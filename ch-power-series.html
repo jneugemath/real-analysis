@@ -31,7 +31,7 @@ window.MathJax = {
 <main id="main">
 <article id="ch-power-series">
 <h1>Chapter 12. Power Series Expansions</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-radius">12.1 Radius of Convergence</a></li><li><a href="#sec-power-series-calculus">12.2 Integrals and Derivatives of Power
-Series</a></li><li><a href="#sec-taylor">12.3 Taylor Series</a></li><li><a href="#notes-11">Notes</a></li></ul></nav>
+Series</a></li><li><a href="#sec-taylor">12.3 Taylor Series</a></li><li><a href="#sec-trig">12.4 The Trigonometric Functions</a></li><li><a href="#notes-11">Notes</a></li></ul></nav>
 <p>A power series is a series of functions whose terms are constant
 multiples of <span class="math inline">\((x-c)^k\)</span>. It is the
 infinite analogue of a polynomial. This chapter shows that power series
@@ -99,7 +99,7 @@ Otherwise let <span class="math inline">\(\varepsilon\to0\)</span>.</p></li>
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <p>Suppose <span class="math inline">\(b\ge1\)</span>, and let <span class="math inline">\(h_k=\sqrt[k]{b}-1\ge0\)</span>. By the Binomial
-Theorem (<a href="ch-integrals.html#exer-binomial">Exercise 9.3.4</a>), <span class="math inline">\(b=(1+h_k)^k\ge1+kh_k\)</span>. So <span class="math inline">\(0\le h_k\le\frac{b-1}{k}\)</span>, and <span class="math inline">\(h_k\to0\)</span> by the Squeeze Theorem. If <span class="math inline">\(0&lt;b&lt;1\)</span>, then <span class="math inline">\(\sqrt[k]{b}=1/\sqrt[k]{1/b}\to1\)</span> by the
+Theorem (<a href="ch-integrals.html#exer-binomial">Exercise 9.3.3</a>), <span class="math inline">\(b=(1+h_k)^k\ge1+kh_k\)</span>. So <span class="math inline">\(0\le h_k\le\frac{b-1}{k}\)</span>, and <span class="math inline">\(h_k\to0\)</span> by the Squeeze Theorem. If <span class="math inline">\(0&lt;b&lt;1\)</span>, then <span class="math inline">\(\sqrt[k]{b}=1/\sqrt[k]{1/b}\to1\)</span> by the
 first case and the limit laws.</p>
 <p>For the second limit, let <span class="math inline">\(h_k=\sqrt[k]{k}-1\ge0\)</span>. For <span class="math inline">\(k\ge2\)</span>, the Binomial Theorem gives <span class="math inline">\(k=(1+h_k)^k\ge\binom{k}{2}h_k^2=\frac{k(k-1)}{2}h_k^2\)</span>.
 So <span class="math inline">\(0\le h_k\le\sqrt{\frac{2}{k-1}}\)</span>,
@@ -257,7 +257,7 @@ but the proof is not given here. It requires rewriting a power series
 centered at <span class="math inline">\(c\)</span> as one centered at
 <span class="math inline">\(d\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-40">
+<section class="level5 unnumbered" id="exercises-41">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-radius-gaps-1">
 
@@ -339,7 +339,7 @@ uniform on <span class="math inline">\(|t|\le |x|\)</span> when <span class="mat
 \end{aligned}\]</span> for all <span class="math inline">\(x\)</span>
 with <span class="math inline">\(|x|&lt;1\)</span>. The first equality
 holds because both sides are <span class="math inline">\(0\)</span> at
-<span class="math inline">\(x=0\)</span> and have derivative <span class="math inline">\(\frac{1}{1+x}\)</span>, by <a href="ch-integrals.html#ex-exp-ln">Example 9.3.8</a> and <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>. When <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(\int_0^x\)</span> means <span class="math inline">\(-\int_x^0\)</span>. The series <span class="math inline">\(\sum^\infty_{k=1}\frac{(-1)^{k+1}}{k}x^k\)</span>
+<span class="math inline">\(x=0\)</span> and have derivative <span class="math inline">\(\frac{1}{1+x}\)</span>, by <a href="ch-integrals.html#ex-exp-ln">Example 9.4.1</a> and <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>. When <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(\int_0^x\)</span> means <span class="math inline">\(-\int_x^0\)</span>. The series <span class="math inline">\(\sum^\infty_{k=1}\frac{(-1)^{k+1}}{k}x^k\)</span>
 has radius of convergence <span class="math inline">\(R=1\)</span> and
 also converges when <span class="math inline">\(x=1\)</span>. Thus by
 Abel’s Theorem, and since <span class="math inline">\(\ln\)</span> is
@@ -451,8 +451,8 @@ Since <span class="math inline">\(f(x)=g(x)\)</span> for all <span class="math i
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>Recall that <span class="math inline">\(e^u=E(u)\)</span>, where
-<span class="math inline">\(E'=E\)</span>, <span class="math inline">\(E(0)=1\)</span> and <span class="math inline">\(E\)</span> is increasing (<a href="ch-integrals.html#exer-exp-function">Exercise 9.3.3</a>). For <span class="math inline">\(m\in\mathbb{N}_0\)</span> and <span class="math inline">\(u\ge0\)</span>, let <span class="math inline">\(g_m(u)=e^u-\sum_{k=0}^m\frac{u^k}{k!}\)</span>. We
+<p>Recall that <span class="math inline">\(e^u\)</span> is increasing,
+<span class="math inline">\(\frac{d}{du}e^u=e^u\)</span> and <span class="math inline">\(e^0=1\)</span> (<a href="ch-integrals.html#thm-exp-properties">Theorem 9.4.4</a>). For <span class="math inline">\(m\in\mathbb{N}_0\)</span> and <span class="math inline">\(u\ge0\)</span>, let <span class="math inline">\(g_m(u)=e^u-\sum_{k=0}^m\frac{u^k}{k!}\)</span>. We
 show <span class="math inline">\(g_m(u)\ge0\)</span> for <span class="math inline">\(u\ge0\)</span> by induction on <span class="math inline">\(m\)</span>. First, <span class="math inline">\(g_0(u)=e^u-1\ge0\)</span>, since <span class="math inline">\(E\)</span> is increasing. If <span class="math inline">\(g_{m-1}\ge0\)</span> on <span class="math inline">\([0,\infty)\)</span>, then <span class="math inline">\(g_m'=g_{m-1}\ge0\)</span> there, so <span class="math inline">\(g_m\)</span> is increasing on <span class="math inline">\([0,\infty)\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Since <span class="math inline">\(g_m(0)=0\)</span>, <span class="math inline">\(g_m(u)\ge0\)</span> for all <span class="math inline">\(u\ge0\)</span>. So <span class="math inline">\(e^u\ge\sum_{k=0}^m\frac{u^k}{k!}\ge\frac{u^m}{m!}\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="examplebox" id="ex-flat-function">
@@ -500,7 +500,7 @@ with positive radius of convergence that converges to <span class="math inline">
 </div>
 <figure class="figure" id="fig-flat-function"><div class="figure-images"><img alt="The graph of e to the minus 1 over x squared. It lies along the x-axis near 0, then rises smoothly and levels off toward height 1 on both sides." height="207" src="figs/fig14.svg" width="501"/></div><figcaption><strong>Figure 12.1.</strong> The function <span class="math inline">\(f\)</span> of <a href="#ex-flat-function">Example
 12.2.10</a>. It is extremely flat at <span class="math inline">\(0\)</span>. Every derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(0\)</span> is <span class="math inline">\(0\)</span>, but <span class="math inline">\(f\)</span> is not the zero function.</figcaption></figure>
-<section class="level5 unnumbered" id="exercises-41">
+<section class="level5 unnumbered" id="exercises-42">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-power-series-integral">
 
@@ -694,7 +694,7 @@ Remainder)<strong>.</strong></p>
 <div class="proofbox">
 <p><em>Proof.</em> Since <span class="math inline">\(f^{(n+1)}(t)(x-t)^n\)</span> is continuous on the
 interval between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span>, by the Mean Value Theorem for
-Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.4.1</a>), there exists
+Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.5.1</a>), there exists
 a <span class="math inline">\(\xi\)</span> between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span> such that <span class="math display">\[\int^x_c
 f^{(n+1)}(t)(x-t)^n\,dt=(x-c)f^{(n+1)}(\xi)(x-\xi)^n.\]</span> The
 result then follows from the Integral Form of the Remainder (<a href="#thm-taylor-integral">Theorem 12.3.9</a>).</p>
@@ -775,7 +775,7 @@ distance in the complex plane from <span class="math inline">\(c=0\)</span> to <
 series. The explanation belongs to complex analysis, where power series
 are studied for complex <span class="math inline">\(x\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-42">
+<section class="level5 unnumbered" id="exercises-43">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-taylor-polynomial-at-1">
 
@@ -818,6 +818,323 @@ for <span class="math inline">\(|x|&lt;1\)</span>. This is the
 </div>
 </section>
 </section>
+<section class="level3 unnumbered" id="sec-trig">
+<h2>12.4 The Trigonometric Functions</h2>
+<p>The functions <span class="math inline">\(\sin x\)</span> and <span class="math inline">\(\cos x\)</span> have been used throughout the book
+with their properties assumed. See <a href="ch-sequences.html#rem-elementary-functions">Remark 3.1.1</a> and the introduction
+to <a href="ch-derivative.html">Chapter 7</a>. This section defines them and
+proves those properties. It also defines <span class="math inline">\(\pi\)</span>.</p>
+<p><a href="#ex-sin-taylor">Example 12.3.11</a> showed that if <span class="math inline">\(\sin\)</span> has its familiar derivatives, then
+it equals its Taylor series. This section turns that around. The series
+becomes the definition. Everything else follows from the derivatives,
+and from one fact about the differential equation <span class="math inline">\(y''+y=0\)</span>.</p>
+<div class="definitionbox" id="def-sin-cos">
+
+<p><strong>Definition 12.4.1.</strong> For <span class="math inline">\(x\in\mathbb{R}\)</span>, define <span class="math display">\[\sin
+x=\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)!}x^{2k+1}=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\]</span>
+and <span class="math display">\[\cos
+x=\sum_{k=0}^\infty\frac{(-1)^k}{(2k)!}x^{2k}=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots.\]</span>
+These are the <em>sine</em> and <em>cosine</em> functions.</p>
+</div>
+<p>Both series converge for every <span class="math inline">\(x\)</span>. Each term has absolute value at most
+<span class="math inline">\(\frac{|x|^n}{n!}\)</span> for some <span class="math inline">\(n\)</span>, with each <span class="math inline">\(n\)</span> used once. The series <span class="math inline">\(\sum\frac{|x|^n}{n!}\)</span> converges by the
+Ratio Test (<a href="ch-series.html#thm-ratio-test">Theorem 10.2.12</a>), since <span class="math inline">\(\frac{|x|^{n+1}/(n+1)!}{|x|^n/n!}=\frac{|x|}{n+1}\to0\)</span>.
+So both series converge absolutely by the Comparison Test (<a href="ch-series.html#thm-comparison-test-series">Theorem 10.2.7</a>). A power series
+that converges everywhere has radius of convergence <span class="math inline">\(\infty\)</span>, by <a href="#thm-radius-of-convergence">Theorem 12.1.7</a> (2).</p>
+<div class="theorembox" id="thm-sin-cos-derivatives">
+
+<p><strong>Theorem 12.4.2.</strong> The functions <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are differentiable on <span class="math inline">\(\mathbb{R}\)</span>, and <span class="math display">\[\frac{d}{dx}\sin x=\cos
+x\quad\text{and}\quad\frac{d}{dx}\cos x=-\sin x.\]</span> Also <span class="math inline">\(\sin0=0\)</span>, <span class="math inline">\(\cos0=1\)</span>, <span class="math inline">\(\sin(-x)=-\sin x\)</span> and <span class="math inline">\(\cos(-x)=\cos x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#thm-power-series-derivative">Theorem 12.2.3</a>, the
+series can be differentiated term by term. For <span class="math inline">\(\sin\)</span>, <span class="math display">\[\frac{d}{dx}\sin
+x=\sum_{k=0}^\infty\frac{(-1)^k(2k+1)}{(2k+1)!}x^{2k}=\sum_{k=0}^\infty\frac{(-1)^k}{(2k)!}x^{2k}=\cos
+x.\]</span> For <span class="math inline">\(\cos\)</span>, the term with
+<span class="math inline">\(k=0\)</span> is constant, so <span class="math display">\[\frac{d}{dx}\cos
+x=\sum_{k=1}^\infty\frac{(-1)^k(2k)}{(2k)!}x^{2k-1}=\sum_{k=1}^\infty\frac{(-1)^k}{(2k-1)!}x^{2k-1}=-\sum_{j=0}^\infty\frac{(-1)^j}{(2j+1)!}x^{2j+1}=-\sin
+x,\]</span> where <span class="math inline">\(j=k-1\)</span>. Setting
+<span class="math inline">\(x=0\)</span> in the series gives <span class="math inline">\(\sin0=0\)</span> and <span class="math inline">\(\cos0=1\)</span>. The series for <span class="math inline">\(\sin\)</span> has only odd powers and the series
+for <span class="math inline">\(\cos\)</span> has only even powers. So
+<span class="math inline">\(\sin(-x)=-\sin x\)</span> and <span class="math inline">\(\cos(-x)=\cos x\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(\sin''=-\sin\)</span> and
+<span class="math inline">\(\cos''=-\cos\)</span>. Both
+functions solve the differential equation <span class="math inline">\(y''+y=0\)</span>. The next lemma says a
+solution of this equation is determined by its value and its derivative
+at <span class="math inline">\(0\)</span>. It is the key to every
+identity in this section.</p>
+<div class="lemmabox" id="lem-trig-ode-zero">
+
+<p><strong>Lemma 12.4.3.</strong> Let <span class="math inline">\(y:\mathbb{R}\to\mathbb{R}\)</span> be twice
+differentiable with <span class="math inline">\(y''+y=0\)</span>
+on <span class="math inline">\(\mathbb{R}\)</span>. If <span class="math inline">\(y(0)=0\)</span> and <span class="math inline">\(y'(0)=0\)</span>, then <span class="math inline">\(y(x)=0\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(E(x)=y(x)^2+y'(x)^2\)</span>.
+Then <span class="math display">\[E'(x)=2y(x)y'(x)+2y'(x)y''(x)=2y'(x)\bigl(y(x)+y''(x)\bigr)=0.\]</span>
+By <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5), <span class="math inline">\(E\)</span> is constant. Since <span class="math inline">\(E(0)=0\)</span>, <span class="math inline">\(E(x)=0\)</span> for all <span class="math inline">\(x\)</span>. A sum of two squares is <span class="math inline">\(0\)</span> only when both are <span class="math inline">\(0\)</span>. So <span class="math inline">\(y(x)=0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-trig-ode">
+
+<p><strong>Theorem 12.4.4.</strong> Let <span class="math inline">\(y:\mathbb{R}\to\mathbb{R}\)</span> be twice
+differentiable with <span class="math inline">\(y''+y=0\)</span>
+on <span class="math inline">\(\mathbb{R}\)</span>. Then <span class="math display">\[y(x)=y(0)\cos x+y'(0)\sin x\]</span> for all
+<span class="math inline">\(x\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(z(x)=y(x)-y(0)\cos x-y'(0)\sin
+x\)</span>. By <a href="#thm-sin-cos-derivatives">Theorem 12.4.2</a>,
+<span class="math inline">\(z''=-z\)</span>, so <span class="math inline">\(z''+z=0\)</span>. Also <span class="math inline">\(z(0)=y(0)-y(0)=0\)</span> and <span class="math inline">\(z'(0)=y'(0)-y'(0)=0\)</span>. By <a href="#lem-trig-ode-zero">Lemma 12.4.3</a>, <span class="math inline">\(z=0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-trig-identities">
+
+<p><strong>Theorem 12.4.5.</strong> For all <span class="math inline">\(x,y\in\mathbb{R}\)</span>,</p>
+<ol>
+<li><p><span class="math inline">\(\sin^2x+\cos^2x=1\)</span>, so <span class="math inline">\(|\sin x|\le1\)</span> and <span class="math inline">\(|\cos x|\le1\)</span>,</p></li>
+<li><p><span class="math inline">\(\sin(x+y)=\sin x\cos y+\cos x\sin
+y\)</span>, and</p></li>
+<li><p><span class="math inline">\(\cos(x+y)=\cos x\cos y-\sin x\sin
+y\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Let <span class="math inline">\(E(x)=\sin^2x+\cos^2x\)</span>. By
+<a href="#thm-sin-cos-derivatives">Theorem 12.4.2</a>, <span class="math inline">\(E'(x)=2\sin x\cos x-2\cos x\sin x=0\)</span>.
+So <span class="math inline">\(E\)</span> is constant, and <span class="math inline">\(E(x)=E(0)=1\)</span>.</p>
+<p>(2) Fix <span class="math inline">\(y\)</span>, and let <span class="math inline">\(f(x)=\sin(x+y)\)</span>. By the Chain Rule, <span class="math inline">\(f'(x)=\cos(x+y)\)</span> and <span class="math inline">\(f''(x)=-\sin(x+y)=-f(x)\)</span>. Also
+<span class="math inline">\(f(0)=\sin y\)</span> and <span class="math inline">\(f'(0)=\cos y\)</span>. By <a href="#thm-trig-ode">Theorem 12.4.4</a>, <span class="math inline">\(f(x)=\sin y\cos x+\cos y\sin x\)</span>.</p>
+<p>(3) Fix <span class="math inline">\(y\)</span>, and let <span class="math inline">\(g(x)=\cos(x+y)\)</span>. Then <span class="math inline">\(g''=-g\)</span>, <span class="math inline">\(g(0)=\cos y\)</span> and <span class="math inline">\(g'(0)=-\sin y\)</span>. By <a href="#thm-trig-ode">Theorem 12.4.4</a>, <span class="math inline">\(g(x)=\cos y\cos x-\sin y\sin x\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-trig-formulas">
+
+<p><strong>Corollary 12.4.6.</strong> For all <span class="math inline">\(x,y\in\mathbb{R}\)</span>,</p>
+<ol>
+<li><p><span class="math inline">\(\sin2x=2\sin x\cos x\)</span> and
+<span class="math inline">\(\cos2x=\cos^2x-\sin^2x=1-2\sin^2x\)</span>,</p></li>
+<li><p><span class="math inline">\(\sin x\sin
+y=\frac12\bigl[\cos(x-y)-\cos(x+y)\bigr]\)</span>,</p></li>
+<li><p><span class="math inline">\(\cos x\cos
+y=\frac12\bigl[\cos(x-y)+\cos(x+y)\bigr]\)</span> and <span class="math inline">\(\sin x\cos
+y=\frac12\bigl[\sin(x+y)+\sin(x-y)\bigr]\)</span>, and</p></li>
+<li><p><span class="math inline">\(\sin x-\sin
+y=2\cos\frac{x+y}2\sin\frac{x-y}2\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Take <span class="math inline">\(y=x\)</span> in <a href="#thm-trig-identities">Theorem 12.4.5</a>, and use <span class="math inline">\(\cos^2x=1-\sin^2x\)</span>.</p>
+<p>(2) and (3) By Theorems <a href="#thm-trig-identities">12.4.5</a> and
+<a href="#thm-sin-cos-derivatives">12.4.2</a>, <span class="math inline">\(\cos(x-y)=\cos x\cos y+\sin x\sin y\)</span> and
+<span class="math inline">\(\sin(x-y)=\sin x\cos y-\cos x\sin
+y\)</span>. Add or subtract these and the formulas for <span class="math inline">\(\cos(x+y)\)</span> and <span class="math inline">\(\sin(x+y)\)</span>.</p>
+<p>(4) Let <span class="math inline">\(u=\frac{x+y}2\)</span> and <span class="math inline">\(v=\frac{x-y}2\)</span>. Then <span class="math inline">\(x=u+v\)</span> and <span class="math inline">\(y=u-v\)</span>. By (3), <span class="math inline">\(\sin x-\sin y=\sin(u+v)-\sin(u-v)=2\cos u\sin
+v\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>These are the identities used in <a href="ch-continuity.html#ex-sine-uniform">Example
+6.4.3</a>, <a href="ch-series.html#thm-trig-series-test">Theorem 10.2.20</a> and <a href="ch-function-sequences.html#ex-weierstrass">Example 11.3.1</a>.</p>
+<p>Next comes <span class="math inline">\(\pi\)</span>. The plan is to
+find the first positive zero of <span class="math inline">\(\cos\)</span>. To locate it, compare <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> with their Taylor polynomials.</p>
+<div class="lemmabox" id="lem-sin-cos-bounds">
+
+<p><strong>Lemma 12.4.7.</strong> For all <span class="math inline">\(x\ge0\)</span>,</p>
+<ol>
+<li><p><span class="math inline">\(x-\frac{x^3}{6}\le\sin x\le
+x\)</span>, and</p></li>
+<li><p><span class="math inline">\(1-\frac{x^2}2+\frac{x^4}{24}-\frac{x^6}{720}\le\cos
+x\le1-\frac{x^2}2+\frac{x^4}{24}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Each inequality has the form <span class="math inline">\(f(x)\ge0\)</span>, where <span class="math inline">\(f(0)=0\)</span> and <span class="math inline">\(f'\)</span> is the function in the previous
+inequality. If <span class="math inline">\(f'\ge0\)</span> on <span class="math inline">\([0,\infty)\)</span> and <span class="math inline">\(f(0)=0\)</span>, then <span class="math inline">\(f\ge0\)</span> on <span class="math inline">\([0,\infty)\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Start with <span class="math inline">\(1-\cos x\ge0\)</span>, which holds by <a href="#thm-trig-identities">Theorem 12.4.5</a> (1). Then, in order,
+<span class="math display">\[\begin{aligned}
+f_1(x)&amp;=x-\sin x, &amp; f_1'(x)&amp;=1-\cos x\ge0,\\
+f_2(x)&amp;=\cos x-1+\tfrac{x^2}2, &amp; f_2'(x)&amp;=f_1(x)\ge0,\\
+f_3(x)&amp;=\sin x-x+\tfrac{x^3}6, &amp; f_3'(x)&amp;=f_2(x)\ge0,\\
+f_4(x)&amp;=1-\tfrac{x^2}2+\tfrac{x^4}{24}-\cos x, &amp;
+f_4'(x)&amp;=f_3(x)\ge0,\\
+f_5(x)&amp;=x-\tfrac{x^3}6+\tfrac{x^5}{120}-\sin x, &amp;
+f_5'(x)&amp;=f_4(x)\ge0,\\
+f_6(x)&amp;=\cos x-1+\tfrac{x^2}2-\tfrac{x^4}{24}+\tfrac{x^6}{720},
+&amp; f_6'(x)&amp;=f_5(x)\ge0.
+\end{aligned}\]</span> Each <span class="math inline">\(f_j\)</span> is
+<span class="math inline">\(0\)</span> at <span class="math inline">\(0\)</span>. So <span class="math inline">\(f_j\ge0\)</span> on <span class="math inline">\([0,\infty)\)</span> for each <span class="math inline">\(j\)</span>. Now <span class="math inline">\(f_1,f_3\ge0\)</span> give (1), and <span class="math inline">\(f_4,f_6\ge0\)</span> give (2).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cos-first-zero">
+
+<p><strong>Theorem 12.4.8.</strong> There is a number <span class="math inline">\(x_0\in\left(\frac32,2\right)\)</span> with <span class="math inline">\(\cos x_0=0\)</span> and <span class="math inline">\(\cos x&gt;0\)</span> for <span class="math inline">\(0\le x&lt;x_0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#lem-sin-cos-bounds">Lemma 12.4.7</a> (2), <span class="math inline">\(\cos2\le1-2+\frac{16}{24}=-\frac13&lt;0\)</span>.
+Let <span class="math inline">\(p(x)=1-\frac{x^2}2+\frac{x^4}{24}-\frac{x^6}{720}\)</span>.
+For <span class="math inline">\(0&lt;x\le\frac32\)</span>, <span class="math inline">\(x^2&lt;6\)</span>, so <span class="math display">\[p'(x)=-x+\frac{x^3}6-\frac{x^5}{120}=-x\left(1-\frac{x^2}6\right)-\frac{x^5}{120}&lt;0.\]</span>
+So <span class="math inline">\(p\)</span> is decreasing on <span class="math inline">\(\left[0,\frac32\right]\)</span>, and for <span class="math inline">\(0\le x\le\frac32\)</span>, <span class="math display">\[\cos x\ge p(x)\ge
+p\left(\tfrac32\right)=1-\frac98+\frac{81}{384}-\frac{729}{46080}&gt;0.\]</span>
+(The value is about <span class="math inline">\(0.07\)</span>.) Let
+<span class="math inline">\(Z=\{x\in[0,2]:\cos x=0\}\)</span>. Since
+<span class="math inline">\(\cos\frac32&gt;0&gt;\cos2\)</span>, <span class="math inline">\(Z\)</span> is not empty by <a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a>. Let <span class="math inline">\(x_0=\inf Z\)</span>. Since <span class="math inline">\(\cos&gt;0\)</span> on <span class="math inline">\(\left[0,\frac32\right]\)</span>, <span class="math inline">\(x_0\ge\frac32\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span> there is a <span class="math inline">\(z_n\in Z\)</span> with <span class="math inline">\(x_0\le z_n&lt;x_0+\frac1n\)</span>. Then <span class="math inline">\(z_n\to x_0\)</span>, and <span class="math inline">\(\cos x_0=\lim\cos z_n=0\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>. So <span class="math inline">\(x_0\in Z\)</span>, and <span class="math inline">\(x_0\ne\frac32\)</span> and <span class="math inline">\(x_0\ne2\)</span>. Finally, <span class="math inline">\(\cos x\ne0\)</span> for <span class="math inline">\(0\le x&lt;x_0\)</span>. If <span class="math inline">\(\cos x&lt;0\)</span> for such an <span class="math inline">\(x\)</span>, then <span class="math inline">\(\cos\)</span> would have a zero in <span class="math inline">\((0,x)\)</span> by <a href="ch-continuity.html#thm-ivt">Theorem
+6.3.10</a>, which is smaller than <span class="math inline">\(x_0\)</span>. So <span class="math inline">\(\cos
+x&gt;0\)</span> for <span class="math inline">\(0\le
+x&lt;x_0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-pi">
+
+<p><strong>Definition 12.4.9.</strong> Define <span class="math inline">\(\pi=2x_0\)</span>, where <span class="math inline">\(x_0\)</span> is the number in <a href="#thm-cos-first-zero">Theorem 12.4.8</a>. So <span class="math inline">\(\pi\)</span> is twice the smallest positive zero
+of <span class="math inline">\(\cos\)</span>, and <span class="math inline">\(3&lt;\pi&lt;4\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-trig-periodic">
+
+<p><strong>Theorem 12.4.10.</strong></p>
+<ol>
+<li><p><span class="math inline">\(\cos\frac\pi2=0\)</span>, <span class="math inline">\(\sin\frac\pi2=1\)</span>, <span class="math inline">\(\cos\pi=-1\)</span> and <span class="math inline">\(\sin\pi=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin\left(x+\frac\pi2\right)=\cos
+x\)</span> and <span class="math inline">\(\cos\left(x+\frac\pi2\right)=-\sin x\)</span> for
+all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin(x+\pi)=-\sin x\)</span> and
+<span class="math inline">\(\cos(x+\pi)=-\cos x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin(x+2\pi)=\sin x\)</span> and
+<span class="math inline">\(\cos(x+2\pi)=\cos x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin x&gt;0\)</span> for <span class="math inline">\(0&lt;x&lt;\pi\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin x=0\)</span> exactly when <span class="math inline">\(x=k\pi\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>, and <span class="math inline">\(\cos x=0\)</span> exactly when <span class="math inline">\(x=\frac\pi2+k\pi\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) By definition, <span class="math inline">\(\cos\frac\pi2=0\)</span>. On <span class="math inline">\(\left[0,\frac\pi2\right)\)</span>, <span class="math inline">\(\sin'=\cos&gt;0\)</span>. So <span class="math inline">\(\sin\)</span> is strictly increasing on <span class="math inline">\(\left[0,\frac\pi2\right]\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>, and <span class="math inline">\(\sin\frac\pi2&gt;\sin0=0\)</span>. Since <span class="math inline">\(\sin^2\frac\pi2=1-\cos^2\frac\pi2=1\)</span>,
+<span class="math inline">\(\sin\frac\pi2=1\)</span>. By <a href="#cor-trig-formulas">Corollary 12.4.6</a> (1), <span class="math inline">\(\cos\pi=1-2\sin^2\frac\pi2=-1\)</span> and <span class="math inline">\(\sin\pi=2\sin\frac\pi2\cos\frac\pi2=0\)</span>.</p>
+<p>(2) By <a href="#thm-trig-identities">Theorem 12.4.5</a> and (1),
+<span class="math inline">\(\sin\left(x+\frac\pi2\right)=\sin
+x\cdot0+\cos x\cdot1=\cos x\)</span> and <span class="math inline">\(\cos\left(x+\frac\pi2\right)=\cos x\cdot0-\sin
+x\cdot1=-\sin x\)</span>.</p>
+<p>(3) Apply (2) twice. Then <span class="math inline">\(\sin(x+\pi)=\cos\left(x+\frac\pi2\right)=-\sin
+x\)</span> and <span class="math inline">\(\cos(x+\pi)=-\sin\left(x+\frac\pi2\right)=-\cos
+x\)</span>.</p>
+<p>(4) Apply (3) twice.</p>
+<p>(5) If <span class="math inline">\(0&lt;x\le\frac\pi2\)</span>, then
+<span class="math inline">\(\sin x&gt;0\)</span> by the proof of (1). If
+<span class="math inline">\(\frac\pi2&lt;x&lt;\pi\)</span>, then <span class="math inline">\(0&lt;\pi-x&lt;\frac\pi2\)</span>. By (3) and <a href="#thm-sin-cos-derivatives">Theorem 12.4.2</a>, <span class="math inline">\(\sin x=-\sin(x-\pi)=\sin(\pi-x)&gt;0\)</span>.</p>
+<p>(6) By (1) and (3), <span class="math inline">\(\sin(k\pi)=\pm\sin0=0\)</span> for all <span class="math inline">\(k\in\mathbb{Z}\)</span>. Conversely, suppose <span class="math inline">\(\sin x=0\)</span>. Let <span class="math inline">\(k\)</span> be the integer with <span class="math inline">\(k\pi\le x&lt;(k+1)\pi\)</span>, and let <span class="math inline">\(t=x-k\pi\in[0,\pi)\)</span>. By (3), <span class="math inline">\(\sin t=\pm\sin x=0\)</span>. By (5), <span class="math inline">\(t=0\)</span>. So <span class="math inline">\(x=k\pi\)</span>. By (2), <span class="math inline">\(\cos x=\sin\left(x+\frac\pi2\right)\)</span>. So
+<span class="math inline">\(\cos x=0\)</span> exactly when <span class="math inline">\(x+\frac\pi2=m\pi\)</span> for some <span class="math inline">\(m\in\mathbb{Z}\)</span>, that is, when <span class="math inline">\(x=\frac\pi2+(m-1)\pi\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This <span class="math inline">\(\pi\)</span> is the familiar one.
+The point <span class="math inline">\((\cos t,\sin t)\)</span> lies on
+the unit circle, by <a href="#thm-trig-identities">Theorem
+12.4.5</a> (1). As <span class="math inline">\(t\)</span> goes from
+<span class="math inline">\(0\)</span> to <span class="math inline">\(2\pi\)</span>, it goes around the circle once,
+starting and ending at <span class="math inline">\((1,0)\)</span>. See
+<a href="#exer-unit-circle">Exercise 12.4.7</a>. Its velocity <span class="math inline">\((-\sin t,\cos t)\)</span> has length <span class="math inline">\(1\)</span>. So the arc of the circle from <span class="math inline">\((1,0)\)</span> to <span class="math inline">\((\cos t,\sin t)\)</span> has length <span class="math inline">\(t\)</span>, and the whole circle has length <span class="math inline">\(2\pi\)</span>. Arc length is not developed in this
+book, so this is only a remark. But it explains why the functions
+defined here are the sine and cosine of trigonometry, measured in
+radians.</p>
+<p>Two limits from <a href="ch-continuity.html">Chapter 6</a> now come for
+free. By <a href="#thm-sin-cos-derivatives">Theorem 12.4.2</a>, <span class="math display">\[\lim_{x\to0}\frac{\sin x}x=\lim_{x\to0}\frac{\sin
+x-\sin0}{x-0}=\cos0=1
+\quad\text{and}\quad
+\lim_{x\to0}\frac{\cos x-1}x=-\sin0=0.\]</span> Compare <a href="ch-continuity.html#exer-sin-x-over-x">Exercise 6.1.7</a>, which uses a geometric
+inequality instead.</p>
+<div class="definitionbox" id="def-tan">
+
+<p><strong>Definition 12.4.11.</strong> For <span class="math inline">\(x\ne\frac\pi2+k\pi\)</span>, <span class="math inline">\(k\in\mathbb{Z}\)</span>, define <span class="math inline">\(\tan x=\frac{\sin x}{\cos x}\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-tan-arctan">
+
+<p><strong>Theorem 12.4.12.</strong></p>
+<ol>
+<li><p><span class="math inline">\(\frac{d}{dx}\tan
+x=\frac1{\cos^2x}=1+\tan^2x\)</span> wherever <span class="math inline">\(\tan\)</span> is defined.</p></li>
+<li><p><span class="math inline">\(\tan\)</span> is strictly increasing
+on <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span> and
+maps it onto <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+<li><p>The inverse <span class="math inline">\(\arctan:\mathbb{R}\to\left(-\frac\pi2,\frac\pi2\right)\)</span>
+is differentiable, and <span class="math inline">\(\frac{d}{dx}\arctan
+x=\frac1{1+x^2}\)</span>.</p></li>
+<li><p><span class="math inline">\(\arctan
+x=\int_0^x\frac{dt}{1+t^2}\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>. In particular, <span class="math inline">\(\pi=4\int_0^1\frac{dt}{1+t^2}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) By the Quotient Rule (<a href="ch-derivative.html#thm-derivative-algebra">Theorem
+7.1.5</a>) and <a href="#thm-trig-identities">Theorem 12.4.5</a> (1),
+<span class="math display">\[\frac{d}{dx}\tan x=\frac{\cos x\cos x-\sin
+x(-\sin
+x)}{\cos^2x}=\frac1{\cos^2x}=\frac{\cos^2x+\sin^2x}{\cos^2x}=1+\tan^2x.\]</span></p>
+<p>(2) By (1), <span class="math inline">\(\tan'&gt;0\)</span> on
+<span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>.
+So <span class="math inline">\(\tan\)</span> is strictly increasing
+there by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. As <span class="math inline">\(x\to\frac\pi2^-\)</span>, <span class="math inline">\(\sin x\to1\)</span> and <span class="math inline">\(\cos x\to0\)</span> with <span class="math inline">\(\cos x&gt;0\)</span>. So <span class="math inline">\(\tan x\to\infty\)</span>. Since <span class="math inline">\(\tan(-x)=-\tan x\)</span>, <span class="math inline">\(\tan x\to-\infty\)</span> as <span class="math inline">\(x\to-\frac\pi2^+\)</span>. Given <span class="math inline">\(y\in\mathbb{R}\)</span>, choose <span class="math inline">\(a&lt;b\)</span> in <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span> with
+<span class="math inline">\(\tan a&lt;y&lt;\tan b\)</span>. By <a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a>, <span class="math inline">\(\tan
+c=y\)</span> for some <span class="math inline">\(c\in(a,b)\)</span>. So
+<span class="math inline">\(\tan\)</span> maps <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span> onto
+<span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>(3) By <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a>, <span class="math inline">\(\arctan\)</span> is differentiable on <span class="math inline">\(\mathbb{R}\)</span>. If <span class="math inline">\(y=\tan x\)</span> with <span class="math inline">\(|x|&lt;\frac\pi2\)</span>, then <span class="math display">\[\arctan'(y)=\frac1{\tan'(x)}=\frac1{1+\tan^2x}=\frac1{1+y^2}.\]</span></p>
+<p>(4) Let <span class="math inline">\(F(x)=\int_0^x\frac{dt}{1+t^2}\)</span>. By <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, <span class="math inline">\(F'(x)=\frac1{1+x^2}=\arctan'(x)\)</span>.
+So <span class="math inline">\(F-\arctan\)</span> is constant by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5). Both are <span class="math inline">\(0\)</span> at <span class="math inline">\(0\)</span>. So <span class="math inline">\(F=\arctan\)</span>. Last, <span class="math inline">\(\cos^2\frac\pi4-\sin^2\frac\pi4=\cos\frac\pi2=0\)</span>
+by <a href="#cor-trig-formulas">Corollary 12.4.6</a> (1), and both <span class="math inline">\(\sin\frac\pi4\)</span> and <span class="math inline">\(\cos\frac\pi4\)</span> are positive. So <span class="math inline">\(\sin\frac\pi4=\cos\frac\pi4\)</span>, <span class="math inline">\(\tan\frac\pi4=1\)</span> and <span class="math inline">\(\arctan1=\frac\pi4\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Part (4) gives another way to define <span class="math inline">\(\pi\)</span>, as four times an integral, much as
+<span class="math inline">\(\ln x\)</span> was defined in <a href="ch-integrals.html#sec-exp-log">Section 9.4</a>. The inverse cosine was found in <a href="ch-derivative.html#ex-arccos">Example 7.2.10</a>, and the inverse sine is <a href="#exer-arcsin">Exercise 12.4.4</a>.</p>
+<section class="level5 unnumbered" id="exercises-44">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-trig-double-angle">
+
+<p><strong>Exercise 12.4.1.</strong> Prove that <span class="math inline">\(\sin^2x=\frac{1-\cos2x}2\)</span> and <span class="math inline">\(\cos^2x=\frac{1+\cos2x}2\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>. Then prove that <span class="math inline">\(\sin3x=3\sin x-4\sin^3x\)</span>. <a aria-label="Hint for Exercise 12.4.1" href="solutions-ch12.html#sol-exer-trig-double-angle">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-trig-values">
+
+<p><strong>Exercise 12.4.2.</strong> Prove that <span class="math inline">\(\sin\frac\pi4=\cos\frac\pi4=\frac{\sqrt2}2\)</span>,
+<span class="math inline">\(\sin\frac\pi6=\frac12\)</span> and <span class="math inline">\(\cos\frac\pi6=\frac{\sqrt3}2\)</span>. <a aria-label="Solution for Exercise 12.4.2" href="solutions-ch12.html#sol-exer-trig-values">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-tan-addition">
+
+<p><strong>Exercise 12.4.3.</strong> Prove that <span class="math inline">\(\tan(x+y)=\frac{\tan x+\tan y}{1-\tan x\tan
+y}\)</span> whenever <span class="math inline">\(\tan x\)</span>, <span class="math inline">\(\tan y\)</span> and <span class="math inline">\(\tan(x+y)\)</span> are defined and <span class="math inline">\(\tan x\tan y\ne1\)</span>. <a aria-label="Hint for Exercise 12.4.3" href="solutions-ch12.html#sol-exer-tan-addition">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-arcsin">
+
+<p><strong>Exercise 12.4.4.</strong> Prove that <span class="math inline">\(\sin\)</span> is strictly increasing on <span class="math inline">\(\left[-\frac\pi2,\frac\pi2\right]\)</span> and
+maps it onto <span class="math inline">\([-1,1]\)</span>. Let <span class="math inline">\(\arcsin:[-1,1]\to\left[-\frac\pi2,\frac\pi2\right]\)</span>
+be the inverse. Prove that <span class="math inline">\(\frac{d}{dx}\arcsin
+x=\frac1{\sqrt{1-x^2}}\)</span> for <span class="math inline">\(-1&lt;x&lt;1\)</span>, and that <span class="math inline">\(\arcsin x+\arccos x=\frac\pi2\)</span> for <span class="math inline">\(-1\le x\le1\)</span>, where <span class="math inline">\(\arccos\)</span> is as in <a href="ch-derivative.html#ex-arccos">Example 7.2.10</a>. <a aria-label="Solution for Exercise 12.4.4" href="solutions-ch12.html#sol-exer-arcsin">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-trig-ode-omega">
+
+<p><strong>Exercise 12.4.5.</strong> Let <span class="math inline">\(\omega&gt;0\)</span>, and let <span class="math inline">\(y:\mathbb{R}\to\mathbb{R}\)</span> be twice
+differentiable with <span class="math inline">\(y''+\omega^2y=0\)</span> on <span class="math inline">\(\mathbb{R}\)</span>. Prove that <span class="math inline">\(y(x)=y(0)\cos\omega
+x+\frac{y'(0)}\omega\sin\omega x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>. <a aria-label="Solution for Exercise 12.4.5" href="solutions-ch12.html#sol-exer-trig-ode-omega">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-sin-periods">
+
+<p><strong>Exercise 12.4.6.</strong> Suppose <span class="math inline">\(p\in\mathbb{R}\)</span> and <span class="math inline">\(\sin(x+p)=\sin x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>. Prove that <span class="math inline">\(p=2k\pi\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>. <a aria-label="Hint for Exercise 12.4.6" href="solutions-ch12.html#sol-exer-sin-periods">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-unit-circle">
+
+<p><strong>Exercise 12.4.7.</strong> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span> with <span class="math inline">\(a^2+b^2=1\)</span>. Prove that there is exactly
+one <span class="math inline">\(t\in[0,2\pi)\)</span> with <span class="math inline">\(\cos t=a\)</span> and <span class="math inline">\(\sin t=b\)</span>. <a aria-label="Solution for Exercise 12.4.7" href="solutions-ch12.html#sol-exer-unit-circle">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-pi-bounds">
+
+<p><strong>Exercise 12.4.8.</strong> Use <a href="#lem-sin-cos-bounds">Lemma 12.4.7</a> to prove that <span class="math inline">\(3.1&lt;\pi&lt;3.2\)</span>. <a aria-label="Hint for Exercise 12.4.8" href="solutions-ch12.html#sol-exer-pi-bounds">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-leibniz-pi">
+
+<p><strong>Exercise 12.4.9.</strong> Prove that <span class="math inline">\(\arctan
+x=\sum_{k=0}^\infty\frac{(-1)^k}{2k+1}x^{2k+1}\)</span> for <span class="math inline">\(|x|&lt;1\)</span>. Then use <a href="#thm-abel">Theorem 12.2.1</a> to prove that <span class="math display">\[\frac\pi4=1-\frac13+\frac15-\frac17+\cdots.\]</span>
+<a aria-label="Hint for Exercise 12.4.9" href="solutions-ch12.html#sol-exer-leibniz-pi">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sin-not-polynomial">
+
+<p><strong>Exercise 12.4.10.</strong> Prove that <span class="math inline">\(\sin\)</span> is not a polynomial. <a aria-label="Hint for Exercise 12.4.10" href="solutions-ch12.html#sol-exer-sin-not-polynomial">[Hint]</a></p>
+</div>
+</section>
+</section>
 <section class="level3 unnumbered" id="notes-11">
 <h2>Notes</h2>
 <p>Brook Taylor published the series that bears his name in 1715 [<a href="bibliography.html#bib-taylor1715">71</a>]. Colin Maclaurin used the special case
@@ -834,7 +1151,12 @@ series of <a href="#exer-binomial-series">Exercise 12.3.6</a> converges
 for <span class="math inline">\(\ln(1+x)\)</span> in 1668 [<a href="bibliography.html#bib-mercator1668">53</a>]. Gottfried Wilhelm Leibniz published
 the series <span class="math inline">\(\frac\pi4=1-\frac13+\frac15-\cdots\)</span> in
 1682 [<a href="bibliography.html#bib-leibniz1682">44</a>]. Madhava of Sangamagrama had
-found it around 1400.</p>
+found it around 1400. Madhava also knew the series for <span class="math inline">\(\sin x\)</span> and <span class="math inline">\(\cos x\)</span>. Isaac Newton found them again in
+1669. Leonhard Euler made <span class="math inline">\(\sin\)</span> and
+<span class="math inline">\(\cos\)</span> functions of a real variable
+in his <em>Introductio in analysin infinitorum</em> of 1748. Defining
+them by their series, as in <a href="#sec-trig">Section 12.4</a>, makes
+them part of analysis instead of geometry.</p>
 </section>
 </article>
 </main>

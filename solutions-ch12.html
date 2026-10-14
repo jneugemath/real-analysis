@@ -56,7 +56,7 @@ y8\right)^k\)</span>.</p>
 <p><strong><a href="ch-power-series.html#exer-radius-practice">Exercise 12.1.3</a>.</strong>
 <em>Hint.</em> Use <a href="ch-power-series.html#cor-radius-ratio">Corollary 12.1.6</a>. In
 (d), the ratio of consecutive coefficients is <span class="math inline">\(\left(\frac{k}{k+1}\right)^k\to\frac1e\)</span>.
-At <span class="math inline">\(x=\pm e\)</span>, use <span class="math inline">\(\left(1+\frac1k\right)^k&lt;e\)</span>, from <a href="ch-integrals.html#ex-exp-ln">Example 9.3.8</a>, to show the terms do not tend to
+At <span class="math inline">\(x=\pm e\)</span>, use <span class="math inline">\(\left(1+\frac1k\right)^k&lt;e\)</span>, from <a href="ch-integrals.html#ex-exp-ln">Example 9.4.1</a>, to show the terms do not tend to
 <span class="math inline">\(0\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-liminf-ratio-root">
@@ -169,7 +169,8 @@ too large. In fact <span class="math inline">\(0.18226&lt;\ln1.2&lt;0.18267\)</s
 <em>Hint.</em> By <a href="ch-power-series.html#thm-taylor-lagrange">Theorem 12.3.7</a>,
 <span class="math inline">\(|R_n(x)|\le
 e^{|x|}\frac{|x|^{n+1}}{(n+1)!}\)</span>. Use <a href="ch-series.html#exer-pk-over-kfactorial">Exercise 10.2.5</a>.</p>
-<p><em>Solution.</em> Let <span class="math inline">\(f(x)=e^x=E(x)\)</span>. Since <span class="math inline">\(E'=E\)</span> (<a href="ch-integrals.html#exer-exp-function">Exercise 9.3.3</a>), <span class="math inline">\(f^{(n)}(x)=e^x\)</span> for all <span class="math inline">\(n\)</span>. So <span class="math inline">\(f\in
+<p><em>Solution.</em> Let <span class="math inline">\(f(x)=e^x\)</span>.
+Since <span class="math inline">\(\frac{d}{dx}e^x=e^x\)</span> (<a href="ch-integrals.html#thm-exp-properties">Theorem 9.4.4</a>), <span class="math inline">\(f^{(n)}(x)=e^x\)</span> for all <span class="math inline">\(n\)</span>. So <span class="math inline">\(f\in
 C^\infty(\mathbb{R})\)</span> and <span class="math inline">\(f^{(k)}(0)=e^0=1\)</span> for all <span class="math inline">\(k\)</span>. So <span class="math inline">\(T(e^x,0)=\sum_{k=0}^\infty\frac{x^k}{k!}\)</span>.</p>
 <p>Let <span class="math inline">\(x\in\mathbb{R}\)</span>. If <span class="math inline">\(x=0\)</span>, both sides equal <span class="math inline">\(1\)</span>. Suppose <span class="math inline">\(x\ne0\)</span>. By Lagrange’s Form of the
 Remainder (<a href="ch-power-series.html#thm-taylor-lagrange">Theorem 12.3.7</a>) on <span class="math inline">\(I=\mathbb{R}\)</span>, for each <span class="math inline">\(n\)</span> there is a <span class="math inline">\(\xi\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(x\)</span> with <span class="math display">\[R_n(x)=\frac{e^\xi}{(n+1)!}x^{n+1}.\]</span>
@@ -187,6 +188,89 @@ x\)</span> is <span class="math inline">\(\pm\sin x\)</span> or <span class="mat
 
 <p><strong><a href="ch-power-series.html#exer-binomial-series">Exercise 12.3.6</a>.</strong>
 <em>Hint.</em> (a) Compute <span class="math inline">\(f^{(k)}(0)\)</span>. For the radius, use <a href="ch-power-series.html#cor-radius-ratio">Corollary 12.1.6</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-trig-double-angle">
+
+<p><strong><a href="ch-power-series.html#exer-trig-double-angle">Exercise
+12.4.1</a>.</strong> <em>Hint.</em> Use <a href="ch-power-series.html#cor-trig-formulas">Corollary 12.4.6</a> (1) and <span class="math inline">\(\sin^2x+\cos^2x=1\)</span>. For <span class="math inline">\(\sin3x\)</span>, write <span class="math inline">\(3x=2x+x\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-trig-values">
+
+<p><strong><a href="ch-power-series.html#exer-trig-values">Exercise 12.4.2</a>.</strong> The
+proof of <a href="ch-power-series.html#thm-tan-arctan">Theorem 12.4.12</a> (4) showed <span class="math inline">\(\sin\frac\pi4=\cos\frac\pi4&gt;0\)</span>. Since
+their squares add to <span class="math inline">\(1\)</span>, <span class="math inline">\(2\sin^2\frac\pi4=1\)</span>. So <span class="math inline">\(\sin\frac\pi4=\cos\frac\pi4=\frac1{\sqrt2}=\frac{\sqrt2}2\)</span>.</p>
+<p>Let <span class="math inline">\(s=\sin\frac\pi6\)</span>. Then <span class="math inline">\(s&gt;0\)</span> by <a href="ch-power-series.html#thm-trig-periodic">Theorem 12.4.10</a> (5). By <a href="ch-power-series.html#thm-trig-identities">Theorem 12.4.5</a> and <a href="ch-power-series.html#cor-trig-formulas">Corollary 12.4.6</a> (1), <span class="math display">\[\sin3x=\sin2x\cos x+\cos2x\sin x=2\sin
+x(1-\sin^2x)+(1-2\sin^2x)\sin x=3\sin x-4\sin^3x.\]</span> With <span class="math inline">\(x=\frac\pi6\)</span>, this gives <span class="math inline">\(1=\sin\frac\pi2=3s-4s^3\)</span>. So <span class="math display">\[0=4s^3-3s+1=(s+1)(2s-1)^2.\]</span> Since <span class="math inline">\(s&gt;0\)</span>, <span class="math inline">\(s=\frac12\)</span>. Also <span class="math inline">\(\cos\frac\pi6&gt;0\)</span> by <a href="ch-power-series.html#thm-cos-first-zero">Theorem 12.4.8</a>, and <span class="math inline">\(\cos^2\frac\pi6=1-\frac14=\frac34\)</span>. So
+<span class="math inline">\(\cos\frac\pi6=\frac{\sqrt3}2\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-tan-addition">
+
+<p><strong><a href="ch-power-series.html#exer-tan-addition">Exercise 12.4.3</a>.</strong>
+<em>Hint.</em> Divide the numerator and denominator of <span class="math inline">\(\frac{\sin(x+y)}{\cos(x+y)}\)</span> by <span class="math inline">\(\cos x\cos y\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-arcsin">
+
+<p><strong><a href="ch-power-series.html#exer-arcsin">Exercise 12.4.4</a>.</strong> By <a href="ch-power-series.html#thm-cos-first-zero">Theorem 12.4.8</a>, <span class="math inline">\(\cos x&gt;0\)</span> for <span class="math inline">\(0\le x&lt;\frac\pi2\)</span>, and <span class="math inline">\(\cos\)</span> is even. So <span class="math inline">\(\cos x&gt;0\)</span> for <span class="math inline">\(|x|&lt;\frac\pi2\)</span>. Let <span class="math inline">\(-\frac\pi2\le a&lt;b\le\frac\pi2\)</span>. By <a href="ch-derivative.html#thm-mvt">Theorem 7.2.4</a>, <span class="math inline">\(\sin
+b-\sin a=\cos\xi\,(b-a)\)</span> for some <span class="math inline">\(\xi\in(a,b)\)</span>. Since <span class="math inline">\(|\xi|&lt;\frac\pi2\)</span>, this is positive. So
+<span class="math inline">\(\sin\)</span> is strictly increasing on
+<span class="math inline">\(\left[-\frac\pi2,\frac\pi2\right]\)</span>.
+Since <span class="math inline">\(\sin\left(\pm\frac\pi2\right)=\pm1\)</span>, <a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a> shows that <span class="math inline">\(\sin\)</span> maps <span class="math inline">\(\left[-\frac\pi2,\frac\pi2\right]\)</span> onto
+<span class="math inline">\([-1,1]\)</span>.</p>
+<p>Apply <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a> to <span class="math inline">\(\sin\)</span> on <span class="math inline">\(I=\left(-\frac\pi2,\frac\pi2\right)\)</span>,
+where <span class="math inline">\(\sin'=\cos\ne0\)</span> and <span class="math inline">\(\sin[I]=(-1,1)\)</span>. If <span class="math inline">\(y=\sin x\)</span> with <span class="math inline">\(|x|&lt;\frac\pi2\)</span>, then <span class="math inline">\(\cos x&gt;0\)</span>, so <span class="math inline">\(\cos x=\sqrt{1-\sin^2x}=\sqrt{1-y^2}\)</span>.
+Thus <span class="math display">\[\arcsin'(y)=\frac1{\cos
+x}=\frac1{\sqrt{1-y^2}}.\]</span></p>
+<p>Let <span class="math inline">\(y\in[-1,1]\)</span> and <span class="math inline">\(x=\arcsin y\)</span>. Then <span class="math inline">\(\frac\pi2-x\in[0,\pi]\)</span>, and by Theorems <a href="ch-power-series.html#thm-trig-identities">12.4.5</a> and <a href="ch-power-series.html#thm-trig-periodic">12.4.10</a>, <span class="math display">\[\cos\left(\tfrac\pi2-x\right)=\cos\tfrac\pi2\cos
+x+\sin\tfrac\pi2\sin x=\sin x=y.\]</span> Since <span class="math inline">\(\arccos\)</span> is the inverse of <span class="math inline">\(\cos\)</span> on <span class="math inline">\([0,\pi]\)</span>, <span class="math inline">\(\arccos y=\frac\pi2-x\)</span>. So <span class="math inline">\(\arcsin y+\arccos y=\frac\pi2\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-trig-ode-omega">
+
+<p><strong><a href="ch-power-series.html#exer-trig-ode-omega">Exercise 12.4.5</a>.</strong>
+Let <span class="math inline">\(u(t)=y\left(\frac
+t\omega\right)\)</span>. By the Chain Rule, <span class="math inline">\(u'(t)=\frac1\omega y'\left(\frac
+t\omega\right)\)</span> and <span class="math display">\[u''(t)=\frac1{\omega^2}y''\left(\frac
+t\omega\right)=-y\left(\frac t\omega\right)=-u(t).\]</span> So <span class="math inline">\(u''+u=0\)</span>, with <span class="math inline">\(u(0)=y(0)\)</span> and <span class="math inline">\(u'(0)=\frac{y'(0)}\omega\)</span>. By <a href="ch-power-series.html#thm-trig-ode">Theorem 12.4.4</a>, <span class="math inline">\(u(t)=y(0)\cos t+\frac{y'(0)}\omega\sin
+t\)</span>. Then <span class="math inline">\(y(x)=u(\omega
+x)=y(0)\cos\omega x+\frac{y'(0)}\omega\sin\omega x\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sin-periods">
+
+<p><strong><a href="ch-power-series.html#exer-sin-periods">Exercise 12.4.6</a>.</strong>
+<em>Hint.</em> Take <span class="math inline">\(x=0\)</span>, and then
+<span class="math inline">\(x=\frac\pi2\)</span>. Use <span class="math inline">\(\cos(k\pi)=(-1)^k\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-unit-circle">
+
+<p><strong><a href="ch-power-series.html#exer-unit-circle">Exercise 12.4.7</a>.</strong>
+<em>Existence.</em> On <span class="math inline">\((0,\pi)\)</span>,
+<span class="math inline">\(\cos'=-\sin&lt;0\)</span> by <a href="ch-power-series.html#thm-trig-periodic">Theorem 12.4.10</a> (5). So <span class="math inline">\(\cos\)</span> is strictly decreasing on <span class="math inline">\([0,\pi]\)</span>, by <a href="ch-derivative.html#thm-mvt">Theorem
+7.2.4</a> as in <a href="ch-power-series.html#exer-arcsin">Exercise 12.4.4</a>. Since <span class="math inline">\(\cos0=1\)</span>, <span class="math inline">\(\cos\pi=-1\)</span> and <span class="math inline">\(|a|\le1\)</span>, <a href="ch-continuity.html#thm-ivt">Theorem
+6.3.10</a> gives an <span class="math inline">\(s\in[0,\pi]\)</span>
+with <span class="math inline">\(\cos s=a\)</span>. Then <span class="math inline">\(\sin s\ge0\)</span> and <span class="math inline">\(\sin^2s=1-a^2=b^2\)</span>, so <span class="math inline">\(\sin s=|b|\)</span>. If <span class="math inline">\(b\ge0\)</span>, let <span class="math inline">\(t=s\)</span>. If <span class="math inline">\(b&lt;0\)</span>, then <span class="math inline">\(\sin s&gt;0\)</span>, so <span class="math inline">\(0&lt;s&lt;\pi\)</span>. Let <span class="math inline">\(t=2\pi-s\in(\pi,2\pi)\)</span>. By <a href="ch-power-series.html#thm-trig-periodic">Theorem 12.4.10</a> (4) and <a href="ch-power-series.html#thm-sin-cos-derivatives">Theorem 12.4.2</a>, <span class="math inline">\(\cos t=\cos(-s)=a\)</span> and <span class="math inline">\(\sin t=\sin(-s)=-|b|=b\)</span>.</p>
+<p><em>Uniqueness.</em> Suppose <span class="math inline">\(t_1,t_2\in[0,2\pi)\)</span> both work. By <a href="ch-power-series.html#thm-trig-identities">Theorem 12.4.5</a> and <a href="ch-power-series.html#thm-sin-cos-derivatives">Theorem 12.4.2</a>, <span class="math display">\[\cos(t_1-t_2)=\cos t_1\cos t_2+\sin t_1\sin
+t_2=a^2+b^2=1\]</span> and <span class="math inline">\(\sin(t_1-t_2)=\sin t_1\cos t_2-\cos t_1\sin
+t_2=ba-ab=0\)</span>. By <a href="ch-power-series.html#thm-trig-periodic">Theorem
+12.4.10</a> (6), <span class="math inline">\(t_1-t_2=k\pi\)</span> for
+some <span class="math inline">\(k\in\mathbb{Z}\)</span>. By <a href="ch-power-series.html#thm-trig-periodic">Theorem 12.4.10</a> (3), <span class="math inline">\(\cos(k\pi)=(-1)^k\)</span>. So <span class="math inline">\(k\)</span> is even. Since <span class="math inline">\(|t_1-t_2|&lt;2\pi\)</span>, <span class="math inline">\(k=0\)</span> and <span class="math inline">\(t_1=t_2\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-pi-bounds">
+
+<p><strong><a href="ch-power-series.html#exer-pi-bounds">Exercise 12.4.8</a>.</strong>
+<em>Hint.</em> Show <span class="math inline">\(\cos1.6&lt;0\)</span>
+with the upper bound in <a href="ch-power-series.html#lem-sin-cos-bounds">Lemma
+12.4.7</a> (2). For the lower bound, follow the proof of <a href="ch-power-series.html#thm-cos-first-zero">Theorem 12.4.8</a> with <span class="math inline">\(1.55\)</span> in place of <span class="math inline">\(\frac32\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-leibniz-pi">
+
+<p><strong><a href="ch-power-series.html#exer-leibniz-pi">Exercise 12.4.9</a>.</strong>
+<em>Hint.</em> Both sides are <span class="math inline">\(0\)</span> at
+<span class="math inline">\(x=0\)</span> and have derivative <span class="math inline">\(\frac1{1+x^2}\)</span> for <span class="math inline">\(|x|&lt;1\)</span>. At <span class="math inline">\(x=1\)</span>, the series converges by the
+Alternating Series Test.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sin-not-polynomial">
+
+<p><strong><a href="ch-power-series.html#exer-sin-not-polynomial">Exercise
+12.4.10</a>.</strong> <em>Hint.</em> If <span class="math inline">\(p\)</span> is a polynomial of degree <span class="math inline">\(n\)</span>, then <span class="math inline">\(p^{(m)}=0\)</span> for <span class="math inline">\(m&gt;n\)</span>. What is <span class="math inline">\(\sin^{(4m)}\)</span>?</p>
 </div>
 </article>
 </main>

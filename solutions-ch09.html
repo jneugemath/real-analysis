@@ -147,20 +147,6 @@ the upper sums of <span class="math inline">\(g\)</span>. Therefore
 <p><strong><a href="ch-integrals.html#exer-ftc-piecewise">Exercise 9.3.1</a>.</strong>
 <em>Hint.</em> By <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, <span class="math inline">\(F'(x)=f(x)\)</span> wherever <span class="math inline">\(f\)</span> is continuous. At <span class="math inline">\(x=1\)</span>, find the one-sided derivatives of
 <span class="math inline">\(F\)</span>.</p>
-<p><em>Solution.</em> The answer is <span class="math inline">\(b=2\)</span>.</p>
-<p>The function <span class="math inline">\(f\)</span> is bounded and is
-continuous at every point of <span class="math inline">\([0,2]\)</span>
-except possibly <span class="math inline">\(1\)</span>. So <span class="math inline">\(f\in\mathcal{R}[0,2]\)</span>, by Lebesgue’s
-Theorem (<a href="ch-integrals.html#thm-lebesgue-criterion">Theorem 9.2.9</a>) and <a href="ch-integrals.html#ex-finite-measure-zero">Example 9.2.6</a>, and <span class="math inline">\(F\)</span> is defined. By <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, <span class="math inline">\(F\)</span> is continuous on <span class="math inline">\([0,2]\)</span>, and <span class="math inline">\(F'(x)=f(x)\)</span> at every <span class="math inline">\(x\ne1\)</span>. So <span class="math inline">\(F\)</span> is differentiable on <span class="math inline">\([0,2]\)</span> if and only if it is differentiable
-at <span class="math inline">\(1\)</span>.</p>
-<p>For <span class="math inline">\(0\le x&lt;1\)</span>, <span class="math inline">\(f(t)=t\)</span> on <span class="math inline">\([0,x]\)</span>, so <span class="math inline">\(F(x)=\frac{x^2}2\)</span> by <a href="ch-integrals.html#ex-integral-of-x">Example 9.1.11</a>. Since <span class="math inline">\(F\)</span> is continuous at <span class="math inline">\(1\)</span>, <span class="math inline">\(F(1)=\lim_{x\to1^-}\frac{x^2}2=\frac12\)</span>.
-For <span class="math inline">\(1&lt;x\le2\)</span>, <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a> and the Fundamental
-Theorem of Calculus (<a href="ch-integrals.html#thm-ftc-evaluation">Theorem 9.3.6</a>),
-with the antiderivative <span class="math inline">\(bt-\frac{t^3}3\)</span>, give <span class="math display">\[F(x)=\frac12+\int_1^x(b-t^2)\,dt=\frac12+b(x-1)-\frac{x^3-1}{3}.\]</span>
-Now compute the one-sided limits of the difference quotient at <span class="math inline">\(1\)</span>. For <span class="math inline">\(-1&lt;h&lt;0\)</span>, <span class="math display">\[\frac{F(1+h)-F(1)}{h}=\frac{(1+h)^2-1}{2h}=1+\frac
-h2\to1\quad\text{as }h\to0^-.\]</span> For <span class="math inline">\(0&lt;h\le1\)</span>, <span class="math display">\[\frac{F(1+h)-F(1)}{h}=b-\frac{(1+h)^3-1}{3h}=b-1-h-\frac{h^2}3\to
-b-1\quad\text{as }h\to0^+.\]</span> By <a href="ch-continuity.html#thm-one-sided-limits">Theorem 6.1.23</a>, <span class="math inline">\(F'(1)\)</span> exists if and only if <span class="math inline">\(1=b-1\)</span>, that is, <span class="math inline">\(b=2\)</span>. Notice that <span class="math inline">\(b=2\)</span> is also exactly the value that makes
-<span class="math inline">\(f\)</span> continuous at <span class="math inline">\(1\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-ftc-continuous">
 
@@ -179,24 +165,84 @@ M(y-x)\)</span> for any partition <span class="math inline">\(\mathcal{P}\)</spa
 <span class="math inline">\(F\)</span> is continuous on <span class="math inline">\([a,b]\)</span>. In fact <span class="math inline">\(F\)</span> is Lipschitz continuous, and so
 uniformly continuous.</p>
 </div>
-<div class="solutionbox" id="sol-exer-exp-function">
-
-<p><strong><a href="ch-integrals.html#exer-exp-function">Exercise 9.3.3</a>.</strong>
-<em>Hint.</em> (a) <span class="math inline">\(\ln(2^n)=n\ln2\)</span>.
-(c) Apply <span class="math inline">\(\ln\)</span> to both sides. Use
-<span class="math inline">\(\ln ab=\ln a+\ln b\)</span> from <a href="ch-integrals.html#ex-exp-ln">Example 9.3.8</a>. (d) By <a href="ch-integrals.html#ex-exp-ln">Example
-9.3.8</a>, <span class="math inline">\(\ln(e^r)=r\ln e=r\)</span>.</p>
-</div>
 <div class="solutionbox" id="sol-exer-binomial">
 
-<p><strong><a href="ch-integrals.html#exer-binomial">Exercise 9.3.4</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-binomial">Exercise 9.3.3</a>.</strong>
 <em>Hint.</em> For the identity, use the common denominator <span class="math inline">\(k!(n+1-k)!\)</span>. For the induction step, write
 <span class="math inline">\((a+b)^{n+1}=(a+b)(a+b)^n\)</span>, expand,
 and shift the index in one of the two sums.</p>
 </div>
+<div class="solutionbox" id="sol-exer-log-base-laws">
+
+<p><strong><a href="ch-integrals.html#exer-log-base-laws">Exercise 9.4.1</a>.</strong>
+<em>Hint.</em> Use <a href="ch-integrals.html#thm-log-base-change">Theorem 9.4.8</a> to
+write each logarithm as a quotient of natural logarithms.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ln-bounds">
+
+<p><strong><a href="ch-integrals.html#exer-ln-bounds">Exercise 9.4.2</a>.</strong>
+<em>Hint.</em> On <span class="math inline">\([1,2]\)</span>, <span class="math inline">\(\frac1t\le1\)</span>, and on <span class="math inline">\(\left[\frac32,2\right]\)</span>, <span class="math inline">\(\frac1t\le\frac23\)</span>. For <span class="math inline">\(\ln3\)</span>, the function <span class="math inline">\(\frac1t\)</span> is decreasing, so its infimum on
+each subinterval is at the right endpoint. The lower sum is <span class="math inline">\(\frac15+\frac16+\dots+\frac1{12}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-to-the-x">
+
+<p><strong><a href="ch-integrals.html#exer-x-to-the-x">Exercise 9.4.3</a>.</strong></p>
+<ol>
+<li><p>For <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(f(x)=e^{x\ln x}\)</span>. By the Chain Rule and
+the Product Rule, <span class="math display">\[f'(x)=e^{x\ln
+x}\left(\ln x+x\cdot\frac1x\right)=x^x(1+\ln x).\]</span></p></li>
+<li><p>Since <span class="math inline">\(x^x&gt;0\)</span>, <span class="math inline">\(f'(x)\)</span> has the sign of <span class="math inline">\(1+\ln x\)</span>. Since <span class="math inline">\(\ln\)</span> is strictly increasing and <span class="math inline">\(\ln\frac1e=-1\)</span>, <span class="math inline">\(f'(x)&lt;0\)</span> for <span class="math inline">\(0&lt;x&lt;\frac1e\)</span> and <span class="math inline">\(f'(x)&gt;0\)</span> for <span class="math inline">\(x&gt;\frac1e\)</span>. By <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>, <span class="math inline">\(f\)</span> is strictly decreasing on <span class="math inline">\(\left(0,\frac1e\right]\)</span> and strictly
+increasing on <span class="math inline">\(\left[\frac1e,\infty\right)\)</span>. So the
+smallest value of <span class="math inline">\(f\)</span> is <span class="math inline">\(f\left(\frac1e\right)=e^{-1/e}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\{x_n\}\)</span> be a sequence
+with <span class="math inline">\(x_n&gt;0\)</span> and <span class="math inline">\(x_n\to0\)</span>. By <a href="ch-integrals.html#thm-growth-rates">Theorem 9.4.11</a> (3) with <span class="math inline">\(\alpha=1\)</span> and <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>, <span class="math inline">\(x_n\ln x_n\to0\)</span>. Since <span class="math inline">\(\exp\)</span> is continuous at <span class="math inline">\(0\)</span>, <span class="math inline">\(x_n^{x_n}=e^{x_n\ln x_n}\to e^0=1\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>. So <span class="math inline">\(\lim_{x\to0^+}x^x=1\)</span> by <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>.</p></li>
+</ol>
+</div>
+<div class="solutionbox" id="sol-exer-exp-unique">
+
+<p><strong><a href="ch-integrals.html#exer-exp-unique">Exercise 9.4.4</a>.</strong> Let
+<span class="math inline">\(g(x)=f(x)e^{-x}\)</span>. By the Chain Rule,
+<span class="math inline">\(\frac{d}{dx}e^{-x}=-e^{-x}\)</span>. So
+<span class="math display">\[g'(x)=f'(x)e^{-x}-f(x)e^{-x}=0\]</span>
+for all <span class="math inline">\(x\in\mathbb{R}\)</span>, since <span class="math inline">\(f'=f\)</span>. By <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5), <span class="math inline">\(g\)</span> is constant on <span class="math inline">\(\mathbb{R}\)</span>. Since <span class="math inline">\(g(0)=f(0)=1\)</span>, <span class="math inline">\(f(x)e^{-x}=1\)</span> for all <span class="math inline">\(x\)</span>. Multiplying by <span class="math inline">\(e^x\)</span> gives <span class="math inline">\(f(x)=e^x\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-exp-functional-equation">
+
+<p><strong><a href="ch-integrals.html#exer-exp-functional-equation">Exercise
+9.4.5</a>.</strong> <em>Hint.</em> First show <span class="math inline">\(f(x)=f\left(\frac x2\right)^2\ge0\)</span>, and
+that <span class="math inline">\(f\)</span> is never <span class="math inline">\(0\)</span>. Then show <span class="math inline">\(f(r)=a^r\)</span> for <span class="math inline">\(r\in\mathbb{Q}\)</span>. Finish with the density
+of <span class="math inline">\(\mathbb{Q}\)</span> and the continuity of
+<span class="math inline">\(f\)</span> and of <span class="math inline">\(x\mapsto a^x\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-hyperbolic">
+
+<p><strong><a href="ch-integrals.html#exer-hyperbolic">Exercise 9.4.6</a>.</strong>
+<em>Hint.</em> (b) <span class="math inline">\(\frac{d}{dx}\sinh x=\cosh
+x&gt;0\)</span>. Find the limits of <span class="math inline">\(\sinh
+x\)</span> as <span class="math inline">\(x\to\pm\infty\)</span> and use
+the Intermediate Value Theorem. (c) If <span class="math inline">\(\sinh
+y=x\)</span>, then <span class="math inline">\(u=e^y\)</span> solves
+<span class="math inline">\(u^2-2xu-1=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-exp-real-limits">
+
+<p><strong><a href="ch-integrals.html#exer-exp-real-limits">Exercise 9.4.7</a>.</strong>
+For <span class="math inline">\(x&gt;-1\)</span> with <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\((1+x)^{1/x}=e^{\ln(1+x)/x}\)</span> by <a href="ch-integrals.html#def-general-power">Definition 9.4.5</a>. Let <span class="math inline">\(\{x_n\}\)</span> be a sequence with <span class="math inline">\(x_n&gt;-1\)</span>, <span class="math inline">\(x_n\ne0\)</span> and <span class="math inline">\(x_n\to0\)</span>. Since the derivative of <span class="math inline">\(\ln\)</span> at <span class="math inline">\(1\)</span> is <span class="math inline">\(1\)</span>, <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> gives <span class="math display">\[\frac{\ln(1+x_n)}{x_n}=\frac{\ln(1+x_n)-\ln1}{x_n}\to1.\]</span>
+Since <span class="math inline">\(\exp\)</span> is continuous at <span class="math inline">\(1\)</span>, <span class="math inline">\((1+x_n)^{1/x_n}\to e^1=e\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>. So <span class="math inline">\(\lim_{x\to0}(1+x)^{1/x}=e\)</span> by <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a>.</p>
+<p>For the second limit, let <span class="math inline">\(\{x_n\}\)</span> be a sequence with <span class="math inline">\(x_n&gt;0\)</span> and <span class="math inline">\(x_n\to\infty\)</span>. Let <span class="math inline">\(h_n=\frac1{x_n}\)</span>. Then <span class="math inline">\(h_n&gt;0\)</span> and <span class="math inline">\(h_n\to0\)</span>. By the first part, <span class="math inline">\(\left(1+\frac1{x_n}\right)^{x_n}=(1+h_n)^{1/h_n}\to
+e\)</span>. So <span class="math inline">\(\lim_{x\to\infty}\left(1+\frac1x\right)^x=e\)</span>
+by <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-weighted-am-gm">
+
+<p><strong><a href="ch-integrals.html#exer-weighted-am-gm">Exercise 9.4.8</a>.</strong>
+<em>Hint.</em> By <a href="ch-integrals.html#thm-ln-properties">Theorem 9.4.2</a> (4),
+<span class="math inline">\(\ln(ta+(1-t)b)\ge t\ln a+(1-t)\ln
+b\)</span>. Write the right side as one logarithm and apply <span class="math inline">\(\exp\)</span>.</p>
+</div>
 <div class="solutionbox" id="sol-exer-weighted-mvt">
 
-<p><strong><a href="ch-integrals.html#exer-weighted-mvt">Exercise 9.4.1</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-weighted-mvt">Exercise 9.5.1</a>.</strong>
 <em>Hint.</em> Let <span class="math inline">\(m\)</span> and <span class="math inline">\(M\)</span> be the minimum and maximum of <span class="math inline">\(f\)</span>. Then <span class="math inline">\(m\int_a^bg\le\int_a^bfg\le M\int_a^bg\)</span>. If
 <span class="math inline">\(\int_a^bg&gt;0\)</span>, use the
 Intermediate Value Theorem. If <span class="math inline">\(\int_a^bg=0\)</span>, any <span class="math inline">\(c\)</span> works.</p>
@@ -218,7 +264,7 @@ endpoints <span class="math inline">\(c_1\)</span> and <span class="math inline"
 <div class="solutionbox" id="sol-exer-even-odd-integral">
 
 <p><strong><a href="ch-integrals.html#exer-even-odd-integral">Exercise
-9.4.2</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(\int_{-a}^af=\int_{-a}^0f+\int_0^af\)</span>. Show
+9.5.2</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(\int_{-a}^af=\int_{-a}^0f+\int_0^af\)</span>. Show
 that <span class="math inline">\(\int_{-a}^0f(x)\,dx=\int_0^af(-t)\,dt\)</span>.
 Reflect each partition of <span class="math inline">\([0,a]\)</span> to
 a partition of <span class="math inline">\([-a,0]\)</span>. The upper
@@ -226,7 +272,7 @@ and lower sums do not change.</p>
 </div>
 <div class="solutionbox" id="sol-exer-p-test">
 
-<p><strong><a href="ch-integrals.html#exer-p-test">Exercise 9.5.1</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-p-test">Exercise 9.6.1</a>.</strong>
 <em>Hint.</em> For <span class="math inline">\(p\ne1\)</span>, <span class="math inline">\(\int_a^sx^{-p}\,dx=\frac{s^{1-p}-a^{1-p}}{1-p}\)</span>.
 For <span class="math inline">\(p=1\)</span>, it is <span class="math inline">\(\ln s-\ln a\)</span>. Let <span class="math inline">\(s\to\infty\)</span>. For the second part,
 integrate over <span class="math inline">\([t,a]\)</span> and let <span class="math inline">\(t\to0^+\)</span>.</p>
@@ -255,7 +301,7 @@ only if <span class="math inline">\(p&lt;1\)</span>.</p>
 <div class="solutionbox" id="sol-exer-pv-agrees-interior">
 
 <p><strong><a href="ch-integrals.html#exer-pv-agrees-interior">Exercise
-9.5.2</a>.</strong> <em>Hint.</em> By definition, <span class="math inline">\(\lim_{s\to c^-}\int_a^sf\)</span> and <span class="math inline">\(\lim_{t\to c^+}\int_t^bf\)</span> both exist. Take
+9.6.2</a>.</strong> <em>Hint.</em> By definition, <span class="math inline">\(\lim_{s\to c^-}\int_a^sf\)</span> and <span class="math inline">\(\lim_{t\to c^+}\int_t^bf\)</span> both exist. Take
 <span class="math inline">\(s=c-\varepsilon\)</span> and <span class="math inline">\(t=c+\varepsilon\)</span>.</p>
 <p><em>Solution.</em> Since <span class="math inline">\(\int_a^bf\)</span> converges, the limits <span class="math display">\[L_1=\lim_{s\to c^-}\int_a^sf\quad\text{and}\quad
 L_2=\lim_{t\to c^+}\int_t^bf\]</span> exist, and <span class="math inline">\(\int_a^bf=L_1+L_2\)</span>. For <span class="math inline">\(0&lt;\varepsilon&lt;\min\{c-a,b-c\}\)</span>, let
@@ -271,32 +317,32 @@ So <span class="math inline">\(\operatorname{P.V.}\int_a^bf=\lim_{\varepsilon\to
 </div>
 <div class="solutionbox" id="sol-exer-x-log-p">
 
-<p><strong><a href="ch-integrals.html#exer-x-log-p">Exercise 9.5.3</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-x-log-p">Exercise 9.6.3</a>.</strong>
 <em>Hint.</em> Substitute <span class="math inline">\(u=\ln x\)</span>
 on <span class="math inline">\([2,s]\)</span>. Then use the <span class="math inline">\(p\)</span>-Test.</p>
 </div>
 <div class="solutionbox" id="sol-exer-gamma">
 
-<p><strong><a href="ch-integrals.html#exer-gamma">Exercise 9.5.4</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-gamma">Exercise 9.6.4</a>.</strong>
 <em>Hint.</em> (a) Split at <span class="math inline">\(t=1\)</span>. On
-<span class="math inline">\((0,1]\)</span>, <span class="math inline">\(e^{-t}t^{x-1}\le t^{x-1}\)</span>. On <span class="math inline">\([1,\infty)\)</span>, <span class="math inline">\(e^{-t}t^{x+1}\to0\)</span>, so <span class="math inline">\(e^{-t}t^{x-1}\le t^{-2}\)</span> for large <span class="math inline">\(t\)</span>. Use Theorems <a href="ch-integrals.html#thm-comparison-test-integrals">9.5.8</a> and <a href="ch-integrals.html#thm-p-test">9.5.7</a>.</p>
+<span class="math inline">\((0,1]\)</span>, <span class="math inline">\(e^{-t}t^{x-1}\le t^{x-1}\)</span>. On <span class="math inline">\([1,\infty)\)</span>, <span class="math inline">\(e^{-t}t^{x+1}\to0\)</span>, so <span class="math inline">\(e^{-t}t^{x-1}\le t^{-2}\)</span> for large <span class="math inline">\(t\)</span>. Use Theorems <a href="ch-integrals.html#thm-comparison-test-integrals">9.6.8</a> and <a href="ch-integrals.html#thm-p-test">9.6.7</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-improper-independent-c">
 
 <p><strong><a href="ch-integrals.html#exer-improper-independent-c">Exercise
-9.5.5</a>.</strong> <em>Hint.</em> If <span class="math inline">\(c&lt;c'\)</span>, then <span class="math inline">\(\int_s^cf+\int_c^tf=\int_s^{c'}f+\int_{c'}^tf\)</span>
+9.6.5</a>.</strong> <em>Hint.</em> If <span class="math inline">\(c&lt;c'\)</span>, then <span class="math inline">\(\int_s^cf+\int_c^tf=\int_s^{c'}f+\int_{c'}^tf\)</span>
 for <span class="math inline">\(s&lt;c\)</span> and <span class="math inline">\(t&gt;c'\)</span>, by <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-step">
 
-<p><strong><a href="ch-integrals.html#exer-rs-step">Exercise 9.6.1</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-rs-step">Exercise 9.7.1</a>.</strong>
 <em>Hint.</em> Write <span class="math inline">\(\alpha=c_1+(c_2-c_1)I_c\)</span>, and argue as in
-<a href="ch-integrals.html#ex-unit-jump">Example 9.6.6</a>.</p>
+<a href="ch-integrals.html#ex-unit-jump">Example 9.7.6</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-equal-increments">
 
 <p><strong><a href="ch-integrals.html#exer-rs-equal-increments">Exercise
-9.6.2</a>.</strong> <em>Hint.</em> Use the Intermediate Value Theorem to
+9.7.2</a>.</strong> <em>Hint.</em> Use the Intermediate Value Theorem to
 find <span class="math inline">\(x_i\)</span> with <span class="math inline">\(\alpha(x_i)=\alpha(a)+\frac
 in[\alpha(b)-\alpha(a)]\)</span>.</p>
 <p><em>Solution.</em> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. If <span class="math inline">\(\alpha(b)=\alpha(a)\)</span>, then <span class="math inline">\(\alpha\)</span> is constant, since it is
@@ -318,22 +364,22 @@ partition of <span class="math inline">\([a,b]\)</span>. For each <span class="m
 <div class="solutionbox" id="sol-exer-rs-parts-identity">
 
 <p><strong><a href="ch-integrals.html#exer-rs-parts-identity">Exercise
-9.6.3</a>.</strong> <em>Hint.</em> Since <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> increase, the sup of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> is <span class="math inline">\(\alpha(x_i)\)</span> and the inf of <span class="math inline">\(\beta\)</span> is <span class="math inline">\(\beta(x_{i-1})\)</span>. Check that <span class="math inline">\(\alpha(x_i)\beta(x_i)-\alpha(x_{i-1})\beta(x_{i-1})=\alpha(x_i)\Delta\beta_i+\beta(x_{i-1})\Delta\alpha_i\)</span>,
+9.7.3</a>.</strong> <em>Hint.</em> Since <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> increase, the sup of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> is <span class="math inline">\(\alpha(x_i)\)</span> and the inf of <span class="math inline">\(\beta\)</span> is <span class="math inline">\(\beta(x_{i-1})\)</span>. Check that <span class="math inline">\(\alpha(x_i)\beta(x_i)-\alpha(x_{i-1})\beta(x_{i-1})=\alpha(x_i)\Delta\beta_i+\beta(x_{i-1})\Delta\alpha_i\)</span>,
 and sum over <span class="math inline">\(i\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-finite-jumps">
 
-<p><strong><a href="ch-integrals.html#exer-rs-finite-jumps">Exercise 9.6.4</a>.</strong>
-<em>Hint.</em> By <a href="ch-integrals.html#ex-unit-jump">Example 9.6.6</a>, <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Multiplying
+<p><strong><a href="ch-integrals.html#exer-rs-finite-jumps">Exercise 9.7.4</a>.</strong>
+<em>Hint.</em> By <a href="ch-integrals.html#ex-unit-jump">Example 9.7.6</a>, <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Multiplying
 the integrator by <span class="math inline">\(c\ge0\)</span> multiplies
 every Riemann–Stieltjes sum by <span class="math inline">\(c\)</span>.
-Then use <a href="ch-integrals.html#thm-rs-properties">Theorem 9.6.10</a> (3).</p>
+Then use <a href="ch-integrals.html#thm-rs-properties">Theorem 9.7.10</a> (3).</p>
 <p><em>Solution.</em> <em>Step 1. Scaling the integrator.</em> Let <span class="math inline">\(\beta:[a,b]\to\mathbb{R}\)</span> be increasing,
 let <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, and let
 <span class="math inline">\(c\ge0\)</span>. We show <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span> and <span class="math inline">\(\int_a^bf\,d(c\beta)=c\int_a^bf\,d\beta\)</span>.
 If <span class="math inline">\(c=0\)</span>, then <span class="math inline">\(c\beta\)</span> is constant. Every sum for <span class="math inline">\(c\beta\)</span> is <span class="math inline">\(0\)</span>, so the integral is <span class="math inline">\(0\)</span>. Suppose <span class="math inline">\(c&gt;0\)</span>. For any partition <span class="math inline">\(\mathcal{P}\)</span>, the increments of <span class="math inline">\(c\beta\)</span> are <span class="math inline">\(c\Delta\beta_i\)</span>. So <span class="math display">\[\mathcal{U}(\mathcal{P},f,c\beta)=c\,\mathcal{U}(\mathcal{P},f,\beta)\quad\text{and}\quad\mathcal{L}(\mathcal{P},f,c\beta)=c\,\mathcal{L}(\mathcal{P},f,\beta).\]</span>
 Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Riemann’s
-Criterion (<a href="ch-integrals.html#thm-rs-riemann-criterion">Theorem 9.6.8</a>) gives
+Criterion (<a href="ch-integrals.html#thm-rs-riemann-criterion">Theorem 9.7.8</a>) gives
 a partition <span class="math inline">\(\mathcal{P}\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P},f,\beta)-\mathcal{L}(\mathcal{P},f,\beta)&lt;\frac\varepsilon
 c\)</span>. Then the difference for <span class="math inline">\(c\beta\)</span> is less than <span class="math inline">\(\varepsilon\)</span>. So <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span>. Also, for every
 <span class="math inline">\(\mathcal{P}\)</span>, <span class="math inline">\(\mathcal{L}(\mathcal{P},f,\beta)\le\int_a^bf\,d\beta\le\mathcal{U}(\mathcal{P},f,\beta)\)</span>.
@@ -341,36 +387,36 @@ Multiplying by <span class="math inline">\(c\)</span>, the number <span class="m
 lower sum and every upper sum for <span class="math inline">\(c\beta\)</span>. So it lies between the lower and
 upper integrals, which both equal <span class="math inline">\(\int_a^bf\,d(c\beta)\)</span>.</p>
 <p><em>Step 2.</em> Since <span class="math inline">\(a&lt;s_i\le
-b\)</span> and <span class="math inline">\(f\)</span> is continuous, <a href="ch-integrals.html#ex-unit-jump">Example 9.6.6</a> gives <span class="math inline">\(f\in\mathcal{R}(I_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Here <span class="math inline">\(I_{s_i}(x)=I(x-s_i)\)</span>. By Step 1, <span class="math inline">\(f\in\mathcal{R}(c_iI_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,d(c_iI_{s_i})=c_if(s_i)\)</span>. Each
+b\)</span> and <span class="math inline">\(f\)</span> is continuous, <a href="ch-integrals.html#ex-unit-jump">Example 9.7.6</a> gives <span class="math inline">\(f\in\mathcal{R}(I_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Here <span class="math inline">\(I_{s_i}(x)=I(x-s_i)\)</span>. By Step 1, <span class="math inline">\(f\in\mathcal{R}(c_iI_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,d(c_iI_{s_i})=c_if(s_i)\)</span>. Each
 <span class="math inline">\(c_iI_{s_i}\)</span> is increasing, since
 <span class="math inline">\(c_i\ge0\)</span>.</p>
 <p><em>Step 3.</em> Let <span class="math inline">\(\alpha_k=\sum_{i=1}^kc_iI_{s_i}\)</span>. We show
 by induction on <span class="math inline">\(k\)</span> that <span class="math inline">\(f\in\mathcal{R}(\alpha_k)\)</span> and <span class="math inline">\(\int_a^bf\,d\alpha_k=\sum_{i=1}^kc_if(s_i)\)</span>.
 The case <span class="math inline">\(k=1\)</span> is Step 2. If it holds
 for <span class="math inline">\(k\)</span>, then <span class="math inline">\(\alpha_{k+1}=\alpha_k+c_{k+1}I_{s_{k+1}}\)</span>
-is a sum of two increasing functions. By <a href="ch-integrals.html#thm-rs-properties">Theorem 9.6.10</a> (3) and Step 2, <span class="math display">\[\int_a^bf\,d\alpha_{k+1}=\int_a^bf\,d\alpha_k+\int_a^bf\,d(c_{k+1}I_{s_{k+1}})=\sum_{i=1}^{k+1}c_if(s_i).\]</span>
+is a sum of two increasing functions. By <a href="ch-integrals.html#thm-rs-properties">Theorem 9.7.10</a> (3) and Step 2, <span class="math display">\[\int_a^bf\,d\alpha_{k+1}=\int_a^bf\,d\alpha_k+\int_a^bf\,d(c_{k+1}I_{s_{k+1}})=\sum_{i=1}^{k+1}c_if(s_i).\]</span>
 Since <span class="math inline">\(\alpha=\alpha_n\)</span>, this proves
 the theorem.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-floor-x-squared">
 
 <p><strong><a href="ch-integrals.html#exer-rs-floor-x-squared">Exercise
-9.6.5</a>.</strong> <em>Hint.</em> On <span class="math inline">\([1,5]\)</span>, <span class="math inline">\(\left\lfloor
+9.7.5</a>.</strong> <em>Hint.</em> On <span class="math inline">\([1,5]\)</span>, <span class="math inline">\(\left\lfloor
 x^2\right\rfloor=1+\sum_{k=2}^{25}I(x-\sqrt k)\)</span>. Adding a
-constant to the integrator does not change the integral. Use <a href="ch-integrals.html#thm-rs-finite-jumps">Theorem 9.6.15</a>.</p>
+constant to the integrator does not change the integral. Use <a href="ch-integrals.html#thm-rs-finite-jumps">Theorem 9.7.15</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-sin">
 
-<p><strong><a href="ch-integrals.html#exer-rs-sin">Exercise 9.6.6</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-rs-sin">Exercise 9.7.6</a>.</strong>
 <em>Hint.</em> Use <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem
-9.6.17</a>.</p>
+9.7.17</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-c1-formula">
 
-<p><strong><a href="ch-integrals.html#exer-rs-c1-formula">Exercise 9.6.7</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-rs-c1-formula">Exercise 9.7.7</a>.</strong>
 <em>Hint.</em> First show that <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>,
 so that <span class="math inline">\(V_\alpha\in C^{(1)}[a,b]\)</span>.
-Then apply <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.6.17</a> to
+Then apply <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.7.17</a> to
 <span class="math inline">\(V_\alpha\)</span> and to <span class="math inline">\(V_\alpha-\alpha\)</span>.</p>
 <p><em>Solution.</em> By <a href="ch-bounded-variation.html#cor-continuous-derivative-bv">Corollary 8.1.10</a>, <span class="math inline">\(\alpha\in BV[a,b]\)</span>. So <span class="math inline">\(V_\alpha\)</span> is defined.</p>
 <p><em>Step 1. <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>
@@ -392,8 +438,8 @@ for every <span class="math inline">\(\mathcal{P}\)</span>, and <span class="mat
 9.3.7</a>, <span class="math inline">\(V_\alpha\)</span> is
 differentiable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(V_\alpha'=|\alpha'|\)</span>, which is
 continuous and so in <span class="math inline">\(\mathcal{R}[a,b]\)</span>. Let <span class="math inline">\(\beta=V_\alpha-\alpha\)</span>. Then <span class="math inline">\(\beta\)</span> is differentiable with <span class="math inline">\(\beta'=|\alpha'|-\alpha'\in\mathcal{R}[a,b]\)</span>.
-Both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(\beta\)</span> are increasing, by Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. By <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.6.17</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, with <span class="math display">\[\int_a^bf\,dV_\alpha=\int_a^bf|\alpha'|\quad\text{and}\quad\int_a^bf\,d\beta=\int_a^bf\bigl(|\alpha'|-\alpha'\bigr).\]</span>
-By <a href="ch-integrals.html#def-rs-bv">Definition 9.6.20</a>, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, and by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, <span class="math display">\[\int_a^bf\,d\alpha=\int_a^bf|\alpha'|-\int_a^bf\bigl(|\alpha'|-\alpha'\bigr)=\int_a^bf\alpha'.\]</span></p>
+Both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(\beta\)</span> are increasing, by Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. By <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.7.17</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, with <span class="math display">\[\int_a^bf\,dV_\alpha=\int_a^bf|\alpha'|\quad\text{and}\quad\int_a^bf\,d\beta=\int_a^bf\bigl(|\alpha'|-\alpha'\bigr).\]</span>
+By <a href="ch-integrals.html#def-rs-bv">Definition 9.7.20</a>, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, and by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, <span class="math display">\[\int_a^bf\,d\alpha=\int_a^bf|\alpha'|-\int_a^bf\bigl(|\alpha'|-\alpha'\bigr)=\int_a^bf\alpha'.\]</span></p>
 </div>
 </article>
 </main>
