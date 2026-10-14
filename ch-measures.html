@@ -281,7 +281,7 @@ intersections.</p></li>
 <div class="proofbox">
 <p><em>Proof.</em> See <a href="#exer-rings">Exercise 13.1.2</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-47">
+<section class="level5 unnumbered" id="exercises-53">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-sigma-algebra-intersection">
 
@@ -374,7 +374,8 @@ a <span class="math inline">\(G_\delta\)</span>.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em> See <a href="#exer-continuity-points">Exercise
-13.2.1</a>.</p>
+13.2.1</a>, or <a href="ch-continuity.html#thm-continuity-set-gdelta">Theorem 6.6.2</a> in
+the starred <a href="ch-continuity.html#sec-continuity-set">Section 6.6</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-borel-generators">
 
@@ -430,7 +431,7 @@ and <span class="math inline">\(\mathcal{E}_3\subset\sigma(\mathcal{E}_8)\)</spa
 So <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_7)\)</span>
 and <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_8)\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-48">
+<section class="level5 unnumbered" id="exercises-54">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-continuity-points">
 
@@ -599,7 +600,7 @@ with <span class="math inline">\(m(I)\)</span> equal to the length of
 <span class="math inline">\(I\)</span> for every interval <span class="math inline">\(I\)</span>. The answer is yes. But <a href="ch-lebesgue-measure.html#sec-nonmeasurable">Section 14.4</a> shows that such a measure
 cannot be defined on every subset of <span class="math inline">\(\mathbb{R}\)</span>, if it is also unchanged by
 translation. That is why measures are defined on <span class="math inline">\(\sigma\)</span>-algebras and not on all of <span class="math inline">\(\mathcal{P}(X)\)</span>.</p>
-<section class="level5 unnumbered" id="exercises-49">
+<section class="level5 unnumbered" id="exercises-55">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-weighted-counting">
 
@@ -658,6 +659,16 @@ Find a formula for <span class="math inline">\(\mu(E)\)</span>, where
 show <span class="math inline">\(\mu\)</span> is a probability measure.
 <a aria-label="Hint for Exercise 13.3.6" href="solutions-ch13.html#sol-exer-dirac-sum">[Hint]</a></p>
 </div>
+<div class="exercisebox" id="exer-borel-cantelli">
+
+<p><strong>Exercise 13.3.7.</strong> (Borel–Cantelli Lemma) Let <span class="math inline">\((X,\mathcal{M},\mu)\)</span> be a measure space
+and let <span class="math inline">\(E_1,E_2,\ldots\in\mathcal{M}\)</span> with <span class="math inline">\(\sum_{k=1}^\infty\mu(E_k)&lt;\infty\)</span>. Let
+<span class="math inline">\(E\)</span> be the set of points that belong
+to infinitely many of the sets <span class="math inline">\(E_k\)</span>.
+Prove that <span class="math inline">\(E=\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty
+E_k\)</span>, so <span class="math inline">\(E\in\mathcal{M}\)</span>,
+and that <span class="math inline">\(\mu(E)=0\)</span>. <a aria-label="Solution for Exercise 13.3.7" href="solutions-ch13.html#sol-exer-borel-cantelli">[Solution]</a></p>
+</div>
 </section>
 </section>
 <section class="level3 unnumbered" id="notes-12">
@@ -669,7 +680,10 @@ word for an open set, and the <span class="math inline">\(F\)</span> for
 <em>fermé</em>, French for closed. The <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\sigma\)</span> stand for the German words
 <em>Durchschnitt</em> (intersection) and <em>Summe</em> (union). Maurice
 Fréchet defined measures on abstract sets in 1915 [<a href="bibliography.html#bib-frechet1915">31</a>]. Andrey Kolmogorov based probability
-theory on measure theory in 1933 [<a href="bibliography.html#bib-kolmogorov1933">39</a>].</p>
+theory on measure theory in 1933 [<a href="bibliography.html#bib-kolmogorov1933">39</a>].
+The lemma in <a href="#exer-borel-cantelli">Exercise 13.3.7</a> is named
+for Émile Borel, who used it in probability in 1909, and Francesco Paolo
+Cantelli, who stated it in general in 1917.</p>
 </section>
 </article>
 </main>

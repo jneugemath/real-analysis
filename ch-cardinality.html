@@ -30,7 +30,7 @@ window.MathJax = {
 </nav>
 <main id="main">
 <article id="ch-cardinality">
-<h1>Chapter 2. Cardinality</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-countable">2.1 Countable and Uncountable Sets</a></li><li><a href="#sec-Q-countable">2.2 Countability of the Rationals</a></li><li><a href="#sec-R-uncountable">2.3 Uncountability of the Reals</a></li><li><a href="#notes-1">Notes</a></li></ul></nav>
+<h1>Chapter 2. Cardinality</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-countable">2.1 Countable and Uncountable Sets</a></li><li><a href="#sec-Q-countable">2.2 Countability of the Rationals</a></li><li><a href="#sec-R-uncountable">2.3 Uncountability of the Reals</a></li><li><a href="#sec-comparing-sets">2.4 Comparing Infinite Sets<sup>*</sup></a></li><li><a href="#notes-1">Notes</a></li></ul></nav>
 <p>When do two sets have the same cardinality? For finite sets, count
 the elements. For infinite sets, counting never ends, so a different
 idea is needed. Two sets are said to have the same cardinality if their
@@ -41,7 +41,9 @@ rational numbers all have the same cardinality, even though each set is
 a proper subset of the next. The real numbers are different. No list
 <span class="math inline">\(x_1,x_2,x_3,\dots\)</span> of real numbers
 contains every real number. So two infinite sets do not always have the
-same cardinality.</p>
+same cardinality. The starred <a href="#sec-comparing-sets">Section
+2.4</a> shows how to compare the sizes of infinite sets, and that there
+is no largest one.</p>
 <section class="level3 unnumbered" id="sec-countable">
 <h2>2.1 Countable and Uncountable Sets</h2>
 <p>Functions are the tool for pairing off the elements of two sets. This
@@ -395,6 +397,166 @@ irrational numbers is uncountable. <a aria-label="Hint for Exercise 2.3.2" href=
 </div>
 </section>
 </section>
+<section class="level3 unnumbered" id="sec-comparing-sets">
+<h2>2.4 Comparing Infinite Sets<sup>*</sup></h2>
+<p><a href="#sec-R-uncountable">Section 2.3</a> showed that <span class="math inline">\(\mathbb{N}\)</span> and <span class="math inline">\(\mathbb{R}\)</span> do not have the same
+cardinality. It is natural to say <span class="math inline">\(\mathbb{R}\)</span> is bigger. This section makes
+“bigger” precise. It proves the Schröder–Bernstein Theorem, which makes
+it easy to show two sets have the same cardinality. It also proves
+Cantor’s Theorem, which says there is no largest infinite set. This
+section can be skipped. Nothing later depends on it.</p>
+<div class="definitionbox" id="def-cardinality-leq">
+
+<p><strong>Definition 2.4.1.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets. Write <span class="math inline">\(A\lesssim B\)</span>, or <span class="math inline">\(B\gtrsim A\)</span>, if there exists a one-to-one
+function <span class="math inline">\(f:A\to B\)</span>.</p>
+</div>
+<p>Think of <span class="math inline">\(A\lesssim B\)</span> as saying
+<span class="math inline">\(B\)</span> is at least as big as <span class="math inline">\(A\)</span>. If <span class="math inline">\(A\subset B\)</span>, then <span class="math inline">\(A\lesssim B\)</span>, using the function <span class="math inline">\(f(a)=a\)</span>. If <span class="math inline">\(A\sim B\)</span>, then <span class="math inline">\(A\lesssim B\)</span> and <span class="math inline">\(B\lesssim A\)</span>. If <span class="math inline">\(A\lesssim B\)</span> and <span class="math inline">\(B\lesssim C\)</span>, then <span class="math inline">\(A\lesssim C\)</span>, since a composition of
+one-to-one functions is one-to-one. See <a href="#exer-lesssim-basics">Exercise 2.4.1</a>.</p>
+<p>The next theorem is the converse of the second fact. It is the main
+tool for comparing infinite sets.</p>
+<div class="theorembox" id="thm-schroder-bernstein">
+
+<p><strong>Theorem 2.4.2</strong> (Schröder–Bernstein
+Theorem)<strong>.</strong></p>
+<p>If <span class="math inline">\(A\lesssim B\)</span> and <span class="math inline">\(B\lesssim A\)</span>, then <span class="math inline">\(A\sim B\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(f:A\to B\)</span> and <span class="math inline">\(g:B\to A\)</span> be one-to-one. The plan is to
+use <span class="math inline">\(f\)</span> on part of <span class="math inline">\(A\)</span> and the inverse of <span class="math inline">\(g\)</span> on the rest.</p>
+<p>Let <span class="math inline">\(C_0=A\setminus g[B]\)</span>, the set
+of points of <span class="math inline">\(A\)</span> that are not values
+of <span class="math inline">\(g\)</span>. For <span class="math inline">\(n\in\mathbb{N}_0\)</span>, let <span class="math inline">\(C_{n+1}=g\bigl[f[C_n]\bigr]\)</span>. Let <span class="math inline">\(C=\bigcup_{n=0}^\infty C_n\)</span>. Every point
+of <span class="math inline">\(A\setminus C\)</span> is in <span class="math inline">\(g[B]\)</span>, since it is not in <span class="math inline">\(C_0\)</span>. Since <span class="math inline">\(g\)</span> is one-to-one, each such point is <span class="math inline">\(g(b)\)</span> for exactly one <span class="math inline">\(b\in B\)</span>. Define <span class="math inline">\(h:A\to B\)</span> by <span class="math display">\[h(a)=\begin{cases}f(a), &amp; a\in C,\\ \text{the
+}b\in B\text{ with }g(b)=a, &amp; a\notin C.\end{cases}\]</span></p>
+<p><em><span class="math inline">\(h\)</span> is one-to-one.</em> Let
+<span class="math inline">\(a,a'\in A\)</span> with <span class="math inline">\(h(a)=h(a')\)</span>. If <span class="math inline">\(a,a'\in C\)</span>, then <span class="math inline">\(f(a)=f(a')\)</span>, so <span class="math inline">\(a=a'\)</span>. If <span class="math inline">\(a,a'\notin C\)</span>, then <span class="math inline">\(a=g(h(a))=g(h(a'))=a'\)</span>. Suppose
+<span class="math inline">\(a\in C\)</span> and <span class="math inline">\(a'\notin C\)</span>. Then <span class="math inline">\(a'=g(h(a'))=g(h(a))=g(f(a))\)</span>.
+Since <span class="math inline">\(a\in C_n\)</span> for some <span class="math inline">\(n\)</span>, <span class="math inline">\(a'\in
+C_{n+1}\subset C\)</span>. This contradicts <span class="math inline">\(a'\notin C\)</span>. So this case cannot
+happen.</p>
+<p><em><span class="math inline">\(h\)</span> is onto.</em> Let <span class="math inline">\(b\in B\)</span>, and let <span class="math inline">\(a=g(b)\)</span>. If <span class="math inline">\(a\notin C\)</span>, then <span class="math inline">\(h(a)=b\)</span>. If <span class="math inline">\(a\in C\)</span>, then <span class="math inline">\(a\in C_n\)</span> for some <span class="math inline">\(n\)</span>. Since <span class="math inline">\(a\in
+g[B]\)</span>, <span class="math inline">\(n\ne0\)</span>. So <span class="math inline">\(a\in C_n=g\bigl[f[C_{n-1}]\bigr]\)</span>, and
+<span class="math inline">\(a=g(f(a'))\)</span> for some <span class="math inline">\(a'\in C_{n-1}\)</span>. Since <span class="math inline">\(g\)</span> is one-to-one, <span class="math inline">\(b=f(a')=h(a')\)</span>.</p>
+<p>So <span class="math inline">\(h\)</span> is a bijection, and <span class="math inline">\(A\sim B\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving Two Sets Have the Same
+Cardinality).</strong> To prove <span class="math inline">\(A\sim
+B\)</span>, a bijection is needed. Writing one down can be hard. By <a href="#thm-schroder-bernstein">Theorem 2.4.2</a>, it is enough to find
+two one-to-one functions, one from <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span> and one from <span class="math inline">\(B\)</span> into <span class="math inline">\(A\)</span>. Neither has to be onto. That is
+usually much easier.</p>
+</div>
+<div class="examplebox" id="ex-closed-open-interval">
+
+<p><strong>Example 2.4.3.</strong> <span class="math inline">\((0,1)\sim[0,1]\)</span>. Since <span class="math inline">\((0,1)\subset[0,1]\)</span>, <span class="math inline">\((0,1)\lesssim[0,1]\)</span>. The function <span class="math inline">\(f(x)=\frac{x+1}3\)</span> is one-to-one and maps
+<span class="math inline">\([0,1]\)</span> into <span class="math inline">\(\left[\frac13,\frac23\right]\subset(0,1)\)</span>.
+So <span class="math inline">\([0,1]\lesssim(0,1)\)</span>. By <a href="#thm-schroder-bernstein">Theorem 2.4.2</a>, <span class="math inline">\((0,1)\sim[0,1]\)</span>. A bijection exists, but
+it is not easy to write down.</p>
+</div>
+<div class="theorembox" id="thm-interval-binary">
+
+<p><strong>Theorem 2.4.4.</strong> <span class="math inline">\([0,1]\sim2^\mathbb{N}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em><span class="math inline">\(2^\mathbb{N}\lesssim[0,1]\)</span>.</em> For <span class="math inline">\(s\in2^\mathbb{N}\)</span>, let <span class="math inline">\(F(s)=\sum_{k=1}^\infty\frac{2s(k)}{3^k}\)</span>.
+The series converges by comparison with <span class="math inline">\(\sum\frac2{3^k}=1\)</span>, and <span class="math inline">\(0\le F(s)\le1\)</span>. (Series are studied in <a href="ch-series.html">Chapter 10</a>. As in <a href="#rem-decimal-expansions">Remark 2.3.1</a>, these facts are assumed
+here.) (These are the points of the Cantor set of <a href="ch-cantor.html">Chapter 5</a>.) Let <span class="math inline">\(s\ne
+t\)</span>, and let <span class="math inline">\(k\)</span> be the first
+index with <span class="math inline">\(s(k)\ne t(k)\)</span>. Say <span class="math inline">\(s(k)=1\)</span> and <span class="math inline">\(t(k)=0\)</span>. Then <span class="math display">\[F(s)-F(t)\ge\frac2{3^k}-\sum_{j=k+1}^\infty\frac2{3^j}=\frac2{3^k}-\frac1{3^k}&gt;0.\]</span>
+So <span class="math inline">\(F(s)\ne F(t)\)</span>, and <span class="math inline">\(F\)</span> is one-to-one.</p>
+<p><em><span class="math inline">\([0,1]\lesssim2^\mathbb{N}\)</span>.</em> As with
+decimal expansions in <a href="#rem-decimal-expansions">Remark
+2.3.1</a>, every <span class="math inline">\(x\in[0,1)\)</span> has a
+binary expansion <span class="math inline">\(x=\sum_{k=1}^\infty\frac{d_k}{2^k}\)</span> with
+each <span class="math inline">\(d_k\in\{0,1\}\)</span>, and it can be
+chosen so that it does not end in all <span class="math inline">\(1\)</span>’s. Then it is unique. Let <span class="math inline">\(G(x)\)</span> be the sequence <span class="math inline">\(\{d_k\}\)</span> of that expansion, and let <span class="math inline">\(G(1)\)</span> be the sequence of all <span class="math inline">\(1\)</span>’s. Different numbers in <span class="math inline">\([0,1)\)</span> have different expansions, and no
+expansion used for <span class="math inline">\(x&lt;1\)</span> ends in
+all <span class="math inline">\(1\)</span>’s. So <span class="math inline">\(G\)</span> is one-to-one.</p>
+<p>By <a href="#thm-schroder-bernstein">Theorem 2.4.2</a>, <span class="math inline">\([0,1]\sim2^\mathbb{N}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\([0,1]\)</span> and <span class="math inline">\(2^\mathbb{N}\)</span> all have the same
+cardinality (<a href="#exer-R-sim-interval">Exercise 2.4.3</a>). The set
+<span class="math inline">\(2^\mathbb{N}\)</span> is really the set of
+all subsets of <span class="math inline">\(\mathbb{N}\)</span>. A
+sequence of <span class="math inline">\(0\)</span>’s and <span class="math inline">\(1\)</span>’s marks which natural numbers belong to
+a subset (<a href="#exer-power-set-binary">Exercise 2.4.4</a>). The last
+theorem shows that the step from <span class="math inline">\(\mathbb{N}\)</span> to its set of subsets always
+gives a bigger set, and that the same step works for every set.</p>
+<div class="theorembox" id="thm-cantor-power-set">
+
+<p><strong>Theorem 2.4.5</strong> (Cantor’s
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(A\)</span> be a set and let <span class="math inline">\(\mathcal{P}(A)\)</span> be its power set. Then
+<span class="math inline">\(A\lesssim\mathcal{P}(A)\)</span>, but <span class="math inline">\(A\not\sim\mathcal{P}(A)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The function <span class="math inline">\(a\mapsto\{a\}\)</span> is
+one-to-one from <span class="math inline">\(A\)</span> to <span class="math inline">\(\mathcal{P}(A)\)</span>. So <span class="math inline">\(A\lesssim\mathcal{P}(A)\)</span>. Let <span class="math inline">\(f:A\to\mathcal{P}(A)\)</span> be any function. Let
+<span class="math display">\[D=\{a\in A:a\notin f(a)\}.\]</span> Then
+<span class="math inline">\(D\in\mathcal{P}(A)\)</span>. Suppose <span class="math inline">\(D=f(d)\)</span> for some <span class="math inline">\(d\in A\)</span>. If <span class="math inline">\(d\in D\)</span>, then <span class="math inline">\(d\notin f(d)=D\)</span>. If <span class="math inline">\(d\notin D\)</span>, then <span class="math inline">\(d\in f(d)=D\)</span>. Both are impossible. So
+<span class="math inline">\(D\)</span> is not a value of <span class="math inline">\(f\)</span>, and <span class="math inline">\(f\)</span> is not onto. So there is no bijection
+from <span class="math inline">\(A\)</span> to <span class="math inline">\(\mathcal{P}(A)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This is the diagonal argument again. The set <span class="math inline">\(D\)</span> differs from <span class="math inline">\(f(a)\)</span> at the element <span class="math inline">\(a\)</span>, just as the number <span class="math inline">\(y\)</span> in <a href="#thm-interval-uncountable">Theorem 2.3.2</a> differs from <span class="math inline">\(x_n\)</span> in the <span class="math inline">\(n\)</span>th digit.</p>
+<p>Applying <a href="#thm-cantor-power-set">Theorem 2.4.5</a> over and
+over gives <span class="math display">\[\mathbb{N}\lesssim\mathcal{P}(\mathbb{N})\lesssim\mathcal{P}(\mathcal{P}(\mathbb{N}))\lesssim\cdots,\]</span>
+and no two of these sets have the same cardinality (<a href="#exer-power-set-chain">Exercise 2.4.5</a>). So there are
+infinitely many different sizes of infinite sets, and none is the
+largest.</p>
+<div class="remarkbox" id="rem-continuum-hypothesis">
+
+<p><strong>Remark 2.4.6.</strong> Is there a set <span class="math inline">\(S\subset\mathbb{R}\)</span> that is bigger than
+<span class="math inline">\(\mathbb{N}\)</span> but smaller than <span class="math inline">\(\mathbb{R}\)</span>? That is, is there an
+uncountable <span class="math inline">\(S\subset\mathbb{R}\)</span> with
+<span class="math inline">\(S\not\sim\mathbb{R}\)</span>? Cantor
+believed not. This is the <em>continuum hypothesis</em>. It cannot be
+settled from the usual axioms of set theory. Kurt Gödel showed in 1940
+that it cannot be disproved from them, and Paul Cohen showed in 1963
+that it cannot be proved from them.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-10">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-lesssim-basics">
+
+<p><strong>Exercise 2.4.1.</strong> Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>
+and <span class="math inline">\(C\)</span> be sets. Prove that <span class="math inline">\(A\lesssim A\)</span>, that <span class="math inline">\(A\subset B\)</span> implies <span class="math inline">\(A\lesssim B\)</span>, and that <span class="math inline">\(A\lesssim B\)</span> and <span class="math inline">\(B\lesssim C\)</span> imply <span class="math inline">\(A\lesssim C\)</span>. <a aria-label="Hint for Exercise 2.4.1" href="solutions-ch02.html#sol-exer-lesssim-basics">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-interval-types">
+
+<p><strong>Exercise 2.4.2.</strong> Let <span class="math inline">\(a&lt;b\)</span>. Use <a href="#thm-schroder-bernstein">Theorem 2.4.2</a> to prove that <span class="math inline">\((a,b)\)</span>, <span class="math inline">\([a,b)\)</span>, <span class="math inline">\((a,b]\)</span> and <span class="math inline">\([a,b]\)</span> all have the same cardinality as
+<span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 2.4.2" href="solutions-ch02.html#sol-exer-interval-types">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-R-sim-interval">
+
+<p><strong>Exercise 2.4.3.</strong> Prove that <span class="math inline">\(f(x)=\frac x{1+|x|}\)</span> is a bijection from
+<span class="math inline">\(\mathbb{R}\)</span> to <span class="math inline">\((-1,1)\)</span>. Conclude that <span class="math inline">\(\mathbb{R}\sim[0,1]\sim2^\mathbb{N}\)</span>. <a aria-label="Solution for Exercise 2.4.3" href="solutions-ch02.html#sol-exer-R-sim-interval">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-power-set-binary">
+
+<p><strong>Exercise 2.4.4.</strong> For <span class="math inline">\(E\subset\mathbb{N}\)</span>, let <span class="math inline">\(\chi_E\)</span> be the sequence with <span class="math inline">\(\chi_E(k)=1\)</span> if <span class="math inline">\(k\in E\)</span> and <span class="math inline">\(\chi_E(k)=0\)</span> if <span class="math inline">\(k\notin E\)</span>. Prove that <span class="math inline">\(E\mapsto\chi_E\)</span> is a bijection from <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> to <span class="math inline">\(2^\mathbb{N}\)</span>. Conclude that <span class="math inline">\(\mathcal{P}(\mathbb{N})\sim\mathbb{R}\)</span>. <a aria-label="Solution for Exercise 2.4.4" href="solutions-ch02.html#sol-exer-power-set-binary">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-power-set-chain">
+
+<p><strong>Exercise 2.4.5.</strong> Let <span class="math inline">\(A_0=\mathbb{N}\)</span> and <span class="math inline">\(A_{n+1}=\mathcal{P}(A_n)\)</span>. Prove that if
+<span class="math inline">\(m&lt;n\)</span>, then <span class="math inline">\(A_m\lesssim A_n\)</span> and <span class="math inline">\(A_m\not\sim A_n\)</span>. <a aria-label="Hint for Exercise 2.4.5" href="solutions-ch02.html#sol-exer-power-set-chain">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-square-sim">
+
+<p><strong>Exercise 2.4.6.</strong> For <span class="math inline">\(s,t\in2^\mathbb{N}\)</span>, define the sequence
+<span class="math inline">\(u\)</span> by <span class="math inline">\(u(2k-1)=s(k)\)</span> and <span class="math inline">\(u(2k)=t(k)\)</span>. Prove that <span class="math inline">\((s,t)\mapsto u\)</span> is a bijection from <span class="math inline">\(2^\mathbb{N}\times2^\mathbb{N}\)</span> to <span class="math inline">\(2^\mathbb{N}\)</span>. Conclude that <span class="math inline">\(\mathbb{R}\times\mathbb{R}\sim\mathbb{R}\)</span>.
+So the plane has no more points than a line. <a aria-label="Hint for Exercise 2.4.6" href="solutions-ch02.html#sol-exer-square-sim">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-functions-bigger">
+
+<p><strong>Exercise 2.4.7.</strong> Let <span class="math inline">\(\mathcal F\)</span> be the set of all functions
+from <span class="math inline">\(\mathbb{R}\)</span> to <span class="math inline">\(\mathbb{R}\)</span>. Prove that <span class="math inline">\(\mathbb{R}\lesssim\mathcal F\)</span> and <span class="math inline">\(\mathbb{R}\not\sim\mathcal F\)</span>. <a aria-label="Hint for Exercise 2.4.7" href="solutions-ch02.html#sol-exer-functions-bigger">[Hint]</a></p>
+</div>
+</section>
+</section>
 <section class="level3 unnumbered" id="notes-1">
 <h2>Notes</h2>
 <p>Galileo noticed in 1638 that the perfect squares can be paired off
@@ -407,7 +569,13 @@ the algebraic numbers are countable and that <span class="math inline">\(\mathbb
 not algebraic exist. Joseph Liouville had already built explicit
 examples, in work announced in 1844 and published in full in 1851 [<a href="bibliography.html#bib-liouville1851">48</a>]. In 1878, Cantor defined two sets to
 have the same cardinality when there is a bijection between them [<a href="bibliography.html#bib-cantor1878">10</a>]. His diagonal argument appeared in 1891
-[<a href="bibliography.html#bib-cantor1891">13</a>].</p>
+[<a href="bibliography.html#bib-cantor1891">13</a>]. Cantor proved <a href="#thm-cantor-power-set">Theorem 2.4.5</a> in the same 1891 paper
+[<a href="bibliography.html#bib-cantor1891">13</a>]. He also proved in 1878 that <span class="math inline">\(\mathbb{R}\times\mathbb{R}\sim\mathbb{R}\)</span>
+(<a href="#exer-square-sim">Exercise 2.4.6</a>), and wrote to Dedekind,
+“I see it, but I do not believe it.” Cantor stated <a href="#thm-schroder-bernstein">Theorem 2.4.2</a> without proof. Dedekind
+proved it in 1887 but did not publish his proof. Ernst Schröder
+published a proof in 1896 that turned out to have a gap, and Felix
+Bernstein gave a correct proof in 1897, published in 1898.</p>
 </section>
 </article>
 </main>

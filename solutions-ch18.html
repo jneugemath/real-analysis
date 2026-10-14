@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 18. L^p Spaces | Real Analysis from Scratch</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis from Scratch</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch17.html"><span class="dir">Previous</span> Solutions for Chapter 17. Differentiation and Integration</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-appa.html"><span class="dir">Next</span> Solutions for Appendix A. Construction of the Real Numbers by Cuts</a>
+</nav>
+<main id="main">
+<article id="solutions-ch18">
+<h1>Solutions for Chapter 18. <span class="math inline">\(L^p\)</span> Spaces</h1>
+<div class="solutionbox" id="sol-exer-lp-inclusion">
+
+<p><strong><a href="ch-lp.html#exer-lp-inclusion">Exercise 18.1.1</a>.</strong>
+Let <span class="math inline">\(f\in L^r(E)\)</span>, and let <span class="math inline">\(s=\frac rp&gt;1\)</span>, with conjugate exponent
+<span class="math inline">\(s'\)</span>. Then <span class="math inline">\(|f|^p\in L^s(E)\)</span>, since <span class="math inline">\((|f|^p)^s=|f|^r\)</span>, and <span class="math inline">\(1\in L^{s'}(E)\)</span>, since <span class="math inline">\(m(E)&lt;\infty\)</span>. By <a href="ch-lp.html#thm-holder">Theorem 18.1.3</a>, <span class="math display">\[\int_E|f|^p\cdot1\le\left(\int_E|f|^r\right)^{p/r}m(E)^{1/s'}=\left\lVert
+f\right\rVert_r^p\,m(E)^{1-p/r}.\]</span> So <span class="math inline">\(f\in L^p(E)\)</span>, and taking <span class="math inline">\(p\)</span>th roots gives <span class="math inline">\(\left\lVert f\right\rVert_p\le
+m(E)^{1/p-1/r}\left\lVert f\right\rVert_r\)</span>. If <span class="math inline">\(f\in L^\infty(E)\)</span>, then <span class="math inline">\(|f|^p\le\left\lVert
+f\right\rVert_\infty^p\)</span> almost everywhere by <a href="ch-lp.html#exer-linf-norm">Exercise 18.1.4</a>, so <span class="math inline">\(\int_E|f|^p\le\left\lVert
+f\right\rVert_\infty^pm(E)&lt;\infty\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-lp-not-nested">
+
+<p><strong><a href="ch-lp.html#exer-lp-not-nested">Exercise 18.1.2</a>.</strong>
+Let <span class="math inline">\(f(x)=x^{-1/2}\)</span> for <span class="math inline">\(0&lt;x&lt;1\)</span> and <span class="math inline">\(f(x)=0\)</span> for <span class="math inline">\(x\ge1\)</span>. For <span class="math inline">\(0&lt;\delta&lt;1\)</span>, <span class="math inline">\(\int_\delta^1x^{-1/2}\,dx=2-2\sqrt\delta\)</span>.
+By <a href="ch-lebesgue-integral.html#thm-mct">Theorem 16.4.7</a> applied to <span class="math inline">\(f\chi_{[1/n,1)}\)</span>, <span class="math inline">\(\int_Ef=2\)</span>, so <span class="math inline">\(f\in L^1(E)\)</span>. But <span class="math inline">\(f^2=\frac1x\)</span> on <span class="math inline">\((0,1)\)</span>, and <span class="math inline">\(\int_\delta^1\frac{dx}x=-\ln\delta\to\infty\)</span>.
+So <span class="math inline">\(f\notin L^2(E)\)</span>.</p>
+<p>Let <span class="math inline">\(g(x)=0\)</span> for <span class="math inline">\(0&lt;x&lt;1\)</span> and <span class="math inline">\(g(x)=\frac1x\)</span> for <span class="math inline">\(x\ge1\)</span>. Then <span class="math inline">\(\int_1^b\frac{dx}{x^2}=1-\frac1b\to1\)</span>, so
+<span class="math inline">\(g\in L^2(E)\)</span> by <a href="ch-lebesgue-integral.html#thm-mct">Theorem 16.4.7</a>. But <span class="math inline">\(\int_1^b\frac{dx}x=\ln b\to\infty\)</span>, so
+<span class="math inline">\(g\notin L^1(E)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cauchy-schwarz">
+
+<p><strong><a href="ch-lp.html#exer-cauchy-schwarz">Exercise 18.1.3</a>.</strong>
+<em>Hint.</em> Take <span class="math inline">\(p=q=2\)</span> in <a href="ch-lp.html#thm-holder">Theorem 18.1.3</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-linf-norm">
+
+<p><strong><a href="ch-lp.html#exer-linf-norm">Exercise 18.1.4</a>.</strong>
+<em>Hint.</em> For each <span class="math inline">\(n\)</span>, <span class="math inline">\(|f|\le\left\lVert
+f\right\rVert_\infty+\frac1n\)</span> off a set of measure zero. Take
+the union of these sets.</p>
+</div>
+<div class="solutionbox" id="sol-exer-typewriter">
+
+<p><strong><a href="ch-lp.html#exer-typewriter">Exercise 18.2.1</a>.</strong> For
+<span class="math inline">\(2^k\le n&lt;2^{k+1}\)</span>, <span class="math inline">\(f_n\)</span> is <span class="math inline">\(1\)</span> on an interval of length <span class="math inline">\(2^{-k}\)</span> and <span class="math inline">\(0\)</span> elsewhere. So <span class="math inline">\(\left\lVert f_n\right\rVert_p^p=2^{-k}\)</span>.
+As <span class="math inline">\(n\to\infty\)</span>, <span class="math inline">\(k\to\infty\)</span>, so <span class="math inline">\(\left\lVert f_n\right\rVert_p\to0\)</span>.</p>
+<p>Fix <span class="math inline">\(x\in[0,1]\)</span> and <span class="math inline">\(k\ge1\)</span>. The intervals <span class="math inline">\([j2^{-k},(j+1)2^{-k}]\)</span> with <span class="math inline">\(0\le j&lt;2^k\)</span> cover <span class="math inline">\([0,1]\)</span>, so <span class="math inline">\(f_n(x)=1\)</span> for at least one <span class="math inline">\(n\)</span> with <span class="math inline">\(2^k\le
+n&lt;2^{k+1}\)</span>. Since there are at least two such intervals and
+<span class="math inline">\(x\)</span> lies in at most two of them, if
+<span class="math inline">\(k\ge2\)</span> then <span class="math inline">\(f_n(x)=0\)</span> for another such <span class="math inline">\(n\)</span>. So <span class="math inline">\(f_n(x)=1\)</span> and <span class="math inline">\(f_n(x)=0\)</span> each happen for infinitely many
+<span class="math inline">\(n\)</span>, and <span class="math inline">\(\{f_n(x)\}\)</span> does not converge.</p>
+<p>The subsequence <span class="math inline">\(f_{2^k}=\chi_{[0,2^{-k}]}\)</span> converges to
+<span class="math inline">\(0\)</span> at every <span class="math inline">\(x\in(0,1]\)</span>, so almost everywhere.</p>
+</div>
+<div class="solutionbox" id="sol-exer-linf-complete">
+
+<p><strong><a href="ch-lp.html#exer-linf-complete">Exercise 18.2.2</a>.</strong>
+<em>Hint.</em> Off one set of measure zero, <span class="math inline">\(|f_n-f_m|\le\left\lVert
+f_n-f_m\right\rVert_\infty\)</span> for all <span class="math inline">\(m,n\)</span>. There the sequence is uniformly
+Cauchy.</p>
+</div>
+<div class="solutionbox" id="sol-exer-convergence-in-measure">
+
+<p><strong><a href="ch-lp.html#exer-convergence-in-measure">Exercise
+18.2.3</a>.</strong> <em>Hint.</em> <span class="math inline">\(\{|f_n-f|\ge\varepsilon\}=\{|f_n-f|^p\ge\varepsilon^p\}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-continuous-dense">
+
+<p><strong><a href="ch-lp.html#exer-continuous-dense">Exercise
+18.3.1</a>.</strong> Repeat the proof of <a href="ch-lp.html#thm-lp-step-dense">Theorem 18.3.1</a>. Step 1 is unchanged. In
+Step 2, <a href="ch-measurable-functions.html#thm-measurable-approx-continuous">Theorem 15.2.7</a>
+also gives a continuous <span class="math inline">\(h\)</span> with
+<span class="math inline">\(-N\le h\le N\)</span> and <span class="math inline">\(m(\{x:|f_N(x)-h(x)|\ge\eta\})&lt;\eta\)</span>.
+The same estimate gives <span class="math inline">\(\int_{[a,b]}|f_N-h|^p\le\eta^p(b-a)+(2N)^p\eta&lt;\left(\frac\varepsilon
+2\right)^p\)</span> for small <span class="math inline">\(\eta\)</span>.
+Then <span class="math inline">\(\left\lVert
+f-h\right\rVert_p\le\left\lVert f-f_N\right\rVert_p+\left\lVert
+f_N-h\right\rVert_p&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-riemann-lebesgue">
+
+<p><strong><a href="ch-lp.html#exer-riemann-lebesgue">Exercise
+18.3.2</a>.</strong> <em>Hint.</em> For <span class="math inline">\(f=\chi_{[c,d]}\)</span>, the integral is <span class="math inline">\(\frac{\cos nc-\cos nd}n\)</span>. Then use <a href="ch-lp.html#thm-lp-step-dense">Theorem 18.3.1</a> with <span class="math inline">\(p=1\)</span>.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch17.html"><span class="dir">Previous</span> Solutions for Chapter 17. Differentiation and Integration</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-appa.html"><span class="dir">Next</span> Solutions for Appendix A. Construction of the Real Numbers by Cuts</a>
+</nav>
+<footer class="site">
+<p>Real Analysis from Scratch by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

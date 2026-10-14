@@ -26,12 +26,12 @@ window.MathJax = {
 <nav class="pager" aria-label="Previous and next page (top)">
 <a rel="prev" href="ch-lebesgue-integral.html"><span class="dir">Previous</span> Chapter 16. The Lebesgue Integral</a>
 <a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
-<a rel="next" href="part-appendices.html"><span class="dir">Next</span> Appendices</a>
+<a rel="next" href="ch-lp.html"><span class="dir">Next</span> Chapter 18. L^p Spaces*</a>
 </nav>
 <main id="main">
 <article id="ch-differentiation">
 <h1>Chapter 17. Differentiation and Integration</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-vitali">17.1 The Vitali Covering Lemma<sup>*</sup></a></li><li><a href="#sec-monotone-differentiation">17.2 Differentiating Monotone Functions</a></li><li><a href="#sec-bv-revisited">17.3 Functions of Bounded Variation
-Revisited</a></li><li><a href="#sec-differentiating-integral">17.4 Differentiating an Integral</a></li><li><a href="#sec-absolute-continuity">17.5 Absolute Continuity</a></li><li><a href="#sec-cantor-function">17.6 The Cantor Function<sup>*</sup></a></li><li><a href="#notes-16">Notes</a></li></ul></nav>
+Revisited</a></li><li><a href="#sec-differentiating-integral">17.4 Differentiating an Integral</a></li><li><a href="#sec-absolute-continuity">17.5 Absolute Continuity</a></li><li><a href="#sec-cantor-function">17.6 The Cantor Function<sup>*</sup></a></li><li><a href="#sec-volterra">17.7 Volterra’s Function<sup>*</sup></a></li><li><a href="#notes-16">Notes</a></li></ul></nav>
 <p>The Fundamental Theorem of Calculus in <a href="ch-integrals.html#sec-ftc">Section
 9.3</a> has two halves. If <span class="math inline">\(f\)</span> is
 continuous, then <span class="math inline">\(\int_a^xf\)</span> has
@@ -53,13 +53,16 @@ introduces absolute continuity and proves the Fundamental Theorem of
 Calculus for the Lebesgue integral. <a href="#sec-cantor-function">Section 17.6</a>, also starred, builds the
 Cantor function. It is continuous and increasing, and its derivative is
 <span class="math inline">\(0\)</span> almost everywhere, but it is not
-constant.</p>
+constant. <a href="#sec-volterra">Section 17.7</a>, also starred, builds
+Volterra’s function. It is differentiable everywhere with a bounded
+derivative that is not Riemann integrable.</p>
 <p><em>What this chapter uses from earlier chapters.</em> Limits
 superior and inferior (<a href="ch-sequences.html#sec-limsup">Section 3.6</a>), the
 Fundamental Theorem of Calculus and the Mean Value Theorem for Integrals
 (<a href="ch-integrals.html">Chapter 9</a>), the definitions in <a href="ch-bounded-variation.html#sec-bv">Section 8.1</a>, outer measure (<a href="ch-lebesgue-measure.html">Chapter 14</a>), and the integral and the
 convergence theorems (<a href="ch-lebesgue-integral.html">Chapter 16</a>).
-<a href="#sec-cantor-function">Section 17.6</a> uses the Cantor set (<a href="ch-cantor.html">Chapter 5</a>).</p>
+<a href="#sec-cantor-function">Section 17.6</a> uses the Cantor set (<a href="ch-cantor.html">Chapter 5</a>). <a href="#sec-volterra">Section
+17.7</a> uses Lebesgue’s Theorem (<a href="ch-integrals.html#thm-lebesgue-criterion">Theorem 9.2.9</a>).</p>
 <section class="level3 unnumbered" id="sec-vitali">
 <h2>17.1 The Vitali Covering Lemma<sup>*</sup></h2>
 <p>This section can be skipped. Later sections use the statement of the
@@ -146,7 +149,7 @@ The payoff comes at the end. Any interval that was passed over is not
 much longer than one that was chosen, so a fixed enlargement of the
 chosen intervals covers everything that was missed.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-63">
+<section class="level5 unnumbered" id="exercises-69">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-vitali-needed">
 
@@ -300,7 +303,7 @@ quantities into two comparisons with fixed numbers, which are much
 easier to use. Step 1 of the proof of <a href="#thm-monotone-differentiable">Theorem 17.2.3</a> works this way.
 The same trick, with one rational number, appeared in the proof of <a href="ch-measurable-functions.html#thm-measurable-algebra">Theorem 15.1.4</a>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-64">
+<section class="level5 unnumbered" id="exercises-70">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-dini-monotone">
 
@@ -416,7 +419,7 @@ g(b)-g(a)+h(b)-h(a)&lt;\infty\)</span>.</p>
 <div class="proofbox">
 <p><em>Proof.</em> See <a href="#exer-variation-lower-semicontinuous">Exercise 17.3.2</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-65">
+<section class="level5 unnumbered" id="exercises-71">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-pn-increasing">
 
@@ -555,7 +558,7 @@ By the first case, the two integrals have derivatives <span class="math inline">
 <span class="math inline">\(f\)</span> to be continuous at <span class="math inline">\(x\)</span> and then gives <span class="math inline">\(F'(x)=f(x)\)</span> at that point. Here <span class="math inline">\(f\)</span> is only integrable, and the conclusion
 holds almost everywhere. It can fail at particular points. If <span class="math inline">\(f=\chi_{[0,1/2]}\)</span> on <span class="math inline">\([0,1]\)</span>, then <span class="math inline">\(F(x)=\min\left\{x,\frac12\right\}\)</span>, which
 is not differentiable at <span class="math inline">\(\frac12\)</span>.</p>
-<section class="level5 unnumbered" id="exercises-66">
+<section class="level5 unnumbered" id="exercises-72">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-averages-converge">
 
@@ -744,7 +747,7 @@ are absolutely continuous (<a href="#exer-ac-algebra">Exercise
 continuous, show that it is not of bounded variation, as in <a href="#ex-x-sin-not-ac">Example 17.5.4</a>, or show that <span class="math inline">\(f(b)-f(a)\ne\int_{[a,b]}f'\)</span>, as for
 the Cantor function.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-67">
+<section class="level5 unnumbered" id="exercises-73">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-monotone-ac-singular">
 
@@ -883,7 +886,7 @@ which is false.</p>
 length <span class="math inline">\(\left(\frac23\right)^n\)</span>,
 which is as small as we like. But <span class="math inline">\(\phi\)</span> increases by <span class="math inline">\(\frac{1}{2^n}\)</span> on each of them, by <a href="#lem-cantor-approx">Lemma 17.6.1</a> (2) and (3), for a total of
 <span class="math inline">\(1\)</span>. So no <span class="math inline">\(\delta\)</span> works for <span class="math inline">\(\varepsilon=1\)</span> in <a href="#def-absolutely-continuous">Definition 17.5.1</a>.</p>
-<section class="level5 unnumbered" id="exercises-68">
+<section class="level5 unnumbered" id="exercises-74">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cantor-symmetry">
 
@@ -919,6 +922,136 @@ set.</p></li>
 </div>
 </section>
 </section>
+<section class="level3 unnumbered" id="sec-volterra">
+<h2>17.7 Volterra’s Function<sup>*</sup></h2>
+<p>The book has two famous strange functions so far. The Weierstrass
+function (<a href="ch-function-sequences.html#sec-weierstrass">Section 11.3</a>) is continuous but
+differentiable nowhere. The Cantor function (<a href="#sec-cantor-function">Section 17.6</a>) is continuous and
+increasing with derivative <span class="math inline">\(0\)</span> almost
+everywhere, but it is not constant. This section builds a third.
+Volterra’s function is differentiable at every point, and its derivative
+is bounded, but its derivative is not Riemann integrable. So the
+Fundamental Theorem of Calculus for the Riemann integral (<a href="ch-integrals.html#thm-ftc-evaluation">Theorem 9.3.6</a>) cannot even be stated for
+it. The Lebesgue version (<a href="#cor-ftc-lebesgue">Corollary
+17.5.9</a>) still holds. This section can be skipped. Nothing later
+depends on it.</p>
+<p>The construction has three ingredients. A closed set with no
+intervals in it but with positive measure. The function <span class="math inline">\(x^2\sin\frac1x\)</span>, whose derivative
+oscillates near <span class="math inline">\(0\)</span>. And a way to
+glue copies of that function into the gaps of the set.</p>
+<div class="examplebox" id="ex-fat-cantor">
+
+<p><strong>Example 17.7.1</strong> (A Fat Cantor
+Set)<strong>.</strong></p>
+<p>Start with <span class="math inline">\([0,1]\)</span>. At step <span class="math inline">\(1\)</span>, remove the open middle interval of
+length <span class="math inline">\(\frac14\)</span>. At step <span class="math inline">\(n\)</span>, there are <span class="math inline">\(2^{n-1}\)</span> closed intervals left, all of the
+same length. Remove from the middle of each one an open interval of
+length <span class="math inline">\(4^{-n}\)</span>. Let <span class="math inline">\(K\)</span> be the set of points that are never
+removed.</p>
+<p>Before step <span class="math inline">\(n\)</span>, the total length
+removed is <span class="math inline">\(\sum_{j=1}^{n-1}2^{j-1}4^{-j}=\frac12-2^{-n}\)</span>.
+So each remaining interval has length <span class="math inline">\(\ell_n=\frac{1/2+2^{-n}}{2^{n-1}}=2^{-n}+2^{1-2n}\)</span>,
+which is more than <span class="math inline">\(4^{-n}\)</span>. So each
+step can be carried out. The set <span class="math inline">\(K\)</span>
+is closed, since its complement is the union of the removed open
+intervals with <span class="math inline">\((-\infty,0)\)</span> and
+<span class="math inline">\((1,\infty)\)</span>. It contains no open
+interval, since every point of <span class="math inline">\(K\)</span>
+lies in a remaining interval of length <span class="math inline">\(\ell_n\)</span> for every <span class="math inline">\(n\)</span>, and <span class="math inline">\(\ell_n\to0\)</span>. The removed intervals are
+disjoint, and Lebesgue measure is countably additive (<a href="ch-lebesgue-measure.html#thm-lebesgue-measure-space">Theorem 14.2.12</a>). So <span class="math display">\[m(K)=1-\sum_{n=1}^\infty2^{n-1}4^{-n}=1-\frac12=\frac12.\]</span>
+So <span class="math inline">\(K\)</span> is a closed set with no
+intervals in it, like the Cantor set, but it has positive measure.</p>
+</div>
+<p>Next, let <span class="math inline">\(g(x)=x^2\sin\frac1x\)</span>
+for <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(g(0)=0\)</span>. By <a href="#exer-volterra-g">Exercise 17.7.1</a>, <span class="math inline">\(g\)</span> is differentiable on <span class="math inline">\(\mathbb{R}\)</span> with <span class="math display">\[g'(x)=2x\sin\frac1x-\cos\frac1x\quad(x\ne0),\qquad
+g'(0)=0,\]</span> and <span class="math inline">\(|g'(x)|\le3\)</span> for <span class="math inline">\(|x|\le1\)</span>. Also <span class="math inline">\(|g(x)|\le x^2\)</span>. At the points <span class="math inline">\(x=\frac1{2k\pi}\)</span>, <span class="math inline">\(g'(x)=-1\)</span>. These points come
+arbitrarily close to <span class="math inline">\(0\)</span>.</p>
+<div class="definitionbox" id="def-volterra">
+
+<p><strong>Definition 17.7.2.</strong> Let <span class="math inline">\((\alpha,\beta)\)</span> be one of the open
+intervals removed in <a href="#ex-fat-cantor">Example 17.7.1</a>, and
+let <span class="math inline">\(\ell=\beta-\alpha\)</span>. The function
+<span class="math inline">\(g'\)</span> is continuous on <span class="math inline">\(\left(0,\frac\ell2\right]\)</span> and has zeros
+arbitrarily close to <span class="math inline">\(0\)</span>. Let <span class="math inline">\(c\)</span> be the largest zero of <span class="math inline">\(g'\)</span> in <span class="math inline">\(\left(0,\frac\ell2\right]\)</span>. Define <span class="math inline">\(V\)</span> on <span class="math inline">\([\alpha,\beta]\)</span> by <span class="math display">\[V(x)=\begin{cases}g(x-\alpha), &amp; \alpha\le
+x\le\alpha+c,\\ g(c), &amp; \alpha+c\le x\le\beta-c,\\ g(\beta-x), &amp;
+\beta-c\le x\le\beta.\end{cases}\]</span> <em>Volterra’s function</em>
+<span class="math inline">\(F:[0,1]\to\mathbb{R}\)</span> is <span class="math inline">\(F(x)=0\)</span> for <span class="math inline">\(x\in K\)</span>, and <span class="math inline">\(F(x)=V(x)\)</span> on each removed interval, with
+the <span class="math inline">\(V\)</span> built for that interval.</p>
+</div>
+<p>The largest zero <span class="math inline">\(c\)</span> exists. The
+zeros of <span class="math inline">\(g'\)</span> in <span class="math inline">\(\left[\delta,\frac\ell2\right]\)</span> form a
+closed set for each small <span class="math inline">\(\delta&gt;0\)</span>, so the supremum of the zeros
+is one of them. On each removed interval, <span class="math inline">\(V\)</span> is a copy of <span class="math inline">\(g\)</span> starting at each end, joined by a flat
+piece. The flat piece starts at a zero of <span class="math inline">\(g'\)</span>, so the pieces fit together
+smoothly.</p>
+<div class="theorembox" id="thm-volterra">
+
+<p><strong>Theorem 17.7.3.</strong> Volterra’s function <span class="math inline">\(F\)</span> has the following properties.</p>
+<ol>
+<li><p><span class="math inline">\(F\)</span> is differentiable at every
+point of <span class="math inline">\([0,1]\)</span>, and <span class="math inline">\(|F'(x)|\le3\)</span> for all <span class="math inline">\(x\)</span>.</p></li>
+<li><p><span class="math inline">\(F'(x)=0\)</span> for <span class="math inline">\(x\in K\)</span>, and <span class="math inline">\(F'\)</span> is not continuous at any point of
+<span class="math inline">\(K\)</span>.</p></li>
+<li><p><span class="math inline">\(F'\)</span> is not Riemann
+integrable on <span class="math inline">\([0,1]\)</span>.</p></li>
+<li><p><span class="math inline">\(F'\)</span> is Lebesgue
+integrable, and <span class="math inline">\(F(x)=\int_{[0,x]}F'\)</span> for every <span class="math inline">\(x\in[0,1]\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) and (2). Let <span class="math inline">\((\alpha,\beta)\)</span>
+be a removed interval. On <span class="math inline">\((\alpha,\alpha+c)\)</span>, <span class="math inline">\(V'(x)=g'(x-\alpha)\)</span>. On <span class="math inline">\((\alpha+c,\beta-c)\)</span>, <span class="math inline">\(V'(x)=0\)</span>. On <span class="math inline">\((\beta-c,\beta)\)</span>, <span class="math inline">\(V'(x)=-g'(\beta-x)\)</span>. At <span class="math inline">\(\alpha+c\)</span> and <span class="math inline">\(\beta-c\)</span>, both one-sided derivatives are
+<span class="math inline">\(0\)</span>, since <span class="math inline">\(g'(c)=0\)</span>. So <span class="math inline">\(V\)</span> is differentiable on <span class="math inline">\((\alpha,\beta)\)</span> with <span class="math inline">\(|V'|\le3\)</span>, since <span class="math inline">\(c\le\frac12\)</span>.</p>
+<p>Let <span class="math inline">\(x\in K\)</span>. If <span class="math inline">\(y\in K\)</span>, then <span class="math inline">\(F(y)-F(x)=0\)</span>. If <span class="math inline">\(y\)</span> is in a removed interval <span class="math inline">\((\alpha,\beta)\)</span>, let <span class="math inline">\(d\)</span> be the distance from <span class="math inline">\(y\)</span> to the nearer of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. On the outer pieces, <span class="math inline">\(|V(y)|\le d^2\)</span>, since <span class="math inline">\(|g(t)|\le t^2\)</span>. On the flat piece, <span class="math inline">\(d\ge c\)</span>, so <span class="math inline">\(|V(y)|=|g(c)|\le c^2\le d^2\)</span>. Since <span class="math inline">\(x\notin(\alpha,\beta)\)</span>, <span class="math inline">\(|y-x|\ge d\)</span>. So in every case <span class="math inline">\(|F(y)-F(x)|\le|y-x|^2\)</span>. Thus <span class="math inline">\(\left|\frac{F(y)-F(x)}{y-x}\right|\le|y-x|\to0\)</span>,
+and <span class="math inline">\(F'(x)=0\)</span>.</p>
+<p>Now let <span class="math inline">\(x\in K\)</span> and <span class="math inline">\(\delta&gt;0\)</span>. Choose <span class="math inline">\(n\)</span> with <span class="math inline">\(\ell_n&lt;\delta\)</span>. The remaining interval
+of step <span class="math inline">\(n\)</span> that contains <span class="math inline">\(x\)</span> lies in <span class="math inline">\((x-\delta,x+\delta)\)</span>, and at step <span class="math inline">\(n\)</span> an interval <span class="math inline">\((\alpha,\beta)\)</span> is removed from its
+middle. For every large <span class="math inline">\(k\)</span>, <span class="math inline">\(\alpha+\frac1{2k\pi}\)</span> lies in <span class="math inline">\((\alpha,\alpha+c)\)</span>, and there <span class="math inline">\(F'=g'\left(\frac1{2k\pi}\right)=-1\)</span>.
+So every neighborhood of <span class="math inline">\(x\)</span> contains
+points where <span class="math inline">\(F'=-1\)</span>, while <span class="math inline">\(F'(x)=0\)</span>. So <span class="math inline">\(F'\)</span> is not continuous at <span class="math inline">\(x\)</span>.</p>
+<p>(3) By (1), <span class="math inline">\(F'\)</span> is bounded.
+By (2), <span class="math inline">\(F'\)</span> is discontinuous at
+every point of <span class="math inline">\(K\)</span>, and <span class="math inline">\(m(K)=\frac12&gt;0\)</span>. By <a href="ch-integrals.html#thm-lebesgue-criterion">Theorem 9.2.9</a>, <span class="math inline">\(F'\)</span> is not Riemann integrable.</p>
+<p>(4) For <span class="math inline">\(x,y\in[0,1]\)</span>, the Mean
+Value Theorem and (1) give <span class="math inline">\(|F(x)-F(y)|\le3|x-y|\)</span>. So <span class="math inline">\(F\)</span> is absolutely continuous. Given <span class="math inline">\(\varepsilon&gt;0\)</span>, take <span class="math inline">\(\delta=\frac\varepsilon 3\)</span> in <a href="#def-absolutely-continuous">Definition 17.5.1</a>. By <a href="#cor-ftc-lebesgue">Corollary 17.5.9</a>, <span class="math inline">\(F'\)</span> is Lebesgue integrable and <span class="math inline">\(F(x)=F(0)+\int_{[0,x]}F'\)</span>. Since <span class="math inline">\(0\in K\)</span>, <span class="math inline">\(F(0)=0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(F\)</span> has a derivative
+everywhere, the derivative is bounded, and <span class="math inline">\(F\)</span> is the integral of its derivative. But
+the Riemann integral cannot see this, because <span class="math inline">\(F'\)</span> is discontinuous on a set of
+positive measure. This is one of the problems that led Lebesgue to his
+integral. In his 1904 lectures, he cited Volterra’s example as a reason
+the Riemann integral is not enough.</p>
+<section class="level5 unnumbered" id="exercises-75">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-volterra-g">
+
+<p><strong>Exercise 17.7.1.</strong> Let <span class="math inline">\(g(x)=x^2\sin\frac1x\)</span> for <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(g(0)=0\)</span>. Prove that <span class="math inline">\(g\)</span> is differentiable on <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(g'(0)=0\)</span>, that <span class="math inline">\(|g'(x)|\le3\)</span> for <span class="math inline">\(|x|\le1\)</span>, and that <span class="math inline">\(\lim_{x\to0}g'(x)\)</span> does not exist. <a aria-label="Solution for Exercise 17.7.1" href="solutions-ch17.html#sol-exer-volterra-g">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-fat-cantor-measure">
+
+<p><strong>Exercise 17.7.2.</strong> Let <span class="math inline">\(0&lt;a&lt;1\)</span>. Change <a href="#ex-fat-cantor">Example 17.7.1</a> so that the intervals removed
+at step <span class="math inline">\(n\)</span> have length <span class="math inline">\(a3^{-n}\)</span>. Prove that each step can be
+carried out, and that the resulting set is closed, contains no open
+interval, and has measure <span class="math inline">\(1-a\)</span>. <a aria-label="Solution for Exercise 17.7.2" href="solutions-ch17.html#sol-exer-fat-cantor-measure">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-fat-cantor-indicator">
+
+<p><strong>Exercise 17.7.3.</strong> Let <span class="math inline">\(K\)</span> be the set of <a href="#ex-fat-cantor">Example 17.7.1</a>. Prove that <span class="math inline">\(\chi_K\)</span> is discontinuous at every point of
+<span class="math inline">\(K\)</span> and continuous everywhere else.
+Conclude that <span class="math inline">\(\chi_K\)</span> is Lebesgue
+integrable but not Riemann integrable on <span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 17.7.3" href="solutions-ch17.html#sol-exer-fat-cantor-indicator">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-volterra-integral">
+
+<p><strong>Exercise 17.7.4.</strong> Prove that <span class="math inline">\(\int_{[0,1]}F'=0\)</span> for Volterra’s
+function <span class="math inline">\(F\)</span>. Then find a removed
+interval <span class="math inline">\((\alpha,\beta)\)</span> and explain
+why <span class="math inline">\(\int_\alpha^\beta F'=0\)</span> as a
+Riemann integral, even though <span class="math inline">\(F'\)</span> is not Riemann integrable on <span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 17.7.4" href="solutions-ch17.html#sol-exer-volterra-integral">[Hint]</a></p>
+</div>
+</section>
+</section>
 <section class="level3 unnumbered" id="notes-16">
 <h2>Notes</h2>
 <p>Ulisse Dini introduced the four derivatives that bear his name in
@@ -932,14 +1065,18 @@ indefinite integrals [<a href="bibliography.html#bib-vitali1905b">74</a>]. He pr
 covering lemma in 1908 [<a href="bibliography.html#bib-vitali1908">75</a>]. Georg Cantor
 described the Cantor function in 1884 [<a href="bibliography.html#bib-cantor1884">12</a>]. The same year, Ludwig Scheeffer used it
 as a counterexample to a claimed extension of the Fundamental Theorem of
-Calculus [<a href="bibliography.html#bib-scheeffer1884">63</a>].</p>
+Calculus [<a href="bibliography.html#bib-scheeffer1884">63</a>]. Vito Volterra published
+the function of <a href="#sec-volterra">Section 17.7</a> in 1881, while
+he was still a student. Henry John Stephen Smith had described closed
+sets with no intervals and positive measure in 1875, and they are
+sometimes called Smith–Volterra–Cantor sets.</p>
 </section>
 </article>
 </main>
 <nav class="pager" aria-label="Previous and next page (bottom)">
 <a rel="prev" href="ch-lebesgue-integral.html"><span class="dir">Previous</span> Chapter 16. The Lebesgue Integral</a>
 <a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
-<a rel="next" href="part-appendices.html"><span class="dir">Next</span> Appendices</a>
+<a rel="next" href="ch-lp.html"><span class="dir">Next</span> Chapter 18. L^p Spaces*</a>
 </nav>
 <footer class="site">
 <p>Real Analysis from Scratch by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>

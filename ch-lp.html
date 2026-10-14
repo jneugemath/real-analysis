@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 18. L^p Spaces* | Real Analysis from Scratch</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis from Scratch</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-differentiation.html"><span class="dir">Previous</span> Chapter 17. Differentiation and Integration</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="part-appendices.html"><span class="dir">Next</span> Appendices</a>
+</nav>
+<main id="main">
+<article id="ch-lp">
+<h1>Chapter 18. <span class="math inline">\(L^p\)</span> Spaces<sup>*</sup></h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-lp-spaces">18.1 The Spaces <span class="math inline">\(L^p\)</span></a></li><li><a href="#sec-riesz-fischer">18.2 Completeness</a></li><li><a href="#sec-lp-approximation">18.3 Approximation in <span class="math inline">\(L^p\)</span></a></li><li><a href="#notes-17">Notes</a></li></ul></nav>
+<p><a href="ch-lebesgue-integral.html">Chapter 16</a> defined <span class="math inline">\(L^1(E)\)</span>, the functions whose absolute
+value has a finite integral. This chapter replaces <span class="math inline">\(|f|\)</span> by <span class="math inline">\(|f|^p\)</span>. The resulting spaces <span class="math inline">\(L^p(E)\)</span> are where much of modern analysis
+takes place, including Fourier analysis, probability and the study of
+differential equations. <a href="#sec-lp-spaces">Section 18.1</a>
+defines them and proves the inequalities of Hölder and Minkowski. <a href="#sec-riesz-fischer">Section 18.2</a> proves that <span class="math inline">\(L^p\)</span> is complete, the analogue of the
+completeness of <span class="math inline">\(\mathbb{R}\)</span>. <a href="#sec-lp-approximation">Section 18.3</a> shows that step functions
+and continuous functions are dense in <span class="math inline">\(L^p[a,b]\)</span>.</p>
+<p>The whole chapter is marked with a star. It can be skipped. Nothing
+else in the book depends on it. It uses Chapters <a href="ch-measurable-functions.html">15</a> and <a href="ch-lebesgue-integral.html">16</a>, and the power functions <span class="math inline">\(x^p\)</span> for real <span class="math inline">\(p\)</span> (see <a href="ch-integrals.html#sec-exp-log">Section
+9.4</a>).</p>
+<p>Throughout, <span class="math inline">\(E\)</span> is a measurable
+subset of <span class="math inline">\(\mathbb{R}\)</span>. Two functions
+that are equal almost everywhere on <span class="math inline">\(E\)</span> have the same integrals over <span class="math inline">\(E\)</span>. So in this chapter they are treated as
+the same function. This is what makes <span class="math inline">\(\left\lVert f\right\rVert_p=0\)</span> mean <span class="math inline">\(f=0\)</span>.</p>
+<section class="level3 unnumbered" id="sec-lp-spaces">
+<h2>18.1 The Spaces <span class="math inline">\(L^p\)</span></h2>
+<div class="definitionbox" id="def-lp">
+
+<p><strong>Definition 18.1.1.</strong> Let <span class="math inline">\(1\le p&lt;\infty\)</span>. A measurable function
+<span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span> is in <span class="math inline">\(L^p(E)\)</span> if <span class="math inline">\(\int_E|f|^p&lt;\infty\)</span>. For such <span class="math inline">\(f\)</span>, the <em><span class="math inline">\(L^p\)</span> norm</em> of <span class="math inline">\(f\)</span> is <span class="math display">\[\left\lVert
+f\right\rVert_p=\left(\int_E|f|^p\right)^{1/p}.\]</span> A measurable
+function <span class="math inline">\(f\)</span> is in <span class="math inline">\(L^\infty(E)\)</span> if there is an <span class="math inline">\(M\)</span> with <span class="math inline">\(|f|\le
+M\)</span> almost everywhere on <span class="math inline">\(E\)</span>.
+Then <span class="math inline">\(\left\lVert
+f\right\rVert_\infty\)</span> is the infimum of all such <span class="math inline">\(M\)</span>. Write <span class="math inline">\(L^p[a,b]\)</span> for <span class="math inline">\(L^p([a,b])\)</span>.</p>
+</div>
+<p>For <span class="math inline">\(p=1\)</span> this is the space <span class="math inline">\(L^1(E)\)</span> of <a href="ch-lebesgue-integral.html#def-lebesgue-integrable">Definition 16.5.3</a>. The infimum in
+the definition of <span class="math inline">\(\left\lVert
+f\right\rVert_\infty\)</span> is attained, so <span class="math inline">\(|f|\le\left\lVert f\right\rVert_\infty\)</span>
+almost everywhere (<a href="#exer-linf-norm">Exercise 18.1.4</a>). The
+number <span class="math inline">\(q\)</span> with <span class="math inline">\(\frac1p+\frac1q=1\)</span> is called the
+<em>conjugate exponent</em> of <span class="math inline">\(p\)</span>.
+For <span class="math inline">\(p=1\)</span>, take <span class="math inline">\(q=\infty\)</span>, and for <span class="math inline">\(p=2\)</span>, <span class="math inline">\(q=2\)</span>.</p>
+<div class="lemmabox" id="lem-young">
+
+<p><strong>Lemma 18.1.2</strong> (Young’s
+Inequality)<strong>.</strong></p>
+<p>Let <span class="math inline">\(1&lt;p&lt;\infty\)</span>, let <span class="math inline">\(\frac1p+\frac1q=1\)</span>, and let <span class="math inline">\(a,b\ge0\)</span>. Then <span class="math inline">\(ab\le\frac{a^p}p+\frac{b^q}q\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(b=0\)</span>, there is nothing to
+prove. Fix <span class="math inline">\(b&gt;0\)</span>, and let <span class="math inline">\(h(a)=\frac{a^p}p+\frac{b^q}q-ab\)</span> for <span class="math inline">\(a\ge0\)</span>. Then <span class="math inline">\(h'(a)=a^{p-1}-b\)</span>, which is negative
+for <span class="math inline">\(a&lt;a_0=b^{1/(p-1)}\)</span> and
+positive for <span class="math inline">\(a&gt;a_0\)</span>. So <span class="math inline">\(h\)</span> has its smallest value at <span class="math inline">\(a_0\)</span>, by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Since <span class="math inline">\(\frac1{p-1}=\frac qp\)</span>, <span class="math inline">\(a_0^p=b^q\)</span> and <span class="math inline">\(a_0b=b^{q/p+1}=b^q\)</span>, because <span class="math inline">\(\frac
+qp+1=q\left(\frac1p+\frac1q\right)=q\)</span>. So <span class="math inline">\(h(a_0)=\frac{b^q}p+\frac{b^q}q-b^q=0\)</span>, and
+<span class="math inline">\(h\ge0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-holder">
+
+<p><strong>Theorem 18.1.3</strong> (Hölder’s
+Inequality)<strong>.</strong></p>
+<p>Let <span class="math inline">\(1\le p\le\infty\)</span> and let
+<span class="math inline">\(q\)</span> be its conjugate exponent. If
+<span class="math inline">\(f\in L^p(E)\)</span> and <span class="math inline">\(g\in L^q(E)\)</span>, then <span class="math inline">\(fg\in L^1(E)\)</span> and <span class="math display">\[\int_E|fg|\le\left\lVert
+f\right\rVert_p\left\lVert g\right\rVert_q.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(p=1\)</span>, then <span class="math inline">\(|fg|\le|f|\left\lVert
+g\right\rVert_\infty\)</span> almost everywhere, and integrating gives
+the result. The case <span class="math inline">\(p=\infty\)</span> is
+the same with <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> exchanged. Let <span class="math inline">\(1&lt;p&lt;\infty\)</span>. If <span class="math inline">\(\left\lVert f\right\rVert_p=0\)</span>, then <span class="math inline">\(f=0\)</span> almost everywhere, and both sides are
+<span class="math inline">\(0\)</span>. The same holds if <span class="math inline">\(\left\lVert g\right\rVert_q=0\)</span>. Otherwise,
+let <span class="math inline">\(F=\frac{|f|}{\left\lVert
+f\right\rVert_p}\)</span> and <span class="math inline">\(G=\frac{|g|}{\left\lVert
+g\right\rVert_q}\)</span>. Then <span class="math inline">\(\int_EF^p=\int_EG^q=1\)</span>. By <a href="#lem-young">Lemma 18.1.2</a>, <span class="math inline">\(FG\le\frac{F^p}p+\frac{G^q}q\)</span>.
+Integrating, <span class="math inline">\(\int_EFG\le\frac1p+\frac1q=1\)</span>. Multiply by
+<span class="math inline">\(\left\lVert f\right\rVert_p\left\lVert
+g\right\rVert_q\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-minkowski">
+
+<p><strong>Theorem 18.1.4</strong> (Minkowski’s
+Inequality)<strong>.</strong></p>
+<p>Let <span class="math inline">\(1\le p\le\infty\)</span>. If <span class="math inline">\(f,g\in L^p(E)\)</span>, then <span class="math inline">\(f+g\in L^p(E)\)</span> and <span class="math inline">\(\left\lVert f+g\right\rVert_p\le\left\lVert
+f\right\rVert_p+\left\lVert g\right\rVert_p\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The cases <span class="math inline">\(p=1\)</span> and <span class="math inline">\(p=\infty\)</span> follow from <span class="math inline">\(|f+g|\le|f|+|g|\)</span> (<a href="#exer-linf-norm">Exercise 18.1.4</a>). Let <span class="math inline">\(1&lt;p&lt;\infty\)</span>. Since <span class="math inline">\(|f+g|\le2\max\{|f|,|g|\}\)</span>, <span class="math inline">\(|f+g|^p\le2^p(|f|^p+|g|^p)\)</span>. So <span class="math inline">\(f+g\in L^p(E)\)</span>. If <span class="math inline">\(\left\lVert f+g\right\rVert_p=0\)</span> there is
+nothing to prove. Let <span class="math inline">\(q\)</span> be the
+conjugate exponent, so <span class="math inline">\((p-1)q=p\)</span>.
+Then <span class="math inline">\(|f+g|^{p-1}\in L^q(E)\)</span>, with
+<span class="math inline">\(\left\lVert
+|f+g|^{p-1}\right\rVert_q=\left\lVert f+g\right\rVert_p^{p/q}\)</span>.
+By <a href="#thm-holder">Theorem 18.1.3</a>, <span class="math display">\[\int_E|f+g|^p\le\int_E|f||f+g|^{p-1}+\int_E|g||f+g|^{p-1}\le\bigl(\left\lVert
+f\right\rVert_p+\left\lVert g\right\rVert_p\bigr)\left\lVert
+f+g\right\rVert_p^{p/q}.\]</span> Divide by <span class="math inline">\(\left\lVert f+g\right\rVert_p^{p/q}\)</span>.
+Since <span class="math inline">\(p-\frac pq=1\)</span>, this gives
+<span class="math inline">\(\left\lVert f+g\right\rVert_p\le\left\lVert
+f\right\rVert_p+\left\lVert g\right\rVert_p\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(L^p(E)\)</span> is closed under
+addition, and clearly under multiplication by constants. It is a vector
+space, and <span class="math inline">\(\left\lVert
+\cdot\right\rVert_p\)</span> behaves like a length. It satisfies <span class="math inline">\(\left\lVert cf\right\rVert_p=|c|\left\lVert
+f\right\rVert_p\)</span> and the triangle inequality, and <span class="math inline">\(\left\lVert f\right\rVert_p=0\)</span> only when
+<span class="math inline">\(f=0\)</span> almost everywhere. The distance
+between <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> is <span class="math inline">\(\left\lVert f-g\right\rVert_p\)</span>. For <span class="math inline">\(p=2\)</span>, Hölder’s Inequality is the
+<em>Cauchy–Schwarz Inequality</em> (<a href="#exer-cauchy-schwarz">Exercise 18.1.3</a>).</p>
+<p>On a set of finite measure, larger <span class="math inline">\(p\)</span> means a smaller space (<a href="#exer-lp-inclusion">Exercise 18.1.1</a>). On <span class="math inline">\((0,\infty)\)</span>, no space contains another (<a href="#exer-lp-not-nested">Exercise 18.1.2</a>).</p>
+<section class="level5 unnumbered" id="exercises-76">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-lp-inclusion">
+
+<p><strong>Exercise 18.1.1.</strong> Let <span class="math inline">\(m(E)&lt;\infty\)</span> and <span class="math inline">\(1\le p&lt;r&lt;\infty\)</span>. Prove that <span class="math inline">\(L^r(E)\subset L^p(E)\)</span> and that <span class="math inline">\(\left\lVert f\right\rVert_p\le
+m(E)^{1/p-1/r}\left\lVert f\right\rVert_r\)</span>. (Apply <a href="#thm-holder">Theorem 18.1.3</a> to <span class="math inline">\(|f|^p\cdot1\)</span> with exponent <span class="math inline">\(\frac rp\)</span>.) Prove also that <span class="math inline">\(L^\infty(E)\subset L^p(E)\)</span>. <a aria-label="Solution for Exercise 18.1.1" href="solutions-ch18.html#sol-exer-lp-inclusion">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-lp-not-nested">
+
+<p><strong>Exercise 18.1.2.</strong> On <span class="math inline">\(E=(0,\infty)\)</span>, find a function in <span class="math inline">\(L^1(E)\)</span> that is not in <span class="math inline">\(L^2(E)\)</span>, and a function in <span class="math inline">\(L^2(E)\)</span> that is not in <span class="math inline">\(L^1(E)\)</span>. <a aria-label="Solution for Exercise 18.1.2" href="solutions-ch18.html#sol-exer-lp-not-nested">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-cauchy-schwarz">
+
+<p><strong>Exercise 18.1.3.</strong> Prove that <span class="math inline">\(\left(\int_E|fg|\right)^2\le\int_Ef^2\int_Eg^2\)</span>
+for <span class="math inline">\(f,g\in L^2(E)\)</span>. <a aria-label="Hint for Exercise 18.1.3" href="solutions-ch18.html#sol-exer-cauchy-schwarz">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-linf-norm">
+
+<p><strong>Exercise 18.1.4.</strong> Let <span class="math inline">\(f,g\in L^\infty(E)\)</span>. Prove that <span class="math inline">\(|f|\le\left\lVert f\right\rVert_\infty\)</span>
+almost everywhere, and that <span class="math inline">\(\left\lVert
+f+g\right\rVert_\infty\le\left\lVert f\right\rVert_\infty+\left\lVert
+g\right\rVert_\infty\)</span>. <a aria-label="Hint for Exercise 18.1.4" href="solutions-ch18.html#sol-exer-linf-norm">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-riesz-fischer">
+<h2>18.2 Completeness</h2>
+<div class="definitionbox" id="def-lp-convergence">
+
+<p><strong>Definition 18.2.1.</strong> Let <span class="math inline">\(1\le p\le\infty\)</span>. A sequence <span class="math inline">\(\{f_n\}\)</span> in <span class="math inline">\(L^p(E)\)</span> <em>converges in <span class="math inline">\(L^p\)</span></em> to <span class="math inline">\(f\in L^p(E)\)</span> if <span class="math inline">\(\left\lVert f_n-f\right\rVert_p\to0\)</span>. It
+is a <em>Cauchy sequence in <span class="math inline">\(L^p\)</span></em> if for every <span class="math inline">\(\varepsilon&gt;0\)</span> there is an <span class="math inline">\(N\)</span> with <span class="math inline">\(\left\lVert
+f_n-f_m\right\rVert_p&lt;\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N\)</span>.</p>
+</div>
+<p>For <span class="math inline">\(p=\infty\)</span>, convergence in
+<span class="math inline">\(L^\infty\)</span> is uniform convergence off
+a set of measure zero. For <span class="math inline">\(p&lt;\infty\)</span>, convergence in <span class="math inline">\(L^p\)</span> is a different kind of convergence
+from those in <a href="ch-measurable-functions.html">Chapter 15</a>. The
+sequence <span class="math inline">\(f_n=n\chi_{(0,1/n)}\)</span>
+converges to <span class="math inline">\(0\)</span> at every point, but
+<span class="math inline">\(\left\lVert f_n\right\rVert_1=1\)</span> for
+all <span class="math inline">\(n\)</span>, so it does not converge to
+<span class="math inline">\(0\)</span> in <span class="math inline">\(L^1\)</span>. (See <a href="ch-lebesgue-integral.html#fig-mass-escapes">Figure 16.2</a>.) In the other direction, a
+sequence can converge in <span class="math inline">\(L^p\)</span>
+without converging at any point (<a href="#exer-typewriter">Exercise
+18.2.1</a>). The next theorem shows that some subsequence always
+converges almost everywhere.</p>
+<div class="theorembox" id="thm-riesz-fischer">
+
+<p><strong>Theorem 18.2.2</strong> (Riesz–Fischer
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(1\le p&lt;\infty\)</span>. Every
+Cauchy sequence in <span class="math inline">\(L^p(E)\)</span> converges
+in <span class="math inline">\(L^p\)</span> to a function in <span class="math inline">\(L^p(E)\)</span>. Also, some subsequence converges
+to it almost everywhere.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\{f_n\}\)</span> be Cauchy in <span class="math inline">\(L^p(E)\)</span>. Choose <span class="math inline">\(n_1&lt;n_2&lt;\cdots\)</span> with <span class="math inline">\(\left\lVert
+f_n-f_m\right\rVert_p&lt;2^{-k}\)</span> for all <span class="math inline">\(m,n\ge n_k\)</span>. Then <span class="math inline">\(\left\lVert
+f_{n_{k+1}}-f_{n_k}\right\rVert_p&lt;2^{-k}\)</span>. Let <span class="math display">\[g_K=|f_{n_1}|+\sum_{k=1}^K|f_{n_{k+1}}-f_{n_k}|\quad\text{and}\quad
+g=\lim_{K\to\infty}g_K.\]</span> By <a href="#thm-minkowski">Theorem
+18.1.4</a>, <span class="math inline">\(\left\lVert
+g_K\right\rVert_p\le\left\lVert f_{n_1}\right\rVert_p+1\)</span> for
+every <span class="math inline">\(K\)</span>. The functions <span class="math inline">\(g_K^p\)</span> increase to <span class="math inline">\(g^p\)</span>, so by <a href="ch-lebesgue-integral.html#thm-mct">Theorem
+16.4.7</a>, <span class="math inline">\(\int_Eg^p\le(\left\lVert
+f_{n_1}\right\rVert_p+1)^p&lt;\infty\)</span>. In particular, <span class="math inline">\(g&lt;\infty\)</span> almost everywhere.</p>
+<p>Where <span class="math inline">\(g(x)&lt;\infty\)</span>, the series
+<span class="math inline">\(f_{n_1}(x)+\sum_k\bigl(f_{n_{k+1}}(x)-f_{n_k}(x)\bigr)\)</span>
+converges absolutely. Its partial sums are <span class="math inline">\(f_{n_{K+1}}(x)\)</span>. So <span class="math inline">\(f_{n_k}(x)\)</span> converges to a number <span class="math inline">\(f(x)\)</span> almost everywhere. Set <span class="math inline">\(f=0\)</span> elsewhere. Then <span class="math inline">\(f\)</span> is measurable, and <span class="math inline">\(|f|\le g\)</span>, so <span class="math inline">\(f\in L^p(E)\)</span>. Also <span class="math inline">\(|f-f_{n_k}|^p\le(2g)^p\)</span>, which is
+integrable, and <span class="math inline">\(|f-f_{n_k}|^p\to0\)</span>
+almost everywhere. By <a href="ch-lebesgue-integral.html#thm-dct">Theorem 16.5.6</a>, <span class="math inline">\(\left\lVert
+f-f_{n_k}\right\rVert_p\to0\)</span>.</p>
+<p>Finally, let <span class="math inline">\(\varepsilon&gt;0\)</span>.
+Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(\left\lVert
+f_n-f_m\right\rVert_p&lt;\varepsilon\)</span> for <span class="math inline">\(m,n\ge N\)</span>, and choose <span class="math inline">\(k\)</span> with <span class="math inline">\(n_k\ge
+N\)</span> and <span class="math inline">\(\left\lVert
+f-f_{n_k}\right\rVert_p&lt;\varepsilon\)</span>. For <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(\left\lVert f-f_n\right\rVert_p\le\left\lVert
+f-f_{n_k}\right\rVert_p+\left\lVert
+f_{n_k}-f_n\right\rVert_p&lt;2\varepsilon\)</span>. So <span class="math inline">\(f_n\to f\)</span> in <span class="math inline">\(L^p\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>In the language of later courses, <span class="math inline">\(L^p(E)\)</span> is a <em>Banach space</em>, a
+complete normed vector space. The theorem is also true for <span class="math inline">\(p=\infty\)</span> (<a href="#exer-linf-complete">Exercise 18.2.2</a>). For the Riemann
+integral, nothing like it holds. A sequence of Riemann integrable
+functions can be Cauchy for <span class="math inline">\(\int|f_n-f_m|\)</span> without converging to any
+Riemann integrable function. This is one of the main reasons the
+Lebesgue integral replaced the Riemann integral.</p>
+<section class="level5 unnumbered" id="exercises-77">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-typewriter">
+
+<p><strong>Exercise 18.2.1.</strong> For <span class="math inline">\(n\in\mathbb{N}\)</span>, write <span class="math inline">\(n=2^k+j\)</span> with <span class="math inline">\(k\in\mathbb{N}_0\)</span> and <span class="math inline">\(0\le j&lt;2^k\)</span>, and let <span class="math inline">\(f_n=\chi_{[j2^{-k},(j+1)2^{-k}]}\)</span> on <span class="math inline">\([0,1]\)</span>. Prove that <span class="math inline">\(f_n\to0\)</span> in <span class="math inline">\(L^p[0,1]\)</span> for every <span class="math inline">\(p&lt;\infty\)</span>, but that <span class="math inline">\(\{f_n(x)\}\)</span> converges for no <span class="math inline">\(x\in[0,1]\)</span>. Find a subsequence that
+converges to <span class="math inline">\(0\)</span> almost everywhere.
+<a aria-label="Solution for Exercise 18.2.1" href="solutions-ch18.html#sol-exer-typewriter">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-linf-complete">
+
+<p><strong>Exercise 18.2.2.</strong> Prove that every Cauchy sequence in
+<span class="math inline">\(L^\infty(E)\)</span> converges in <span class="math inline">\(L^\infty\)</span>. <a aria-label="Hint for Exercise 18.2.2" href="solutions-ch18.html#sol-exer-linf-complete">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-convergence-in-measure">
+
+<p><strong>Exercise 18.2.3.</strong> A sequence <span class="math inline">\(\{f_n\}\)</span> of measurable functions on <span class="math inline">\(E\)</span> <em>converges in measure</em> to <span class="math inline">\(f\)</span> if <span class="math inline">\(m(\{x\in
+E:|f_n(x)-f(x)|\ge\varepsilon\})\to0\)</span> for every <span class="math inline">\(\varepsilon&gt;0\)</span>. Use <a href="ch-lebesgue-integral.html#exer-chebyshev">Exercise 16.4.5</a> to prove that convergence in
+<span class="math inline">\(L^p\)</span> implies convergence in measure.
+Then show that the sequence of <a href="#exer-typewriter">Exercise
+18.2.1</a> converges in measure but not almost everywhere. <a aria-label="Hint for Exercise 18.2.3" href="solutions-ch18.html#sol-exer-convergence-in-measure">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-lp-approximation">
+<h2>18.3 Approximation in <span class="math inline">\(L^p\)</span></h2>
+<div class="theorembox" id="thm-lp-step-dense">
+
+<p><strong>Theorem 18.3.1.</strong> Let <span class="math inline">\(1\le
+p&lt;\infty\)</span> and <span class="math inline">\(f\in
+L^p[a,b]\)</span>. For every <span class="math inline">\(\varepsilon&gt;0\)</span>, there is a step
+function <span class="math inline">\(g\)</span> on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\left\lVert
+f-g\right\rVert_p&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>Step 1. Cut <span class="math inline">\(f\)</span> off.</em> For
+<span class="math inline">\(N\in\mathbb{N}\)</span>, let <span class="math inline">\(f_N=f\)</span> where <span class="math inline">\(|f|\le N\)</span>, <span class="math inline">\(f_N=N\)</span> where <span class="math inline">\(f&gt;N\)</span>, and <span class="math inline">\(f_N=-N\)</span> where <span class="math inline">\(f&lt;-N\)</span>. By <a href="ch-lebesgue-integral.html#exer-chebyshev">Exercise 16.4.5</a>, <span class="math inline">\(m(\{|f|^p\ge N^p\})\le
+N^{-p}\int|f|^p\to0\)</span>, so <span class="math inline">\(|f|&lt;\infty\)</span> almost everywhere. So <span class="math inline">\(f_N\to f\)</span> almost everywhere. Also <span class="math inline">\(|f-f_N|^p\le|f|^p\)</span>, which is integrable.
+By <a href="ch-lebesgue-integral.html#thm-dct">Theorem 16.5.6</a>, <span class="math inline">\(\left\lVert f-f_N\right\rVert_p\to0\)</span>.
+Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(\left\lVert
+f-f_N\right\rVert_p&lt;\frac\varepsilon 2\)</span>.</p>
+<p><em>Step 2. Approximate the bounded function <span class="math inline">\(f_N\)</span>.</em> Let <span class="math inline">\(\eta&gt;0\)</span>. By <a href="ch-measurable-functions.html#thm-measurable-approx-continuous">Theorem 15.2.7</a>, there is a
+step function <span class="math inline">\(g\)</span> with <span class="math inline">\(-N\le g\le N\)</span> and <span class="math inline">\(m(A)&lt;\eta\)</span>, where <span class="math inline">\(A=\{x:|f_N(x)-g(x)|\ge\eta\}\)</span>. Off <span class="math inline">\(A\)</span>, <span class="math inline">\(|f_N-g|&lt;\eta\)</span>. On <span class="math inline">\(A\)</span>, <span class="math inline">\(|f_N-g|\le2N\)</span>. So <span class="math display">\[\int_{[a,b]}|f_N-g|^p\le\eta^p(b-a)+(2N)^p\eta.\]</span>
+Choose <span class="math inline">\(\eta\)</span> so small that this is
+less than <span class="math inline">\(\left(\frac\varepsilon
+2\right)^p\)</span>. Then <span class="math inline">\(\left\lVert
+f_N-g\right\rVert_p&lt;\frac\varepsilon 2\)</span>, and <span class="math inline">\(\left\lVert
+f-g\right\rVert_p&lt;\varepsilon\)</span> by <a href="#thm-minkowski">Theorem 18.1.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The same proof, with the continuous function <span class="math inline">\(h\)</span> of <a href="ch-measurable-functions.html#thm-measurable-approx-continuous">Theorem 15.2.7</a> in place of
+<span class="math inline">\(g\)</span>, shows that continuous functions
+are dense too (<a href="#exer-continuous-dense">Exercise 18.3.1</a>). So
+every function in <span class="math inline">\(L^p[a,b]\)</span>, however
+wild, is close in the <span class="math inline">\(L^p\)</span> norm to a
+continuous one. Together with <a href="#thm-riesz-fischer">Theorem
+18.2.2</a>, this says <span class="math inline">\(L^p[a,b]\)</span> is
+exactly what is obtained by filling in the gaps in the continuous
+functions under the norm <span class="math inline">\(\left\lVert
+\cdot\right\rVert_p\)</span>, much as <span class="math inline">\(\mathbb{R}\)</span> fills in the gaps in <span class="math inline">\(\mathbb{Q}\)</span> in <a href="app-cauchy.html">Appendix B</a>.</p>
+<section class="level5 unnumbered" id="exercises-78">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-continuous-dense">
+
+<p><strong>Exercise 18.3.1.</strong> Let <span class="math inline">\(1\le p&lt;\infty\)</span> and <span class="math inline">\(f\in L^p[a,b]\)</span>. Prove that for every <span class="math inline">\(\varepsilon&gt;0\)</span> there is a continuous
+function <span class="math inline">\(h\)</span> on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\left\lVert
+f-h\right\rVert_p&lt;\varepsilon\)</span>. <a aria-label="Solution for Exercise 18.3.1" href="solutions-ch18.html#sol-exer-continuous-dense">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-riemann-lebesgue">
+
+<p><strong>Exercise 18.3.2.</strong> (Riemann–Lebesgue Lemma) Let <span class="math inline">\(f\in L^1[a,b]\)</span>. Prove that <span class="math inline">\(\lim_{n\to\infty}\int_{[a,b]}f(x)\sin
+nx\,dx=0\)</span>. (First take <span class="math inline">\(f\)</span> to
+be a step function.) <a aria-label="Hint for Exercise 18.3.2" href="solutions-ch18.html#sol-exer-riemann-lebesgue">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-17">
+<h2>Notes</h2>
+<p>Frigyes Riesz introduced the spaces <span class="math inline">\(L^p\)</span> in 1910. Riesz and Ernst Fischer each
+proved the completeness of <span class="math inline">\(L^2\)</span> in
+1907, which is why <a href="#thm-riesz-fischer">Theorem 18.2.2</a>
+carries both names. Leonard James Rogers proved the inequality now named
+for Otto Hölder in 1888, and Hölder found it again in 1889. Hermann
+Minkowski proved his inequality for sums in 1896. Stefan Banach made
+complete normed spaces the subject of a general theory in the 1920s. The
+Riemann–Lebesgue Lemma of <a href="#exer-riemann-lebesgue">Exercise
+18.3.2</a> goes back to Riemann’s 1854 paper on trigonometric series,
+and Lebesgue proved it for his integral.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-differentiation.html"><span class="dir">Previous</span> Chapter 17. Differentiation and Integration</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="part-appendices.html"><span class="dir">Next</span> Appendices</a>
+</nav>
+<footer class="site">
+<p>Real Analysis from Scratch by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

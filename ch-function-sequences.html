@@ -31,7 +31,8 @@ window.MathJax = {
 <main id="main">
 <article id="ch-function-sequences">
 <h1>Chapter 11. Sequences and Series of
-Functions</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-pointwise">11.1 The Problems with Pointwise Convergence</a></li><li><a href="#sec-uniform">11.2 The Importance of Uniform Convergence</a></li><li><a href="#sec-weierstrass">11.3 The Weierstrass Function<sup>*</sup></a></li><li><a href="#notes-10">Notes</a></li></ul></nav>
+Functions</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-pointwise">11.1 The Problems with Pointwise Convergence</a></li><li><a href="#sec-uniform">11.2 The Importance of Uniform Convergence</a></li><li><a href="#sec-weierstrass">11.3 The Weierstrass Function<sup>*</sup></a></li><li><a href="#sec-weierstrass-approximation">11.4 The Weierstrass Approximation
+Theorem<sup>*</sup></a></li><li><a href="#sec-picard">11.5 Picard’s Theorem<sup>*</sup></a></li><li><a href="#notes-10">Notes</a></li></ul></nav>
 <p>A sequence of functions can converge in two very different ways.
 Pointwise convergence asks only that <span class="math inline">\(f_n(x)\to f(x)\)</span> at each <span class="math inline">\(x\)</span> separately. It is the obvious
 definition, and it is too weak. <a href="#sec-pointwise">Section
@@ -42,7 +43,10 @@ which asks that <span class="math inline">\(f_n\)</span> be close to
 <span class="math inline">\(f\)</span> at every <span class="math inline">\(x\)</span> at once. Uniform convergence fixes the
 first two problems. With an extra hypothesis, it fixes the third. <a href="#sec-weierstrass">Section 11.3</a>, which is marked with a star,
 uses uniform convergence to build a continuous function that has a
-derivative at no point at all.</p>
+derivative at no point at all. The starred <a href="#sec-weierstrass-approximation">Section 11.4</a> shows that every
+continuous function on <span class="math inline">\([a,b]\)</span> is a
+uniform limit of polynomials, and the starred <a href="#sec-picard">Section 11.5</a> uses uniform convergence to solve
+differential equations.</p>
 <section class="level3 unnumbered" id="sec-pointwise">
 <h2>11.1 The Problems with Pointwise Convergence</h2>
 <div class="definitionbox" id="def-pointwise-convergence">
@@ -326,10 +330,10 @@ series does not converge uniformly on <span class="math inline">\((-2,2)\)</span
 does not imply absolute convergence. Consider the series <span class="math inline">\(\sum^\infty_{k=1}(-1)^{k+1}\frac{x^k}{k}\)</span>,
 <span class="math inline">\(x\in[0,1]\)</span>. Set <span class="math inline">\(b_k(x)=\frac{x^k}{k}\)</span>. Then, for <span class="math inline">\(x\in[0,1]\)</span>, <span class="math inline">\(b_1(x)\ge b_2(x)\ge \cdots\ge 0\)</span> and <span class="math inline">\(b_k(x)\to 0\)</span>. Thus by the Alternating
 Series Test (<a href="ch-series.html#thm-alternating-series-test">Theorem
-10.2.16</a>), the series <span class="math inline">\(\sum
+10.2.17</a>), the series <span class="math inline">\(\sum
 (-1)^{k+1}b_k(x)\)</span> converges for all <span class="math inline">\(x\in[0,1]\)</span>. Now let <span class="math inline">\(S(x)=\sum^{\infty}_{k=1}(-1)^{k+1}b_k(x)\)</span>,
 <span class="math inline">\(S_n(x)=\sum^{n}_{k=1}(-1)^{k+1}b_k(x)\)</span>.
-Then by <a href="ch-series.html#thm-alternating-error">Theorem 10.2.19</a>, <span class="math display">\[M_n=\sup_{x\in[0,1]}|S(x)-S_n(x)|\le
+Then by <a href="ch-series.html#thm-alternating-error">Theorem 10.2.20</a>, <span class="math display">\[M_n=\sup_{x\in[0,1]}|S(x)-S_n(x)|\le
 \sup_{x\in[0,1]}b_{n+1}(x)=\frac{1}{n+1}.\]</span> Since <span class="math inline">\(M_n\to 0\)</span>, by <a href="#thm-uniform-sup">Theorem 11.2.7</a>, <span class="math inline">\(\{S_n\}\)</span> converges uniformly to <span class="math inline">\(S\)</span> on <span class="math inline">\([0,1]\)</span>. However, notice if <span class="math inline">\(x=1\)</span>, the series does not converge
 absolutely.</p>
 </div>
@@ -564,7 +568,7 @@ c}q_n(x)\right)=\lim_{n\to\infty}f_n'(c).\]</span></p>
 alone is not enough. In <a href="#ex-sin-nx-over-n">Example 11.1.8</a>,
 <span class="math inline">\(\left|\frac{\sin
 nx}{n}\right|\le\frac1n\)</span>, so <span class="math inline">\(f_n\to0\)</span> uniformly on <span class="math inline">\(\mathbb{R}\)</span>. But <span class="math inline">\(f_n'(0)=1\)</span> for all <span class="math inline">\(n\)</span>.</p>
-<section class="level5 unnumbered" id="exercises-41">
+<section class="level5 unnumbered" id="exercises-45">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-uniform-sup">
 
@@ -732,6 +736,228 @@ bounded. So <span class="math inline">\(f\)</span> is not differentiable
 at <span class="math inline">\(x\)</span>. Since <span class="math inline">\(x\in\mathbb{R}\)</span> was arbitrary, <span class="math inline">\(f\)</span> is differentiable at no point of <span class="math inline">\(\mathbb{R}\)</span>.</p>
 </div>
 </section>
+<section class="level3 unnumbered" id="sec-weierstrass-approximation">
+<h2>11.4 The Weierstrass Approximation
+Theorem<sup>*</sup></h2>
+<p><a href="#sec-weierstrass">Section 11.3</a> built a continuous
+function with no derivative anywhere. This section proves that even such
+a function is a uniform limit of polynomials, the smoothest functions
+there are. The proof, due to Sergei Bernstein, writes down the
+polynomials explicitly. This section can be skipped. Nothing later
+depends on it.</p>
+<div class="definitionbox" id="def-bernstein">
+
+<p><strong>Definition 11.4.1.</strong> Let <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. The <em>Bernstein
+polynomial</em> of <span class="math inline">\(f\)</span> of degree
+<span class="math inline">\(n\)</span> is <span class="math display">\[B_nf(x)=\sum_{k=0}^nf\left(\frac kn\right)\binom
+nkx^k(1-x)^{n-k}.\]</span></p>
+</div>
+<p>Write <span class="math inline">\(p_{n,k}(x)=\binom
+nkx^k(1-x)^{n-k}\)</span>. For <span class="math inline">\(x\in[0,1]\)</span>, these numbers are at least
+<span class="math inline">\(0\)</span>. So <span class="math inline">\(B_nf(x)\)</span> is a weighted average of the
+values <span class="math inline">\(f\left(\frac kn\right)\)</span>. The
+next lemma shows the weights add to <span class="math inline">\(1\)</span> and are concentrated where <span class="math inline">\(\frac kn\)</span> is close to <span class="math inline">\(x\)</span>.</p>
+<div class="lemmabox" id="lem-bernstein-moments">
+
+<p><strong>Lemma 11.4.2.</strong> For <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(x\in\mathbb{R}\)</span>, <span class="math display">\[\sum_{k=0}^np_{n,k}(x)=1,\qquad\sum_{k=0}^nkp_{n,k}(x)=nx,\qquad\sum_{k=0}^n(k-nx)^2p_{n,k}(x)=nx(1-x).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The first sum is <span class="math inline">\((x+(1-x))^n=1\)</span>,
+by the Binomial Theorem (<a href="ch-integrals.html#exer-binomial">Exercise 9.3.3</a>).
+For <span class="math inline">\(k\ge1\)</span>, <span class="math inline">\(k\binom nk=n\binom{n-1}{k-1}\)</span>. So <span class="math display">\[\sum_{k=0}^nkp_{n,k}(x)=nx\sum_{k=1}^n\binom{n-1}{k-1}x^{k-1}(1-x)^{n-k}=nx\bigl(x+(1-x)\bigr)^{n-1}=nx.\]</span>
+In the same way, <span class="math inline">\(k(k-1)\binom
+nk=n(n-1)\binom{n-2}{k-2}\)</span> for <span class="math inline">\(k\ge2\)</span>, so <span class="math inline">\(\sum k(k-1)p_{n,k}(x)=n(n-1)x^2\)</span>. (When
+<span class="math inline">\(n=1\)</span> both sides are <span class="math inline">\(0\)</span>.) Then <span class="math display">\[\sum_{k=0}^n(k-nx)^2p_{n,k}=\sum
+k(k-1)p_{n,k}+\sum kp_{n,k}-2nx\sum kp_{n,k}+n^2x^2\sum
+p_{n,k},\]</span> which is <span class="math inline">\(n(n-1)x^2+nx-2n^2x^2+n^2x^2=nx-nx^2\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-weierstrass-approximation">
+
+<p><strong>Theorem 11.4.3</strong> (Weierstrass Approximation
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+continuous. For every <span class="math inline">\(\varepsilon&gt;0\)</span>, there is a polynomial
+<span class="math inline">\(p\)</span> with <span class="math inline">\(|f(x)-p(x)|&lt;\varepsilon\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. If <span class="math inline">\([a,b]=[0,1]\)</span>, then <span class="math inline">\(B_nf\to f\)</span> uniformly on <span class="math inline">\([0,1]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>First take <span class="math inline">\([a,b]=[0,1]\)</span>. By <a href="ch-continuity.html#thm-evt">Theorem 6.3.15</a>, there is an <span class="math inline">\(M\)</span> with <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-continuity.html#cor-interval-uniform">Corollary 6.4.8</a>, <span class="math inline">\(f\)</span> is uniformly continuous, so there is a
+<span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(s)-f(t)|&lt;\frac\varepsilon 2\)</span>
+whenever <span class="math inline">\(|s-t|&lt;\delta\)</span>. Let <span class="math inline">\(x\in[0,1]\)</span>. By <a href="#lem-bernstein-moments">Lemma 11.4.2</a>, <span class="math display">\[|B_nf(x)-f(x)|=\left|\sum_{k=0}^n\left(f\left(\tfrac
+kn\right)-f(x)\right)p_{n,k}(x)\right|\le\sum_{k=0}^n\left|f\left(\tfrac
+kn\right)-f(x)\right|p_{n,k}(x).\]</span> Split the sum. When <span class="math inline">\(\left|\frac kn-x\right|&lt;\delta\)</span>, the
+term is at most <span class="math inline">\(\frac\varepsilon
+2p_{n,k}(x)\)</span>, and these terms add to at most <span class="math inline">\(\frac\varepsilon 2\)</span>. When <span class="math inline">\(\left|\frac kn-x\right|\ge\delta\)</span>, the
+term is at most <span class="math inline">\(2Mp_{n,k}(x)\)</span>, and
+<span class="math inline">\(1\le\frac{(k-nx)^2}{n^2\delta^2}\)</span>.
+So these terms add to at most <span class="math display">\[\frac{2M}{n^2\delta^2}\sum_{k=0}^n(k-nx)^2p_{n,k}(x)=\frac{2Mx(1-x)}{n\delta^2}\le\frac
+M{2n\delta^2}.\]</span> If <span class="math inline">\(n&gt;\frac
+M{\varepsilon\delta^2}\)</span>, then <span class="math inline">\(|B_nf(x)-f(x)|&lt;\frac\varepsilon
+2+\frac\varepsilon 2=\varepsilon\)</span> for every <span class="math inline">\(x\in[0,1]\)</span>. So <span class="math inline">\(B_nf\to f\)</span> uniformly.</p>
+<p>For a general <span class="math inline">\([a,b]\)</span>, let <span class="math inline">\(g(t)=f(a+(b-a)t)\)</span> for <span class="math inline">\(t\in[0,1]\)</span>. It is continuous, so there is
+a polynomial <span class="math inline">\(q\)</span> with <span class="math inline">\(|g(t)-q(t)|&lt;\varepsilon\)</span> on <span class="math inline">\([0,1]\)</span>. Let <span class="math inline">\(p(x)=q\left(\frac{x-a}{b-a}\right)\)</span>, which
+is a polynomial. For <span class="math inline">\(x\in[a,b]\)</span>,
+<span class="math inline">\(t=\frac{x-a}{b-a}\in[0,1]\)</span> and <span class="math inline">\(|f(x)-p(x)|=|g(t)-q(t)|&lt;\varepsilon\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Compare this with Taylor polynomials. The function <span class="math inline">\(f\)</span> of <a href="ch-power-series.html#ex-flat-function">Example
+12.2.10</a> has derivatives of every order, but its Taylor polynomials
+at <span class="math inline">\(0\)</span> are all <span class="math inline">\(0\)</span>. They do not approximate <span class="math inline">\(f\)</span> at all. Bernstein polynomials need only
+continuity. They converge slowly, though. For <span class="math inline">\(f(x)=x^2\)</span>, <span class="math inline">\(B_nf(x)=x^2+\frac{x(1-x)}n\)</span> (<a href="#exer-bernstein-small">Exercise 11.4.1</a>).</p>
+<section class="level5 unnumbered" id="exercises-46">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-bernstein-small">
+
+<p><strong>Exercise 11.4.1.</strong> Find <span class="math inline">\(B_nf\)</span> for <span class="math inline">\(f(x)=1\)</span>, <span class="math inline">\(f(x)=x\)</span> and <span class="math inline">\(f(x)=x^2\)</span>. <a aria-label="Solution for Exercise 11.4.1" href="solutions-ch11.html#sol-exer-bernstein-small">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-moments-zero">
+
+<p><strong>Exercise 11.4.2.</strong> Let <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> be continuous with
+<span class="math inline">\(\int_0^1f(x)x^n\,dx=0\)</span> for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>. Prove that <span class="math inline">\(f(x)=0\)</span> for all <span class="math inline">\(x\in[0,1]\)</span>. <a aria-label="Solution for Exercise 11.4.2" href="solutions-ch11.html#sol-exer-moments-zero">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-exp-not-polynomial-limit">
+
+<p><strong>Exercise 11.4.3.</strong> Prove that there is no sequence of
+polynomials that converges uniformly to <span class="math inline">\(e^x\)</span> on all of <span class="math inline">\(\mathbb{R}\)</span>. <a aria-label="Hint for Exercise 11.4.3" href="solutions-ch11.html#sol-exer-exp-not-polynomial-limit">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-weierstrass-open">
+
+<p><strong>Exercise 11.4.4.</strong> Show that the conclusion of <a href="#thm-weierstrass-approximation">Theorem 11.4.3</a> fails for <span class="math inline">\(f(x)=\frac1x\)</span> on <span class="math inline">\((0,1)\)</span>. <a aria-label="Hint for Exercise 11.4.4" href="solutions-ch11.html#sol-exer-weierstrass-open">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-approx-c1">
+
+<p><strong>Exercise 11.4.5.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> have a continuous
+derivative. Prove that there are polynomials <span class="math inline">\(p_n\)</span> with <span class="math inline">\(p_n\to f\)</span> and <span class="math inline">\(p_n'\to f'\)</span> uniformly on <span class="math inline">\([a,b]\)</span>. <a aria-label="Hint for Exercise 11.4.5" href="solutions-ch11.html#sol-exer-approx-c1">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-picard">
+<h2>11.5 Picard’s Theorem<sup>*</sup></h2>
+<p>A differential equation <span class="math inline">\(y'=f(t,y)\)</span> with <span class="math inline">\(y(t_0)=y_0\)</span> asks for a function whose
+derivative at each <span class="math inline">\(t\)</span> depends on
+<span class="math inline">\(t\)</span> and on the value of the function.
+This section proves that, under a mild condition on <span class="math inline">\(f\)</span>, there is exactly one solution. The
+proof builds the solution as a uniform limit, using the Weierstrass
+M-Test and <a href="#thm-uniform-integral">Theorem 11.2.18</a>. For the
+equation <span class="math inline">\(y'=y\)</span>, the
+approximations are exactly the partial sums of the series for <span class="math inline">\(e^t\)</span>. This section can be skipped. Nothing
+later depends on it.</p>
+<p>Throughout, <span class="math inline">\(a&lt;b\)</span>, <span class="math inline">\(t_0\in[a,b]\)</span> and <span class="math inline">\(y_0\in\mathbb{R}\)</span>. The function <span class="math inline">\(f\)</span> is defined for <span class="math inline">\(t\in[a,b]\)</span> and <span class="math inline">\(y\in\mathbb{R}\)</span>, and it satisfies two
+conditions.</p>
+<ol>
+<li><p>For each <span class="math inline">\(y\in\mathbb{R}\)</span>, the
+function <span class="math inline">\(t\mapsto f(t,y)\)</span> is
+continuous on <span class="math inline">\([a,b]\)</span>.</p></li>
+<li><p>There is a constant <span class="math inline">\(L\)</span> with
+<span class="math inline">\(|f(t,y)-f(t,z)|\le L|y-z|\)</span> for all
+<span class="math inline">\(t\in[a,b]\)</span> and <span class="math inline">\(y,z\in\mathbb{R}\)</span>.</p></li>
+</ol>
+<p>The second condition says <span class="math inline">\(f\)</span> is
+Lipschitz in <span class="math inline">\(y\)</span>, uniformly in <span class="math inline">\(t\)</span>. When <span class="math inline">\(t&lt;t_0\)</span>, <span class="math inline">\(\int_{t_0}^t\)</span> means <span class="math inline">\(-\int_t^{t_0}\)</span>.</p>
+<div class="lemmabox" id="lem-picard-integral">
+
+<p><strong>Lemma 11.5.1.</strong></p>
+<ol>
+<li><p>If <span class="math inline">\(y:[a,b]\to\mathbb{R}\)</span> is
+continuous, then <span class="math inline">\(t\mapsto f(t,y(t))\)</span>
+is continuous on <span class="math inline">\([a,b]\)</span>.</p></li>
+<li><p>A continuous function <span class="math inline">\(y:[a,b]\to\mathbb{R}\)</span> is differentiable
+with <span class="math inline">\(y'(t)=f(t,y(t))\)</span> for all
+<span class="math inline">\(t\in[a,b]\)</span> and <span class="math inline">\(y(t_0)=y_0\)</span> if and only if <span class="math display">\[y(t)=y_0+\int_{t_0}^tf(s,y(s))\,ds\quad\text{for
+all }t\in[a,b].\]</span></p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Let <span class="math inline">\(t\in[a,b]\)</span>. For <span class="math inline">\(s\in[a,b]\)</span>, <span class="math display">\[\begin{aligned}
+|f(s,y(s))-f(t,y(t))|&amp;\le|f(s,y(s))-f(s,y(t))|+|f(s,y(t))-f(t,y(t))|\\
+&amp;\le L|y(s)-y(t)|+|f(s,y(t))-f(t,y(t))|.
+\end{aligned}\]</span> As <span class="math inline">\(s\to t\)</span>,
+the first term tends to <span class="math inline">\(0\)</span> since
+<span class="math inline">\(y\)</span> is continuous. The second tends
+to <span class="math inline">\(0\)</span> by condition (1), applied with
+the fixed number <span class="math inline">\(y(t)\)</span>.</p>
+<p>(2) If <span class="math inline">\(y\)</span> satisfies the integral
+equation, then <span class="math inline">\(y(t_0)=y_0\)</span>, and
+<span class="math inline">\(y'(t)=f(t,y(t))\)</span> by (1) and <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>. Conversely, if <span class="math inline">\(y'(t)=f(t,y(t))\)</span>, then <span class="math inline">\(y'\)</span> is continuous by (1), and <a href="ch-integrals.html#thm-ftc-evaluation">Theorem 9.3.6</a> gives <span class="math inline">\(y(t)-y(t_0)=\int_{t_0}^ty'(s)\,ds\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-picard">
+
+<p><strong>Theorem 11.5.2</strong> (Picard’s
+Theorem)<strong>.</strong></p>
+<p>There is exactly one differentiable function <span class="math inline">\(y:[a,b]\to\mathbb{R}\)</span> with <span class="math inline">\(y'(t)=f(t,y(t))\)</span> for all <span class="math inline">\(t\in[a,b]\)</span> and <span class="math inline">\(y(t_0)=y_0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>The approximations.</em> Let <span class="math inline">\(\varphi_0(t)=y_0\)</span> for all <span class="math inline">\(t\)</span>, and for <span class="math inline">\(n\in\mathbb{N}_0\)</span> let <span class="math display">\[\varphi_{n+1}(t)=y_0+\int_{t_0}^tf(s,\varphi_n(s))\,ds.\]</span>
+By <a href="#lem-picard-integral">Lemma 11.5.1</a> (1) and <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, each <span class="math inline">\(\varphi_n\)</span> is continuous, so each step
+makes sense. These are the <em>Picard iterates</em>.</p>
+<p><em>An estimate.</em> The function <span class="math inline">\(t\mapsto f(t,y_0)\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, so it is bounded, say by <span class="math inline">\(M\)</span> (<a href="ch-continuity.html#thm-evt">Theorem
+6.3.15</a>). We show by induction that <span class="math display">\[|\varphi_{n+1}(t)-\varphi_n(t)|\le\frac{ML^n|t-t_0|^{n+1}}{(n+1)!}\quad\text{for
+all }t\in[a,b].\]</span> For <span class="math inline">\(n=0\)</span>,
+<span class="math inline">\(|\varphi_1(t)-y_0|=\left|\int_{t_0}^tf(s,y_0)\,ds\right|\le
+M|t-t_0|\)</span>. If the estimate holds for <span class="math inline">\(n\)</span>, then by condition (2), <span class="math display">\[\begin{aligned}
+|\varphi_{n+2}(t)-\varphi_{n+1}(t)|&amp;\le\left|\int_{t_0}^tL|\varphi_{n+1}(s)-\varphi_n(s)|\,ds\right|\\
+&amp;\le\left|\int_{t_0}^t\frac{ML^{n+1}|s-t_0|^{n+1}}{(n+1)!}\,ds\right|=\frac{ML^{n+1}|t-t_0|^{n+2}}{(n+2)!}.
+\end{aligned}\]</span></p>
+<p><em>Uniform convergence.</em> Let <span class="math inline">\(h=b-a\)</span>. Then <span class="math inline">\(|\varphi_{n+1}(t)-\varphi_n(t)|\le\frac{ML^nh^{n+1}}{(n+1)!}\)</span>
+for all <span class="math inline">\(t\)</span>. These bounds form a
+convergent series, by the Ratio Test. By <a href="#thm-weierstrass-m-test">Theorem 11.2.10</a>, <span class="math inline">\(\varphi_n=y_0+\sum_{k=0}^{n-1}(\varphi_{k+1}-\varphi_k)\)</span>
+converges uniformly on <span class="math inline">\([a,b]\)</span> to a
+function <span class="math inline">\(y\)</span>, which is continuous by
+<a href="#cor-uniform-limit-continuous">Corollary 11.2.16</a>.</p>
+<p><em>The limit is a solution.</em> By condition (2), <span class="math inline">\(|f(s,\varphi_n(s))-f(s,y(s))|\le
+L|\varphi_n(s)-y(s)|\)</span>, so <span class="math inline">\(f(s,\varphi_n(s))\to f(s,y(s))\)</span> uniformly.
+By <a href="#thm-uniform-integral">Theorem 11.2.18</a>, letting <span class="math inline">\(n\to\infty\)</span> in the definition of <span class="math inline">\(\varphi_{n+1}\)</span> gives <span class="math inline">\(y(t)=y_0+\int_{t_0}^tf(s,y(s))\,ds\)</span>. By <a href="#lem-picard-integral">Lemma 11.5.1</a> (2), <span class="math inline">\(y\)</span> is a solution.</p>
+<p><em>Uniqueness.</em> Let <span class="math inline">\(z\)</span> be
+another solution, and let <span class="math inline">\(w(t)=|y(t)-z(t)|\)</span>. By <a href="#lem-picard-integral">Lemma 11.5.1</a>, <span class="math inline">\(w\)</span> is continuous, and by condition (2),
+<span class="math display">\[w(t)\le\left|\int_{t_0}^tLw(s)\,ds\right|.\]</span>
+Let <span class="math inline">\(K\)</span> be the maximum of <span class="math inline">\(w\)</span> on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(w(t)\le KL|t-t_0|\)</span>, and by induction <span class="math inline">\(w(t)\le\frac{KL^n|t-t_0|^n}{n!}\le\frac{K(Lh)^n}{n!}\)</span>
+for every <span class="math inline">\(n\)</span>. This tends to <span class="math inline">\(0\)</span> by <a href="ch-series.html#exer-pk-over-kfactorial">Exercise 10.2.5</a>. So <span class="math inline">\(w=0\)</span> and <span class="math inline">\(z=y\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-picard-exp">
+
+<p><strong>Example 11.5.3.</strong> Take <span class="math inline">\(f(t,y)=y\)</span>, <span class="math inline">\(t_0=0\)</span> and <span class="math inline">\(y_0=1\)</span> on any interval <span class="math inline">\([a,b]\)</span> containing <span class="math inline">\(0\)</span>. Here <span class="math inline">\(L=1\)</span>. The Picard iterates are <span class="math inline">\(\varphi_0(t)=1\)</span>, <span class="math inline">\(\varphi_1(t)=1+\int_0^t1\,ds=1+t\)</span>, <span class="math inline">\(\varphi_2(t)=1+\int_0^t(1+s)\,ds=1+t+\frac{t^2}2\)</span>,
+and by induction <span class="math display">\[\varphi_n(t)=\sum_{k=0}^n\frac{t^k}{k!}.\]</span>
+These are the partial sums of the series for <span class="math inline">\(e^t\)</span> in <a href="ch-power-series.html#sec-exp-series">Section
+12.5</a>. So Picard’s Theorem builds <span class="math inline">\(e^t\)</span> a third way, as the unique solution
+of <span class="math inline">\(y'=y\)</span> with <span class="math inline">\(y(0)=1\)</span>.</p>
+</div>
+<p>The Lipschitz condition cannot simply be dropped. The equation <span class="math inline">\(y'=3y^{2/3}\)</span> with <span class="math inline">\(y(0)=0\)</span> has two solutions (<a href="#exer-ode-nonunique">Exercise 11.5.2</a>). Without the Lipschitz
+condition, continuity of <span class="math inline">\(f\)</span> in both
+variables still gives a solution near <span class="math inline">\(t_0\)</span>, by a theorem of Giuseppe Peano, but
+the proof needs more than this book develops. The same method also works
+for systems of equations, such as <span class="math inline">\(y'=v\)</span>, <span class="math inline">\(v'=-y\)</span>. That system is the equation
+<span class="math inline">\(y''+y=0\)</span> of Sections <a href="ch-integrals.html#sec-trig-integrals">9.5</a> and <a href="ch-power-series.html#sec-trig">12.4</a>, and
+<a href="ch-power-series.html#lem-trig-ode-zero">Lemma 12.4.3</a> is its uniqueness
+statement.</p>
+<section class="level5 unnumbered" id="exercises-47">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-picard-gaussian">
+
+<p><strong>Exercise 11.5.1.</strong> Find the Picard iterates for <span class="math inline">\(y'=2ty\)</span>, <span class="math inline">\(y(0)=1\)</span>. What is the solution? <a aria-label="Solution for Exercise 11.5.1" href="solutions-ch11.html#sol-exer-picard-gaussian">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-ode-nonunique">
+
+<p><strong>Exercise 11.5.2.</strong> Show that <span class="math inline">\(y(t)=0\)</span> and <span class="math inline">\(y(t)=t^3\)</span> both solve <span class="math inline">\(y'=3y^{2/3}\)</span>, <span class="math inline">\(y(0)=0\)</span>. Which hypothesis of <a href="#thm-picard">Theorem 11.5.2</a> fails? <a aria-label="Solution for Exercise 11.5.2" href="solutions-ch11.html#sol-exer-ode-nonunique">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-contraction">
+
+<p><strong>Exercise 11.5.3.</strong> Let <span class="math inline">\(g:[a,b]\to[a,b]\)</span> satisfy <span class="math inline">\(|g(x)-g(y)|\le k|x-y|\)</span> for all <span class="math inline">\(x,y\)</span>, where <span class="math inline">\(0\le k&lt;1\)</span>. Let <span class="math inline">\(x_1\in[a,b]\)</span> and <span class="math inline">\(x_{n+1}=g(x_n)\)</span>. Prove that <span class="math inline">\(\{x_n\}\)</span> converges to a point <span class="math inline">\(c\)</span> with <span class="math inline">\(g(c)=c\)</span>, and that <span class="math inline">\(g\)</span> has no other fixed point. <a aria-label="Hint for Exercise 11.5.3" href="solutions-ch11.html#sol-exer-contraction">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-picard-error">
+
+<p><strong>Exercise 11.5.4.</strong> In the proof of <a href="#thm-picard">Theorem 11.5.2</a>, prove that <span class="math inline">\(|y(t)-\varphi_n(t)|\le\frac{M(Lh)^nh}{n!}e^{Lh}\)</span>
+for all <span class="math inline">\(t\in[a,b]\)</span>. <a aria-label="Hint for Exercise 11.5.4" href="solutions-ch11.html#sol-exer-picard-error">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-linear-ode">
+
+<p><strong>Exercise 11.5.5.</strong> Let <span class="math inline">\(p,q:[a,b]\to\mathbb{R}\)</span> be continuous.
+Prove that <span class="math inline">\(y'=p(t)y+q(t)\)</span>, <span class="math inline">\(y(t_0)=y_0\)</span> has exactly one solution on
+<span class="math inline">\([a,b]\)</span>. <a aria-label="Hint for Exercise 11.5.5" href="solutions-ch11.html#sol-exer-linear-ode">[Hint]</a></p>
+</div>
+</section>
+</section>
 <section class="level3 unnumbered" id="notes-10">
 <h2>Notes</h2>
 <p>In his <em>Cours d’analyse</em> of 1821, Cauchy stated that a
@@ -750,7 +976,12 @@ Weierstrass’s function was <span class="math inline">\(\sum
 b^k\cos(a^k\pi x)\)</span> with <span class="math inline">\(0&lt;b&lt;1\)</span>, <span class="math inline">\(a\)</span> an odd integer and <span class="math inline">\(ab&gt;1+\frac32\pi\)</span>. <a href="#ex-weierstrass">Example 11.3.1</a> is the case <span class="math inline">\(b=\frac12\)</span>. G. H. Hardy proved in 1916
 that <span class="math inline">\(ab\ge1\)</span> is enough [<a href="bibliography.html#bib-hardy1916">35</a>]. Bernard Bolzano had found a continuous
 nowhere differentiable function around 1830, but it was not published
-until a century later.</p>
+until a century later. Weierstrass proved <a href="#thm-weierstrass-approximation">Theorem 11.4.3</a> in 1885. The
+proof with Bernstein polynomials is from 1912. Émile Picard introduced
+his iteration in 1890, and Ernst Lindelöf gave the version with a
+Lipschitz condition in 1894, so <a href="#thm-picard">Theorem 11.5.2</a>
+is often called the Picard–Lindelöf Theorem. Peano’s existence theorem
+is from 1886.</p>
 </section>
 </article>
 </main>

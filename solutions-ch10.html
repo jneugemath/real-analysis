@@ -75,7 +75,7 @@ get <span class="math inline">\(k\ge\binom{k}{2}h_k^2\)</span> for <span class="
 k2h_k^2=\frac{k(k-1)}2h_k^2.\]</span> So <span class="math inline">\(0\le h_k^2\le\frac2{k-1}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. If <span class="math inline">\(k&gt;1+\frac2{\varepsilon^2}\)</span>, then <span class="math inline">\(h_k^2&lt;\varepsilon^2\)</span>, so <span class="math inline">\(h_k&lt;\varepsilon\)</span>. So <span class="math inline">\(h_k\to0\)</span>, and <span class="math inline">\(\sqrt[k]{k}\to1\)</span>.</p>
 <p>Now let <span class="math inline">\(a_k=\frac1k\)</span>. Then <span class="math inline">\(\sqrt[k]{a_k}=\frac{1}{\sqrt[k]{k}}\to1\)</span>.
 Let <span class="math inline">\(a_k=\frac1{k^2}\)</span>. Then <span class="math inline">\(\sqrt[k]{a_k}=\left(\frac{1}{\sqrt[k]{k}}\right)^2\to1\)</span>.
-In both cases the sequence <span class="math inline">\(\{\sqrt[k]{a_k}\}\)</span> converges to <span class="math inline">\(1\)</span>, so <span class="math inline">\(\alpha=\limsup\sqrt[k]{a_k}=1\)</span> by <a href="ch-sequences.html#cor-limsup-equals-liminf">Corollary 3.6.14</a>. But <span class="math inline">\(\sum\frac1k\)</span> diverges and <span class="math inline">\(\sum\frac1{k^2}\)</span> converges, by <a href="ch-series.html#ex-p-series">Example 10.2.11</a>. So when <span class="math inline">\(\alpha=1\)</span>, the series may converge or
+In both cases the sequence <span class="math inline">\(\{\sqrt[k]{a_k}\}\)</span> converges to <span class="math inline">\(1\)</span>, so <span class="math inline">\(\alpha=\limsup\sqrt[k]{a_k}=1\)</span> by <a href="ch-sequences.html#cor-limsup-equals-liminf">Corollary 3.6.14</a>. But <span class="math inline">\(\sum\frac1k\)</span> diverges and <span class="math inline">\(\sum\frac1{k^2}\)</span> converges, by <a href="ch-series.html#ex-p-series">Example 10.2.12</a>. So when <span class="math inline">\(\alpha=1\)</span>, the series may converge or
 diverge, and the Root Test gives no information.</p>
 </div>
 <div class="solutionbox" id="sol-exer-ast-decreasing">
@@ -116,7 +116,7 @@ t2\,A_n=\sin\left(\left(n+\frac12\right)t\right)-\sin\frac t2,
 \quad\text{and}\quad
 |A_n|\le\frac{2}{2\left|\sin\frac t2\right|}=\frac{1}{\left|\sin\frac
 t2\right|}.\]</span> So the partial sums <span class="math inline">\(A_n\)</span> are bounded. By the Dirichlet Test
-(<a href="ch-series.html#thm-dirichlet-test">Theorem 10.2.15</a>) with <span class="math inline">\(a_k=\cos kt\)</span>, <span class="math inline">\(\sum b_k\cos kt\)</span> converges.</p>
+(<a href="ch-series.html#thm-dirichlet-test">Theorem 10.2.16</a>) with <span class="math inline">\(a_k=\cos kt\)</span>, <span class="math inline">\(\sum b_k\cos kt\)</span> converges.</p>
 </div>
 <div class="solutionbox" id="sol-exer-series-practice">
 
@@ -124,6 +124,11 @@ t2\right|}.\]</span> So the partial sums <span class="math inline">\(A_n\)</span
 10.2.10</a>.</strong> <em>Hint.</em> (a) Ratio Test. (c) Integral Test.
 (d) Root Test. (e) and (f) Limit Comparison Test, with <span class="math inline">\(\frac1k\)</span> and with <span class="math inline">\(\frac1{k^2}\)</span>. (g) Alternating Series Test.
 (b) Ratio Test. Use <span class="math inline">\(\left(1+\frac1k\right)^k\to e\)</span> from <a href="ch-integrals.html#ex-exp-ln">Example 9.4.1</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-condensation">
+
+<p><strong><a href="ch-series.html#exer-condensation">Exercise 10.2.11</a>.</strong>
+<em>Hint.</em> Group the terms in blocks from <span class="math inline">\(2^j\)</span> to <span class="math inline">\(2^{j+1}-1\)</span>. Show <span class="math inline">\(s_n\le t_m\)</span> when <span class="math inline">\(n&lt;2^{m+1}\)</span>, and <span class="math inline">\(s_n\ge\frac12t_m\)</span> when <span class="math inline">\(n\ge2^m\)</span>, where <span class="math inline">\(t_m=\sum_{j=0}^m2^ja_{2^j}\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-telescoping-bound-absolute">
 
@@ -136,7 +141,7 @@ t2\right|}.\]</span> So the partial sums <span class="math inline">\(A_n\)</span
 <em>Hint.</em> For large <span class="math inline">\(k\)</span>, <span class="math inline">\(|k^pa_k|\le|A|+1\)</span>. Compare with <span class="math inline">\(\sum\frac1{k^p}\)</span>.</p>
 <p><em>Solution.</em> With <span class="math inline">\(\varepsilon=1\)</span>, there is a <span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(|k^pa_k-A|&lt;1\)</span> for all <span class="math inline">\(k\ge K\)</span>. Then <span class="math inline">\(|k^pa_k|&lt;|A|+1\)</span>, so <span class="math display">\[0\le|a_k|\le\frac{|A|+1}{k^p}\quad\text{for all
 }k\ge K.\]</span> Since <span class="math inline">\(p&gt;1\)</span>,
-<span class="math inline">\(\sum\frac1{k^p}\)</span> converges (<a href="ch-series.html#ex-p-series">Example 10.2.11</a>). By the Comparison Test (<a href="ch-series.html#thm-comparison-test-series">Theorem 10.2.7</a>) with <span class="math inline">\(M=|A|+1\)</span>, <span class="math inline">\(\sum|a_k|\)</span> converges. So <span class="math inline">\(\sum a_k\)</span> converges absolutely.</p>
+<span class="math inline">\(\sum\frac1{k^p}\)</span> converges (<a href="ch-series.html#ex-p-series">Example 10.2.12</a>). By the Comparison Test (<a href="ch-series.html#thm-comparison-test-series">Theorem 10.2.7</a>) with <span class="math inline">\(M=|A|+1\)</span>, <span class="math inline">\(\sum|a_k|\)</span> converges. So <span class="math inline">\(\sum a_k\)</span> converges absolutely.</p>
 </div>
 <div class="solutionbox" id="sol-exer-squares-absolute">
 
@@ -168,6 +173,22 @@ terms until the total passes <span class="math inline">\(1\)</span>,
 then one negative term. Then add positive terms until the total passes
 <span class="math inline">\(2\)</span>, then one negative term, and so
 on.</p>
+</div>
+<div class="solutionbox" id="sol-exer-geometric-square">
+
+<p><strong><a href="ch-series.html#exer-geometric-square">Exercise
+10.4.1</a>.</strong> For <span class="math inline">\(|x|&lt;1\)</span>,
+<span class="math inline">\(\sum_{k=0}^\infty x^k\)</span> converges
+absolutely to <span class="math inline">\(\frac1{1-x}\)</span>. The
+Cauchy product of this series with itself has terms <span class="math inline">\(c_n=\sum_{k=0}^nx^kx^{n-k}=(n+1)x^n\)</span>. By
+<a href="ch-series.html#thm-mertens">Theorem 10.4.2</a>, <span class="math inline">\(\sum_{n=0}^\infty(n+1)x^n=\frac1{1-x}\cdot\frac1{1-x}=\frac1{(1-x)^2}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cauchy-product-absolute">
+
+<p><strong><a href="ch-series.html#exer-cauchy-product-absolute">Exercise
+10.4.2</a>.</strong> <em>Hint.</em> <span class="math inline">\(|c_n|\le\sum_{k=0}^n|a_k||b_{n-k}|\)</span>, which
+is the <span class="math inline">\(n\)</span>th term of the Cauchy
+product of <span class="math inline">\(\sum|a_k|\)</span> and <span class="math inline">\(\sum|b_k|\)</span>.</p>
 </div>
 </article>
 </main>

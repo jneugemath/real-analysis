@@ -52,6 +52,7 @@ window.MathJax = {
 <li><a href="ch-cardinality.html#sec-countable">2.1 Countable and Uncountable Sets</a></li>
 <li><a href="ch-cardinality.html#sec-Q-countable">2.2 Countability of the Rationals</a></li>
 <li><a href="ch-cardinality.html#sec-R-uncountable">2.3 Uncountability of the Reals</a></li>
+<li><a href="ch-cardinality.html#sec-comparing-sets">2.4 Comparing Infinite Sets*</a></li>
 <li><a href="ch-cardinality.html#notes-1">Notes</a></li>
 </ul>
 </li>
@@ -87,6 +88,7 @@ window.MathJax = {
 <li><a href="ch-continuity.html#sec-continuity">6.3 Continuity</a></li>
 <li><a href="ch-continuity.html#sec-uniform-continuity">6.4 Uniform Continuity</a></li>
 <li><a href="ch-continuity.html#sec-monotone-functions">6.5 Monotonicity</a></li>
+<li><a href="ch-continuity.html#sec-continuity-set">6.6 Where Can a Function Be Continuous?*</a></li>
 <li><a href="ch-continuity.html#notes-5">Notes</a></li>
 </ul>
 </li>
@@ -117,7 +119,8 @@ window.MathJax = {
 <li><a href="ch-integrals.html#sec-trig-integrals">9.5 Trigonometric Functions from Integrals*</a></li>
 <li><a href="ch-integrals.html#sec-more-integral-properties">9.6 More Properties of the Integral</a></li>
 <li><a href="ch-integrals.html#sec-improper">9.7 Improper Integrals</a></li>
-<li><a href="ch-integrals.html#sec-riemann-stieltjes">9.8 Riemann–Stieltjes Integrals*</a></li>
+<li><a href="ch-integrals.html#sec-famous-formulas">9.8 Four Famous Formulas*</a></li>
+<li><a href="ch-integrals.html#sec-riemann-stieltjes">9.9 Riemann–Stieltjes Integrals*</a></li>
 <li><a href="ch-integrals.html#notes-8">Notes</a></li>
 </ul>
 </li>
@@ -126,6 +129,7 @@ window.MathJax = {
 <li><a href="ch-series.html#sec-series">10.1 Types of Series</a></li>
 <li><a href="ch-series.html#sec-convergence-tests">10.2 Convergence Tests</a></li>
 <li><a href="ch-series.html#sec-absolute-convergence">10.3 Conditional and Absolute Convergence</a></li>
+<li><a href="ch-series.html#sec-cauchy-product">10.4 The Cauchy Product*</a></li>
 <li><a href="ch-series.html#notes-9">Notes</a></li>
 </ul>
 </li>
@@ -134,6 +138,8 @@ window.MathJax = {
 <li><a href="ch-function-sequences.html#sec-pointwise">11.1 The Problems with Pointwise Convergence</a></li>
 <li><a href="ch-function-sequences.html#sec-uniform">11.2 The Importance of Uniform Convergence</a></li>
 <li><a href="ch-function-sequences.html#sec-weierstrass">11.3 The Weierstrass Function*</a></li>
+<li><a href="ch-function-sequences.html#sec-weierstrass-approximation">11.4 The Weierstrass Approximation Theorem*</a></li>
+<li><a href="ch-function-sequences.html#sec-picard">11.5 Picard’s Theorem*</a></li>
 <li><a href="ch-function-sequences.html#notes-10">Notes</a></li>
 </ul>
 </li>
@@ -193,7 +199,16 @@ window.MathJax = {
 <li><a href="ch-differentiation.html#sec-differentiating-integral">17.4 Differentiating an Integral</a></li>
 <li><a href="ch-differentiation.html#sec-absolute-continuity">17.5 Absolute Continuity</a></li>
 <li><a href="ch-differentiation.html#sec-cantor-function">17.6 The Cantor Function*</a></li>
+<li><a href="ch-differentiation.html#sec-volterra">17.7 Volterra’s Function*</a></li>
 <li><a href="ch-differentiation.html#notes-16">Notes</a></li>
+</ul>
+</li>
+<li><a href="ch-lp.html">Chapter 18. L^p Spaces*</a>
+<ul>
+<li><a href="ch-lp.html#sec-lp-spaces">18.1 The Spaces L^p</a></li>
+<li><a href="ch-lp.html#sec-riesz-fischer">18.2 Completeness</a></li>
+<li><a href="ch-lp.html#sec-lp-approximation">18.3 Approximation in L^p</a></li>
+<li><a href="ch-lp.html#notes-17">Notes</a></li>
 </ul>
 </li>
 </ul></li>
@@ -205,7 +220,7 @@ window.MathJax = {
 <li><a href="app-cuts.html#sec-cuts-addition">A.3 Addition</a></li>
 <li><a href="app-cuts.html#sec-cuts-multiplication">A.4 Multiplication</a></li>
 <li><a href="app-cuts.html#sec-cuts-rationals">A.5 The Rational Numbers as a Subfield</a></li>
-<li><a href="app-cuts.html#notes-17">Notes</a></li>
+<li><a href="app-cuts.html#notes-18">Notes</a></li>
 </ul>
 </li>
 <li><a href="app-cauchy.html">Appendix B. Construction of the Real Numbers by Cauchy Sequences</a>
@@ -215,7 +230,7 @@ window.MathJax = {
 <li><a href="app-cauchy.html#sec-cauchy-construction-order">B.3 Order</a></li>
 <li><a href="app-cauchy.html#sec-cauchy-construction-completeness">B.4 Completeness</a></li>
 <li><a href="app-cauchy.html#sec-cauchy-construction-uniqueness">B.5 Uniqueness of the Real Numbers*</a></li>
-<li><a href="app-cauchy.html#notes-18">Notes</a></li>
+<li><a href="app-cauchy.html#notes-19">Notes</a></li>
 </ul>
 </li>
 <li><a href="app-solutions.html">Appendix C. Hints and Solutions</a>
@@ -237,6 +252,7 @@ window.MathJax = {
 <li><a href="solutions-ch15.html">Solutions for Chapter 15. Measurable Functions</a></li>
 <li><a href="solutions-ch16.html">Solutions for Chapter 16. The Lebesgue Integral</a></li>
 <li><a href="solutions-ch17.html">Solutions for Chapter 17. Differentiation and Integration</a></li>
+<li><a href="solutions-ch18.html">Solutions for Chapter 18. L^p Spaces</a></li>
 <li><a href="solutions-appa.html">Solutions for Appendix A. Construction of the Real Numbers by Cuts</a></li>
 <li><a href="solutions-appb.html">Solutions for Appendix B. Construction of the Real Numbers by Cauchy Sequences</a></li>
 </ul>

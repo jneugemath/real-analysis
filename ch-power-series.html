@@ -205,7 +205,7 @@ convergence <span class="math inline">\(R=1\)</span> and diverges when
 <p>The radii follow from <a href="#lem-root-limits">Lemma 12.1.3</a>,
 since <span class="math inline">\(\sqrt[k]{k}\to1\)</span> and <span class="math inline">\(\sqrt[k]{k^2}=\left(\sqrt[k]{k}\right)^2\to1\)</span>.
 At <span class="math inline">\(x=\pm1\)</span>, use the <span class="math inline">\(n\)</span>th Term Test, the Alternating Series
-Test and <a href="ch-series.html#ex-p-series">Example 10.2.11</a>.</p>
+Test and <a href="ch-series.html#ex-p-series">Example 10.2.12</a>.</p>
 </div>
 <div class="examplebox" id="ex-radius-alternating-coefficients">
 
@@ -261,7 +261,7 @@ but the proof is not given here. It requires rewriting a power series
 centered at <span class="math inline">\(c\)</span> as one centered at
 <span class="math inline">\(d\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-42">
+<section class="level5 unnumbered" id="exercises-48">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-radius-gaps-1">
 
@@ -324,7 +324,7 @@ gives an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
 all }j\ge n&gt;N.\]</span> Fix <span class="math inline">\(m\ge
 n&gt;N\)</span> and <span class="math inline">\(x\in[0,1]\)</span>. For
 <span class="math inline">\(j=n,\dots,m\)</span>, let <span class="math inline">\(B_j=\sum_{k=n}^ja_k\)</span>, and let <span class="math inline">\(B_{n-1}=0\)</span>. Then <span class="math inline">\(|B_j|&lt;\varepsilon\)</span> and <span class="math inline">\(a_k=B_k-B_{k-1}\)</span> for <span class="math inline">\(n\le k\le m\)</span>. Summing by parts, exactly as
-in the proof of <a href="ch-series.html#thm-abel-summation">Theorem 10.2.14</a>, <span class="math display">\[\sum_{k=n}^ma_kx^k=\sum_{k=n}^m(B_k-B_{k-1})x^k=\sum_{k=n}^{m-1}B_k\left(x^k-x^{k+1}\right)+B_mx^m.\]</span>
+in the proof of <a href="ch-series.html#thm-abel-summation">Theorem 10.2.15</a>, <span class="math display">\[\sum_{k=n}^ma_kx^k=\sum_{k=n}^m(B_k-B_{k-1})x^k=\sum_{k=n}^{m-1}B_k\left(x^k-x^{k+1}\right)+B_mx^m.\]</span>
 Since <span class="math inline">\(0\le x\le1\)</span>, each <span class="math inline">\(x^k-x^{k+1}\)</span> is nonnegative. So <span class="math display">\[\left|\sum_{k=n}^ma_kx^k\right|\le\varepsilon\left(\sum_{k=n}^{m-1}\left(x^k-x^{k+1}\right)+x^m\right)=\varepsilon
 x^n\le\varepsilon.\]</span> This holds for all <span class="math inline">\(m\ge n&gt;N\)</span> and all <span class="math inline">\(x\in[0,1]\)</span>. By <a href="ch-function-sequences.html#cor-cauchy-criterion-uniform-series">Corollary 11.2.6</a>, <span class="math inline">\(\sum a_kx^k\)</span> converges uniformly on <span class="math inline">\([0,1]\)</span>. Let <span class="math inline">\(g(x)=\sum_{k=0}^\infty a_kx^k\)</span> for <span class="math inline">\(x\in[0,1]\)</span>. Each term is continuous, so
 <span class="math inline">\(g\)</span> is continuous on <span class="math inline">\([0,1]\)</span>, by <a href="ch-function-sequences.html#cor-uniform-limit-continuous">Corollary 11.2.16</a>. Since <span class="math inline">\(g=f\)</span> on <span class="math inline">\([0,1)\)</span> and <span class="math inline">\(g(1)=\sum_{k=0}^\infty a_k\)</span>, <span class="math display">\[\lim_{x\to1^-}f(x)=\lim_{x\to1^-}g(x)=g(1)=\sum_{k=0}^\infty
@@ -504,7 +504,7 @@ with positive radius of convergence that converges to <span class="math inline">
 </div>
 <figure class="figure" id="fig-flat-function"><div class="figure-images"><img alt="The graph of e to the minus 1 over x squared. It lies along the x-axis near 0, then rises smoothly and levels off toward height 1 on both sides." height="207" src="figs/fig14.svg" width="501"/></div><figcaption><strong>Figure 12.1.</strong> The function <span class="math inline">\(f\)</span> of <a href="#ex-flat-function">Example
 12.2.10</a>. It is extremely flat at <span class="math inline">\(0\)</span>. Every derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(0\)</span> is <span class="math inline">\(0\)</span>, but <span class="math inline">\(f\)</span> is not the zero function.</figcaption></figure>
-<section class="level5 unnumbered" id="exercises-43">
+<section class="level5 unnumbered" id="exercises-49">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-power-series-integral">
 
@@ -779,7 +779,7 @@ distance in the complex plane from <span class="math inline">\(c=0\)</span> to <
 series. The explanation belongs to complex analysis, where power series
 are studied for complex <span class="math inline">\(x\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-44">
+<section class="level5 unnumbered" id="exercises-50">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-taylor-polynomial-at-1">
 
@@ -847,7 +847,7 @@ These are the <em>sine</em> and <em>cosine</em> functions.</p>
 </div>
 <p>Both series converge for every <span class="math inline">\(x\)</span>. Each term has absolute value at most
 <span class="math inline">\(\frac{|x|^n}{n!}\)</span> for some <span class="math inline">\(n\)</span>, with each <span class="math inline">\(n\)</span> used once. The series <span class="math inline">\(\sum\frac{|x|^n}{n!}\)</span> converges by the
-Ratio Test (<a href="ch-series.html#thm-ratio-test">Theorem 10.2.12</a>), since <span class="math inline">\(\frac{|x|^{n+1}/(n+1)!}{|x|^n/n!}=\frac{|x|}{n+1}\to0\)</span>.
+Ratio Test (<a href="ch-series.html#thm-ratio-test">Theorem 10.2.13</a>), since <span class="math inline">\(\frac{|x|^{n+1}/(n+1)!}{|x|^n/n!}=\frac{|x|}{n+1}\to0\)</span>.
 So both series converge absolutely by the Comparison Test (<a href="ch-series.html#thm-comparison-test-series">Theorem 10.2.7</a>). A power series
 that converges everywhere has radius of convergence <span class="math inline">\(\infty\)</span>, by <a href="#thm-radius-of-convergence">Theorem 12.1.7</a> (2).</p>
 <div class="theorembox" id="thm-sin-cos-derivatives">
@@ -945,7 +945,7 @@ y\)</span>. Add or subtract these and the formulas for <span class="math inline"
 v\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <p>These are the identities used in <a href="ch-continuity.html#ex-sine-uniform">Example
-6.4.3</a>, <a href="ch-series.html#thm-trig-series-test">Theorem 10.2.20</a> and <a href="ch-function-sequences.html#ex-weierstrass">Example 11.3.1</a>.</p>
+6.4.3</a>, <a href="ch-series.html#thm-trig-series-test">Theorem 10.2.21</a> and <a href="ch-function-sequences.html#ex-weierstrass">Example 11.3.1</a>.</p>
 <p>Next comes <span class="math inline">\(\pi\)</span>. The plan is to
 find the first positive zero of <span class="math inline">\(\cos\)</span>. To locate it, compare <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> with their Taylor polynomials.</p>
 <div class="lemmabox" id="lem-sin-cos-bounds">
@@ -1098,7 +1098,7 @@ section. By <a href="ch-integrals.html#thm-sin-cos-integral">Theorem 9.5.9</a>, 
 zero of <span class="math inline">\(C\)</span>. So the two definitions
 of <span class="math inline">\(\pi\)</span> agree. By <a href="#thm-tan-arctan">Theorem 12.4.12</a> (4), the two definitions of
 <span class="math inline">\(\arctan\)</span> agree too.</p>
-<section class="level5 unnumbered" id="exercises-45">
+<section class="level5 unnumbered" id="exercises-51">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-trig-double-angle">
 
@@ -1168,7 +1168,7 @@ x\)</span> can skip both sections.</p>
 </div>
 <p>The series converges for every <span class="math inline">\(x\)</span>. For <span class="math inline">\(x\ne0\)</span>, the ratio of consecutive terms is
 <span class="math inline">\(\frac{|x|}{k+1}\to0\)</span>, so it
-converges absolutely by the Ratio Test (<a href="ch-series.html#thm-ratio-test">Theorem 10.2.12</a>). So its radius of
+converges absolutely by the Ratio Test (<a href="ch-series.html#thm-ratio-test">Theorem 10.2.13</a>). So its radius of
 convergence is <span class="math inline">\(\infty\)</span>, by <a href="#thm-radius-of-convergence">Theorem 12.1.7</a> (2).</p>
 <div class="theorembox" id="thm-exp-series">
 
@@ -1256,7 +1256,7 @@ x.\]</span> This is Euler’s formula. Making it precise requires series
 of complex numbers, which belong to complex analysis. This book stays
 with real numbers.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-46">
+<section class="level5 unnumbered" id="exercises-52">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-exp-series-bounds">
 

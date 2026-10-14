@@ -250,6 +250,58 @@ loss of generality, <span class="math inline">\(a&lt;b\)</span>. If
 <span class="math inline">\(f\)</span> is strictly increasing, then
 <span class="math inline">\(f(a)&lt;f(b)\)</span>. If <span class="math inline">\(f\)</span> is strictly decreasing, then <span class="math inline">\(f(a)&gt;f(b)\)</span>. Either way, <span class="math inline">\(f(a)\ne f(b)\)</span>. So <span class="math inline">\(f\)</span> is one-to-one.</p>
 </div>
+<div class="solutionbox" id="sol-exer-continuity-set-examples">
+
+<p><strong><a href="ch-continuity.html#exer-continuity-set-examples">Exercise
+6.6.1</a>.</strong> <em>Hint.</em> For the Dirichlet function, every
+interval contains points where <span class="math inline">\(f\)</span> is
+<span class="math inline">\(0\)</span> and points where it is <span class="math inline">\(1\)</span>. For the step function, only intervals
+around <span class="math inline">\(0\)</span> cause trouble.</p>
+</div>
+<div class="solutionbox" id="sol-exer-irrationals-gdelta">
+
+<p><strong><a href="ch-continuity.html#exer-irrationals-gdelta">Exercise
+6.6.2</a>.</strong> Let <span class="math inline">\(q_1,q_2,q_3,\dots\)</span> be an enumeration of
+<span class="math inline">\(\mathbb{Q}\)</span>. Each set <span class="math inline">\(\mathbb{R}\setminus\{q_k\}\)</span> is open, and
+<span class="math display">\[\mathbb{R}\setminus\mathbb{Q}=\bigcap_{k=1}^\infty\bigl(\mathbb{R}\setminus\{q_k\}\bigr).\]</span>
+So <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> is
+a <span class="math inline">\(G_\delta\)</span> set.</p>
+<p>If <span class="math inline">\(x=\frac mn\)</span> in lowest terms,
+then <span class="math inline">\(x+1=\frac{m+n}n\)</span> in lowest
+terms. So <span class="math inline">\(f(x+1)=f(x)\)</span> for every
+<span class="math inline">\(x\)</span>. Near a point <span class="math inline">\(c\in(k,k+1)\)</span> with <span class="math inline">\(k\in\mathbb{Z}\)</span>, <span class="math inline">\(f(x)=g(x-k)\)</span>, where <span class="math inline">\(g\)</span> is Thomae’s function on <span class="math inline">\((0,1)\)</span>. By <a href="ch-continuity.html#ex-thomae">Example
+6.3.2</a>, <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span> when <span class="math inline">\(c\)</span> is irrational and not continuous at
+<span class="math inline">\(c\)</span> when <span class="math inline">\(c\)</span> is rational. At an integer <span class="math inline">\(k\)</span>, <span class="math inline">\(f(k)=1\)</span>, but every interval around <span class="math inline">\(k\)</span> contains irrational numbers, where
+<span class="math inline">\(f=0\)</span>. So <span class="math inline">\(f\)</span> is not continuous at <span class="math inline">\(k\)</span>. Thus <span class="math inline">\(f\)</span> is continuous exactly at the irrational
+numbers, which agrees with <a href="ch-continuity.html#thm-continuity-set-gdelta">Theorem
+6.6.2</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-baire-uncountable">
+
+<p><strong><a href="ch-continuity.html#exer-baire-uncountable">Exercise
+6.6.3</a>.</strong> Suppose <span class="math inline">\(\mathbb{R}\)</span> is countable, say <span class="math inline">\(\mathbb{R}=\{x_1,x_2,x_3,\dots\}\)</span>. Let
+<span class="math inline">\(V_k=\mathbb{R}\setminus\{x_k\}\)</span>.
+Each <span class="math inline">\(V_k\)</span> is open. It is dense,
+since every open interval contains points other than <span class="math inline">\(x_k\)</span>. By <a href="ch-continuity.html#thm-baire">Theorem
+6.6.3</a>, <span class="math inline">\(\bigcap_{k=1}^\infty V_k\)</span>
+is not empty. But a point in it differs from every <span class="math inline">\(x_k\)</span>, so it is not in <span class="math inline">\(\mathbb{R}\)</span>. This is a contradiction.</p>
+</div>
+<div class="solutionbox" id="sol-exer-dense-gdelta">
+
+<p><strong><a href="ch-continuity.html#exer-dense-gdelta">Exercise 6.6.4</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(G=\bigcap U_n\)</span> is
+dense, then each <span class="math inline">\(U_n\)</span> is dense.
+Apply <a href="ch-continuity.html#thm-baire">Theorem 6.6.3</a> to all the <span class="math inline">\(U_n\)</span> and <span class="math inline">\(V_n\)</span> together. For the last part, add the
+sets <span class="math inline">\(\mathbb{R}\setminus\{g_k\}\)</span>, as
+in the proof of <a href="ch-continuity.html#thm-Q-not-gdelta">Theorem 6.6.4</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-nowhere-dense">
+
+<p><strong><a href="ch-continuity.html#exer-nowhere-dense">Exercise 6.6.5</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(\mathbb{R}=\bigcup
+A_n\)</span>, apply <a href="ch-continuity.html#thm-baire">Theorem 6.6.3</a> to <span class="math inline">\(U_n=\mathbb{R}\setminus\overline{A_n}\)</span>.
+For the Cantor set, an open interval longer than <span class="math inline">\(3^{-n}\)</span> cannot lie inside <span class="math inline">\(C_n\)</span>.</p>
+</div>
 </article>
 </main>
 <nav class="pager" aria-label="Previous and next page (bottom)">

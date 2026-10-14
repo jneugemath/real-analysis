@@ -245,6 +245,16 @@ K}c_n\mu_n(E_k)\)</span>.</p>
 <em>Hint.</em> <span class="math inline">\(\mu(E)=\sum_{k\in
 E\cap\mathbb{N}}2^{-k}\)</span>. Use <a href="ch-measures.html#exer-sum-of-measures">Exercise 13.3.5</a>.</p>
 </div>
+<div class="solutionbox" id="sol-exer-borel-cantelli">
+
+<p><strong><a href="ch-measures.html#exer-borel-cantelli">Exercise 13.3.7</a>.</strong>
+A point <span class="math inline">\(x\)</span> lies in infinitely many
+<span class="math inline">\(E_k\)</span> exactly when, for every <span class="math inline">\(n\)</span>, there is a <span class="math inline">\(k\ge n\)</span> with <span class="math inline">\(x\in E_k\)</span>. That is, <span class="math inline">\(x\in\bigcup_{k=n}^\infty E_k\)</span> for every
+<span class="math inline">\(n\)</span>. So <span class="math inline">\(E=\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty
+E_k\)</span>. A <span class="math inline">\(\sigma\)</span>-algebra is
+closed under countable unions and countable intersections, so <span class="math inline">\(E\in\mathcal{M}\)</span>. For each <span class="math inline">\(n\)</span>, <span class="math inline">\(E\subset\bigcup_{k=n}^\infty E_k\)</span>. By <a href="ch-measures.html#thm-measure-properties">Theorem 13.3.9</a> (1) and (2), <span class="math display">\[\mu(E)\le\sum_{k=n}^\infty\mu(E_k).\]</span> This
+is the tail of a convergent series, so it tends to <span class="math inline">\(0\)</span> as <span class="math inline">\(n\to\infty\)</span>. So <span class="math inline">\(\mu(E)=0\)</span>.</p>
+</div>
 </article>
 </main>
 <nav class="pager" aria-label="Previous and next page (bottom)">

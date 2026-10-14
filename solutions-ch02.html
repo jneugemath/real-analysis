@@ -93,6 +93,65 @@ contradicts <a href="ch-cardinality.html#thm-interval-uncountable">Theorem 2.3.2
 <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> is
 uncountable.</p>
 </div>
+<div class="solutionbox" id="sol-exer-lesssim-basics">
+
+<p><strong><a href="ch-cardinality.html#exer-lesssim-basics">Exercise 2.4.1</a>.</strong>
+<em>Hint.</em> Use the identity function, the inclusion <span class="math inline">\(a\mapsto a\)</span>, and a composition of
+one-to-one functions.</p>
+</div>
+<div class="solutionbox" id="sol-exer-interval-types">
+
+<p><strong><a href="ch-cardinality.html#exer-interval-types">Exercise 2.4.2</a>.</strong>
+<em>Hint.</em> Each of the four sets lies between <span class="math inline">\((a,b)\)</span> and <span class="math inline">\([a,b]\)</span>. Use <span class="math inline">\(x\mapsto a+(b-a)x\)</span> and <a href="ch-cardinality.html#ex-closed-open-interval">Example 2.4.3</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-R-sim-interval">
+
+<p><strong><a href="ch-cardinality.html#exer-R-sim-interval">Exercise 2.4.3</a>.</strong>
+Since <span class="math inline">\(|x|&lt;1+|x|\)</span>, <span class="math inline">\(|f(x)|&lt;1\)</span>, so <span class="math inline">\(f\)</span> maps <span class="math inline">\(\mathbb{R}\)</span> into <span class="math inline">\((-1,1)\)</span>. Also <span class="math inline">\(f(x)\)</span> has the same sign as <span class="math inline">\(x\)</span>, and <span class="math inline">\(|f(x)|=\frac{|x|}{1+|x|}\)</span>.</p>
+<p><em>One-to-one.</em> Let <span class="math inline">\(f(x)=f(y)\)</span>. Then <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> have the same sign, and <span class="math inline">\(\frac{|x|}{1+|x|}=\frac{|y|}{1+|y|}\)</span>.
+Cross-multiplying gives <span class="math inline">\(|x|+|x||y|=|y|+|x||y|\)</span>, so <span class="math inline">\(|x|=|y|\)</span>. So <span class="math inline">\(x=y\)</span>.</p>
+<p><em>Onto.</em> Let <span class="math inline">\(y\in(-1,1)\)</span>,
+and let <span class="math inline">\(x=\frac y{1-|y|}\)</span>. Then
+<span class="math inline">\(x\)</span> has the sign of <span class="math inline">\(y\)</span> and <span class="math inline">\(|x|=\frac{|y|}{1-|y|}\)</span>, so <span class="math inline">\(1+|x|=\frac1{1-|y|}\)</span> and <span class="math inline">\(f(x)=\frac{y/(1-|y|)}{1/(1-|y|)}=y\)</span>.</p>
+<p>So <span class="math inline">\(\mathbb{R}\sim(-1,1)\)</span>. The
+function <span class="math inline">\(g(x)=\frac{x+1}2\)</span> is a
+bijection from <span class="math inline">\((-1,1)\)</span> to <span class="math inline">\((0,1)\)</span>. By <a href="ch-cardinality.html#ex-closed-open-interval">Example 2.4.3</a>, <span class="math inline">\((0,1)\sim[0,1]\)</span>, and by <a href="ch-cardinality.html#thm-interval-binary">Theorem 2.4.4</a>, <span class="math inline">\([0,1]\sim2^\mathbb{N}\)</span>. By <a href="ch-cardinality.html#thm-cardinal-equivalence">Theorem 2.1.8</a>, <span class="math inline">\(\mathbb{R}\sim[0,1]\sim2^\mathbb{N}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-power-set-binary">
+
+<p><strong><a href="ch-cardinality.html#exer-power-set-binary">Exercise 2.4.4</a>.</strong>
+Let <span class="math inline">\(\Phi(E)=\chi_E\)</span>. If <span class="math inline">\(E\ne F\)</span>, there is a <span class="math inline">\(k\)</span> in one set and not the other, and then
+<span class="math inline">\(\chi_E(k)\ne\chi_F(k)\)</span>. So <span class="math inline">\(\Phi\)</span> is one-to-one. Let <span class="math inline">\(s\in2^\mathbb{N}\)</span>, and let <span class="math inline">\(E=\{k\in\mathbb{N}:s(k)=1\}\)</span>. Then <span class="math inline">\(\chi_E=s\)</span>. So <span class="math inline">\(\Phi\)</span> is onto, and <span class="math inline">\(\mathcal{P}(\mathbb{N})\sim2^\mathbb{N}\)</span>.
+By <a href="ch-cardinality.html#exer-R-sim-interval">Exercise 2.4.3</a> and <a href="ch-cardinality.html#thm-cardinal-equivalence">Theorem 2.1.8</a>, <span class="math inline">\(\mathcal{P}(\mathbb{N})\sim\mathbb{R}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-power-set-chain">
+
+<p><strong><a href="ch-cardinality.html#exer-power-set-chain">Exercise 2.4.5</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(A_m\sim A_n\)</span> with
+<span class="math inline">\(m&lt;n\)</span>, show <span class="math inline">\(\mathcal{P}(A_m)\lesssim A_m\)</span>. Then use
+Theorems <a href="ch-cardinality.html#thm-schroder-bernstein">2.4.2</a> and <a href="ch-cardinality.html#thm-cantor-power-set">2.4.5</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-square-sim">
+
+<p><strong><a href="ch-cardinality.html#exer-square-sim">Exercise 2.4.6</a>.</strong>
+<em>Hint.</em> To invert the map, read off the odd-numbered and
+even-numbered terms of <span class="math inline">\(u\)</span>. Then use
+<a href="ch-cardinality.html#exer-R-sim-interval">Exercise 2.4.3</a>.</p>
+<p><em>Solution.</em> Call the map <span class="math inline">\(\Psi\)</span>. If <span class="math inline">\(\Psi(s,t)=\Psi(s',t')=u\)</span>, then
+<span class="math inline">\(s(k)=u(2k-1)=s'(k)\)</span> and <span class="math inline">\(t(k)=u(2k)=t'(k)\)</span> for all <span class="math inline">\(k\)</span>. So <span class="math inline">\((s,t)=(s',t')\)</span>. Given <span class="math inline">\(u\in2^\mathbb{N}\)</span>, let <span class="math inline">\(s(k)=u(2k-1)\)</span> and <span class="math inline">\(t(k)=u(2k)\)</span>. Then <span class="math inline">\(\Psi(s,t)=u\)</span>. So <span class="math inline">\(\Psi\)</span> is a bijection.</p>
+<p>By <a href="ch-cardinality.html#exer-R-sim-interval">Exercise 2.4.3</a>, there is a
+bijection <span class="math inline">\(\phi:\mathbb{R}\to2^\mathbb{N}\)</span>. Then
+<span class="math inline">\((x,y)\mapsto(\phi(x),\phi(y))\)</span> is a
+bijection from <span class="math inline">\(\mathbb{R}\times\mathbb{R}\)</span> to <span class="math inline">\(2^\mathbb{N}\times2^\mathbb{N}\)</span>. So <span class="math inline">\(\mathbb{R}\times\mathbb{R}\sim2^\mathbb{N}\times2^\mathbb{N}\sim2^\mathbb{N}\sim\mathbb{R}\)</span>
+by <a href="ch-cardinality.html#thm-cardinal-equivalence">Theorem 2.1.8</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-functions-bigger">
+
+<p><strong><a href="ch-cardinality.html#exer-functions-bigger">Exercise 2.4.7</a>.</strong>
+<em>Hint.</em> Constant functions show <span class="math inline">\(\mathbb{R}\lesssim\mathcal F\)</span>. The
+functions that take only the values <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> show <span class="math inline">\(\mathcal{P}(\mathbb{R})\lesssim\mathcal
+F\)</span>. Then use Theorems <a href="ch-cardinality.html#thm-schroder-bernstein">2.4.2</a> and <a href="ch-cardinality.html#thm-cantor-power-set">2.4.5</a>.</p>
+</div>
 </article>
 </main>
 <nav class="pager" aria-label="Previous and next page (bottom)">

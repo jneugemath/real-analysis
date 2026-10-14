@@ -30,7 +30,8 @@ window.MathJax = {
 </nav>
 <main id="main">
 <article id="ch-continuity">
-<h1>Chapter 6. Functions and Continuity</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-function-limits">6.1 Limits</a></li><li><a href="#sec-infinite-limits">6.2 Infinite Limits and Limits at Infinity</a></li><li><a href="#sec-continuity">6.3 Continuity</a></li><li><a href="#sec-uniform-continuity">6.4 Uniform Continuity</a></li><li><a href="#sec-monotone-functions">6.5 Monotonicity</a></li><li><a href="#notes-5">Notes</a></li></ul></nav>
+<h1>Chapter 6. Functions and Continuity</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-function-limits">6.1 Limits</a></li><li><a href="#sec-infinite-limits">6.2 Infinite Limits and Limits at Infinity</a></li><li><a href="#sec-continuity">6.3 Continuity</a></li><li><a href="#sec-uniform-continuity">6.4 Uniform Continuity</a></li><li><a href="#sec-monotone-functions">6.5 Monotonicity</a></li><li><a href="#sec-continuity-set">6.6 Where Can a Function Be
+Continuous?<sup>*</sup></a></li><li><a href="#notes-5">Notes</a></li></ul></nav>
 <p><a href="ch-sequences.html">Chapter 3</a> defined the limit of a
 sequence. This chapter defines the limit of a function at a point and
 uses it to define continuity. The definitions follow the same pattern as
@@ -42,7 +43,9 @@ bounded interval <span class="math inline">\([a,b]\)</span>. Such a
 function takes every value between any two of its values. This is the
 Intermediate Value Theorem. It has a largest and a smallest value. This
 is the Extreme Value Theorem. It is also uniformly continuous. Each of
-these facts uses the completeness of <span class="math inline">\(\mathbb{R}\)</span>, and each fails over <span class="math inline">\(\mathbb{Q}\)</span>. For example, <span class="math inline">\(f(x)=x^2-2\)</span> is negative at <span class="math inline">\(0\)</span> and positive at <span class="math inline">\(2\)</span>, but it has no rational zero.</p>
+these facts uses the completeness of <span class="math inline">\(\mathbb{R}\)</span>, and each fails over <span class="math inline">\(\mathbb{Q}\)</span>. For example, <span class="math inline">\(f(x)=x^2-2\)</span> is negative at <span class="math inline">\(0\)</span> and positive at <span class="math inline">\(2\)</span>, but it has no rational zero. The
+starred <a href="#sec-continuity-set">Section 6.6</a> asks which sets
+can be the set of points where a function is continuous.</p>
 <section class="level3 unnumbered" id="sec-function-limits">
 <h2>6.1 Limits</h2>
 <p>The limit of <span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span> describes what <span class="math inline">\(f(x)\)</span> does as <span class="math inline">\(x\)</span> gets close to <span class="math inline">\(c\)</span>. The value <span class="math inline">\(f(c)\)</span> plays no role. The function does not
@@ -382,7 +385,7 @@ f(x)=L\)</span>.</p>
 <p><em>Proof.</em> See <a href="#exer-one-sided-limits">Exercise
 6.1.8</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-20">
+<section class="level5 unnumbered" id="exercises-21">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-basic-limits">
 
@@ -540,7 +543,7 @@ c^+}f(x)=\infty\)</span> if and only if <span class="math inline">\(f(x_n)\to\in
 <p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(\lim_{x\to c^+}f(x)\ne\infty\)</span>. Negating
 the definition, there exists an <span class="math inline">\(M&gt;0\)</span> such that for every <span class="math inline">\(\delta&gt;0\)</span>, there exists an <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta\)</span> and <span class="math inline">\(f(x)\le M\)</span>. Taking <span class="math inline">\(\delta=\frac1n\)</span> gives, for each <span class="math inline">\(n\in\mathbb{N}\)</span>, an <span class="math inline">\(x_n\in E\)</span> with <span class="math inline">\(c&lt;x_n&lt;c+\frac1n\)</span> and <span class="math inline">\(f(x_n)\le M\)</span>. Then <span class="math inline">\(x_n&gt;c\)</span> and <span class="math inline">\(x_n\to c\)</span>, but <span class="math inline">\(\{f(x_n)\}\)</span> does not diverge to <span class="math inline">\(\infty\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-21">
+<section class="level5 unnumbered" id="exercises-22">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-one-over-x-at-infinity">
 
@@ -791,7 +794,7 @@ U\)</span>. Hence <span class="math inline">\((c-\delta,c+\delta)\subset
 f^{-1}[U]\)</span>. So <span class="math inline">\(f^{-1}[U]\)</span> is
 open.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-22">
+<section class="level5 unnumbered" id="exercises-23">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-x-sin-continuous">
 
@@ -917,7 +920,7 @@ So <span class="math inline">\(f\)</span> is uniformly continuous on
 <p><em>Proof.</em> This is an immediate consequence of <a href="#thm-compact-uniform">Theorem 6.4.7</a> and the Heine–Borel
 Theorem (<a href="ch-topology.html#thm-heine-borel">Theorem 4.2.14</a>).</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-23">
+<section class="level5 unnumbered" id="exercises-24">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-one-over-x-uniform">
 
@@ -1075,7 +1078,7 @@ for all <span class="math inline">\(y\in J\)</span> with <span class="math inlin
 for all <span class="math inline">\(y\in J\)</span> with <span class="math inline">\(|y-d|&lt;\delta\)</span>, <span class="math inline">\(|f^{-1}(d)-f^{-1}(y)|&lt;\varepsilon\)</span>. So
 <span class="math inline">\(f^{-1}\)</span> is continuous at <span class="math inline">\(d\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-24">
+<section class="level5 unnumbered" id="exercises-25">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-inverse-one-to-one">
 
@@ -1103,6 +1106,136 @@ where <span class="math inline">\(f\)</span> is discontinuous.</p>
 </div>
 </section>
 </section>
+<section class="level3 unnumbered" id="sec-continuity-set">
+<h2>6.6 Where Can a Function Be
+Continuous?<sup>*</sup></h2>
+<p>Thomae’s function (<a href="#ex-thomae">Example 6.3.2</a>) is
+continuous at every irrational number and at no rational number. Is
+there a function that does the reverse, continuous at every rational
+number and at no irrational number? This section shows the answer is no.
+The proof uses the Baire Category Theorem, which says <span class="math inline">\(\mathbb{R}\)</span> cannot be built from countably
+many “thin” sets. This section can be skipped. Nothing later depends on
+it.</p>
+<div class="definitionbox" id="def-g-delta-continuity">
+
+<p><strong>Definition 6.6.1.</strong> A set <span class="math inline">\(G\subset\mathbb{R}\)</span> is a <em><span class="math inline">\(G_\delta\)</span> set</em> if it is the
+intersection of countably many open sets.</p>
+</div>
+<p>Every open set is a <span class="math inline">\(G_\delta\)</span>
+set. So is every closed interval, since <span class="math inline">\([a,b]=\bigcap_{n=1}^\infty\left(a-\frac1n,b+\frac1n\right)\)</span>.
+The irrational numbers form a <span class="math inline">\(G_\delta\)</span> set (<a href="#exer-irrationals-gdelta">Exercise 6.6.2</a>). The first theorem
+says the points where a function is continuous always form a <span class="math inline">\(G_\delta\)</span> set.</p>
+<div class="theorembox" id="thm-continuity-set-gdelta">
+
+<p><strong>Theorem 6.6.2.</strong> Let <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(U_n\)</span> be the set of <span class="math inline">\(c\in\mathbb{R}\)</span> for which there is a <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(x)-f(y)|&lt;\frac1n\)</span> for all <span class="math inline">\(x,y\in(c-\delta,c+\delta)\)</span>. Then each
+<span class="math inline">\(U_n\)</span> is open, and <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span> if and only if <span class="math inline">\(c\in\bigcap_{n=1}^\infty U_n\)</span>. So the set
+of points where <span class="math inline">\(f\)</span> is continuous is
+a <span class="math inline">\(G_\delta\)</span> set.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em><span class="math inline">\(U_n\)</span> is open.</em> Let <span class="math inline">\(c\in U_n\)</span>, with <span class="math inline">\(\delta\)</span> as in the definition. Let <span class="math inline">\(c'\in(c-\delta,c+\delta)\)</span>, and let
+<span class="math inline">\(\delta'=\delta-|c'-c|&gt;0\)</span>.
+Then <span class="math inline">\((c'-\delta',c'+\delta')\subset(c-\delta,c+\delta)\)</span>.
+So <span class="math inline">\(|f(x)-f(y)|&lt;\frac1n\)</span> for all
+<span class="math inline">\(x,y\)</span> in <span class="math inline">\((c'-\delta',c'+\delta')\)</span>,
+and <span class="math inline">\(c'\in U_n\)</span>. Thus <span class="math inline">\((c-\delta,c+\delta)\subset U_n\)</span>.</p>
+<p><em>Continuity.</em> Suppose <span class="math inline">\(f\)</span>
+is continuous at <span class="math inline">\(c\)</span>, and let <span class="math inline">\(n\in\mathbb{N}\)</span>. Choose <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(x)-f(c)|&lt;\frac1{2n}\)</span> whenever <span class="math inline">\(|x-c|&lt;\delta\)</span>. For <span class="math inline">\(x,y\in(c-\delta,c+\delta)\)</span>, <span class="math inline">\(|f(x)-f(y)|\le|f(x)-f(c)|+|f(c)-f(y)|&lt;\frac1n\)</span>.
+So <span class="math inline">\(c\in U_n\)</span>. Conversely, suppose
+<span class="math inline">\(c\in U_n\)</span> for every <span class="math inline">\(n\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(n\)</span> with <span class="math inline">\(\frac1n&lt;\varepsilon\)</span>, and <span class="math inline">\(\delta\)</span> for this <span class="math inline">\(n\)</span>. If <span class="math inline">\(|x-c|&lt;\delta\)</span>, take <span class="math inline">\(y=c\)</span>. Then <span class="math inline">\(|f(x)-f(c)|&lt;\frac1n&lt;\varepsilon\)</span>. So
+<span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-baire">
+
+<p><strong>Theorem 6.6.3</strong> (Baire Category
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(U_1,U_2,U_3,\dots\)</span> be open
+sets that are dense in <span class="math inline">\(\mathbb{R}\)</span>.
+Then <span class="math inline">\(\bigcap_{n=1}^\infty U_n\)</span> is
+dense in <span class="math inline">\(\mathbb{R}\)</span>. In particular,
+it is not empty.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>First, if <span class="math inline">\(U\)</span> is dense, then every
+open interval <span class="math inline">\((a,b)\)</span> meets <span class="math inline">\(U\)</span>. Otherwise no point of <span class="math inline">\((a,b)\)</span> is in <span class="math inline">\(U\)</span> or is a limit point of <span class="math inline">\(U\)</span>, so <span class="math inline">\((a,b)\cap\overline U=\emptyset\)</span>, and <span class="math inline">\(\overline U\ne\mathbb{R}\)</span>.</p>
+<p>Let <span class="math inline">\((a,b)\)</span> be an open interval.
+It is enough to find a point of <span class="math inline">\(\bigcap
+U_n\)</span> in <span class="math inline">\((a,b)\)</span>. The set
+<span class="math inline">\((a,b)\cap U_1\)</span> is open and not
+empty. So it contains an open interval, and inside that a closed
+interval <span class="math inline">\([a_1,b_1]\)</span> with <span class="math inline">\(a_1&lt;b_1\)</span>. Suppose <span class="math inline">\([a_n,b_n]\subset U_n\)</span> has been chosen,
+with <span class="math inline">\(a_n&lt;b_n\)</span>. Then <span class="math inline">\((a_n,b_n)\cap U_{n+1}\)</span> is open and not
+empty, so it contains a closed interval <span class="math inline">\([a_{n+1},b_{n+1}]\)</span> with <span class="math inline">\(a_{n+1}&lt;b_{n+1}\)</span>. This gives nested
+closed intervals <span class="math display">\[(a,b)\supset[a_1,b_1]\supset[a_2,b_2]\supset\cdots\]</span>
+with <span class="math inline">\([a_n,b_n]\subset U_n\)</span>. By <a href="ch-sequences.html#thm-nested-intervals">Theorem 3.4.4</a>, some <span class="math inline">\(x\)</span> lies in every <span class="math inline">\([a_n,b_n]\)</span>. Then <span class="math inline">\(x\in(a,b)\)</span> and <span class="math inline">\(x\in U_n\)</span> for every <span class="math inline">\(n\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The name comes from Baire’s language. A set is <em>nowhere dense</em>
+if its closure contains no open interval. Sets that are countable unions
+of nowhere dense sets are said to be of the <em>first category</em>.
+Taking complements, <a href="#thm-baire">Theorem 6.6.3</a> says <span class="math inline">\(\mathbb{R}\)</span> is not of the first category
+(<a href="#exer-nowhere-dense">Exercise 6.6.5</a>). Countable sets are
+of the first category, and so is the Cantor set.</p>
+<div class="theorembox" id="thm-Q-not-gdelta">
+
+<p><strong>Theorem 6.6.4.</strong> The set <span class="math inline">\(\mathbb{Q}\)</span> is not a <span class="math inline">\(G_\delta\)</span> set.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Suppose <span class="math inline">\(\mathbb{Q}=\bigcap_{n=1}^\infty
+U_n\)</span> with each <span class="math inline">\(U_n\)</span> open.
+Each <span class="math inline">\(U_n\)</span> contains <span class="math inline">\(\mathbb{Q}\)</span>, so it is dense. Let <span class="math inline">\(q_1,q_2,q_3,\dots\)</span> be an enumeration of
+<span class="math inline">\(\mathbb{Q}\)</span> (<a href="ch-cardinality.html#cor-Q-countable">Corollary 2.2.7</a>), and let <span class="math inline">\(V_k=\mathbb{R}\setminus\{q_k\}\)</span>. Each
+<span class="math inline">\(V_k\)</span> is open, and it is dense since
+it misses only one point. The sets <span class="math inline">\(U_1,V_1,U_2,V_2,\dots\)</span> are countably many
+dense open sets. By <a href="#thm-baire">Theorem 6.6.3</a>, they have a
+point <span class="math inline">\(x\)</span> in common. Since <span class="math inline">\(x\in\bigcap U_n\)</span>, <span class="math inline">\(x\in\mathbb{Q}\)</span>. Since <span class="math inline">\(x\in V_k\)</span> for every <span class="math inline">\(k\)</span>, <span class="math inline">\(x\ne
+q_k\)</span> for every <span class="math inline">\(k\)</span>, so <span class="math inline">\(x\notin\mathbb{Q}\)</span>. This is a
+contradiction.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-no-reverse-thomae">
+
+<p><strong>Corollary 6.6.5.</strong> There is no function <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> that is
+continuous at every rational number and discontinuous at every
+irrational number.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>For such an <span class="math inline">\(f\)</span>, the set of points
+where <span class="math inline">\(f\)</span> is continuous would be
+<span class="math inline">\(\mathbb{Q}\)</span>. By <a href="#thm-continuity-set-gdelta">Theorem 6.6.2</a>, it is a <span class="math inline">\(G_\delta\)</span> set. This contradicts <a href="#thm-Q-not-gdelta">Theorem 6.6.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-26">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-continuity-set-examples">
+
+<p><strong>Exercise 6.6.1.</strong> Find the sets <span class="math inline">\(U_n\)</span> of <a href="#thm-continuity-set-gdelta">Theorem 6.6.2</a> for the Dirichlet
+function of <a href="#ex-dirichlet-function">Example 6.1.9</a> and for
+the function that is <span class="math inline">\(0\)</span> for <span class="math inline">\(x&lt;0\)</span> and <span class="math inline">\(1\)</span> for <span class="math inline">\(x\ge0\)</span>. <a aria-label="Hint for Exercise 6.6.1" href="solutions-ch06.html#sol-exer-continuity-set-examples">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-irrationals-gdelta">
+
+<p><strong>Exercise 6.6.2.</strong> Prove that <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> is a <span class="math inline">\(G_\delta\)</span> set. Then extend Thomae’s
+function to <span class="math inline">\(\mathbb{R}\)</span> by <span class="math inline">\(f(x)=\frac1n\)</span> when <span class="math inline">\(x=\frac mn\)</span> in lowest terms with <span class="math inline">\(n\in\mathbb{N}\)</span>, and <span class="math inline">\(f(x)=0\)</span> when <span class="math inline">\(x\)</span> is irrational. Explain why <span class="math inline">\(f\)</span> is continuous exactly at the irrational
+numbers. <a aria-label="Solution for Exercise 6.6.2" href="solutions-ch06.html#sol-exer-irrationals-gdelta">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-baire-uncountable">
+
+<p><strong>Exercise 6.6.3.</strong> Use <a href="#thm-baire">Theorem
+6.6.3</a> to give another proof that <span class="math inline">\(\mathbb{R}\)</span> is uncountable. <a aria-label="Solution for Exercise 6.6.3" href="solutions-ch06.html#sol-exer-baire-uncountable">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-dense-gdelta">
+
+<p><strong>Exercise 6.6.4.</strong> Let <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span> be <span class="math inline">\(G_\delta\)</span> sets that are dense in <span class="math inline">\(\mathbb{R}\)</span>. Prove that <span class="math inline">\(G\cap H\)</span> is dense in <span class="math inline">\(\mathbb{R}\)</span>. Conclude that a dense <span class="math inline">\(G_\delta\)</span> set is uncountable. <a aria-label="Hint for Exercise 6.6.4" href="solutions-ch06.html#sol-exer-dense-gdelta">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-nowhere-dense">
+
+<p><strong>Exercise 6.6.5.</strong> Prove that <span class="math inline">\(\mathbb{R}\)</span> is not a countable union of
+nowhere dense sets. Then prove that the Cantor set of <a href="ch-cantor.html">Chapter 5</a> is nowhere dense. <a aria-label="Hint for Exercise 6.6.5" href="solutions-ch06.html#sol-exer-nowhere-dense">[Hint]</a></p>
+</div>
+</section>
+</section>
 <section class="level3 unnumbered" id="notes-5">
 <h2>Notes</h2>
 <p>Bernard Bolzano proved the Intermediate Value Theorem in 1817 [<a href="bibliography.html#bib-bolzano1817">5</a>]. He also proved the Extreme Value Theorem
@@ -1120,7 +1253,10 @@ condition in 1876 to prove existence theorems for differential equations
 [<a href="bibliography.html#bib-lipschitz1876">49</a>]. The fact that a monotone function
 has only countably many discontinuities (<a href="#cor-monotone-discontinuities">Corollary 6.5.3</a>) is sometimes
 called Froda’s Theorem, after Alexandru Froda’s 1929 thesis [<a href="bibliography.html#bib-froda1929">32</a>]. Froda himself noted that it was already
-well known.</p>
+well known. Vito Volterra showed in 1881 that no function can be
+continuous exactly at the rational numbers. René Baire proved <a href="#thm-baire">Theorem 6.6.3</a> in his 1899 thesis. William Osgood
+had found the case of <span class="math inline">\(\mathbb{R}\)</span> in
+1897.</p>
 </section>
 </article>
 </main>

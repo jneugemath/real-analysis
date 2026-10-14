@@ -124,6 +124,80 @@ the Fundamental Theorem of Calculus, and use <a href="ch-function-sequences.html
 <p><strong><a href="ch-function-sequences.html#exer-uniform-bounded">Exercise
 11.2.11</a>.</strong> <em>Hint.</em> Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|f_n(x)-f(x)|&lt;1\)</span> for all <span class="math inline">\(n\ge N\)</span> and <span class="math inline">\(x\in E\)</span>. Then <span class="math inline">\(|f|\)</span> is at most <span class="math inline">\(1\)</span> more than a bound for <span class="math inline">\(|f_N|\)</span>. Treat <span class="math inline">\(f_1,\dots,f_{N-1}\)</span> separately.</p>
 </div>
+<div class="solutionbox" id="sol-exer-bernstein-small">
+
+<p><strong><a href="ch-function-sequences.html#exer-bernstein-small">Exercise 11.4.1</a>.</strong>
+By <a href="ch-function-sequences.html#lem-bernstein-moments">Lemma 11.4.2</a>, <span class="math inline">\(B_n1=\sum_kp_{n,k}(x)=1\)</span> and <span class="math inline">\(B_nx=\sum_k\frac
+knp_{n,k}(x)=\frac{nx}n=x\)</span>. In the proof of that lemma, <span class="math inline">\(\sum_kk(k-1)p_{n,k}(x)=n(n-1)x^2\)</span>, so
+<span class="math inline">\(\sum_kk^2p_{n,k}(x)=n(n-1)x^2+nx\)</span>.
+Thus <span class="math display">\[B_nx^2=\sum_{k=0}^n\frac{k^2}{n^2}p_{n,k}(x)=\frac{n(n-1)x^2+nx}{n^2}=x^2+\frac{x(1-x)}n.\]</span></p>
+</div>
+<div class="solutionbox" id="sol-exer-moments-zero">
+
+<p><strong><a href="ch-function-sequences.html#exer-moments-zero">Exercise 11.4.2</a>.</strong> By
+linearity, <span class="math inline">\(\int_0^1f(x)p(x)\,dx=0\)</span>
+for every polynomial <span class="math inline">\(p\)</span>. Let <span class="math inline">\(M\)</span> be a bound for <span class="math inline">\(|f|\)</span> on <span class="math inline">\([0,1]\)</span> (<a href="ch-continuity.html#thm-evt">Theorem
+6.3.15</a>), and let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-function-sequences.html#thm-weierstrass-approximation">Theorem 11.4.3</a>, there is a
+polynomial <span class="math inline">\(p\)</span> with <span class="math inline">\(|f(x)-p(x)|&lt;\varepsilon\)</span> on <span class="math inline">\([0,1]\)</span>. Then <span class="math display">\[0\le\int_0^1f^2=\int_0^1f(f-p)+\int_0^1fp=\int_0^1f(f-p)\le
+M\varepsilon.\]</span> Since <span class="math inline">\(\varepsilon\)</span> is arbitrary, <span class="math inline">\(\int_0^1f^2=0\)</span>. Suppose <span class="math inline">\(f(c)\ne0\)</span> for some <span class="math inline">\(c\)</span>. Then <span class="math inline">\(f^2(c)&gt;0\)</span>, and since <span class="math inline">\(f^2\)</span> is continuous, <span class="math inline">\(f^2(x)&gt;\frac{f^2(c)}2\)</span> on some interval
+<span class="math inline">\([\alpha,\beta]\subset[0,1]\)</span> with
+<span class="math inline">\(\alpha&lt;\beta\)</span>. Then <span class="math inline">\(\int_0^1f^2\ge\frac{f^2(c)}2(\beta-\alpha)&gt;0\)</span>.
+This is a contradiction. So <span class="math inline">\(f=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-exp-not-polynomial-limit">
+
+<p><strong><a href="ch-function-sequences.html#exer-exp-not-polynomial-limit">Exercise
+11.4.3</a>.</strong> <em>Hint.</em> If <span class="math inline">\(|p(x)-e^x|&lt;1\)</span> for all <span class="math inline">\(x\)</span>, then <span class="math inline">\(p\)</span> is bounded on <span class="math inline">\((-\infty,0]\)</span>. A polynomial that is not
+constant is unbounded there.</p>
+</div>
+<div class="solutionbox" id="sol-exer-weierstrass-open">
+
+<p><strong><a href="ch-function-sequences.html#exer-weierstrass-open">Exercise
+11.4.4</a>.</strong> <em>Hint.</em> A polynomial is bounded on <span class="math inline">\((0,1)\)</span>, but <span class="math inline">\(\frac1x\)</span> is not.</p>
+</div>
+<div class="solutionbox" id="sol-exer-approx-c1">
+
+<p><strong><a href="ch-function-sequences.html#exer-approx-c1">Exercise 11.4.5</a>.</strong>
+<em>Hint.</em> Approximate <span class="math inline">\(f'\)</span>
+by polynomials <span class="math inline">\(q_n\)</span>, and let <span class="math inline">\(p_n(x)=f(a)+\int_a^xq_n\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-picard-gaussian">
+
+<p><strong><a href="ch-function-sequences.html#exer-picard-gaussian">Exercise 11.5.1</a>.</strong>
+Here <span class="math inline">\(f(t,y)=2ty\)</span>. On any <span class="math inline">\([a,b]\)</span> containing <span class="math inline">\(0\)</span>, it satisfies the hypotheses with <span class="math inline">\(L=2\max\{|a|,|b|\}\)</span>. The iterates are
+<span class="math inline">\(\varphi_0=1\)</span>, <span class="math inline">\(\varphi_1(t)=1+\int_0^t2s\,ds=1+t^2\)</span>,
+<span class="math inline">\(\varphi_2(t)=1+\int_0^t2s(1+s^2)\,ds=1+t^2+\frac{t^4}2\)</span>.
+By induction, <span class="math inline">\(\varphi_n(t)=\sum_{k=0}^n\frac{t^{2k}}{k!}\)</span>.
+Indeed, if this holds for <span class="math inline">\(n\)</span>, then
+<span class="math display">\[\varphi_{n+1}(t)=1+\int_0^t\sum_{k=0}^n\frac{2s^{2k+1}}{k!}\,ds=1+\sum_{k=0}^n\frac{t^{2k+2}}{(k+1)!}=\sum_{j=0}^{n+1}\frac{t^{2j}}{j!}.\]</span>
+These are the partial sums of the series for <span class="math inline">\(e^u\)</span> with <span class="math inline">\(u=t^2\)</span>. So the solution is <span class="math inline">\(y(t)=e^{t^2}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ode-nonunique">
+
+<p><strong><a href="ch-function-sequences.html#exer-ode-nonunique">Exercise 11.5.2</a>.</strong>
+Clearly <span class="math inline">\(y=0\)</span> works. For <span class="math inline">\(y(t)=t^3\)</span>, <span class="math inline">\(y(0)=0\)</span> and <span class="math inline">\(y'(t)=3t^2\)</span>. Also <span class="math inline">\(y(t)^{2/3}=\left(\sqrt[3]{t^3}\right)^2=t^2\)</span>.
+So <span class="math inline">\(y'=3y^{2/3}\)</span>. The Lipschitz
+condition fails. If <span class="math inline">\(|3y^{2/3}-3z^{2/3}|\le
+L|y-z|\)</span> for all <span class="math inline">\(y,z\)</span>, then
+taking <span class="math inline">\(z=0\)</span> gives <span class="math inline">\(3|y|^{2/3}\le L|y|\)</span>, so <span class="math inline">\(3\le L|y|^{1/3}\)</span> for all <span class="math inline">\(y\ne0\)</span>. This is false for small <span class="math inline">\(y\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-contraction">
+
+<p><strong><a href="ch-function-sequences.html#exer-contraction">Exercise 11.5.3</a>.</strong>
+<em>Hint.</em> Show <span class="math inline">\(|x_{n+1}-x_n|\le
+k^{n-1}|x_2-x_1|\)</span>, so <span class="math inline">\(\{x_n\}\)</span> is Cauchy. For uniqueness, <span class="math inline">\(|c-d|=|g(c)-g(d)|\le k|c-d|\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-picard-error">
+
+<p><strong><a href="ch-function-sequences.html#exer-picard-error">Exercise 11.5.4</a>.</strong>
+<em>Hint.</em> Sum the estimate in the proof from <span class="math inline">\(k=n\)</span> to <span class="math inline">\(\infty\)</span>, and use <span class="math inline">\((j+n+1)!\ge n!\,j!\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-linear-ode">
+
+<p><strong><a href="ch-function-sequences.html#exer-linear-ode">Exercise 11.5.5</a>.</strong>
+<em>Hint.</em> Check the two conditions of <a href="ch-function-sequences.html#sec-picard">Section
+11.5</a> with <span class="math inline">\(L=\max|p|\)</span>.</p>
+</div>
 </article>
 </main>
 <nav class="pager" aria-label="Previous and next page (bottom)">

@@ -381,16 +381,73 @@ on <span class="math inline">\([2,s]\)</span>. Then use the <span class="math in
 9.7.5</a>.</strong> <em>Hint.</em> If <span class="math inline">\(c&lt;c'\)</span>, then <span class="math inline">\(\int_s^cf+\int_c^tf=\int_s^{c'}f+\int_{c'}^tf\)</span>
 for <span class="math inline">\(s&lt;c\)</span> and <span class="math inline">\(t&gt;c'\)</span>, by <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>.</p>
 </div>
+<div class="solutionbox" id="sol-exer-wallis-cos">
+
+<p><strong><a href="ch-integrals.html#exer-wallis-cos">Exercise 9.8.1</a>.</strong>
+<em>Hint.</em> Use <a href="ch-integrals.html#thm-substitution">Theorem 9.6.3</a> and
+<span class="math inline">\(\cos\left(\frac\pi2-t\right)=\sin
+t\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-stirling-root">
+
+<p><strong><a href="ch-integrals.html#exer-stirling-root">Exercise 9.8.2</a>.</strong>
+Let <span class="math inline">\(c_n=\frac{n!}{\sqrt{2\pi
+n}(n/e)^n}\)</span>. Then <span class="math display">\[\frac{\sqrt[n]{n!}}n=\sqrt[n]{c_n}\cdot\sqrt[n]{\sqrt{2\pi
+n}}\cdot\frac1e.\]</span> By <a href="ch-integrals.html#thm-stirling">Theorem 9.8.3</a>,
+<span class="math inline">\(c_n\to1\)</span>, so <span class="math inline">\(\frac12\le c_n\le2\)</span> for large <span class="math inline">\(n\)</span>. Then <span class="math inline">\(\sqrt[n]{1/2}\le\sqrt[n]{c_n}\le\sqrt[n]2\)</span>,
+and both bounds tend to <span class="math inline">\(1\)</span> by <a href="ch-power-series.html#lem-root-limits">Lemma 12.1.3</a>. So <span class="math inline">\(\sqrt[n]{c_n}\to1\)</span>. Also <span class="math inline">\(\sqrt[n]{\sqrt{2\pi
+n}}=\sqrt{\sqrt[n]{2\pi}\cdot\sqrt[n]n}\to1\)</span> by <a href="ch-power-series.html#lem-root-limits">Lemma 12.1.3</a>. So <span class="math inline">\(\frac{\sqrt[n]{n!}}n\to\frac1e\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-stirling-bounds">
+
+<p><strong><a href="ch-integrals.html#exer-stirling-bounds">Exercise 9.8.3</a>.</strong>
+<em>Hint.</em> In the proof of <a href="ch-integrals.html#thm-stirling">Theorem
+9.8.3</a>, <span class="math inline">\(a_n\)</span> strictly decreases
+to <span class="math inline">\(\sqrt{2\pi}\)</span>, and <span class="math inline">\(b_n=a_ne^{-1/(4n)}\)</span> strictly increases to
+it. For <span class="math inline">\(n=10\)</span> the lower bound is
+about <span class="math inline">\(3598696\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-gamma-half">
+
+<p><strong><a href="ch-integrals.html#exer-gamma-half">Exercise 9.8.4</a>.</strong> Let
+<span class="math inline">\(0&lt;a&lt;b\)</span>. On <span class="math inline">\([\sqrt a,\sqrt b]\)</span>, the substitution <span class="math inline">\(t=u^2\)</span>, <span class="math inline">\(dt=2u\,du\)</span>, gives <span class="math display">\[\int_a^be^{-t}t^{-1/2}\,dt=\int_{\sqrt a}^{\sqrt
+b}e^{-u^2}\cdot\frac1u\cdot2u\,du=2\int_{\sqrt a}^{\sqrt
+b}e^{-u^2}\,du.\]</span> Let <span class="math inline">\(a\to0^+\)</span> and <span class="math inline">\(b\to\infty\)</span>. By <a href="ch-integrals.html#thm-gauss-integral">Theorem 9.8.4</a>, <span class="math inline">\(\Gamma\left(\frac12\right)=2\cdot\frac{\sqrt\pi}2=\sqrt\pi\)</span>.
+By <a href="ch-integrals.html#exer-gamma">Exercise 9.7.4</a>, <span class="math inline">\(\Gamma(x+1)=x\Gamma(x)\)</span>. So <span class="math inline">\(\Gamma\left(\frac52\right)=\frac32\cdot\frac12\cdot\Gamma\left(\frac12\right)=\frac{3\sqrt\pi}4\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-gauss-variants">
+
+<p><strong><a href="ch-integrals.html#exer-gauss-variants">Exercise 9.8.5</a>.</strong>
+The substitution <span class="math inline">\(x=-u\)</span> gives <span class="math inline">\(\int_{-b}^0e^{-x^2}\,dx=\int_0^be^{-u^2}\,du\)</span>.
+Letting <span class="math inline">\(b\to\infty\)</span> and adding <span class="math inline">\(\int_0^\infty e^{-x^2}\,dx\)</span> gives <span class="math inline">\(\int_{-\infty}^\infty
+e^{-x^2}\,dx=2\cdot\frac{\sqrt\pi}2=\sqrt\pi\)</span>.</p>
+<p>For the second integral, let <span class="math inline">\(b&gt;0\)</span> and integrate by parts with <span class="math inline">\(u=x\)</span> and <span class="math inline">\(v=-\frac12e^{-x^2}\)</span>, so <span class="math inline">\(v'=xe^{-x^2}\)</span>. Then <span class="math display">\[\int_0^bx^2e^{-x^2}\,dx=-\frac
+b2e^{-b^2}+\frac12\int_0^be^{-x^2}\,dx.\]</span> For <span class="math inline">\(b\ge1\)</span>, <span class="math inline">\(0&lt;be^{-b^2}\le be^{-b}\)</span>, which tends to
+<span class="math inline">\(0\)</span> by <a href="ch-integrals.html#thm-growth-rates">Theorem 9.4.11</a>. So letting <span class="math inline">\(b\to\infty\)</span> gives <span class="math inline">\(\int_0^\infty
+x^2e^{-x^2}\,dx=\frac12\cdot\frac{\sqrt\pi}2=\frac{\sqrt\pi}4\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-basel-variants">
+
+<p><strong><a href="ch-integrals.html#exer-basel-variants">Exercise 9.8.6</a>.</strong>
+<em>Hint.</em> Split <span class="math inline">\(\sum\frac1{k^2}\)</span> into the sum over even
+<span class="math inline">\(k\)</span> and the sum over odd <span class="math inline">\(k\)</span>. The even terms add up to <span class="math inline">\(\frac14\sum\frac1{k^2}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-pi-irrational">
+
+<p><strong><a href="ch-integrals.html#exer-pi-irrational">Exercise 9.8.7</a>.</strong>
+<em>Hint.</em> (a) <span class="math inline">\(f\)</span> is <span class="math inline">\(\frac1{n!}\)</span> times a polynomial with
+integer coefficients and only powers <span class="math inline">\(x^n\)</span> through <span class="math inline">\(x^{2n}\)</span>. Use <span class="math inline">\(a-b(\pi-x)=bx\)</span>. (b) <span class="math inline">\(f^{(2n+2)}=0\)</span>. (c) On <span class="math inline">\((0,\pi)\)</span>, <span class="math inline">\(0&lt;x(a-bx)&lt;\pi a\)</span>.</p>
+</div>
 <div class="solutionbox" id="sol-exer-rs-step">
 
-<p><strong><a href="ch-integrals.html#exer-rs-step">Exercise 9.8.1</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-rs-step">Exercise 9.9.1</a>.</strong>
 <em>Hint.</em> Write <span class="math inline">\(\alpha=c_1+(c_2-c_1)I_c\)</span>, and argue as in
-<a href="ch-integrals.html#ex-unit-jump">Example 9.8.6</a>.</p>
+<a href="ch-integrals.html#ex-unit-jump">Example 9.9.6</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-equal-increments">
 
 <p><strong><a href="ch-integrals.html#exer-rs-equal-increments">Exercise
-9.8.2</a>.</strong> <em>Hint.</em> Use the Intermediate Value Theorem to
+9.9.2</a>.</strong> <em>Hint.</em> Use the Intermediate Value Theorem to
 find <span class="math inline">\(x_i\)</span> with <span class="math inline">\(\alpha(x_i)=\alpha(a)+\frac
 in[\alpha(b)-\alpha(a)]\)</span>.</p>
 <p><em>Solution.</em> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. If <span class="math inline">\(\alpha(b)=\alpha(a)\)</span>, then <span class="math inline">\(\alpha\)</span> is constant, since it is
@@ -412,22 +469,22 @@ partition of <span class="math inline">\([a,b]\)</span>. For each <span class="m
 <div class="solutionbox" id="sol-exer-rs-parts-identity">
 
 <p><strong><a href="ch-integrals.html#exer-rs-parts-identity">Exercise
-9.8.3</a>.</strong> <em>Hint.</em> Since <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> increase, the sup of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> is <span class="math inline">\(\alpha(x_i)\)</span> and the inf of <span class="math inline">\(\beta\)</span> is <span class="math inline">\(\beta(x_{i-1})\)</span>. Check that <span class="math inline">\(\alpha(x_i)\beta(x_i)-\alpha(x_{i-1})\beta(x_{i-1})=\alpha(x_i)\Delta\beta_i+\beta(x_{i-1})\Delta\alpha_i\)</span>,
+9.9.3</a>.</strong> <em>Hint.</em> Since <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> increase, the sup of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> is <span class="math inline">\(\alpha(x_i)\)</span> and the inf of <span class="math inline">\(\beta\)</span> is <span class="math inline">\(\beta(x_{i-1})\)</span>. Check that <span class="math inline">\(\alpha(x_i)\beta(x_i)-\alpha(x_{i-1})\beta(x_{i-1})=\alpha(x_i)\Delta\beta_i+\beta(x_{i-1})\Delta\alpha_i\)</span>,
 and sum over <span class="math inline">\(i\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-finite-jumps">
 
-<p><strong><a href="ch-integrals.html#exer-rs-finite-jumps">Exercise 9.8.4</a>.</strong>
-<em>Hint.</em> By <a href="ch-integrals.html#ex-unit-jump">Example 9.8.6</a>, <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Multiplying
+<p><strong><a href="ch-integrals.html#exer-rs-finite-jumps">Exercise 9.9.4</a>.</strong>
+<em>Hint.</em> By <a href="ch-integrals.html#ex-unit-jump">Example 9.9.6</a>, <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Multiplying
 the integrator by <span class="math inline">\(c\ge0\)</span> multiplies
 every Riemann–Stieltjes sum by <span class="math inline">\(c\)</span>.
-Then use <a href="ch-integrals.html#thm-rs-properties">Theorem 9.8.10</a> (3).</p>
+Then use <a href="ch-integrals.html#thm-rs-properties">Theorem 9.9.10</a> (3).</p>
 <p><em>Solution.</em> <em>Step 1. Scaling the integrator.</em> Let <span class="math inline">\(\beta:[a,b]\to\mathbb{R}\)</span> be increasing,
 let <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, and let
 <span class="math inline">\(c\ge0\)</span>. We show <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span> and <span class="math inline">\(\int_a^bf\,d(c\beta)=c\int_a^bf\,d\beta\)</span>.
 If <span class="math inline">\(c=0\)</span>, then <span class="math inline">\(c\beta\)</span> is constant. Every sum for <span class="math inline">\(c\beta\)</span> is <span class="math inline">\(0\)</span>, so the integral is <span class="math inline">\(0\)</span>. Suppose <span class="math inline">\(c&gt;0\)</span>. For any partition <span class="math inline">\(\mathcal{P}\)</span>, the increments of <span class="math inline">\(c\beta\)</span> are <span class="math inline">\(c\Delta\beta_i\)</span>. So <span class="math display">\[\mathcal{U}(\mathcal{P},f,c\beta)=c\,\mathcal{U}(\mathcal{P},f,\beta)\quad\text{and}\quad\mathcal{L}(\mathcal{P},f,c\beta)=c\,\mathcal{L}(\mathcal{P},f,\beta).\]</span>
 Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Riemann’s
-Criterion (<a href="ch-integrals.html#thm-rs-riemann-criterion">Theorem 9.8.8</a>) gives
+Criterion (<a href="ch-integrals.html#thm-rs-riemann-criterion">Theorem 9.9.8</a>) gives
 a partition <span class="math inline">\(\mathcal{P}\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P},f,\beta)-\mathcal{L}(\mathcal{P},f,\beta)&lt;\frac\varepsilon
 c\)</span>. Then the difference for <span class="math inline">\(c\beta\)</span> is less than <span class="math inline">\(\varepsilon\)</span>. So <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span>. Also, for every
 <span class="math inline">\(\mathcal{P}\)</span>, <span class="math inline">\(\mathcal{L}(\mathcal{P},f,\beta)\le\int_a^bf\,d\beta\le\mathcal{U}(\mathcal{P},f,\beta)\)</span>.
@@ -435,36 +492,36 @@ Multiplying by <span class="math inline">\(c\)</span>, the number <span class="m
 lower sum and every upper sum for <span class="math inline">\(c\beta\)</span>. So it lies between the lower and
 upper integrals, which both equal <span class="math inline">\(\int_a^bf\,d(c\beta)\)</span>.</p>
 <p><em>Step 2.</em> Since <span class="math inline">\(a&lt;s_i\le
-b\)</span> and <span class="math inline">\(f\)</span> is continuous, <a href="ch-integrals.html#ex-unit-jump">Example 9.8.6</a> gives <span class="math inline">\(f\in\mathcal{R}(I_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Here <span class="math inline">\(I_{s_i}(x)=I(x-s_i)\)</span>. By Step 1, <span class="math inline">\(f\in\mathcal{R}(c_iI_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,d(c_iI_{s_i})=c_if(s_i)\)</span>. Each
+b\)</span> and <span class="math inline">\(f\)</span> is continuous, <a href="ch-integrals.html#ex-unit-jump">Example 9.9.6</a> gives <span class="math inline">\(f\in\mathcal{R}(I_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Here <span class="math inline">\(I_{s_i}(x)=I(x-s_i)\)</span>. By Step 1, <span class="math inline">\(f\in\mathcal{R}(c_iI_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,d(c_iI_{s_i})=c_if(s_i)\)</span>. Each
 <span class="math inline">\(c_iI_{s_i}\)</span> is increasing, since
 <span class="math inline">\(c_i\ge0\)</span>.</p>
 <p><em>Step 3.</em> Let <span class="math inline">\(\alpha_k=\sum_{i=1}^kc_iI_{s_i}\)</span>. We show
 by induction on <span class="math inline">\(k\)</span> that <span class="math inline">\(f\in\mathcal{R}(\alpha_k)\)</span> and <span class="math inline">\(\int_a^bf\,d\alpha_k=\sum_{i=1}^kc_if(s_i)\)</span>.
 The case <span class="math inline">\(k=1\)</span> is Step 2. If it holds
 for <span class="math inline">\(k\)</span>, then <span class="math inline">\(\alpha_{k+1}=\alpha_k+c_{k+1}I_{s_{k+1}}\)</span>
-is a sum of two increasing functions. By <a href="ch-integrals.html#thm-rs-properties">Theorem 9.8.10</a> (3) and Step 2, <span class="math display">\[\int_a^bf\,d\alpha_{k+1}=\int_a^bf\,d\alpha_k+\int_a^bf\,d(c_{k+1}I_{s_{k+1}})=\sum_{i=1}^{k+1}c_if(s_i).\]</span>
+is a sum of two increasing functions. By <a href="ch-integrals.html#thm-rs-properties">Theorem 9.9.10</a> (3) and Step 2, <span class="math display">\[\int_a^bf\,d\alpha_{k+1}=\int_a^bf\,d\alpha_k+\int_a^bf\,d(c_{k+1}I_{s_{k+1}})=\sum_{i=1}^{k+1}c_if(s_i).\]</span>
 Since <span class="math inline">\(\alpha=\alpha_n\)</span>, this proves
 the theorem.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-floor-x-squared">
 
 <p><strong><a href="ch-integrals.html#exer-rs-floor-x-squared">Exercise
-9.8.5</a>.</strong> <em>Hint.</em> On <span class="math inline">\([1,5]\)</span>, <span class="math inline">\(\left\lfloor
+9.9.5</a>.</strong> <em>Hint.</em> On <span class="math inline">\([1,5]\)</span>, <span class="math inline">\(\left\lfloor
 x^2\right\rfloor=1+\sum_{k=2}^{25}I(x-\sqrt k)\)</span>. Adding a
-constant to the integrator does not change the integral. Use <a href="ch-integrals.html#thm-rs-finite-jumps">Theorem 9.8.15</a>.</p>
+constant to the integrator does not change the integral. Use <a href="ch-integrals.html#thm-rs-finite-jumps">Theorem 9.9.15</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-sin">
 
-<p><strong><a href="ch-integrals.html#exer-rs-sin">Exercise 9.8.6</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-rs-sin">Exercise 9.9.6</a>.</strong>
 <em>Hint.</em> Use <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem
-9.8.17</a>.</p>
+9.9.17</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-rs-c1-formula">
 
-<p><strong><a href="ch-integrals.html#exer-rs-c1-formula">Exercise 9.8.7</a>.</strong>
+<p><strong><a href="ch-integrals.html#exer-rs-c1-formula">Exercise 9.9.7</a>.</strong>
 <em>Hint.</em> First show that <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>,
 so that <span class="math inline">\(V_\alpha\in C^{(1)}[a,b]\)</span>.
-Then apply <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.8.17</a> to
+Then apply <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.9.17</a> to
 <span class="math inline">\(V_\alpha\)</span> and to <span class="math inline">\(V_\alpha-\alpha\)</span>.</p>
 <p><em>Solution.</em> By <a href="ch-bounded-variation.html#cor-continuous-derivative-bv">Corollary 8.1.10</a>, <span class="math inline">\(\alpha\in BV[a,b]\)</span>. So <span class="math inline">\(V_\alpha\)</span> is defined.</p>
 <p><em>Step 1. <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>
@@ -486,8 +543,8 @@ for every <span class="math inline">\(\mathcal{P}\)</span>, and <span class="mat
 9.3.7</a>, <span class="math inline">\(V_\alpha\)</span> is
 differentiable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(V_\alpha'=|\alpha'|\)</span>, which is
 continuous and so in <span class="math inline">\(\mathcal{R}[a,b]\)</span>. Let <span class="math inline">\(\beta=V_\alpha-\alpha\)</span>. Then <span class="math inline">\(\beta\)</span> is differentiable with <span class="math inline">\(\beta'=|\alpha'|-\alpha'\in\mathcal{R}[a,b]\)</span>.
-Both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(\beta\)</span> are increasing, by Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. By <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.8.17</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, with <span class="math display">\[\int_a^bf\,dV_\alpha=\int_a^bf|\alpha'|\quad\text{and}\quad\int_a^bf\,d\beta=\int_a^bf\bigl(|\alpha'|-\alpha'\bigr).\]</span>
-By <a href="ch-integrals.html#def-rs-bv">Definition 9.8.20</a>, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, and by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, <span class="math display">\[\int_a^bf\,d\alpha=\int_a^bf|\alpha'|-\int_a^bf\bigl(|\alpha'|-\alpha'\bigr)=\int_a^bf\alpha'.\]</span></p>
+Both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(\beta\)</span> are increasing, by Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. By <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.9.17</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, with <span class="math display">\[\int_a^bf\,dV_\alpha=\int_a^bf|\alpha'|\quad\text{and}\quad\int_a^bf\,d\beta=\int_a^bf\bigl(|\alpha'|-\alpha'\bigr).\]</span>
+By <a href="ch-integrals.html#def-rs-bv">Definition 9.9.20</a>, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, and by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, <span class="math display">\[\int_a^bf\,d\alpha=\int_a^bf|\alpha'|-\int_a^bf\bigl(|\alpha'|-\alpha'\bigr)=\int_a^bf\alpha'.\]</span></p>
 </div>
 </article>
 </main>
