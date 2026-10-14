@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 8. Functions of Bounded Variation* | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="part-riemann.html"><span class="dir">Previous</span> Part II. Riemann Integrals and Series</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-integrals.html"><span class="dir">Next</span> Chapter 9. Integrals</a>
+</nav>
+<main id="main">
+<article id="ch-bounded-variation">
+<h1>Chapter 8. Functions of Bounded
+Variation<sup>*</sup></h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-bv">8.1 Partitions and Functions of Bounded
+Variation</a></li><li><a href="#sec-jordan">8.2 Jordan Decomposition Theorem</a></li><li><a href="#notes-7">Notes</a></li></ul></nav>
+<p>This chapter can be skipped. Only <a href="ch-integrals.html#sec-riemann-stieltjes">Section 9.6</a> uses it. Partitions,
+defined in <a href="#sec-bv">Section 8.1</a>, are defined again in <a href="ch-integrals.html#sec-darboux">Section 9.1</a>.</p>
+<p>Imagine walking along the graph of <span class="math inline">\(f\)</span> from <span class="math inline">\(x=a\)</span> to <span class="math inline">\(x=b\)</span> and recording only the vertical
+distance traveled, up or down. That total is the variation of <span class="math inline">\(f\)</span>. A function of bounded variation is one
+for which it is finite. Monotone functions have bounded variation, and
+so do functions with bounded derivatives. The main result, the Jordan
+Decomposition Theorem, says every function of bounded variation is a
+difference of two increasing functions. These functions are the natural
+integrators for the Riemann–Stieltjes integral in <a href="ch-integrals.html#sec-riemann-stieltjes">Section 9.6</a>, and they return in Part
+III.</p>
+<section class="level3 unnumbered" id="sec-bv">
+<h2>8.1 Partitions and Functions of Bounded
+Variation</h2>
+<div class="definitionbox" id="def-partition">
+
+<p><strong>Definition 8.1.1.</strong> A <em>partition</em> <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> is a finite collection <span class="math inline">\(\{x_0,x_1,\dots,x_n\}\)</span> with <span class="math inline">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-mesh">
+
+<p><strong>Definition 8.1.2.</strong> The <em>mesh</em> of a partition
+<span class="math inline">\(\mathcal{P}\)</span> is defined as <span class="math inline">\(\left\lVert \mathcal{P}\right\rVert=\max_i\Delta
+x_i\)</span>, where <span class="math inline">\(\Delta
+x_i=x_i-x_{i-1}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-regular-partition">
+
+<p><strong>Definition 8.1.3.</strong> A partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> is <em>regular</em> if <span class="math inline">\(x_k-x_{k-1}=\frac{b-a}{n}\)</span> for all <span class="math inline">\(k=1,2,\dots,n\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-refinement">
+
+<p><strong>Definition 8.1.4.</strong> A partition <span class="math inline">\(\mathcal{P}^*\)</span> of <span class="math inline">\([a,b]\)</span> is a <em>refinement</em> of the
+partition <span class="math inline">\(\mathcal{P}\)</span> if <span class="math inline">\(\mathcal{P}\subset\mathcal{P}^*\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-bounded-variation">
+
+<p><strong>Definition 8.1.5.</strong> Suppose <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>. If <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> is a
+partition of <span class="math inline">\([a,b]\)</span>, define <span class="math display">\[V(\mathcal{P})=\sum_{k=1}^n|f(x_k)-f(x_{k-1})|.\]</span>
+Define the <em>total variation</em> of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> by <span class="math display">\[V_f[a,b]=\sup_{\mathcal{P}}
+V(\mathcal{P}),\]</span> where the supremum is taken over all possible
+partitions of <span class="math inline">\([a,b]\)</span>. If <span class="math inline">\(V_f[a,b]&lt;\infty\)</span>, <span class="math inline">\(f\)</span> is of <em>bounded variation</em> on
+<span class="math inline">\([a,b]\)</span>. The set of functions of
+bounded variation on <span class="math inline">\([a,b]\)</span> is
+denoted <span class="math inline">\(BV[a,b]\)</span>.</p>
+</div>
+<p>Here <span class="math inline">\(V_f[a,b]=\infty\)</span> means the
+set of sums <span class="math inline">\(V(\mathcal{P})\)</span> is not
+bounded above, as in <a href="ch-sequences.html#rem-sup-infinity">Remark 3.6.7</a>. When
+more than one function or interval is involved, the context says which
+one <span class="math inline">\(V(\mathcal{P})\)</span> refers to.</p>
+<div class="remarkbox" id="rem-variation-endpoints">
+
+<p><strong>Remark 8.1.6.</strong> Notice that by picking <span class="math inline">\(\mathcal{P}=\{a,b\}\)</span>, <span class="math inline">\(V(\mathcal{P})=|f(b)-f(a)|\)</span>. So <span class="math inline">\(V_f[a,b]\ge |f(b)-f(a)|\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-variation-refinement">
+
+<p><strong>Lemma 8.1.7.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>. If <span class="math inline">\(\mathcal{P}^*\)</span> is a refinement of the
+partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(V(\mathcal{P})\le V(\mathcal{P}^*)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> First suppose <span class="math inline">\(\mathcal{P}^*=\mathcal{P}\cup\{x^*\}\)</span> has
+one more point than <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span>. Then <span class="math inline">\(x_{k-1}&lt;x^*&lt;x_k\)</span> for some <span class="math inline">\(k\)</span>. By the Triangle Inequality, <span class="math display">\[|f(x_k)-f(x_{k-1})|\le|f(x_k)-f(x^*)|+|f(x^*)-f(x_{k-1})|.\]</span>
+The left side is the term of <span class="math inline">\(V(\mathcal{P})\)</span> for <span class="math inline">\([x_{k-1},x_k]\)</span>. The right side is the sum
+of the two terms of <span class="math inline">\(V(\mathcal{P}^*)\)</span> that replace it. All
+other terms are the same. So <span class="math inline">\(V(\mathcal{P})\le V(\mathcal{P}^*)\)</span>. In
+general, <span class="math inline">\(\mathcal{P}^*\)</span> has finitely
+many more points than <span class="math inline">\(\mathcal{P}\)</span>.
+Adding them one at a time gives the result.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Telescoping Sums).</strong></p>
+<p>A sum of the form <span class="math inline">\(\sum_{k=1}^n(a_k-a_{k-1})\)</span> collapses.
+Writing it out, <span class="math inline">\((a_1-a_0)+(a_2-a_1)+\cdots+(a_n-a_{n-1})\)</span>,
+every term cancels except <span class="math inline">\(a_n-a_0\)</span>.
+Such a sum is called <em>telescoping</em>. The proof of <a href="#thm-monotone-bv">Theorem 8.1.8</a> uses it with <span class="math inline">\(a_k=f(x_k)\)</span>. The proof of <a href="#thm-bounded-derivative-bv">Theorem 8.1.9</a> uses it with <span class="math inline">\(a_k=x_k\)</span>, which gives <span class="math inline">\(\sum_{k=1}^n\Delta x_k=b-a\)</span> for every
+partition of <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-monotone-bv">
+
+<p><strong>Theorem 8.1.8.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be monotone on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(V_f[a,b]=|f(b)-f(a)|\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume without loss of generality that <span class="math inline">\(f\)</span> is increasing on <span class="math inline">\([a,b]\)</span>. (Otherwise, replace <span class="math inline">\(f\)</span> by <span class="math inline">\(-f\)</span>, which has the same variation.) Let
+<span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span>
+be a partition of <span class="math inline">\([a,b]\)</span>. Then <span class="math display">\[\begin{aligned}
+\sum^n_{k=1}|f(x_k)-f(x_{k-1})|&amp;=\sum^n_{k=1}\bigl(f(x_k)-f(x_{k-1})\bigr)\\
+&amp;=f(x_1)-f(x_0)+f(x_2)-f(x_1)+\cdots+f(x_n)-f(x_{n-1})\\
+&amp;=f(x_n)-f(x_0)\\
+&amp;=f(b)-f(a).
+\end{aligned}\]</span> The first equality holds since <span class="math inline">\(f(x_k)\ge f(x_{k-1})\)</span> for each <span class="math inline">\(k\)</span>. So every sum <span class="math inline">\(V(\mathcal{P})\)</span> equals <span class="math inline">\(f(b)-f(a)\)</span>. So <span class="math inline">\(V_f[a,b]=f(b)-f(a)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-bounded-derivative-bv">
+
+<p><strong>Theorem 8.1.9.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be differentiable on
+<span class="math inline">\([a,b]\)</span> with <span class="math inline">\(f'\)</span> bounded on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(f'\)</span> is
+bounded on <span class="math inline">\([a,b]\)</span>, there exists an
+<span class="math inline">\(M&gt;0\)</span> such that <span class="math inline">\(|f'(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. By the Mean
+Value Theorem, for each <span class="math inline">\(k=1,2,\dots,n\)</span>, there exists a <span class="math inline">\(c_k\in(x_{k-1},x_k)\)</span> such that <span class="math display">\[f(x_k)-f(x_{k-1})=f'(c_k)(x_k-x_{k-1}).\]</span>
+So <span class="math display">\[|f(x_k)-f(x_{k-1})|=|f'(c_k)||x_k-x_{k-1}|\le
+M|x_k-x_{k-1}|.\]</span> This implies <span class="math display">\[\sum^n_{k=1}|f(x_k)-f(x_{k-1})|\le\sum^n_{k=1}M|x_k-x_{k-1}|=M(b-a).\]</span>
+Hence <span class="math inline">\(V_f[a,b]\le M(b-a)\)</span> and the
+function <span class="math inline">\(f\)</span> is of bounded variation
+on <span class="math inline">\([a,b]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-continuous-derivative-bv">
+
+<p><strong>Corollary 8.1.10.</strong> Let <span class="math inline">\(f\in C^{(1)}[a,b]\)</span>. Then <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="ch-continuity.html#thm-continuous-bounded">Theorem 6.3.14</a>, <span class="math inline">\(f'\)</span> is bounded on <span class="math inline">\([a,b]\)</span>. So <a href="#thm-bounded-derivative-bv">Theorem 8.1.9</a> applies.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-cube-root-bv">
+
+<p><strong>Example 8.1.11.</strong> Notice that <span class="math inline">\(f:[-1,1]\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=\sqrt[3]{x}\)</span>, is of bounded variation
+on <span class="math inline">\([-1,1]\)</span> since it is strictly
+increasing on <span class="math inline">\([-1,1]\)</span>. However, its
+derivative is unbounded on <span class="math inline">\([-1,1]\setminus\{0\}\)</span>, and <span class="math inline">\(f'(0)\)</span> does not exist. So the converse
+of <a href="#thm-bounded-derivative-bv">Theorem 8.1.9</a> is false. (For
+<span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(\sqrt[3]{x}=-\sqrt[3]{-x}\)</span>.)</p>
+</div>
+<div class="theorembox" id="thm-lipschitz-bv">
+
+<p><strong>Theorem 8.1.12.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> satisfy a Lipschitz
+condition on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-lipschitz-bv">Exercise
+8.1.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-29">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-x-alpha-sin-bv">
+
+<p><strong>Exercise 8.1.1.</strong> Prove if <span class="math inline">\(\alpha\ge\beta+1\)</span> and <span class="math inline">\(\beta&gt;0\)</span>, then <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> defined by <span class="math display">\[f(x)=\begin{cases}x^\alpha\sin\frac{1}{x^\beta},
+&amp; 0&lt;x\le 1, \\ 0, &amp; x=0,\end{cases}\]</span> is of bounded
+variation on <span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 8.1.1" href="solutions-ch08.html#sol-exer-x-alpha-sin-bv">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-lipschitz-bv">
+
+<p><strong>Exercise 8.1.2.</strong> Prove <a href="#thm-lipschitz-bv">Theorem 8.1.12</a>. <a aria-label="Hint for Exercise 8.1.2" href="solutions-ch08.html#sol-exer-lipschitz-bv">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-bv-bounded">
+
+<p><strong>Exercise 8.1.3.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be of bounded
+variation on <span class="math inline">\([a,b]\)</span>. Prove that
+<span class="math inline">\(|f(x)|\le|f(a)|+V_f[a,b]\)</span> for all
+<span class="math inline">\(x\in[a,b]\)</span>. So <span class="math inline">\(f\)</span> is bounded. <a aria-label="Hint for Exercise 8.1.3" href="solutions-ch08.html#sol-exer-bv-bounded">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-sin-not-bv">
+
+<p><strong>Exercise 8.1.4.</strong> Define <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=x\sin\frac1x\)</span> for <span class="math inline">\(x&gt;0\)</span> and <span class="math inline">\(f(0)=0\)</span>. Prove that <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([0,1]\)</span> but is not of bounded variation on
+<span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 8.1.4" href="solutions-ch08.html#sol-exer-x-sin-not-bv">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dirichlet-not-bv">
+
+<p><strong>Exercise 8.1.5.</strong> Prove that the Dirichlet function of
+<a href="ch-continuity.html#ex-dirichlet-function">Example 6.1.9</a>, restricted to <span class="math inline">\([0,1]\)</span>, is not of bounded variation on
+<span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 8.1.5" href="solutions-ch08.html#sol-exer-dirichlet-not-bv">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-jordan">
+<h2>8.2 Jordan Decomposition Theorem</h2>
+<p>This section shows that a function of bounded variation is the
+difference of two increasing functions. The two functions are built from
+the variation of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,x]\)</span>, viewed as a function of <span class="math inline">\(x\)</span>.</p>
+<div class="theorembox" id="thm-variation-additive">
+
+<p><strong>Theorem 8.2.1.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(c\in(a,b)\)</span>, then <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,c]\)</span> and <span class="math inline">\([c,b]\)</span>, and <span class="math inline">\(V_f[a,b]=V_f[a,c]+V_f[c,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\mathcal{P}_a=\{x_0,x_1,\dots,x_j\}\)</span> be a
+partition of <span class="math inline">\([a,c]\)</span> and let <span class="math inline">\(\mathcal{P}_b=\{y_0,y_1,\dots,y_n\}\)</span> be a
+partition of <span class="math inline">\([c,b]\)</span>. Then <span class="math inline">\(\mathcal{P}=\mathcal{P}_a\cup\mathcal{P}_b\)</span>
+is a partition of <span class="math inline">\([a,b]\)</span> with <span class="math display">\[V(\mathcal{P})=\sum^j_{k=1}|f(x_k)-f(x_{k-1})|+\sum^n_{k=1}|f(y_k)-f(y_{k-1})|\le\sup_{\mathcal{P}}
+V(\mathcal{P})=V_f[a,b].\]</span> Take the supremum over all partitions
+of <span class="math inline">\([a,c]\)</span>. Then <span class="math display">\[V_f[a,c]+\sum^n_{k=1}|f(y_k)-f(y_{k-1})|\le
+\sup_{\mathcal{P}} V(\mathcal{P})=V_f[a,b].\]</span> So <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,c]\)</span>. Then taking the supremum over all
+partitions of <span class="math inline">\([c,b]\)</span>, <span class="math display">\[V_f[a,c]+V_f[c,b]\le \sup_{\mathcal{P}}
+V(\mathcal{P})=V_f[a,b].\]</span> So <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([c,b]\)</span>.</p>
+<p>Now let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Without loss of
+generality assume <span class="math inline">\(c\in\mathcal{P}\)</span>.
+If not, add it. By <a href="#lem-variation-refinement">Lemma 8.1.7</a>,
+this does not decrease <span class="math inline">\(V(\mathcal{P})\)</span>. So there exists a <span class="math inline">\(k\in\{1,\dots,n\}\)</span> with <span class="math inline">\(c=x_k\)</span>. Then <span class="math inline">\(\mathcal{P}_a=\{x_0,\dots,x_k\}\)</span> is a
+partition of <span class="math inline">\([a,c]\)</span> and <span class="math inline">\(\mathcal{P}_b=\{x_k,\dots,x_n\}\)</span> is a
+partition of <span class="math inline">\([c,b]\)</span>. Now <span class="math display">\[V(\mathcal{P})=V(\mathcal{P}_a)+V(\mathcal{P}_b)\le
+V_f[a,c]+V_f[c,b].\]</span> By taking the supremum of all partitions of
+<span class="math inline">\([a,b]\)</span>, <span class="math display">\[V_f[a,b]\le V_f[a,c]+V_f[c,b].\]</span> So <span class="math display">\[V_f[a,b]= V_f[a,c]+V_f[c,b].\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Taking Suprema One at a Time).</strong></p>
+<p>The first half of the proof of <a href="#thm-variation-additive">Theorem 8.2.1</a> has two independent
+choices, a partition <span class="math inline">\(\mathcal{P}_a\)</span>
+of <span class="math inline">\([a,c]\)</span> and a partition <span class="math inline">\(\mathcal{P}_b\)</span> of <span class="math inline">\([c,b]\)</span>. It knows <span class="math inline">\(V(\mathcal{P}_a)+V(\mathcal{P}_b)\le
+V_f[a,b]\)</span> for every pair. To get <span class="math inline">\(V_f[a,c]+V_f[c,b]\le V_f[a,b]\)</span>, it fixes
+<span class="math inline">\(\mathcal{P}_b\)</span> and takes the
+supremum over <span class="math inline">\(\mathcal{P}_a\)</span>. The
+result still holds for every <span class="math inline">\(\mathcal{P}_b\)</span>, so it then takes the
+supremum over <span class="math inline">\(\mathcal{P}_b\)</span>. Each
+step uses only that a supremum is the least upper bound. If every
+element of a set is at most <span class="math inline">\(K\)</span>, then
+so is the supremum.</p>
+</div>
+<div class="theorembox" id="thm-variation-increasing">
+
+<p><strong>Theorem 8.2.2.</strong> Suppose that <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> is of bounded
+variation on <span class="math inline">\([a,b]\)</span>. Define <span class="math inline">\(V_f(x)=V_f[a,x]\)</span> for <span class="math inline">\(a&lt;x\le b\)</span>, and <span class="math inline">\(V_f(a)=0\)</span>. Then the function <span class="math inline">\(V_f\)</span> is increasing on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By <a href="#thm-variation-additive">Theorem
+8.2.1</a>, <span class="math inline">\(V_f\)</span> is a well-defined
+function. Now let <span class="math inline">\(x_1,x_2\in[a,b]\)</span>
+with <span class="math inline">\(x_1&lt;x_2\)</span>. If <span class="math inline">\(x_1=a\)</span>, then <span class="math inline">\(V_f(x_1)=0\le V_f(x_2)\)</span>. So assume <span class="math inline">\(x_1&gt;a\)</span>. By <a href="#thm-variation-additive">Theorem 8.2.1</a> on <span class="math inline">\([a,x_2]\)</span>, <span class="math display">\[V_f[a,x_2]=V_f[a,x_1]+V_f[x_1,x_2].\]</span> So
+<span class="math display">\[V_f(x_2)-V_f(x_1)=V_f[x_1,x_2]\ge
+0.\]</span> Thus, <span class="math inline">\(V_f(x_1)\le
+V_f(x_2)\)</span> and <span class="math inline">\(V_f\)</span> is
+increasing on <span class="math inline">\([a,b]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-variation-continuity">
+
+<p><strong>Theorem 8.2.3.</strong> Suppose that <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> is of bounded
+variation on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\in[a,b]\)</span> if and only if <span class="math inline">\(V_f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(x\in[a,b]\)</span>. If <span class="math inline">\(c&lt;x\)</span>, then by <a href="#rem-variation-endpoints">Remark 8.1.6</a> and <a href="#thm-variation-additive">Theorem 8.2.1</a>, <span class="math display">\[|f(x)-f(c)|\le V_f[c,x]=V_f(x)-V_f(c).\]</span>
+If <span class="math inline">\(x&lt;c\)</span>, the same argument gives
+<span class="math inline">\(|f(c)-f(x)|\le V_f(c)-V_f(x)\)</span>. So
+<span class="math inline">\(|f(x)-f(c)|\le|V_f(x)-V_f(c)|\)</span> for
+all <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(V_f\)</span> is continuous at <span class="math inline">\(c\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|V_f(x)-V_f(c)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\in[a,b]\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>. For these <span class="math inline">\(x\)</span>, <span class="math inline">\(|f(x)-f(c)|&lt;\varepsilon\)</span>. So <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>. First suppose <span class="math inline">\(c&lt;b\)</span>. To show <span class="math inline">\(\lim_{x\to c^+}V_f(x)=V_f(c)\)</span>, let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|f(x)-f(c)|&lt;\frac{\varepsilon}{2}\)</span> for
+all <span class="math inline">\(x\in[a,b]\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>. Since <span class="math inline">\(V_f[c,b]-\frac{\varepsilon}{2}\)</span> is less
+than the supremum <span class="math inline">\(V_f[c,b]\)</span>, there
+exists a partition <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> of
+<span class="math inline">\([c,b]\)</span> with <span class="math inline">\(V(\mathcal{P})&gt;V_f[c,b]-\frac{\varepsilon}{2}\)</span>.
+By <a href="#lem-variation-refinement">Lemma 8.1.7</a>, adding points to
+<span class="math inline">\(\mathcal{P}\)</span> does not decrease <span class="math inline">\(V(\mathcal{P})\)</span>. So assume <span class="math inline">\(x_1-c&lt;\delta\)</span> and <span class="math inline">\(x_1&lt;b\)</span>. Then <span class="math display">\[V_f[c,b]-\frac{\varepsilon}{2}&lt;V(\mathcal{P})=|f(x_1)-f(c)|+\sum_{k=2}^n|f(x_k)-f(x_{k-1})|&lt;\frac{\varepsilon}{2}+V_f[x_1,b].\]</span>
+By <a href="#thm-variation-additive">Theorem 8.2.1</a>, <span class="math inline">\(V_f[c,b]-V_f[x_1,b]=V_f[c,x_1]\)</span>. So <span class="math inline">\(V_f[c,x_1]&lt;\varepsilon\)</span>. Now let <span class="math inline">\(c&lt;x&lt;x_1\)</span>. Since <span class="math inline">\(V_f\)</span> is increasing, <span class="math display">\[0\le V_f(x)-V_f(c)=V_f[c,x]\le
+V_f[c,x_1]&lt;\varepsilon,\]</span> where the last step uses <a href="#thm-variation-increasing">Theorem 8.2.2</a> on <span class="math inline">\([c,b]\)</span>. So <span class="math inline">\(|V_f(x)-V_f(c)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\)</span> with <span class="math inline">\(c&lt;x&lt;x_1\)</span>. Thus <span class="math inline">\(\lim_{x\to c^+}V_f(x)=V_f(c)\)</span>.</p>
+<p>If <span class="math inline">\(c&gt;a\)</span>, a similar argument
+with a partition of <span class="math inline">\([a,c]\)</span> shows
+<span class="math inline">\(\lim_{x\to c^-}V_f(x)=V_f(c)\)</span>.
+Together, these show <span class="math inline">\(V_f\)</span> is
+continuous at <span class="math inline">\(c\)</span>. (At <span class="math inline">\(c=a\)</span> only the right-hand limit is needed,
+and at <span class="math inline">\(c=b\)</span> only the left-hand
+limit.)</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-variation-minus-f">
+
+<p><strong>Theorem 8.2.4.</strong> Suppose that <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> is of bounded
+variation on <span class="math inline">\([a,b]\)</span>. Then the
+function <span class="math inline">\(V_f-f\)</span> is increasing on
+<span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(x_1,x_2\in[a,b]\)</span> with <span class="math inline">\(x_1&lt;x_2\)</span>. Then <span class="math display">\[\begin{aligned}
+(V_f-f)(x_2)-(V_f-f)(x_1)&amp;=V_f(x_2)-V_f(x_1)-(f(x_2)-f(x_1))\\
+&amp;=V_f[x_1,x_2]-(f(x_2)-f(x_1))\\
+&amp;\ge |f(x_2)-f(x_1)|-(f(x_2)-f(x_1))\\
+&amp;\ge 0.
+\end{aligned}\]</span> The first inequality is <a href="#rem-variation-endpoints">Remark 8.1.6</a> on <span class="math inline">\([x_1,x_2]\)</span>. Thus <span class="math inline">\((V_f-f)(x_2)\ge(V_f-f)(x_1)\)</span> and <span class="math inline">\(V_f-f\)</span> is increasing on <span class="math inline">\([a,b]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-jordan-decomposition">
+
+<p><strong>Theorem 8.2.5</strong> (Jordan Decomposition
+Theorem)<strong>.</strong></p>
+<p>Suppose that <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>. Then <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span> if and only if <span class="math inline">\(f\)</span> can be written as the difference of two
+increasing functions.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Leftarrow\)</span>)
+Suppose that <span class="math inline">\(g,h:[a,b]\to\mathbb{R}\)</span>
+are increasing functions and <span class="math inline">\(f\)</span> is
+defined by <span class="math inline">\(f=g-h\)</span>. By <a href="#thm-monotone-bv">Theorem 8.1.8</a>, <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are of bounded variation with <span class="math inline">\(V_g[a,b]=g(b)-g(a)\)</span> and <span class="math inline">\(V_h[a,b]=h(b)-h(a)\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Then <span class="math display">\[\begin{aligned}
+V(\mathcal{P})&amp;=\sum_{k=1}^n|f(x_k)-f(x_{k-1})|\\
+&amp;=\sum_{k=1}^n|g(x_k)-g(x_{k-1})-(h(x_k)-h(x_{k-1}))|\\
+&amp;\le
+\sum_{k=1}^n|g(x_k)-g(x_{k-1})|+\sum_{k=1}^n|h(x_k)-h(x_{k-1})|\\
+&amp;=g(b)-g(a)+h(b)-h(a).
+\end{aligned}\]</span> So <span class="math inline">\(V_f[a,b]\le
+g(b)-g(a)+h(b)-h(a)&lt;\infty\)</span> and <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) If <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>, then by Theorems <a href="#thm-variation-increasing">8.2.2</a> and <a href="#thm-variation-minus-f">8.2.4</a>, <span class="math inline">\(V_f\)</span> and <span class="math inline">\(V_f-f\)</span> are increasing functions. But <span class="math inline">\(f=V_f-(V_f-f)\)</span>. So <span class="math inline">\(f\)</span> is the difference of two increasing
+functions.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-30">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-x-squared-jordan">
+
+<p><strong>Exercise 8.2.1.</strong> Write <span class="math inline">\(f(x)=x^2\)</span> on <span class="math inline">\([-1,1]\)</span> as the difference of two monotone
+functions by finding <span class="math inline">\(V_f(x)\)</span>. <a aria-label="Hint for Exercise 8.2.1" href="solutions-ch08.html#sol-exer-x-squared-jordan">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-bv-sum">
+
+<p><strong>Exercise 8.2.2.</strong> Prove if <span class="math inline">\(f,g\)</span> are of bounded variation on <span class="math inline">\([a,b]\)</span>, then so are <span class="math inline">\(f+g\)</span> and <span class="math inline">\(f-g\)</span>. <a aria-label="Solution for Exercise 8.2.2" href="solutions-ch08.html#sol-exer-bv-sum">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-bv-product">
+
+<p><strong>Exercise 8.2.3.</strong> Prove if <span class="math inline">\(f,g\)</span> are of bounded variation on <span class="math inline">\([a,b]\)</span>, then so is <span class="math inline">\(fg\)</span>. <a aria-label="Hint for Exercise 8.2.3" href="solutions-ch08.html#sol-exer-bv-product">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-continuous-jordan">
+
+<p><strong>Exercise 8.2.4.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be continuous and of
+bounded variation on <span class="math inline">\([a,b]\)</span>. Prove
+that <span class="math inline">\(f\)</span> is the difference of two
+continuous increasing functions. <a aria-label="Hint for Exercise 8.2.4" href="solutions-ch08.html#sol-exer-continuous-jordan">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-7">
+<h2>Notes</h2>
+<p>Camille Jordan introduced functions of bounded variation in 1881, in
+his work on Fourier series [<a href="bibliography.html#bib-jordan1881">38</a>]. <a href="ch-differentiation.html#sec-bv-revisited">Section 17.3</a> in Part III treats bounded
+variation again, using positive, negative and total variation.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="part-riemann.html"><span class="dir">Previous</span> Part II. Riemann Integrals and Series</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-integrals.html"><span class="dir">Next</span> Chapter 9. Integrals</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

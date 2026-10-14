@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 5. The Cantor Set | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch04.html"><span class="dir">Previous</span> Solutions for Chapter 4. Topological Properties of the Real Line</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch06.html"><span class="dir">Next</span> Solutions for Chapter 6. Functions and Continuity</a>
+</nav>
+<main id="main">
+<article id="solutions-ch05">
+<h1>Solutions for Chapter 5. The Cantor Set</h1>
+<div class="solutionbox" id="sol-exer-cantor-total-length">
+
+<p><strong><a href="ch-cantor.html#exer-cantor-total-length">Exercise
+5.1.1</a>.</strong> By <a href="ch-cantor.html#lem-cantor-intervals">Lemma
+5.1.2</a> (1), <span class="math inline">\(C_n\)</span> is the union of
+the <span class="math inline">\(2^n\)</span> disjoint intervals <span class="math inline">\(J_{n,1},\dots,J_{n,2^n}\)</span>, and each has
+length <span class="math inline">\(\frac{1}{3^n}\)</span>. So the sum of
+their lengths is <span class="math inline">\(2^n\cdot\frac{1}{3^n}=\left(\frac23\right)^n\)</span>.</p>
+<p>The intervals removed in building <span class="math inline">\(C_1,\dots,C_n\)</span> fill up the rest of <span class="math inline">\([0,1]\)</span>, apart from endpoints. So their
+lengths add up to <span class="math inline">\(1-\left(\frac23\right)^n\)</span>. As <span class="math inline">\(n\to\infty\)</span>, <span class="math inline">\(\left(\frac23\right)^n\to0\)</span> by <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>. So the lengths of all the
+removed intervals add up to <span class="math inline">\(1\)</span>. This
+is <a href="ch-cantor.html#thm-cantor-length">Theorem 5.1.5</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cantor-endpoints-countable">
+
+<p><strong><a href="ch-cantor.html#exer-cantor-endpoints-countable">Exercise
+5.1.2</a>.</strong> <em>Hint.</em> For each <span class="math inline">\(n\)</span> there are only finitely many endpoints.
+Use <a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-three-fourths-cantor">
+
+<p><strong><a href="ch-cantor.html#exer-three-fourths-cantor">Exercise
+5.2.3</a>.</strong> <em>Hint.</em> Find a ternary expansion of <span class="math inline">\(\frac34\)</span> that uses only the digits <span class="math inline">\(0\)</span> and <span class="math inline">\(2\)</span>, and use <a href="ch-cantor.html#thm-cantor-ternary">Theorem 5.2.7</a>.</p>
+<p><em>Solution.</em> Take the digits <span class="math inline">\(n_k=2\)</span> for odd <span class="math inline">\(k\)</span> and <span class="math inline">\(n_k=0\)</span> for even <span class="math inline">\(k\)</span>. The odd <span class="math inline">\(k\)</span> are <span class="math inline">\(k=2j-1\)</span> for <span class="math inline">\(j\in\mathbb{N}\)</span>, so <span class="math display">\[\sum_{k=1}^\infty\frac{n_k}{3^k}=\sum_{j=1}^\infty\frac{2}{3^{2j-1}}=6\sum_{j=1}^\infty\left(\frac19\right)^j=6\cdot\frac{1/9}{1-1/9}=\frac34,\]</span>
+using <span class="math inline">\(\sum_{i=0}^\infty
+r^i=\frac{1}{1-r}\)</span> for <span class="math inline">\(|r|&lt;1\)</span>, as in the proof of <a href="ch-cantor.html#thm-cantor-length">Theorem 5.1.5</a>. So <span class="math inline">\(.2020\dots\)</span> is a ternary expansion of
+<span class="math inline">\(\frac34\)</span> that uses only the digits
+<span class="math inline">\(0\)</span> and <span class="math inline">\(2\)</span>. By <a href="ch-cantor.html#thm-cantor-ternary">Theorem 5.2.7</a>, <span class="math inline">\(\frac34\in C\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cantor-four-points">
+
+<p><strong><a href="ch-cantor.html#exer-cantor-four-points">Exercise
+5.2.4</a>.</strong> Four points in the Cantor set include <span class="math inline">\(1/3\)</span> and <span class="math inline">\(2/3\)</span>, which are both endpoints, and <span class="math inline">\(1/4\)</span> and <span class="math inline">\(111/364\)</span>, which both have ternary
+expansions consisting of <span class="math inline">\(0\)</span>’s and
+<span class="math inline">\(2\)</span>’s. Indeed, <span class="math inline">\(\frac14=.020202\dots\)</span> and <span class="math inline">\(\frac{111}{364}=.022020\,022020\dots\)</span>
+(base <span class="math inline">\(3\)</span>), so both are in <span class="math inline">\(C\)</span> by <a href="ch-cantor.html#thm-cantor-ternary">Theorem 5.2.7</a>. Every endpoint of an
+interval <span class="math inline">\(J_{n,i}\)</span> has the form <span class="math inline">\(\frac{k}{3^n}\)</span> by <a href="ch-cantor.html#lem-cantor-intervals">Lemma 5.1.2</a>. In lowest terms, <span class="math inline">\(\frac14\)</span> and <span class="math inline">\(\frac{111}{364}\)</span> have denominators <span class="math inline">\(4\)</span> and <span class="math inline">\(364\)</span>, which are not powers of <span class="math inline">\(3\)</span>. So they are not endpoints.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cantor-interior">
+
+<p><strong><a href="ch-cantor.html#exer-cantor-interior">Exercise 5.2.5</a>.</strong>
+<em>Hint.</em> An interval inside <span class="math inline">\(C\)</span>
+lies inside <span class="math inline">\(C_n\)</span> for every <span class="math inline">\(n\)</span>, so its length is at most <span class="math inline">\(3^{-n}\)</span>. For <span class="math inline">\(C'=C\)</span>, use <a href="ch-cantor.html#thm-cantor-perfect">Theorem 5.1.4</a> and the fact that <span class="math inline">\(C\)</span> is closed.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch04.html"><span class="dir">Previous</span> Solutions for Chapter 4. Topological Properties of the Real Line</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch06.html"><span class="dir">Next</span> Solutions for Chapter 6. Functions and Continuity</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

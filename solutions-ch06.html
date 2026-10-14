@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 6. Functions and Continuity | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch05.html"><span class="dir">Previous</span> Solutions for Chapter 5. The Cantor Set</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch07.html"><span class="dir">Next</span> Solutions for Chapter 7. The Derivative</a>
+</nav>
+<main id="main">
+<article id="solutions-ch06">
+<h1>Solutions for Chapter 6. Functions and Continuity</h1>
+<div class="solutionbox" id="sol-exer-basic-limits">
+
+<p><strong><a href="ch-continuity.html#exer-basic-limits">Exercise 6.1.1</a>.</strong>
+<em>Hint.</em> (d) First show <span class="math inline">\(|\sqrt{x}-\sqrt{c}|=\dfrac{|x-c|}{\sqrt{x}+\sqrt{c}}\)</span>.</p>
+<p><em>Solution.</em>(a) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\varepsilon\)</span>. Then for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|k-k|=0&lt;\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c} k=k\)</span>.</p>
+<p>(b) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define
+<span class="math inline">\(\delta=\varepsilon\)</span>. Then for all
+<span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|x-c|&lt;\delta=\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c} x=c\)</span>.</p>
+<p>(c) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define
+<span class="math inline">\(\delta=\varepsilon\)</span>. Then, by the
+reverse triangle inequality, for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(\bigl||x|-|c|\bigr|\le
+|x-c|&lt;\delta=\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c} |x|=|c|\)</span>.</p>
+<p>(d) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define
+<span class="math inline">\(\delta=\sqrt{c}\,\varepsilon\)</span>. Then
+for all <span class="math inline">\(x\ge0\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math display">\[|\sqrt{x}-\sqrt{c}|=|\sqrt{x}-\sqrt{c}|\frac{\sqrt{x}+\sqrt{c}}{\sqrt{x}+\sqrt{c}}=\frac{|x-c|}{\sqrt{x}+\sqrt{c}}\le
+\frac{|x-c|}{\sqrt{c}}&lt;\frac{\delta}{\sqrt{c}}=\varepsilon.\]</span>
+So <span class="math inline">\(\lim_{x\to c}
+\sqrt{x}=\sqrt{c}\)</span>.</p>
+<p>(e) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define
+<span class="math inline">\(\delta=\frac{\varepsilon}{6}\)</span>. Then
+for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-3|&lt;\delta\)</span>, <span class="math display">\[|(6x+7)-25|=|6x-18|=6|x-3|&lt;6\delta=\varepsilon.\]</span>
+So <span class="math inline">\(\lim_{x\to 3}(6x+7)=25\)</span>.</p>
+<p>(f) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define
+<span class="math inline">\(\delta=\min\left\{1,\frac{\varepsilon}{10}
+\right\}\)</span>. Then for all <span class="math inline">\(x\)</span>
+with <span class="math inline">\(0&lt;|x-2|&lt;\delta\)</span>, <span class="math display">\[|(x^2+5x)-14|=|x+7||x-2|.\]</span> Since <span class="math inline">\(|x-2|&lt;\delta\le1\)</span>, <span class="math inline">\(-1&lt;x-2&lt;1\)</span>, and it follows that <span class="math inline">\(8&lt;x+7&lt;10\)</span>. So <span class="math inline">\(|x+7|&lt;10\)</span>. Therefore, for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-2|&lt;\delta\)</span>, <span class="math display">\[|(x^2+5x)-14|=|x+7||x-2|&lt;10|x-2|&lt;10\delta\le\varepsilon.\]</span>
+So <span class="math inline">\(\lim_{x\to2}(x^2+5x)=14\)</span>.</p>
+<p>(g) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define
+<span class="math inline">\(\delta=\min\left\{\frac{1}{2},
+\frac{23\varepsilon}{54}\right\}\)</span>. Then for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-4|&lt;\delta\)</span>, <span class="math display">\[\left|\frac{1}{x^2+5x-24}-\frac{1}{12}\right|=\left|\frac{x^2+5x-36}{12(x^2+5x-24)}\right|=\frac{|x+9||x-4|}{12|x+8||x-3|}.\]</span>
+Since <span class="math inline">\(|x-4|&lt;\delta\le\frac{1}{2}\)</span>, it follows
+that <span class="math inline">\(\frac{25}{2}&lt;x+9&lt;\frac{27}{2}\)</span>,
+<span class="math inline">\(\frac{23}{2}&lt;x+8&lt;\frac{25}{2}\)</span>, and
+<span class="math inline">\(\frac{1}{2}&lt;x-3&lt;\frac{3}{2}\)</span>.
+So <span class="math inline">\(|x+9|&lt;\frac{27}{2}\)</span>, <span class="math inline">\(\frac{1}{|x+8|}&lt;\frac{2}{23}\)</span>, and
+<span class="math inline">\(\frac{1}{|x-3|}&lt;2\)</span>. Therefore,
+for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-4|&lt;\delta\)</span>, <span class="math display">\[\left|\frac{1}{x^2+5x-24}-\frac{1}{12}\right|&lt;\frac{54|x-4|}{23\cdot12}&lt;\frac{54|x-4|}{23}&lt;\frac{54\delta}{23}\le\varepsilon.\]</span>
+So <span class="math inline">\(\lim_{x\to 4}
+\frac{1}{x^2+5x-24}=\frac{1}{12}\)</span>.</p>
+<p>(h) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define
+<span class="math inline">\(\delta=\min\left\{\frac{1}{2},\frac{\varepsilon}{2}\right\}\)</span>.
+Then for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-3|&lt;\delta\)</span>, <span class="math display">\[\left|\frac{1}{x-2}-1\right|=\frac{|x-3|}{|x-2|}.\]</span>
+Since <span class="math inline">\(|x-3|&lt;\delta\le\frac{1}{2}\)</span>, it follows
+that <span class="math inline">\(\frac{1}{2}&lt;x-2&lt;\frac{3}{2}\)</span>, and so
+<span class="math inline">\(\frac{1}{|x-2|}&lt;2\)</span>. Therefore,
+for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-3|&lt;\delta\)</span>, <span class="math display">\[\left|\frac{1}{x-2}-1\right|=\frac{|x-3|}{|x-2|}&lt;2|x-3|&lt;2\delta\le\varepsilon.\]</span>
+So <span class="math inline">\(\lim_{x\to3}\frac{1}{x-2}=1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-limit-sign">
+
+<p><strong><a href="ch-continuity.html#exer-limit-sign">Exercise 6.1.3</a>.</strong> Let
+<span class="math inline">\(L&gt;0\)</span>. Set <span class="math inline">\(\varepsilon=L/2&gt;0\)</span>. Then there exists a
+<span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-L|&lt;L/2\)</span>. So for all such <span class="math inline">\(x\)</span>, <span class="math inline">\(f(x)-L&gt;-L/2\)</span>, or <span class="math inline">\(f(x)&gt;L/2&gt;0\)</span>. If <span class="math inline">\(L&lt;0\)</span>, apply this to <span class="math inline">\(-f\)</span>, which has limit <span class="math inline">\(-L&gt;0\)</span> by <a href="ch-continuity.html#thm-function-limit-laws">Theorem 6.1.13</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-function-limit-laws">
+
+<p><strong><a href="ch-continuity.html#exer-function-limit-laws">Exercise
+6.1.5</a>.</strong> (1) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. There exist <span class="math inline">\(\delta_1,\delta_2&gt;0\)</span> with <span class="math inline">\(|f(x)-L_1|&lt;\frac\varepsilon 2\)</span> for
+<span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>, and <span class="math inline">\(|g(x)-L_2|&lt;\frac\varepsilon 2\)</span> for
+<span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_2\)</span>. Let <span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>. For
+<span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, the Triangle
+Inequality gives <span class="math inline">\(|f(x)+g(x)-(L_1+L_2)|\le|f(x)-L_1|+|g(x)-L_2|&lt;\varepsilon\)</span>.</p>
+<p>(2) Since <span class="math inline">\(\lim_{x\to c}f(x)\)</span>
+exists, by <a href="ch-continuity.html#lem-limit-locally-bounded">Lemma 6.1.12</a> there
+exists an <span class="math inline">\(M&gt;0\)</span> and a <span class="math inline">\(\delta_1&gt;0\)</span> such that for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>, <span class="math inline">\(|f(x)|\le M\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\lim_{x\to c}f(x)=L_1\)</span>, there exists a
+<span class="math inline">\(\delta_2&gt;0\)</span> such that for all
+<span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_2\)</span>, <span class="math inline">\(|f(x)-L_1|&lt;\frac{\varepsilon}{2(|L_2|+1)}\)</span>.
+Since <span class="math inline">\(\lim_{x\to c}g(x)=L_2\)</span>, there
+exists a <span class="math inline">\(\delta_3&gt;0\)</span> such that
+for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_3\)</span>, <span class="math inline">\(|g(x)-L_2|&lt;\frac{\varepsilon}{2M}\)</span>. Set
+<span class="math inline">\(\delta=\min\{\delta_1,\delta_2,\delta_3\}\)</span>.
+Then for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+|f(x)g(x)-L_1L_2|&amp;=|f(x)g(x)-f(x)L_2+f(x)L_2-L_1L_2|\\
+&amp;\le |f(x)||g(x)-L_2|+|L_2||f(x)-L_1|\\
+&amp;&lt;
+M\left(\frac{\varepsilon}{2M}\right)+|L_2|\left(\frac{\varepsilon}{2(|L_2|+1)}\right)&lt;\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\lim_{x\to
+c}f(x)g(x)=L_1L_2\)</span>. Throughout, <span class="math inline">\(x\)</span> ranges over <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sin-x-over-x">
+
+<p><strong><a href="ch-continuity.html#exer-sin-x-over-x">Exercise 6.1.7</a>.</strong>
+<em>Hint.</em> For <span class="math inline">\(0&lt;|x|&lt;\frac{\pi}{2}\)</span>, <span class="math inline">\(\cos x&lt;\frac{\sin x}{x}&lt;1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-one-sided-limits">
+
+<p><strong><a href="ch-continuity.html#exer-one-sided-limits">Exercise 6.1.8</a>.</strong>
+(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then there exists a
+<span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. So for all <span class="math inline">\(x\in(c-\delta,c)\)</span> and for all <span class="math inline">\(x\in(c,c+\delta)\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c^-}f(x)=\lim_{x\to
+c^+}f(x)=L\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then there exists a
+<span class="math inline">\(\delta_1&gt;0\)</span> such that for all
+<span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta_{1}\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. Also, there
+exists a <span class="math inline">\(\delta_2&gt;0\)</span> such that
+for all <span class="math inline">\(x\)</span> with <span class="math inline">\(-\delta_{2}&lt;x-c&lt;0\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. Set <span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>. Then
+for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-on-rationals">
+
+<p><strong><a href="ch-continuity.html#exer-x-on-rationals">Exercise 6.1.9</a>.</strong>
+<em>Hint.</em> For <span class="math inline">\(c\ne0\)</span>, use a
+sequence of rational numbers and a sequence of irrational numbers that
+converge to <span class="math inline">\(c\)</span>, and <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cos-one-over-x">
+
+<p><strong><a href="ch-continuity.html#exer-cos-one-over-x">Exercise 6.1.10</a>.</strong>
+<em>Hint.</em> Look at <span class="math inline">\(x_n=\frac{1}{2n\pi}\)</span> and <span class="math inline">\(y_n=\frac{1}{(2n+1)\pi}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-one-over-x-at-infinity">
+
+<p><strong><a href="ch-continuity.html#exer-one-over-x-at-infinity">Exercise
+6.2.1</a>.</strong> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(d=\frac{1}{\varepsilon}\)</span>. Then for all
+<span class="math inline">\(x\)</span> with <span class="math inline">\(x&gt;d\)</span>, <span class="math display">\[\left|\frac{1}{x}-0\right|=\frac{1}{x}&lt;\frac{1}{d}=\frac{1}{\frac{1}{\varepsilon}}=\varepsilon.\]</span>
+So <span class="math inline">\(\lim_{x\to\infty}\frac{1}{x}=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rational-at-infinity">
+
+<p><strong><a href="ch-continuity.html#exer-rational-at-infinity">Exercise
+6.2.3</a>.</strong> <em>Hint.</em> For <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(\left|\frac{2x+1}{x+3}-2\right|=\frac{5}{x+3}&lt;\frac5x\)</span>.</p>
+<p><em>Solution.</em> For <span class="math inline">\(x&gt;0\)</span>,
+<span class="math display">\[\left|\frac{2x+1}{x+3}-2\right|=\left|\frac{2x+1-2x-6}{x+3}\right|=\frac{5}{x+3}&lt;\frac5x.\]</span>
+Let <span class="math inline">\(\varepsilon&gt;0\)</span> and set <span class="math inline">\(d=\frac5\varepsilon\)</span>. If <span class="math inline">\(x&gt;d\)</span>, then <span class="math inline">\(\left|\frac{2x+1}{x+3}-2\right|&lt;\frac5x&lt;\frac5d=\varepsilon\)</span>.
+By <a href="ch-continuity.html#def-limit-at-infinity">Definition 6.2.5</a>, <span class="math inline">\(\lim_{x\to\infty}\frac{2x+1}{x+3}=2\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-sin-continuous">
+
+<p><strong><a href="ch-continuity.html#exer-x-sin-continuous">Exercise 6.3.1</a>.</strong>
+<em>Hint.</em> <span class="math inline">\(|x\sin\frac1x|\le|x|\)</span>.</p>
+<p><em>Solution.</em> By <a href="ch-continuity.html#def-continuity">Definition 6.3.1</a>,
+it is enough to show <span class="math inline">\(\lim_{x\to0}f(x)=f(0)=0\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span> and set <span class="math inline">\(\delta=\varepsilon\)</span>. If <span class="math inline">\(0&lt;|x|&lt;\delta\)</span>, then <span class="math display">\[|f(x)-0|=|x|\left|\sin\frac1x\right|\le|x|&lt;\delta=\varepsilon,\]</span>
+since <span class="math inline">\(|\sin t|\le1\)</span> for all <span class="math inline">\(t\)</span>. So <span class="math inline">\(\lim_{x\to0}f(x)=0=f(0)\)</span>, and <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ivt-two-functions">
+
+<p><strong><a href="ch-continuity.html#exer-ivt-two-functions">Exercise
+6.3.4</a>.</strong> <em>Hint.</em> Apply the Intermediate Value Theorem
+to <span class="math inline">\(f-g\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-zero-on-rationals">
+
+<p><strong><a href="ch-continuity.html#exer-zero-on-rationals">Exercise
+6.3.5</a>.</strong> <em>Hint.</em> Choose rational numbers <span class="math inline">\(q_n\to x\)</span>, and use <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-continuous-preimage-open">
+
+<p><strong><a href="ch-continuity.html#exer-continuous-preimage-open">Exercise
+6.3.6</a>.</strong> (<span class="math inline">\(\Rightarrow\)</span>)
+Let <span class="math inline">\(O\)</span> be an open set. For all <span class="math inline">\(x\in f^{-1}[O]\)</span>, <span class="math inline">\(f(x)\in O\)</span>, and so for all <span class="math inline">\(x\in f^{-1}[O]\)</span>, there exists an <span class="math inline">\(\varepsilon_x&gt;0\)</span> such that <span class="math inline">\((f(x)-\varepsilon_x,f(x)+\varepsilon_x)\subset
+O\)</span>. Since for all <span class="math inline">\(x\in
+f^{-1}[O]\subset E\)</span>, <span class="math inline">\(f\)</span> is
+continuous at <span class="math inline">\(x\)</span>, there exists a
+<span class="math inline">\(\delta_x&gt;0\)</span> such that for all
+<span class="math inline">\(y\in E\)</span> with <span class="math inline">\(|x-y|&lt;\delta_x\)</span>, <span class="math inline">\(|f(x)-f(y)|&lt;\varepsilon_x\)</span>. Set <span class="math inline">\(U=\bigcup_{x\in f^{-1}[O]}(x-\delta_x,
+x+\delta_x)\)</span>, an open set. If <span class="math inline">\(y\in
+E\cap U\)</span>, then <span class="math inline">\(y\in E\)</span> and
+there exists an <span class="math inline">\(x\in f^{-1}[O]\)</span> such
+that <span class="math inline">\(y\in(x-\delta_x,x+\delta_x)\)</span>.
+So <span class="math inline">\(f(y)\in(f(x)-\varepsilon_x,f(x)+\varepsilon_x)\subset
+O\)</span>. So <span class="math inline">\(y\in f^{-1}[O]\)</span> and
+<span class="math inline">\(E\cap U\subset f^{-1}[O]\)</span>. Now let
+<span class="math inline">\(x\in f^{-1}[O]\)</span>. Then <span class="math inline">\(x\in U\)</span>. Also, since <span class="math inline">\(f^{-1}[O]\subset E\)</span>, <span class="math inline">\(x\in E\)</span>. So <span class="math inline">\(x\in E\cap U\)</span>. So <span class="math inline">\(f^{-1}[O]\subset E\cap U\)</span> and <span class="math inline">\(f^{-1}[O]=E\cap U\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Let <span class="math inline">\(x\in E\)</span>. By the assumption, there exists
+an open set <span class="math inline">\(U\)</span> such that <span class="math inline">\(f^{-1}[(f(x)-\varepsilon,f(x)+\varepsilon)]=E\cap
+U\)</span>. So <span class="math inline">\(x\in U\)</span>. Since <span class="math inline">\(U\)</span> is open, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\((x-\delta,x+\delta)\subset U\)</span>. Thus, for
+all <span class="math inline">\(y\in E\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math inline">\(y\in E\cap U\)</span>. So <span class="math inline">\(f(y)\in (f(x)-\varepsilon,
+f(x)+\varepsilon)\)</span>. Thus, for all <span class="math inline">\(y\in E\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-f(y)|&lt;\varepsilon\)</span>. So <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span>. Since <span class="math inline">\(x\in
+E\)</span> was arbitrary, <span class="math inline">\(f\)</span> is
+continuous on all of <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-one-over-x-uniform">
+
+<p><strong><a href="ch-continuity.html#exer-one-over-x-uniform">Exercise
+6.4.1</a>.</strong> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=a^2\varepsilon\)</span>. Then for all <span class="math inline">\(x,y\in[a,\infty)\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math display">\[|f(x)-f(y)|=\left|\frac{1}{x}-\frac{1}{y}\right|=\frac{|x-y|}{xy}\le
+\frac{|x-y|}{a^2}&lt;\frac{\delta}{a^2}=\frac{a^2\varepsilon}{a^2}=\varepsilon.\]</span>
+So <span class="math inline">\(f\)</span> is uniformly continuous on
+<span class="math inline">\([a,\infty)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-squared-not-uniform">
+
+<p><strong><a href="ch-continuity.html#exer-x-squared-not-uniform">Exercise
+6.4.2</a>.</strong> Assume, by way of contradiction, that <span class="math inline">\(f\)</span> is uniformly continuous on <span class="math inline">\(\mathbb{R}\)</span>. Let <span class="math inline">\(\varepsilon=1\)</span>. Then there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x,y\in\mathbb{R}\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-f(y)|=|x^2-y^2|&lt;1\)</span>. Set <span class="math inline">\(x=\frac{1}{\delta}-\frac{\delta}{4}\)</span> and
+<span class="math inline">\(y=\frac{1}{\delta}+\frac{\delta}{4}\)</span>. Then
+<span class="math inline">\(|x-y|=\frac{\delta}{2}&lt;\delta\)</span>
+but <span class="math inline">\(|x^2-y^2|=|x+y||x-y|=\frac{2}{\delta}\cdot\frac{\delta}{2}=1\)</span>,
+a contradiction. So <span class="math inline">\(f\)</span> is not
+uniformly continuous on <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sqrt-uniform">
+
+<p><strong><a href="ch-continuity.html#exer-sqrt-uniform">Exercise 6.4.4</a>.</strong>
+<em>Hint.</em> Show <span class="math inline">\(|\sqrt{x}-\sqrt{y}|\le\sqrt{|x-y|}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-uniform-cauchy">
+
+<p><strong><a href="ch-continuity.html#exer-uniform-cauchy">Exercise 6.4.5</a>.</strong>
+<em>Hint.</em> Given <span class="math inline">\(\varepsilon\)</span>,
+take <span class="math inline">\(\delta\)</span> from uniform
+continuity. Then use the Cauchy condition with <span class="math inline">\(\delta\)</span> in place of <span class="math inline">\(\varepsilon\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sin-one-over-x-not-uniform">
+
+<p><strong><a href="ch-continuity.html#exer-sin-one-over-x-not-uniform">Exercise
+6.4.6</a>.</strong> <em>Hint.</em> Try <span class="math inline">\(x_n=\frac{1}{2n\pi+\pi/2}\)</span> and <span class="math inline">\(y_n=\frac{1}{2n\pi-\pi/2}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-inverse-one-to-one">
+
+<p><strong><a href="ch-continuity.html#exer-inverse-one-to-one">Exercise
+6.5.1</a>.</strong> Suppose <span class="math inline">\(f^{-1}(a)=f^{-1}(b)\)</span>. Then, since <span class="math inline">\(f\)</span> is a function, <span class="math inline">\(f(f^{-1}(a))=f(f^{-1}(b))\)</span>. So <span class="math inline">\(a=b\)</span> and <span class="math inline">\(f^{-1}\)</span> is one-to-one.</p>
+</div>
+<div class="solutionbox" id="sol-exer-strictly-monotone-one-to-one">
+
+<p><strong><a href="ch-continuity.html#exer-strictly-monotone-one-to-one">Exercise
+6.5.2</a>.</strong> Suppose <span class="math inline">\(a,b\in
+E\)</span> with <span class="math inline">\(a\ne b\)</span>. Without
+loss of generality, <span class="math inline">\(a&lt;b\)</span>. If
+<span class="math inline">\(f\)</span> is strictly increasing, then
+<span class="math inline">\(f(a)&lt;f(b)\)</span>. If <span class="math inline">\(f\)</span> is strictly decreasing, then <span class="math inline">\(f(a)&gt;f(b)\)</span>. Either way, <span class="math inline">\(f(a)\ne f(b)\)</span>. So <span class="math inline">\(f\)</span> is one-to-one.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch05.html"><span class="dir">Previous</span> Solutions for Chapter 5. The Cantor Set</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch07.html"><span class="dir">Next</span> Solutions for Chapter 7. The Derivative</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

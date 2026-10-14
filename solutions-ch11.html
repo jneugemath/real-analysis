@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 11. Sequences and Series of Functions | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch10.html"><span class="dir">Previous</span> Solutions for Chapter 10. Series of Real Numbers</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch12.html"><span class="dir">Next</span> Solutions for Chapter 12. Power Series Expansions</a>
+</nav>
+<main id="main">
+<article id="solutions-ch11">
+<h1>Solutions for Chapter 11. Sequences and Series of
+Functions</h1>
+<div class="solutionbox" id="sol-exer-uniform-sup">
+
+<p><strong><a href="ch-function-sequences.html#exer-uniform-sup">Exercise 11.2.1</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(|f_n(x)-f(x)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\in E\)</span>, then <span class="math inline">\(M_n\le\varepsilon\)</span>. If <span class="math inline">\(M_n&lt;\varepsilon\)</span>, then <span class="math inline">\(|f_n(x)-f(x)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\in E\)</span>.</p>
+<p><em>Solution.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Suppose <span class="math inline">\(f_n\to f\)</span> uniformly on <span class="math inline">\(E\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. There is an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|f_n(x)-f(x)|&lt;\frac\varepsilon 2\)</span> for
+all <span class="math inline">\(n\ge N\)</span> and all <span class="math inline">\(x\in E\)</span>. For <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(\frac\varepsilon 2\)</span> is an upper bound of
+<span class="math inline">\(\{|f_n(x)-f(x)|:x\in E\}\)</span>. So <span class="math inline">\(0\le M_n\le\frac\varepsilon
+2&lt;\varepsilon\)</span>. So <span class="math inline">\(M_n\to0\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(M_n\to0\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. There is an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(M_n&lt;\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>. Then for <span class="math inline">\(n\ge N\)</span> and <span class="math inline">\(x\in E\)</span>, <span class="math display">\[|f_n(x)-f(x)|\le M_n&lt;\varepsilon.\]</span> So
+<span class="math inline">\(f_n\to f\)</span> uniformly on <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-over-2-not-uniform">
+
+<p><strong><a href="ch-function-sequences.html#exer-x-over-2-not-uniform">Exercise
+11.2.2</a>.</strong> <em>Hint.</em> By <a href="ch-function-sequences.html#cor-cauchy-criterion-uniform-series">Corollary 11.2.6</a>, the
+terms of a uniformly convergent series converge uniformly to <span class="math inline">\(0\)</span>. Find <span class="math inline">\(\sup_{|x|&lt;2}\left|\left(\frac
+x2\right)^k\right|\)</span>.</p>
+<p><em>Solution.</em> Suppose the series converges uniformly on <span class="math inline">\((-2,2)\)</span>. By <a href="ch-function-sequences.html#cor-cauchy-criterion-uniform-series">Corollary 11.2.6</a> with
+<span class="math inline">\(\varepsilon=\frac12\)</span>, there is an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math display">\[\left|\sum_{k=n+1}^m\left(\frac
+x2\right)^k\right|&lt;\frac12\quad\text{for all }m&gt;n\ge N\text{ and
+all }x\in(-2,2).\]</span> Take <span class="math inline">\(n=N\)</span>
+and <span class="math inline">\(m=N+1\)</span>. Then <span class="math inline">\(\left|\left(\frac
+x2\right)^{N+1}\right|&lt;\frac12\)</span> for all <span class="math inline">\(x\in(-2,2)\)</span>. But let <span class="math inline">\(x=2\cdot2^{-1/(N+1)}\)</span>. Then <span class="math inline">\(0&lt;x&lt;2\)</span> and <span class="math inline">\(\left(\frac x2\right)^{N+1}=\frac12\)</span>. This
+is a contradiction. So the convergence is not uniform on <span class="math inline">\((-2,2)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-xn-1-plus-xn">
+
+<p><strong><a href="ch-function-sequences.html#exer-xn-1-plus-xn">Exercise 11.2.3</a>.</strong>
+<em>Hint.</em> Find the pointwise limit. It is not continuous at <span class="math inline">\(1\)</span>. Use <a href="ch-function-sequences.html#cor-uniform-limit-continuous">Corollary 11.2.16</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-1-minus-x">
+
+<p><strong><a href="ch-function-sequences.html#exer-x-1-minus-x">Exercise 11.2.4</a>.</strong>
+<em>Hint.</em> Sum the geometric series. The sum is <span class="math inline">\(1\)</span> for <span class="math inline">\(0&lt;x\le1\)</span> and <span class="math inline">\(0\)</span> at <span class="math inline">\(x=0\)</span>. Use <a href="ch-function-sequences.html#cor-uniform-limit-continuous">Corollary 11.2.16</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-power-series-absolute">
+
+<p><strong><a href="ch-function-sequences.html#exer-power-series-absolute">Exercise
+11.2.5</a>.</strong> <em>Hint.</em> Use the Weierstrass <span class="math inline">\(M\)</span>-Test (<a href="ch-function-sequences.html#thm-weierstrass-m-test">Theorem 11.2.10</a>) with <span class="math inline">\(M_k=|a_k|\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bct-xn">
+
+<p><strong><a href="ch-function-sequences.html#exer-bct-xn">Exercise 11.2.6</a>.</strong>
+<em>Hint.</em> Let <span class="math inline">\(|f|\le M\)</span>. Then
+<span class="math inline">\(|x^nf(x)|\le M\)</span>. The limit is <span class="math inline">\(0\)</span> on <span class="math inline">\([0,1)\)</span> and <span class="math inline">\(f(1)\)</span> at <span class="math inline">\(1\)</span>. Its integral is <span class="math inline">\(0\)</span>, by <a href="ch-integrals.html#exer-finitely-many-nonzero">Exercise 9.2.2</a>.</p>
+<p><em>Solution.</em> Since <span class="math inline">\(f\in\mathcal{R}[0,1]\)</span>, <span class="math inline">\(f\)</span> is bounded. Choose <span class="math inline">\(M&gt;0\)</span> with <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in[0,1]\)</span>. Let <span class="math inline">\(g_n(x)=x^nf(x)\)</span>. Since <span class="math inline">\(x^n\)</span> is continuous, <span class="math inline">\(g_n\in\mathcal{R}[0,1]\)</span> by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a> (3). Also <span class="math inline">\(|g_n(x)|\le M\)</span> for all <span class="math inline">\(x\in[0,1]\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p>If <span class="math inline">\(0\le x&lt;1\)</span>, then <span class="math inline">\(x^n\to0\)</span> by <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>, so <span class="math inline">\(g_n(x)\to0\)</span>. Also <span class="math inline">\(g_n(1)=f(1)\)</span> for all <span class="math inline">\(n\)</span>. So <span class="math inline">\(g_n\to
+g\)</span> pointwise on <span class="math inline">\([0,1]\)</span>,
+where <span class="math inline">\(g(x)=0\)</span> for <span class="math inline">\(x\in[0,1)\)</span> and <span class="math inline">\(g(1)=f(1)\)</span>. By <a href="ch-integrals.html#exer-finitely-many-nonzero">Exercise 9.2.2</a>, <span class="math inline">\(g\in\mathcal{R}[0,1]\)</span> and <span class="math inline">\(\int_0^1g=0\)</span>. By the Bounded Convergence
+Theorem (<a href="ch-function-sequences.html#thm-bounded-convergence">Theorem 11.2.21</a>), <span class="math display">\[\lim_{n\to\infty}\int_0^1x^nf(x)\,dx=\int_0^1g=0.\]</span></p>
+</div>
+<div class="solutionbox" id="sol-exer-sup-of-sequence">
+
+<p><strong><a href="ch-function-sequences.html#exer-sup-of-sequence">Exercise 11.2.7</a>.</strong>
+<em>Hint.</em> (a) Define a new sequence of functions <span class="math inline">\(\{g_n\}\)</span> by <span class="math inline">\(g_n(x)=\max_{k\in\{1,\dots,n\}} f_k(x)\)</span>
+for each <span class="math inline">\(x\in[a,b]\)</span>. Show <span class="math inline">\(\{g_n\}\)</span> is a sequence of continuous
+functions that converges uniformly to <span class="math inline">\(g\)</span>. (b) Try <span class="math inline">\(f_n(x)=\max\{0,1-n|x-\frac1n|\}\)</span> on <span class="math inline">\([0,1]\)</span>. These are tents of height <span class="math inline">\(1\)</span> that move toward <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-dini-hypotheses">
+
+<p><strong><a href="ch-function-sequences.html#exer-dini-hypotheses">Exercise 11.2.8</a>.</strong>
+<em>Hint.</em> Try the moving tents from the hint to <a href="ch-function-sequences.html#exer-sup-of-sequence">Exercise 11.2.7</a> (b).</p>
+<p><em>Solution.</em> For <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(x\in[0,1]\)</span>, let <span class="math display">\[f_n(x)=\max\left\{0,\
+1-n\left|x-\frac1n\right|\right\}.\]</span> The graph of <span class="math inline">\(f_n\)</span> is a tent of height <span class="math inline">\(1\)</span> over <span class="math inline">\(\left[0,\frac2n\right]\)</span>, with its peak at
+<span class="math inline">\(\frac1n\)</span>. Each <span class="math inline">\(f_n\)</span> is continuous, since <span class="math inline">\(x\mapsto1-n\left|x-\frac1n\right|\)</span> is
+continuous and the maximum of two continuous functions is continuous.
+Also <span class="math inline">\(0\le f_n(x)\le1\)</span>.</p>
+<p>The sequence converges pointwise to <span class="math inline">\(0\)</span>. First, <span class="math inline">\(f_n(0)=\max\{0,1-1\}=0\)</span> for all <span class="math inline">\(n\)</span>. Now let <span class="math inline">\(0&lt;x\le1\)</span>. If <span class="math inline">\(n&gt;\frac2x\)</span>, then <span class="math inline">\(x-\frac1n&gt;\frac1n\)</span>, so <span class="math inline">\(1-n\left|x-\frac1n\right|&lt;0\)</span> and <span class="math inline">\(f_n(x)=0\)</span>. So <span class="math inline">\(f_n(x)\to0\)</span>.</p>
+<p>The convergence is not uniform. Since <span class="math inline">\(f_n\left(\frac1n\right)=1\)</span>, <span class="math inline">\(\sup_{x\in[0,1]}|f_n(x)-0|=1\)</span> for every
+<span class="math inline">\(n\)</span>. By <a href="ch-function-sequences.html#thm-uniform-sup">Theorem 11.2.7</a>, <span class="math inline">\(\{f_n\}\)</span> does not converge uniformly to
+<span class="math inline">\(0\)</span>.</p>
+<p>Here <span class="math inline">\([0,1]\)</span> is compact and the
+limit <span class="math inline">\(0\)</span> is continuous. So Dini’s
+Theorem fails only because the sequence is not decreasing. For example,
+<span class="math inline">\(f_1(x)=x\)</span>, so <span class="math inline">\(f_1\left(\frac1n\right)=\frac1n&lt;1=f_n\left(\frac1n\right)\)</span>
+for <span class="math inline">\(n\ge2\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-uniform-derivative-ftc">
+
+<p><strong><a href="ch-function-sequences.html#exer-uniform-derivative-ftc">Exercise
+11.2.10</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(f_n(x)=f_n(x_0)+\int_{x_0}^xf_n'\)</span> by
+the Fundamental Theorem of Calculus, and use <a href="ch-function-sequences.html#thm-uniform-integral">Theorem 11.2.18</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-uniform-bounded">
+
+<p><strong><a href="ch-function-sequences.html#exer-uniform-bounded">Exercise
+11.2.11</a>.</strong> <em>Hint.</em> Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|f_n(x)-f(x)|&lt;1\)</span> for all <span class="math inline">\(n\ge N\)</span> and <span class="math inline">\(x\in E\)</span>. Then <span class="math inline">\(|f|\)</span> is at most <span class="math inline">\(1\)</span> more than a bound for <span class="math inline">\(|f_N|\)</span>. Treat <span class="math inline">\(f_1,\dots,f_{N-1}\)</span> separately.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch10.html"><span class="dir">Previous</span> Solutions for Chapter 10. Series of Real Numbers</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch12.html"><span class="dir">Next</span> Solutions for Chapter 12. Power Series Expansions</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

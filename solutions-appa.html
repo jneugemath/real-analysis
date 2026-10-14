@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Appendix A. Construction of the Real Numbers by Cuts | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch17.html"><span class="dir">Previous</span> Solutions for Chapter 17. Differentiation and Integration</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-appb.html"><span class="dir">Next</span> Solutions for Appendix B. Construction of the Real Numbers by Cauchy Sequences</a>
+</nav>
+<main id="main">
+<article id="solutions-appa">
+<h1>Solutions for Appendix A. Construction of the Real Numbers by
+Cuts</h1>
+<div class="solutionbox" id="sol-exer-cut-examples">
+
+<p><strong><a href="app-cuts.html#exer-cut-examples">Exercise A.1.1</a>.</strong>
+<em>Hint.</em> (a) Check property (2). (b) Check property (3). (c) It is
+a cut. For property (3), use <span class="math inline">\(r=\frac{3p+3}{p+3}\)</span>, as in <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.3.5</a>. (d) First find the
+set, using <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cut-rational-iff">
+
+<p><strong><a href="app-cuts.html#exer-cut-rational-iff">Exercise A.1.2</a>.</strong>
+(<span class="math inline">\(\Rightarrow\)</span>) If <span class="math inline">\(\alpha=q^*\)</span>, then <span class="math inline">\(q\)</span> is the smallest element of <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span>, by <a href="app-cuts.html#ex-rational-cut">Example A.1.3</a>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(q\)</span> be the smallest element of <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span>. If <span class="math inline">\(p\in\alpha\)</span>, then <span class="math inline">\(p&lt;q\)</span> by <a href="app-cuts.html#rem-cut-consequences">Remark A.1.2</a>, so <span class="math inline">\(p\in q^*\)</span>. If <span class="math inline">\(p&lt;q\)</span>, then <span class="math inline">\(p\notin\mathbb{Q}\setminus\alpha\)</span>, since
+<span class="math inline">\(q\)</span> is the smallest element of that
+set. So <span class="math inline">\(p\in\alpha\)</span>. Thus <span class="math inline">\(\alpha=q^*\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cut-density">
+
+<p><strong><a href="app-cuts.html#exer-cut-density">Exercise A.2.1</a>.</strong>
+Since <span class="math inline">\(\alpha\subsetneqq\beta\)</span>, there
+is a <span class="math inline">\(p\in\beta\)</span> with <span class="math inline">\(p\notin\alpha\)</span>. Since <span class="math inline">\(\beta\)</span> has no largest element, there is a
+<span class="math inline">\(q\in\beta\)</span> with <span class="math inline">\(q&gt;p\)</span>.</p>
+<p>If <span class="math inline">\(r\in\alpha\)</span>, then <span class="math inline">\(r&lt;p\)</span> by <a href="app-cuts.html#rem-cut-consequences">Remark A.1.2</a>, so <span class="math inline">\(r&lt;q\)</span> and <span class="math inline">\(r\in q^*\)</span>. So <span class="math inline">\(\alpha\subset q^*\)</span>. Also <span class="math inline">\(p\in q^*\)</span> and <span class="math inline">\(p\notin\alpha\)</span>. So <span class="math inline">\(\alpha&lt;q^*\)</span>.</p>
+<p>If <span class="math inline">\(r&lt;q\)</span>, then <span class="math inline">\(r\in\beta\)</span>, since <span class="math inline">\(q\in\beta\)</span>. So <span class="math inline">\(q^*\subset\beta\)</span>. Also <span class="math inline">\(q\in\beta\)</span> and <span class="math inline">\(q\notin q^*\)</span>. So <span class="math inline">\(q^*&lt;\beta\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cut-sup-rational">
+
+<p><strong><a href="app-cuts.html#exer-cut-sup-rational">Exercise A.2.2</a>.</strong>
+<em>Hint.</em> By <a href="app-cuts.html#thm-cut-lub">Theorem A.2.3</a>, the supremum
+is the union of the cuts <span class="math inline">\(q^*\)</span> with
+<span class="math inline">\(q\in\alpha\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cut-sum-laws">
+
+<p><strong><a href="app-cuts.html#exer-cut-sum-laws">Exercise A.3.1</a>.</strong> (1)
+Since <span class="math inline">\(r+s=s+r\)</span> in <span class="math inline">\(\mathbb{Q}\)</span>, <span class="math display">\[\alpha+\beta=\{r+s:r\in\alpha,\
+s\in\beta\}=\{s+r:s\in\beta,\ r\in\alpha\}=\beta+\alpha.\]</span></p>
+<p>(2) An element of <span class="math inline">\((\alpha+\beta)+\gamma\)</span> is a sum <span class="math inline">\(w+t\)</span> with <span class="math inline">\(w\in\alpha+\beta\)</span> and <span class="math inline">\(t\in\gamma\)</span>, and <span class="math inline">\(w=r+s\)</span> with <span class="math inline">\(r\in\alpha\)</span> and <span class="math inline">\(s\in\beta\)</span>. So <span class="math inline">\((\alpha+\beta)+\gamma\)</span> is the set of all
+numbers <span class="math inline">\((r+s)+t\)</span> with <span class="math inline">\(r\in\alpha\)</span>, <span class="math inline">\(s\in\beta\)</span> and <span class="math inline">\(t\in\gamma\)</span>. In the same way, <span class="math inline">\(\alpha+(\beta+\gamma)\)</span> is the set of all
+numbers <span class="math inline">\(r+(s+t)\)</span>. Since <span class="math inline">\((r+s)+t=r+(s+t)\)</span> in <span class="math inline">\(\mathbb{Q}\)</span>, the two cuts are equal.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sqrt2-cut-negative">
+
+<p><strong><a href="app-cuts.html#exer-sqrt2-cut-negative">Exercise
+A.3.2</a>.</strong> <em>Hint.</em> By <a href="app-cuts.html#ex-sqrt2-cut">Example
+A.1.4</a>, <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> is the set
+<span class="math inline">\(B\)</span> of <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.3.5</a>. Use that <span class="math inline">\(B\)</span> has no smallest element.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cut-field-signs">
+
+<p><strong><a href="app-cuts.html#exer-cut-field-signs">Exercise A.4.1</a>.</strong>
+Only the additive facts of <a href="app-cuts.html#cor-cut-additive">Corollary
+A.3.5</a> are used to rearrange sums, such as <span class="math inline">\(-(\beta+\gamma)=(-\beta)+(-\gamma)\)</span> and
+<span class="math inline">\(-(-\gamma)=\gamma\)</span>.</p>
+<p><em>The rule of signs.</em> First, <span class="math inline">\((-\alpha)\beta=-(\alpha\beta)\)</span> for all
+cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. If <span class="math inline">\(\alpha=0^*\)</span> or <span class="math inline">\(\beta=0^*\)</span>, both sides are <span class="math inline">\(0^*\)</span>. Otherwise there are four cases, by
+<a href="app-cuts.html#def-cut-product">Definition A.4.6</a>.</p>
+<ul>
+<li><p>If <span class="math inline">\(\alpha&gt;0^*\)</span> and <span class="math inline">\(\beta&gt;0^*\)</span>, then <span class="math inline">\(-\alpha&lt;0^*&lt;\beta\)</span>, so <span class="math inline">\((-\alpha)\beta=-(\alpha\beta)\)</span> by
+definition.</p></li>
+<li><p>If <span class="math inline">\(\alpha&lt;0^*&lt;\beta\)</span>,
+then <span class="math inline">\(\alpha\beta=-\bigl((-\alpha)\beta\bigr)\)</span>
+by definition, so <span class="math inline">\((-\alpha)\beta=-(\alpha\beta)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\beta&lt;0^*&lt;\alpha\)</span>,
+then <span class="math inline">\(-\alpha&lt;0^*\)</span> and <span class="math inline">\(\beta&lt;0^*\)</span>. So <span class="math inline">\((-\alpha)\beta=\alpha(-\beta)\)</span> by
+definition, and <span class="math inline">\(\alpha(-\beta)=-(\alpha\beta)\)</span> since <span class="math inline">\(\alpha\beta=-\bigl(\alpha(-\beta)\bigr)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\alpha&lt;0^*\)</span> and <span class="math inline">\(\beta&lt;0^*\)</span>, then <span class="math inline">\(\beta&lt;0^*&lt;-\alpha\)</span>. So <span class="math inline">\((-\alpha)\beta=-\bigl((-\alpha)(-\beta)\bigr)=-(\alpha\beta)\)</span>.</p></li>
+</ul>
+<p>Since multiplication is commutative, also <span class="math inline">\(\alpha(-\beta)=-(\alpha\beta)\)</span>.</p>
+<p><em>Associativity.</em> If one of <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> is <span class="math inline">\(0^*\)</span>, both sides of <span class="math inline">\((\alpha\beta)\gamma=\alpha(\beta\gamma)\)</span>
+are <span class="math inline">\(0^*\)</span>. If the identity holds for
+<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span>, it also holds with <span class="math inline">\(\alpha\)</span> replaced by <span class="math inline">\(-\alpha\)</span>, since by the rule of signs <span class="math display">\[\bigl((-\alpha)\beta\bigr)\gamma=-\bigl((\alpha\beta)\gamma\bigr)=-\bigl(\alpha(\beta\gamma)\bigr)=(-\alpha)(\beta\gamma).\]</span>
+The same computation works for <span class="math inline">\(\beta\)</span> and for <span class="math inline">\(\gamma\)</span>. The identity holds when all three
+cuts are positive, by <a href="app-cuts.html#thm-cut-multiplication-positive">Theorem
+A.4.5</a> (2). Every nonzero cut is a positive cut or the negative of
+one. So the identity holds for all cuts.</p>
+<p><em>Distributivity.</em> If <span class="math inline">\(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\)</span>,
+then <span class="math display">\[(-\alpha)(\beta+\gamma)=-\bigl(\alpha\beta+\alpha\gamma\bigr)=(-\alpha)\beta+(-\alpha)\gamma.\]</span>
+So it is enough to treat <span class="math inline">\(\alpha\ge0^*\)</span>, and <span class="math inline">\(\alpha=0^*\)</span> is clear. Let <span class="math inline">\(\alpha&gt;0^*\)</span>. If <span class="math inline">\(\beta,\gamma\ge0^*\)</span>, the identity is <a href="app-cuts.html#thm-cut-multiplication-positive">Theorem A.4.5</a> (5), or is
+clear when <span class="math inline">\(\beta\)</span> or <span class="math inline">\(\gamma\)</span> is <span class="math inline">\(0^*\)</span>. If <span class="math inline">\(\beta,\gamma\le0^*\)</span>, then <span class="math inline">\(-\beta,-\gamma\ge0^*\)</span>, and <span class="math display">\[\alpha(\beta+\gamma)=-\bigl(\alpha((-\beta)+(-\gamma))\bigr)=-\bigl(\alpha(-\beta)+\alpha(-\gamma)\bigr)=\alpha\beta+\alpha\gamma.\]</span>
+Finally, suppose one of <span class="math inline">\(\beta\)</span>,
+<span class="math inline">\(\gamma\)</span> is positive and the other is
+negative. Since addition is commutative, we may take <span class="math inline">\(\beta&gt;0^*&gt;\gamma\)</span>. If <span class="math inline">\(\beta+\gamma\ge0^*\)</span>, then <span class="math inline">\(\beta=(\beta+\gamma)+(-\gamma)\)</span> is a sum
+of two cuts that are at least <span class="math inline">\(0^*\)</span>.
+So <span class="math inline">\(\alpha\beta=\alpha(\beta+\gamma)+\alpha(-\gamma)=\alpha(\beta+\gamma)-\alpha\gamma\)</span>,
+which gives <span class="math inline">\(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\)</span>.
+If <span class="math inline">\(\beta+\gamma&lt;0^*\)</span>, then <span class="math inline">\(-\gamma=\bigl(-(\beta+\gamma)\bigr)+\beta\)</span>
+is a sum of two positive cuts. So <span class="math display">\[-(\alpha\gamma)=\alpha(-\gamma)=-\bigl(\alpha(\beta+\gamma)\bigr)+\alpha\beta,\]</span>
+which again gives <span class="math inline">\(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sqrt2-cut-square">
+
+<p><strong><a href="app-cuts.html#exer-sqrt2-cut-square">Exercise A.4.2</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(r,s&gt;0\)</span> and
+<span class="math inline">\(r^2,s^2&lt;2\)</span>, then <span class="math inline">\((rs)^2&lt;4\)</span>. For the other inclusion, let
+<span class="math inline">\(0&lt;p&lt;2\)</span>. Apply <a href="app-cuts.html#lem-cut-ratio-step">Lemma A.4.4</a> with a rational <span class="math inline">\(t&gt;1\)</span> such that <span class="math inline">\(t^2\le\frac2p\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cut-membership">
+
+<p><strong><a href="app-cuts.html#exer-cut-membership">Exercise A.5.1</a>.</strong>
+(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(q\in\alpha\)</span>. If <span class="math inline">\(r&lt;q\)</span>, then <span class="math inline">\(r\in\alpha\)</span>. So <span class="math inline">\(q^*\subset\alpha\)</span>. Also <span class="math inline">\(q\in\alpha\)</span> and <span class="math inline">\(q\notin q^*\)</span>. So <span class="math inline">\(q^*&lt;\alpha\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(q^*&lt;\alpha\)</span>. Then there is a <span class="math inline">\(p\in\alpha\)</span> with <span class="math inline">\(p\notin q^*\)</span>, that is, <span class="math inline">\(p\ge q\)</span>. If <span class="math inline">\(q=p\)</span>, then <span class="math inline">\(q\in\alpha\)</span>. If <span class="math inline">\(q&lt;p\)</span>, then <span class="math inline">\(q\in\alpha\)</span> by property (2) of <a href="app-cuts.html#def-cut">Definition A.1.1</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rational-cuts-signs">
+
+<p><strong><a href="app-cuts.html#exer-rational-cuts-signs">Exercise
+A.5.2</a>.</strong> <em>Hint.</em> Follow the case <span class="math inline">\(p&lt;0&lt;q\)</span> in the proof of <a href="app-cuts.html#thm-rational-cuts">Theorem A.5.1</a>, using <a href="app-cuts.html#def-cut-product">Definition A.4.6</a> and <a href="app-cuts.html#thm-rational-cuts">Theorem A.5.1</a> (3).</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch17.html"><span class="dir">Previous</span> Solutions for Chapter 17. Differentiation and Integration</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-appb.html"><span class="dir">Next</span> Solutions for Appendix B. Construction of the Real Numbers by Cauchy Sequences</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

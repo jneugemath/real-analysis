@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 9. Integrals | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch08.html"><span class="dir">Previous</span> Solutions for Chapter 8. Functions of Bounded Variation</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch10.html"><span class="dir">Next</span> Solutions for Chapter 10. Series of Real Numbers</a>
+</nav>
+<main id="main">
+<article id="solutions-ch09">
+<h1>Solutions for Chapter 9. Integrals</h1>
+<div class="solutionbox" id="sol-exer-darboux-sum-bounds">
+
+<p><strong><a href="ch-integrals.html#exer-darboux-sum-bounds">Exercise
+9.1.2</a>.</strong> <em>Hint.</em> Each <span class="math inline">\(m_i\)</span> and <span class="math inline">\(M_i\)</span> lies in <span class="math inline">\([m,M]\)</span>, and <span class="math inline">\(\sum\Delta x_i=b-a\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(1\le i\le n\)</span>. Since <span class="math inline">\(m\le f(x)\)</span> for all <span class="math inline">\(x\in[x_{i-1},x_i]\)</span>, <span class="math inline">\(m\)</span> is a lower bound of <span class="math inline">\(\{f(x):x_{i-1}\le x\le x_i\}\)</span>. So <span class="math inline">\(m\le m_i\)</span>. In the same way, <span class="math inline">\(M_i\le M\)</span>. Also <span class="math inline">\(m_i\le f(x_i)\le M_i\)</span>. So <span class="math display">\[m\le m_i\le M_i\le M.\]</span> Multiply by <span class="math inline">\(\Delta x_i&gt;0\)</span> and add over <span class="math inline">\(i\)</span>. Since <span class="math inline">\(\sum_{i=1}^n\Delta x_i=b-a\)</span>, <span class="math display">\[m(b-a)=\sum_{i=1}^nm\,\Delta
+x_i\le\sum_{i=1}^nm_i\Delta x_i\le\sum_{i=1}^nM_i\Delta
+x_i\le\sum_{i=1}^nM\,\Delta x_i=M(b-a).\]</span> The middle two sums are
+<span class="math inline">\(\mathcal{L}(\mathcal{P},f)\)</span> and
+<span class="math inline">\(\mathcal{U}(\mathcal{P},f)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-on-irrationals-integral">
+
+<p><strong><a href="ch-integrals.html#exer-x-on-irrationals-integral">Exercise
+9.1.3</a>.</strong> <em>Hint.</em> Every subinterval contains rational
+and irrational numbers. So <span class="math inline">\(m_i=0\)</span>
+and <span class="math inline">\(M_i=x_i\)</span>. Compare <span class="math inline">\(\mathcal{U}(\mathcal{P},f)\)</span> with the upper
+sums of <span class="math inline">\(g(x)=x\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-floor-integral">
+
+<p><strong><a href="ch-integrals.html#exer-floor-integral">Exercise 9.1.4</a>.</strong>
+<em>Hint.</em> The function is constant on <span class="math inline">\([0,\frac13)\)</span>, <span class="math inline">\([\frac13,\frac23)\)</span> and <span class="math inline">\([\frac23,1)\)</span>. Use partitions with short
+subintervals around <span class="math inline">\(\frac13\)</span>, <span class="math inline">\(\frac23\)</span> and <span class="math inline">\(1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-linear-integral">
+
+<p><strong><a href="ch-integrals.html#exer-linear-integral">Exercise 9.1.5</a>.</strong>
+<em>Hint.</em> Use the regular partition into <span class="math inline">\(n\)</span> subintervals and <span class="math inline">\(\sum_{i=1}^ni=\frac{n(n+1)}{2}\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(f(x)=2x+1\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(\mathcal{P}_n=\left\{0,\frac1n,\frac2n,\dots,1\right\}\)</span>.
+Since <span class="math inline">\(f\)</span> is increasing, its infimum
+and supremum on <span class="math inline">\(\left[\frac{i-1}{n},\frac
+in\right]\)</span> are the values at the endpoints. So <span class="math display">\[m_i=\frac{2(i-1)}{n}+1\quad\text{and}\quad
+M_i=\frac{2i}{n}+1.\]</span> Since <span class="math inline">\(\Delta
+x_i=\frac1n\)</span> and <span class="math inline">\(\sum_{i=1}^ni=\frac{n(n+1)}2\)</span>, <span class="math display">\[\mathcal{L}(\mathcal{P}_n,f)=\frac{2}{n^2}\sum_{i=1}^n(i-1)+1=\frac{n-1}{n}+1=2-\frac1n\]</span>
+and <span class="math display">\[\mathcal{U}(\mathcal{P}_n,f)=\frac{2}{n^2}\sum_{i=1}^ni+1=\frac{n+1}{n}+1=2+\frac1n.\]</span>
+By <a href="ch-integrals.html#def-darboux-integrals">Definition 9.1.4</a> and <a href="ch-integrals.html#thm-lower-le-upper">Theorem 9.1.6</a>, for every <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[2-\frac1n=\mathcal{L}(\mathcal{P}_n,f)\le\underline{\int_{0}^{1}}f\le\overline{\int_{0}^{1}}f\le\mathcal{U}(\mathcal{P}_n,f)=2+\frac1n.\]</span>
+Letting <span class="math inline">\(n\to\infty\)</span> gives <span class="math inline">\(\underline{\int_{0}^{1}}f=\overline{\int_{0}^{1}}f=2\)</span>.
+So <span class="math inline">\(\int_0^1(2x+1)\,dx=2\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-squared-integral">
+
+<p><strong><a href="ch-integrals.html#exer-x-squared-integral">Exercise
+9.1.6</a>.</strong> <em>Hint.</em> For any partition, <span class="math inline">\(x_{i-1}^2\le\frac13(x_{i-1}^2+x_{i-1}x_i+x_i^2)\le
+x_i^2\)</span>. Also <span class="math inline">\(\frac13(x_{i-1}^2+x_{i-1}x_i+x_i^2)\Delta
+x_i=\frac13(x_i^3-x_{i-1}^3)\)</span>. Sum over <span class="math inline">\(i\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-integral-scalar">
+
+<p><strong><a href="ch-integrals.html#exer-integral-scalar">Exercise 9.2.1</a>.</strong>
+<em>Hint.</em> For <span class="math inline">\(c\ge0\)</span>, <span class="math inline">\(\mathcal{U}(\mathcal{P},cf)=c\,\mathcal{U}(\mathcal{P},f)\)</span>
+and <span class="math inline">\(\mathcal{L}(\mathcal{P},cf)=c\,\mathcal{L}(\mathcal{P},f)\)</span>.
+For <span class="math inline">\(c&lt;0\)</span>, multiplying by <span class="math inline">\(c\)</span> swaps sup and inf. So <span class="math inline">\(\mathcal{U}(\mathcal{P},cf)=c\,\mathcal{L}(\mathcal{P},f)\)</span>.</p>
+<p><em>Solution.</em> If <span class="math inline">\(c=0\)</span>, then
+<span class="math inline">\(cf\)</span> is the zero function. Every
+upper and lower sum of <span class="math inline">\(cf\)</span> is <span class="math inline">\(0\)</span>. So <span class="math inline">\(cf\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\int_a^bcf=0=c\int_a^bf\)</span>.</p>
+<p>Suppose <span class="math inline">\(c\ne0\)</span>, and let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Write <span class="math inline">\(m_i\)</span> and <span class="math inline">\(M_i\)</span> for the infimum and supremum of <span class="math inline">\(f\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span>.</p>
+<p>Suppose <span class="math inline">\(c&gt;0\)</span>. For <span class="math inline">\(x\in[x_{i-1},x_i]\)</span>, <span class="math inline">\(cm_i\le cf(x)\le cM_i\)</span>. So the supremum of
+<span class="math inline">\(cf\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> is at most <span class="math inline">\(cM_i\)</span>, and its infimum is at least <span class="math inline">\(cm_i\)</span>. Adding over <span class="math inline">\(i\)</span>, <span class="math display">\[c\,\mathcal{L}(\mathcal{P},f)\le\mathcal{L}(\mathcal{P},cf)\le\mathcal{U}(\mathcal{P},cf)\le
+c\,\mathcal{U}(\mathcal{P},f).\]</span> Suppose <span class="math inline">\(c&lt;0\)</span>. Multiplying by <span class="math inline">\(c\)</span> reverses inequalities, so <span class="math inline">\(cM_i\le cf(x)\le cm_i\)</span>. In the same way,
+<span class="math display">\[c\,\mathcal{U}(\mathcal{P},f)\le\mathcal{L}(\mathcal{P},cf)\le\mathcal{U}(\mathcal{P},cf)\le
+c\,\mathcal{L}(\mathcal{P},f).\]</span> In both cases, call the outer
+numbers <span class="math inline">\(A_\mathcal{P}\le
+B_\mathcal{P}\)</span>. Then <span class="math inline">\(B_\mathcal{P}-A_\mathcal{P}=|c|\bigl(\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\bigr)\)</span>.
+Since <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\le\int_a^bf\le\mathcal{U}(\mathcal{P},f)\)</span>,
+also <span class="math inline">\(A_\mathcal{P}\le c\int_a^bf\le
+B_\mathcal{P}\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By
+Riemann’s Criterion (<a href="ch-integrals.html#thm-riemann-criterion">Theorem
+9.2.1</a>), there is a partition <span class="math inline">\(\mathcal{P}\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\frac{\varepsilon}{|c|}\)</span>.
+Then <span class="math inline">\(\mathcal{U}(\mathcal{P},cf)-\mathcal{L}(\mathcal{P},cf)\le
+B_\mathcal{P}-A_\mathcal{P}&lt;\varepsilon\)</span>. So <span class="math inline">\(cf\in\mathcal{R}[a,b]\)</span>, by Riemann’s
+Criterion. Both <span class="math inline">\(\int_a^bcf\)</span> and
+<span class="math inline">\(c\int_a^bf\)</span> lie in <span class="math inline">\([A_\mathcal{P},B_\mathcal{P}]\)</span>, an
+interval of length less than <span class="math inline">\(\varepsilon\)</span>. So they differ by less than
+<span class="math inline">\(\varepsilon\)</span>. Since <span class="math inline">\(\varepsilon&gt;0\)</span> was arbitrary, <span class="math inline">\(\int_a^bcf=c\int_a^bf\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-finitely-many-nonzero">
+
+<p><strong><a href="ch-integrals.html#exer-finitely-many-nonzero">Exercise
+9.2.2</a>.</strong> <em>Hint.</em> Let <span class="math inline">\(M=\max|f(c_i)|\)</span>. Choose a partition in
+which each <span class="math inline">\(c_i\)</span> lies in at most two
+subintervals, each shorter than <span class="math inline">\(\delta\)</span>. Then <span class="math inline">\(|\mathcal{U}(\mathcal{P},f)|\)</span> and <span class="math inline">\(|\mathcal{L}(\mathcal{P},f)|\)</span> are at most
+<span class="math inline">\(2nM\delta\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-integral-monotone">
+
+<p><strong><a href="ch-integrals.html#exer-integral-monotone">Exercise
+9.2.3</a>.</strong> <em>Hint.</em> Show that <span class="math inline">\(\mathcal{U}(\mathcal{P},f)\le\mathcal{U}(\mathcal{P},g)\)</span>
+for every partition <span class="math inline">\(\mathcal{P}\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. For <span class="math inline">\(x\in[x_{i-1},x_i]\)</span>, <span class="math inline">\(f(x)\le g(x)\le\sup\{g(t):x_{i-1}\le t\le
+x_i\}\)</span>. So the supremum of <span class="math inline">\(f\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> is at most the supremum of
+<span class="math inline">\(g\)</span> there. Multiplying by <span class="math inline">\(\Delta x_i\)</span> and adding gives <span class="math inline">\(\mathcal{U}(\mathcal{P},f)\le\mathcal{U}(\mathcal{P},g)\)</span>.
+Since <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, <span class="math display">\[\int_a^bf=\overline{\int_{a}^{b}}f\le\mathcal{U}(\mathcal{P},f)\le\mathcal{U}(\mathcal{P},g).\]</span>
+So <span class="math inline">\(\int_a^bf\)</span> is a lower bound of
+the upper sums of <span class="math inline">\(g\)</span>. Therefore
+<span class="math inline">\(\int_a^bf\le\overline{\int_{a}^{b}}g=\int_a^bg\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-change-finitely-many">
+
+<p><strong><a href="ch-integrals.html#exer-change-finitely-many">Exercise
+9.2.4</a>.</strong> <em>Hint.</em> Apply <a href="ch-integrals.html#exer-finitely-many-nonzero">Exercise 9.2.2</a> to <span class="math inline">\(g-f\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-continuous-zero-integral">
+
+<p><strong><a href="ch-integrals.html#exer-continuous-zero-integral">Exercise
+9.2.5</a>.</strong> <em>Hint.</em> If <span class="math inline">\(f(c)&gt;0\)</span>, then <span class="math inline">\(f&gt;\frac{f(c)}2\)</span> on an interval around
+<span class="math inline">\(c\)</span>. Show that <span class="math inline">\(\int_a^bf&gt;0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ftc-piecewise">
+
+<p><strong><a href="ch-integrals.html#exer-ftc-piecewise">Exercise 9.3.1</a>.</strong>
+<em>Hint.</em> By <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, <span class="math inline">\(F'(x)=f(x)\)</span> wherever <span class="math inline">\(f\)</span> is continuous. At <span class="math inline">\(x=1\)</span>, find the one-sided derivatives of
+<span class="math inline">\(F\)</span>.</p>
+<p><em>Solution.</em> The answer is <span class="math inline">\(b=2\)</span>.</p>
+<p>The function <span class="math inline">\(f\)</span> is bounded and is
+continuous at every point of <span class="math inline">\([0,2]\)</span>
+except possibly <span class="math inline">\(1\)</span>. So <span class="math inline">\(f\in\mathcal{R}[0,2]\)</span>, by Lebesgue’s
+Theorem (<a href="ch-integrals.html#thm-lebesgue-criterion">Theorem 9.2.9</a>) and <a href="ch-integrals.html#ex-finite-measure-zero">Example 9.2.6</a>, and <span class="math inline">\(F\)</span> is defined. By <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, <span class="math inline">\(F\)</span> is continuous on <span class="math inline">\([0,2]\)</span>, and <span class="math inline">\(F'(x)=f(x)\)</span> at every <span class="math inline">\(x\ne1\)</span>. So <span class="math inline">\(F\)</span> is differentiable on <span class="math inline">\([0,2]\)</span> if and only if it is differentiable
+at <span class="math inline">\(1\)</span>.</p>
+<p>For <span class="math inline">\(0\le x&lt;1\)</span>, <span class="math inline">\(f(t)=t\)</span> on <span class="math inline">\([0,x]\)</span>, so <span class="math inline">\(F(x)=\frac{x^2}2\)</span> by <a href="ch-integrals.html#ex-integral-of-x">Example 9.1.11</a>. Since <span class="math inline">\(F\)</span> is continuous at <span class="math inline">\(1\)</span>, <span class="math inline">\(F(1)=\lim_{x\to1^-}\frac{x^2}2=\frac12\)</span>.
+For <span class="math inline">\(1&lt;x\le2\)</span>, <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a> and the Fundamental
+Theorem of Calculus (<a href="ch-integrals.html#thm-ftc-evaluation">Theorem 9.3.6</a>),
+with the antiderivative <span class="math inline">\(bt-\frac{t^3}3\)</span>, give <span class="math display">\[F(x)=\frac12+\int_1^x(b-t^2)\,dt=\frac12+b(x-1)-\frac{x^3-1}{3}.\]</span>
+Now compute the one-sided limits of the difference quotient at <span class="math inline">\(1\)</span>. For <span class="math inline">\(-1&lt;h&lt;0\)</span>, <span class="math display">\[\frac{F(1+h)-F(1)}{h}=\frac{(1+h)^2-1}{2h}=1+\frac
+h2\to1\quad\text{as }h\to0^-.\]</span> For <span class="math inline">\(0&lt;h\le1\)</span>, <span class="math display">\[\frac{F(1+h)-F(1)}{h}=b-\frac{(1+h)^3-1}{3h}=b-1-h-\frac{h^2}3\to
+b-1\quad\text{as }h\to0^+.\]</span> By <a href="ch-continuity.html#thm-one-sided-limits">Theorem 6.1.23</a>, <span class="math inline">\(F'(1)\)</span> exists if and only if <span class="math inline">\(1=b-1\)</span>, that is, <span class="math inline">\(b=2\)</span>. Notice that <span class="math inline">\(b=2\)</span> is also exactly the value that makes
+<span class="math inline">\(f\)</span> continuous at <span class="math inline">\(1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ftc-continuous">
+
+<p><strong><a href="ch-integrals.html#exer-ftc-continuous">Exercise 9.3.2</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(|f|\le M\)</span>, then
+<span class="math inline">\(|F(x)-F(y)|\le M|x-y|\)</span>.</p>
+<p><em>Solution.</em> Since <span class="math inline">\(f\)</span> is
+bounded, there is an <span class="math inline">\(M&gt;0\)</span> with
+<span class="math inline">\(|f(t)|\le M\)</span> for all <span class="math inline">\(t\in[a,b]\)</span>. By <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>, <span class="math inline">\(f\)</span> is integrable on every closed interval
+in <span class="math inline">\([a,b]\)</span>, and <span class="math display">\[F(y)-F(x)=\int_x^yf(t)\,dt\quad\text{for }a\le
+x&lt;y\le b.\]</span> (If <span class="math inline">\(x=a\)</span>, this
+is the definition of <span class="math inline">\(F(y)\)</span>, since
+<span class="math inline">\(F(a)=0\)</span>.) Since <span class="math inline">\(-M\le f(t)\le M\)</span> on <span class="math inline">\([x,y]\)</span>, <a href="ch-integrals.html#thm-darboux-sum-bounds">Theorem 9.1.3</a> gives <span class="math inline">\(-M(y-x)\le\mathcal{L}(\mathcal{P},f)\le\int_x^yf\le\mathcal{U}(\mathcal{P},f)\le
+M(y-x)\)</span> for any partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([x,y]\)</span>. So <span class="math display">\[|F(y)-F(x)|\le M|y-x|\quad\text{for all
+}x,y\in[a,b].\]</span> Let <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(\delta=\frac\varepsilon M\)</span>. If <span class="math inline">\(x,y\in[a,b]\)</span> and <span class="math inline">\(|x-y|&lt;\delta\)</span>, then <span class="math inline">\(|F(y)-F(x)|&lt;M\delta=\varepsilon\)</span>. So
+<span class="math inline">\(F\)</span> is continuous on <span class="math inline">\([a,b]\)</span>. In fact <span class="math inline">\(F\)</span> is Lipschitz continuous, and so
+uniformly continuous.</p>
+</div>
+<div class="solutionbox" id="sol-exer-exp-function">
+
+<p><strong><a href="ch-integrals.html#exer-exp-function">Exercise 9.3.3</a>.</strong>
+<em>Hint.</em> (a) <span class="math inline">\(\ln(2^n)=n\ln2\)</span>.
+(c) Apply <span class="math inline">\(\ln\)</span> to both sides. Use
+<span class="math inline">\(\ln ab=\ln a+\ln b\)</span> from <a href="ch-integrals.html#ex-exp-ln">Example 9.3.8</a>. (d) By <a href="ch-integrals.html#ex-exp-ln">Example
+9.3.8</a>, <span class="math inline">\(\ln(e^r)=r\ln e=r\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-binomial">
+
+<p><strong><a href="ch-integrals.html#exer-binomial">Exercise 9.3.4</a>.</strong>
+<em>Hint.</em> For the identity, use the common denominator <span class="math inline">\(k!(n+1-k)!\)</span>. For the induction step, write
+<span class="math inline">\((a+b)^{n+1}=(a+b)(a+b)^n\)</span>, expand,
+and shift the index in one of the two sums.</p>
+</div>
+<div class="solutionbox" id="sol-exer-weighted-mvt">
+
+<p><strong><a href="ch-integrals.html#exer-weighted-mvt">Exercise 9.4.1</a>.</strong>
+<em>Hint.</em> Let <span class="math inline">\(m\)</span> and <span class="math inline">\(M\)</span> be the minimum and maximum of <span class="math inline">\(f\)</span>. Then <span class="math inline">\(m\int_a^bg\le\int_a^bfg\le M\int_a^bg\)</span>. If
+<span class="math inline">\(\int_a^bg&gt;0\)</span>, use the
+Intermediate Value Theorem. If <span class="math inline">\(\int_a^bg=0\)</span>, any <span class="math inline">\(c\)</span> works.</p>
+<p><em>Solution.</em> By the Extreme Value Theorem (<a href="ch-continuity.html#thm-evt">Theorem 6.3.15</a>), there are <span class="math inline">\(c_1,c_2\in[a,b]\)</span> with <span class="math inline">\(m=f(c_1)\le f(x)\le f(c_2)=M\)</span> for all
+<span class="math inline">\(x\in[a,b]\)</span>. Since <span class="math inline">\(g(x)\ge0\)</span>, <span class="math display">\[mg(x)\le f(x)g(x)\le Mg(x)\quad\text{for all
+}x\in[a,b].\]</span> Since <span class="math inline">\(f\)</span> is
+continuous, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>,
+and so <span class="math inline">\(fg\in\mathcal{R}[a,b]\)</span> by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a> (3). By <a href="ch-integrals.html#exer-integral-monotone">Exercise 9.2.3</a> and <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a> (2), <span class="math display">\[m\int_a^bg\le\int_a^bfg\le M\int_a^bg.\]</span>
+Also <span class="math inline">\(\int_a^bg\ge0\)</span>, by <a href="ch-integrals.html#exer-integral-monotone">Exercise 9.2.3</a> with the zero
+function.</p>
+<p>If <span class="math inline">\(\int_a^bg=0\)</span>, then <span class="math inline">\(\int_a^bfg=0\)</span>, and every <span class="math inline">\(c\in[a,b]\)</span> works.</p>
+<p>Suppose <span class="math inline">\(\int_a^bg&gt;0\)</span>, and let
+<span class="math inline">\(k=\frac{\int_a^bfg}{\int_a^bg}\)</span>.
+Then <span class="math inline">\(m\le k\le M\)</span>. If <span class="math inline">\(k=m\)</span>, take <span class="math inline">\(c=c_1\)</span>. If <span class="math inline">\(k=M\)</span>, take <span class="math inline">\(c=c_2\)</span>. Otherwise <span class="math inline">\(f(c_1)&lt;k&lt;f(c_2)\)</span>. Apply the
+Intermediate Value Theorem (<a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a>) to
+<span class="math inline">\(f\)</span> on the closed interval with
+endpoints <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span>. It gives a <span class="math inline">\(c\)</span> between <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span>, so in <span class="math inline">\([a,b]\)</span>, with <span class="math inline">\(f(c)=k\)</span>. In every case, <span class="math inline">\(\int_a^bfg=f(c)\int_a^bg\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-even-odd-integral">
+
+<p><strong><a href="ch-integrals.html#exer-even-odd-integral">Exercise
+9.4.2</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(\int_{-a}^af=\int_{-a}^0f+\int_0^af\)</span>. Show
+that <span class="math inline">\(\int_{-a}^0f(x)\,dx=\int_0^af(-t)\,dt\)</span>.
+Reflect each partition of <span class="math inline">\([0,a]\)</span> to
+a partition of <span class="math inline">\([-a,0]\)</span>. The upper
+and lower sums do not change.</p>
+</div>
+<div class="solutionbox" id="sol-exer-p-test">
+
+<p><strong><a href="ch-integrals.html#exer-p-test">Exercise 9.5.1</a>.</strong>
+<em>Hint.</em> For <span class="math inline">\(p\ne1\)</span>, <span class="math inline">\(\int_a^sx^{-p}\,dx=\frac{s^{1-p}-a^{1-p}}{1-p}\)</span>.
+For <span class="math inline">\(p=1\)</span>, it is <span class="math inline">\(\ln s-\ln a\)</span>. Let <span class="math inline">\(s\to\infty\)</span>. For the second part,
+integrate over <span class="math inline">\([t,a]\)</span> and let <span class="math inline">\(t\to0^+\)</span>.</p>
+<p><em>Solution.</em> Two facts about powers are used. If <span class="math inline">\(q&gt;0\)</span>, then <span class="math inline">\(s^q\to\infty\)</span> as <span class="math inline">\(s\to\infty\)</span>, since <span class="math inline">\(s^q\)</span> is increasing and <span class="math inline">\(s^q\ge n\)</span> for <span class="math inline">\(s\ge n^{1/q}\)</span>. So <span class="math inline">\(s^{-q}=\frac1{s^q}\to0\)</span> as <span class="math inline">\(s\to\infty\)</span>, and <span class="math inline">\(t^q=\frac{1}{(1/t)^q}\to0\)</span> as <span class="math inline">\(t\to0^+\)</span>. Also <span class="math inline">\(\ln s\to\infty\)</span> as <span class="math inline">\(s\to\infty\)</span>, since <span class="math inline">\(\ln\)</span> is increasing and <span class="math inline">\(\ln(2^n)=n\ln2\)</span> with <span class="math inline">\(\ln2&gt;0\)</span>.</p>
+<p>The function <span class="math inline">\(x^{-p}\)</span> is
+continuous on <span class="math inline">\((0,\infty)\)</span>, so it is
+locally integrable there. An antiderivative is <span class="math inline">\(\frac{x^{1-p}}{1-p}\)</span> if <span class="math inline">\(p\ne1\)</span>, and <span class="math inline">\(\ln x\)</span> if <span class="math inline">\(p=1\)</span>. By the Fundamental Theorem of
+Calculus, for <span class="math inline">\(0&lt;t&lt;a&lt;s\)</span>,
+<span class="math display">\[\int_a^s\frac{dx}{x^p}=\begin{cases}\dfrac{s^{1-p}-a^{1-p}}{1-p},
+&amp; p\ne1,\\[1ex] \ln s-\ln a, &amp; p=1,\end{cases}
+\qquad
+\int_t^a\frac{dx}{x^p}=\begin{cases}\dfrac{a^{1-p}-t^{1-p}}{1-p}, &amp;
+p\ne1,\\[1ex] \ln a-\ln t, &amp; p=1.\end{cases}\]</span></p>
+<p>Let <span class="math inline">\(s\to\infty\)</span>. If <span class="math inline">\(p&gt;1\)</span>, then <span class="math inline">\(s^{1-p}\to0\)</span>, and the first integral tends
+to <span class="math inline">\(\frac{a^{1-p}}{p-1}\)</span>. If <span class="math inline">\(p&lt;1\)</span>, then <span class="math inline">\(s^{1-p}\to\infty\)</span>, and the first integral
+tends to <span class="math inline">\(\infty\)</span>. If <span class="math inline">\(p=1\)</span>, <span class="math inline">\(\ln
+s\to\infty\)</span>. So <span class="math inline">\(\int_a^\infty\frac{dx}{x^p}\)</span> converges if
+and only if <span class="math inline">\(p&gt;1\)</span>.</p>
+<p>Let <span class="math inline">\(t\to0^+\)</span>. If <span class="math inline">\(p&lt;1\)</span>, then <span class="math inline">\(t^{1-p}\to0\)</span>, and the second integral
+tends to <span class="math inline">\(\frac{a^{1-p}}{1-p}\)</span>. If
+<span class="math inline">\(p&gt;1\)</span>, then <span class="math inline">\(t^{1-p}=\frac{1}{t^{p-1}}\to\infty\)</span>, and
+the second integral tends to <span class="math inline">\(\infty\)</span>. If <span class="math inline">\(p=1\)</span>, <span class="math inline">\(-\ln
+t=\ln\frac1t\to\infty\)</span>. So <span class="math inline">\(\int_0^a\frac{dx}{x^p}\)</span> converges if and
+only if <span class="math inline">\(p&lt;1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-pv-agrees-interior">
+
+<p><strong><a href="ch-integrals.html#exer-pv-agrees-interior">Exercise
+9.5.2</a>.</strong> <em>Hint.</em> By definition, <span class="math inline">\(\lim_{s\to c^-}\int_a^sf\)</span> and <span class="math inline">\(\lim_{t\to c^+}\int_t^bf\)</span> both exist. Take
+<span class="math inline">\(s=c-\varepsilon\)</span> and <span class="math inline">\(t=c+\varepsilon\)</span>.</p>
+<p><em>Solution.</em> Since <span class="math inline">\(\int_a^bf\)</span> converges, the limits <span class="math display">\[L_1=\lim_{s\to c^-}\int_a^sf\quad\text{and}\quad
+L_2=\lim_{t\to c^+}\int_t^bf\]</span> exist, and <span class="math inline">\(\int_a^bf=L_1+L_2\)</span>. For <span class="math inline">\(0&lt;\varepsilon&lt;\min\{c-a,b-c\}\)</span>, let
+<span class="math inline">\(G(\varepsilon)=\int_a^{c-\varepsilon}f+\int_{c+\varepsilon}^bf\)</span>.
+We show <span class="math inline">\(G(\varepsilon)\to L_1+L_2\)</span>
+as <span class="math inline">\(\varepsilon\to0^+\)</span>.</p>
+<p>Let <span class="math inline">\(\eta&gt;0\)</span>. There is a <span class="math inline">\(\delta_1&gt;0\)</span> such that <span class="math inline">\(\left|\int_a^sf-L_1\right|&lt;\frac\eta2\)</span>
+for all <span class="math inline">\(s\in[a,c)\)</span> with <span class="math inline">\(c-s&lt;\delta_1\)</span>. There is a <span class="math inline">\(\delta_2&gt;0\)</span> such that <span class="math inline">\(\left|\int_t^bf-L_2\right|&lt;\frac\eta2\)</span>
+for all <span class="math inline">\(t\in(c,b]\)</span> with <span class="math inline">\(t-c&lt;\delta_2\)</span>. Let <span class="math inline">\(\delta=\min\{\delta_1,\delta_2,c-a,b-c\}\)</span>.
+If <span class="math inline">\(0&lt;\varepsilon&lt;\delta\)</span>, take
+<span class="math inline">\(s=c-\varepsilon\)</span> and <span class="math inline">\(t=c+\varepsilon\)</span>. Then <span class="math display">\[|G(\varepsilon)-(L_1+L_2)|\le\left|\int_a^{c-\varepsilon}f-L_1\right|+\left|\int_{c+\varepsilon}^bf-L_2\right|&lt;\frac\eta2+\frac\eta2=\eta.\]</span>
+So <span class="math inline">\(\operatorname{P.V.}\int_a^bf=\lim_{\varepsilon\to0^+}G(\varepsilon)=L_1+L_2=\int_a^bf\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-log-p">
+
+<p><strong><a href="ch-integrals.html#exer-x-log-p">Exercise 9.5.3</a>.</strong>
+<em>Hint.</em> Substitute <span class="math inline">\(u=\ln x\)</span>
+on <span class="math inline">\([2,s]\)</span>. Then use the <span class="math inline">\(p\)</span>-Test.</p>
+</div>
+<div class="solutionbox" id="sol-exer-gamma">
+
+<p><strong><a href="ch-integrals.html#exer-gamma">Exercise 9.5.4</a>.</strong>
+<em>Hint.</em> (a) Split at <span class="math inline">\(t=1\)</span>. On
+<span class="math inline">\((0,1]\)</span>, <span class="math inline">\(e^{-t}t^{x-1}\le t^{x-1}\)</span>. On <span class="math inline">\([1,\infty)\)</span>, <span class="math inline">\(e^{-t}t^{x+1}\to0\)</span>, so <span class="math inline">\(e^{-t}t^{x-1}\le t^{-2}\)</span> for large <span class="math inline">\(t\)</span>. Use Theorems <a href="ch-integrals.html#thm-comparison-test-integrals">9.5.8</a> and <a href="ch-integrals.html#thm-p-test">9.5.7</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-improper-independent-c">
+
+<p><strong><a href="ch-integrals.html#exer-improper-independent-c">Exercise
+9.5.5</a>.</strong> <em>Hint.</em> If <span class="math inline">\(c&lt;c'\)</span>, then <span class="math inline">\(\int_s^cf+\int_c^tf=\int_s^{c'}f+\int_{c'}^tf\)</span>
+for <span class="math inline">\(s&lt;c\)</span> and <span class="math inline">\(t&gt;c'\)</span>, by <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rs-step">
+
+<p><strong><a href="ch-integrals.html#exer-rs-step">Exercise 9.6.1</a>.</strong>
+<em>Hint.</em> Write <span class="math inline">\(\alpha=c_1+(c_2-c_1)I_c\)</span>, and argue as in
+<a href="ch-integrals.html#ex-unit-jump">Example 9.6.6</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rs-equal-increments">
+
+<p><strong><a href="ch-integrals.html#exer-rs-equal-increments">Exercise
+9.6.2</a>.</strong> <em>Hint.</em> Use the Intermediate Value Theorem to
+find <span class="math inline">\(x_i\)</span> with <span class="math inline">\(\alpha(x_i)=\alpha(a)+\frac
+in[\alpha(b)-\alpha(a)]\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. If <span class="math inline">\(\alpha(b)=\alpha(a)\)</span>, then <span class="math inline">\(\alpha\)</span> is constant, since it is
+increasing. Then every partition with <span class="math inline">\(n\)</span> subintervals works, since every <span class="math inline">\(\Delta\alpha_i=0\)</span>.</p>
+<p>Suppose <span class="math inline">\(\alpha(a)&lt;\alpha(b)\)</span>.
+For <span class="math inline">\(i=0,1,\dots,n\)</span>, let <span class="math display">\[y_i=\alpha(a)+\frac
+in[\alpha(b)-\alpha(a)].\]</span> Then <span class="math inline">\(\alpha(a)=y_0&lt;y_1&lt;\cdots&lt;y_n=\alpha(b)\)</span>.
+Let <span class="math inline">\(x_0=a\)</span> and <span class="math inline">\(x_n=b\)</span>. For <span class="math inline">\(0&lt;i&lt;n\)</span>, <span class="math inline">\(y_i\)</span> is between <span class="math inline">\(\alpha(a)\)</span> and <span class="math inline">\(\alpha(b)\)</span>. Since <span class="math inline">\(\alpha\)</span> is continuous, the Intermediate
+Value Theorem (<a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a>) gives an <span class="math inline">\(x_i\in(a,b)\)</span> with <span class="math inline">\(\alpha(x_i)=y_i\)</span>. So <span class="math inline">\(\alpha(x_i)=y_i\)</span> for every <span class="math inline">\(i\)</span>.</p>
+<p>The points are in order. If <span class="math inline">\(x_i\le
+x_{i-1}\)</span> for some <span class="math inline">\(i\)</span>, then
+<span class="math inline">\(\alpha(x_i)\le\alpha(x_{i-1})\)</span>,
+since <span class="math inline">\(\alpha\)</span> is increasing. That
+says <span class="math inline">\(y_i\le y_{i-1}\)</span>, which is
+false. So <span class="math inline">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span>, and
+<span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> is a
+partition of <span class="math inline">\([a,b]\)</span>. For each <span class="math inline">\(i\)</span>, <span class="math display">\[\Delta\alpha_i=y_i-y_{i-1}=\frac1n[\alpha(b)-\alpha(a)].\]</span></p>
+</div>
+<div class="solutionbox" id="sol-exer-rs-parts-identity">
+
+<p><strong><a href="ch-integrals.html#exer-rs-parts-identity">Exercise
+9.6.3</a>.</strong> <em>Hint.</em> Since <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> increase, the sup of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> is <span class="math inline">\(\alpha(x_i)\)</span> and the inf of <span class="math inline">\(\beta\)</span> is <span class="math inline">\(\beta(x_{i-1})\)</span>. Check that <span class="math inline">\(\alpha(x_i)\beta(x_i)-\alpha(x_{i-1})\beta(x_{i-1})=\alpha(x_i)\Delta\beta_i+\beta(x_{i-1})\Delta\alpha_i\)</span>,
+and sum over <span class="math inline">\(i\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rs-finite-jumps">
+
+<p><strong><a href="ch-integrals.html#exer-rs-finite-jumps">Exercise 9.6.4</a>.</strong>
+<em>Hint.</em> By <a href="ch-integrals.html#ex-unit-jump">Example 9.6.6</a>, <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Multiplying
+the integrator by <span class="math inline">\(c\ge0\)</span> multiplies
+every Riemann–Stieltjes sum by <span class="math inline">\(c\)</span>.
+Then use <a href="ch-integrals.html#thm-rs-properties">Theorem 9.6.10</a> (3).</p>
+<p><em>Solution.</em> <em>Step 1. Scaling the integrator.</em> Let <span class="math inline">\(\beta:[a,b]\to\mathbb{R}\)</span> be increasing,
+let <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, and let
+<span class="math inline">\(c\ge0\)</span>. We show <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span> and <span class="math inline">\(\int_a^bf\,d(c\beta)=c\int_a^bf\,d\beta\)</span>.
+If <span class="math inline">\(c=0\)</span>, then <span class="math inline">\(c\beta\)</span> is constant. Every sum for <span class="math inline">\(c\beta\)</span> is <span class="math inline">\(0\)</span>, so the integral is <span class="math inline">\(0\)</span>. Suppose <span class="math inline">\(c&gt;0\)</span>. For any partition <span class="math inline">\(\mathcal{P}\)</span>, the increments of <span class="math inline">\(c\beta\)</span> are <span class="math inline">\(c\Delta\beta_i\)</span>. So <span class="math display">\[\mathcal{U}(\mathcal{P},f,c\beta)=c\,\mathcal{U}(\mathcal{P},f,\beta)\quad\text{and}\quad\mathcal{L}(\mathcal{P},f,c\beta)=c\,\mathcal{L}(\mathcal{P},f,\beta).\]</span>
+Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Riemann’s
+Criterion (<a href="ch-integrals.html#thm-rs-riemann-criterion">Theorem 9.6.8</a>) gives
+a partition <span class="math inline">\(\mathcal{P}\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P},f,\beta)-\mathcal{L}(\mathcal{P},f,\beta)&lt;\frac\varepsilon
+c\)</span>. Then the difference for <span class="math inline">\(c\beta\)</span> is less than <span class="math inline">\(\varepsilon\)</span>. So <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span>. Also, for every
+<span class="math inline">\(\mathcal{P}\)</span>, <span class="math inline">\(\mathcal{L}(\mathcal{P},f,\beta)\le\int_a^bf\,d\beta\le\mathcal{U}(\mathcal{P},f,\beta)\)</span>.
+Multiplying by <span class="math inline">\(c\)</span>, the number <span class="math inline">\(c\int_a^bf\,d\beta\)</span> lies between every
+lower sum and every upper sum for <span class="math inline">\(c\beta\)</span>. So it lies between the lower and
+upper integrals, which both equal <span class="math inline">\(\int_a^bf\,d(c\beta)\)</span>.</p>
+<p><em>Step 2.</em> Since <span class="math inline">\(a&lt;s_i\le
+b\)</span> and <span class="math inline">\(f\)</span> is continuous, <a href="ch-integrals.html#ex-unit-jump">Example 9.6.6</a> gives <span class="math inline">\(f\in\mathcal{R}(I_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Here <span class="math inline">\(I_{s_i}(x)=I(x-s_i)\)</span>. By Step 1, <span class="math inline">\(f\in\mathcal{R}(c_iI_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,d(c_iI_{s_i})=c_if(s_i)\)</span>. Each
+<span class="math inline">\(c_iI_{s_i}\)</span> is increasing, since
+<span class="math inline">\(c_i\ge0\)</span>.</p>
+<p><em>Step 3.</em> Let <span class="math inline">\(\alpha_k=\sum_{i=1}^kc_iI_{s_i}\)</span>. We show
+by induction on <span class="math inline">\(k\)</span> that <span class="math inline">\(f\in\mathcal{R}(\alpha_k)\)</span> and <span class="math inline">\(\int_a^bf\,d\alpha_k=\sum_{i=1}^kc_if(s_i)\)</span>.
+The case <span class="math inline">\(k=1\)</span> is Step 2. If it holds
+for <span class="math inline">\(k\)</span>, then <span class="math inline">\(\alpha_{k+1}=\alpha_k+c_{k+1}I_{s_{k+1}}\)</span>
+is a sum of two increasing functions. By <a href="ch-integrals.html#thm-rs-properties">Theorem 9.6.10</a> (3) and Step 2, <span class="math display">\[\int_a^bf\,d\alpha_{k+1}=\int_a^bf\,d\alpha_k+\int_a^bf\,d(c_{k+1}I_{s_{k+1}})=\sum_{i=1}^{k+1}c_if(s_i).\]</span>
+Since <span class="math inline">\(\alpha=\alpha_n\)</span>, this proves
+the theorem.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rs-floor-x-squared">
+
+<p><strong><a href="ch-integrals.html#exer-rs-floor-x-squared">Exercise
+9.6.5</a>.</strong> <em>Hint.</em> On <span class="math inline">\([1,5]\)</span>, <span class="math inline">\(\left\lfloor
+x^2\right\rfloor=1+\sum_{k=2}^{25}I(x-\sqrt k)\)</span>. Adding a
+constant to the integrator does not change the integral. Use <a href="ch-integrals.html#thm-rs-finite-jumps">Theorem 9.6.15</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rs-sin">
+
+<p><strong><a href="ch-integrals.html#exer-rs-sin">Exercise 9.6.6</a>.</strong>
+<em>Hint.</em> Use <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem
+9.6.17</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rs-c1-formula">
+
+<p><strong><a href="ch-integrals.html#exer-rs-c1-formula">Exercise 9.6.7</a>.</strong>
+<em>Hint.</em> First show that <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>,
+so that <span class="math inline">\(V_\alpha\in C^{(1)}[a,b]\)</span>.
+Then apply <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.6.17</a> to
+<span class="math inline">\(V_\alpha\)</span> and to <span class="math inline">\(V_\alpha-\alpha\)</span>.</p>
+<p><em>Solution.</em> By <a href="ch-bounded-variation.html#cor-continuous-derivative-bv">Corollary 8.1.10</a>, <span class="math inline">\(\alpha\in BV[a,b]\)</span>. So <span class="math inline">\(V_\alpha\)</span> is defined.</p>
+<p><em>Step 1. <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>
+for <span class="math inline">\(x\in[a,b]\)</span>.</em> Both sides are
+<span class="math inline">\(0\)</span> at <span class="math inline">\(x=a\)</span>. Fix <span class="math inline">\(x\in(a,b]\)</span>. Since <span class="math inline">\(|\alpha'|\)</span> is continuous, it is
+integrable on <span class="math inline">\([a,x]\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,x]\)</span>. By the Mean
+Value Theorem, <span class="math inline">\(\alpha(x_i)-\alpha(x_{i-1})=\alpha'(t_i)\Delta
+x_i\)</span> for some <span class="math inline">\(t_i\in(x_{i-1},x_i)\)</span>. So <span class="math display">\[V(\mathcal{P})=\sum_{i=1}^n|\alpha'(t_i)|\Delta
+x_i,\]</span> and <span class="math inline">\(\mathcal{L}(\mathcal{P},|\alpha'|)\le
+V(\mathcal{P})\le\mathcal{U}(\mathcal{P},|\alpha'|)\)</span>. The
+left inequality and <span class="math inline">\(V(\mathcal{P})\le
+V_\alpha[a,x]\)</span> give <span class="math inline">\(\int_a^x|\alpha'|=\underline{\int_{a}^{x}}|\alpha'|\le
+V_\alpha[a,x]\)</span>. For the other direction, let <span class="math inline">\(\mathcal{Q}\)</span> be any partition of <span class="math inline">\([a,x]\)</span>. By Lemmas <a href="ch-bounded-variation.html#lem-variation-refinement">8.1.7</a> and <a href="ch-integrals.html#lem-refinement-sums">9.1.5</a>, <span class="math display">\[V(\mathcal{P})\le
+V(\mathcal{P}\cup\mathcal{Q})\le\mathcal{U}(\mathcal{P}\cup\mathcal{Q},|\alpha'|)\le\mathcal{U}(\mathcal{Q},|\alpha'|).\]</span>
+So <span class="math inline">\(V(\mathcal{P})\le\overline{\int_{a}^{x}}|\alpha'|=\int_a^x|\alpha'|\)</span>
+for every <span class="math inline">\(\mathcal{P}\)</span>, and <span class="math inline">\(V_\alpha[a,x]\le\int_a^x|\alpha'|\)</span>.</p>
+<p><em>Step 2.</em> By Step 1 and <a href="ch-integrals.html#thm-ftc-derivative">Theorem
+9.3.7</a>, <span class="math inline">\(V_\alpha\)</span> is
+differentiable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(V_\alpha'=|\alpha'|\)</span>, which is
+continuous and so in <span class="math inline">\(\mathcal{R}[a,b]\)</span>. Let <span class="math inline">\(\beta=V_\alpha-\alpha\)</span>. Then <span class="math inline">\(\beta\)</span> is differentiable with <span class="math inline">\(\beta'=|\alpha'|-\alpha'\in\mathcal{R}[a,b]\)</span>.
+Both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(\beta\)</span> are increasing, by Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. By <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.6.17</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, with <span class="math display">\[\int_a^bf\,dV_\alpha=\int_a^bf|\alpha'|\quad\text{and}\quad\int_a^bf\,d\beta=\int_a^bf\bigl(|\alpha'|-\alpha'\bigr).\]</span>
+By <a href="ch-integrals.html#def-rs-bv">Definition 9.6.20</a>, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, and by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, <span class="math display">\[\int_a^bf\,d\alpha=\int_a^bf|\alpha'|-\int_a^bf\bigl(|\alpha'|-\alpha'\bigr)=\int_a^bf\alpha'.\]</span></p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch08.html"><span class="dir">Previous</span> Solutions for Chapter 8. Functions of Bounded Variation</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch10.html"><span class="dir">Next</span> Solutions for Chapter 10. Series of Real Numbers</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

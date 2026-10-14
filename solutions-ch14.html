@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 14. Lebesgue Measure | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch13.html"><span class="dir">Previous</span> Solutions for Chapter 13. σ-Algebras and Measures</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch15.html"><span class="dir">Next</span> Solutions for Chapter 15. Measurable Functions</a>
+</nav>
+<main id="main">
+<article id="solutions-ch14">
+<h1>Solutions for Chapter 14. Lebesgue Measure</h1>
+<div class="solutionbox" id="sol-exer-outer-measure-monotone">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-outer-measure-monotone">Exercise
+14.1.1</a>.</strong> Since <span class="math inline">\(A\subset
+B\)</span>, <span class="math inline">\(\{\{I_n\}: B\subset\bigcup
+I_n\}\subset\{\{I_k\}: A\subset\bigcup I_k\}\)</span>. So <span class="math display">\[\left\{\sum \ell(I_n): B\subset\bigcup
+I_n\right\}\subset\left\{\sum \ell(I_k): A\subset\bigcup
+I_k\right\},\]</span> implying <span class="math display">\[\inf_{A\subset\bigcup I_k}\sum \ell(I_k)\leq
+\inf_{B\subset\bigcup I_n}\sum \ell(I_n).\]</span> Thus <span class="math inline">\(m^*(A)\leq m^*(B)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-outer-measure-translation">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-outer-measure-translation">Exercise
+14.1.2</a>.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, <span class="math inline">\(y\in\mathbb{R}\)</span>. Notice that <span class="math inline">\(E\subset\bigcup I_n\)</span>, where each <span class="math inline">\(I_n\)</span> is an open interval, if and only if
+<span class="math inline">\(E+y\subset \bigcup J_n\)</span>, where <span class="math inline">\(J_n=I_n+y\)</span>. Each <span class="math inline">\(J_n\)</span> is an open interval and <span class="math inline">\(\ell(I_n)=\ell(J_n)\)</span>, so <span class="math inline">\(\sum \ell(I_n)=\sum \ell(J_n)\)</span>. Also
+notice that if <span class="math inline">\(E+y\subset \bigcup
+J_n\)</span>, then there exists some cover <span class="math inline">\(\{I_n\}\)</span> of <span class="math inline">\(E\)</span> with <span class="math inline">\(I_n=J_n-y\)</span> such that <span class="math inline">\(E+y\subset\bigcup(I_n+y)\)</span>. Again, since
+<span class="math inline">\(\ell(I_n)=\ell(J_n)\)</span>, <span class="math inline">\(\sum \ell(I_n)=\sum \ell(J_n)\)</span>. So <span class="math inline">\(\left\{\sum \ell(I_n): E\subset\bigcup
+I_n\right\}=\left\{\sum \ell(J_n): E+y\subset\bigcup
+J_n\right\}\)</span> and <span class="math display">\[\inf_{E\subset\bigcup I_n}\sum \ell(I_n)=
+\inf_{E+y\subset\bigcup J_n}\sum \ell(J_n).\]</span> So <span class="math inline">\(m^*(E)=m^*(E+y)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-outer-measure-open">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-outer-measure-open">Exercise
+14.1.4</a>.</strong> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. If <span class="math inline">\(m^*(A)=\infty\)</span>, take <span class="math inline">\(U=\mathbb{R}\)</span>. So assume <span class="math inline">\(m^*(A)&lt;\infty\)</span>. Since <span class="math inline">\(m^*(A)=\inf_{A\subset\bigcup I_n}\sum
+\ell(I_n)\)</span>, there exists a sequence <span class="math inline">\(\{I_n\}\)</span> of open intervals such that <span class="math inline">\(A\subset\bigcup I_n\)</span> and <span class="math inline">\(m^*(A)+\varepsilon\geq \sum \ell(I_n)\)</span>.
+Let <span class="math inline">\(U=\bigcup I_n\)</span>. Then <span class="math inline">\(U\)</span> is open, <span class="math inline">\(A\subset U\)</span> and <span class="math display">\[m^*(U)=m^*\left(\bigcup I_n\right)\le\sum
+m^*(I_n)= \sum \ell(I_n) \leq m^*(A)+\varepsilon.\]</span> The first
+inequality is <a href="ch-lebesgue-measure.html#thm-outer-measure-subadditive">Theorem
+14.1.6</a>, and <span class="math inline">\(m^*(I_n)=\ell(I_n)\)</span>
+by <a href="ch-lebesgue-measure.html#thm-outer-measure-interval">Theorem 14.1.4</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-outer-measure-closed-intervals">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-outer-measure-closed-intervals">Exercise
+14.1.6</a>.</strong> <em>Hint.</em> Each open interval lies in its
+closure, which has the same length. Each closed interval <span class="math inline">\(J_n\)</span> lies in an open interval of length
+<span class="math inline">\(\ell(J_n)+\frac{\varepsilon}{2^n}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-outer-measure-scaling">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-outer-measure-scaling">Exercise
+14.1.7</a>.</strong> <em>Hint.</em> <span class="math inline">\(\{I_n\}\)</span> covers <span class="math inline">\(A\)</span> if and only if <span class="math inline">\(\{cI_n\}\)</span> covers <span class="math inline">\(cA\)</span>, and <span class="math inline">\(\ell(cI_n)=c\,\ell(I_n)\)</span>. Compare <a href="ch-lebesgue-measure.html#exer-outer-measure-translation">Exercise 14.1.2</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-countable-measurable">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-countable-measurable">Exercise
+14.2.1</a>.</strong> <em>Hint.</em> Use <a href="ch-lebesgue-measure.html#cor-countable-outer-measure-zero">Corollary 14.1.7</a> and <a href="ch-lebesgue-measure.html#lem-null-measurable">Lemma 14.2.3</a>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(A\)</span> be
+countable. By <a href="ch-lebesgue-measure.html#cor-countable-outer-measure-zero">Corollary
+14.1.7</a>, <span class="math inline">\(m^*(A)=0\)</span>. By <a href="ch-lebesgue-measure.html#lem-null-measurable">Lemma 14.2.3</a>, <span class="math inline">\(A\)</span> is measurable, and <span class="math inline">\(m(A)=m^*(A)=0\)</span>.</p>
+<p>In particular, <span class="math inline">\(\mathbb{Q}\)</span> is
+measurable. Since <span class="math inline">\(\mathcal{M}\)</span> is a
+<span class="math inline">\(\sigma\)</span>-algebra (<a href="ch-lebesgue-measure.html#thm-lebesgue-sigma-algebra">Theorem 14.2.8</a>), <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}=\mathbb{Q}^c\)</span>
+is measurable. The interval <span class="math inline">\([0,1]\)</span>
+is measurable by <a href="ch-lebesgue-measure.html#thm-borel-measurable">Theorem 14.2.10</a>. So
+<span class="math inline">\([0,1]\cap\mathbb{Q}\)</span> and <span class="math inline">\([0,1]\setminus\mathbb{Q}=[0,1]\cap\mathbb{Q}^c\)</span>
+are measurable and disjoint, and their union is <span class="math inline">\([0,1]\)</span>. By additivity, <span class="math display">\[1=m([0,1])=m([0,1]\cap\mathbb{Q})+m([0,1]\setminus\mathbb{Q})=0+m([0,1]\setminus\mathbb{Q}).\]</span>
+So <span class="math inline">\(m\bigl([0,1]\setminus\mathbb{Q}\bigr)=1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-null-difference">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-null-difference">Exercise 14.2.2</a>.</strong>
+<em>Hint.</em> Write <span class="math inline">\(F=\bigl(E\setminus(E\setminus
+F)\bigr)\cup(F\setminus E)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-outer-measure-measurable-subset">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-outer-measure-measurable-subset">Exercise
+14.2.4</a>.</strong> <em>Hint.</em> Apply the definition of
+measurability of <span class="math inline">\(E\)</span> to the sets
+<span class="math inline">\(A\)</span> and <span class="math inline">\(A\cup E\)</span>.</p>
+<p><em>Solution.</em> Test the set <span class="math inline">\(A\cup
+E\)</span> with the measurable set <span class="math inline">\(E\)</span>. Since <span class="math inline">\((A\cup E)\cap E=E\)</span> and <span class="math inline">\((A\cup E)\cap E^c=A\cap E^c\)</span>, <span class="math display">\[m^*(A\cup E)=m^*(E)+m^*(A\cap E^c).\]</span> Add
+<span class="math inline">\(m^*(A\cap E)\)</span> to both sides. Then
+test <span class="math inline">\(A\)</span> with <span class="math inline">\(E\)</span>, which gives <span class="math inline">\(m^*(A\cap E)+m^*(A\cap E^c)=m^*(A)\)</span>. So
+<span class="math display">\[m^*(A\cup E)+m^*(A\cap E)=m(E)+m^*(A\cap
+E)+m^*(A\cap E^c)=m(E)+m^*(A).\]</span> Only addition is used, so this
+holds even when some of the values are <span class="math inline">\(\infty\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-measure-zero-nowhere">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-measure-zero-nowhere">Exercise
+14.2.5</a>.</strong> <em>Hint.</em> Countable sets have measure zero, by
+<a href="ch-lebesgue-measure.html#cor-countable-outer-measure-zero">Corollary 14.1.7</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-measurable-approximation">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-measurable-approximation">Exercise
+14.3.1</a>.</strong> <em>Hint.</em> First, show that for <span class="math inline">\(m^*(E)&lt;\infty\)</span>, (1)<span class="math inline">\(\Rightarrow\)</span>(2). Then show for arbitrary
+sets <span class="math inline">\(E\)</span>, (1)<span class="math inline">\(\Rightarrow\)</span>(2)<span class="math inline">\(\Rightarrow\)</span>(4)<span class="math inline">\(\Rightarrow\)</span>(1). Finally, show (1)<span class="math inline">\(\Rightarrow\)</span>(3)<span class="math inline">\(\Rightarrow\)</span>(5)<span class="math inline">\(\Rightarrow\)</span>(1).</p>
+<p><em>Solution.</em>Let <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<p>((1)<span class="math inline">\(\Rightarrow\)</span>(2)) First assume
+<span class="math inline">\(m^*(E)&lt;\infty\)</span>. Then there exists
+an open set <span class="math inline">\(O\)</span> with <span class="math inline">\(E\subset O\)</span> and <span class="math inline">\(m(O)\leq m(E)+\frac\varepsilon 2\)</span>, by <a href="ch-lebesgue-measure.html#exer-outer-measure-open">Exercise 14.1.4</a>. Since <span class="math inline">\(E\)</span> is measurable, <span class="math inline">\(m(O\setminus E)=m(O\cap E^c)=m(O) - m(O\cap E)=
+m(O)-m(E)\le\frac\varepsilon 2&lt;\varepsilon\)</span>. The subtraction
+is allowed because <span class="math inline">\(m(E)&lt;\infty\)</span>.
+Now assume <span class="math inline">\(m^*(E)=\infty\)</span>. Let <span class="math inline">\(E_n= E\cap[-n,n]\)</span>. So <span class="math inline">\(m (E_n)\le 2n&lt;\infty\)</span>. So there exists
+an open set <span class="math inline">\(O_n\)</span> such that <span class="math inline">\(E_n\subset O_n\)</span> and <span class="math inline">\(m(O_n\setminus E_n)&lt;
+\frac{\varepsilon}{2^n}\)</span>. Let <span class="math inline">\(O=\bigcup_{n\in\mathbb{N}} O_n\)</span>. Then
+<span class="math inline">\(E\subset O\)</span> and <span class="math display">\[m^*(O\setminus E)=m(O\setminus
+E)=m\left(\left(\bigcup O_n\right)\setminus E\right)\le
+m\left(\bigcup(O_n\setminus E_n)\right)\le \sum m(O_n\setminus
+E_n)&lt;\sum_{n\in\mathbb{N}}
+\frac{\varepsilon}{2^n}=\varepsilon.\]</span> The first inequality holds
+since <span class="math inline">\(E_n\subset E\)</span>, so <span class="math inline">\(O_n\setminus E\subset O_n\setminus
+E_n\)</span>.</p>
+<p>((2)<span class="math inline">\(\Rightarrow\)</span>(4)) For each
+<span class="math inline">\(n\in\mathbb{N}\)</span>, there exists an
+open set <span class="math inline">\(O_n\)</span> containing <span class="math inline">\(E\)</span> such that <span class="math inline">\(m^*(O_n\setminus E)&lt;\frac1n\)</span>. Let <span class="math inline">\(G=\bigcap_{n\in\mathbb{N}} O_n\)</span>. So <span class="math inline">\(G\)</span> is a <span class="math inline">\(G_\delta\)</span> containing <span class="math inline">\(E\)</span>, and for all <span class="math inline">\(n\)</span>, <span class="math inline">\(m^*(G\setminus E)\le m^*(O_n\setminus
+E)&lt;\frac1n\)</span>. So <span class="math inline">\(m^*(G\setminus
+E)=0\)</span>.</p>
+<p>((4)<span class="math inline">\(\Rightarrow\)</span>(1)) Since <span class="math inline">\(G\)</span> is a <span class="math inline">\(G_\delta\)</span>, <span class="math inline">\(G\)</span> is measurable by <a href="ch-lebesgue-measure.html#thm-borel-measurable">Theorem 14.2.10</a>. Now <span class="math inline">\(m^*(G\cap E^c)=m^*(G\setminus E)=0\)</span> and so
+<span class="math inline">\(G\cap E^c\)</span> is measurable by <a href="ch-lebesgue-measure.html#lem-null-measurable">Lemma 14.2.3</a>. But <span class="math inline">\(E= G\setminus (G\cap E^c)\)</span> and so <span class="math inline">\(E\)</span> is measurable.</p>
+<p>((1)<span class="math inline">\(\Rightarrow\)</span>(3)) Since <span class="math inline">\(E\)</span> is measurable, <span class="math inline">\(E^c\)</span> is measurable. So since (1)<span class="math inline">\(\Rightarrow\)</span>(2), there exists an open set
+<span class="math inline">\(O\)</span> containing <span class="math inline">\(E^c\)</span> such that <span class="math inline">\(m^*(O\setminus E^c)&lt;\varepsilon\)</span>. Let
+<span class="math inline">\(F=O^c\)</span>. So <span class="math inline">\(F\)</span> is closed, <span class="math inline">\(F\subset E\)</span>, and <span class="math inline">\(E\setminus F=E\cap F^c=E\cap O=O\setminus
+E^c\)</span>. Thus <span class="math inline">\(m^*(E\setminus
+F)=m(O\setminus E^c)&lt;\varepsilon\)</span>.</p>
+<p>((3)<span class="math inline">\(\Rightarrow\)</span>(5)) For each
+<span class="math inline">\(n\in\mathbb{N}\)</span>, there exists a
+closed set <span class="math inline">\(F_n{}\subset E\)</span> such that
+<span class="math inline">\(m^*(E\setminus F_n)&lt;\frac1n\)</span>. Let
+<span class="math inline">\(F=\bigcup F_n\)</span>. So <span class="math inline">\(F\)</span> is an <span class="math inline">\(F_\sigma\)</span> contained in <span class="math inline">\(E\)</span>, and for all <span class="math inline">\(n\)</span>, <span class="math inline">\(m^*(E\setminus F)\leq m^*(E\setminus
+F_n)&lt;\frac1n\)</span>. So <span class="math inline">\(m^*(E\setminus
+F)=0\)</span>.</p>
+<p>((5)<span class="math inline">\(\Rightarrow\)</span>(1)) Since <span class="math inline">\(F\)</span> is an <span class="math inline">\(F_\sigma\)</span>, <span class="math inline">\(F\)</span> is measurable. Now <span class="math inline">\(m^*(E\setminus F)=0\)</span>, so <span class="math inline">\(E\setminus F\)</span> is measurable by <a href="ch-lebesgue-measure.html#lem-null-measurable">Lemma 14.2.3</a>. But <span class="math inline">\(E=F\cup(E\setminus F)\)</span>, and so <span class="math inline">\(E\)</span> is measurable.</p>
+</div>
+<div class="solutionbox" id="sol-exer-measurable-approximation-6">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-measurable-approximation-6">Exercise
+14.3.2</a>.</strong> <em>Hint.</em> For (2)<span class="math inline">\(\Rightarrow\)</span>(6), write the open set <span class="math inline">\(U\)</span> as a countable union of disjoint open
+intervals, by <a href="ch-topology.html#thm-open-set-structure">Theorem 4.1.12</a>, and
+keep finitely many of them.</p>
+</div>
+<div class="solutionbox" id="sol-exer-inner-regularity">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-inner-regularity">Exercise
+14.3.3</a>.</strong> <em>Hint.</em> By <a href="ch-lebesgue-measure.html#thm-measurable-approximation">Theorem 14.3.1</a> (3), there is a
+closed set <span class="math inline">\(F\subset E\)</span> with <span class="math inline">\(m(E\setminus F)&lt;\frac\varepsilon 2\)</span>.
+Let <span class="math inline">\(K=F\cap[-n,n]\)</span> for large <span class="math inline">\(n\)</span>, and use <a href="ch-measures.html#thm-measure-properties">Theorem 13.3.9</a> (4).</p>
+<p><em>Solution.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-lebesgue-measure.html#thm-measurable-approximation">Theorem 14.3.1</a> (3), there is a
+closed set <span class="math inline">\(F\subset E\)</span> with <span class="math inline">\(m^*(E\setminus F)&lt;\frac\varepsilon 2\)</span>.
+The sets <span class="math inline">\(F\)</span> and <span class="math inline">\(E\setminus F\)</span> are measurable, by <a href="ch-lebesgue-measure.html#thm-borel-measurable">Theorem 14.2.10</a>. For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(K_n=F\cap[-n,n]\)</span>. It is closed by <a href="ch-topology.html#thm-closed-union-intersection">Theorem 4.1.17</a>, and it lies in
+the compact set <span class="math inline">\([-n,n]\)</span> (<a href="ch-topology.html#thm-heine-borel">Theorem 4.2.14</a>). So <span class="math inline">\(K_n\)</span> is compact, by <a href="ch-topology.html#lem-closed-subset-compact">Lemma 4.2.10</a>.</p>
+<p>The sets <span class="math inline">\(F\setminus
+K_n=F\setminus[-n,n]\)</span> decrease, and their intersection is empty,
+since every <span class="math inline">\(x\)</span> lies in some <span class="math inline">\([-n,n]\)</span>. Also <span class="math inline">\(m(F\setminus K_1)\le m(E)&lt;\infty\)</span>. By
+continuity from above (<a href="ch-measures.html#thm-measure-properties">Theorem
+13.3.9</a> (4)), <span class="math inline">\(m(F\setminus
+K_n)\to0\)</span>. Choose <span class="math inline">\(n\)</span> with
+<span class="math inline">\(m(F\setminus K_n)&lt;\frac\varepsilon
+2\)</span>. Since <span class="math inline">\(K_n\subset F\subset
+E\)</span>, the set <span class="math inline">\(E\setminus K_n\)</span>
+is the disjoint union of <span class="math inline">\(E\setminus
+F\)</span> and <span class="math inline">\(F\setminus K_n\)</span>. So
+<span class="math display">\[m(E\setminus K_n)=m(E\setminus
+F)+m(F\setminus K_n)&lt;\frac\varepsilon 2+\frac\varepsilon
+2=\varepsilon.\]</span> So <span class="math inline">\(K=K_n\)</span>
+works.</p>
+</div>
+<div class="solutionbox" id="sol-exer-positive-measure-interval">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-positive-measure-interval">Exercise
+14.3.4</a>.</strong> <em>Hint.</em> Use (2) and <a href="ch-topology.html#thm-open-set-structure">Theorem 4.1.12</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-nonmeasurable-positive">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-nonmeasurable-positive">Exercise
+14.4.1</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(P_i\)</span> as a union of translates of <span class="math inline">\(P\cap[0,1-r_i)\)</span> and <span class="math inline">\(P\cap[1-r_i,1)\)</span>. So <span class="math inline">\(m^*(P_i)\le2m^*(P)\)</span>. If <span class="math inline">\(m^*(P)=0\)</span>, subadditivity gives <span class="math inline">\(m^*([0,1))=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-outer-measure-not-additive">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-outer-measure-not-additive">Exercise
+14.4.2</a>.</strong> <em>Hint.</em> In the same way, <span class="math inline">\(m^*(P)\le2m^*(P_i)\)</span>. So <span class="math inline">\(\sum m^*(P_i)=\infty\)</span>, by <a href="ch-lebesgue-measure.html#exer-nonmeasurable-positive">Exercise 14.4.1</a>. But <span class="math inline">\(\bigcup P_i=[0,1)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-nonmeasurable-subset">
+
+<p><strong><a href="ch-lebesgue-measure.html#exer-nonmeasurable-subset">Exercise
+14.4.3</a>.</strong> <em>Hint.</em> Consider the sets <span class="math inline">\(E\cap P_i\)</span>.</p>
+<p><em>Solution.</em> Use <span class="math inline">\(P\)</span>, the
+rational numbers <span class="math inline">\(r_0,r_1,\dots\)</span> and
+the sets <span class="math inline">\(P_i=P\mathbin{\overset{\circ}{+}}r_i\)</span> from
+the proof of <a href="ch-lebesgue-measure.html#thm-nonmeasurable">Theorem 14.4.6</a>. The sets
+<span class="math inline">\(P_i\)</span> are disjoint and their union is
+<span class="math inline">\([0,1)\)</span>. So <span class="math inline">\(E\)</span> is the disjoint union of the sets <span class="math inline">\(E\cap P_i\)</span>. We show that one of them is
+not measurable.</p>
+<p>Suppose every <span class="math inline">\(E\cap P_i\)</span> is
+measurable. By countable additivity, <span class="math inline">\(m(E)=\sum_im(E\cap P_i)\)</span>. Since <span class="math inline">\(m(E)&gt;0\)</span>, some <span class="math inline">\(F=E\cap P_k\)</span> has <span class="math inline">\(m(F)&gt;0\)</span>.</p>
+<p>For each <span class="math inline">\(j\)</span>, <span class="math inline">\(F\mathbin{\overset{\circ}{+}}r_j\)</span> is
+measurable with <span class="math inline">\(m(F\mathbin{\overset{\circ}{+}}r_j)=m(F)\)</span>,
+by <a href="ch-lebesgue-measure.html#lem-translation-mod-1">Lemma 14.4.4</a>. Since <span class="math inline">\(\mathbin{\overset{\circ}{+}}\)</span> is
+associative (<a href="ch-lebesgue-measure.html#rem-sum-mod-1">Remark 14.4.2</a>), <span class="math display">\[F\mathbin{\overset{\circ}{+}}r_j\subset
+P_k\mathbin{\overset{\circ}{+}}r_j=P\mathbin{\overset{\circ}{+}}(r_k\mathbin{\overset{\circ}{+}}r_j).\]</span>
+The number <span class="math inline">\(r_k\mathbin{\overset{\circ}{+}}r_j\)</span> is a
+rational number in <span class="math inline">\([0,1)\)</span>, so it is
+<span class="math inline">\(r_{\sigma(j)}\)</span> for some index <span class="math inline">\(\sigma(j)\)</span>. These indices are distinct. If
+<span class="math inline">\(r_k\mathbin{\overset{\circ}{+}}r_j=r_k\mathbin{\overset{\circ}{+}}r_{j'}\)</span>,
+then <span class="math inline">\(r_j-r_{j'}\)</span> is <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. Since <span class="math inline">\(r_j,r_{j'}\in[0,1)\)</span>, it is <span class="math inline">\(0\)</span>, so <span class="math inline">\(j=j'\)</span>. So the sets <span class="math inline">\(F\mathbin{\overset{\circ}{+}}r_j\)</span> lie in
+the disjoint sets <span class="math inline">\(P_{\sigma(j)}\)</span>,
+and they are pairwise disjoint. They all lie in <span class="math inline">\([0,1)\)</span>. By countable additivity and
+monotonicity, <span class="math display">\[\sum_{j=0}^\infty
+m(F)=m\left(\bigcup_{j=0}^\infty
+F\mathbin{\overset{\circ}{+}}r_j\right)\le m([0,1))=1.\]</span> But the
+left side is <span class="math inline">\(\infty\)</span>, since <span class="math inline">\(m(F)&gt;0\)</span>. This contradiction shows that
+some <span class="math inline">\(E\cap P_i\)</span> is not measurable.
+It is a subset of <span class="math inline">\(E\)</span>.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch13.html"><span class="dir">Previous</span> Solutions for Chapter 13. σ-Algebras and Measures</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch15.html"><span class="dir">Next</span> Solutions for Chapter 15. Measurable Functions</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

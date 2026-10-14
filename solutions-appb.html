@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Appendix B. Construction of the Real Numbers by Cauchy Sequences | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-appa.html"><span class="dir">Previous</span> Solutions for Appendix A. Construction of the Real Numbers by Cuts</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="bibliography.html"><span class="dir">Next</span> Bibliography</a>
+</nav>
+<main id="main">
+<article id="solutions-appb">
+<h1>Solutions for Appendix B. Construction of the Real Numbers by
+Cauchy Sequences</h1>
+<div class="solutionbox" id="sol-exer-newton-cauchy-Q">
+
+<p><strong><a href="app-cauchy.html#exer-newton-cauchy-Q">Exercise B.1.1</a>.</strong>
+<em>Basic facts.</em> By induction, each <span class="math inline">\(x_n\)</span> is a positive rational number. Let
+<span class="math inline">\(d_n=x_n^2-2\)</span>. Then <span class="math inline">\(d_1=2\)</span>, and <span class="math display">\[d_{n+1}=\frac{x_n^2}4+1+\frac1{x_n^2}-2=\Bigl(\frac{x_n}2-\frac1{x_n}\Bigr)^2=\frac{d_n^2}{4x_n^2}.\]</span>
+So <span class="math inline">\(d_n\ge0\)</span> for all <span class="math inline">\(n\)</span>, and <span class="math inline">\(d_n\ne0\)</span> by <a href="ch-real-numbers.html#thm-sqrt2-irrational">Theorem 1.3.4</a>. So <span class="math inline">\(x_n^2&gt;2\)</span> and <span class="math inline">\(x_n&gt;1\)</span>. Also <span class="math inline">\(x_n-x_{n+1}=\frac{x_n}2-\frac1{x_n}=\frac{d_n}{2x_n}&gt;0\)</span>.
+So <span class="math inline">\(\{x_n\}\)</span> decreases, and <span class="math inline">\(1&lt;x_n\le2\)</span>.</p>
+<p><em>A bound.</em> Since <span class="math inline">\(x_n^2&gt;2\)</span>, <span class="math inline">\(d_{n+1}&lt;\frac{d_n^2}8\)</span>. So if <span class="math inline">\(d_n\le2\)</span>, then <span class="math inline">\(d_{n+1}&lt;\frac{d_n}4\)</span>. Since <span class="math inline">\(d_1=2\)</span>, induction gives <span class="math inline">\(d_n\le\frac2{4^{n-1}}\)</span> for all <span class="math inline">\(n\)</span>. Thus <span class="math display">\[0&lt;x_n-x_{n+1}=\frac{d_n}{2x_n}&lt;\frac{d_n}2\le\frac1{4^{n-1}}.\]</span></p>
+<p><em>Cauchy.</em> Let <span class="math inline">\(m&gt;n\)</span>. By
+<a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>, <span class="math display">\[0&lt;x_n-x_m=\sum_{k=n}^{m-1}(x_k-x_{k+1})&lt;\frac1{4^{n-1}}\sum_{j=0}^{m-n-1}\frac1{4^j}&lt;\frac1{4^{n-1}}\cdot\frac43&lt;\frac2n,\]</span>
+since <span class="math inline">\(4^{n-1}\ge n\)</span> by induction.
+Let <span class="math inline">\(\varepsilon&gt;0\)</span> be rational.
+By <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>, choose <span class="math inline">\(N\)</span> with <span class="math inline">\(N\varepsilon&gt;2\)</span>. Then <span class="math inline">\(|x_m-x_n|&lt;\frac2N&lt;\varepsilon\)</span> for
+all <span class="math inline">\(m,n\ge N\)</span>. So <span class="math inline">\(\{x_n\}\)</span> is a Cauchy sequence in <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+<p><em>No rational limit.</em> Suppose <span class="math inline">\(L\in\mathbb{Q}\)</span> and <span class="math inline">\(|x_n-L|\to0\)</span>. Since <span class="math inline">\(0&lt;x_n\le2\)</span>, <span class="math display">\[|x_n^2-L^2|=|x_n-L|\,|x_n+L|\le(2+|L|)\,|x_n-L|.\]</span>
+So <span class="math inline">\(|x_n^2-L^2|\to0\)</span>. Also <span class="math inline">\(|x_n^2-2|=d_n\le\frac2{4^{n-1}}\le\frac2n\to0\)</span>.
+Since <span class="math inline">\(|L^2-2|\le|L^2-x_n^2|+|x_n^2-2|\)</span> for every
+<span class="math inline">\(n\)</span>, <span class="math inline">\(|L^2-2|\)</span> is less than every positive
+rational number. So <span class="math inline">\(L^2=2\)</span>, which
+contradicts <a href="ch-real-numbers.html#thm-sqrt2-irrational">Theorem 1.3.4</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-convergent-in-Q">
+
+<p><strong><a href="app-cauchy.html#exer-convergent-in-Q">Exercise B.1.2</a>.</strong>
+<em>Hint.</em> Write <span class="math inline">\(x\)</span> as the sum
+of the null sequence <span class="math inline">\(x-L\)</span> and the
+constant sequence <span class="math inline">\(L\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-reciprocal-not-cauchy">
+
+<p><strong><a href="app-cauchy.html#exer-reciprocal-not-cauchy">Exercise
+B.2.1</a>.</strong> <em>Example.</em> Let <span class="math inline">\(x_n=\frac1n\)</span>. Then <span class="math inline">\(x\)</span> is a null sequence, so <span class="math inline">\(x\in\mathcal{C}\)</span>, and <span class="math inline">\(x_n\ne0\)</span>. But <span class="math inline">\(\frac1{x_n}=n\)</span>, and <span class="math inline">\(|m-n|\ge1\)</span> whenever <span class="math inline">\(m\ne n\)</span>. So <span class="math inline">\(\{n\}\)</span> is not a Cauchy sequence.</p>
+<p><em>The claim.</em> Suppose <span class="math inline">\([x]\ne[0]\)</span> and <span class="math inline">\(x_n\ne0\)</span> for every <span class="math inline">\(n\)</span>. Then <span class="math inline">\(x\)</span> is not null. By <a href="app-cauchy.html#lem-cauchy-away-from-zero">Lemma B.2.3</a>, there are a rational
+<span class="math inline">\(c&gt;0\)</span> and an <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_n|\ge c\)</span> for all <span class="math inline">\(n\ge N\)</span>. Let <span class="math inline">\(y_n=\frac1{x_n}\)</span>. As in the proof of <a href="app-cauchy.html#thm-cauchy-field">Theorem B.2.4</a>, <span class="math inline">\(|y_m-y_n|\le\frac{|x_m-x_n|}{c^2}\)</span> for
+<span class="math inline">\(m,n\ge N\)</span>, so <span class="math inline">\(y\in\mathcal{C}\)</span>. Also <span class="math inline">\(x_ny_n=1\)</span> for every <span class="math inline">\(n\)</span>, so <span class="math inline">\([x][y]=[1]\)</span>. By <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (7), <span class="math inline">\([y]=[x]^{-1}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cauchy-abs">
+
+<p><strong><a href="app-cauchy.html#exer-cauchy-abs">Exercise B.3.1</a>.</strong> By <a href="ch-real-numbers.html#thm-absolute-value">Theorem 1.6.3</a> (3), <span class="math inline">\(\bigl||x_m|-|x_n|\bigr|\le|x_m-x_n|\)</span>. So
+<span class="math inline">\(|x|\in\mathcal{C}\)</span>. By <a href="app-cauchy.html#lem-cauchy-positive">Lemma B.3.2</a> (2), there are three
+cases.</p>
+<p>If <span class="math inline">\(x\)</span> is positive, then <span class="math inline">\([x]&gt;[0]\)</span>, so <span class="math inline">\(\bigl|[x]\bigr|=[x]\)</span>. Also <span class="math inline">\(x_n\ge c&gt;0\)</span> for large <span class="math inline">\(n\)</span>, so <span class="math inline">\(|x_n|=x_n\)</span> for large <span class="math inline">\(n\)</span>. Then <span class="math inline">\(|x|-x\)</span> is eventually <span class="math inline">\(0\)</span>, so <span class="math inline">\(|x|\sim
+x\)</span> and <span class="math inline">\(\bigl[|x|\bigr]=[x]\)</span>.</p>
+<p>If <span class="math inline">\(x\)</span> is null, then <span class="math inline">\([x]=[0]\)</span>, and <span class="math inline">\(|x|\)</span> is null too. So both sides are <span class="math inline">\([0]\)</span>.</p>
+<p>If <span class="math inline">\(-x\)</span> is positive, then <span class="math inline">\([x]&lt;[0]\)</span>, so <span class="math inline">\(\bigl|[x]\bigr|=-[x]=[-x]\)</span>. Also <span class="math inline">\(x_n\le-c&lt;0\)</span> for large <span class="math inline">\(n\)</span>, so <span class="math inline">\(|x_n|=-x_n\)</span> for large <span class="math inline">\(n\)</span>. So <span class="math inline">\(\bigl[|x|\bigr]=[-x]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cauchy-strict">
+
+<p><strong><a href="app-cauchy.html#exer-cauchy-strict">Exercise B.3.2</a>.</strong>
+<em>Hint.</em> Try a null sequence of positive numbers.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cauchy-complete-direct">
+
+<p><strong><a href="app-cauchy.html#exer-cauchy-complete-direct">Exercise
+B.4.1</a>.</strong> By <a href="app-cauchy.html#lem-cauchy-density">Lemma
+B.4.1</a> (2), for each <span class="math inline">\(k\in\mathbb{N}\)</span> there is a <span class="math inline">\(q_k\in\mathbb{Q}\)</span> with <span class="math inline">\(a_k-\frac1k&lt;q_k&lt;a_k\)</span>. So <span class="math inline">\(|a_k-q_k|&lt;\frac1k\)</span>.</p>
+<p><em>The sequence <span class="math inline">\(q\)</span> is in <span class="math inline">\(\mathcal{C}\)</span>.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span> be rational. Choose
+<span class="math inline">\(K\)</span> with <span class="math inline">\(K\varepsilon&gt;3\)</span> and with <span class="math inline">\(|a_m-a_n|&lt;\frac\varepsilon 3\)</span> for all
+<span class="math inline">\(m,n\ge K\)</span>. For <span class="math inline">\(m,n\ge K\)</span>, <span class="math display">\[|q_m-q_n|\le|q_m-a_m|+|a_m-a_n|+|a_n-q_n|&lt;\frac1m+\frac\varepsilon
+3+\frac1n\le\varepsilon.\]</span> This is an inequality between rational
+numbers that holds in <span class="math inline">\(\mathbb{R}\)</span>,
+so it holds in <span class="math inline">\(\mathbb{Q}\)</span>, by <a href="app-cauchy.html#thm-cauchy-contain-Q">Theorem B.3.5</a>. So <span class="math inline">\(q\in\mathcal{C}\)</span>. Let <span class="math inline">\(s=[q]\)</span>.</p>
+<p><em>Convergence.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span> be a real number. By <a href="app-cauchy.html#lem-cauchy-density">Lemma B.4.1</a> (2), there is a rational
+<span class="math inline">\(\varepsilon'\)</span> with <span class="math inline">\(0&lt;\varepsilon'&lt;\varepsilon\)</span>. By
+<a href="app-cauchy.html#lem-cauchy-converges-to-class">Lemma B.4.2</a>, there is an
+<span class="math inline">\(N\)</span> with <span class="math inline">\(|s-q_k|\le\frac{\varepsilon'}2\)</span> for
+all <span class="math inline">\(k\ge N\)</span>. Choose <span class="math inline">\(N'\ge N\)</span> with <span class="math inline">\(N'\varepsilon'&gt;2\)</span>. For <span class="math inline">\(k\ge N'\)</span>, <span class="math display">\[|a_k-s|\le|a_k-q_k|+|q_k-s|&lt;\frac1k+\frac{\varepsilon'}2&lt;\varepsilon'&lt;\varepsilon.\]</span>
+So <span class="math inline">\(a_k\to s\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-increasing-rationals">
+
+<p><strong><a href="app-cauchy.html#exer-increasing-rationals">Exercise
+B.4.2</a>.</strong> <em>Hint.</em> Choose <span class="math inline">\(q_1\)</span> and then each <span class="math inline">\(q_{k+1}\)</span> in <span class="math inline">\(\mathbb{Q}\)</span> between <span class="math inline">\(\max\bigl\{q_k,a-\frac1{k+1}\bigr\}\)</span> and
+<span class="math inline">\(a\)</span>, by <a href="app-cauchy.html#lem-cauchy-density">Lemma B.4.1</a> (2).</p>
+</div>
+<div class="solutionbox" id="sol-exer-Q-in-ordered-field">
+
+<p><strong><a href="app-cauchy.html#exer-Q-in-ordered-field">Exercise
+B.5.1</a>.</strong> <em>Adding one.</em> First, <span class="math inline">\((m+1)_\mathbb{F}=m_\mathbb{F}+1\)</span> for every
+<span class="math inline">\(m\in\mathbb{Z}\)</span>. For <span class="math inline">\(m\ge0\)</span> this is the definition. For <span class="math inline">\(m=-1\)</span>, <span class="math inline">\(0_\mathbb{F}=0=-1_\mathbb{F}+1\)</span>. For <span class="math inline">\(m=-n\)</span> with <span class="math inline">\(n\ge2\)</span>, the definition gives <span class="math inline">\(n_\mathbb{F}=(n-1)_\mathbb{F}+1\)</span>, so <span class="math inline">\((m+1)_\mathbb{F}=-(n-1)_\mathbb{F}=-n_\mathbb{F}+1=m_\mathbb{F}+1\)</span>.</p>
+<p><em>Sums.</em> Fix <span class="math inline">\(m\in\mathbb{Z}\)</span>. By induction on <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\((m+k)_\mathbb{F}=m_\mathbb{F}+k_\mathbb{F}\)</span>.
+The case <span class="math inline">\(k=1\)</span> was just shown. If it
+holds for <span class="math inline">\(k\)</span>, then <span class="math display">\[(m+k+1)_\mathbb{F}=(m+k)_\mathbb{F}+1=m_\mathbb{F}+k_\mathbb{F}+1=m_\mathbb{F}+(k+1)_\mathbb{F}.\]</span>
+The case <span class="math inline">\(k=0\)</span> is clear. If <span class="math inline">\(k=-n\)</span> with <span class="math inline">\(n\in\mathbb{N}\)</span>, then <span class="math inline">\((m-n)_\mathbb{F}+n_\mathbb{F}=m_\mathbb{F}\)</span>
+by the case just proved, applied to <span class="math inline">\(m-n\)</span>. So <span class="math inline">\((m-n)_\mathbb{F}=m_\mathbb{F}-n_\mathbb{F}=m_\mathbb{F}+(-n)_\mathbb{F}\)</span>.
+In particular, <span class="math inline">\((-j)_\mathbb{F}=-j_\mathbb{F}\)</span> for every
+<span class="math inline">\(j\in\mathbb{Z}\)</span>.</p>
+<p><em>Products.</em> Fix <span class="math inline">\(m\in\mathbb{Z}\)</span>. By induction on <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\((mk)_\mathbb{F}=m_\mathbb{F}\,k_\mathbb{F}\)</span>.
+For <span class="math inline">\(k=1\)</span> this is clear. If it holds
+for <span class="math inline">\(k\)</span>, then <span class="math display">\[(m(k+1))_\mathbb{F}=(mk+m)_\mathbb{F}=(mk)_\mathbb{F}+m_\mathbb{F}=m_\mathbb{F}\,k_\mathbb{F}+m_\mathbb{F}=m_\mathbb{F}\,(k+1)_\mathbb{F}.\]</span>
+For <span class="math inline">\(k=0\)</span> both sides are <span class="math inline">\(0\)</span>. If <span class="math inline">\(k=-n\)</span> with <span class="math inline">\(n\in\mathbb{N}\)</span>, then <span class="math inline">\((m(-n))_\mathbb{F}=-(mn)_\mathbb{F}=-(m_\mathbb{F}\,n_\mathbb{F})=m_\mathbb{F}\,(-n)_\mathbb{F}\)</span>,
+by <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (11).</p>
+<p><em>Order.</em> By induction, <span class="math inline">\(n_\mathbb{F}&gt;0\)</span> for every <span class="math inline">\(n\in\mathbb{N}\)</span>, since <span class="math inline">\(1&gt;0\)</span> (<a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.5.8</a> (5)) and a sum of
+two positive elements is positive. If <span class="math inline">\(m&lt;k\)</span> in <span class="math inline">\(\mathbb{Z}\)</span>, then <span class="math inline">\(k-m\in\mathbb{N}\)</span>. So <span class="math inline">\(k_\mathbb{F}-m_\mathbb{F}=(k-m)_\mathbb{F}&gt;0\)</span>,
+and <span class="math inline">\(m_\mathbb{F}&lt;k_\mathbb{F}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-R-automorphism">
+
+<p><strong><a href="app-cauchy.html#exer-R-automorphism">Exercise B.5.2</a>.</strong>
+<em>Hint.</em> Show <span class="math inline">\(\varphi(1)=1\)</span>,
+and then <span class="math inline">\(\varphi(q)=q\)</span> for <span class="math inline">\(q\in\mathbb{Q}\)</span>. Every <span class="math inline">\(x\ge0\)</span> is a square, so <span class="math inline">\(\varphi(x)\ge0\)</span>. Then compare the rational
+numbers below <span class="math inline">\(x\)</span> and below <span class="math inline">\(\varphi(x)\)</span>, as in <a href="app-cauchy.html#sec-cauchy-construction-uniqueness">Section B.5</a>.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-appa.html"><span class="dir">Previous</span> Solutions for Appendix A. Construction of the Real Numbers by Cuts</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="bibliography.html"><span class="dir">Next</span> Bibliography</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

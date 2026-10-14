@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 2. Cardinality | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-real-numbers.html"><span class="dir">Previous</span> Chapter 1. The Real Number System</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-sequences.html"><span class="dir">Next</span> Chapter 3. Sequences of Real Numbers</a>
+</nav>
+<main id="main">
+<article id="ch-cardinality">
+<h1>Chapter 2. Cardinality</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-countable">2.1 Countable and Uncountable Sets</a></li><li><a href="#sec-Q-countable">2.2 Countability of the Rationals</a></li><li><a href="#sec-R-uncountable">2.3 Uncountability of the Reals</a></li><li><a href="#notes-1">Notes</a></li></ul></nav>
+<p>When do two sets have the same cardinality? For finite sets, count
+the elements. For infinite sets, counting never ends, so a different
+idea is needed. Two sets are said to have the same cardinality if their
+elements can be paired off, one to one, with nothing left over on either
+side. This chapter makes that idea precise.</p>
+<p>The results are surprising. The natural numbers, the integers and the
+rational numbers all have the same cardinality, even though each set is
+a proper subset of the next. The real numbers are different. No list
+<span class="math inline">\(x_1,x_2,x_3,\dots\)</span> of real numbers
+contains every real number. So two infinite sets do not always have the
+same cardinality.</p>
+<section class="level3 unnumbered" id="sec-countable">
+<h2>2.1 Countable and Uncountable Sets</h2>
+<p>Functions are the tool for pairing off the elements of two sets. This
+section sets up the language of functions, then uses one-to-one and onto
+functions to define what it means for two sets to have the same
+cardinality.</p>
+<div class="definitionbox" id="def-function">
+
+<p><strong>Definition 2.1.1.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two sets. A <em>function</em> <span class="math inline">\(f:A\to B\)</span> is a rule that assigns each
+element in <span class="math inline">\(A\)</span> exactly one element in
+<span class="math inline">\(B\)</span>. The set <span class="math inline">\(A\)</span> is the <em>domain</em> of <span class="math inline">\(f\)</span> and <span class="math inline">\(B\)</span> is the <em>codomain</em> of <span class="math inline">\(f\)</span>. The element of <span class="math inline">\(B\)</span> assigned to <span class="math inline">\(a\in A\)</span> is denoted <span class="math inline">\(f(a)\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-image-preimage">
+
+<p><strong>Definition 2.1.2.</strong> Let <span class="math inline">\(f:A\to B\)</span>, <span class="math inline">\(E\subset A\)</span> and <span class="math inline">\(G\subset B\)</span>. The <em>image</em> of <span class="math inline">\(E\)</span> under <span class="math inline">\(f\)</span> is <span class="math display">\[f[E]=\{f(x):x\in E\}.\]</span> The image <span class="math inline">\(f[A]\)</span> is called the <em>range</em> of
+<span class="math inline">\(f\)</span> and is also written <span class="math inline">\(\operatorname{Range}f\)</span>. The
+<em>preimage</em> of <span class="math inline">\(G\)</span> under <span class="math inline">\(f\)</span> is <span class="math display">\[f^{-1}[G]=\{x\in A:f(x)\in G\}.\]</span></p>
+</div>
+<div class="definitionbox" id="def-composition">
+
+<p><strong>Definition 2.1.3.</strong> Let <span class="math inline">\(f:A\to B\)</span> and <span class="math inline">\(g:B\to C\)</span>. The <em>composition</em> of
+<span class="math inline">\(g\)</span> and <span class="math inline">\(f\)</span> is the function <span class="math inline">\(g\circ f:A\to C\)</span> defined by <span class="math inline">\((g\circ f)(a)=g(f(a))\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-injective-surjective">
+
+<p><strong>Definition 2.1.4.</strong> A function <span class="math inline">\(f:A\to B\)</span> is <em>one-to-one</em> (1-1), or
+<em>injective</em>, if for <span class="math inline">\(a_1,a_2\in
+A\)</span> with <span class="math inline">\(a_1\ne a_2\)</span>, <span class="math inline">\(f(a_1)\ne f(a_2)\)</span>. <span class="math inline">\(f\)</span> is <em>onto</em>, or
+<em>surjective</em>, if for each <span class="math inline">\(b\in
+B\)</span>, there exists an <span class="math inline">\(a\in A\)</span>
+with <span class="math inline">\(f(a)=b\)</span>. <span class="math inline">\(f\)</span> is <em>bijective</em> if <span class="math inline">\(f\)</span> is both injective and surjective. A
+bijective function is called a <em>bijection</em>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Function Is One-to-One).</strong>
+The definition says different inputs give different outputs. Its
+contrapositive is easier to use. If <span class="math inline">\(f(a_1)=f(a_2)\)</span>, then <span class="math inline">\(a_1=a_2\)</span>. So to prove <span class="math inline">\(f\)</span> is one-to-one, let <span class="math inline">\(a_1,a_2\in A\)</span> with <span class="math inline">\(f(a_1)=f(a_2)\)</span>. Then show <span class="math inline">\(a_1=a_2\)</span>. To prove <span class="math inline">\(f\)</span> is not one-to-one, find <span class="math inline">\(a_1\ne a_2\)</span> with <span class="math inline">\(f(a_1)=f(a_2)\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Function Is Onto).</strong> To
+prove <span class="math inline">\(f:A\to B\)</span> is onto, let <span class="math inline">\(b\)</span> be an arbitrary element of <span class="math inline">\(B\)</span>. Then find an <span class="math inline">\(a\in A\)</span> with <span class="math inline">\(f(a)=b\)</span>. Finding <span class="math inline">\(a\)</span> is usually scratch work. Solve the
+equation <span class="math inline">\(f(a)=b\)</span> for <span class="math inline">\(a\)</span>. Then the proof states <span class="math inline">\(a\)</span> and checks two things. First, <span class="math inline">\(a\in A\)</span>. Second, <span class="math inline">\(f(a)=b\)</span>. To prove <span class="math inline">\(f\)</span> is not onto, find a <span class="math inline">\(b\in B\)</span> that is not <span class="math inline">\(f(a)\)</span> for any <span class="math inline">\(a\in A\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-shift-bijection">
+
+<p><strong>Example 2.1.5.</strong> Define <span class="math inline">\(f:\mathbb{Z}\to\mathbb{Z}\)</span> by <span class="math inline">\(f(n)=n+3\)</span>. Let <span class="math inline">\(m,n\in\mathbb{Z}\)</span> with <span class="math inline">\(f(m)=f(n)\)</span>. Then <span class="math inline">\(m+3=n+3\)</span>, or <span class="math inline">\(m=n\)</span>. So <span class="math inline">\(f\)</span> is one-to-one. Now let <span class="math inline">\(k\in\mathbb{Z}\)</span>. Then <span class="math inline">\(k-3\in\mathbb{Z}\)</span> and <span class="math inline">\(f(k-3)=k\)</span>. So <span class="math inline">\(f\)</span> is onto. Thus <span class="math inline">\(f\)</span> is a bijection.</p>
+</div>
+<div class="examplebox" id="ex-square-not-bijection">
+
+<p><strong>Example 2.1.6.</strong> Define <span class="math inline">\(f:\mathbb{Z}\to\mathbb{Z}\)</span> by <span class="math inline">\(f(n)=n^2\)</span>. Then <span class="math inline">\(f(-1)=1=f(1)\)</span>, so <span class="math inline">\(f\)</span> is not one-to-one. Also, <span class="math inline">\(n^2\ne2\)</span> for all <span class="math inline">\(n\in\mathbb{Z}\)</span>, so <span class="math inline">\(f\)</span> is not onto. Notice <span class="math inline">\(f[\{-1,0,1,2\}]=\{0,1,4\}\)</span>, <span class="math inline">\(f^{-1}[\{1,4\}]=\{-2,-1,1,2\}\)</span>, and <span class="math inline">\(f^{-1}[\{2\}]=\emptyset\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-same-cardinality">
+
+<p><strong>Definition 2.1.7.</strong> Two sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to have the <em>same
+cardinality</em>, written <span class="math inline">\(A\sim B\)</span>
+or <span class="math inline">\(|A|=|B|\)</span>, if there exists a
+bijection from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-cardinal-equivalence">
+
+<p><strong>Theorem 2.1.8.</strong> Cardinal equivalence is an
+equivalence relation; i.e.,</p>
+<ol>
+<li><p><span class="math inline">\(A\sim A\)</span>;</p></li>
+<li><p>if <span class="math inline">\(A\sim B\)</span>, then <span class="math inline">\(B\sim A\)</span>; and</p></li>
+<li><p>if <span class="math inline">\(A\sim B\)</span> and <span class="math inline">\(B\sim C\)</span>, then <span class="math inline">\(A\sim C\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Define <span class="math inline">\(f:A\to A\)</span> by <span class="math inline">\(f(a)=a\)</span>. Let <span class="math inline">\(a_1,a_2\in A\)</span> with <span class="math inline">\(f(a_1)=f(a_2)\)</span>. Since <span class="math inline">\(f(a_1)=a_1\)</span> and <span class="math inline">\(f(a_2)=a_2\)</span>, <span class="math inline">\(f\)</span> is one-to-one. Now let <span class="math inline">\(a\in A\)</span>. Then <span class="math inline">\(f(a)=a\)</span> and so <span class="math inline">\(f\)</span> is onto. Thus <span class="math inline">\(f\)</span> is a bijection. So <span class="math inline">\(A\sim A\)</span>.</p></li>
+<li><p>Since <span class="math inline">\(A\sim B\)</span>, there exists
+a bijection <span class="math inline">\(f:A\to B\)</span>. Define <span class="math inline">\(g:B\to A\)</span> by <span class="math inline">\(g(b)=a\)</span> if and only if <span class="math inline">\(f(a)=b\)</span>. Since <span class="math inline">\(f\)</span> is onto and 1-1, <span class="math inline">\(g\)</span> is a well defined function. Let <span class="math inline">\(b_1,b_2\in B\)</span> with <span class="math inline">\(g(b_1)=g(b_2)=a\)</span>. Then <span class="math inline">\(f(a)=b_1\)</span> and <span class="math inline">\(f(a)=b_2\)</span>. Since <span class="math inline">\(f\)</span> is a function, <span class="math inline">\(b_1=b_2\)</span>. So <span class="math inline">\(g\)</span> is one-to-one. Now let <span class="math inline">\(a\in A\)</span>. So <span class="math inline">\(f(a)=b\)</span> for some <span class="math inline">\(b\in B\)</span>, implying <span class="math inline">\(g(b)=a\)</span>. So <span class="math inline">\(g\)</span> is onto. Thus <span class="math inline">\(g\)</span> is a bijection. So <span class="math inline">\(B\sim A\)</span>.</p></li>
+<li><p>Since <span class="math inline">\(A\sim B\)</span>, there exists
+a bijection <span class="math inline">\(f:A\to B\)</span>. Since <span class="math inline">\(B\sim C\)</span>, there exists a bijection <span class="math inline">\(g:B\to C\)</span>. Define <span class="math inline">\(h:A\to C\)</span> by <span class="math inline">\(h(a)=g(f(a))\)</span>. Let <span class="math inline">\(a_1,a_2\in A\)</span> with <span class="math inline">\(h(a_1)=h(a_2)\)</span>. Then <span class="math inline">\(g(f(a_1))=g(f(a_2))\)</span>. Since <span class="math inline">\(g\)</span> is 1-1, <span class="math inline">\(f(a_1)=f(a_2)\)</span>. Since <span class="math inline">\(f\)</span> is one-to-one, <span class="math inline">\(a_1=a_2\)</span>. So <span class="math inline">\(h\)</span> is one-to-one. Now let <span class="math inline">\(c\in C\)</span>. Since <span class="math inline">\(g\)</span> is onto, there exists a <span class="math inline">\(b\in B\)</span> such that <span class="math inline">\(g(b)=c\)</span>. Since <span class="math inline">\(f\)</span> is onto, there exists an <span class="math inline">\(a\in A\)</span> with <span class="math inline">\(f(a)=b\)</span>. So <span class="math inline">\(h(a)=g(f(a))=g(b)=c\)</span>, implying <span class="math inline">\(h\)</span> is onto. So <span class="math inline">\(h\)</span> is a bijection and <span class="math inline">\(A\sim C\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-countable">
+
+<p><strong>Definition 2.1.9.</strong> For each <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(\mathbb{N}_n=\{1,2,\dots,n\}\)</span>. A set <span class="math inline">\(A\)</span> is <em>finite</em> if <span class="math inline">\(A=\emptyset\)</span> or <span class="math inline">\(A\sim\mathbb{N}_n\)</span> for some <span class="math inline">\(n\in\mathbb{N}\)</span>. A set that is not finite
+is <em>infinite</em>. A set <span class="math inline">\(A\)</span> is
+<em>countable</em> if <span class="math inline">\(A\sim\mathbb{N}\)</span>. An infinite set that is
+not countable is <em>uncountable</em>. A set is <em>at most
+countable</em> if it is finite or countable.</p>
+</div>
+<p>A countable set is one whose elements can be listed in a sequence
+<span class="math inline">\(a_1,a_2,a_3,\dots\)</span> that includes
+every element exactly once. The bijection <span class="math inline">\(f:\mathbb{N}\to A\)</span> is the list, with <span class="math inline">\(a_n=f(n)\)</span>.</p>
+<div class="examplebox" id="ex-squares-countable">
+
+<p><strong>Example 2.1.10.</strong> Let <span class="math inline">\(S=\{1^2,2^2,3^2,\dots\}\)</span>. Define <span class="math inline">\(f:\mathbb{N}\to S\)</span> by <span class="math inline">\(f(n)=n^2\)</span>. Let <span class="math inline">\(m,n\in\mathbb{N}\)</span> with <span class="math inline">\(f(m)=f(n)\)</span>. Then <span class="math inline">\(m^2=n^2\)</span>, or <span class="math inline">\(m=n\)</span>. So <span class="math inline">\(f\)</span> is one-to-one. Now let <span class="math inline">\(s\in S\)</span>. So <span class="math inline">\(\sqrt{s}\in\mathbb{N}\)</span> with <span class="math inline">\(f(\sqrt{s})=s\)</span>. So <span class="math inline">\(f\)</span> is onto. Thus <span class="math inline">\(f\)</span> is a bijection and <span class="math inline">\(S\sim \mathbb{N}\)</span>, implying <span class="math inline">\(S\)</span> is countable.</p>
+</div>
+<div class="examplebox" id="ex-Z-countable">
+
+<p><strong>Example 2.1.11.</strong> <span class="math inline">\(\mathbb{Z}\)</span> is countable. The proof is an
+exercise.</p>
+</div>
+<div class="examplebox" id="ex-evens-countable">
+
+<p><strong>Example 2.1.12.</strong> Denote <span class="math inline">\(\mathbb{E}\)</span> as the set of even integers.
+Define <span class="math inline">\(f:\mathbb{Z}\to \mathbb{E}\)</span>
+by <span class="math inline">\(f(n)=2n\)</span>. Let <span class="math inline">\(m,n\in\mathbb{Z}\)</span> with <span class="math inline">\(f(m)=f(n)\)</span>. Then <span class="math inline">\(2m=2n\)</span>, or <span class="math inline">\(m=n\)</span>. So <span class="math inline">\(f\)</span> is one-to-one. Now let <span class="math inline">\(n\in \mathbb{E}\)</span>. Then <span class="math inline">\(\frac{n}{2}\in\mathbb{Z}\)</span> and <span class="math inline">\(f\bigl(\frac{n}{2}\bigr)=2\cdot\frac{n}{2}=n\)</span>.
+So <span class="math inline">\(f\)</span> is onto. Thus <span class="math inline">\(f\)</span> is a bijection and <span class="math inline">\(\mathbb{E}\sim \mathbb{Z}\)</span>, implying <span class="math inline">\(\mathbb{E}\)</span> is countable.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-7">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-Z-countable">
+
+<p><strong>Exercise 2.1.1.</strong> Prove that <span class="math inline">\(\mathbb{Z}\)</span> is countable by proving <span class="math inline">\(f:\mathbb{N}\to\mathbb{Z}\)</span> defined by
+<span class="math display">\[f(n)=\begin{cases} \dfrac{n}{2}, &amp;
+n\text{ even},\\[1ex] \dfrac{-(n-1)}{2}, &amp; n\text{
+odd},\end{cases}\]</span> is a bijection. <a aria-label="Solution for Exercise 2.1.1" href="solutions-ch02.html#sol-exer-Z-countable">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-odds-countable">
+
+<p><strong>Exercise 2.1.2.</strong> Let <span class="math inline">\(\mathbb{O}\)</span> denote the set of odd
+integers. Prove <span class="math inline">\(\mathbb{O}\)</span> is
+countable. <a aria-label="Solution for Exercise 2.1.2" href="solutions-ch02.html#sol-exer-odds-countable">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-linear-bijection">
+
+<p><strong>Exercise 2.1.3.</strong> Prove that <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> defined by
+<span class="math inline">\(f(x)=5x-7\)</span> is a bijection.</p>
+</div>
+<div class="exercisebox" id="exer-image-preimage">
+
+<p><strong>Exercise 2.1.4.</strong> Let <span class="math inline">\(f:A\to B\)</span>, <span class="math inline">\(E_1,E_2\subset A\)</span> and <span class="math inline">\(G_1,G_2\subset B\)</span>. Prove each of the
+following.</p>
+<ol type="a">
+<li><p><span class="math inline">\(f[E_1\cup E_2]=f[E_1]\cup
+f[E_2]\)</span>.</p></li>
+<li><p><span class="math inline">\(f^{-1}[G_1\cup G_2]=f^{-1}[G_1]\cup
+f^{-1}[G_2]\)</span>.</p></li>
+<li><p><span class="math inline">\(f^{-1}[G_1\cap G_2]=f^{-1}[G_1]\cap
+f^{-1}[G_2]\)</span>.</p></li>
+<li><p><span class="math inline">\(f^{-1}[B\setminus G_1]=A\setminus
+f^{-1}[G_1]\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercisebox" id="exer-image-intersection">
+
+<p><strong>Exercise 2.1.5.</strong> Find a function <span class="math inline">\(f\)</span> and sets <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_2\)</span> with <span class="math inline">\(f[E_1\cap E_2]\ne f[E_1]\cap f[E_2]\)</span>. <a aria-label="Hint for Exercise 2.1.5" href="solutions-ch02.html#sol-exer-image-intersection">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-Q-countable">
+<h2>2.2 Countability of the Rationals</h2>
+<p>At first, it seems that <span class="math inline">\(\mathbb{N}\times\mathbb{N}\)</span> could not have
+the same cardinality as <span class="math inline">\(\mathbb{N}\)</span>.
+It contains a whole copy of <span class="math inline">\(\mathbb{N}\)</span> in each row. The next theorem
+shows that it does. The idea is to give each pair <span class="math inline">\((m,n)\)</span> its own natural number, using every
+natural number exactly once. The table shows the assignment <span class="math inline">\((m,n)\mapsto2^{m-1}(2n-1)\)</span>. Row <span class="math inline">\(m=1\)</span> lists the odd numbers. Row <span class="math inline">\(m=2\)</span> lists twice the odd numbers, and so
+on. By <a href="ch-real-numbers.html#thm-power-of-two">Theorem 1.2.16</a>, every natural
+number appears in the table exactly once. <span class="math display">\[\begin{array}{c|ccccc}
+&amp; n=1 &amp; n=2 &amp; n=3 &amp; n=4 &amp; n=5\\ \hline
+m=1 &amp; 1 &amp; 3 &amp; 5 &amp; 7 &amp; 9\\
+m=2 &amp; 2 &amp; 6 &amp; 10 &amp; 14 &amp; 18\\
+m=3 &amp; 4 &amp; 12 &amp; 20 &amp; 28 &amp; 36\\
+m=4 &amp; 8 &amp; 24 &amp; 40 &amp; 56 &amp; 72
+\end{array}\]</span></p>
+<div class="theorembox" id="thm-NxN-countable">
+
+<p><strong>Theorem 2.2.1.</strong> <span class="math inline">\(\mathbb{N}\times\mathbb{N}\)</span> is
+countable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By <a href="ch-real-numbers.html#thm-power-of-two">Theorem 1.2.16</a>,
+for each <span class="math inline">\(k\in\mathbb{N}\)</span>, there
+exists unique <span class="math inline">\(m,n\in\mathbb{N}\)</span> such
+that <span class="math inline">\(k=2^{m-1}(2n-1)\)</span>. Define <span class="math inline">\(f:\mathbb{N}\times\mathbb{N}\to\mathbb{N}\)</span>
+by <span class="math inline">\(f(m,n)=2^{m-1}(2n-1)\)</span>. The
+existence gives that <span class="math inline">\(f\)</span> is onto and
+the uniqueness gives that <span class="math inline">\(f\)</span> is
+one-to-one. Thus <span class="math inline">\(f\)</span> is a bijection.
+So <span class="math inline">\(\mathbb{N}\times\mathbb{N}\)</span> is
+countable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-sequence">
+
+<p><strong>Definition 2.2.2.</strong> Let <span class="math inline">\(A\)</span> be a set. A <em>sequence</em> is a
+function <span class="math inline">\(f:\mathbb{N}\to A\)</span>. For
+each <span class="math inline">\(n\in\mathbb{N}\)</span>, denote <span class="math inline">\(x_n=f(n)\)</span>. Then <span class="math inline">\(x_n\)</span> is called the <em><span class="math inline">\(n\)</span>th term</em> of the sequence. Sequences
+are denoted by <span class="math inline">\(\{x_n\}_{n=1}^\infty\)</span>
+or <span class="math inline">\(\{x_n\}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-enumeration">
+
+<p><strong>Definition 2.2.3.</strong> Let <span class="math inline">\(A\)</span> be a countable set. A bijection <span class="math inline">\(f:\mathbb{N}\to A\)</span> is called an
+<em>enumeration</em> of <span class="math inline">\(A\)</span> and is
+written <span class="math inline">\(A=\{x_n:n=1,2,\dots\}=\{x_1,x_2,\dots\}\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-infinite-subset-countable">
+
+<p><strong>Theorem 2.2.4.</strong> Every infinite subset of a countable
+set is countable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(A\)</span> be a
+countable set and let <span class="math inline">\(\{x_n:n=1,2,\dots\}\)</span> be an enumeration of
+<span class="math inline">\(A\)</span>. Let <span class="math inline">\(E\subset A\)</span> be infinite. For each <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(x\in
+A\)</span>. So <span class="math inline">\(x\)</span> must have the form
+<span class="math inline">\(x_k\)</span> for some <span class="math inline">\(k\in\mathbb{N}\)</span>. Let <span class="math display">\[n_1=\min\{k:x_k\in E\},\]</span> which must exist
+by the Well-Ordering Principle (<a href="ch-real-numbers.html#ax-well-ordering">Axiom
+1.2.7</a>). Relabel this <span class="math inline">\(x_k\)</span> as
+<span class="math inline">\(x_{n_1}\)</span>. Let <span class="math display">\[n_2=\min\bigl\{k:x_k\in
+E\setminus\{x_{n_1}\}\bigr\}.\]</span> Relabel this <span class="math inline">\(x_k\)</span> as <span class="math inline">\(x_{n_2}\)</span>. In general, let <span class="math display">\[n_m=\min\bigl\{k:x_k\in
+E\setminus\{x_{n_1},\dots,x_{n_{m-1}}\}\bigr\}.\]</span> Relabel this
+<span class="math inline">\(x_k\)</span> as <span class="math inline">\(x_{n_m}\)</span>. Define <span class="math inline">\(f(k)=x_{n_k}\)</span>. Since <span class="math inline">\(E\)</span> is infinite, <span class="math inline">\(f\)</span> is defined for all <span class="math inline">\(k\in\mathbb{N}\)</span>.</p>
+<p>Let <span class="math inline">\(m,k\in\mathbb{N}\)</span> with <span class="math inline">\(m\ne k\)</span>. Assume without loss of generality
+that <span class="math inline">\(m&gt;k\)</span>. Then <span class="math inline">\(n_m&gt;n_k\)</span> and so <span class="math inline">\(x_{n_m}\ne x_{n_k}\)</span>. So <span class="math inline">\(f(m)\ne f(k)\)</span> and <span class="math inline">\(f\)</span> is one-to-one. If <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(x\in
+A\)</span> and so <span class="math inline">\(x=x_j\)</span> for some
+<span class="math inline">\(j\in\mathbb{N}\)</span>. By construction,
+<span class="math inline">\(n_k=j\)</span> for some <span class="math inline">\(k\in\mathbb{N}\)</span>, and so <span class="math inline">\(f(k)=x\)</span>. Thus <span class="math inline">\(f\)</span> is onto and is a bijection. So <span class="math inline">\(E\)</span> is countable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-onto-at-most-countable">
+
+<p><strong>Theorem 2.2.5.</strong> If <span class="math inline">\(f\)</span> maps <span class="math inline">\(\mathbb{N}\)</span> onto <span class="math inline">\(A\)</span>, then <span class="math inline">\(A\)</span> is at most countable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> If <span class="math inline">\(A\)</span> is finite,
+the conclusion follows immediately. Suppose <span class="math inline">\(A\)</span> is infinite. Since <span class="math inline">\(f\)</span> maps <span class="math inline">\(\mathbb{N}\)</span> onto <span class="math inline">\(A\)</span>, for each <span class="math inline">\(a\in A\)</span>, there exists an <span class="math inline">\(n\in\mathbb{N}\)</span> such that <span class="math inline">\(f(n)=a\)</span>. Also, by the Well-Ordering
+Principle, for each <span class="math inline">\(a\in A\)</span>, <span class="math display">\[f^{-1}[\{a\}]=\{n\in\mathbb{N}:f(n)=a\}\]</span>
+has a smallest integer, call it <span class="math inline">\(n_a\)</span>. Then the mapping <span class="math inline">\(a\mapsto n_a\)</span> is one-to-one, since <span class="math inline">\(f\)</span> is a function. So <span class="math inline">\(A\sim\{n_a:a\in A\}\)</span>. This set is an
+infinite subset of <span class="math inline">\(\mathbb{N}\)</span>. So
+by <a href="#thm-infinite-subset-countable">Theorem 2.2.4</a>, <span class="math inline">\(A\)</span> is countable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-countable-union">
+
+<p><strong>Theorem 2.2.6.</strong> Let <span class="math inline">\(E_1,E_2,\dots\)</span> be countably many countable
+sets. Then <span class="math display">\[S=\bigcup_{n=1}^\infty
+E_n\]</span> is countable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(E_n\)</span> is
+countable for each <span class="math inline">\(n\in\mathbb{N}\)</span>,
+<span class="math inline">\(E_n\)</span> can be enumerated as <span class="math inline">\(E_n=\{x_{n,k}:k=1,2,\dots\}\)</span>. Since <span class="math inline">\(E_1\subset S\)</span> and <span class="math inline">\(E_1\)</span> is infinite, <span class="math inline">\(S\)</span> is infinite. Define <span class="math inline">\(h:\mathbb{N}\times\mathbb{N}\to S\)</span> by
+<span class="math display">\[h(n,k)=x_{n,k}.\]</span> The function <span class="math inline">\(h\)</span> is onto. Since <span class="math inline">\(\mathbb{N}\times\mathbb{N}\sim
+\mathbb{N}\)</span>, there exists a mapping from <span class="math inline">\(\mathbb{N}\)</span> onto <span class="math inline">\(S\)</span>. Since <span class="math inline">\(S\)</span> is infinite, by <a href="#thm-onto-at-most-countable">Theorem 2.2.5</a>, <span class="math inline">\(S\)</span> is countable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-Q-countable">
+
+<p><strong>Corollary 2.2.7.</strong> <span class="math inline">\(\mathbb{Q}\)</span> is countable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> For each <span class="math inline">\(m\in\mathbb{N}\)</span>, define <span class="math display">\[E_m=\left\{\frac{n}{m}:n\in\mathbb{Z}\right\}.\]</span>
+Then <span class="math inline">\(E_m\)</span> is countable and since
+<span class="math display">\[\mathbb{Q}=\bigcup_{m=1}^\infty
+E_m,\]</span> by <a href="#thm-countable-union">Theorem 2.2.6</a>, <span class="math inline">\(\mathbb{Q}\)</span> is countable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This is surprising at first. Between any two rational numbers there
+is another one, by <a href="ch-real-numbers.html#exer-rational-midpoint">Exercise 1.3.3</a>.
+So there are infinitely many rational numbers in every interval. Even
+so, all of them can be listed in a single sequence <span class="math inline">\(q_1,q_2,q_3,\dots\)</span>.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Set Is Countable).</strong> There
+are two common ways to prove a set <span class="math inline">\(S\)</span> is countable. One is to build a
+bijection from <span class="math inline">\(\mathbb{N}\)</span> to <span class="math inline">\(S\)</span>, or from <span class="math inline">\(S\)</span> to <span class="math inline">\(\mathbb{N}\)</span>. The other is to use the
+theorems in this section. If <span class="math inline">\(S\)</span> is
+an infinite subset of a countable set, <a href="#thm-infinite-subset-countable">Theorem 2.2.4</a> applies. If
+<span class="math inline">\(S\)</span> is a countable union of countable
+sets, <a href="#thm-countable-union">Theorem 2.2.6</a> applies. The
+proof of <a href="#cor-Q-countable">Corollary 2.2.7</a> uses the second
+way.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-8">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-Nn-countable">
+
+<p><strong>Exercise 2.2.1.</strong> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. Prove that <span class="math display">\[\mathbb{N}^n=\underbrace{\mathbb{N}\times\mathbb{N}\times\cdots\times\mathbb{N}}_{n\text{
+times}}=\{(x_1,x_2,\dots,x_n):x_i\in\mathbb{N}\text{ for all
+}i=1,\dots,n\}\]</span> is countable. <a aria-label="Hint for Exercise 2.2.1" href="solutions-ch02.html#sol-exer-Nn-countable">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-algebraic-countable">
+
+<p><strong>Exercise 2.2.2.</strong> A real number <span class="math inline">\(a\)</span> is <em>algebraic</em> if there exists a
+nonzero polynomial <span class="math inline">\(p\)</span> with integer
+coefficients such that <span class="math inline">\(p(a)=0\)</span>.</p>
+<ol type="a">
+<li><p>Denote the set of polynomials of degree <span class="math inline">\(n\)</span> with integer coefficients by <span class="math inline">\(P_n\)</span>. Prove <span class="math inline">\(P_n\)</span> is countable.</p></li>
+<li><p>Prove that the set of all polynomials with integer coefficients
+<span class="math inline">\(P=\bigcup_{n\in\mathbb{N}}P_n\)</span> is
+countable.</p></li>
+<li><p>Let <span class="math inline">\(p\in P\)</span>. Let <span class="math inline">\(R_p\)</span> be the set of roots of <span class="math inline">\(p\)</span>. Prove that the set of algebraic
+numbers <span class="math inline">\(A=\bigcup_{p\in P}R_p\)</span> is
+countable.</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-R-uncountable">
+<h2>2.3 Uncountability of the Reals</h2>
+<p>Every infinite set so far has turned out to be countable. This
+section shows <span class="math inline">\([0,1]\)</span>, and so <span class="math inline">\(\mathbb{R}\)</span>, is not. Since <span class="math inline">\(\mathbb{Q}\)</span> is countable, it follows that
+the set of irrational numbers is uncountable. See <a href="#exer-irrationals-uncountable">Exercise 2.3.2</a>.</p>
+<div class="remarkbox" id="rem-decimal-expansions">
+
+<p><strong>Remark 2.3.1.</strong> Every <span class="math inline">\(x\in[0,1]\)</span> has a <em>decimal
+expansion</em> <span class="math inline">\(x=0.d_1d_2d_3\dots\)</span>,
+where each <span class="math inline">\(d_k\in\{0,1,\dots,9\}\)</span>.
+This means <span class="math inline">\(x=\sum_{k=1}^\infty\frac{d_k}{10^k}\)</span>. Some
+numbers have two decimal expansions. For example, <span class="math inline">\(0.5000\dots=0.4999\dots\)</span>. This happens
+exactly when one expansion ends in all <span class="math inline">\(0\)</span>’s and the other ends in all <span class="math inline">\(9\)</span>’s. These facts are assumed in this
+section. Infinite series are studied in <a href="ch-series.html">Chapter
+10</a>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Diagonal Argument).</strong> The proof of <a href="#thm-interval-uncountable">Theorem 2.3.2</a> shows no list <span class="math inline">\(x_1,x_2,x_3,\dots\)</span> of numbers in <span class="math inline">\([0,1]\)</span> can contain all of <span class="math inline">\([0,1]\)</span>. It builds a number <span class="math inline">\(y\)</span> whose <span class="math inline">\(n\)</span>th decimal digit is different from the
+<span class="math inline">\(n\)</span>th decimal digit of <span class="math inline">\(x_n\)</span>. So <span class="math inline">\(y\ne
+x_n\)</span> for every <span class="math inline">\(n\)</span>. This is
+called a <em>diagonal argument</em>, since it uses the digits <span class="math inline">\(x_{1,1},x_{2,2},x_{3,3},\dots\)</span> on the
+diagonal of the list. <a href="#thm-binary-sequences-uncountable">Theorem 2.3.3</a> uses the same
+idea.</p>
+</div>
+<div class="theorembox" id="thm-interval-uncountable">
+
+<p><strong>Theorem 2.3.2.</strong> The closed interval <span class="math inline">\([0,1]\)</span> is uncountable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(E=\{x_n:n=1,2,\dots\}\)</span> be a countable
+subset of <span class="math inline">\([0,1]\)</span>. Then each <span class="math inline">\(x_n\)</span> has the decimal expansion <span class="math display">\[x_n=0.x_{n,1}x_{n,2}x_{n,3}\dots,\]</span> where
+for each <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(x_{n,k}\in\{0,1,\dots,9\}\)</span>. Define a
+number <span class="math display">\[y=0.y_1y_2y_3\dots\]</span> in the
+following way. If <span class="math inline">\(x_{n,n}\le 5\)</span>,
+define <span class="math inline">\(y_n=6\)</span>. If <span class="math inline">\(x_{n,n}\ge 6\)</span>, define <span class="math inline">\(y_n=3\)</span>. Then <span class="math inline">\(y\in[0,1]\)</span> and since <span class="math inline">\(y_n\ne0,9\)</span>, <span class="math inline">\(y\)</span> is not one of the real numbers with two
+decimal expansions. Also, since for each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(y_n\ne x_{n,n}\)</span>, <span class="math inline">\(y\ne x_n\)</span> for any <span class="math inline">\(n\)</span>. So <span class="math inline">\(y\notin
+E\)</span>. Thus no countable subset of <span class="math inline">\([0,1]\)</span> is all of <span class="math inline">\([0,1]\)</span>. Since <span class="math inline">\([0,1]\)</span> is infinite, <span class="math inline">\([0,1]\)</span> is uncountable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-binary-sequences-uncountable">
+
+<p><strong>Theorem 2.3.3.</strong> The set of all sequences whose
+elements are <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, denoted as <span class="math inline">\(2^\mathbb{N}\)</span> or <span class="math inline">\(\{0,1\}^\mathbb{N}\)</span>, is uncountable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(E=\{s_n:n=1,2,\dots\}\)</span> be an enumeration
+of <span class="math inline">\(E\)</span>, a countable subset of <span class="math inline">\(2^\mathbb{N}\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(s_n\)</span> is a sequence of <span class="math inline">\(0\)</span>’s and <span class="math inline">\(1\)</span>’s.</p>
+<p>Now, for each <span class="math inline">\(k\in\mathbb{N}\)</span>,
+let <span class="math display">\[s(k)=1-s_k(k).\]</span> Thus, if <span class="math inline">\(s_k(k)=0\)</span>, <span class="math inline">\(s(k)=1\)</span>, and if <span class="math inline">\(s_k(k)=1\)</span>, <span class="math inline">\(s(k)=0\)</span>. Thus <span class="math inline">\(s\in 2^\mathbb{N}\)</span>. Since, for each <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(s(k)\ne s_k(k)\)</span>, <span class="math inline">\(s\ne s_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(s\notin E\)</span>. Thus no countable subset of
+<span class="math inline">\(2^\mathbb{N}\)</span> is all of <span class="math inline">\(2^\mathbb{N}\)</span>. Since <span class="math inline">\(2^\mathbb{N}\)</span> is infinite, <span class="math inline">\(2^\mathbb{N}\)</span> is uncountable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-9">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-R-uncountable">
+
+<p><strong>Exercise 2.3.1.</strong> Prove that <span class="math inline">\(\mathbb{R}\)</span> is uncountable.</p>
+</div>
+<div class="exercisebox" id="exer-irrationals-uncountable">
+
+<p><strong>Exercise 2.3.2.</strong> Prove that the set <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> of
+irrational numbers is uncountable. <a aria-label="Hint for Exercise 2.3.2" href="solutions-ch02.html#sol-exer-irrationals-uncountable">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-1">
+<h2>Notes</h2>
+<p>Galileo noticed in 1638 that the perfect squares can be paired off
+with all of the natural numbers [<a href="bibliography.html#bib-galileo1638">33</a>]. He
+concluded that “equal,” “greater” and “less” do not apply to infinite
+collections. In 1888, Dedekind turned this around. He defined a set to
+be infinite if it has the same cardinality as one of its proper subsets
+[<a href="bibliography.html#bib-dedekind1888">21</a>]. Georg Cantor proved in 1874 that
+the algebraic numbers are countable and that <span class="math inline">\(\mathbb{R}\)</span> is uncountable [<a href="bibliography.html#bib-cantor1874">9</a>]. Together these show that numbers that are
+not algebraic exist. Joseph Liouville had already built explicit
+examples, in work announced in 1844 and published in full in 1851 [<a href="bibliography.html#bib-liouville1851">48</a>]. In 1878, Cantor defined two sets to
+have the same cardinality when there is a bijection between them [<a href="bibliography.html#bib-cantor1878">10</a>]. His diagonal argument appeared in 1891
+[<a href="bibliography.html#bib-cantor1891">13</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-real-numbers.html"><span class="dir">Previous</span> Chapter 1. The Real Number System</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-sequences.html"><span class="dir">Next</span> Chapter 3. Sequences of Real Numbers</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

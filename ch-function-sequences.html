@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 11. Sequences and Series of Functions | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-series.html"><span class="dir">Previous</span> Chapter 10. Series of Real Numbers</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-power-series.html"><span class="dir">Next</span> Chapter 12. Power Series Expansions</a>
+</nav>
+<main id="main">
+<article id="ch-function-sequences">
+<h1>Chapter 11. Sequences and Series of
+Functions</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-pointwise">11.1 The Problems with Pointwise Convergence</a></li><li><a href="#sec-uniform">11.2 The Importance of Uniform Convergence</a></li><li><a href="#sec-weierstrass">11.3 The Weierstrass Function<sup>*</sup></a></li><li><a href="#notes-10">Notes</a></li></ul></nav>
+<p>A sequence of functions can converge in two very different ways.
+Pointwise convergence asks only that <span class="math inline">\(f_n(x)\to f(x)\)</span> at each <span class="math inline">\(x\)</span> separately. It is the obvious
+definition, and it is too weak. <a href="#sec-pointwise">Section
+11.1</a> shows that a pointwise limit of continuous functions need not
+be continuous, that the integrals of <span class="math inline">\(f_n\)</span> need not converge to the integral of
+the limit, and that derivatives behave even worse. <a href="#sec-uniform">Section 11.2</a> introduces uniform convergence,
+which asks that <span class="math inline">\(f_n\)</span> be close to
+<span class="math inline">\(f\)</span> at every <span class="math inline">\(x\)</span> at once. Uniform convergence fixes the
+first two problems. With an extra hypothesis, it fixes the third. <a href="#sec-weierstrass">Section 11.3</a>, which is marked with a star,
+uses uniform convergence to build a continuous function that has a
+derivative at no point at all.</p>
+<section class="level3 unnumbered" id="sec-pointwise">
+<h2>11.1 The Problems with Pointwise Convergence</h2>
+<div class="definitionbox" id="def-pointwise-convergence">
+
+<p><strong>Definition 11.1.1.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, and let <span class="math inline">\(\{f_n\}_{n=1}^\infty\)</span> be a sequence of
+functions <span class="math inline">\(f_n:E\to\mathbb{R}\)</span>. The
+sequence <span class="math inline">\(\{f_n\}\)</span> <em>converges
+pointwise</em> on <span class="math inline">\(E\)</span> if the sequence
+of real numbers <span class="math inline">\(\{f_n(x)\}\)</span>
+converges for every <span class="math inline">\(x\in E\)</span>. If this
+is the case, then <span class="math inline">\(f\)</span> defined by
+<span class="math display">\[f(x)=\lim_{n\to\infty}f_n(x),\quad x\in
+E,\]</span> defines a function on <span class="math inline">\(E\)</span>. The function <span class="math inline">\(f\)</span> is called the <em>limit</em> of the
+sequence <span class="math inline">\(\{f_n\}\)</span>.</p>
+<p>In other words, the sequence <span class="math inline">\(\{f_n\}\)</span> converges pointwise to <span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span> if for each <span class="math inline">\(x\in E\)</span> and for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an <span class="math inline">\(N(x,\varepsilon)\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|f_n(x)-f(x)|&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-series-of-functions">
+
+<p><strong>Definition 11.1.2.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, and let <span class="math inline">\(\{f_n\}\)</span> be a sequence of functions <span class="math inline">\(f_n:E\to\mathbb{R}\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, define a sequence of
+functions <span class="math inline">\(\{S_n\}\)</span> by <span class="math display">\[S_n(x)=\sum^n_{k=1}f_k(x).\]</span> Then <span class="math inline">\(\{S_n\}\)</span> is called a <em>series of
+functions</em> and is denoted by <span class="math inline">\(\sum
+f_k\)</span>. The series of functions converges pointwise on <span class="math inline">\(E\)</span> if for each <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(\{S_n(x)\}\)</span> converges. If the series <span class="math inline">\(\{S_n\}\)</span> converges pointwise to <span class="math inline">\(S\)</span>, <span class="math inline">\(S\)</span>
+is the <em>sum</em> of the series, written <span class="math inline">\(S=\sum f_k\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-interchange-questions">
+
+<p><strong>Remark 11.1.3.</strong> Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of functions <span class="math inline">\(f_n:[a,b]\to\mathbb{R}\)</span> converging
+pointwise to <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span>.</p>
+<ol>
+<li><p>If each <span class="math inline">\(f_n\)</span> is continuous at
+<span class="math inline">\(c\in [a,b]\)</span>, is <span class="math inline">\(f\)</span> continuous at <span class="math inline">\(c\)</span>; i.e., does <span class="math display">\[\lim_{x\to
+c}\left(\lim_{n\to\infty}f_n(x)\right)=\lim_{n\to\infty}\left(\lim_{x\to
+c}f_n(x)\right)?\]</span></p></li>
+<li><p>If each <span class="math inline">\(f_n\in\mathcal{R}[a,b]\)</span>, is <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>? If so, does <span class="math display">\[\int^b_a f=\lim_{n\to\infty}\int^b_a
+f_n,\]</span> i.e., does <span class="math display">\[\lim_{n\to\infty}\int^b_a f_n=\int^b_a
+\lim_{n\to\infty}f_n?\]</span></p></li>
+<li><p>If each <span class="math inline">\(f_n\)</span> is
+differentiable at <span class="math inline">\(c\in [a,b]\)</span>, is
+<span class="math inline">\(f\)</span> differentiable at <span class="math inline">\(c\)</span>? If so, does <span class="math display">\[f'(c)=\lim_{n\to\infty}f_n'(c)?\]</span></p></li>
+</ol>
+<p>Each question asks whether two limit operations can be done in either
+order. The next five examples show that the answer to every question is
+no.</p>
+</div>
+<div class="examplebox" id="ex-xn-pointwise">
+
+<p><strong>Example 11.1.4.</strong> Let <span class="math inline">\(E=[0,1]\)</span> and for each <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(n\in\mathbb{N}\)</span>, define <span class="math inline">\(f_n(x)=x^n\)</span>. Since <span class="math inline">\(f_n(1)=1\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(f_n(1)\to 1\)</span>. If <span class="math inline">\(x\in[0,1)\)</span>, then <span class="math inline">\(f_n(x)\to 0\)</span> by <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>. Therefore, <span class="math display">\[\lim_{n\to\infty}f_n(x)=f(x)=\begin{cases} 0,
+&amp; x\in[0,1), \\ 1, &amp; x=1.\end{cases}\]</span> But each <span class="math inline">\(f_n\)</span> is continuous and <span class="math inline">\(f\)</span> is not. See <a href="#fig-xn">Figure
+11.1</a>.</p>
+</div>
+<figure class="figure" id="fig-xn"><div class="figure-images"><img alt="Graphs of x to the n on [0,1] for n = 1, 2, 4, 8, 16 and 32. Each curve runs from (0,0) to (1,1), and as n grows they hug the x-axis longer before rising sharply near 1. The limit, drawn in red, is the x-axis on [0,1) together with the single point (1,1)." height="269" src="figs/fig10.svg" width="338"/></div><figcaption><strong>Figure 11.1.</strong> The functions <span class="math inline">\(f_n(x)=x^n\)</span> on <span class="math inline">\([0,1]\)</span> for <span class="math inline">\(n=1,2,4,8,16,32\)</span>. Each one is continuous.
+Their pointwise limit, shown in red, is <span class="math inline">\(0\)</span> on <span class="math inline">\([0,1)\)</span> and <span class="math inline">\(1\)</span> at <span class="math inline">\(x=1\)</span>.</figcaption></figure>
+<div class="examplebox" id="ex-series-discontinuous">
+
+<p><strong>Example 11.1.5.</strong> Let <span class="math inline">\(f_k(x)=\frac{x^2}{(1+x^2)^k}\)</span> for <span class="math inline">\(x\in\mathbb{R}\)</span> and consider the series
+<span class="math display">\[S(x)=\sum_{k=0}^\infty
+f_k(x)=\sum_{k=0}^\infty x^2\left(\frac{1}{1+x^2}\right)^k.\]</span>
+Notice each <span class="math inline">\(f_k\)</span> is continuous on
+<span class="math inline">\(\mathbb{R}\)</span>. If <span class="math inline">\(x=0\)</span>, then <span class="math inline">\(f_k(0)=0\)</span> and thus <span class="math inline">\(S(0)=0\)</span>. If <span class="math inline">\(x\ne 0\)</span>, <span class="math inline">\(\frac{1}{1+x^2}&lt;1\)</span> and hence by <a href="ch-series.html#ex-geometric-series">Example 10.1.3</a> <span class="math display">\[x^2\sum_{k=0}^\infty\left(\frac{1}{1+x^2}\right)^k=x^2\left[\frac{1}{1-\frac{1}{1+x^2}}\right]=1+x^2.\]</span>
+Thus <span class="math inline">\(S(x)=1+x^2\)</span> for <span class="math inline">\(x\ne 0\)</span>. So <span class="math display">\[S(x)=\begin{cases}0, &amp; x=0, \\ 1+x^2, &amp;
+x\ne 0,\end{cases}\]</span> which is not continuous on <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-rationals-enumeration">
+
+<p><strong>Example 11.1.6.</strong> Let <span class="math inline">\(\{x_k\}\)</span> be an enumeration of the rational
+numbers in <span class="math inline">\([0,1]\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, define <span class="math inline">\(f_n:[0,1]\to\mathbb{R}\)</span> as <span class="math display">\[f_n(x)=\begin{cases}0, &amp; x=x_k,\quad 1\le
+k\le n, \\ 1, &amp; \text{otherwise}.\end{cases}\]</span> Since each
+<span class="math inline">\(f_n\)</span> is continuous except at <span class="math inline">\(x_1,\dots,x_n\)</span>, <span class="math inline">\(f_n\in\mathcal{R}[0,1]\)</span> with <span class="math inline">\(\int^1_0 f_n=1\)</span>. This follows from <a href="ch-integrals.html#exer-change-finitely-many">Exercise 9.2.4</a>, since <span class="math inline">\(f_n\)</span> equals the constant <span class="math inline">\(1\)</span> except at <span class="math inline">\(n\)</span> points. But <span class="math display">\[\lim_{n\to\infty} f_n(x)=f(x)=\begin{cases} 0,
+&amp; x\in\mathbb{Q}\cap[0,1],\\ 1, &amp;
+x\in[0,1]\setminus\mathbb{Q},\end{cases}\]</span> and <span class="math inline">\(f\notin\mathcal{R}[0,1]\)</span>. As in <a href="ch-integrals.html#ex-dirichlet-not-integrable">Example 9.1.9</a>, every lower sum
+of <span class="math inline">\(f\)</span> is <span class="math inline">\(0\)</span> and every upper sum is <span class="math inline">\(1\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-integral-mismatch">
+
+<p><strong>Example 11.1.7.</strong> For <span class="math inline">\(x\in[0,1]\)</span>, <span class="math inline">\(n\in\mathbb{N}\)</span>, define <span class="math inline">\(f_n(x)=nx(1-x^2)^n\)</span>. Since each <span class="math inline">\(f_n\)</span> is continuous, <span class="math inline">\(f_n\in\mathcal{R}[0,1]\)</span>. If <span class="math inline">\(x=0,1\)</span>, then <span class="math inline">\(f_n(x)=0\)</span>. If <span class="math inline">\(x\in(0,1)\)</span>, then <span class="math inline">\(0&lt;1-x^2&lt;1\)</span>, and so <span class="math inline">\(f_n(x)\to 0\)</span>. Indeed, <span class="math inline">\(\sum_nnx(1-x^2)^n\)</span> converges by <a href="ch-series.html#ex-polynomial-geometric">Example 10.3.5</a>, so its terms tend to
+<span class="math inline">\(0\)</span>. Thus for all <span class="math inline">\(x\in[0,1]\)</span>, <span class="math display">\[\lim_{n\to\infty} f_n(x)=f(x)=0.\]</span> Thus
+<span class="math inline">\(f\in\mathcal{R}[0,1]\)</span> as well. But
+the substitution <span class="math inline">\(u=1-x^2\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.4.3</a>) gives <span class="math display">\[\int^1_0
+f_n=\frac{1}{2}\cdot\frac{n}{n+1},\]</span> implying <span class="math display">\[\lim_{n\to\infty}\int^1_0 f_n=\frac{1}{2}\ne
+0=\int^1_0 f.\]</span></p>
+</div>
+<div class="examplebox" id="ex-sin-nx-over-n">
+
+<p><strong>Example 11.1.8.</strong> Consider <span class="math inline">\(f_n(x)=\frac{\sin nx}{n}\)</span> for <span class="math inline">\(x\in\mathbb{R}\)</span>. Since <span class="math inline">\(|\sin nx|\le 1\)</span> for all <span class="math inline">\(x\in \mathbb{R}\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[\lim_{n\to\infty}f_n(x)=f(x)=0,\]</span> for all
+<span class="math inline">\(x\in\mathbb{R}\)</span>. But <span class="math inline">\(f_n'(x)=\cos nx\)</span> which implies <span class="math inline">\(f_n'(0)=1\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Therefore <span class="math display">\[\lim_{n\to\infty}f_n'(0)=1\ne
+0=f'(0).\]</span></p>
+</div>
+</section>
+<section class="level3 unnumbered" id="sec-uniform">
+<h2>11.2 The Importance of Uniform Convergence</h2>
+<p>In each example of <a href="#sec-pointwise">Section 11.1</a>, the
+convergence is slower at some points than at others. For <span class="math inline">\(f_n(x)=x^n\)</span>, the closer <span class="math inline">\(x\)</span> is to <span class="math inline">\(1\)</span>, the larger <span class="math inline">\(n\)</span> must be before <span class="math inline">\(x^n\)</span> is small. No single <span class="math inline">\(n\)</span> works for every <span class="math inline">\(x\)</span>. Uniform convergence rules this
+out.</p>
+<div class="definitionbox" id="def-uniform-convergence">
+
+<p><strong>Definition 11.2.1.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, let <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and let <span class="math inline">\(\{f_n\}\)</span> be a sequence of functions <span class="math inline">\(f_n:E\to\mathbb{R}\)</span>. The sequence <span class="math inline">\(\{f_n\}\)</span> <em>converges uniformly</em> to
+<span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span> if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an <span class="math inline">\(N(\varepsilon)\in\mathbb{N}\)</span> such that for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|f_n(x)-f(x)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\in E\)</span>. Similarly, <span class="math inline">\(\sum f_k\)</span> converges uniformly to <span class="math inline">\(S\)</span> on <span class="math inline">\(E\)</span> if the series <span class="math inline">\(\{S_n\}\)</span> converges uniformly to <span class="math inline">\(S\)</span> on <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-uniform-vs-pointwise">
+
+<p><strong>Remark 11.2.2.</strong> The difference from pointwise
+convergence is the order of the quantifiers. In pointwise convergence,
+<span class="math inline">\(N\)</span> may depend on <span class="math inline">\(x\)</span>. In uniform convergence, one <span class="math inline">\(N\)</span> works for every <span class="math inline">\(x\in E\)</span> at once. Geometrically, for <span class="math inline">\(n\ge N\)</span> the graph of <span class="math inline">\(f_n\)</span> lies inside the band between the
+graphs of <span class="math inline">\(f-\varepsilon\)</span> and <span class="math inline">\(f+\varepsilon\)</span>. See <a href="#fig-uniform-band">Figure 11.2</a>. A sequence that converges
+uniformly to <span class="math inline">\(f\)</span> also converges
+pointwise to <span class="math inline">\(f\)</span>. So to decide
+whether a sequence converges uniformly, first find its pointwise limit.
+That is the only possible uniform limit.</p>
+</div>
+<figure class="figure" id="fig-uniform-band"><div class="figure-images"><img alt="The graph of a function f with a shaded band of constant width above and below it. The graph of f_n wiggles around f but stays entirely inside the band." height="220" src="figs/fig11.svg" width="561"/></div><figcaption><strong>Figure 11.2.</strong> Uniform convergence. For every <span class="math inline">\(n\ge N\)</span>, the whole graph of <span class="math inline">\(f_n\)</span> lies inside the shaded band around
+the graph of <span class="math inline">\(f\)</span>.</figcaption></figure>
+<div class="examplebox" id="ex-xn-not-uniform">
+
+<p><strong>Example 11.2.3.</strong> For <span class="math inline">\(x\in[0,1]\)</span>, consider <span class="math inline">\(f_n(x)=x^n\)</span>. Assume by way of
+contradiction that <span class="math inline">\(f_n\)</span> converges
+uniformly to <span class="math inline">\(f\)</span>, where <span class="math display">\[f(x)=\begin{cases} 0, &amp; x\in[0,1), \\ 1,
+&amp; x=1.\end{cases}\]</span> Let <span class="math inline">\(\varepsilon&gt;0\)</span> with <span class="math inline">\(\varepsilon&lt;1\)</span>. So there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x^n&lt;\varepsilon\)</span> for all <span class="math inline">\(x\in[0,1)\)</span>. In particular, <span class="math inline">\(x^N&lt;\varepsilon\)</span> for all <span class="math inline">\(x\in[0,1)\)</span>. Since <span class="math inline">\(0^N=0\)</span> and <span class="math inline">\(1^N=1\)</span>, by the Intermediate Value Theorem,
+there exists a <span class="math inline">\(c\in(0,1)\)</span> such that
+<span class="math inline">\(c^N=\varepsilon\)</span>, a
+contradiction.</p>
+</div>
+<div class="examplebox" id="ex-sn-not-uniform">
+
+<p><strong>Example 11.2.4.</strong> Consider the series <span class="math display">\[\sum^\infty_{k=1}\left[kxe^{-kx^2}-(k-1)xe^{-(k-1)x^2}\right]\]</span>
+for <span class="math inline">\(x\in[0,\infty)\)</span>. Now <span class="math inline">\(S_n(x)=nxe^{-nx^2}\)</span>, so <span class="math inline">\(S(x)=0\)</span> for all <span class="math inline">\(x\in[0,\infty)\)</span>. The partial sums
+telescope. For <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(nxe^{-nx^2}=nx\,r^n\)</span> with <span class="math inline">\(r=e^{-x^2}\in(0,1)\)</span>, which tends to <span class="math inline">\(0\)</span> by <a href="ch-series.html#ex-polynomial-geometric">Example 10.3.5</a> and the <span class="math inline">\(n\)</span>th Term Test. Assume by way of
+contradiction this convergence is uniform. Let <span class="math inline">\(\varepsilon=1\)</span>. So there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|S_n(x)-S(x)|=nxe^{-nx^2}&lt;1\]</span> for all
+<span class="math inline">\(x\in[0,\infty)\)</span>. But <span class="math display">\[S_n'(x)=ne^{-nx^2}-2n^2x^2e^{-nx^2}=0\]</span>
+when <span class="math inline">\(x=\sqrt{\frac{1}{2n}}\)</span>,
+implying <span class="math inline">\(S_n\)</span> has a maximum value of
+<span class="math display">\[S_n\left(\sqrt{\frac{1}{2n}}\right)=\sqrt{\frac{n}{2e}}&gt;1\]</span>
+for <span class="math inline">\(n\ge 6\)</span>, a contradiction. (The
+derivative is positive to the left of <span class="math inline">\(\sqrt{1/(2n)}\)</span> and negative to the right
+of it, so this is the maximum.)</p>
+<p><a href="#fig-sn-bumps">Figure 11.3</a> shows <span class="math inline">\(S_n\)</span> for <span class="math inline">\(n=1\)</span>, <span class="math inline">\(4\)</span> and <span class="math inline">\(16\)</span>. Each graph has a bump. As <span class="math inline">\(n\)</span> grows, the bump gets taller and moves
+toward <span class="math inline">\(0\)</span>. At each fixed <span class="math inline">\(x&gt;0\)</span> the bump eventually passes by, so
+<span class="math inline">\(S_n(x)\to0\)</span>. But the bump never
+shrinks.</p>
+</div>
+<figure class="figure" id="fig-sn-bumps"><div class="figure-images"><img alt="Three bump-shaped curves for n = 1, 4 and 16. Each starts at 0, rises to a peak and decays back toward 0. Larger n gives a taller, narrower peak closer to x = 0." height="228" src="figs/fig12.svg" width="536"/></div><figcaption><strong>Figure 11.3.</strong> The partial sums <span class="math inline">\(S_n(x)=nxe^{-nx^2}\)</span> of <a href="#ex-sn-not-uniform">Example 11.2.4</a> for <span class="math inline">\(n=1,4,16\)</span>. Each tends to <span class="math inline">\(0\)</span> at every <span class="math inline">\(x\)</span>, but the maximum <span class="math inline">\(\sqrt{n/(2e)}\)</span> grows without bound.</figcaption></figure>
+<div class="theorembox" id="thm-cauchy-criterion-uniform">
+
+<p><strong>Theorem 11.2.5</strong> (Cauchy
+Criterion)<strong>.</strong></p>
+<p>Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, and let
+<span class="math inline">\(\{f_n\}\)</span> be a sequence of functions
+<span class="math inline">\(f_n:E\to\mathbb{R}\)</span>. Then <span class="math inline">\(\{f_n\}\)</span> converges uniformly on <span class="math inline">\(E\)</span> to some function <span class="math inline">\(f:E\to\mathbb{R}\)</span> if and only if for all
+<span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(m,n\ge N\)</span>, <span class="math inline">\(|f_n(x)-f_m(x)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\in E\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Suppose <span class="math inline">\(\{f_n\}\)</span> converges uniformly
+on <span class="math inline">\(E\)</span> to <span class="math inline">\(f\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. So there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|f_n(x)-f(x)|&lt;\frac{\varepsilon}{2}\)</span>
+for all <span class="math inline">\(x\in E\)</span>. So for all <span class="math inline">\(m,n\ge N\)</span> and all <span class="math inline">\(x\in E\)</span>, <span class="math display">\[\begin{aligned}
+|f_n(x)-f_m(x)|&amp; = |f_n(x)-f(x)+f(x)-f_m(x)|\\
+&amp;\le |f_n(x)-f(x)|+|f(x)-f_m(x)|\\
+&amp;&lt; \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+\end{aligned}\]</span></p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) For each <span class="math inline">\(x\in E\)</span>, the sequence <span class="math inline">\(\{f_n(x)\}\)</span> is Cauchy in <span class="math inline">\(\mathbb{R}\)</span> and therefore, by <a href="ch-sequences.html#thm-cauchy-criterion">Theorem 3.5.2</a>, converges. So <span class="math display">\[f(x)=\lim_{n\to \infty}f_n(x)\]</span> exists for
+every <span class="math inline">\(x\in E\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. So there
+exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(m,n\ge N\)</span>, <span class="math inline">\(|f_n(x)-f_m(x)|&lt;\frac{\varepsilon}{2}\)</span>
+for all <span class="math inline">\(x\in E\)</span>. Fix <span class="math inline">\(M\ge N\)</span>. Then <span class="math display">\[|f(x)-f_M(x)|=\lim_{n\to\infty}|f_n(x)-f_M(x)|\le
+\frac{\varepsilon}{2}&lt;\varepsilon\]</span> for all <span class="math inline">\(x\in E\)</span>. The equality holds because <span class="math inline">\(\bigl||u|-|v|\bigr|\le|u-v|\)</span>, and the
+inequality holds by <a href="ch-sequences.html#thm-order-limits">Theorem 3.2.7</a>. Since
+<span class="math inline">\(M\ge N\)</span> was arbitrary, <span class="math inline">\(\{f_n\}\)</span> converges uniformly to <span class="math inline">\(f\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Like the Cauchy Criterion for sequences, this criterion proves
+uniform convergence without knowing the limit. The proof of the
+Weierstrass M-Test below uses it in this way.</p>
+<div class="corollarybox" id="cor-cauchy-criterion-uniform-series">
+
+<p><strong>Corollary 11.2.6.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, and let <span class="math inline">\(\{f_k\}\)</span> be a sequence of functions <span class="math inline">\(f_k:E\to\mathbb{R}\)</span>. The series <span class="math inline">\(\sum f_k\)</span> converges uniformly on <span class="math inline">\(E\)</span> if and only if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(m&gt;n\ge N\)</span> and for all <span class="math inline">\(x\in E\)</span>, <span class="math display">\[\left|\sum_{k=n+1}^m
+f_k(x)\right|&lt;\varepsilon.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Apply <a href="#thm-cauchy-criterion-uniform">Theorem
+11.2.5</a> to the series <span class="math inline">\(\{S_n\}\)</span>
+where <span class="math inline">\(S_n(x)=\sum_{k=1}^n
+f_k(x)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-uniform-sup">
+
+<p><strong>Theorem 11.2.7.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, let <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and let <span class="math inline">\(\{f_n\}\)</span> be a sequence of functions <span class="math inline">\(f_n:E\to\mathbb{R}\)</span> that converges
+pointwise to <span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, set <span class="math display">\[M_n=\sup_{x\in E}|f_n(x)-f(x)|.\]</span> Then
+<span class="math inline">\(\{f_n\}\)</span> converges uniformly to
+<span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span> if and only if <span class="math inline">\(M_n\to 0\)</span>. (Some <span class="math inline">\(M_n\)</span> may be <span class="math inline">\(\infty\)</span>. Then <span class="math inline">\(M_n\to0\)</span> means <span class="math inline">\(M_n\)</span> is finite for all large <span class="math inline">\(n\)</span> and tends to <span class="math inline">\(0\)</span>.)</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-uniform-sup">Exercise
+11.2.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-xn-sup">
+
+<p><strong>Example 11.2.8.</strong> Consider <span class="math inline">\(f_n(x)=x^n\)</span>, <span class="math inline">\(x\in[0,1]\)</span>. Then <span class="math inline">\(\{f_n\}\)</span> converges pointwise to <span class="math display">\[f(x)=\begin{cases} 0, &amp; x\in[0,1), \\ 1,
+&amp; x=1.\end{cases}\]</span> Notice <span class="math display">\[M_n=\sup_{x\in[0,1]}|f_n(x)-f(x)|=1,\]</span> for
+all <span class="math inline">\(n\in \mathbb{N}\)</span>. So <span class="math inline">\(M_n\to 1\)</span> and <span class="math inline">\(\{f_n\}\)</span> does not converge uniformly to
+<span class="math inline">\(f\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-sn-sup">
+
+<p><strong>Example 11.2.9.</strong> Consider <span class="math inline">\(S_n(x)=nxe^{-nx^2}\)</span>, which converges
+pointwise to <span class="math inline">\(S(x)=0\)</span>. Notice <span class="math display">\[M_n=\sup_{x\in[0,\infty)}
+|S_n(x)-S(x)|=\sqrt{\frac{n}{2e}}.\]</span> So <span class="math inline">\(M_n\to \infty\)</span> and <span class="math inline">\(\{S_n\}\)</span> does not converge uniformly to
+<span class="math inline">\(S\)</span>.</p>
+<p>Let <span class="math inline">\(a&gt;0\)</span> and consider <span class="math inline">\(\{S_n\}\)</span> on <span class="math inline">\([a,\infty)\)</span>. Then since <span class="math inline">\(S_n\)</span> attains its maximum value at <span class="math inline">\(x=\sqrt{\frac{1}{2n}}\to 0\)</span> as <span class="math inline">\(n\to \infty\)</span>, <span class="math inline">\(S_n\)</span> attains its maximum value on <span class="math inline">\([a,\infty)\)</span> at <span class="math inline">\(x=a\)</span> when <span class="math inline">\(\sqrt{\frac{1}{2n}}&lt;a\)</span>. This is because
+<span class="math inline">\(S_n\)</span> is decreasing on <span class="math inline">\(\left[\sqrt{1/(2n)},\infty\right)\)</span>. So
+<span class="math display">\[M_n=\sup_{x\in[a,\infty)}
+|S_n(x)-S(x)|=nae^{-na^2}\to 0.\]</span> Thus <span class="math inline">\(\{S_n\}\)</span> converges uniformly to <span class="math inline">\(S\)</span> on <span class="math inline">\([a,\infty)\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Showing Convergence Is Not
+Uniform).</strong></p>
+<p>First find the pointwise limit <span class="math inline">\(f\)</span>. If the convergence is uniform at all,
+it is uniform to <span class="math inline">\(f\)</span>. Then there are
+three common ways to show it is not uniform. One is to compute or bound
+<span class="math inline">\(M_n=\sup_{x\in E}|f_n(x)-f(x)|\)</span> and
+show <span class="math inline">\(M_n\not\to0\)</span>, as in Examples <a href="#ex-xn-sup">11.2.8</a> and <a href="#ex-sn-sup">11.2.9</a>.
+Another is to find one <span class="math inline">\(\varepsilon&gt;0\)</span> and, for infinitely many
+<span class="math inline">\(n\)</span>, a point <span class="math inline">\(x_n\in E\)</span> with <span class="math inline">\(|f_n(x_n)-f(x_n)|\ge\varepsilon\)</span>. In <a href="#ex-sn-not-uniform">Example 11.2.4</a>, the points <span class="math inline">\(x_n=\sqrt{1/(2n)}\)</span> work with <span class="math inline">\(\varepsilon=1\)</span>. The point <span class="math inline">\(x_n\)</span> is allowed to move with <span class="math inline">\(n\)</span>, and it usually has to. The third way
+applies when every <span class="math inline">\(f_n\)</span> is
+continuous. If the limit <span class="math inline">\(f\)</span> is not
+continuous, the convergence is not uniform, by <a href="#cor-uniform-limit-continuous">Corollary 11.2.16</a> below.</p>
+</div>
+<div class="theorembox" id="thm-weierstrass-m-test">
+
+<p><strong>Theorem 11.2.10</strong> (Weierstrass
+M-Test)<strong>.</strong></p>
+<p>Let <span class="math inline">\(E\subset\mathbb{R}\)</span>. Suppose
+<span class="math inline">\(\{f_k\}\)</span> is a sequence of functions
+<span class="math inline">\(f_k:E\to\mathbb{R}\)</span>, and <span class="math inline">\(\{M_k\}\)</span> is a sequence of real numbers
+satisfying <span class="math inline">\(|f_k(x)|\le M_k\)</span> for all
+<span class="math inline">\(x\in E\)</span>, <span class="math inline">\(k\in \mathbb{N}\)</span>. If <span class="math inline">\(\sum M_k\)</span> converges, then <span class="math inline">\(\sum f_k\)</span> converges uniformly and
+absolutely on <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> The fact that <span class="math inline">\(\sum
+f_k\)</span> converges absolutely for each <span class="math inline">\(x\in E\)</span> follows from the Comparison Test.
+Let <span class="math inline">\(S_n(x)=\sum_{k=1}^n f_k(x)\)</span>.
+Then, for <span class="math inline">\(m&gt;n\)</span>, <span class="math display">\[|S_n(x)-S_m(x)|=\left|\sum_{k=n+1}^m
+f_k(x)\right|\le \sum^m_{k=n+1}|f_k(x)|\le \sum^m_{k=n+1} M_k.\]</span>
+Uniform convergence now follows from the Cauchy Criterion. In detail,
+let <span class="math inline">\(\varepsilon&gt;0\)</span>. By the Cauchy
+Criterion for series (<a href="ch-series.html#thm-cauchy-criterion-series">Theorem
+10.2.1</a>), there is an <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(\sum_{k=n+1}^mM_k&lt;\varepsilon\)</span> for all
+<span class="math inline">\(m&gt;n\ge N\)</span>. Then <span class="math inline">\(|S_n(x)-S_m(x)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(m&gt;n\ge N\)</span> and all <span class="math inline">\(x\in E\)</span>. So <span class="math inline">\(\sum f_k\)</span> converges uniformly on <span class="math inline">\(E\)</span> by <a href="#cor-cauchy-criterion-uniform-series">Corollary 11.2.6</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-cos-kx-kp">
+
+<p><strong>Example 11.2.11.</strong> Consider <span class="math inline">\(\sum_{k=1}^\infty \frac{\cos kx}{k^p}\)</span>,
+<span class="math inline">\(p&gt;1\)</span>, <span class="math inline">\(x\in \mathbb{R}\)</span>. Then <span class="math display">\[\left|\frac{\cos kx}{k^p}\right|\le
+\frac{1}{k^p}=M_k.\]</span> Since <span class="math inline">\(\sum
+M_k\)</span> is a <span class="math inline">\(p\)</span>-series with
+<span class="math inline">\(p&gt;1\)</span>, <span class="math inline">\(\sum M_k\)</span> converges. So <span class="math inline">\(\sum_{k=1}^\infty \frac{\cos kx}{k^p}\)</span>
+converges uniformly and absolutely on <span class="math inline">\(\mathbb{R}\)</span>. Similarly, <span class="math inline">\(\sum_{k=1}^\infty \frac{\sin kx}{k^p}\)</span>
+converges uniformly and absolutely on <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-x-over-2">
+
+<p><strong>Example 11.2.12.</strong> Consider the series <span class="math inline">\(\sum_{k=1}^\infty
+\left(\frac{x}{2}\right)^k\)</span>. Let <span class="math inline">\(a\in[0,2)\)</span>. For all <span class="math inline">\(x\in[-a,a]\)</span>, <span class="math display">\[\left|\left(\frac{x}{2}\right)^k\right|\le
+\left(\frac{a}{2}\right)^k=M_k.\]</span> Since <span class="math inline">\(\frac{a}{2}&lt;1\)</span>, <span class="math inline">\(\sum M_k\)</span> converges. So <span class="math inline">\(\sum_{k=1}^\infty
+\left(\frac{x}{2}\right)^k\)</span> converges uniformly on <span class="math inline">\([-a,a]\)</span> for any <span class="math inline">\(a\in[0,2)\)</span>. However, an exercise (<a href="#exer-x-over-2-not-uniform">Exercise 11.2.2</a>) will show this
+series does not converge uniformly on <span class="math inline">\((-2,2)\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-uniform-not-absolute">
+
+<p><strong>Example 11.2.13.</strong> In general, uniform convergence
+does not imply absolute convergence. Consider the series <span class="math inline">\(\sum^\infty_{k=1}(-1)^{k+1}\frac{x^k}{k}\)</span>,
+<span class="math inline">\(x\in[0,1]\)</span>. Set <span class="math inline">\(b_k(x)=\frac{x^k}{k}\)</span>. Then, for <span class="math inline">\(x\in[0,1]\)</span>, <span class="math inline">\(b_1(x)\ge b_2(x)\ge \cdots\ge 0\)</span> and <span class="math inline">\(b_k(x)\to 0\)</span>. Thus by the Alternating
+Series Test (<a href="ch-series.html#thm-alternating-series-test">Theorem
+10.2.16</a>), the series <span class="math inline">\(\sum
+(-1)^{k+1}b_k(x)\)</span> converges for all <span class="math inline">\(x\in[0,1]\)</span>. Now let <span class="math inline">\(S(x)=\sum^{\infty}_{k=1}(-1)^{k+1}b_k(x)\)</span>,
+<span class="math inline">\(S_n(x)=\sum^{n}_{k=1}(-1)^{k+1}b_k(x)\)</span>.
+Then by <a href="ch-series.html#thm-alternating-error">Theorem 10.2.19</a>, <span class="math display">\[M_n=\sup_{x\in[0,1]}|S(x)-S_n(x)|\le
+\sup_{x\in[0,1]}b_{n+1}(x)=\frac{1}{n+1}.\]</span> Since <span class="math inline">\(M_n\to 0\)</span>, by <a href="#thm-uniform-sup">Theorem 11.2.7</a>, <span class="math inline">\(\{S_n\}\)</span> converges uniformly to <span class="math inline">\(S\)</span> on <span class="math inline">\([0,1]\)</span>. However, notice if <span class="math inline">\(x=1\)</span>, the series does not converge
+absolutely.</p>
+</div>
+<div class="examplebox" id="ex-absolute-not-uniform">
+
+<p><strong>Example 11.2.14.</strong> In general, absolute convergence
+does not imply uniform convergence. Consider the series <span class="math inline">\(\sum_{k=0}^\infty x^2(1+x^2)^{-k}\)</span>. This
+series converges absolutely to <span class="math display">\[f(x)=\begin{cases} 0 , &amp; x=0,\\ 1+x^2, &amp;
+x\ne 0,\end{cases}\]</span> on all of <span class="math inline">\(\mathbb{R}\)</span>. However, <a href="#cor-uniform-limit-continuous">Corollary 11.2.16</a> below will
+show the convergence is not uniform. (The terms are nonnegative, so
+convergence and absolute convergence are the same here. See <a href="#ex-series-discontinuous">Example 11.1.5</a>.)</p>
+</div>
+<p>The rest of this section answers the three questions of <a href="#rem-interchange-questions">Remark 11.1.3</a>. Uniform convergence
+lets limits pass through limits, continuity and integrals. For
+derivatives, the derivatives themselves must converge uniformly.</p>
+<div class="theorembox" id="thm-interchange-limits">
+
+<p><strong>Theorem 11.2.15.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, let <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and suppose <span class="math inline">\(\{f_n\}\)</span> is a sequence of functions <span class="math inline">\(f_n:E\to\mathbb{R}\)</span> that converges
+uniformly to <span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span>. Let <span class="math inline">\(c\)</span> be a limit point of <span class="math inline">\(E\)</span>, and suppose that for each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[\lim_{x\to c}f_n(x)=A_n.\]</span> Then the
+sequence <span class="math inline">\(\{A_n\}\)</span> converges and
+<span class="math display">\[\lim_{x\to c}f(x)=\lim_{n\to \infty}
+A_n;\]</span> i.e., <span class="math display">\[\lim_{x\to
+c}\left(\lim_{n\to \infty}f_n(x)\right)=\lim_{n\to
+\infty}\left(\lim_{x\to c} f_n(x)\right).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>The numbers <span class="math inline">\(A_n\)</span>
+converge.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By the Cauchy Criterion
+(<a href="#thm-cauchy-criterion-uniform">Theorem 11.2.5</a>), there is
+an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|f_n(x)-f_m(x)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\in E\)</span> and all <span class="math inline">\(m,n\ge N\)</span>. Fix <span class="math inline">\(m,n\ge N\)</span>. By the limit laws, <span class="math inline">\(f_n(x)-f_m(x)\to A_n-A_m\)</span> as <span class="math inline">\(x\to c\)</span>, and so <span class="math inline">\(|f_n(x)-f_m(x)|\to|A_n-A_m|\)</span>, since <span class="math inline">\(\bigl||u|-|v|\bigr|\le|u-v|\)</span>. So <span class="math inline">\(|A_n-A_m|\le\varepsilon\)</span>, by <a href="ch-continuity.html#thm-function-order-limits">Theorem 6.1.15</a>. Thus <span class="math inline">\(\{A_n\}\)</span> is a Cauchy sequence. By <a href="ch-sequences.html#thm-cauchy-criterion">Theorem 3.5.2</a>, it converges. Let <span class="math inline">\(A=\lim_{n\to\infty}A_n\)</span>.</p>
+<p><em>The function <span class="math inline">\(f\)</span> has limit
+<span class="math inline">\(A\)</span> at <span class="math inline">\(c\)</span>.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. For all large <span class="math inline">\(n\)</span>, both <span class="math inline">\(|f(x)-f_n(x)|&lt;\frac\varepsilon 3\)</span> for
+every <span class="math inline">\(x\in E\)</span>, and <span class="math inline">\(|A_n-A|&lt;\frac\varepsilon 3\)</span>. Fix one
+such <span class="math inline">\(n\)</span>. Since <span class="math inline">\(f_n(x)\to A_n\)</span> as <span class="math inline">\(x\to c\)</span>, there is a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|f_n(x)-A_n|&lt;\frac\varepsilon 3\)</span> for
+all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>. For those <span class="math inline">\(x\)</span>, <span class="math display">\[\begin{aligned}
+|f(x)-A|&amp;\le |f(x)-f_n(x)|+|f_n(x)-A_n|+|A_n-A|\\
+&amp;&lt;\frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\lim_{x\to
+c}f(x)=A\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (The <span class="math inline">\(\varepsilon/3\)</span> Argument).</strong></p>
+<p>The second half of the proof of <a href="#thm-interchange-limits">Theorem 11.2.15</a> is a pattern that
+appears again and again. To show <span class="math inline">\(f\)</span>
+has a property, approximate <span class="math inline">\(f\)</span> by a
+function <span class="math inline">\(f_n\)</span> that is known to have
+it. Then go from <span class="math inline">\(f\)</span> to <span class="math inline">\(f_n\)</span>, use the property of <span class="math inline">\(f_n\)</span>, and come back to the target. That is
+three steps, so give each step <span class="math inline">\(\frac\varepsilon 3\)</span>. The order of choices
+matters. First choose one <span class="math inline">\(n\)</span>, using
+uniform convergence so that <span class="math inline">\(f_n\)</span> is
+close to <span class="math inline">\(f\)</span> at every point at once.
+Only then use the property of that one <span class="math inline">\(f_n\)</span>. Pointwise convergence is not enough,
+because the <span class="math inline">\(\delta\)</span> for <span class="math inline">\(f_n\)</span> would come first and <span class="math inline">\(n\)</span> would then depend on <span class="math inline">\(x\)</span>. The proofs of <a href="#cor-uniform-limit-continuous">Corollary 11.2.16</a> and <a href="#thm-uniform-integral">Theorem 11.2.18</a> use the same idea.</p>
+</div>
+<div class="corollarybox" id="cor-uniform-limit-continuous">
+
+<p><strong>Corollary 11.2.16.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(\{f_n\}\)</span> is a sequence of
+continuous functions <span class="math inline">\(f_n:E\to\mathbb{R}\)</span>, and if <span class="math inline">\(\{f_n\}\)</span> converges uniformly to <span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span>, then <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(E\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\{f_n\}\)</span> is a sequence of
+continuous functions <span class="math inline">\(f_n:E\to\mathbb{R}\)</span>, and if <span class="math inline">\(\sum f_n\)</span> converges uniformly on <span class="math inline">\(E\)</span>, then <span class="math inline">\(S(x)=\sum f_n(x)\)</span> is continuous on <span class="math inline">\(E\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>If <span class="math inline">\(c\in E\)</span> is an isolated
+point of <span class="math inline">\(E\)</span>, then <span class="math inline">\(f\)</span> is automatically continuous at <span class="math inline">\(c\)</span> (<a href="ch-continuity.html#rem-continuity-on-set">Remark 6.3.7</a>). Suppose <span class="math inline">\(c\in E\)</span> is a limit point of <span class="math inline">\(E\)</span>. Then since <span class="math inline">\(f_n\)</span> is continuous for each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[\lim_{x\to c}f_n(x)=f_n(c),\]</span> for all
+<span class="math inline">\(n\in\mathbb{N}\)</span>. Then by <a href="#thm-interchange-limits">Theorem 11.2.15</a>, <span class="math display">\[\lim_{x\to c}f(x)=\lim_{x\to
+c}\left(\lim_{n\to\infty}f_n(x)\right)=\lim_{n\to
+\infty}\left(\lim_{x\to c}f_n(x)\right)=\lim_{n\to \infty}
+f_n(c)=f(c).\]</span> So <span class="math inline">\(f\)</span> is
+continuous at <span class="math inline">\(c\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(S_n(x)=\sum^n_{k=1}f_k(x)\)</span>. Then for each
+<span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(S_n\)</span> is continuous on <span class="math inline">\(E\)</span>. Since <span class="math inline">\(\{S_n\}\)</span> converges uniformly to <span class="math inline">\(S\)</span> on <span class="math inline">\(E\)</span>, by (1), <span class="math inline">\(S\)</span> is continuous on <span class="math inline">\(E\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So the series of Examples <a href="#ex-series-discontinuous">11.1.5</a> and <a href="#ex-absolute-not-uniform">11.2.14</a> does not converge uniformly
+on <span class="math inline">\(\mathbb{R}\)</span>, because its sum is
+not continuous at <span class="math inline">\(0\)</span>. In the same
+way, <span class="math inline">\(x^n\)</span> does not converge
+uniformly on <span class="math inline">\([0,1]\)</span>.</p>
+<p>The converse of <a href="#cor-uniform-limit-continuous">Corollary
+11.2.16</a> is false. The limit can be continuous even when the
+convergence is not uniform, as <a href="#ex-sn-not-uniform">Example
+11.2.4</a> shows. Dini’s Theorem gives a case where it is true. On a
+compact set, a decreasing sequence of continuous functions with a
+continuous limit converges uniformly.</p>
+<div class="theorembox" id="thm-dini">
+
+<p><strong>Theorem 11.2.17</strong> (Dini)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(K\subset \mathbb{R}\)</span> is
+compact and <span class="math inline">\(\{f_n\}\)</span> is a sequence
+of continuous functions <span class="math inline">\(f_n:K\to\mathbb{R}\)</span> such that <span class="math inline">\(\{f_n\}\)</span> converges pointwise on <span class="math inline">\(K\)</span> to a continuous function <span class="math inline">\(f\)</span>, and <span class="math inline">\(f_n(x)\ge f_{n+1}(x)\)</span> for all <span class="math inline">\(x\in K\)</span> and for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math inline">\(\{f_n\}\)</span> converges uniformly to <span class="math inline">\(f\)</span> on <span class="math inline">\(K\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>For each <span class="math inline">\(n\in\mathbb{N}\)</span>, let
+<span class="math inline">\(g_n=f_n-f\)</span>. Each <span class="math inline">\(g_n\)</span> is continuous on <span class="math inline">\(K\)</span>. Also <span class="math inline">\(g_n(x)\ge g_{n+1}(x)\ge0\)</span> and <span class="math inline">\(g_n(x)\to0\)</span> for every <span class="math inline">\(x\in K\)</span>. It is enough to show <span class="math inline">\(g_n\to0\)</span> uniformly on <span class="math inline">\(K\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. For each
+<span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math display">\[K_n=\{x\in K:g_n(x)\ge \varepsilon\},\]</span>
+the set of points where <span class="math inline">\(g_n\)</span> is
+still not within <span class="math inline">\(\varepsilon\)</span> of
+<span class="math inline">\(0\)</span>. The goal is to show <span class="math inline">\(K_N=\emptyset\)</span> for some <span class="math inline">\(N\)</span>.</p>
+<p>Each <span class="math inline">\(K_n\)</span> is closed. To see this,
+let <span class="math inline">\(c\)</span> be a limit point of <span class="math inline">\(K_n\)</span>. By <a href="ch-topology.html#thm-limit-point-sequence">Theorem 4.1.23</a>, there is a sequence
+<span class="math inline">\(\{x_k\}\)</span> in <span class="math inline">\(K_n\)</span> with <span class="math inline">\(x_k\to c\)</span>. Then <span class="math inline">\(c\in K\)</span>, since <span class="math inline">\(K\)</span> is closed (<a href="ch-topology.html#thm-compact-closed-bounded">Theorem 4.2.9</a>). Since <span class="math inline">\(g_n\)</span> is continuous and <span class="math inline">\(g_n(x_k)\ge\varepsilon\)</span> for all <span class="math inline">\(k\)</span>, <span class="math inline">\(g_n(c)=\lim_{k\to\infty}g_n(x_k)\ge\varepsilon\)</span>.
+So <span class="math inline">\(c\in K_n\)</span>. By <a href="ch-topology.html#thm-closed-limit-points">Theorem 4.1.24</a>, <span class="math inline">\(K_n\)</span> is closed. As a closed subset of
+<span class="math inline">\(K\)</span>, it is compact, by <a href="ch-topology.html#lem-closed-subset-compact">Lemma 4.2.10</a>.</p>
+<p>The sets are nested. If <span class="math inline">\(x\in
+K_{n+1}\)</span>, then <span class="math inline">\(g_n(x)\ge
+g_{n+1}(x)\ge\varepsilon\)</span>, so <span class="math inline">\(x\in
+K_n\)</span>. So <span class="math inline">\(K_{n+1}\subset
+K_n\)</span>.</p>
+<p>The sets have empty intersection. For each <span class="math inline">\(x\in K\)</span>, <span class="math inline">\(g_n(x)\to0\)</span>, so <span class="math inline">\(g_n(x)&lt;\varepsilon\)</span> for some <span class="math inline">\(n\)</span>, and then <span class="math inline">\(x\notin K_n\)</span>.</p>
+<p>If every <span class="math inline">\(K_n\)</span> were nonempty,
+Cantor’s Intersection Theorem (<a href="ch-topology.html#thm-cantor-intersection">Theorem 4.2.12</a>) would make <span class="math inline">\(\bigcap_{n=1}^\infty K_n\)</span> nonempty. So
+<span class="math inline">\(K_N=\emptyset\)</span> for some <span class="math inline">\(N\in\mathbb{N}\)</span>. Since the sets are
+nested, <span class="math inline">\(K_n=\emptyset\)</span> for all <span class="math inline">\(n\ge N\)</span>. This means <span class="math inline">\(0\le g_n(x)&lt;\varepsilon\)</span>, that is,
+<span class="math inline">\(|f_n(x)-f(x)|&lt;\varepsilon\)</span>, for
+all <span class="math inline">\(x\in K\)</span> and all <span class="math inline">\(n\ge N\)</span>. So <span class="math inline">\(\{f_n\}\)</span> converges uniformly to <span class="math inline">\(f\)</span> on <span class="math inline">\(K\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>All three hypotheses matter. On <span class="math inline">\([0,1)\)</span>, which is not compact, <span class="math inline">\(f_n(x)=x^n\)</span> decreases to the continuous
+function <span class="math inline">\(0\)</span>, but not uniformly. On
+<span class="math inline">\([0,1]\)</span>, the same sequence decreases
+to a function that is not continuous. See <a href="#exer-dini-hypotheses">Exercise 11.2.8</a> for the monotonicity
+hypothesis. The theorem also holds for increasing sequences. Apply it to
+<span class="math inline">\(\{-f_n\}\)</span>.</p>
+<div class="theorembox" id="thm-uniform-integral">
+
+<p><strong>Theorem 11.2.18.</strong> Suppose <span class="math inline">\(\{f_n\}\)</span> is a sequence of functions <span class="math inline">\(f_n:[a,b]\to\mathbb{R}\)</span> with <span class="math inline">\(f_n\in\mathcal{R}[a,b]\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Also, suppose the
+sequence <span class="math inline">\(\{f_n\}\)</span> converges
+uniformly to <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and <span class="math display">\[\int^b_a f=\lim_{n\to\infty} \int^b_a
+f_n;\]</span> i.e., <span class="math display">\[\lim_{n\to\infty}
+\int^b_a f_n=\int^b_a \lim_{n\to \infty}f_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>For each <span class="math inline">\(n\in\mathbb{N}\)</span>, let
+<span class="math inline">\(\varepsilon_n=\sup_{x\in[a,b]}|f_n(x)-f(x)|\)</span>.
+By <a href="#thm-uniform-sup">Theorem 11.2.7</a>, <span class="math inline">\(\varepsilon_n\to0\)</span>. In particular, <span class="math inline">\(\varepsilon_n\)</span> is finite for all large
+<span class="math inline">\(n\)</span>. For such <span class="math inline">\(n\)</span>, <span class="math inline">\(|f(x)|\le|f_n(x)|+\varepsilon_n\)</span> for all
+<span class="math inline">\(x\)</span>, so <span class="math inline">\(f\)</span> is bounded, since <span class="math inline">\(f_n\)</span> is.</p>
+<p><em>The function <span class="math inline">\(f\)</span> is
+integrable.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(n\)</span> with <span class="math inline">\(\varepsilon_n&lt;\frac{\varepsilon}{3(b-a)}\)</span>.
+Since <span class="math inline">\(f_n\in\mathcal{R}[a,b]\)</span>,
+Riemann’s Criterion (<a href="ch-integrals.html#thm-riemann-criterion">Theorem 9.2.1</a>)
+gives a partition <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_k\}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P},f_n)-\mathcal{L}(\mathcal{P},f_n)&lt;\frac\varepsilon
+3\)</span>. On each <span class="math inline">\([x_{i-1},x_i]\)</span>,
+<span class="math inline">\(f_n(x)-\varepsilon_n\le f(x)\le
+f_n(x)+\varepsilon_n\)</span>. So the supremum of <span class="math inline">\(f\)</span> there is at most the supremum of <span class="math inline">\(f_n\)</span> plus <span class="math inline">\(\varepsilon_n\)</span>, and the infimum of <span class="math inline">\(f\)</span> there is at least the infimum of <span class="math inline">\(f_n\)</span> minus <span class="math inline">\(\varepsilon_n\)</span>. Summing over <span class="math inline">\(i\)</span>, <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\le\mathcal{U}(\mathcal{P},f_n)-\mathcal{L}(\mathcal{P},f_n)+2\varepsilon_n(b-a)&lt;\frac\varepsilon
+3+\frac{2\varepsilon}{3}=\varepsilon.\]</span> So <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> by Riemann’s
+Criterion.</p>
+<p><em>The integrals converge.</em> For all large <span class="math inline">\(n\)</span>, by Theorems <a href="ch-integrals.html#thm-integral-linear">9.2.11</a> and <a href="ch-integrals.html#thm-integral-abs">9.2.12</a> and <a href="ch-integrals.html#exer-integral-monotone">Exercise 9.2.3</a>, <span class="math display">\[\left|\int^b_a f-\int^b_a
+f_n\right|=\left|\int_a^b(f-f_n)\right|\le\int_a^b|f-f_n|\le
+\varepsilon_n(b-a).\]</span> Since <span class="math inline">\(\varepsilon_n\to0\)</span>, <span class="math inline">\(\lim_{n\to\infty}\int^b_a f_n=\int^b_a
+f\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-series-integral">
+
+<p><strong>Corollary 11.2.19.</strong> If <span class="math inline">\(f_k\in\mathcal{R}[a,b]\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span> and if <span class="math inline">\(S(x)=\sum f_k(x)\)</span>, <span class="math inline">\(x\in[a,b]\)</span>, where the series converges
+uniformly on <span class="math inline">\([a,b]\)</span>, then <span class="math display">\[\int^b_a S=\sum\int^b_a f_k.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(S_n=\sum_{k=1}^nf_k\)</span>. By <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, <span class="math inline">\(S_n\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\int_a^bS_n=\sum_{k=1}^n\int_a^bf_k\)</span>.
+These are the partial sums of <span class="math inline">\(\sum\int_a^bf_k\)</span>. By <a href="#thm-uniform-integral">Theorem 11.2.18</a>, they converge to <span class="math inline">\(\int_a^bS\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-xn-integral">
+
+<p><strong>Example 11.2.20.</strong> Notice even though for <span class="math inline">\(f_n(x)=x^n\)</span>, <span class="math inline">\(\{f_n\}\)</span> converges pointwise and not
+uniformly to <span class="math display">\[f(x)=\begin{cases}0, &amp;
+x\in[0,1),\\ 1, &amp; x=1,\end{cases}\]</span> we have <span class="math display">\[\lim_{n\to\infty}\int^1_0
+f_n=\lim_{n\to\infty}\frac{1}{n+1}=0=\int^1_0 f.\]</span> So uniform
+convergence is sufficient for the conclusion of <a href="#thm-uniform-integral">Theorem 11.2.18</a>, but not necessary. The
+next theorem gives a different sufficient condition.</p>
+</div>
+<div class="theorembox" id="thm-bounded-convergence">
+
+<p><strong>Theorem 11.2.21</strong> (Bounded Convergence
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of
+functions <span class="math inline">\(f_n:[a,b]\to\mathbb{R}\)</span>
+converging pointwise to <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(f_n\in\mathcal{R}[a,b]\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Suppose there
+exists a positive constant <span class="math inline">\(M\)</span> such
+that <span class="math inline">\(|f_n(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span> and for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math display">\[\int^b_a f=\lim_{n\to\infty} \int^b_a
+f_n.\]</span></p>
+</div>
+<p>This theorem is due to Cesare Arzelà. Its proof using only Riemann
+integrals is long. It follows quickly from the Bounded Convergence
+Theorem for the Lebesgue integral, <a href="ch-lebesgue-integral.html#thm-bct">Theorem
+16.3.6</a>, since Riemann integrable functions are Lebesgue integrable
+with the same integral. See <a href="ch-lebesgue-integral.html#cor-arzela">Corollary 16.3.8</a>.
+The hypothesis <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>
+cannot be dropped, as <a href="#ex-rationals-enumeration">Example
+11.1.6</a> shows. Without the bound <span class="math inline">\(M\)</span>, the conclusion can fail, as <a href="#ex-integral-mismatch">Example 11.1.7</a> shows.</p>
+<div class="theorembox" id="thm-uniform-derivative">
+
+<p><strong>Theorem 11.2.22.</strong> Suppose <span class="math inline">\(\{f_n\}\)</span> is a sequence of differentiable
+functions on <span class="math inline">\([a,b]\)</span>. If <span class="math inline">\(\{f_n'\}\)</span> converges uniformly on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(\{f_n(x_0)\}\)</span> converges for some <span class="math inline">\(x_0\in[a,b]\)</span>, then <span class="math inline">\(\{f_n\}\)</span> converges uniformly to a function
+<span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> with <span class="math display">\[f'(x)=\lim_{n\to\infty}f_n'(x)\]</span>
+for all <span class="math inline">\(x\in[a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>A key estimate.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\{f_n(x_0)\}\)</span> converges and <span class="math inline">\(\{f_n'\}\)</span> converges uniformly, there
+is an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for
+all <span class="math inline">\(m,n\ge N\)</span>, <span class="math display">\[|f_n(x_0)-f_m(x_0)|&lt;\frac{\varepsilon}{2}\quad\text{and}\quad|f_n'(t)-f_m'(t)|&lt;\frac{\varepsilon}{2(b-a)}\text{
+for all }t\in[a,b].\]</span> Fix <span class="math inline">\(m,n\ge
+N\)</span>, and let <span class="math inline">\(h=f_n-f_m\)</span>. Then
+<span class="math inline">\(h\)</span> is differentiable on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(|h'(t)|&lt;\frac{\varepsilon}{2(b-a)}\)</span>
+for all <span class="math inline">\(t\)</span>. Let <span class="math inline">\(x,y\in[a,b]\)</span> with <span class="math inline">\(x\ne y\)</span>. By the Mean Value Theorem, <span class="math inline">\(h(x)-h(y)=h'(t)(x-y)\)</span> for some <span class="math inline">\(t\)</span> between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. So <span id="eq-uniform-derivative-key"></span> <span class="math display">\[|h(x)-h(y)|\le\frac{\varepsilon}{2(b-a)}|x-y|\quad\text{for
+all }x,y\in[a,b].
+\tag{11.2.1}\]</span> This also holds when <span class="math inline">\(x=y\)</span>.</p>
+<p><em>Uniform convergence of <span class="math inline">\(\{f_n\}\)</span>.</em> Take <span class="math inline">\(y=x_0\)</span> in <a href="#eq-uniform-derivative-key">(11.2.1)</a>. Since <span class="math inline">\(|x-x_0|\le b-a\)</span>, for all <span class="math inline">\(x\in[a,b]\)</span>, <span class="math display">\[|f_n(x)-f_m(x)|=|h(x)|\le|h(x)-h(x_0)|+|h(x_0)|&lt;\frac\varepsilon
+2+\frac\varepsilon 2=\varepsilon.\]</span> This holds for all <span class="math inline">\(m,n\ge N\)</span>. So by <a href="#thm-cauchy-criterion-uniform">Theorem 11.2.5</a>, <span class="math inline">\(\{f_n\}\)</span> converges uniformly on <span class="math inline">\([a,b]\)</span> to a function <span class="math inline">\(f\)</span>.</p>
+<p><em>The derivative of <span class="math inline">\(f\)</span>.</em>
+Fix <span class="math inline">\(c\in[a,b]\)</span> and let <span class="math inline">\(E=[a,b]\setminus\{c\}\)</span>. For <span class="math inline">\(x\in E\)</span>, define <span class="math display">\[q_n(x)=\frac{f_n(x)-f_n(c)}{x-c}\quad\text{and}\quad
+q(x)=\frac{f(x)-f(c)}{x-c}.\]</span> Then <span class="math inline">\(q_n(x)\to q(x)\)</span> for every <span class="math inline">\(x\in E\)</span>, and <span class="math inline">\(\lim_{x\to c}q_n(x)=f_n'(c)\)</span> for each
+<span class="math inline">\(n\)</span>. Taking <span class="math inline">\(y=c\)</span> in <a href="#eq-uniform-derivative-key">(11.2.1)</a>, for all <span class="math inline">\(m,n\ge N\)</span> and all <span class="math inline">\(x\in E\)</span>, <span class="math display">\[|q_n(x)-q_m(x)|=\frac{|h(x)-h(c)|}{|x-c|}\le\frac{\varepsilon}{2(b-a)}.\]</span>
+Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
+arbitrary, <span class="math inline">\(\{q_n\}\)</span> converges
+uniformly on <span class="math inline">\(E\)</span>, by <a href="#thm-cauchy-criterion-uniform">Theorem 11.2.5</a>. Its limit is
+<span class="math inline">\(q\)</span>. The point <span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(E\)</span>. So by <a href="#thm-interchange-limits">Theorem 11.2.15</a>, <span class="math display">\[f'(c)=\lim_{x\to
+c}q(x)=\lim_{n\to\infty}\left(\lim_{x\to
+c}q_n(x)\right)=\lim_{n\to\infty}f_n'(c).\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Uniform convergence of <span class="math inline">\(\{f_n\}\)</span>
+alone is not enough. In <a href="#ex-sin-nx-over-n">Example 11.1.8</a>,
+<span class="math inline">\(\left|\frac{\sin
+nx}{n}\right|\le\frac1n\)</span>, so <span class="math inline">\(f_n\to0\)</span> uniformly on <span class="math inline">\(\mathbb{R}\)</span>. But <span class="math inline">\(f_n'(0)=1\)</span> for all <span class="math inline">\(n\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-39">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-uniform-sup">
+
+<p><strong>Exercise 11.2.1.</strong> Prove <a href="#thm-uniform-sup">Theorem 11.2.7</a>. <a aria-label="Hint for Exercise 11.2.1" href="solutions-ch11.html#sol-exer-uniform-sup">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-over-2-not-uniform">
+
+<p><strong>Exercise 11.2.2.</strong> Show the series <span class="math inline">\(\sum_{k=1}^\infty
+\left(\frac{x}{2}\right)^k\)</span> does not converge uniformly on <span class="math inline">\((-2,2)\)</span>. <a aria-label="Hint for Exercise 11.2.2" href="solutions-ch11.html#sol-exer-x-over-2-not-uniform">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-xn-1-plus-xn">
+
+<p><strong>Exercise 11.2.3.</strong> For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(f_n(x)=x^n(1+x^n)\)</span>, <span class="math inline">\(x\in[0,1]\)</span>. Prove the sequence <span class="math inline">\(\{f_n\}\)</span> does not converge uniformly on
+<span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 11.2.3" href="solutions-ch11.html#sol-exer-xn-1-plus-xn">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-1-minus-x">
+
+<p><strong>Exercise 11.2.4.</strong> Prove the series <span class="math inline">\(\sum^\infty_{k=0}x(1-x)^k\)</span> does not
+converge uniformly for <span class="math inline">\(0\le x\le 1\)</span>.
+<a aria-label="Hint for Exercise 11.2.4" href="solutions-ch11.html#sol-exer-x-1-minus-x">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-power-series-absolute">
+
+<p><strong>Exercise 11.2.5.</strong> If <span class="math inline">\(\sum^\infty_{k=0}a_k\)</span> converges
+absolutely, prove that <span class="math inline">\(\sum^\infty_{k=0}a_kx^k\)</span> converges
+uniformly on <span class="math inline">\([-1,1]\)</span>. <a aria-label="Hint for Exercise 11.2.5" href="solutions-ch11.html#sol-exer-power-series-absolute">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-bct-xn">
+
+<p><strong>Exercise 11.2.6.</strong> If <span class="math inline">\(f\in\mathcal{R}[0,1]\)</span>, use the Bounded
+Convergence Theorem to prove that <span class="math display">\[\lim_{n\to\infty}\int^1_0x^nf(x)\,dx=0.\]</span>
+<a aria-label="Hint for Exercise 11.2.6" href="solutions-ch11.html#sol-exer-bct-xn">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sup-of-sequence">
+
+<p><strong>Exercise 11.2.7.</strong> Suppose <span class="math inline">\(\{f_n\}\)</span> is a sequence of continuous
+functions on <span class="math inline">\([a,b]\)</span> that converges
+uniformly on <span class="math inline">\([a,b]\)</span>. For each <span class="math inline">\(x\in[a,b]\)</span>, set <span class="math inline">\(g(x)=\sup_{n\in\mathbb{N}}\{f_n(x)\}\)</span>.</p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\(g\)</span> is continuous
+on <span class="math inline">\([a,b]\)</span>.</p></li>
+<li><p>Show by example that this conclusion may be false if the sequence
+<span class="math inline">\(\{f_n\}\)</span> converges only pointwise on
+<span class="math inline">\([a,b]\)</span>.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 11.2.7" href="solutions-ch11.html#sol-exer-sup-of-sequence">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dini-hypotheses">
+
+<p><strong>Exercise 11.2.8.</strong> Find continuous functions <span class="math inline">\(f_n:[0,1]\to\mathbb{R}\)</span> that converge
+pointwise to <span class="math inline">\(0\)</span>, with <span class="math inline">\(0\le f_n(x)\le1\)</span>, but not uniformly. (So
+Dini’s Theorem needs the monotonicity hypothesis.) <a aria-label="Hint for Exercise 11.2.8" href="solutions-ch11.html#sol-exer-dini-hypotheses">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dini-sequences">
+
+<p><strong>Exercise 11.2.9.</strong> Give a second proof of Dini’s
+Theorem, by contradiction. If the convergence is not uniform, find an
+<span class="math inline">\(\varepsilon&gt;0\)</span> and points <span class="math inline">\(x_n\in K\)</span> with <span class="math inline">\(g_n(x_n)\ge\varepsilon\)</span> for all <span class="math inline">\(n\)</span>. Use the Bolzano–Weierstrass Theorem to
+get a subsequence <span class="math inline">\(x_{n_j}\to c\in
+K\)</span>. Then show <span class="math inline">\(g_m(c)\ge\varepsilon\)</span> for every <span class="math inline">\(m\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-uniform-derivative-ftc">
+
+<p><strong>Exercise 11.2.10.</strong> Prove <a href="#thm-uniform-derivative">Theorem 11.2.22</a> under the stronger
+hypothesis that each <span class="math inline">\(f_n'\)</span> is
+continuous. <a aria-label="Hint for Exercise 11.2.10" href="solutions-ch11.html#sol-exer-uniform-derivative-ftc">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-uniform-bounded">
+
+<p><strong>Exercise 11.2.11.</strong> Suppose each <span class="math inline">\(f_n:E\to\mathbb{R}\)</span> is bounded and <span class="math inline">\(f_n\to f\)</span> uniformly on <span class="math inline">\(E\)</span>. Prove that <span class="math inline">\(f\)</span> is bounded, and that there is one <span class="math inline">\(M&gt;0\)</span> with <span class="math inline">\(|f_n(x)|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> and all <span class="math inline">\(x\in E\)</span>. <a aria-label="Hint for Exercise 11.2.11" href="solutions-ch11.html#sol-exer-uniform-bounded">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-weierstrass">
+<h2>11.3 The Weierstrass Function<sup>*</sup></h2>
+<p>This section can be skipped. Nothing later in the book depends on
+it.</p>
+<p>A continuous function can fail to be differentiable at a point, as
+<span class="math inline">\(|x|\)</span> does at <span class="math inline">\(0\)</span>. It can fail at infinitely many points,
+as a zigzag does at each corner. For much of the nineteenth century,
+many mathematicians believed that a continuous function must still be
+differentiable at most points. Weierstrass’s example shows this is
+false. His function is continuous on all of <span class="math inline">\(\mathbb{R}\)</span> and differentiable at no
+point. It is the sum of a uniformly convergent series of cosine waves.
+Each wave oscillates much faster than the one before, and its height is
+half as large. See <a href="#fig-weierstrass">Figure 11.4</a>.</p>
+<figure class="figure" id="fig-weierstrass"><div class="figure-images"><img alt="A jagged, rapidly oscillating curve on an interval, with many sharp corners at several scales, approximating a function that is continuous but nowhere differentiable." height="282" src="figs/fig13.svg" width="603"/></div><figcaption><strong>Figure 11.4.</strong> The partial sum <span class="math inline">\(\sum_{k=0}^{5}\frac{\cos(3^k\pi x)}{2^k}\)</span>.
+This uses <span class="math inline">\(a=3\)</span>, which is easier to
+draw than the values <span class="math inline">\(a&gt;3\pi+2\)</span> in
+<a href="#ex-weierstrass">Example 11.3.1</a>. The full sum with <span class="math inline">\(a=3\)</span> is also differentiable nowhere, by a
+theorem of Hardy.</figcaption></figure>
+<div class="examplebox" id="ex-weierstrass">
+
+<p><strong>Example 11.3.1.</strong></p>
+<p>Consider the function <span class="math display">\[f(x)=\sum^\infty_{k=0}\frac{\cos(a^k\pi
+x)}{2^k},\]</span> where <span class="math inline">\(a\)</span> is an
+odd positive integer satisfying <span class="math inline">\(a&gt;3\pi+2\)</span>. For example, <span class="math inline">\(a=13\)</span> works.</p>
+<p>Since <span class="math inline">\(\left|\frac{\cos(a^k \pi
+x)}{2^k}\right|\le \frac{1}{2^k}\)</span> and <span class="math inline">\(\sum\frac{1}{2^k}\)</span> converges, by the
+Weierstrass M-Test, <span class="math inline">\(\sum\frac{\cos(a^k\pi
+x)}{2^k}\)</span> converges uniformly and absolutely, and hence by <a href="#cor-uniform-limit-continuous">Corollary 11.2.16</a>, <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>Now fix <span class="math inline">\(x\in\mathbb{R}\)</span>. The rest
+of the example shows <span class="math inline">\(f\)</span> is not
+differentiable at <span class="math inline">\(x\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span>, set <span class="math display">\[S_n(x)=\sum^{n-1}_{k=0}\frac{\cos(a^k\pi
+x)}{2^k},\]</span> and <span class="math display">\[R_n(x)=\sum^{\infty}_{k=n}\frac{\cos(a^k\pi
+x)}{2^k}.\]</span> Then for <span class="math inline">\(h&gt;0\)</span>,
+<span class="math display">\[\frac{f(x+h)-f(x)}{h}=\frac{S_n(x+h)-S_n(x)}{h}+\frac{R_n(x+h)-R_n(x)}{h}.\]</span></p>
+<p><em>The first part is not too large.</em> By the Mean Value Theorem,
+for each <span class="math inline">\(k\)</span> there exists a <span class="math inline">\(\xi\in(0,h)\)</span> with <span class="math display">\[\frac{\cos(a^k\pi(x+h))-\cos(a^k\pi
+x)}{h}=-a^k\pi\sin(a^k\pi(x+\xi)).\]</span> Since <span class="math display">\[|-a^k\pi\sin(a^k\pi(x+\xi))|\le a^k\pi,\]</span>
+<span class="math display">\[\begin{aligned}
+\left|\frac{S_n(x+h)-S_n(x)}{h}\right|&amp;\le
+\sum^{n-1}_{k=0}\frac{1}{2^k}\left|\frac{\cos(a^k\pi(x+h))-\cos(a^k\pi
+x)}{h}\right|\\
+&amp;\le \pi\sum^{n-1}_{k=0}\left(\frac{a}{2}\right)^k\\
+&amp;=\frac{\pi\left(1-\left(\frac{a}{2}\right)^n\right)}{1-\frac{a}{2}}\\
+&amp;&lt;\frac{2\pi}{a-2}\left(\frac{a}{2}\right)^n.
+\end{aligned}\]</span></p>
+<p><em>A good choice of <span class="math inline">\(h\)</span>.</em>
+Write <span class="math inline">\(a^nx=k_n+\delta_n\)</span>, where
+<span class="math inline">\(k_n\in\mathbb{Z}\)</span> and <span class="math inline">\(-\frac{1}{2}\le \delta_n&lt;\frac{1}{2}\)</span>.
+Set <span class="math display">\[h_n=\frac{1-\delta_n}{a^n}.\]</span>
+Since <span class="math inline">\(-\frac{1}{2}\le
+\delta_n&lt;\frac{1}{2}\)</span>, <span class="math inline">\(\frac{3}{2}\ge 1-\delta_n&gt;\frac{1}{2}\)</span>.
+Therefore, <span class="math display">\[\frac{2}{3}a^n\le
+\frac{1}{h_n}&lt;2a^n.\]</span> In particular <span class="math inline">\(h_n&gt;0\)</span> and <span class="math inline">\(h_n\to0\)</span> as <span class="math inline">\(n\to\infty\)</span>.</p>
+<p><em>The second part is large.</em> For <span class="math inline">\(k\ge n\)</span>, <span class="math display">\[\begin{aligned}
+a^k\pi(x+h_n)&amp;=a^{k-n}a^n\pi(x+h_n)\\
+&amp;=a^{k-n}\pi(a^nx+(1-\delta_n))\\
+&amp;=a^{k-n}\pi(k_n+1).
+\end{aligned}\]</span> Since <span class="math inline">\(a^{k-n}\)</span> is odd and <span class="math inline">\(k_n\)</span> is an integer, <span class="math display">\[\cos(a^k\pi(x+h_n))=\cos(a^{k-n}\pi(k_n+1))=(-1)^{k_n+1}.\]</span>
+Also, <span class="math display">\[a^k\pi x=a^{k-n}a^n\pi
+x=a^{k-n}\pi(k_n+\delta_n).\]</span> Using the trigonometric identity
+<span class="math display">\[\cos(A+B)=\cos A\cos B-\sin A\sin
+B,\]</span> and the fact that <span class="math inline">\(\sin(k_n
+a^{k-n}\pi)=0\)</span>, <span class="math display">\[\begin{aligned}
+\cos(a^k\pi x)&amp;=\cos(a^{k-n}\pi k_n+a^{k-n}\pi\delta_n)\\
+&amp;=\cos(a^{k-n}k_n\pi)\cos(a^{k-n}\delta_n\pi)\\
+&amp;=(-1)^{k_n}\cos(a^{k-n}\delta_n\pi).
+\end{aligned}\]</span> Therefore, <span class="math display">\[\begin{aligned}
+\cos(a^k\pi(x+h_n))-\cos(a^k\pi
+x)&amp;=(-1)^{k_n+1}-(-1)^{k_n}\cos(a^{k-n}\delta_n\pi)\\
+&amp;=(-1)^{k_n+1}(1+\cos(a^{k-n}\delta_n\pi)).
+\end{aligned}\]</span> So <span class="math display">\[\begin{aligned}
+\left|\frac{R_n(x+h_n)-R_n(x)}{h_n}\right|&amp;=\left|\sum^\infty_{k=n}\frac{1}{2^k}
+\cdot\frac{\cos(a^k\pi(x+h_n))-\cos(a^k\pi x)}{h_n}\right|\\
+&amp;=\left|\sum^\infty_{k=n}\frac{(-1)^{k_n+1}}{h_n}\cdot\frac{1+\cos(a^{k-n}\delta_n\pi)}{2^k}\right|\\
+&amp;=\frac{1}{h_n}\sum^\infty_{k=n}\frac{1+\cos(a^{k-n}\delta_n\pi)}{2^k}\\
+&amp;\ge \frac{1}{h_n}\cdot\frac{1+\cos(\delta_n\pi)}{2^n}.
+\end{aligned}\]</span> The last step keeps only the term <span class="math inline">\(k=n\)</span>. The other terms are nonnegative.
+Since <span class="math inline">\(-\frac{1}{2}\le
+\delta_n&lt;\frac{1}{2}\)</span>, <span class="math inline">\(\cos(\delta_n\pi)\ge 0\)</span>. Therefore, <span class="math display">\[\left|\frac{R_n(x+h_n)-R_n(x)}{h_n}\right|\ge
+\frac{1}{h_n}\cdot\frac{1}{2^n}\ge
+\frac{2}{3}\left(\frac{a}{2}\right)^n.\]</span></p>
+<p><em>Putting the parts together.</em> Therefore, by using the Reverse
+Triangle Inequality, <span class="math display">\[\begin{aligned}
+\left|\frac{f(x+h_n)-f(x)}{h_n}\right|&amp;\ge
+\left|\frac{R_n(x+h_n)-R_n(x)}{h_n}\right|-\left|\frac{S_n(x+h_n)-S_n(x)}{h_n}\right|\\
+&amp;\ge\frac{2}{3}\left(\frac{a}{2}\right)^n-\frac{2\pi}{a-2}\left(\frac{a}{2}\right)^n\\
+&amp;=\left(\frac{a}{2}\right)^n\left(\frac{2}{3}-\frac{2\pi}{a-2}\right).
+\end{aligned}\]</span> Since <span class="math inline">\(\frac{a}{2}&gt;1\)</span> and <span class="math inline">\(\frac{2}{3}-\frac{2\pi}{a-2}&gt;0\)</span>, <span class="math display">\[\left|\frac{f(x+h_n)-f(x)}{h_n}\right|\to\infty\]</span>
+as <span class="math inline">\(n\to\infty\)</span>. If <span class="math inline">\(f'(x)\)</span> existed, then by <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> these difference
+quotients would converge to <span class="math inline">\(f'(x)\)</span>, since <span class="math inline">\(h_n\to0\)</span> and <span class="math inline">\(h_n\ne0\)</span>. A convergent sequence is
+bounded. So <span class="math inline">\(f\)</span> is not differentiable
+at <span class="math inline">\(x\)</span>. Since <span class="math inline">\(x\in\mathbb{R}\)</span> was arbitrary, <span class="math inline">\(f\)</span> is differentiable at no point of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+</section>
+<section class="level3 unnumbered" id="notes-10">
+<h2>Notes</h2>
+<p>In his <em>Cours d’analyse</em> of 1821, Cauchy stated that a
+convergent series of continuous functions has a continuous sum [<a href="bibliography.html#bib-cauchy1821">15</a>]. In 1826 Abel pointed out that the series
+<span class="math inline">\(\sin
+x-\frac12\sin2x+\frac13\sin3x-\cdots\)</span> is a counterexample [<a href="bibliography.html#bib-abel1826">1</a>]. Its sum jumps at every odd multiple of
+<span class="math inline">\(\pi\)</span>. Philipp Ludwig von Seidel [<a href="bibliography.html#bib-seidel1847">65</a>] and George Gabriel Stokes [<a href="bibliography.html#bib-stokes1847">69</a>] each found the missing hypothesis in
+1847. Weierstrass used uniform convergence in an 1841 manuscript on
+power series, which was published only in 1894 [<a href="bibliography.html#bib-weierstrass1841">76</a>]. His Berlin lectures made the idea
+standard. Ulisse Dini proved <a href="#thm-dini">Theorem 11.2.17</a> in
+his 1878 book [<a href="bibliography.html#bib-dini1878">23</a>]. Cesare Arzelà proved <a href="#thm-bounded-convergence">Theorem 11.2.21</a> in 1885 [<a href="bibliography.html#bib-arzela1885">3</a>].</p>
+<p>Weierstrass presented the function of <a href="#ex-weierstrass">Example 11.3.1</a> to the Berlin Academy in 1872
+[<a href="bibliography.html#bib-weierstrass1872">77</a>]. Paul du Bois-Reymond published
+it first, in 1875 [<a href="bibliography.html#bib-duboisreymond1875">26</a>].
+Weierstrass’s function was <span class="math inline">\(\sum
+b^k\cos(a^k\pi x)\)</span> with <span class="math inline">\(0&lt;b&lt;1\)</span>, <span class="math inline">\(a\)</span> an odd integer and <span class="math inline">\(ab&gt;1+\frac32\pi\)</span>. <a href="#ex-weierstrass">Example 11.3.1</a> is the case <span class="math inline">\(b=\frac12\)</span>. G. H. Hardy proved in 1916
+that <span class="math inline">\(ab\ge1\)</span> is enough [<a href="bibliography.html#bib-hardy1916">35</a>]. Bernard Bolzano had found a continuous
+nowhere differentiable function around 1830, but it was not published
+until a century later.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-series.html"><span class="dir">Previous</span> Chapter 10. Series of Real Numbers</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-power-series.html"><span class="dir">Next</span> Chapter 12. Power Series Expansions</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

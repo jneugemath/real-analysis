@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 1. The Real Number System | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="app-solutions.html"><span class="dir">Previous</span> Appendix C. Hints and Solutions</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch02.html"><span class="dir">Next</span> Solutions for Chapter 2. Cardinality</a>
+</nav>
+<main id="main">
+<article id="solutions-ch01">
+<h1>Solutions for Chapter 1. The Real Number System</h1>
+<div class="solutionbox" id="sol-exer-set-computations">
+
+<p><strong><a href="ch-real-numbers.html#exer-set-computations">Exercise 1.1.1</a>.</strong>
+<span class="math inline">\(A\cup B=\{1,2,3,4,6,8\}\)</span>, <span class="math inline">\(A\cap C=\{3\}\)</span>, <span class="math inline">\(B\setminus C=\{2,4,8\}\)</span>, and <span class="math inline">\((A\cup B)^c=X\setminus(A\cup B)=\{5,7\}\)</span>.
+Since <span class="math inline">\(A^c=\{4,5,6,7,8\}\)</span>, <span class="math inline">\(A^c\cap C=\{6\}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-de-morgan">
+
+<p><strong><a href="ch-real-numbers.html#exer-de-morgan">Exercise 1.1.3</a>.</strong> Let
+<span class="math inline">\(x\in(A\cap B)^c\)</span>. Then <span class="math inline">\(x\in X\)</span> and <span class="math inline">\(x\notin A\cap B\)</span>. So <span class="math inline">\(x\notin A\)</span> or <span class="math inline">\(x\notin B\)</span>. If <span class="math inline">\(x\notin A\)</span>, then <span class="math inline">\(x\in A^c\)</span>. If <span class="math inline">\(x\notin B\)</span>, then <span class="math inline">\(x\in B^c\)</span>. Either way, <span class="math inline">\(x\in A^c\cup B^c\)</span>. So <span class="math inline">\((A\cap B)^c\subset A^c\cup B^c\)</span>.</p>
+<p>Now let <span class="math inline">\(x\in A^c\cup B^c\)</span>. If
+<span class="math inline">\(x\in A^c\)</span>, then <span class="math inline">\(x\notin A\)</span>, so <span class="math inline">\(x\notin A\cap B\)</span>. If <span class="math inline">\(x\in B^c\)</span>, then <span class="math inline">\(x\notin B\)</span>, so again <span class="math inline">\(x\notin A\cap B\)</span>. Either way, <span class="math inline">\(x\in(A\cap B)^c\)</span>. So <span class="math inline">\(A^c\cup B^c\subset(A\cap B)^c\)</span>. By <a href="ch-real-numbers.html#def-subset">Definition 1.1.3</a>, <span class="math inline">\((A\cap B)^c=A^c\cup B^c\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-subset-transitive">
+
+<p><strong><a href="ch-real-numbers.html#exer-subset-transitive">Exercise
+1.1.5</a>.</strong> Let <span class="math inline">\(x\in A\)</span>.
+Since <span class="math inline">\(A\subset B\)</span>, <span class="math inline">\(x\in B\)</span>. Since <span class="math inline">\(B\subset C\)</span>, <span class="math inline">\(x\in C\)</span>. So every element of <span class="math inline">\(A\)</span> is an element of <span class="math inline">\(C\)</span>, and <span class="math inline">\(A\subset C\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-union-cancel">
+
+<p><strong><a href="ch-real-numbers.html#exer-union-cancel">Exercise 1.1.7</a>.</strong> Let
+<span class="math inline">\(A=\{1,2\}\)</span>, <span class="math inline">\(B=\{1\}\)</span> and <span class="math inline">\(C=\{2\}\)</span>. Then <span class="math inline">\(A\cup B=\{1,2\}=A\cup C\)</span>, but <span class="math inline">\(B\ne C\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-even-plus-odd">
+
+<p><strong><a href="ch-real-numbers.html#exer-even-plus-odd">Exercise 1.2.2</a>.</strong>
+Let <span class="math inline">\(m\)</span> be even and <span class="math inline">\(n\)</span> be odd. Then <span class="math inline">\(m=2j\)</span> and <span class="math inline">\(n=2k+1\)</span> for some <span class="math inline">\(j,k\in\mathbb{Z}\)</span>. So <span class="math inline">\(m+n=2j+2k+1=2(j+k)+1\)</span>. Since <span class="math inline">\(j+k\in\mathbb{Z}\)</span>, <span class="math inline">\(m+n\)</span> is odd.</p>
+</div>
+<div class="solutionbox" id="sol-exer-odd-square">
+
+<p><strong><a href="ch-real-numbers.html#exer-odd-square">Exercise 1.2.3</a>.</strong>
+(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(n\)</span> is odd. Then <span class="math inline">\(n=2k+1\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>. So <span class="math inline">\(n^2=4k^2+4k+1=2(2k^2+2k)+1\)</span>. Since <span class="math inline">\(2k^2+2k\in\mathbb{Z}\)</span>, <span class="math inline">\(n^2\)</span> is odd.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Use the
+contrapositive. Suppose <span class="math inline">\(n\)</span> is not
+odd. By <a href="ch-real-numbers.html#cor-even-or-odd">Corollary 1.2.13</a>, <span class="math inline">\(n\)</span> is even. By <a href="ch-real-numbers.html#thm-even-odd-arithmetic">Theorem 1.2.5</a> (3), <span class="math inline">\(n^2=n\cdot n\)</span> is even. By <a href="ch-real-numbers.html#cor-even-or-odd">Corollary 1.2.13</a> again, <span class="math inline">\(n^2\)</span> is not odd. So if <span class="math inline">\(n^2\)</span> is odd, then <span class="math inline">\(n\)</span> is odd.</p>
+</div>
+<div class="solutionbox" id="sol-exer-three-divides-square">
+
+<p><strong><a href="ch-real-numbers.html#exer-three-divides-square">Exercise
+1.2.4</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(n=3q+r\)</span> with <span class="math inline">\(r\in\{0,1,2\}\)</span>, and compute <span class="math inline">\(n^2\)</span> in each case.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sum-of-squares">
+
+<p><strong><a href="ch-real-numbers.html#exer-sum-of-squares">Exercise 1.2.6</a>.</strong>
+For <span class="math inline">\(n=1\)</span>, the left side is <span class="math inline">\(1\)</span> and the right side is <span class="math inline">\(\frac{1\cdot2\cdot3}{6}=1\)</span>. Now suppose
+the formula holds for some <span class="math inline">\(k\in\mathbb{N}\)</span>. Then <span class="math display">\[\sum_{i=1}^{k+1}i^2=\frac{k(k+1)(2k+1)}{6}+(k+1)^2=\frac{(k+1)\bigl(2k^2+k+6k+6\bigr)}{6}=\frac{(k+1)(k+2)(2k+3)}{6}.\]</span>
+This is the formula with <span class="math inline">\(n=k+1\)</span>,
+since <span class="math inline">\(k+2=(k+1)+1\)</span> and <span class="math inline">\(2k+3=2(k+1)+1\)</span>. By the Principle of
+Mathematical Induction, the formula holds for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-two-to-n">
+
+<p><strong><a href="ch-real-numbers.html#exer-two-to-n">Exercise 1.2.9</a>.</strong> For
+<span class="math inline">\(n=1\)</span>, <span class="math inline">\(2^1=2&gt;1\)</span>. Now suppose <span class="math inline">\(2^k&gt;k\)</span> for some <span class="math inline">\(k\in\mathbb{N}\)</span>. Then <span class="math inline">\(2^{k+1}=2\cdot2^k&gt;2k=k+k\ge k+1\)</span>, since
+<span class="math inline">\(k\ge1\)</span>. So <span class="math inline">\(2^{k+1}&gt;k+1\)</span>. By the Principle of
+Mathematical Induction, <span class="math inline">\(2^n&gt;n\)</span>
+for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-factorial-bound">
+
+<p><strong><a href="ch-real-numbers.html#exer-factorial-bound">Exercise 1.2.10</a>.</strong>
+<em>Hint.</em> For the inductive step, use <span class="math inline">\((k+1)!=(k+1)\,k!\)</span> and <span class="math inline">\(k+1\ge2\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sqrt3">
+
+<p><strong><a href="ch-real-numbers.html#exer-sqrt3">Exercise 1.3.1</a>.</strong>
+<em>Hint.</em> Use <a href="ch-real-numbers.html#exer-three-divides-square">Exercise
+1.2.4</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sqrt6">
+
+<p><strong><a href="ch-real-numbers.html#exer-sqrt6">Exercise 1.3.2</a>.</strong>
+<em>Hint.</em> Follow the proof of <a href="ch-real-numbers.html#thm-sqrt2-irrational">Theorem 1.3.4</a>. If <span class="math inline">\(6n^2=m^2\)</span>, show that <span class="math inline">\(m\)</span> and then <span class="math inline">\(n\)</span> must be even.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rational-midpoint">
+
+<p><strong><a href="ch-real-numbers.html#exer-rational-midpoint">Exercise
+1.3.3</a>.</strong> Define <span class="math inline">\(c=\frac{p+q}{2}\)</span>. Then <span class="math inline">\(c\in\mathbb{Q}\)</span> and <span class="math inline">\(p&lt;c&lt;q\)</span>. Indeed, <span class="math inline">\(p+q\in\mathbb{Q}\)</span>, and the quotient of a
+rational number by <span class="math inline">\(2\)</span> is rational.
+Since <span class="math inline">\(p&lt;q\)</span>, <span class="math inline">\(2p=p+p&lt;p+q\)</span>, so <span class="math inline">\(p&lt;c\)</span>. Similarly <span class="math inline">\(p+q&lt;q+q=2q\)</span>, so <span class="math inline">\(c&lt;q\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-inf-le-sup">
+
+<p><strong><a href="ch-real-numbers.html#exer-inf-le-sup">Exercise 1.4.2</a>.</strong> Let
+<span class="math inline">\(\alpha=\inf E\)</span> and <span class="math inline">\(\beta=\sup E\)</span>. Since <span class="math inline">\(E\ne\emptyset\)</span>, there is an <span class="math inline">\(x\in E\)</span>. Since <span class="math inline">\(\alpha\)</span> is a lower bound of <span class="math inline">\(E\)</span>, <span class="math inline">\(\alpha\le
+x\)</span>. Since <span class="math inline">\(\beta\)</span> is an upper
+bound of <span class="math inline">\(E\)</span>, <span class="math inline">\(x\le\beta\)</span>. If <span class="math inline">\(\alpha=x\)</span> or <span class="math inline">\(x=\beta\)</span>, then <span class="math inline">\(\alpha\le\beta\)</span> follows at once. Otherwise
+<span class="math inline">\(\alpha&lt;x\)</span> and <span class="math inline">\(x&lt;\beta\)</span>, so <span class="math inline">\(\alpha&lt;\beta\)</span> by transitivity. Either
+way, <span class="math inline">\(\inf E\le\sup E\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sup-one-minus">
+
+<p><strong><a href="ch-real-numbers.html#exer-sup-one-minus">Exercise 1.4.3</a>.</strong>
+<em>Hint.</em> To show <span class="math inline">\(1\)</span> is the
+least upper bound, suppose <span class="math inline">\(q&lt;1\)</span>
+is an upper bound and find an <span class="math inline">\(n\)</span>
+with <span class="math inline">\(1-\frac1n&gt;q\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-field-properties">
+
+<p><strong><a href="ch-real-numbers.html#exer-field-properties">Exercise 1.5.1</a>.</strong>
+(2) Now <span class="math inline">\(x+y=x=x+0\)</span>, so by <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (1), <span class="math inline">\(y=0\)</span>.</p>
+<p>(3) Now <span class="math inline">\(x+y=0=x+(-x)\)</span>, so by <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (1), <span class="math inline">\(y=-x\)</span>.</p>
+<p>(4) Now <span class="math inline">\(-x+x=0\)</span>, so by <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (3), applied to <span class="math inline">\(-x\)</span> in place of <span class="math inline">\(x\)</span> and <span class="math inline">\(x\)</span> in place of <span class="math inline">\(y\)</span>, <span class="math inline">\(x=-(-x)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ordered-field-properties">
+
+<p><strong><a href="ch-real-numbers.html#exer-ordered-field-properties">Exercise
+1.5.2</a>.</strong> (2) Suppose <span class="math inline">\(x&lt;y\)</span>. Adding <span class="math inline">\((-x)+(-y)\)</span> to both sides gives <span class="math inline">\(-y&lt;-x\)</span>, by the axiom that <span class="math inline">\(x&lt;y\)</span> implies <span class="math inline">\(x+z&lt;y+z\)</span>. Conversely, if <span class="math inline">\(-y&lt;-x\)</span>, adding <span class="math inline">\(x+y\)</span> to both sides gives <span class="math inline">\(x&lt;y\)</span>.</p>
+<p>(3) Since <span class="math inline">\(z&gt;y\)</span>, <span class="math inline">\(z+(-y)&gt;y+(-y)=0\)</span>. Thus <span class="math inline">\(x(z+(-y))&gt;0\)</span>, implying <span class="math inline">\(xz=x(z+(-y))+xy&gt;0+xy=xy\)</span>.</p>
+<p>(4) Now <span class="math inline">\(-(x(z+(-y)))=(-x)(z+(-y))&gt;0\)</span>, and so
+<span class="math inline">\(x(z+(-y))&lt;0\)</span>. Thus <span class="math inline">\(xz=x(z+(-y))+xy&lt;0+xy=xy\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bernoulli">
+
+<p><strong><a href="ch-real-numbers.html#exer-bernoulli">Exercise 1.5.6</a>.</strong>
+<em>Hint.</em> In the inductive step, multiply <span class="math inline">\((1+x)^k\ge1+kx\)</span> by <span class="math inline">\(1+x\ge0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-inf-neg-sup">
+
+<p><strong><a href="ch-real-numbers.html#exer-inf-neg-sup">Exercise 1.5.7</a>.</strong> Let
+<span class="math inline">\(E\subset\mathbb{F}\)</span>, where <span class="math inline">\(E\neq\emptyset\)</span> and <span class="math inline">\(E\)</span> is bounded below. Since <span class="math inline">\(\mathbb{F}\)</span> is a field, for each <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(-x\in\mathbb{F}\)</span>. Since <span class="math inline">\(E\ne\emptyset\)</span>, there is an <span class="math inline">\(x\in E\)</span>. So <span class="math inline">\(-x\in-E\)</span> and <span class="math inline">\(-E\)</span> is not empty. Since <span class="math inline">\(E\)</span> is bounded below, there exists an <span class="math inline">\(\alpha\in\mathbb{F}\)</span> such that for all
+<span class="math inline">\(x\in E\)</span>, <span class="math inline">\(\alpha\le x\)</span>. Again, since <span class="math inline">\(\mathbb{F}\)</span> is a field, <span class="math inline">\(-\alpha\in\mathbb{F}\)</span>. Since for all <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(\alpha\le x\)</span>, for all <span class="math inline">\(-x\in -E\)</span>, <span class="math inline">\(-x\le -\alpha\)</span>. So <span class="math inline">\(-\alpha\)</span> is an upper bound of <span class="math inline">\(-E\)</span>. This proves (a). Since <span class="math inline">\(\mathbb{F}\)</span> has the least upper bound
+property, <span class="math inline">\(\sup(-E)\in\mathbb{F}\)</span>,
+say <span class="math inline">\(\beta=\sup(-E)\)</span>.</p>
+<p>For (b), first note that <span class="math inline">\(-\beta\)</span>
+is a lower bound of <span class="math inline">\(E\)</span>. Indeed, if
+<span class="math inline">\(x\in E\)</span>, then <span class="math inline">\(-x\in-E\)</span>, so <span class="math inline">\(-x\le\beta\)</span> and <span class="math inline">\(x\ge-\beta\)</span>. Suppose <span class="math inline">\(y&gt;-\beta\)</span>. Then <span class="math inline">\(-y&lt;\beta\)</span> and so <span class="math inline">\(-y\)</span> is not an upper bound of <span class="math inline">\(-E\)</span>, implying there exists a <span class="math inline">\(z\in -E\)</span> with <span class="math inline">\(-y&lt;z\)</span>. So <span class="math inline">\(y&gt;-z\)</span> and <span class="math inline">\(-z\in E\)</span>. Thus <span class="math inline">\(y\)</span> is not a lower bound of <span class="math inline">\(E\)</span>. So <span class="math inline">\(-\beta=\inf E\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-triangle-three">
+
+<p><strong><a href="ch-real-numbers.html#exer-triangle-three">Exercise 1.6.2</a>.</strong>
+Write <span class="math inline">\(x-y=(x-z)+(z-y)\)</span>. By the
+Triangle Inequality (<a href="ch-real-numbers.html#thm-absolute-value">Theorem
+1.6.3</a> (2)), <span class="math display">\[|x-y|=|(x-z)+(z-y)|\le|x-z|+|z-y|.\]</span></p>
+</div>
+<div class="solutionbox" id="sol-exer-abs-less-than-eps">
+
+<p><strong><a href="ch-real-numbers.html#exer-abs-less-than-eps">Exercise
+1.7.1</a>.</strong> <em>Hint.</em> If <span class="math inline">\(x\ne0\)</span>, try <span class="math inline">\(\varepsilon=\frac{|x|}{2}\)</span>.</p>
+<p><em>Solution.</em> Suppose <span class="math inline">\(x\ne0\)</span>. Then <span class="math inline">\(|x|&gt;0\)</span> by <a href="ch-real-numbers.html#thm-absolute-value-basic">Theorem 1.6.2</a> (1). Let <span class="math inline">\(\varepsilon=\frac{|x|}{2}&gt;0\)</span>. By
+hypothesis, <span class="math inline">\(|x|\le\frac{|x|}{2}\)</span>.
+Subtracting <span class="math inline">\(\frac{|x|}{2}\)</span> from both
+sides gives <span class="math inline">\(\frac{|x|}{2}\le0\)</span>, so
+<span class="math inline">\(|x|\le0\)</span>. This contradicts <span class="math inline">\(|x|&gt;0\)</span>. So <span class="math inline">\(x=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-inf-alternating">
+
+<p><strong><a href="ch-real-numbers.html#exer-inf-alternating">Exercise 1.7.3</a>.</strong>
+<em>Hint.</em> Show <span class="math inline">\(-1\)</span> is a lower
+bound. Then, for <span class="math inline">\(\varepsilon&gt;0\)</span>,
+find an odd <span class="math inline">\(n\)</span> with <span class="math inline">\(-\frac{n}{n+1}&lt;-1+\varepsilon\)</span>.</p>
+<p><em>Solution.</em> First, <span class="math inline">\(-1\)</span> is
+a lower bound of <span class="math inline">\(E\)</span>. If <span class="math inline">\(n\)</span> is even, then <span class="math inline">\((-1)^n\frac{n}{n+1}=\frac{n}{n+1}\ge0&gt;-1\)</span>.
+If <span class="math inline">\(n\)</span> is odd, then <span class="math inline">\((-1)^n\frac{n}{n+1}=-\frac{n}{n+1}&gt;-1\)</span>,
+since <span class="math inline">\(\frac{n}{n+1}&lt;1\)</span>.</p>
+<p>Now let <span class="math inline">\(\gamma&gt;-1\)</span>, and set
+<span class="math inline">\(\varepsilon=\gamma+1&gt;0\)</span>. By the
+Archimedean Principle (<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a>),
+there is an <span class="math inline">\(N\in\mathbb{N}\)</span> with
+<span class="math inline">\(N&gt;\frac1\varepsilon\)</span>. Let <span class="math inline">\(n=2N-1\)</span>, which is odd. Then <span class="math display">\[(-1)^n\frac{n}{n+1}=-\frac{2N-1}{2N}=-1+\frac{1}{2N}&lt;-1+\frac1N&lt;-1+\varepsilon=\gamma.\]</span>
+So <span class="math inline">\(\gamma\)</span> is not a lower bound of
+<span class="math inline">\(E\)</span>. By <a href="ch-real-numbers.html#def-sup-inf">Definition 1.4.4</a>, <span class="math inline">\(\inf E=-1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rational-plus-irrational">
+
+<p><strong><a href="ch-real-numbers.html#exer-rational-plus-irrational">Exercise
+1.7.4</a>.</strong> <em>Hint.</em> Argue by contradiction. If <span class="math inline">\(r+x=q\in\mathbb{Q}\)</span>, then <span class="math inline">\(x=q-r\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-density-irrationals">
+
+<p><strong><a href="ch-real-numbers.html#exer-density-irrationals">Exercise
+1.7.5</a>.</strong> <em>Hint.</em> (a) If <span class="math inline">\(p&lt;q\)</span> are rational, try <span class="math inline">\(p+\frac{q-p}{\sqrt2}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sup-is-sqrt2">
+
+<p><strong><a href="ch-real-numbers.html#exer-sup-is-sqrt2">Exercise 1.7.6</a>.</strong>
+<em>Hint.</em> Let <span class="math inline">\(s=\sup A\)</span>. Rule
+out <span class="math inline">\(s^2&lt;2\)</span> and <span class="math inline">\(s^2&gt;2\)</span>, using the ideas in the proof of
+<a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.3.5</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cut-sup-inf">
+
+<p><strong><a href="ch-real-numbers.html#exer-cut-sup-inf">Exercise 1.7.7</a>.</strong>
+First, let <span class="math inline">\(u_0\in U\)</span>. Then for all
+<span class="math inline">\(l\in L\)</span>, <span class="math inline">\(l&lt;u_0\)</span>. So <span class="math inline">\(u_0\)</span> is an upper bound for <span class="math inline">\(L\)</span>, and since <span class="math inline">\(L\)</span> is nonempty, <span class="math inline">\(L\)</span> has a supremum in <span class="math inline">\(\mathbb{R}\)</span>. Similarly, let <span class="math inline">\(l_0\in L\)</span>. Then for all <span class="math inline">\(u\in U\)</span>, <span class="math inline">\(l_0&lt;u\)</span>. So <span class="math inline">\(l_0\)</span> is a lower bound for <span class="math inline">\(U\)</span>, and since <span class="math inline">\(U\)</span> is nonempty, <span class="math inline">\(U\)</span> has an infimum in <span class="math inline">\(\mathbb{R}\)</span> by <a href="ch-real-numbers.html#exer-inf-neg-sup">Exercise 1.5.7</a>.</p>
+<p>Now suppose <span class="math inline">\(\sup L\notin L\)</span>. So,
+since <span class="math inline">\(\mathbb{R}=L\cup U\)</span>, <span class="math inline">\(\sup L\in U\)</span>. Note for <span class="math inline">\(u\in U\)</span>, <span class="math inline">\(u&gt;l\)</span> for all <span class="math inline">\(l\in L\)</span>, so each <span class="math inline">\(u\in U\)</span> is an upper bound of <span class="math inline">\(L\)</span>. So <span class="math inline">\(\sup
+L\leq u\)</span> for all <span class="math inline">\(u\in U\)</span>. So
+<span class="math inline">\(\sup L\)</span> is a lower bound of <span class="math inline">\(U\)</span>. Let <span class="math inline">\(k\)</span> be a lower bound of <span class="math inline">\(U\)</span>. Since <span class="math inline">\(\sup
+L\in U\)</span>, <span class="math inline">\(k\leq \sup L\)</span>. Thus
+for any lower bound <span class="math inline">\(k\)</span> of <span class="math inline">\(U\)</span>, <span class="math inline">\(k\leq \sup
+L\)</span>. So <span class="math inline">\(\sup L=\inf U\)</span>. Thus
+<span class="math inline">\(\inf U\in U\)</span>. So if <span class="math inline">\(\sup L\notin L\)</span>, then <span class="math inline">\(\inf U\in U\)</span>, which is what was to be
+proved.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="app-solutions.html"><span class="dir">Previous</span> Appendix C. Hints and Solutions</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch02.html"><span class="dir">Next</span> Solutions for Chapter 2. Cardinality</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 5. The Cantor Set* | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-topology.html"><span class="dir">Previous</span> Chapter 4. Topological Properties of the Real Line</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-continuity.html"><span class="dir">Next</span> Chapter 6. Functions and Continuity</a>
+</nav>
+<main id="main">
+<article id="ch-cantor">
+<h1>Chapter 5. The Cantor Set<sup>*</sup></h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-cantor-construction">5.1 Construction of the Cantor Set</a></li><li><a href="#sec-ternary">5.2 Ternary Expansion of Elements of the Cantor
+Set</a></li><li><a href="#notes-4">Notes</a></li></ul></nav>
+<p>This short chapter builds one example. It can be skipped. Later
+chapters use it only in <a href="ch-integrals.html#ex-cantor-measure-zero">Example
+9.2.8</a>, a few exercises, and the starred <a href="ch-differentiation.html#sec-cantor-function">Section 17.6</a>, which builds the Cantor
+function. Start with <span class="math inline">\([0,1]\)</span>. Remove
+the open middle third. Then remove the open middle third of each of the
+two pieces that are left. Keep going forever. What is left at the end is
+the Cantor set.</p>
+<p>The Cantor set is a test case for intuition. It is compact. It has no
+isolated points. The intervals removed to build it have total length
+<span class="math inline">\(1\)</span>, so it seems that almost nothing
+is left. It contains no open intervals at all. Yet it is uncountable. It
+returns in <a href="ch-integrals.html">Chapter 9</a> as an example of a set
+of measure zero.</p>
+<section class="level3 unnumbered" id="sec-cantor-construction">
+<h2>5.1 Construction of the Cantor Set</h2>
+<div class="definitionbox" id="def-cantor-set">
+
+<p><strong>Definition 5.1.1</strong> (Construction of the Cantor
+Set)<strong>.</strong></p>
+<p>Define <span class="math display">\[\begin{array}{ccc}C_0 &amp; =
+&amp; [0,1]\\ &amp; = &amp; J_{0,1},\end{array}\]</span> <span class="math display">\[\begin{array}{ccccc}C_1 &amp; = &amp;
+[0,1/3]&amp; \cup &amp; [2/3,1] \\ &amp; = &amp; J_{1,1}&amp; \cup &amp;
+J_{1,2},\end{array}\]</span> <span class="math display">\[\begin{array}{ccccccccc}C_2 &amp; = &amp;
+[0,1/9]&amp; \cup &amp; [2/9,1/3] &amp; \cup &amp; [2/3,7/9]&amp; \cup
+&amp; [8/9,1]\\ &amp; = &amp; J_{2,1} &amp; \cup &amp; J_{2,2} &amp;
+\cup &amp; J_{2,3} &amp; \cup &amp; J_{2,4},\end{array}\]</span> and in
+general, <span class="math inline">\(C_{n+1}\)</span> is obtained from
+<span class="math inline">\(C_n\)</span> by removing the open middle
+third of each closed interval in <span class="math inline">\(C_n\)</span>. That is, each interval <span class="math inline">\([a,b]\)</span> in <span class="math inline">\(C_n\)</span> is replaced by the two intervals
+<span class="math inline">\(\left[a,a+\frac{b-a}{3}\right]\)</span> and
+<span class="math inline">\(\left[b-\frac{b-a}{3},b\right]\)</span>.
+This gives <span class="math display">\[C_n=\bigcup_{i=1}^{2^n}
+J_{n,i},\quad\text{where
+}J_{n,i}=\left[\frac{k_{n,i}}{3^n},\frac{k_{n,i}+1}{3^n}\right]\]</span>
+for some <span class="math inline">\(k_{n,i}\in\mathbb{N}_0\)</span>.
+The intervals are numbered from left to right. Define the <em>Cantor
+set</em> to be <span class="math display">\[C=\bigcap_{n=0}^\infty
+C_n.\]</span></p>
+</div>
+<figure class="figure" id="fig-cantor"><div class="figure-images"><img alt="Five rows of line segments. The top row is the interval [0,1]. Each row below removes the open middle third of every segment in the row above, leaving 1, 2, 4, 8 and 16 segments." height="179" src="figs/fig05.svg" width="560"/></div><figcaption><strong>Figure 5.1.</strong> The sets <span class="math inline">\(C_0,C_1,\dots,C_4\)</span>. Each one is built from
+the one above it by removing the open middle third of each interval.</figcaption></figure>
+<div class="lemmabox" id="lem-cantor-intervals">
+
+<p><strong>Lemma 5.1.2.</strong> For each <span class="math inline">\(n\in\mathbb{N}_0\)</span>, the following hold.</p>
+<ol>
+<li><p>The intervals <span class="math inline">\(J_{n,1},\dots,J_{n,2^n}\)</span> are pairwise
+disjoint, and each has length <span class="math inline">\(\frac{1}{3^n}\)</span>.</p></li>
+<li><p>The left endpoints of <span class="math inline">\(J_{n,1},\dots,J_{n,2^n}\)</span> are exactly the
+numbers <span class="math inline">\(\sum_{k=1}^n\frac{d_k}{3^k}\)</span>
+with each <span class="math inline">\(d_k\in\{0,2\}\)</span>. (For <span class="math inline">\(n=0\)</span>, this sum is <span class="math inline">\(0\)</span>.)</p></li>
+<li><p>The endpoints of each <span class="math inline">\(J_{n,i}\)</span> are in <span class="math inline">\(C\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Parts (1) and (2) are proved together by induction on
+<span class="math inline">\(n\)</span>. For <span class="math inline">\(n=0\)</span>, <span class="math inline">\(C_0=J_{0,1}=[0,1]\)</span> has length <span class="math inline">\(1=\frac{1}{3^0}\)</span> and left endpoint <span class="math inline">\(0\)</span>. Suppose (1) and (2) hold for <span class="math inline">\(n\)</span>. Let <span class="math inline">\(J_{n,i}=\left[s,s+\frac{1}{3^n}\right]\)</span> be
+one of the intervals of <span class="math inline">\(C_n\)</span>.
+Removing its open middle third leaves <span class="math display">\[\left[s,s+\frac{1}{3^{n+1}}\right]\quad\text{and}\quad\left[s+\frac{2}{3^{n+1}},s+\frac{1}{3^n}\right].\]</span>
+Each has length <span class="math inline">\(\frac{1}{3^{n+1}}\)</span>.
+They are disjoint, and they lie inside <span class="math inline">\(J_{n,i}\)</span>. Since the intervals of <span class="math inline">\(C_n\)</span> are pairwise disjoint, all <span class="math inline">\(2\cdot 2^n=2^{n+1}\)</span> intervals of <span class="math inline">\(C_{n+1}\)</span> are pairwise disjoint. Their left
+endpoints are <span class="math inline">\(s+\frac{0}{3^{n+1}}\)</span>
+and <span class="math inline">\(s+\frac{2}{3^{n+1}}\)</span>, where
+<span class="math inline">\(s=\sum_{k=1}^n\frac{d_k}{3^k}\)</span> with
+each <span class="math inline">\(d_k\in\{0,2\}\)</span>. These are
+exactly the sums <span class="math inline">\(\sum_{k=1}^{n+1}\frac{d_k}{3^k}\)</span> with each
+<span class="math inline">\(d_k\in\{0,2\}\)</span>. So (1) and (2) hold
+for <span class="math inline">\(n+1\)</span>.</p>
+<p>For (3), let <span class="math inline">\(p\)</span> be an endpoint of
+<span class="math inline">\(J_{n,i}\)</span>. The display above shows
+<span class="math inline">\(p\)</span> is also an endpoint of one of the
+two intervals of <span class="math inline">\(C_{n+1}\)</span> inside
+<span class="math inline">\(J_{n,i}\)</span>. By induction, <span class="math inline">\(p\)</span> is an endpoint of an interval of <span class="math inline">\(C_m\)</span>, and so <span class="math inline">\(p\in C_m\)</span>, for every <span class="math inline">\(m\ge n\)</span>. Also <span class="math inline">\(p\in C_n\subset C_m\)</span> for every <span class="math inline">\(m\le n\)</span>. So <span class="math inline">\(p\in C\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cantor-compact">
+
+<p><strong>Theorem 5.1.3.</strong> <span class="math inline">\(C\)</span> is compact and nonempty.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> The endpoints of <span class="math inline">\(J_{n,i}\)</span>, <span class="math inline">\(n=1,2,\dots\)</span> are in <span class="math inline">\(C\)</span> by <a href="#lem-cantor-intervals">Lemma 5.1.2</a>, so <span class="math inline">\(C\ne\emptyset\)</span>. Also, each <span class="math inline">\(J_{n,i}\)</span> is compact by the Heine–Borel
+Theorem (<a href="ch-topology.html#thm-heine-borel">Theorem 4.2.14</a>), so <span class="math inline">\(C_n\)</span> is compact for <span class="math inline">\(n=1,2,\dots\)</span> by <a href="ch-topology.html#exer-union-compact">Exercise 4.2.5</a>. Also, <span class="math inline">\(C_{n+1}\subset C_n\)</span> for all <span class="math inline">\(n\)</span>. Therefore, by <a href="ch-topology.html#thm-cantor-intersection">Theorem 4.2.12</a>, <span class="math inline">\(C\)</span> is compact.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cantor-perfect">
+
+<p><strong>Theorem 5.1.4.</strong> Every point of <span class="math inline">\(C\)</span> is a limit point of <span class="math inline">\(C\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Let <span class="math inline">\(x\in C\)</span>. Choose <span class="math inline">\(m\in\mathbb{N}\)</span> such that <span class="math inline">\((1/3)^m&lt;\varepsilon\)</span>. Since <span class="math inline">\(x\in C_m\)</span>, <span class="math inline">\(x\in J_{m,i}\)</span> for some <span class="math inline">\(i\)</span>, <span class="math inline">\(i=1,\dots,2^m\)</span>. But <span class="math display">\[J_{m,i}=\left[\frac{k_{m,i}}{3^m},\frac{k_{m,i}+1}{3^m}\right],\]</span>
+so the length of <span class="math inline">\(J_{m,i}\)</span> is <span class="math inline">\((1/3)^m&lt;\varepsilon\)</span>. Thus <span class="math inline">\(J_{m,i}\subset
+(x-\varepsilon,x+\varepsilon)\)</span>. Therefore, both end points of
+<span class="math inline">\(J_{m,i}\)</span> are in <span class="math inline">\(C\cap (x-\varepsilon,x+\varepsilon)\)</span> by <a href="#lem-cantor-intervals">Lemma 5.1.2</a>. At least one of them is
+not <span class="math inline">\(x\)</span>, and thus <span class="math inline">\(\bigl(C\cap
+(x-\varepsilon,x+\varepsilon)\bigr)\setminus\{x\}\ne\emptyset\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(C\)</span> has no isolated points. A
+closed set with no isolated points is called <em>perfect</em>. The
+Cantor set is perfect.</p>
+<div class="theorembox" id="thm-cantor-length">
+
+<p><strong>Theorem 5.1.5.</strong> The sum of the lengths of the
+intervals removed in constructing <span class="math inline">\(C_1\)</span> from <span class="math inline">\(C_0\)</span>, <span class="math inline">\(C_2\)</span> from <span class="math inline">\(C_1\)</span>, and so on, is <span class="math inline">\(1\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> When constructing <span class="math inline">\(C_1\)</span> from <span class="math inline">\(C_0\)</span>, an interval of length <span class="math inline">\(1/3\)</span> was removed. At step <span class="math inline">\(n\)</span>, <span class="math inline">\(2^{n-1}\)</span> intervals of length <span class="math inline">\((1/3)^n\)</span> were removed. Thus the sum of the
+length of the intervals removed is <span class="math display">\[2^0\frac{1}{3}+2\frac{1}{3^2}+\cdots+2^{n-1}\frac{1}{3^n}+\cdots
+= \sum^\infty_{n=1}\frac{2^{n-1}}{3^n} = \frac{1}{3}\sum_{n=0}^\infty
+\left(\frac{2}{3}\right)^n =\frac{1}{3}\cdot\frac{1}{1-2/3}=1.\]</span>
+Here the infinite sum means the limit of the sums of the first <span class="math inline">\(n\)</span> terms. By <a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>, <span class="math display">\[\sum_{k=1}^n\frac{2^{k-1}}{3^k}=\frac13\sum_{i=0}^{n-1}\left(\frac23\right)^i=\frac13\cdot\frac{1-(2/3)^n}{1-2/3}=1-\left(\frac23\right)^n,\]</span>
+which converges to <span class="math inline">\(1\)</span> by <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>. The same argument shows
+<span class="math inline">\(\sum_{i=0}^\infty r^i=\frac{1}{1-r}\)</span>
+whenever <span class="math inline">\(|r|&lt;1\)</span>. This formula is
+used again below. Infinite series are studied in <a href="ch-series.html">Chapter 10</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So the intervals removed have total length <span class="math inline">\(1\)</span>, the length of <span class="math inline">\([0,1]\)</span>. In this sense <span class="math inline">\(C\)</span> has length <span class="math inline">\(0\)</span>. <a href="ch-integrals.html#ex-cantor-measure-zero">Example 9.2.8</a> makes this precise. It
+shows <span class="math inline">\(C\)</span> has measure zero.</p>
+<section class="level5 unnumbered" id="exercises-18">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cantor-total-length">
+
+<p><strong>Exercise 5.1.1.</strong> Prove that the sum of the lengths of
+the intervals in <span class="math inline">\(C_n\)</span> is <span class="math inline">\(\left(\frac23\right)^n\)</span>. Use this to give
+another proof of <a href="#thm-cantor-length">Theorem 5.1.5</a>. <a aria-label="Solution for Exercise 5.1.1" href="solutions-ch05.html#sol-exer-cantor-total-length">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-cantor-endpoints-countable">
+
+<p><strong>Exercise 5.1.2.</strong> Let <span class="math inline">\(P\)</span> be the set of all endpoints of the
+intervals <span class="math inline">\(J_{n,i}\)</span>, for <span class="math inline">\(n\in\mathbb{N}_0\)</span> and <span class="math inline">\(i=1,\dots,2^n\)</span>. Prove that <span class="math inline">\(P\)</span> is countable. <a aria-label="Hint for Exercise 5.1.2" href="solutions-ch05.html#sol-exer-cantor-endpoints-countable">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-ternary">
+<h2>5.2 Ternary Expansion of Elements of the Cantor
+Set</h2>
+<p>A decimal expansion writes a number using powers of <span class="math inline">\(10\)</span>. A ternary expansion uses powers of
+<span class="math inline">\(3\)</span>. The Cantor set is built by
+cutting intervals into thirds, so ternary expansions describe it well. A
+number is in <span class="math inline">\(C\)</span> exactly when it has
+a ternary expansion that uses only the digits <span class="math inline">\(0\)</span> and <span class="math inline">\(2\)</span>. This description shows <span class="math inline">\(C\)</span> is uncountable.</p>
+<div class="theorembox" id="thm-cantor-no-intervals">
+
+<p><strong>Theorem 5.2.1.</strong> <span class="math inline">\(C\)</span> contains no open intervals.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Assume by way of contradiction that <span class="math inline">\((a,b)\subset C\)</span> for some <span class="math inline">\(a&lt;b\)</span>. By the Archimedean Principle (<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a>), choose <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(\frac1n&lt;\frac{b-a}{2}\)</span>. Since <span class="math inline">\(3^n&gt;n\)</span>, <span class="math inline">\(\frac{1}{3^n}&lt;\frac{b-a}{2}\)</span>. Let <span class="math inline">\(m=\frac{a+b}{2}\)</span>. Since <span class="math inline">\(m\in C\subset C_n\)</span>, <span class="math inline">\(m\in J_{n,i}\)</span> for some <span class="math inline">\(i\)</span>. Every point of <span class="math inline">\(J_{n,i}\)</span> is within <span class="math inline">\(\frac{1}{3^n}&lt;\frac{b-a}{2}\)</span> of <span class="math inline">\(m\)</span>. So <span class="math inline">\(J_{n,i}\subset(a,b)\subset C\)</span>.</p>
+<p>Let <span class="math inline">\(M\)</span> be the open middle third
+of <span class="math inline">\(J_{n,i}\)</span>. It is removed in
+constructing <span class="math inline">\(C_{n+1}\)</span>. So the points
+of <span class="math inline">\(M\)</span> are not in the two intervals
+of <span class="math inline">\(C_{n+1}\)</span> inside <span class="math inline">\(J_{n,i}\)</span>. They are not in the other
+intervals of <span class="math inline">\(C_{n+1}\)</span> either. Those
+lie inside the intervals <span class="math inline">\(J_{n,j}\)</span>
+with <span class="math inline">\(j\ne i\)</span>, which are disjoint
+from <span class="math inline">\(J_{n,i}\)</span> by <a href="#lem-cantor-intervals">Lemma 5.1.2</a>. So <span class="math inline">\(M\cap C_{n+1}=\emptyset\)</span>. But <span class="math inline">\(M\)</span> is nonempty and <span class="math inline">\(M\subset J_{n,i}\subset C\subset C_{n+1}\)</span>.
+This is a contradiction.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-ternary">
+
+<p><strong>Definition 5.2.2.</strong> Let <span class="math inline">\(x\in[0,1]\)</span>. Let <span class="math inline">\(n_1\in\{0,1,2\}\)</span> be the largest integer
+such that <span class="math display">\[\frac{n_1}{3}&lt;x.\]</span> (If
+<span class="math inline">\(x=0\)</span>, no such <span class="math inline">\(n_1\)</span> exists. In that case, use <span class="math inline">\(.000\dots\)</span>.) Having chosen <span class="math inline">\(n_1,\dots,n_k\)</span>, let <span class="math inline">\(n_{k+1}\in\{0,1,2\}\)</span> be the largest
+integer such that <span class="math display">\[\frac{n_1}{3}+\frac{n_2}{3^2}+\cdots+\frac{n_k}{3^k}+\frac{n_{k+1}}{3^{k+1}}&lt;x.\]</span>
+The expression <span class="math inline">\(.n_1n_2n_3\dots\)</span> is
+called a <em>ternary expansion</em> of <span class="math inline">\(x\)</span>. In general, if <span class="math inline">\(x=\sum_{k=1}^\infty \frac{n_k}{3^k}\)</span>,
+where <span class="math inline">\(n_k\in\{0,1,2\}\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(.n_1n_2n_3\dots\)</span> is called a ternary
+expansion of <span class="math inline">\(x\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-ternary-series">
+
+<p><strong>Remark 5.2.3.</strong> The sum <span class="math inline">\(\sum_{k=1}^\infty\frac{n_k}{3^k}\)</span> means
+the limit of the partial sums <span class="math inline">\(s_m=\sum_{k=1}^m\frac{n_k}{3^k}\)</span>. This
+limit always exists. The partial sums increase, and by <a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>, <span class="math display">\[s_m\le\sum_{k=1}^m\frac{2}{3^k}=1-\frac{1}{3^m}&lt;1.\]</span>
+So <span class="math inline">\(\{s_m\}\)</span> converges by the
+Monotone Convergence Theorem (<a href="ch-sequences.html#thm-monotone-convergence">Theorem 3.2.13</a>). The digits chosen
+in the first part of <a href="#def-ternary">Definition 5.2.2</a> satisfy
+<span class="math inline">\(s_m&lt;x\le s_m+\frac{1}{3^m}\)</span> for
+every <span class="math inline">\(m\)</span>, by <a href="#exer-ternary-algorithm">Exercise 5.2.1</a>. So <span class="math inline">\(s_m\to x\)</span>, and <span class="math inline">\(.n_1n_2n_3\dots\)</span> really is a ternary
+expansion of <span class="math inline">\(x\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-ternary-one-third">
+
+<p><strong>Example 5.2.4.</strong> Let <span class="math inline">\(x=\frac{1}{3}\)</span>. For <span class="math display">\[\frac{n_1}{3}&lt;\frac{1}{3},\quad
+n_1=0.\]</span> For <span class="math display">\[\frac{0}{3}+\frac{n_2}{3^2}&lt;\frac{1}{3},\quad
+n_2=2.\]</span> For <span class="math display">\[\frac{0}{3}+\frac{n_2}{3^2}+\frac{n_3}{3^3}&lt;\frac{1}{3},\quad
+n_3=2.\]</span> Now <span class="math display">\[\begin{aligned}
+.0222\dots&amp;=\sum_{k=2}^\infty \frac{2}{3^k} \\
+&amp;=\frac{2}{9}\sum_{k=0}^\infty\left(\frac{1}{3}\right)^k \\
+&amp;= \frac{2}{9}\cdot\frac{1}{1-1/3}=\frac{1}{3}.
+\end{aligned}\]</span> So <span class="math inline">\(.0222\dots\)</span> is the ternary expansion of
+<span class="math inline">\(\frac{1}{3}\)</span>. Notice <span class="math inline">\(\frac{1}{3}=.100\dots\)</span> (base <span class="math inline">\(3\)</span>). So <span class="math inline">\(\frac{1}{3}\)</span> has two ternary
+expansions.</p>
+</div>
+<div class="definitionbox" id="def-terminating">
+
+<p><strong>Definition 5.2.5.</strong> The ternary expansion <span class="math inline">\(x=.n_1n_2\dots\)</span> is <em>finite</em> or
+<em>terminating</em> if there exists an <span class="math inline">\(m\in\mathbb{N}\)</span> such that <span class="math inline">\(n_k=0\)</span> for all <span class="math inline">\(k&gt;m\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-terminating-expansions">
+
+<p><strong>Example 5.2.6.</strong> Notice if <span class="math inline">\(x\)</span> has a terminating ternary expansion,
+its ternary expansion is not unique. This happens when <span class="math inline">\(x=\frac{a}{3^m}\)</span>, <span class="math inline">\(a\in\mathbb{N}\)</span>, <span class="math inline">\(0&lt;a&lt;3^m\)</span>, and <span class="math inline">\(a\)</span> is not a multiple of <span class="math inline">\(3\)</span>. In this case, <span class="math display">\[x=\frac{a_1}{3}+\cdots+\frac{a_m}{3^m},\quad
+a_m\in\{1,2\}.\]</span> If <span class="math inline">\(a_m=1\)</span>,
+<span class="math display">\[x=\frac{a_1}{3}+\cdots+\frac{0}{3^m}+\sum_{k=m+1}^\infty\frac{2}{3^k},\]</span>
+and if <span class="math inline">\(a_m=2\)</span>, <span class="math display">\[x=\frac{a_1}{3}+\cdots+\frac{1}{3^m}+\sum_{k=m+1}^\infty\frac{2}{3^k}.\]</span>
+If <span class="math inline">\(a_m=1\)</span>, consider only the
+infinite expansion. If <span class="math inline">\(a_m=2\)</span>,
+consider only the finite expansion.</p>
+</div>
+<div class="theorembox" id="thm-cantor-ternary">
+
+<p><strong>Theorem 5.2.7.</strong> Let <span class="math inline">\(x\in[0,1]\)</span>. Then <span class="math inline">\(x\in C\)</span> if and only if <span class="math inline">\(x\)</span> has a ternary expansion <span class="math inline">\(.n_1n_2n_3\dots\)</span> with <span class="math inline">\(n_k\in\{0,2\}\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(x=\sum_{k=1}^\infty\frac{n_k}{3^k}\)</span> with
+each <span class="math inline">\(n_k\in\{0,2\}\)</span>. Let <span class="math inline">\(m\in\mathbb{N}_0\)</span> and let <span class="math inline">\(s_m=\sum_{k=1}^m\frac{n_k}{3^k}\)</span>. For
+<span class="math inline">\(p&gt;m\)</span>, by <a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>, <span class="math display">\[0\le
+s_p-s_m=\sum_{k=m+1}^p\frac{n_k}{3^k}\le\sum_{k=m+1}^p\frac{2}{3^k}=\frac{1}{3^m}-\frac{1}{3^p}&lt;\frac{1}{3^m}.\]</span>
+Letting <span class="math inline">\(p\to\infty\)</span>, <a href="ch-sequences.html#thm-order-limits">Theorem 3.2.7</a> gives <span class="math inline">\(s_m\le x\le s_m+\frac{1}{3^m}\)</span>. By <a href="#lem-cantor-intervals">Lemma 5.1.2</a>, <span class="math inline">\(\left[s_m,s_m+\frac{1}{3^m}\right]\)</span> is one
+of the intervals of <span class="math inline">\(C_m\)</span>. So <span class="math inline">\(x\in C_m\)</span>. Since <span class="math inline">\(m\)</span> was arbitrary, <span class="math inline">\(x\in C\)</span>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(x\in C\)</span>. For each <span class="math inline">\(m\in\mathbb{N}_0\)</span>, <span class="math inline">\(x\in C_m\)</span>. Since the intervals of <span class="math inline">\(C_m\)</span> are disjoint, <span class="math inline">\(x\)</span> is in exactly one of them. Call it
+<span class="math inline">\(\left[s_m,s_m+\frac{1}{3^m}\right]\)</span>.
+Then <span class="math inline">\(s_0=0\)</span>. The interval of <span class="math inline">\(C_{m+1}\)</span> containing <span class="math inline">\(x\)</span> lies inside an interval of <span class="math inline">\(C_m\)</span> that contains <span class="math inline">\(x\)</span>, so it lies inside <span class="math inline">\(\left[s_m,s_m+\frac{1}{3^m}\right]\)</span>. By
+the proof of <a href="#lem-cantor-intervals">Lemma 5.1.2</a>, its left
+endpoint <span class="math inline">\(s_{m+1}\)</span> is <span class="math inline">\(s_m\)</span> or <span class="math inline">\(s_m+\frac{2}{3^{m+1}}\)</span>. So <span class="math inline">\(n_{m+1}=3^{m+1}(s_{m+1}-s_m)\)</span> is <span class="math inline">\(0\)</span> or <span class="math inline">\(2\)</span>. By induction, <span class="math inline">\(s_m=\sum_{k=1}^m\frac{n_k}{3^k}\)</span> for all
+<span class="math inline">\(m\)</span>. Since <span class="math inline">\(s_m\le x\le s_m+\frac{1}{3^m}\)</span>, <span class="math inline">\(|x-s_m|\le\frac{1}{3^m}\)</span>, which converges
+to <span class="math inline">\(0\)</span> by <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>. So <span class="math inline">\(s_m\to x\)</span>, and <span class="math inline">\(x=\sum_{k=1}^\infty\frac{n_k}{3^k}\)</span> with
+each <span class="math inline">\(n_k\in\{0,2\}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>For example, <span class="math inline">\(\frac13=.1000\dots=.0222\dots\)</span> is in <span class="math inline">\(C\)</span>, since its second expansion uses only
+<span class="math inline">\(0\)</span>’s and <span class="math inline">\(2\)</span>’s.</p>
+<div class="theorembox" id="thm-cantor-uncountable">
+
+<p><strong>Theorem 5.2.8.</strong> <span class="math inline">\(C\)</span> is uncountable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By <a href="#thm-cantor-ternary">Theorem 5.2.7</a>,
+<span class="math inline">\(C\sim 2^\mathbb{N}\)</span>. So <span class="math inline">\(C\)</span> is uncountable.</p>
+<p>In more detail, define <span class="math inline">\(f:2^\mathbb{N}\to
+C\)</span> by <span class="math inline">\(f(\{b_k\})=\sum_{k=1}^\infty\frac{2b_k}{3^k}\)</span>.
+By <a href="#thm-cantor-ternary">Theorem 5.2.7</a>, <span class="math inline">\(f\)</span> maps <span class="math inline">\(2^\mathbb{N}\)</span> onto <span class="math inline">\(C\)</span>. To see <span class="math inline">\(f\)</span> is one-to-one, let <span class="math inline">\(\{b_k\}\ne\{c_k\}\)</span>. Let <span class="math inline">\(j\)</span> be the first index with <span class="math inline">\(b_j\ne c_j\)</span>, and say <span class="math inline">\(b_j=1\)</span> and <span class="math inline">\(c_j=0\)</span>. The estimate in the proof of <a href="#thm-cantor-ternary">Theorem 5.2.7</a> gives <span class="math display">\[f(\{b_k\})-f(\{c_k\})\ge\frac{2}{3^j}-\sum_{k=j+1}^\infty\frac{2}{3^k}=\frac{2}{3^j}-\frac{1}{3^j}&gt;0.\]</span>
+So <span class="math inline">\(f\)</span> is a bijection, and <span class="math inline">\(C\sim2^\mathbb{N}\)</span>. Since <span class="math inline">\(2^\mathbb{N}\)</span> is uncountable by <a href="ch-cardinality.html#thm-binary-sequences-uncountable">Theorem 2.3.3</a>, so is <span class="math inline">\(C\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-one-fourth-cantor">
+
+<p><strong>Example 5.2.9.</strong> Since <span class="math inline">\(\frac{1}{4}=.020202\dots\)</span>, <span class="math inline">\(\frac{1}{4}\in C\)</span>. To check the expansion,
+notice <span class="math display">\[.020202\dots=\sum_{j=1}^\infty\frac{2}{3^{2j}}=\frac29\sum_{j=0}^\infty\left(\frac19\right)^j=\frac29\cdot\frac{1}{1-1/9}=\frac14.\]</span>
+Every endpoint of every <span class="math inline">\(J_{n,i}\)</span> has
+the form <span class="math inline">\(\frac{k}{3^n}\)</span>. The number
+<span class="math inline">\(\frac14\)</span> does not, since <span class="math inline">\(3^n=4k\)</span> is impossible when <span class="math inline">\(3^n\)</span> is odd and <span class="math inline">\(4k\)</span> is even. So <span class="math inline">\(C\)</span> contains points that are not
+endpoints.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-19">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-ternary-algorithm">
+
+<p><strong>Exercise 5.2.1.</strong> Let <span class="math inline">\(x\in(0,1]\)</span> and let <span class="math inline">\(n_1,n_2,n_3,\dots\)</span> be the digits chosen in
+<a href="#def-ternary">Definition 5.2.2</a>. Let <span class="math inline">\(s_0=0\)</span> and <span class="math inline">\(s_m=\sum_{k=1}^m\frac{n_k}{3^k}\)</span>. Prove by
+induction that <span class="math inline">\(s_m&lt;x\le
+s_m+\frac{1}{3^m}\)</span> for all <span class="math inline">\(m\in\mathbb{N}_0\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-ternary-examples">
+
+<p><strong>Exercise 5.2.2.</strong> Find the ternary expansions of <span class="math inline">\(\frac19\)</span> and <span class="math inline">\(\frac23\)</span> given by <a href="#def-ternary">Definition 5.2.2</a>. Then find a second ternary
+expansion of each.</p>
+</div>
+<div class="exercisebox" id="exer-three-fourths-cantor">
+
+<p><strong>Exercise 5.2.3.</strong> Prove that <span class="math inline">\(\frac34\in C\)</span>. <a aria-label="Hint for Exercise 5.2.3" href="solutions-ch05.html#sol-exer-three-fourths-cantor">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cantor-four-points">
+
+<p><strong>Exercise 5.2.4.</strong> Find <span class="math inline">\(4\)</span> points in the Cantor set, <span class="math inline">\(2\)</span> of which are not endpoints of the
+intervals <span class="math inline">\(J_{n,i}\)</span>. <a aria-label="Solution for Exercise 5.2.4" href="solutions-ch05.html#sol-exer-cantor-four-points">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-cantor-interior">
+
+<p><strong>Exercise 5.2.5.</strong> Prove that <span class="math inline">\(C^\circ=\emptyset\)</span> and <span class="math inline">\(C'=C\)</span>. <a aria-label="Hint for Exercise 5.2.5" href="solutions-ch05.html#sol-exer-cantor-interior">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-4">
+<h2>Notes</h2>
+<p>Henry Smith described a set like this one in 1875 [<a href="bibliography.html#bib-smith1875">66</a>]. Georg Cantor described it in 1883 [<a href="bibliography.html#bib-cantor1883">11</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-topology.html"><span class="dir">Previous</span> Chapter 4. Topological Properties of the Real Line</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-continuity.html"><span class="dir">Next</span> Chapter 6. Functions and Continuity</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 13. σ-Algebras and Measures | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="part-lebesgue.html"><span class="dir">Previous</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-lebesgue-measure.html"><span class="dir">Next</span> Chapter 14. Lebesgue Measure</a>
+</nav>
+<main id="main">
+<article id="ch-measures">
+<h1>Chapter 13. <span class="math inline">\(\sigma\)</span>-Algebras and Measures</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-sigma-algebras">13.1 Algebras and <span class="math inline">\(\sigma\)</span>-Algebras</a></li><li><a href="#sec-borel">13.2 Borel Sets</a></li><li><a href="#sec-measures">13.3 Measures</a></li><li><a href="#notes-12">Notes</a></li></ul></nav>
+<p>The Riemann integral of <a href="ch-integrals.html">Chapter 9</a>
+measures area by cutting <span class="math inline">\([a,b]\)</span> into
+finitely many intervals. That works well for continuous functions and
+badly for limits. Lebesgue’s idea was to cut up the range of <span class="math inline">\(f\)</span> instead, and measure the sets <span class="math inline">\(\{x:c&lt;f(x)\le d\}\)</span>. Those sets need not
+be intervals. They can be complicated sets like the Cantor set or the
+rationals. So the first job is to assign a length, or <em>measure</em>,
+to sets far more general than intervals.</p>
+<p>Which sets can be measured, and what rules should measure obey? This
+chapter answers both questions in general. A <span class="math inline">\(\sigma\)</span>-algebra is a collection of sets
+that is closed under complements and countable unions. A measure is a
+function on a <span class="math inline">\(\sigma\)</span>-algebra that
+adds up correctly over countably many disjoint pieces. Lebesgue measure
+on <span class="math inline">\(\mathbb{R}\)</span>, built in <a href="ch-lebesgue-measure.html">Chapter 14</a>, is the main example. The
+same language is the foundation of probability theory. A probability
+space is a measure space whose total measure is <span class="math inline">\(1\)</span>.</p>
+<p><em>What this chapter uses from Parts I and II.</em> Sets and De
+Morgan’s Laws (<a href="ch-real-numbers.html#sec-sets">Section 1.1</a>), countable sets (<a href="ch-cardinality.html">Chapter 2</a>), open and closed sets and the
+structure of open sets (<a href="ch-topology.html#sec-open-closed">Section 4.1</a>), and
+series of nonnegative terms (<a href="ch-series.html#thm-nonnegative-series">Theorem
+10.2.6</a>).</p>
+<section class="level3 unnumbered" id="sec-sigma-algebras">
+<h2>13.1 Algebras and <span class="math inline">\(\sigma\)</span>-Algebras</h2>
+<p>Throughout Part III, <span class="math inline">\(X\)</span> denotes a
+nonempty set. For <span class="math inline">\(E\subset X\)</span>, the
+complement <span class="math inline">\(E^c\)</span> means <span class="math inline">\(X\setminus E\)</span>. The power set <span class="math inline">\(\mathcal{P}(X)\)</span> is the collection of all
+subsets of <span class="math inline">\(X\)</span> (<a href="ch-real-numbers.html#def-power-set">Definition 1.1.18</a>).</p>
+<div class="definitionbox" id="def-sigma-algebra">
+
+<p><strong>Definition 13.1.1.</strong> Let <span class="math inline">\(X\)</span> be a nonempty set. An <em>algebra</em>
+of sets on <span class="math inline">\(X\)</span> is a nonempty
+collection <span class="math inline">\(\mathcal{A}\)</span> of subsets
+of <span class="math inline">\(X\)</span> such that</p>
+<ol>
+<li><p>if <span class="math inline">\(E_1,\dots,E_n\in\mathcal{A}\)</span>, then <span class="math inline">\(\bigcup^n_{i=1}E_i\in\mathcal{A}\)</span>;
+and</p></li>
+<li><p>if <span class="math inline">\(E\in\mathcal{A}\)</span>, then
+<span class="math inline">\(E^c\in\mathcal{A}\)</span>.</p></li>
+</ol>
+<p>An algebra <span class="math inline">\(\mathcal{A}\)</span> on a
+nonempty set <span class="math inline">\(X\)</span> is a <em><span class="math inline">\(\sigma\)</span>-algebra</em> if for any sequence
+<span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset\mathcal{A}\)</span>,
+<span class="math inline">\(\bigcup_{n\in\mathbb{N}}E_n\in\mathcal{A}\)</span>.</p>
+</div>
+<p>The <span class="math inline">\(\sigma\)</span> stands for “sum,” an
+old word for union. An algebra is closed under finite unions. A <span class="math inline">\(\sigma\)</span>-algebra is closed under countable
+unions.</p>
+<div class="propositionbox" id="prop-algebra-intersections">
+
+<p><strong>Proposition 13.1.2.</strong> An algebra <span class="math inline">\(\mathcal{A}\)</span> on a nonempty set <span class="math inline">\(X\)</span> has the property that if <span class="math inline">\(E_1,\dots,E_n\in\mathcal{A}\)</span>, then <span class="math inline">\(\bigcap^n_{i=1}E_i\in\mathcal{A}\)</span>.
+Similarly, a <span class="math inline">\(\sigma\)</span>-algebra is
+closed under countable intersections.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Using De Morgan’s law, <span class="math inline">\(\bigcap_{i=1}^nE_i=\left(\bigcup_{i=1}^nE_i^c\right)^c\)</span>.
+Since <span class="math inline">\(\mathcal{A}\)</span> is an algebra,
+<span class="math inline">\(E_i^c\in\mathcal{A}\)</span> for each <span class="math inline">\(i=1,\dots,n\)</span>, implying <span class="math inline">\(\bigcup_{i=1}^nE_i^c\in\mathcal{A}\)</span>.
+Therefore, <span class="math inline">\(\left(\bigcup_{i=1}^nE_i^c\right)^c\in\mathcal{A}\)</span>.
+So <span class="math inline">\(\bigcap_{i=1}^nE_i\in\mathcal{A}\)</span>. The
+countable case is the same, using <a href="ch-real-numbers.html#thm-de-morgan-families">Theorem 1.1.13</a> for a countable
+family.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="remarkbox" id="rem-algebra-empty-X">
+
+<p><strong>Remark 13.1.3.</strong> If <span class="math inline">\(\mathcal{A}\)</span> is an algebra on a nonempty
+set <span class="math inline">\(X\)</span>, then <span class="math inline">\(\emptyset,X\in\mathcal{A}\)</span>. Indeed, since
+<span class="math inline">\(\mathcal{A}\)</span> is nonempty, there is
+an <span class="math inline">\(E\in\mathcal{A}\)</span>, implying <span class="math inline">\(E^c\in\mathcal{A}\)</span>. So <span class="math inline">\(E\cap E^c=\emptyset\in\mathcal{A}\)</span>. Thus
+<span class="math inline">\(\emptyset^c=X\in\mathcal{A}\)</span>. Also,
+if <span class="math inline">\(E,F\in\mathcal{A}\)</span>, then <span class="math inline">\(E\setminus F=E\cap F^c\in\mathcal{A}\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-sigma-algebra-disjoint">
+
+<p><strong>Theorem 13.1.4.</strong> An algebra <span class="math inline">\(\mathcal{A}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra if <span class="math inline">\(\{F_n\}_{n\in\mathbb{N}}\subset\mathcal{A}\)</span>
+with <span class="math inline">\(F_i\cap F_j=\emptyset\)</span> for all
+<span class="math inline">\(i\ne j\in\mathbb{N}\)</span> implies <span class="math inline">\(\bigcup_{n\in\mathbb{N}}F_n\in\mathcal{A}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Suppose <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset\mathcal{A}\)</span>.
+Set <span class="math display">\[F_k=E_k\setminus\left[\bigcup_{i=1}^{k-1}E_i\right]=E_k\cap\left[\bigcup_{i=1}^{k-1}
+E_i\right]^c.\]</span> Since <span class="math inline">\(E_i\in\mathcal{A}\)</span>, <span class="math inline">\(i=1,\dots,k-1\)</span>, <span class="math inline">\(\bigcup_{i=1}^{k-1} E_i\in\mathcal{A}\)</span> and
+since <span class="math inline">\(\mathcal{A}\)</span> is an algebra,
+<span class="math inline">\(\left[\bigcup_{i=1}^{k-1}
+E_i\right]^c\in\mathcal{A}\)</span>. Thus <span class="math inline">\(F_k\in\mathcal{A}\)</span>. Now the sets <span class="math inline">\(F_k\)</span> are pairwise disjoint. So <span class="math inline">\(\bigcup_{n\in\mathbb{N}}F_n\in\mathcal{A}\)</span>.
+But <span class="math inline">\(\bigcup_{n\in\mathbb{N}}F_n=\bigcup_{n\in\mathbb{N}}E_n\)</span>.
+So <span class="math inline">\(\bigcup_{n\in\mathbb{N}}E_n\in\mathcal{A}\)</span>
+and <span class="math inline">\(\mathcal{A}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p>
+<p>To see the two claims about the sets <span class="math inline">\(F_k\)</span>, note that <span class="math inline">\(F_k\)</span> is the set of points of <span class="math inline">\(E_k\)</span> that are in none of the earlier sets
+<span class="math inline">\(E_1,\dots,E_{k-1}\)</span>. If <span class="math inline">\(j&lt;k\)</span>, then <span class="math inline">\(F_k\cap E_j=\emptyset\)</span>, and <span class="math inline">\(F_j\subset E_j\)</span>, so <span class="math inline">\(F_j\cap F_k=\emptyset\)</span>. Each <span class="math inline">\(F_n\subset E_n\)</span>, so <span class="math inline">\(\bigcup F_n\subset\bigcup E_n\)</span>. If <span class="math inline">\(x\in\bigcup E_n\)</span>, let <span class="math inline">\(k\)</span> be the smallest index with <span class="math inline">\(x\in E_k\)</span>. Then <span class="math inline">\(x\in F_k\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Making Sets Disjoint).</strong></p>
+<p>Measures add up correctly over disjoint sets. So many proofs start by
+replacing a sequence <span class="math inline">\(E_1,E_2,\dots\)</span>
+with disjoint sets that have the same union. Take <span class="math inline">\(F_1=E_1\)</span> and <span class="math inline">\(F_k=E_k\setminus(E_1\cup\cdots\cup
+E_{k-1})\)</span>. Each new set keeps only the points not already
+covered. The union does not change, <span class="math inline">\(F_k\subset E_k\)</span>, and the sets <span class="math inline">\(F_k\)</span> are disjoint. If the sets increase,
+<span class="math inline">\(E_1\subset E_2\subset\cdots\)</span>, this
+simplifies to <span class="math inline">\(F_k=E_k\setminus
+E_{k-1}\)</span>. The proofs of Theorems <a href="#thm-sigma-algebra-disjoint">13.1.4</a> and <a href="#thm-measure-properties">13.3.9</a> use this trick.</p>
+</div>
+<div class="examplebox" id="ex-sigma-algebra-trivial">
+
+<p><strong>Example 13.1.5.</strong> If <span class="math inline">\(X\)</span> is a nonempty set, <span class="math inline">\(\mathcal{P}(X)\)</span> and <span class="math inline">\(\{\emptyset,X\}\)</span> are <span class="math inline">\(\sigma\)</span>-algebras.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> <span class="math inline">\(\mathcal{P}(X)\)</span>
+contains every subset of <span class="math inline">\(X\)</span>. The
+complement of any subset of <span class="math inline">\(X\)</span> is a
+subset of <span class="math inline">\(X\)</span> and the union of
+countably many subsets of <span class="math inline">\(X\)</span> is a
+subset of <span class="math inline">\(X\)</span>, so <span class="math inline">\(\mathcal{P}(X)\)</span> is closed under
+complements and countable unions. Since <span class="math inline">\(X^c=\emptyset\)</span>, <span class="math inline">\(\emptyset^c=X\)</span>, and <span class="math inline">\(X\cup\emptyset=X\)</span>, <span class="math inline">\(\{\emptyset,X\}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-countable-cocountable">
+
+<p><strong>Example 13.1.6.</strong> If <span class="math inline">\(X\)</span> is uncountable, then <span class="math display">\[\mathcal{A}=\{E\subset X: E\text{ is countable or
+}E^c\text{ is countable}\}\]</span> is a <span class="math inline">\(\sigma\)</span>-algebra, called the <em><span class="math inline">\(\sigma\)</span>-algebra of countable or
+co-countable sets</em>. Here “countable” means at most countable, so
+finite sets are included.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(E\in\mathcal{A}\)</span>. If <span class="math inline">\(E\)</span> is countable, then <span class="math inline">\((E^c)^c=E\)</span> is countable and so <span class="math inline">\(E^c\in\mathcal{A}\)</span>. If <span class="math inline">\(E^c\)</span> is countable, then <span class="math inline">\(E^c\in\mathcal{A}\)</span> directly. Let <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset
+\mathcal{A}\)</span>. If <span class="math inline">\(E_n\)</span> is
+countable for all <span class="math inline">\(n\in\mathbb{N}\)</span>,
+then <span class="math inline">\(\bigcup_{n\in\mathbb{N}}E_n\)</span> is
+countable (<a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>) and so
+<span class="math inline">\(\bigcup_{n\in\mathbb{N}}E_n\in\mathcal{A}\)</span>.
+If there exists an <span class="math inline">\(n_0\in\mathbb{N}\)</span>
+with <span class="math inline">\(E_{n_0}\)</span> uncountable, then
+<span class="math inline">\(E_{n_0}^c\)</span> is countable and <span class="math display">\[\left(\bigcup_{n\in\mathbb{N}}E_n\right)^c=\bigcap_{n\in\mathbb{N}}E_n^c\subset
+E_{n_0}^c.\]</span> A subset of a countable set is countable. Therefore,
+<span class="math inline">\(\left(\bigcup_{n\in\mathbb{N}}E_n\right)^c\)</span>
+is countable. So <span class="math inline">\(\bigcup_{n\in\mathbb{N}}E_n\in\mathcal{A}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Showing a Collection Is a <span class="math inline">\(\sigma\)</span>-Algebra).</strong></p>
+<p>There are three things to check. The collection is nonempty, usually
+by showing <span class="math inline">\(X\)</span> or <span class="math inline">\(\emptyset\)</span> is in it. It is closed under
+complements. It is closed under countable unions. Check each one
+directly from the definition of the collection, as in <a href="#ex-countable-cocountable">Example 13.1.6</a>. For the union, it
+is often easier to check disjoint unions, or increasing unions, and then
+use <a href="#thm-sigma-algebra-disjoint">Theorem 13.1.4</a> or <a href="#exer-increasing-unions">Exercise 13.1.3</a>. Closure under
+intersections and differences then comes for free, by <a href="#prop-algebra-intersections">Proposition 13.1.2</a> and <a href="#rem-algebra-empty-X">Remark 13.1.3</a>.</p>
+</div>
+<div class="lemmabox" id="lem-sigma-algebra-intersection">
+
+<p><strong>Lemma 13.1.7.</strong> The intersection of a family of <span class="math inline">\(\sigma\)</span>-algebras on a set <span class="math inline">\(X\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-sigma-algebra-intersection">Exercise 13.1.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p><a href="#lem-sigma-algebra-intersection">Lemma 13.1.7</a> gives a
+way to build <span class="math inline">\(\sigma\)</span>-algebras. Start
+with any collection <span class="math inline">\(\mathcal{E}\)</span> of
+subsets of <span class="math inline">\(X\)</span>. There is at least one
+<span class="math inline">\(\sigma\)</span>-algebra containing <span class="math inline">\(\mathcal{E}\)</span>, namely <span class="math inline">\(\mathcal{P}(X)\)</span>. The intersection of all
+of them is a <span class="math inline">\(\sigma\)</span>-algebra that
+contains <span class="math inline">\(\mathcal{E}\)</span>, and it is
+contained in every <span class="math inline">\(\sigma\)</span>-algebra
+that contains <span class="math inline">\(\mathcal{E}\)</span>. So it is
+the smallest one.</p>
+<div class="definitionbox" id="def-generated-sigma-algebra">
+
+<p><strong>Definition 13.1.8.</strong> If <span class="math inline">\(\mathcal{E}\subset\mathcal{P}(X)\)</span>, the
+smallest <span class="math inline">\(\sigma\)</span>-algebra containing
+<span class="math inline">\(\mathcal{E}\)</span>, denoted <span class="math inline">\(\sigma(\mathcal{E})\)</span>, is called the
+<em><span class="math inline">\(\sigma\)</span>-algebra generated by
+<span class="math inline">\(\mathcal{E}\)</span></em>. That is, <span class="math inline">\(\sigma(\mathcal{E})\)</span> is the intersection
+of all <span class="math inline">\(\sigma\)</span>-algebras on <span class="math inline">\(X\)</span> that contain <span class="math inline">\(\mathcal{E}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-generated-finite">
+
+<p><strong>Example 13.1.9.</strong> Let <span class="math inline">\(X=\{a,b,c\}\)</span>. For <span class="math inline">\(\mathcal{E}_1=\{\{a\}\}\)</span>, <span class="math inline">\(\sigma(\mathcal{E}_1)=\{\emptyset,\{a\},\{b,c\},X\}\)</span>.
+For <span class="math inline">\(\mathcal{E}_2=\{\{a\},\{b\}\}\)</span>,
+<span class="math inline">\(\sigma(\mathcal{E}_2)=\mathcal{P}(X)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> If <span class="math inline">\(\{a\}\in\sigma(\mathcal{E}_1)\)</span>, then <span class="math inline">\(\{a\}^c=\{b,c\}\in\sigma(\mathcal{E}_1)\)</span>.
+So <span class="math inline">\(\{a\}\cup\{b,c\}=X\in\sigma(\mathcal{E}_1)\)</span>
+and <span class="math inline">\(X^c=\emptyset\in\sigma(\mathcal{E}_1)\)</span>. So
+<span class="math inline">\(\sigma(\mathcal{E}_1)\)</span> contains
+<span class="math inline">\(\{\emptyset,\{a\},\{b,c\},X\}\)</span>. This
+collection is itself a <span class="math inline">\(\sigma\)</span>-algebra, since it is closed under
+complements and unions. So <span class="math inline">\(\sigma(\mathcal{E}_1)=\{\emptyset,\{a\},\{b,c\},X\}\)</span>.</p>
+<p>If <span class="math inline">\(\{a\},\{b\}\in\sigma(\mathcal{E}_2)\)</span>, then
+<span class="math inline">\(\{a\}\cup\{b\}=\{a,b\}\in\sigma(\mathcal{E}_2)\)</span>.
+Then <span class="math inline">\(\{a,b\}^c=\{c\}\in\sigma(\mathcal{E}_2)\)</span>.
+Also, <span class="math inline">\(\{a\}^c=\{b,c\}\in\sigma(\mathcal{E}_2)\)</span>
+and <span class="math inline">\(\{b\}^c=\{a,c\}\in\sigma(\mathcal{E}_2)\)</span>.
+Lastly, <span class="math inline">\(\{a,b\}\cup\{c\}=X\in\sigma(\mathcal{E}_2)\)</span>,
+implying <span class="math inline">\(X^c=\emptyset\in\sigma(\mathcal{E}_2)\)</span>. So
+every subset of <span class="math inline">\(X\)</span> is in <span class="math inline">\(\sigma(\mathcal{E}_2)\)</span>, and <span class="math inline">\(\sigma(\mathcal{E}_2)=\mathcal{P}(X)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="propositionbox" id="prop-generated-unique">
+
+<p><strong>Proposition 13.1.10.</strong> If <span class="math inline">\(\mathcal{E}\subset\mathcal{P}(X)\)</span>, <span class="math inline">\(\sigma(\mathcal{E})\)</span> is unique.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume <span class="math inline">\(\mathcal{M}_1\)</span> and <span class="math inline">\(\mathcal{M}_2\)</span> are two smallest <span class="math inline">\(\sigma\)</span>-algebras containing <span class="math inline">\(\mathcal{E}\)</span>. Then by <a href="#lem-sigma-algebra-intersection">Lemma 13.1.7</a>, <span class="math inline">\(\mathcal{M}_1\cap\mathcal{M}_2\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra containing <span class="math inline">\(\mathcal{E}\)</span>. But <span class="math inline">\(\mathcal{M}_1\cap\mathcal{M}_2\subset\mathcal{M}_1\)</span>
+and <span class="math inline">\(\mathcal{M}_1\cap\mathcal{M}_2\subset\mathcal{M}_2\)</span>.
+Since <span class="math inline">\(\mathcal{M}_1\)</span> and <span class="math inline">\(\mathcal{M}_2\)</span> are both smallest <span class="math inline">\(\sigma\)</span>-algebras containing <span class="math inline">\(\mathcal{E}\)</span>, <span class="math inline">\(\mathcal{M}_1\cap\mathcal{M}_2=\mathcal{M}_1\)</span>
+and <span class="math inline">\(\mathcal{M}_1\cap\mathcal{M}_2=\mathcal{M}_2\)</span>.
+Thus <span class="math inline">\(\mathcal{M}_1=\mathcal{M}_2\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-generated-subset">
+
+<p><strong>Lemma 13.1.11.</strong> If <span class="math inline">\(\mathcal{E}\subset\sigma(\mathcal{F})\)</span>,
+then <span class="math inline">\(\sigma(\mathcal{E})\subset\sigma(\mathcal{F})\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> <span class="math inline">\(\sigma(\mathcal{F})\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra containing <span class="math inline">\(\mathcal{E}\)</span>. Therefore, it must contain
+the smallest <span class="math inline">\(\sigma\)</span>-algebra
+containing <span class="math inline">\(\mathcal{E}\)</span>, <span class="math inline">\(\sigma(\mathcal{E})\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (The Good Sets Principle).</strong></p>
+<p>How can a statement be proved for every set in <span class="math inline">\(\sigma(\mathcal{E})\)</span>, when nobody can list
+those sets? Let <span class="math inline">\(\mathcal{G}\)</span> be the
+collection of “good” sets, the sets for which the statement is true.
+Show two things. First, <span class="math inline">\(\mathcal{G}\)</span>
+is a <span class="math inline">\(\sigma\)</span>-algebra. Second, <span class="math inline">\(\mathcal{E}\subset\mathcal{G}\)</span>. Then <span class="math inline">\(\sigma(\mathcal{E})\subset\mathcal{G}\)</span>,
+because <span class="math inline">\(\sigma(\mathcal{E})\)</span> is the
+smallest <span class="math inline">\(\sigma\)</span>-algebra containing
+<span class="math inline">\(\mathcal{E}\)</span>. So every set in <span class="math inline">\(\sigma(\mathcal{E})\)</span> is good. <a href="#lem-generated-subset">Lemma 13.1.11</a> is the special case where
+the good sets are the sets in <span class="math inline">\(\sigma(\mathcal{F})\)</span>. This argument
+appears again and again in Part III. For example, it shows that every
+Borel set is Lebesgue measurable.</p>
+</div>
+<div class="definitionbox" id="def-ring">
+
+<p><strong>Definition 13.1.12.</strong> A family of sets <span class="math inline">\(\mathcal{R}\subset\mathcal{P}(X)\)</span> is
+called a <em>ring</em> if <span class="math inline">\(E_1,\dots,E_n\in\mathcal{R}\)</span> implies <span class="math inline">\(\bigcup^{n}_{i=1}E_i\in\mathcal{R}\)</span>, and
+if <span class="math inline">\(E,F\in\mathcal{R}\)</span>, then <span class="math inline">\(E\setminus F\in\mathcal{R}\)</span>. A ring that
+is closed under countable unions is called a <em><span class="math inline">\(\sigma\)</span>-ring</em>.</p>
+</div>
+<div class="propositionbox" id="prop-rings">
+
+<p><strong>Proposition 13.1.13.</strong> Let <span class="math inline">\(\mathcal{R}\)</span> be a ring on a set <span class="math inline">\(X\)</span>.</p>
+<ol>
+<li><p><span class="math inline">\(\mathcal{R}\)</span> is closed under
+finite intersections. Similarly, if <span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-ring, <span class="math inline">\(\mathcal{R}\)</span> is closed under countable
+intersections.</p></li>
+<li><p>If <span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-ring, then <span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra if and only if <span class="math inline">\(X\in\mathcal{R}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-ring, then <span class="math inline">\(\{E\subset X:E\cap F\in\mathcal{R}\text{ for all
+}F\in\mathcal{R}\}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-rings">Exercise 13.1.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-43">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-sigma-algebra-intersection">
+
+<p><strong>Exercise 13.1.1.</strong> Prove that the intersection of a
+family of <span class="math inline">\(\sigma\)</span>-algebras on a set
+<span class="math inline">\(X\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra. <a aria-label="Solution for Exercise 13.1.1" href="solutions-ch13.html#sol-exer-sigma-algebra-intersection">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-rings">
+
+<p><strong>Exercise 13.1.2.</strong> Prove <a href="#prop-rings">Proposition 13.1.13</a>.</p>
+<ol type="a">
+<li><p>Prove that a ring <span class="math inline">\(\mathcal{R}\)</span> is closed under finite
+intersections.</p></li>
+<li><p>Prove that if <span class="math inline">\(\mathcal{R}\)</span> is
+a <span class="math inline">\(\sigma\)</span>-ring, then <span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra if and only if <span class="math inline">\(X\in\mathcal{R}\)</span>.</p></li>
+<li><p>Prove that if <span class="math inline">\(\mathcal{R}\)</span> is
+a <span class="math inline">\(\sigma\)</span>-ring, then <span class="math inline">\(\{E\subset X:E\cap F\in\mathcal{R}\text{ for all
+}F\in\mathcal{R}\}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p></li>
+</ol>
+<p><a aria-label="Solution for Exercise 13.1.2" href="solutions-ch13.html#sol-exer-rings">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-increasing-unions">
+
+<p><strong>Exercise 13.1.3.</strong> Prove that an algebra <span class="math inline">\(\mathcal{A}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra if and only if it is
+closed under countable increasing unions; i.e. if <span class="math inline">\(\{E_i\}_{i=1}^\infty\subset\mathcal{A}\)</span>
+and <span class="math inline">\(E_1\subset E_2 \subset \cdots\)</span>,
+then <span class="math inline">\(\bigcup_{i=1}^\infty E_i \in
+\mathcal{A}\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-finite-sigma-algebra">
+
+<p><strong>Exercise 13.1.4.</strong> Let <span class="math inline">\(X\)</span> be a finite set. Prove that every
+algebra on <span class="math inline">\(X\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra. Find <span class="math inline">\(\sigma(\mathcal{E})\)</span> when <span class="math inline">\(X=\{1,2,3,4\}\)</span> and <span class="math inline">\(\mathcal{E}=\{\{1,2\},\{2,3\}\}\)</span>. <a aria-label="Hint for Exercise 13.1.4" href="solutions-ch13.html#sol-exer-finite-sigma-algebra">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-singletons-generate">
+
+<p><strong>Exercise 13.1.5.</strong> Let <span class="math inline">\(X\)</span> be uncountable, and let <span class="math inline">\(\mathcal{E}\)</span> be the collection of
+one-point subsets of <span class="math inline">\(X\)</span>. Prove that
+<span class="math inline">\(\sigma(\mathcal{E})\)</span> is the <span class="math inline">\(\sigma\)</span>-algebra of countable or
+co-countable sets. <a aria-label="Hint for Exercise 13.1.5" href="solutions-ch13.html#sol-exer-singletons-generate">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-union-not-sigma">
+
+<p><strong>Exercise 13.1.6.</strong> Give an example of two <span class="math inline">\(\sigma\)</span>-algebras on <span class="math inline">\(X=\{1,2,3\}\)</span> whose union is not a <span class="math inline">\(\sigma\)</span>-algebra. <a aria-label="Hint for Exercise 13.1.6" href="solutions-ch13.html#sol-exer-union-not-sigma">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-borel">
+<h2>13.2 Borel Sets</h2>
+<p>On <span class="math inline">\(\mathbb{R}\)</span> the most important
+<span class="math inline">\(\sigma\)</span>-algebra is the one generated
+by the open sets. Every set that can be built from open sets by
+countably many unions, intersections and complements is in it. <a href="ch-lebesgue-measure.html">Chapter 14</a> shows that Lebesgue measure
+assigns a length to every such set.</p>
+<div class="definitionbox" id="def-borel">
+
+<p><strong>Definition 13.2.1.</strong> If <span class="math inline">\(X=\mathbb{R}\)</span>, the <span class="math inline">\(\sigma\)</span>-algebra generated by the family of
+open sets in <span class="math inline">\(\mathbb{R}\)</span> is called
+the <em>Borel <span class="math inline">\(\sigma\)</span>-algebra</em>
+and is denoted <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span>. The members of
+<span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span> are called
+<em>Borel sets</em>. <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span> thus contains open
+sets, closed sets, countable intersections of open sets, countable
+unions of closed sets, and so forth.</p>
+</div>
+<div class="definitionbox" id="def-g-delta">
+
+<p><strong>Definition 13.2.2.</strong> A countable intersection of open
+sets is called a <em><span class="math inline">\(G_\delta\)</span>
+set</em>, a countable union of closed sets is called an <em><span class="math inline">\(F_\sigma\)</span> set</em>, a countable union of
+<span class="math inline">\(G_\delta\)</span> sets is called a <span class="math inline">\(G_{\delta\sigma}\)</span> set, a countable
+intersection of <span class="math inline">\(F_\sigma\)</span> sets is
+called an <span class="math inline">\(F_{\sigma\delta}\)</span> set, and
+so forth.</p>
+</div>
+<div class="examplebox" id="ex-borel-examples">
+
+<p><strong>Example 13.2.3.</strong> Every countable subset of <span class="math inline">\(\mathbb{R}\)</span> is an <span class="math inline">\(F_\sigma\)</span> set, since it is a countable
+union of one-point sets, which are closed. In particular, <span class="math inline">\(\mathbb{Q}\)</span> is an <span class="math inline">\(F_\sigma\)</span> set. Its complement, the set of
+irrational numbers, is a <span class="math inline">\(G_\delta\)</span>
+set, by De Morgan’s Laws. A half-open interval <span class="math inline">\((a,b]\)</span> is both, since <span class="math inline">\((a,b]=\bigcap_{n\in\mathbb{N}}\left(a,b+\frac1n\right)\)</span>
+and <span class="math inline">\((a,b]=\bigcup_{n\in\mathbb{N}}\left[a+\frac1n,b\right]\)</span>.
+All of these sets are Borel sets.</p>
+</div>
+<div class="examplebox" id="ex-continuity-points-g-delta">
+
+<p><strong>Example 13.2.4.</strong> If <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span>, the set of
+points at which <span class="math inline">\(f\)</span> is continuous is
+a <span class="math inline">\(G_\delta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-continuity-points">Exercise
+13.2.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-borel-generators">
+
+<p><strong>Theorem 13.2.5.</strong> <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span> is generated by
+each of the following:</p>
+<ol>
+<li><p>the open intervals <span class="math inline">\(\mathcal{E}_1=\{(a,b):a&lt;b\}\)</span>;</p></li>
+<li><p>the closed intervals <span class="math inline">\(\mathcal{E}_2=\{[a,b]:a&lt;b\}\)</span>;</p></li>
+<li><p>the half open intervals <span class="math inline">\(\mathcal{E}_3=\{(a,b]:a&lt;b\}\)</span> or <span class="math inline">\(\mathcal{E}_4=\{[a,b):a&lt;b\}\)</span>;</p></li>
+<li><p>the open rays <span class="math inline">\(\mathcal{E}_5=\{(a,\infty):a\in\mathbb{R}\}\)</span>
+or <span class="math inline">\(\mathcal{E}_6=\{(-\infty,a):a\in\mathbb{R}\}\)</span>;
+and</p></li>
+<li><p>the closed rays <span class="math inline">\(\mathcal{E}_7=\{[a,\infty):a\in\mathbb{R}\}\)</span>
+or <span class="math inline">\(\mathcal{E}_8=\{(-\infty,a]:a\in\mathbb{R}\}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> We will show <span class="math inline">\(\mathcal{B}_\mathbb{R}=\sigma(\mathcal{E}_i)\)</span>,
+<span class="math inline">\(i=1,\dots,8\)</span>. First, note that the
+elements of <span class="math inline">\(\mathcal{E}_1\)</span>, <span class="math inline">\(\mathcal{E}_2\)</span>, <span class="math inline">\(\mathcal{E}_5\)</span>, <span class="math inline">\(\mathcal{E}_6\)</span>, <span class="math inline">\(\mathcal{E}_7\)</span>, and <span class="math inline">\(\mathcal{E}_8\)</span> are open or closed, so they
+are Borel sets. Since <span class="math inline">\((a,b]=\bigcap_{n\in\mathbb{N}}\left(a,b+\frac{1}{n}\right)\)</span>
+and <span class="math inline">\([a,b)=\bigcap_{n\in\mathbb{N}}\left(a-\frac{1}{n},b\right)\)</span>,
+all elements of <span class="math inline">\(\mathcal{E}_3\)</span> and
+<span class="math inline">\(\mathcal{E}_4\)</span> are <span class="math inline">\(G_\delta\)</span> sets. So <span class="math inline">\(\mathcal{E}_i\subset\mathcal{B}_\mathbb{R}\)</span>
+for <span class="math inline">\(i=1,\dots,8\)</span>, and so by <a href="#lem-generated-subset">Lemma 13.1.11</a>, <span class="math inline">\(\sigma(\mathcal{E}_i)\subset
+\mathcal{B}_\mathbb{R}\)</span> for <span class="math inline">\(i=1,\dots,8\)</span>.</p>
+<p>Now by <a href="ch-topology.html#thm-open-set-structure">Theorem 4.1.12</a>, every
+open set is a countable union of open intervals, so by <a href="#lem-generated-subset">Lemma 13.1.11</a>, <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_1)\)</span>.
+Some of these intervals may be unbounded. But <span class="math inline">\((a,\infty)=\bigcup_{n\in\mathbb{N}}(a,a+n)\)</span>,
+<span class="math inline">\((-\infty,b)=\bigcup_{n\in\mathbb{N}}(b-n,b)\)</span>
+and <span class="math inline">\(\mathbb{R}=\bigcup_{n\in\mathbb{N}}(-n,n)\)</span>,
+so every open interval is in <span class="math inline">\(\sigma(\mathcal{E}_1)\)</span>.</p>
+<p>Since <span class="math inline">\((a,b)=\bigcup_{n\in\mathbb{N}}\left[a+\frac{1}{n},b-\frac{1}{n}\right]\)</span>,
+<span class="math inline">\(\mathcal{E}_1\subset\sigma(\mathcal{E}_2)\)</span>.
+So <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_2)\)</span>.
+(Here only the <span class="math inline">\(n\)</span> with <span class="math inline">\(a+\frac1n&lt;b-\frac1n\)</span> are used.)</p>
+<p>Since <span class="math inline">\((a,b)=\bigcup_{n\in\mathbb{N}}\left(a,b-\frac{1}{n}\right]\)</span>
+and <span class="math inline">\((a,b)=\bigcup_{n\in\mathbb{N}}\left[a+\frac{1}{n},b\right)\)</span>,
+<span class="math inline">\(\mathcal{E}_1\subset\sigma(\mathcal{E}_3)\)</span>
+and <span class="math inline">\(\mathcal{E}_1\subset\sigma(\mathcal{E}_4)\)</span>.
+So <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_3)\)</span>
+and <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_4)\)</span>.</p>
+<p>Now <span class="math inline">\((a,b]=(a,\infty)\cap(b,\infty)^c\)</span> and
+<span class="math inline">\([a,b)=(-\infty,a)^c\cap(-\infty,b)\)</span>,
+and so <span class="math inline">\(\mathcal{E}_3\subset\sigma(\mathcal{E}_5)\)</span>
+and <span class="math inline">\(\mathcal{E}_4\subset\sigma(\mathcal{E}_6)\)</span>.
+So <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_5)\)</span>
+and <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_6)\)</span>.</p>
+<p>Lastly, <span class="math inline">\([a,b)=[a,\infty)\cap[b,\infty)^c\)</span> and
+<span class="math inline">\((a,b]=(-\infty,a]^c\cap(-\infty,b]\)</span>,
+and so <span class="math inline">\(\mathcal{E}_4\subset\sigma(\mathcal{E}_7)\)</span>
+and <span class="math inline">\(\mathcal{E}_3\subset\sigma(\mathcal{E}_8)\)</span>.
+So <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_7)\)</span>
+and <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\sigma(\mathcal{E}_8)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-44">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-continuity-points">
+
+<p><strong>Exercise 13.2.1.</strong> Let <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span>. Prove that the
+set of points at which <span class="math inline">\(f\)</span> is
+continuous is a <span class="math inline">\(G_\delta\)</span>. <a aria-label="Hint for Exercise 13.2.1" href="solutions-ch13.html#sol-exer-continuity-points">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-closed-g-delta">
+
+<p><strong>Exercise 13.2.2.</strong> Let <span class="math inline">\(F\subset\mathbb{R}\)</span> be closed. For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(U_n=\bigcup_{y\in
+F}\left(y-\frac1n,y+\frac1n\right)\)</span>. Prove that <span class="math inline">\(F=\bigcap_{n\in\mathbb{N}}U_n\)</span>. Conclude
+that every closed set is a <span class="math inline">\(G_\delta\)</span>
+set and every open set is an <span class="math inline">\(F_\sigma\)</span> set. <a aria-label="Hint for Exercise 13.2.2" href="solutions-ch13.html#sol-exer-closed-g-delta">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cantor-borel">
+
+<p><strong>Exercise 13.2.3.</strong> Prove that the Cantor set of <a href="ch-cantor.html">Chapter 5</a> is a Borel set. <a aria-label="Hint for Exercise 13.2.3" href="solutions-ch13.html#sol-exer-cantor-borel">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-borel-compact">
+
+<p><strong>Exercise 13.2.4.</strong> Prove that <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span> is generated by
+the compact subsets of <span class="math inline">\(\mathbb{R}\)</span>.
+<a aria-label="Hint for Exercise 13.2.4" href="solutions-ch13.html#sol-exer-borel-compact">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-measures">
+<h2>13.3 Measures</h2>
+<p>A measure assigns a size to each set in a <span class="math inline">\(\sigma\)</span>-algebra. It must give the empty
+set size <span class="math inline">\(0\)</span>, and it must add up over
+countably many disjoint sets. Sizes may be infinite. So a measure takes
+values in <span class="math inline">\([0,\infty]\)</span>, with the
+usual conventions. For <span class="math inline">\(a\in[0,\infty]\)</span>, <span class="math inline">\(a+\infty=\infty+a=\infty\)</span>, and <span class="math inline">\(a\le\infty\)</span>. A series <span class="math inline">\(\sum a_n\)</span> of terms in <span class="math inline">\([0,\infty]\)</span> always has a sum in <span class="math inline">\([0,\infty]\)</span>. It is <span class="math inline">\(\infty\)</span> if some <span class="math inline">\(a_n=\infty\)</span> or if the partial sums are not
+bounded (<a href="ch-series.html#thm-nonnegative-series">Theorem 10.2.6</a>), and
+otherwise it is the usual sum.</p>
+<div class="definitionbox" id="def-measure">
+
+<p><strong>Definition 13.3.1.</strong> Let <span class="math inline">\(X\)</span> be a set with <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{M}\)</span>. A <em>measure</em> on <span class="math inline">\(\mathcal{M}\)</span> (or on <span class="math inline">\((X,\mathcal{M})\)</span> or on <span class="math inline">\(X\)</span> if <span class="math inline">\(\mathcal{M}\)</span> is understood) is a function
+<span class="math inline">\(\mu:\mathcal{M}\to[0,\infty]\)</span> such
+that</p>
+<ol>
+<li><p><span class="math inline">\(\mu(\emptyset)=0\)</span>;
+and</p></li>
+<li><p>if <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\)</span>
+is a sequence of pairwise disjoint sets in <span class="math inline">\(\mathcal{M}\)</span>, then <span class="math inline">\(\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)=\sum_{n\in\mathbb{N}}\mu(E_n)\)</span>.</p></li>
+</ol>
+<p>Property (2) is called <em>countable additivity</em>.</p>
+</div>
+<div class="definitionbox" id="def-measure-space">
+
+<p><strong>Definition 13.3.2.</strong> If <span class="math inline">\(\mu\)</span> is a measure on <span class="math inline">\((X,\mathcal{M})\)</span>, <span class="math inline">\((X,\mathcal{M},\mu)\)</span> is called a
+<em>measure space</em> and the sets in <span class="math inline">\(\mathcal{M}\)</span> are called <em>measurable
+sets</em>. If <span class="math inline">\(\mu(X)=1\)</span>, then <span class="math inline">\(\mu\)</span> is a <em>probability measure</em> and
+<span class="math inline">\((X,\mathcal{M},\mu)\)</span> is a
+<em>probability space</em>.</p>
+</div>
+<div class="remarkbox" id="rem-finite-additivity">
+
+<p><strong>Remark 13.3.3.</strong> A measure is also <em>finitely
+additive</em>. If <span class="math inline">\(E_1,\dots,E_n\in\mathcal{M}\)</span> are disjoint,
+set <span class="math inline">\(E_k=\emptyset\)</span> for <span class="math inline">\(k&gt;n\)</span>. Then countable additivity and
+<span class="math inline">\(\mu(\emptyset)=0\)</span> give <span class="math inline">\(\mu\left(\bigcup_{k=1}^nE_k\right)=\sum_{k=1}^n\mu(E_k)\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-sigma-finite">
+
+<p><strong>Definition 13.3.4.</strong> Let <span class="math inline">\((X,\mathcal{M},\mu)\)</span> be a measure space.
+If <span class="math inline">\(\mu(X)&lt;\infty\)</span>, <span class="math inline">\(\mu\)</span> is called <em>finite</em>. If <span class="math inline">\(X=\bigcup_{n\in\mathbb{N}}E_n\)</span>, where
+<span class="math inline">\(E_n\in\mathcal{M}\)</span> and <span class="math inline">\(\mu(E_n)&lt;\infty\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(\mu\)</span> is called <em><span class="math inline">\(\sigma\)</span>-finite</em>. If <span class="math inline">\(E\in\mathcal{M}\)</span> with <span class="math inline">\(E=\bigcup_{n\in\mathbb{N}}E_n\)</span>, where
+<span class="math inline">\(E_n\in\mathcal{M}\)</span> and <span class="math inline">\(\mu(E_n)&lt;\infty\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(E\)</span> is called <span class="math inline">\(\sigma\)</span>-finite for <span class="math inline">\(\mu\)</span>. If for each <span class="math inline">\(E\in\mathcal{M}\)</span> with <span class="math inline">\(\mu(E)=\infty\)</span>, there exists an <span class="math inline">\(F\in\mathcal{M}\)</span> with <span class="math inline">\(F\subset E\)</span> and <span class="math inline">\(0&lt;\mu(F)&lt;\infty\)</span>, <span class="math inline">\(\mu\)</span> is called <em>semifinite</em>.</p>
+</div>
+<div class="examplebox" id="ex-weighted-counting">
+
+<p><strong>Example 13.3.5.</strong> Let <span class="math inline">\(X\ne\emptyset\)</span>, <span class="math inline">\(\mathcal{M}=\mathcal{P}(X)\)</span>, and <span class="math inline">\(f:X\to[0,\infty]\)</span> be a function. Then for
+<span class="math inline">\(E\in\mathcal{M}\)</span>, define <span class="math inline">\(\mu(E)=\sum_{x\in E} f(x)\)</span>. (Note: <span class="math inline">\(\sum_{x\in E} f(x)=\sup\{\sum_{x\in F}
+f(x):F\subset E\text{ is finite}\}\)</span>.) Then <span class="math inline">\(\mu\)</span> is a measure. <span class="math inline">\(\mu\)</span> is semifinite if and only if <span class="math inline">\(f(x)&lt;\infty\)</span> for all <span class="math inline">\(x\in X\)</span>. <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-finite if and only if <span class="math inline">\(\mu\)</span> is semifinite and <span class="math inline">\(\{x:f(x)&gt;0\}\)</span> is countable. See <a href="#exer-weighted-counting">Exercise 13.3.1</a>.</p>
+</div>
+<div class="examplebox" id="ex-counting-dirac">
+
+<p><strong>Example 13.3.6.</strong> In <a href="#ex-weighted-counting">Example 13.3.5</a>, if <span class="math inline">\(f(x)=1\)</span> for all <span class="math inline">\(x\in X\)</span>, <span class="math inline">\(\mu\)</span> is called <em>counting measure</em>.
+Then <span class="math inline">\(\mu(E)\)</span> is the number of
+elements of <span class="math inline">\(E\)</span> if <span class="math inline">\(E\)</span> is finite, and <span class="math inline">\(\mu(E)=\infty\)</span> if <span class="math inline">\(E\)</span> is infinite. If, for some <span class="math inline">\(x_0\in X\)</span>, <span class="math inline">\(f(x_0)=1\)</span> and <span class="math inline">\(f(x)=0\)</span> for all <span class="math inline">\(x\ne x_0\)</span>, <span class="math inline">\(\mu\)</span> is called the <em>Dirac measure</em>
+at <span class="math inline">\(x_0\)</span>. Then <span class="math inline">\(\mu(E)=1\)</span> if <span class="math inline">\(x_0\in E\)</span> and <span class="math inline">\(\mu(E)=0\)</span> if <span class="math inline">\(x_0\notin E\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-coin-flips">
+
+<p><strong>Example 13.3.7.</strong> Flip a fair coin twice. The set of
+possible outcomes is <span class="math display">\[X=\{HH,HT,TH,TT\}.\]</span> Let <span class="math inline">\(\mathcal{M}=\mathcal{P}(X)\)</span> and let <span class="math inline">\(P(E)\)</span> be the number of elements of <span class="math inline">\(E\)</span> divided by <span class="math inline">\(4\)</span>. This is <a href="#ex-weighted-counting">Example 13.3.5</a> with <span class="math inline">\(f(x)=\frac14\)</span> for every <span class="math inline">\(x\)</span>. So <span class="math inline">\((X,\mathcal{M},P)\)</span> is a probability space.
+The event “at least one head” is the set <span class="math inline">\(E=\{HH,HT,TH\}\)</span>, and <span class="math inline">\(P(E)=\frac34\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-cocountable-measure">
+
+<p><strong>Example 13.3.8.</strong> Let <span class="math inline">\(X\)</span> be an uncountable set and let <span class="math inline">\(\mathcal{M}\)</span> be the <span class="math inline">\(\sigma\)</span>-algebra of countable or
+co-countable sets. Then the function <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal{M}\)</span> defined by <span class="math inline">\(\mu(E)=0\)</span> if <span class="math inline">\(E\)</span> is countable and <span class="math inline">\(\mu(E)=1\)</span> if <span class="math inline">\(E\)</span> is co-countable is a measure.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(\emptyset\)</span>
+is countable, <span class="math inline">\(\mu(\emptyset)=0\)</span>. No
+set is both countable and co-countable, since then <span class="math inline">\(X=E\cup E^c\)</span> would be countable. So <span class="math inline">\(\mu\)</span> is well defined.</p>
+<p>Next, suppose <span class="math inline">\(E,F\in\mathcal{M}\)</span>
+where <span class="math inline">\(E\)</span> and <span class="math inline">\(F\)</span> are both co-countable. Then <span class="math inline">\((E\cap F)^c=E^c\cup F^c\)</span> is countable, and
+so <span class="math inline">\((E\cap F)^c\ne X\)</span>. Thus <span class="math inline">\(E\cap F\ne\emptyset\)</span>.</p>
+<p>Now, let <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\)</span> be a sequence of
+disjoint sets in <span class="math inline">\(\mathcal{M}\)</span>. By
+the previous argument, at most one element of <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\)</span> can be
+co-countable. If this is the case, call that element <span class="math inline">\(E_{n_0}\)</span>. Then <span class="math inline">\(\mu(E_{n_0})=1\)</span> and <span class="math inline">\(\mu(E_n)=0\)</span> for all <span class="math inline">\(n\ne n_0\)</span>. By the proof of <a href="#ex-countable-cocountable">Example 13.1.6</a>, <span class="math inline">\(\bigcup_{n\in\mathbb{N}}E_n\)</span> is
+co-countable and so <span class="math inline">\(\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)=1\)</span>.
+Thus <span class="math inline">\(\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)=1=\sum_{n\in\mathbb{N}}\mu(E_n)\)</span>.</p>
+<p>If <span class="math inline">\(E_n\)</span> is countable for all
+<span class="math inline">\(n\in\mathbb{N}\)</span>, then <span class="math inline">\(\bigcup_{n\in\mathbb{N}}E_n\)</span> is countable,
+and <span class="math inline">\(\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)=0=\sum_{n\in\mathbb{N}}\mu(E_n)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-measure-properties">
+
+<p><strong>Theorem 13.3.9.</strong> Let <span class="math inline">\((X,\mathcal{M},\mu)\)</span> be a measure
+space.</p>
+<ol>
+<li><p><em>(Monotonicity)</em> If <span class="math inline">\(E,F\in\mathcal{M}\)</span> with <span class="math inline">\(E\subset F\)</span>, then <span class="math inline">\(\mu(E)\le\mu(F)\)</span>.</p></li>
+<li><p><em>(Subadditivity)</em> If <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset\mathcal{M}\)</span>,
+then <span class="math inline">\(\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)\le\sum_{n\in\mathbb{N}}\mu(E_n)\)</span>.</p></li>
+<li><p><em>(Continuity from below)</em> If <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset\mathcal{M}\)</span>
+and <span class="math inline">\(E_1\subset E_2\subset\cdots\)</span>,
+then <span class="math inline">\(\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)=\lim_{n\to\infty}\mu(E_n)\)</span>.</p></li>
+<li><p><em>(Continuity from above)</em> If <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset\mathcal{M}\)</span>,
+<span class="math inline">\(E_1\supset E_2\supset\cdots\)</span>, and
+<span class="math inline">\(\mu(E_1)&lt;\infty\)</span>, then <span class="math inline">\(\mu\left(\bigcap_{n\in\mathbb{N}}E_n\right)=\lim_{n\to\infty}\mu(E_n)\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Write <span class="math inline">\(F=E\cup(F\setminus E)\)</span>,
+a disjoint union of sets in <span class="math inline">\(\mathcal{M}\)</span>. By finite additivity, <span class="math inline">\(\mu(F)=\mu(E)+\mu(F\setminus
+E)\ge\mu(E)\)</span>.</p></li>
+<li><p>Make the sets disjoint. Let <span class="math inline">\(F_1=E_1\)</span> and <span class="math inline">\(F_k=E_k\setminus\bigcup_{i=1}^{k-1}E_i\)</span>
+for <span class="math inline">\(k\ge2\)</span>. As in the proof of <a href="#thm-sigma-algebra-disjoint">Theorem 13.1.4</a>, the sets <span class="math inline">\(F_k\)</span> are in <span class="math inline">\(\mathcal{M}\)</span>, they are disjoint, <span class="math inline">\(F_k\subset E_k\)</span>, and <span class="math inline">\(\bigcup F_k=\bigcup E_k\)</span>. By countable
+additivity and (1), <span class="math display">\[\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)=\sum_{k\in\mathbb{N}}\mu(F_k)\le\sum_{k\in\mathbb{N}}\mu(E_k).\]</span></p></li>
+<li><p>Let <span class="math inline">\(E_0=\emptyset\)</span> and <span class="math inline">\(F_k=E_k\setminus E_{k-1}\)</span> for <span class="math inline">\(k\in\mathbb{N}\)</span>. These sets are disjoint,
+<span class="math inline">\(\bigcup_{k=1}^nF_k=E_n\)</span> for each
+<span class="math inline">\(n\)</span>, and <span class="math inline">\(\bigcup_{k\in\mathbb{N}}F_k=\bigcup_{n\in\mathbb{N}}E_n\)</span>.
+So <span class="math display">\[\mu\left(\bigcup_{n\in\mathbb{N}}E_n\right)=\sum_{k=1}^\infty\mu(F_k)=\lim_{n\to\infty}\sum_{k=1}^n\mu(F_k)=\lim_{n\to\infty}\mu(E_n),\]</span>
+using finite additivity in the last step.</p></li>
+<li><p>Let <span class="math inline">\(F_n=E_1\setminus E_n\)</span>.
+Then <span class="math inline">\(F_1\subset F_2\subset\cdots\)</span>
+and <span class="math inline">\(\bigcup_{n\in\mathbb{N}}F_n=E_1\setminus\bigcap_{n\in\mathbb{N}}E_n\)</span>.
+By (3), <span class="math display">\[\mu\left(E_1\setminus\bigcap_{n\in\mathbb{N}}E_n\right)=\lim_{n\to\infty}\mu(E_1\setminus
+E_n).\]</span> If <span class="math inline">\(A\subset E_1\)</span> and
+<span class="math inline">\(A\in\mathcal{M}\)</span>, then <span class="math inline">\(\mu(E_1)=\mu(A)+\mu(E_1\setminus A)\)</span>, and
+all three numbers are finite, since <span class="math inline">\(\mu(E_1)&lt;\infty\)</span>. So <span class="math inline">\(\mu(E_1\setminus A)=\mu(E_1)-\mu(A)\)</span>.
+Using this with <span class="math inline">\(A=\bigcap E_n\)</span> and
+with <span class="math inline">\(A=E_n\)</span>, <span class="math display">\[\mu(E_1)-\mu\left(\bigcap_{n\in\mathbb{N}}E_n\right)=\mu(E_1)-\lim_{n\to\infty}\mu(E_n).\]</span>
+Subtracting <span class="math inline">\(\mu(E_1)\)</span> from both
+sides gives the result.</p></li>
+</ol>
+<p>In (3) and (4), the limits exist in <span class="math inline">\([0,\infty]\)</span>, since <span class="math inline">\(\{\mu(E_n)\}\)</span> is monotone by (1).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The hypothesis <span class="math inline">\(\mu(E_1)&lt;\infty\)</span> in (4) cannot be
+dropped. Let <span class="math inline">\(\mu\)</span> be counting
+measure on <span class="math inline">\(\mathbb{N}\)</span>, and let
+<span class="math inline">\(E_n=\{n,n+1,n+2,\dots\}\)</span>. Then <span class="math inline">\(\mu(E_n)=\infty\)</span> for every <span class="math inline">\(n\)</span>, but <span class="math inline">\(\bigcap_{n\in\mathbb{N}}E_n=\emptyset\)</span>. It
+is enough that <span class="math inline">\(\mu(E_n)&lt;\infty\)</span>
+for some <span class="math inline">\(n\)</span>. Start the sequence
+there.</p>
+<p><a href="ch-lebesgue-measure.html">Chapter 14</a> asks whether there is a
+measure <span class="math inline">\(m\)</span> on a <span class="math inline">\(\sigma\)</span>-algebra containing every interval,
+with <span class="math inline">\(m(I)\)</span> equal to the length of
+<span class="math inline">\(I\)</span> for every interval <span class="math inline">\(I\)</span>. The answer is yes. But <a href="ch-lebesgue-measure.html#sec-nonmeasurable">Section 14.4</a> shows that such a measure
+cannot be defined on every subset of <span class="math inline">\(\mathbb{R}\)</span>, if it is also unchanged by
+translation. That is why measures are defined on <span class="math inline">\(\sigma\)</span>-algebras and not on all of <span class="math inline">\(\mathcal{P}(X)\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-45">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-weighted-counting">
+
+<p><strong>Exercise 13.3.1.</strong> Let <span class="math inline">\(X\ne \emptyset\)</span>, <span class="math inline">\(\mathcal{M}=\mathcal{P}(X)\)</span>, and <span class="math inline">\(f:X\to[0,\infty]\)</span>. For <span class="math inline">\(E\in\mathcal{M}\)</span>, define <span class="math inline">\(\mu(E)=\sum_{x\in E}f(x)\)</span>, as in <a href="#ex-weighted-counting">Example 13.3.5</a>.</p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\((X,\mathcal{M},
+\mu)\)</span> is a measure space.</p></li>
+<li><p>Prove that <span class="math inline">\(\mu\)</span> is semifinite
+if and only if <span class="math inline">\(f(x)&lt;\infty\)</span> for
+all <span class="math inline">\(x\in X\)</span>.</p></li>
+<li><p>Prove that <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-finite if and only if <span class="math inline">\(\mu\)</span> is semifinite and <span class="math inline">\(\{x:f(x)&gt;0\}\)</span> is countable.</p></li>
+</ol>
+<p><a aria-label="Solution for Exercise 13.3.1" href="solutions-ch13.html#sol-exer-weighted-counting">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-finitely-additive-measure">
+
+<p><strong>Exercise 13.3.2.</strong> Let <span class="math inline">\(\mathcal{M}\)</span> be a <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\mathbb{R}\)</span> and assume that the function
+<span class="math inline">\(\mu:\mathcal{M}\to[0,\infty]\)</span> has
+the following properties.</p>
+<ol type="a">
+<li><p>If <span class="math inline">\(E_1,E_2\in\mathcal{M}\)</span>
+with <span class="math inline">\(E_1\cap E_2=\emptyset\)</span>, then
+<span class="math inline">\(\mu(E_1\cup
+E_2)=\mu(E_1)+\mu(E_2)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\{E_n\}_{n=1}^{\infty}\)</span> is
+a sequence in <span class="math inline">\(\mathcal{M}\)</span> such that
+<span class="math inline">\(E_{n+1}\subset E_n\)</span> for all <span class="math inline">\(n\)</span> and <span class="math inline">\(\bigcap^\infty_{n=1} E_n=\emptyset\)</span>, then
+<span class="math inline">\(\lim_{n\to\infty}\mu(E_n)=0\)</span>.</p></li>
+</ol>
+<p>Prove that <span class="math inline">\((\mathbb{R},\mathcal{M},\mu)\)</span> is a measure
+space. <a aria-label="Solution for Exercise 13.3.2" href="solutions-ch13.html#sol-exer-finitely-additive-measure">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-inclusion-exclusion">
+
+<p><strong>Exercise 13.3.3.</strong> Let <span class="math inline">\((X,\mathcal{M},\mu)\)</span> be a measure space.
+Prove that if <span class="math inline">\(E_1,E_2\in\mathcal{M}\)</span>, then <span class="math inline">\(\mu(E_1\cup E_2)+\mu(E_1\cap
+E_2)=\mu(E_1)+\mu(E_2)\)</span>. <a aria-label="Hint for Exercise 13.3.3" href="solutions-ch13.html#sol-exer-inclusion-exclusion">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-restricted-measure">
+
+<p><strong>Exercise 13.3.4.</strong> Let <span class="math inline">\((X,\mathcal{M},\mu)\)</span> be a measure space
+and let <span class="math inline">\(A\in\mathcal{M}\)</span>. Prove that
+<span class="math inline">\(\mu_A(E)=\mu(E\cap A)\)</span> defines a
+measure on <span class="math inline">\(\mathcal{M}\)</span>. <a aria-label="Hint for Exercise 13.3.4" href="solutions-ch13.html#sol-exer-restricted-measure">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sum-of-measures">
+
+<p><strong>Exercise 13.3.5.</strong> Let <span class="math inline">\(\mu_1,\mu_2,\dots\)</span> be measures on <span class="math inline">\((X,\mathcal{M})\)</span> and let <span class="math inline">\(c_n\ge0\)</span>. Prove that <span class="math inline">\(\mu=\sum_{n=1}^\infty c_n\mu_n\)</span> is a
+measure on <span class="math inline">\((X,\mathcal{M})\)</span>. <a aria-label="Hint for Exercise 13.3.5" href="solutions-ch13.html#sol-exer-sum-of-measures">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dirac-sum">
+
+<p><strong>Exercise 13.3.6.</strong> Let <span class="math inline">\(\delta_k\)</span> be the Dirac measure at <span class="math inline">\(k\)</span> on <span class="math inline">\((\mathbb{R},\mathcal{P}(\mathbb{R}))\)</span>.
+Find a formula for <span class="math inline">\(\mu(E)\)</span>, where
+<span class="math inline">\(\mu=\sum_{k=1}^\infty2^{-k}\delta_k\)</span>, and
+show <span class="math inline">\(\mu\)</span> is a probability measure.
+<a aria-label="Hint for Exercise 13.3.6" href="solutions-ch13.html#sol-exer-dirac-sum">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-12">
+<h2>Notes</h2>
+<p>Émile Borel’s 1898 book assigned lengths to the sets that can be
+built from intervals by countable unions and complements [<a href="bibliography.html#bib-borel1898">7</a>]. Henri Lebesgue’s 1902 thesis turned this
+into a theory of measure and integration [<a href="bibliography.html#bib-lebesgue1902">41</a>]. The notation <span class="math inline">\(G_\delta\)</span> and <span class="math inline">\(F_\sigma\)</span> is due to Felix Hausdorff [<a href="bibliography.html#bib-hausdorff1914">36</a>]. The <span class="math inline">\(G\)</span> stands for <em>Gebiet</em>, a German
+word for an open set, and the <span class="math inline">\(F\)</span> for
+<em>fermé</em>, French for closed. The <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\sigma\)</span> stand for the German words
+<em>Durchschnitt</em> (intersection) and <em>Summe</em> (union). Maurice
+Fréchet defined measures on abstract sets in 1915 [<a href="bibliography.html#bib-frechet1915">31</a>]. Andrey Kolmogorov based probability
+theory on measure theory in 1933 [<a href="bibliography.html#bib-kolmogorov1933">39</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="part-lebesgue.html"><span class="dir">Previous</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-lebesgue-measure.html"><span class="dir">Next</span> Chapter 14. Lebesgue Measure</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

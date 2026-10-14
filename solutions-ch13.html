@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 13. σ-Algebras and Measures | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch12.html"><span class="dir">Previous</span> Solutions for Chapter 12. Power Series Expansions</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch14.html"><span class="dir">Next</span> Solutions for Chapter 14. Lebesgue Measure</a>
+</nav>
+<main id="main">
+<article id="solutions-ch13">
+<h1>Solutions for Chapter 13. <span class="math inline">\(\sigma\)</span>-Algebras and Measures</h1>
+<div class="solutionbox" id="sol-exer-sigma-algebra-intersection">
+
+<p><strong><a href="ch-measures.html#exer-sigma-algebra-intersection">Exercise
+13.1.1</a>.</strong> Let <span class="math inline">\(\{\mathcal{M}_\alpha\}_{\alpha\in A}\)</span> be a
+family of <span class="math inline">\(\sigma\)</span>-algebras on a set
+<span class="math inline">\(X\)</span>. Let <span class="math inline">\(\mathcal{M}=\bigcap_{\alpha\in
+A}\mathcal{M}_\alpha\)</span>. First, <span class="math inline">\(\mathcal{M}\)</span> is nonempty. Each <span class="math inline">\(\mathcal{M}_\alpha\)</span> contains <span class="math inline">\(X\)</span> by <a href="ch-measures.html#rem-algebra-empty-X">Remark 13.1.3</a>, so <span class="math inline">\(X\in\mathcal{M}\)</span>. Let <span class="math inline">\(\{E_i\}_{i=1}^\infty\subset \mathcal{M}\)</span>.
+So for each <span class="math inline">\(\alpha\in A\)</span>, <span class="math inline">\(\{E_i\}_{i=1}^\infty\subset\mathcal{M}_\alpha\)</span>.
+Since for each <span class="math inline">\(\alpha\in A\)</span>, <span class="math inline">\(\mathcal{M}_\alpha\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, <span class="math inline">\(\bigcup_{i=1}^\infty
+E_i\in\mathcal{M}_\alpha\)</span> for all <span class="math inline">\(\alpha\in A\)</span>. So <span class="math inline">\(\bigcup_{i=1}^\infty
+E_i\in\mathcal{M}\)</span>.</p>
+<p>Next, let <span class="math inline">\(E\in\mathcal{M}\)</span>. So
+for all <span class="math inline">\(\alpha\in A\)</span>, <span class="math inline">\(E\in\mathcal{M}_\alpha\)</span>. Since for each
+<span class="math inline">\(\alpha\in A\)</span>, <span class="math inline">\(\mathcal{M}_\alpha\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, <span class="math inline">\(E^c\in\mathcal{M}_\alpha\)</span> for all <span class="math inline">\(\alpha\in A\)</span>. So <span class="math inline">\(E^c\in\mathcal{M}\)</span>. So <span class="math inline">\(\mathcal{M}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra. Finite unions are covered
+too. Now <span class="math inline">\(\emptyset=X^c\in\mathcal{M}\)</span>, and <span class="math inline">\(E_1\cup\cdots\cup E_n=\bigcup_{i=1}^\infty
+E_i\)</span> with <span class="math inline">\(E_i=\emptyset\)</span> for
+<span class="math inline">\(i&gt;n\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rings">
+
+<p><strong><a href="ch-measures.html#exer-rings">Exercise 13.1.2</a>.</strong> (a) Let
+<span class="math inline">\(E_1,E_2\in\mathcal{R}\)</span>. Then <span class="math inline">\(E_1\cap E_2=(E_1\cup
+E_2)\setminus\big((E_1\setminus E_2)\cup(E_2\setminus
+E_1)\big)\in\mathcal{R}\)</span>. Indeed, a point of <span class="math inline">\(E_1\cup E_2\)</span> lies in neither <span class="math inline">\(E_1\setminus E_2\)</span> nor <span class="math inline">\(E_2\setminus E_1\)</span> exactly when it lies in
+both sets. An inductive argument shows <span class="math inline">\(\mathcal{R}\)</span> is closed under finite
+intersections.</p>
+<p>(b) (<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(E\in\mathcal{R}\)</span>. Such an <span class="math inline">\(E\)</span> exists since a <span class="math inline">\(\sigma\)</span>-algebra is nonempty. Then by the
+properties of a <span class="math inline">\(\sigma\)</span>-ring, <span class="math inline">\(E\setminus E=\emptyset\in\mathcal{R}\)</span>.
+Since <span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, <span class="math inline">\(\emptyset^c=X\in\mathcal{R}\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Since <span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-ring, it is closed under countable
+unions. Let <span class="math inline">\(E\in\mathcal{R}\)</span>. Since
+<span class="math inline">\(X\in\mathcal{R}\)</span>, <span class="math inline">\(X\setminus E=E^c\in\mathcal{R}\)</span>, and so
+<span class="math inline">\(\mathcal{R}\)</span> is closed under
+complements. Also <span class="math inline">\(\mathcal{R}\)</span> is
+nonempty, since <span class="math inline">\(X\in\mathcal{R}\)</span>. So
+<span class="math inline">\(\mathcal{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p>
+<p>(c) Let <span class="math inline">\(\mathcal{S}=\{E\subset X:E\cap
+F\in\mathcal{R}\text{ for all }F\in\mathcal{R}\}\)</span>. First, <span class="math inline">\(X\in\mathcal{S}\)</span>, since <span class="math inline">\(X\cap F=F\in\mathcal{R}\)</span> for every <span class="math inline">\(F\in\mathcal{R}\)</span>. So <span class="math inline">\(\mathcal{S}\)</span> is nonempty. Let <span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset\mathcal{S}\)</span>.
+Let <span class="math inline">\(F\in\mathcal{R}\)</span>. Since <span class="math inline">\(E_n\cap F\in\mathcal{R}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[\left[\bigcup_{n\in\mathbb{N}} E_n\right] \cap
+F=\bigcup_{n\in\mathbb{N}}(E_n\cap F)\in\mathcal{R}.\]</span> So <span class="math inline">\(\bigcup_{n\in\mathbb{N}}
+E_n\in\mathcal{S}\)</span>.</p>
+<p>Next, let <span class="math inline">\(E\in\mathcal{S}\)</span>. Let
+<span class="math inline">\(F\in\mathcal{R}\)</span>. Then <span class="math inline">\(E^c\cap F=F\setminus(E\cap
+F)\in\mathcal{R}\)</span>. So <span class="math inline">\(E^c\in\mathcal{S}\)</span> and <span class="math inline">\(\mathcal{S}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p>
+</div>
+<div class="solutionbox" id="sol-exer-finite-sigma-algebra">
+
+<p><strong><a href="ch-measures.html#exer-finite-sigma-algebra">Exercise
+13.1.4</a>.</strong> <em>Hint.</em> An algebra on a finite set has
+finitely many members, so a countable union of members is a finite
+union. For <span class="math inline">\(\sigma(\mathcal{E})\)</span>,
+find the one-point sets using intersections and differences.</p>
+</div>
+<div class="solutionbox" id="sol-exer-singletons-generate">
+
+<p><strong><a href="ch-measures.html#exer-singletons-generate">Exercise
+13.1.5</a>.</strong> <em>Hint.</em> The collection in <a href="ch-measures.html#ex-countable-cocountable">Example 13.1.6</a> is a <span class="math inline">\(\sigma\)</span>-algebra containing <span class="math inline">\(\mathcal{E}\)</span>. Conversely, a countable set
+is a countable union of one-point sets.</p>
+</div>
+<div class="solutionbox" id="sol-exer-union-not-sigma">
+
+<p><strong><a href="ch-measures.html#exer-union-not-sigma">Exercise 13.1.6</a>.</strong>
+<em>Hint.</em> Try the <span class="math inline">\(\sigma\)</span>-algebras generated by <span class="math inline">\(\{1\}\)</span> and by <span class="math inline">\(\{2\}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-continuity-points">
+
+<p><strong><a href="ch-measures.html#exer-continuity-points">Exercise
+13.2.1</a>.</strong> <em>Hint.</em> For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(U_n\)</span> be the set of points <span class="math inline">\(c\)</span> for which there is a <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(x)-f(y)|&lt;\frac1n\)</span> for all <span class="math inline">\(x,y\in(c-\delta,c+\delta)\)</span>. Show <span class="math inline">\(U_n\)</span> is open.</p>
+<p><em>Solution.</em>Let <span class="math inline">\(S=\{x\in\mathbb{R}:
+f \text{ is continuous at } x\}\)</span>. Now for each <span class="math inline">\(x\in S\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists a <span class="math inline">\(\delta_{x,n}&gt;0\)</span> such that for all <span class="math inline">\(y\in\mathbb{R}\)</span> with <span class="math inline">\(|x-y|&lt;\delta_{x,n}\)</span>, <span class="math inline">\(|f(x)-f(y)|&lt;\frac1n\)</span>. Let <span class="math inline">\(G_n=\bigcup_{x\in
+S}(x-\delta_{x,n},x+\delta_{x,n})\)</span>. Let <span class="math inline">\(G=\bigcap_{n\in\mathbb{N}} G_n\)</span>. Each
+<span class="math inline">\(G_n\)</span> is a union of open intervals,
+so it is open. Thus <span class="math inline">\(G\)</span> is a <span class="math inline">\(G_\delta\)</span>.</p>
+<p>For <span class="math inline">\(z\in S\)</span>, <span class="math inline">\(z\in G_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, and so <span class="math inline">\(z\in G\)</span>. Thus <span class="math inline">\(S\subset G\)</span>.</p>
+<p>Now let <span class="math inline">\(z\in G\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\frac2\varepsilon\)</span>. Since <span class="math inline">\(z\in G\)</span>, <span class="math inline">\(z\in
+G_N\)</span>. So there exists an <span class="math inline">\(x\in
+S\)</span> such that <span class="math inline">\(z\in (x-\delta_{x,N},
+x+\delta_{x,N})\)</span>. In particular, <span class="math inline">\(|f(z)-f(x)|&lt;\frac1N\)</span>. Choose <span class="math inline">\(\delta=\delta_{x,N}-|x-z|&gt;0\)</span>. So for
+all <span class="math inline">\(y\in \mathbb{R}\)</span> with <span class="math inline">\(|z-y|&lt;\delta\)</span>, <span class="math display">\[|x-y|\leq |x-z|+|z-y|&lt;
+|x-z|+\delta=\delta_{x,N}.\]</span> So for all <span class="math inline">\(y\in \mathbb{R}\)</span> with <span class="math inline">\(|z-y|&lt;\delta\)</span>, <span class="math display">\[|f(z)-f(y)|\leq |f(z)-f(x)|+|f(x)-f(y)|&lt;
+\frac1N + \frac1N = \frac2N&lt;\varepsilon.\]</span> So <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(z\)</span> and thus <span class="math inline">\(z\in S\)</span>. So <span class="math inline">\(G\subset S\)</span> and <span class="math inline">\(G=S\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-closed-g-delta">
+
+<p><strong><a href="ch-measures.html#exer-closed-g-delta">Exercise 13.2.2</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(x\in U_n\)</span> for
+every <span class="math inline">\(n\)</span>, there are points <span class="math inline">\(y_n\in F\)</span> with <span class="math inline">\(|x-y_n|&lt;\frac1n\)</span>. Since <span class="math inline">\(F\)</span> is closed, <span class="math inline">\(x\in F\)</span>. For open sets, take
+complements.</p>
+<p><em>Solution.</em> Each <span class="math inline">\(U_n\)</span> is a
+union of open intervals, so it is open by <a href="ch-topology.html#thm-open-union-intersection">Theorem 4.1.11</a>. If <span class="math inline">\(y\in F\)</span>, then <span class="math inline">\(y\in\left(y-\frac1n,y+\frac1n\right)\subset
+U_n\)</span> for every <span class="math inline">\(n\)</span>. So <span class="math inline">\(F\subset\bigcap_nU_n\)</span>.</p>
+<p>Conversely, let <span class="math inline">\(x\in\bigcap_nU_n\)</span>. For each <span class="math inline">\(n\)</span> there is a <span class="math inline">\(y_n\in F\)</span> with <span class="math inline">\(|x-y_n|&lt;\frac1n\)</span>. If <span class="math inline">\(x=y_n\)</span> for some <span class="math inline">\(n\)</span>, then <span class="math inline">\(x\in
+F\)</span>. Otherwise, let <span class="math inline">\(\varepsilon&gt;0\)</span> and choose <span class="math inline">\(n\)</span> with <span class="math inline">\(\frac1n&lt;\varepsilon\)</span>. Then <span class="math inline">\(y_n\in F\)</span>, <span class="math inline">\(y_n\ne x\)</span> and <span class="math inline">\(|y_n-x|&lt;\varepsilon\)</span>. So <span class="math inline">\(x\)</span> is a limit point of <span class="math inline">\(F\)</span>, and <span class="math inline">\(x\in
+F\)</span> by <a href="ch-topology.html#thm-closed-limit-points">Theorem 4.1.24</a>. So
+<span class="math inline">\(\bigcap_nU_n\subset F\)</span>, and <span class="math inline">\(F=\bigcap_nU_n\)</span> is a <span class="math inline">\(G_\delta\)</span> set.</p>
+<p>Now let <span class="math inline">\(U\)</span> be open. Then <span class="math inline">\(U^c\)</span> is closed, so <span class="math inline">\(U^c=\bigcap_nV_n\)</span> with each <span class="math inline">\(V_n\)</span> open. By De Morgan’s Laws (<a href="ch-real-numbers.html#thm-de-morgan-families">Theorem 1.1.13</a>), <span class="math inline">\(U=\bigcup_nV_n^c\)</span>. Each <span class="math inline">\(V_n^c\)</span> is closed. So <span class="math inline">\(U\)</span> is an <span class="math inline">\(F_\sigma\)</span> set.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cantor-borel">
+
+<p><strong><a href="ch-measures.html#exer-cantor-borel">Exercise 13.2.3</a>.</strong>
+<em>Hint.</em> The Cantor set is an intersection of closed sets.</p>
+</div>
+<div class="solutionbox" id="sol-exer-borel-compact">
+
+<p><strong><a href="ch-measures.html#exer-borel-compact">Exercise 13.2.4</a>.</strong>
+<em>Hint.</em> Compact sets are closed, so they are Borel sets.
+Conversely, every closed set <span class="math inline">\(F\)</span> is
+the union of the compact sets <span class="math inline">\(F\cap[-n,n]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-weighted-counting">
+
+<p><strong><a href="ch-measures.html#exer-weighted-counting">Exercise
+13.3.1</a>.</strong> (a) First, <span class="math inline">\(\mu(\emptyset)=\sum_{x\in\emptyset}f(x)=0\)</span>.
+Let <span class="math inline">\(\{E_i\}_{i=1}^\infty\subset\mathcal{M}\)</span> be
+a disjoint sequence. Then <span class="math display">\[\mu\left(\bigcup_{i=1}^\infty
+E_i\right)=\sum_{x\in \bigcup_{i=1}^\infty
+E_i}f(x)=\sum_{i=1}^\infty\sum_{x\in E_i}f(x)=\sum_{i=1}^\infty
+\mu(E_i).\]</span> So <span class="math inline">\(\mu\)</span> is a
+measure.</p>
+<p>The middle equality needs a word, since each sum is a supremum over
+finite sets. Let <span class="math inline">\(E=\bigcup_iE_i\)</span>. If
+<span class="math inline">\(F\subset E\)</span> is finite, then <span class="math inline">\(F\)</span> meets only finitely many <span class="math inline">\(E_i\)</span>, and the sets <span class="math inline">\(F\cap E_i\)</span> are disjoint. So <span class="math display">\[\sum_{x\in F}f(x)=\sum_{i=1}^\infty\sum_{x\in
+F\cap E_i}f(x)\le\sum_{i=1}^\infty\mu(E_i).\]</span> Taking the supremum
+over <span class="math inline">\(F\)</span> gives <span class="math inline">\(\mu(E)\le\sum_i\mu(E_i)\)</span>. Conversely, fix
+<span class="math inline">\(n\)</span> and finite sets <span class="math inline">\(F_i\subset E_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Their union <span class="math inline">\(F\)</span> is a finite subset of <span class="math inline">\(E\)</span>. So <span class="math inline">\(\sum_{i=1}^n\sum_{x\in F_i}f(x)=\sum_{x\in
+F}f(x)\le\mu(E)\)</span>. Taking the supremum over each <span class="math inline">\(F_i\)</span> in turn gives <span class="math inline">\(\sum_{i=1}^n\mu(E_i)\le\mu(E)\)</span>. Now let
+<span class="math inline">\(n\to\infty\)</span>.</p>
+<p>(b) (<span class="math inline">\(\Rightarrow\)</span>) Suppose there
+exists an <span class="math inline">\(x\in X\)</span> such that <span class="math inline">\(f(x)=\infty\)</span>. So <span class="math inline">\(\{x\}\in\mathcal{P}(X)=\mathcal{M}\)</span> and
+<span class="math inline">\(\mu(\{x\})=f(x)=\infty\)</span>. Now the
+only subsets of <span class="math inline">\(\{x\}\)</span> are <span class="math inline">\(\{x\}\)</span> and <span class="math inline">\(\emptyset\)</span>. But <span class="math inline">\(\mu(\{x\})=\infty\)</span> and <span class="math inline">\(\mu(\emptyset)=0\)</span>. So <span class="math inline">\(\mu\)</span> is not semifinite. So by
+contrapositive, if <span class="math inline">\(\mu\)</span> is
+semifinite, <span class="math inline">\(f(x)&lt;\infty\)</span> for all
+<span class="math inline">\(x\in X\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(f(x)&lt;\infty\)</span> for all <span class="math inline">\(x\in X\)</span>. Let <span class="math inline">\(E\in\mathcal{M}\)</span> with <span class="math inline">\(\mu (E)=\sum_{x\in E}f(x)=\infty\)</span>. So
+there exists an <span class="math inline">\(x\in E\)</span> such that
+<span class="math inline">\(f(x)&gt;0\)</span>. By the assumption, <span class="math inline">\(f(x)&lt;\infty\)</span>. Now <span class="math inline">\(\{x\}\in\mathcal{P}(X)=\mathcal{M}\)</span>, <span class="math inline">\(\{x\}\subset E\)</span>, and <span class="math inline">\(\mu(\{x\})=f(x)\)</span>. So <span class="math inline">\(0&lt;\mu(\{x\})&lt;\infty\)</span>. Thus <span class="math inline">\(\mu\)</span> is semifinite.</p>
+<p>(c) (<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-finite. So there exists a sequence
+<span class="math inline">\(\{E_n\}_{n\in\mathbb{N}}\subset\mathcal{M}\)</span>
+with <span class="math inline">\(\mu (E_n)&lt;\infty\)</span> for all
+<span class="math inline">\(n\in\mathbb{N}\)</span> such that <span class="math inline">\(X=\bigcup_{n=1}^\infty E_n\)</span>. First, let
+<span class="math inline">\(x\in X\)</span>. Then there exists an <span class="math inline">\(E_N\)</span> with <span class="math inline">\(x\in
+E_N\)</span>. So <span class="math inline">\(f(x)\le\mu(E_N)&lt;\infty\)</span>. So <span class="math inline">\(f(x)&lt;\infty\)</span> for all <span class="math inline">\(x\in X\)</span> and <span class="math inline">\(\mu\)</span> is semifinite by (b). Now, since for
+each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(\mu (E_n)=\sum_{x\in E_n}f(x)&lt;\infty\)</span>,
+the set <span class="math inline">\(\{x\in E_n:f(x)&gt;0\}\)</span> must
+be countable for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Indeed, let <span class="math inline">\(k\in\mathbb{N}\)</span>. If <span class="math inline">\(F\)</span> is a finite subset of <span class="math inline">\(\{x\in E_n:f(x)&gt;\frac1k\}\)</span> with <span class="math inline">\(p\)</span> elements, then <span class="math inline">\(\frac pk\le\sum_{x\in F}f(x)\le\mu(E_n)\)</span>.
+So <span class="math inline">\(\{x\in E_n:f(x)&gt;\frac1k\}\)</span> has
+at most <span class="math inline">\(k\mu(E_n)\)</span> elements. Then
+<span class="math inline">\(\{x\in
+E_n:f(x)&gt;0\}=\bigcup_{k\in\mathbb{N}}\{x\in
+E_n:f(x)&gt;\frac1k\}\)</span> is a countable union of finite sets. So
+<span class="math inline">\(\{x:
+f(x)&gt;0\}=\bigcup_{n\in\mathbb{N}}\{x\in E_n:f(x)&gt;0\}\)</span> is
+countable by <a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(\mu\)</span> is semifinite and <span class="math inline">\(\{x:f(x)&gt;0\}\)</span> is countable. Enumerate
+the elements of <span class="math inline">\(\{x:f(x)&gt;0\}\)</span>,
+<span class="math inline">\(\{x_n\}_{n\in\mathbb{N}}\)</span>. Let <span class="math inline">\(G=\{x:f(x)=0\}\)</span>. Then <span class="math inline">\(\mu( G)=0\)</span>. Also, <span class="math inline">\(\mu(\{x_n\})&lt;\infty\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> by (b). Now <span class="math inline">\(X=G\cup\left[\bigcup_{n\in\mathbb{N}}\{x_n\}\right]\)</span>.
+So <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-finite. If <span class="math inline">\(\{x:f(x)&gt;0\}\)</span> is finite, list its
+elements and stop. The same argument works.</p>
+</div>
+<div class="solutionbox" id="sol-exer-finitely-additive-measure">
+
+<p><strong><a href="ch-measures.html#exer-finitely-additive-measure">Exercise
+13.3.2</a>.</strong> First, the constant sequence <span class="math inline">\(E_n=\emptyset\)</span> satisfies the hypotheses of
+(ii). So <span class="math inline">\(\mu(\emptyset)=\lim_{n\to\infty}\mu(E_n)=0\)</span>.
+Note that from (i), by induction, we have that for <span class="math inline">\(\{E_i\}_{i=1}^k\)</span> with <span class="math inline">\(E_i\cap E_j=\emptyset\)</span> for all <span class="math inline">\(i\neq j\)</span>, <span class="math inline">\(\mu\left(\bigcup_{i=1}^kE_i\right)=\sum_{i=1}^k
+\mu (E_i)\)</span>.</p>
+<p>Now, let <span class="math inline">\(\{E_i\}_{i=1}^\infty\)</span> be
+a disjoint sequence in <span class="math inline">\(\mathcal{M}\)</span>.
+First, if <span class="math inline">\(\mu (E_k)=\infty\)</span> for any
+<span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(\infty=\mu (E_k)\leq\mu\left(\bigcup_{i=1}^\infty
+E_i\right)\)</span> and <span class="math inline">\(\sum_{i=1}^\infty
+\mu (E_i)=\infty\)</span>. The inequality holds since, by (i), <span class="math inline">\(\mu\left(\bigcup_iE_i\right)=\mu(E_k)+\mu\left(\bigcup_{i\ne
+k}E_i\right)\ge\mu(E_k)\)</span>. So <span class="math inline">\(\mu\left(\bigcup_{i=1}^\infty
+E_i\right)=\sum_{i=1}^\infty \mu (E_i)\)</span>. So assume <span class="math inline">\(\mu (E_i)&lt;\infty\)</span> for all <span class="math inline">\(i\in\mathbb{N}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. For all <span class="math inline">\(k\in\mathbb{N}\)</span>, define <span class="math inline">\(F_k=\bigcup_{i=k}^\infty E_i\)</span>. Then <span class="math inline">\(\{F_n\}_{n=1}^{\infty}\)</span> is a sequence in
+<span class="math inline">\(\mathcal{M}\)</span> with <span class="math inline">\(F_{n+1}\subset F_n\)</span> for all <span class="math inline">\(n\)</span> and <span class="math inline">\(\bigcap^\infty_{n=1} F_n=\emptyset\)</span>. So
+<span class="math inline">\(\lim_{n\to\infty}\mu(F_n)=0\)</span>. Thus
+there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such
+that for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(\mu (F_n)&lt;\varepsilon\)</span>. So for all
+<span class="math inline">\(n\geq N\)</span>, the finite sequence <span class="math inline">\(\{E_i\}_{i=1}^{n-1}\cup\{F_n\}\subset\mathcal{M}\)</span>
+is disjoint and <span class="math inline">\(\bigcup_{i=1}^\infty
+E_i=\bigcup_{i=1}^{n-1}E_i\cup F_n\)</span>. So for all <span class="math inline">\(n\geq N\)</span>, <span class="math display">\[\mu\left(\bigcup_{i=1}^\infty
+E_i\right)=\mu\left(\bigcup_{i=1}^{n-1}E_i\cup
+F_n\right)=\sum_{i=1}^{n-1}\mu (E_i) + \mu (F_n)&lt;\sum_{i=1}^{n-1}\mu
+(E_i) + \varepsilon.\]</span> Thus, for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(\left|\mu\left(\bigcup_{i=1}^\infty
+E_i\right)-\sum_{i=1}^{n-1}\mu (E_i)\right|&lt;\varepsilon\)</span>. So
+<span class="math inline">\(\lim_{n\to \infty}\sum_{i=1}^{n-1}\mu
+(E_i)=\sum_{i=1}^\infty\mu (E_i)=\mu\left(\bigcup_{i=1}^\infty
+E_i\right)\)</span>. So <span class="math inline">\((\mathbb{R},\mathcal{M},\mu)\)</span> is a measure
+space.</p>
+</div>
+<div class="solutionbox" id="sol-exer-inclusion-exclusion">
+
+<p><strong><a href="ch-measures.html#exer-inclusion-exclusion">Exercise
+13.3.3</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(E_1\cup E_2\)</span>, <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_2\)</span> as disjoint unions of the sets <span class="math inline">\(E_1\setminus E_2\)</span>, <span class="math inline">\(E_1\cap E_2\)</span> and <span class="math inline">\(E_2\setminus E_1\)</span>. Then add.</p>
+</div>
+<div class="solutionbox" id="sol-exer-restricted-measure">
+
+<p><strong><a href="ch-measures.html#exer-restricted-measure">Exercise
+13.3.4</a>.</strong> <em>Hint.</em> If the sets <span class="math inline">\(E_n\)</span> are disjoint, so are the sets <span class="math inline">\(E_n\cap A\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sum-of-measures">
+
+<p><strong><a href="ch-measures.html#exer-sum-of-measures">Exercise 13.3.5</a>.</strong>
+<em>Hint.</em> Countable additivity needs <span class="math inline">\(\sum_nc_n\sum_k\mu_n(E_k)=\sum_k\sum_nc_n\mu_n(E_k)\)</span>.
+Show that both sides equal the supremum of the finite sums <span class="math inline">\(\sum_{n\le N}\sum_{k\le
+K}c_n\mu_n(E_k)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-dirac-sum">
+
+<p><strong><a href="ch-measures.html#exer-dirac-sum">Exercise 13.3.6</a>.</strong>
+<em>Hint.</em> <span class="math inline">\(\mu(E)=\sum_{k\in
+E\cap\mathbb{N}}2^{-k}\)</span>. Use <a href="ch-measures.html#exer-sum-of-measures">Exercise 13.3.5</a>.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch12.html"><span class="dir">Previous</span> Solutions for Chapter 12. Power Series Expansions</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch14.html"><span class="dir">Next</span> Solutions for Chapter 14. Lebesgue Measure</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

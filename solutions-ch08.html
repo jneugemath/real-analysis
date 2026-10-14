@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 8. Functions of Bounded Variation | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch07.html"><span class="dir">Previous</span> Solutions for Chapter 7. The Derivative</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch09.html"><span class="dir">Next</span> Solutions for Chapter 9. Integrals</a>
+</nav>
+<main id="main">
+<article id="solutions-ch08">
+<h1>Solutions for Chapter 8. Functions of Bounded Variation</h1>
+<div class="solutionbox" id="sol-exer-x-alpha-sin-bv">
+
+<p><strong><a href="ch-bounded-variation.html#exer-x-alpha-sin-bv">Exercise 8.1.1</a>.</strong>
+<em>Hint.</em> Show that <span class="math inline">\(|f'(x)|\le\alpha+\beta\)</span> for <span class="math inline">\(0&lt;x\le1\)</span> and that <span class="math inline">\(|f(x)|\le x\)</span>. Then <span class="math inline">\(f\)</span> satisfies a Lipschitz condition, by the
+Mean Value Theorem. Use <a href="ch-bounded-variation.html#thm-lipschitz-bv">Theorem
+8.1.12</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-lipschitz-bv">
+
+<p><strong><a href="ch-bounded-variation.html#exer-lipschitz-bv">Exercise 8.1.2</a>.</strong>
+<em>Hint.</em> Each term of a variation sum satisfies <span class="math inline">\(|f(x_i)-f(x_{i-1})|\le M(x_i-x_{i-1})\)</span>.
+These bounds add up to <span class="math inline">\(M(b-a)\)</span>.</p>
+<p><em>Solution.</em> Choose <span class="math inline">\(M&gt;0\)</span>
+with <span class="math inline">\(|f(x)-f(y)|\le M|x-y|\)</span> for all
+<span class="math inline">\(x,y\in[a,b]\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Then <span class="math display">\[V(\mathcal{P})=\sum_{k=1}^n|f(x_k)-f(x_{k-1})|\le\sum_{k=1}^nM(x_k-x_{k-1})=M(b-a),\]</span>
+since the last sum telescopes. So <span class="math inline">\(M(b-a)\)</span> is an upper bound for the sums
+<span class="math inline">\(V(\mathcal{P})\)</span>, and <span class="math inline">\(V_f[a,b]\le M(b-a)&lt;\infty\)</span>. So <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bv-bounded">
+
+<p><strong><a href="ch-bounded-variation.html#exer-bv-bounded">Exercise 8.1.3</a>.</strong>
+<em>Hint.</em> Use the partition <span class="math inline">\(\{a,x,b\}\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(x\in[a,b]\)</span>. If <span class="math inline">\(x=a\)</span>, then <span class="math inline">\(|f(x)-f(a)|=0\le V_f[a,b]\)</span>. If <span class="math inline">\(x=b\)</span>, then <span class="math inline">\(|f(x)-f(a)|\le V_f[a,b]\)</span> by <a href="ch-bounded-variation.html#rem-variation-endpoints">Remark 8.1.6</a>. If <span class="math inline">\(a&lt;x&lt;b\)</span>, then <span class="math inline">\(\{a,x,b\}\)</span> is a partition of <span class="math inline">\([a,b]\)</span>. So <span class="math display">\[|f(x)-f(a)|\le|f(x)-f(a)|+|f(b)-f(x)|=V(\{a,x,b\})\le
+V_f[a,b].\]</span> In every case, <span class="math inline">\(|f(x)-f(a)|\le V_f[a,b]\)</span>. By the Triangle
+Inequality, <span class="math display">\[|f(x)|\le|f(a)|+|f(x)-f(a)|\le|f(a)|+V_f[a,b].\]</span>
+Since <span class="math inline">\(V_f[a,b]&lt;\infty\)</span>, this is
+one bound for every <span class="math inline">\(x\in[a,b]\)</span>. So
+<span class="math inline">\(f\)</span> is bounded.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-sin-not-bv">
+
+<p><strong><a href="ch-bounded-variation.html#exer-x-sin-not-bv">Exercise 8.1.4</a>.</strong>
+<em>Hint.</em> Use the points <span class="math inline">\(\frac{2}{(2k+1)\pi}\)</span>. You may use that the
+sums <span class="math inline">\(1+\frac12+\cdots+\frac1n\)</span> are
+not bounded. To see this, group the terms <span class="math inline">\(\frac13+\frac14\)</span>, then <span class="math inline">\(\frac15+\cdots+\frac18\)</span>, and so on.</p>
+</div>
+<div class="solutionbox" id="sol-exer-dirichlet-not-bv">
+
+<p><strong><a href="ch-bounded-variation.html#exer-dirichlet-not-bv">Exercise 8.1.5</a>.</strong>
+<em>Hint.</em> Choose a partition whose points alternate between
+rational and irrational numbers. Each term of its variation sum is <span class="math inline">\(1\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x-squared-jordan">
+
+<p><strong><a href="ch-bounded-variation.html#exer-x-squared-jordan">Exercise 8.2.1</a>.</strong>
+<em>Hint.</em> <span class="math inline">\(f\)</span> decreases on <span class="math inline">\([-1,0]\)</span> and increases on <span class="math inline">\([0,1]\)</span>. On each piece the variation is the
+total change in <span class="math inline">\(f\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(f(x)=x^2\)</span>.
+Since <span class="math inline">\(f\in C^{(1)}[-1,1]\)</span>, <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([-1,1]\)</span> by <a href="ch-bounded-variation.html#cor-continuous-derivative-bv">Corollary 8.1.10</a>. By
+definition, <span class="math inline">\(V_f(-1)=0\)</span>.</p>
+<p>Let <span class="math inline">\(-1&lt;x\le0\)</span>. Then <span class="math inline">\(f\)</span> is decreasing on <span class="math inline">\([-1,x]\)</span>. By <a href="ch-bounded-variation.html#thm-monotone-bv">Theorem 8.1.8</a>, <span class="math display">\[V_f(x)=V_f[-1,x]=|f(x)-f(-1)|=1-x^2.\]</span> Let
+<span class="math inline">\(0&lt;x\le1\)</span>. By <a href="ch-bounded-variation.html#thm-variation-additive">Theorem 8.2.1</a> on <span class="math inline">\([-1,x]\)</span> with <span class="math inline">\(c=0\)</span>, and <a href="ch-bounded-variation.html#thm-monotone-bv">Theorem 8.1.8</a> on <span class="math inline">\([-1,0]\)</span> and <span class="math inline">\([0,x]\)</span>, <span class="math display">\[V_f(x)=V_f[-1,0]+V_f[0,x]=1+x^2.\]</span> So
+<span class="math display">\[V_f(x)=\begin{cases}1-x^2, &amp; -1\le
+x\le0,\\ 1+x^2, &amp; 0&lt;x\le1,\end{cases}\qquad
+V_f(x)-f(x)=\begin{cases}1-2x^2, &amp; -1\le x\le0,\\ 1, &amp;
+0&lt;x\le1.\end{cases}\]</span> Both functions are increasing on <span class="math inline">\([-1,1]\)</span>, by Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. This can also be checked
+directly. Then <span class="math display">\[x^2=V_f(x)-\bigl(V_f(x)-f(x)\bigr)\]</span>
+writes <span class="math inline">\(f\)</span> as the difference of two
+increasing functions.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bv-sum">
+
+<p><strong><a href="ch-bounded-variation.html#exer-bv-sum">Exercise 8.2.2</a>.</strong> Let <span class="math inline">\(h=f+g\)</span> or <span class="math inline">\(h=f-g\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. By the Triangle
+Inequality, for each <span class="math inline">\(k\)</span>, <span class="math display">\[|h(x_k)-h(x_{k-1})|\le|f(x_k)-f(x_{k-1})|+|g(x_k)-g(x_{k-1})|.\]</span>
+Adding over <span class="math inline">\(k\)</span>, the sum <span class="math inline">\(V(\mathcal{P})\)</span> for <span class="math inline">\(h\)</span> is at most the sum <span class="math inline">\(V(\mathcal{P})\)</span> for <span class="math inline">\(f\)</span> plus the sum <span class="math inline">\(V(\mathcal{P})\)</span> for <span class="math inline">\(g\)</span>. So it is at most <span class="math inline">\(V_f[a,b]+V_g[a,b]\)</span>. This holds for every
+partition. So <span class="math display">\[V_h[a,b]\le
+V_f[a,b]+V_g[a,b]&lt;\infty,\]</span> and <span class="math inline">\(h\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bv-product">
+
+<p><strong><a href="ch-bounded-variation.html#exer-bv-product">Exercise 8.2.3</a>.</strong>
+<em>Hint.</em> Use <a href="ch-bounded-variation.html#exer-bv-bounded">Exercise 8.1.3</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-continuous-jordan">
+
+<p><strong><a href="ch-bounded-variation.html#exer-continuous-jordan">Exercise
+8.2.4</a>.</strong> <em>Hint.</em> Write <span class="math inline">\(f=V_f-(V_f-f)\)</span>. Use Theorems <a href="ch-bounded-variation.html#thm-variation-continuity">8.2.3</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch07.html"><span class="dir">Previous</span> Solutions for Chapter 7. The Derivative</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch09.html"><span class="dir">Next</span> Solutions for Chapter 9. Integrals</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

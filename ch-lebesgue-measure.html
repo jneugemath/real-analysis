@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 14. Lebesgue Measure | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-measures.html"><span class="dir">Previous</span> Chapter 13. σ-Algebras and Measures</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-measurable-functions.html"><span class="dir">Next</span> Chapter 15. Measurable Functions</a>
+</nav>
+<main id="main">
+<article id="ch-lebesgue-measure">
+<h1>Chapter 14. Lebesgue Measure</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-outer-measure">14.1 Outer Measure</a></li><li><a href="#sec-lebesgue-measurable">14.2 Lebesgue Measurable Sets</a></li><li><a href="#sec-approximation">14.3 Approximation by Open and Closed Sets</a></li><li><a href="#sec-nonmeasurable">14.4 A Nonmeasurable Set<sup>*</sup></a></li><li><a href="#notes-13">Notes</a></li></ul></nav>
+<p><a href="ch-measures.html">Chapter 13</a> described measures in general.
+This chapter builds the one that matters most for analysis. Lebesgue
+measure gives every interval its length, it does not change when a set
+is translated, and it is a measure on a <span class="math inline">\(\sigma\)</span>-algebra that contains every Borel
+set.</p>
+<p>The construction has two steps. First, <a href="#sec-outer-measure">Section 14.1</a> defines the outer measure
+<span class="math inline">\(m^*(A)\)</span> of every set <span class="math inline">\(A\subset\mathbb{R}\)</span>, by covering <span class="math inline">\(A\)</span> with countably many open intervals as
+efficiently as possible. This is the idea behind sets of measure zero in
+<a href="ch-integrals.html#def-measure-zero">Definition 9.2.5</a>. Outer measure is
+defined for every set, but it is not additive. Second, <a href="#sec-lebesgue-measurable">Section 14.2</a> uses a condition due to
+Carathéodory to pick out the <em>measurable</em> sets, the ones that
+split every other set additively. They form a <span class="math inline">\(\sigma\)</span>-algebra, and on it <span class="math inline">\(m^*\)</span> is a measure. <a href="#sec-approximation">Section 14.3</a> shows every measurable set is
+a Borel set up to a set of measure zero. <a href="#sec-nonmeasurable">Section 14.4</a>, which is marked with a star,
+shows that some sets are not measurable.</p>
+<p><em>What this chapter uses from earlier chapters.</em> The
+Heine–Borel Theorem (<a href="ch-topology.html#thm-heine-borel">Theorem 4.2.14</a>),
+countable unions of countable sets (<a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>), sets of measure zero (<a href="ch-integrals.html#def-measure-zero">Definition 9.2.5</a>), and from <a href="ch-measures.html">Chapter 13</a>, <a href="ch-measures.html#thm-sigma-algebra-disjoint">Theorem 13.1.4</a>, <a href="ch-measures.html#thm-borel-generators">Theorem 13.2.5</a> and the Good Sets
+Principle.</p>
+<section class="level3 unnumbered" id="sec-outer-measure">
+<h2>14.1 Outer Measure</h2>
+<div class="remarkbox" id="rem-measure-wishlist">
+
+<p><strong>Remark 14.1.1.</strong> It seems like a properly defined
+measure <span class="math inline">\(m\)</span> on <span class="math inline">\((\mathbb{R},\mathcal{M})\)</span> should have the
+following properties.</p>
+<ol>
+<li><p><span class="math inline">\(\mathcal{M}=\mathcal{P}(\mathbb{R})\)</span>.</p></li>
+<li><p><span class="math inline">\(m\)</span> is a measure.</p></li>
+<li><p>For an interval <span class="math inline">\(I\)</span>, <span class="math inline">\(m(I)=\ell(I)\)</span>, where <span class="math inline">\(\ell(I)\)</span> is the length of <span class="math inline">\(I\)</span>.</p></li>
+<li><p><span class="math inline">\(m\)</span> is translation invariant;
+i.e. if <span class="math inline">\(E+y=\{x+y:x\in E\}\)</span>, <span class="math inline">\(m(E+y)=m(E)\)</span>.</p></li>
+</ol>
+<p>However, in order for (2), (3), and (4) to be true, there will be
+certain sets <span class="math inline">\(P\in\mathcal{P}(\mathbb{R})\)</span> that will not
+be measurable. The set of measurable sets will end up containing <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span>. (See <a href="#thm-nonmeasurable">Theorem 14.4.6</a>. The measurable sets form a
+<span class="math inline">\(\sigma\)</span>-algebra strictly larger than
+<span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span>, as <a href="#rem-lebesgue-not-borel">Remark 14.3.2</a> explains.)</p>
+</div>
+<div class="definitionbox" id="def-outer-measure">
+
+<p><strong>Definition 14.1.2.</strong> For an interval <span class="math inline">\(I\)</span> with endpoints <span class="math inline">\(a\le b\)</span>, the <em>length</em> of <span class="math inline">\(I\)</span> is <span class="math inline">\(\ell(I)=b-a\)</span>. An unbounded interval has
+length <span class="math inline">\(\infty\)</span>. Let <span class="math inline">\(A\subset\mathbb{R}\)</span> and consider all
+countable collections <span class="math inline">\(\{I_n\}\)</span> of
+open intervals with <span class="math inline">\(A\subset\bigcup_nI_n\)</span>. Define the
+<em>outer measure</em> of <span class="math inline">\(A\)</span>, <span class="math inline">\(m^*(A)\)</span>, to be <span class="math display">\[m^*(A)=\inf_{A\subset\bigcup I_n}\sum
+\ell(I_n).\]</span></p>
+</div>
+<p>The infimum is over a nonempty set, since the intervals <span class="math inline">\((-n,n)\)</span> cover every set. Its value may be
+<span class="math inline">\(\infty\)</span>. A set <span class="math inline">\(E\)</span> has measure zero in the sense of <a href="ch-integrals.html#def-measure-zero">Definition 9.2.5</a> exactly when <span class="math inline">\(m^*(E)=0\)</span>. Indeed, both say that for every
+<span class="math inline">\(\varepsilon&gt;0\)</span> there is a
+countable cover of <span class="math inline">\(E\)</span> by open
+intervals with total length less than <span class="math inline">\(\varepsilon\)</span>.</p>
+<div class="lemmabox" id="lem-outer-measure-monotone">
+
+<p><strong>Lemma 14.1.3.</strong> If <span class="math inline">\(A\subset B\)</span>, <span class="math inline">\(m^*(A)\le m^*(B)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-outer-measure-monotone">Exercise
+14.1.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-outer-measure-interval">
+
+<p><strong>Theorem 14.1.4.</strong> The outer measure of an interval is
+its length.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>Closed bounded intervals.</em> Let <span class="math inline">\(a\le b\)</span>. For <span class="math inline">\(\varepsilon&gt;0\)</span>, the single interval
+<span class="math inline">\((a-\varepsilon,b+\varepsilon)\)</span>
+covers <span class="math inline">\([a,b]\)</span>. So <span class="math inline">\(m^*([a,b])\le b-a+2\varepsilon\)</span> for every
+<span class="math inline">\(\varepsilon&gt;0\)</span>, and <span class="math inline">\(m^*([a,b])\le b-a\)</span>.</p>
+<p>For the reverse inequality, let <span class="math inline">\(\{I_n\}\)</span> be a countable collection of open
+intervals covering <span class="math inline">\([a,b]\)</span>. It is
+enough to show <span class="math inline">\(\sum\ell(I_n)\ge
+b-a\)</span>. If some <span class="math inline">\(I_n\)</span> is
+unbounded, the sum is <span class="math inline">\(\infty\)</span>. So
+assume each <span class="math inline">\(I_n\)</span> is bounded. By the
+Heine–Borel Theorem, finitely many of them cover <span class="math inline">\([a,b]\)</span>. Choose a chain from this finite
+list as follows. See <a href="#fig-interval-chain">Figure 14.1</a>. Let
+<span class="math inline">\((a_1,b_1)\)</span> be one of them that
+contains <span class="math inline">\(a\)</span>. If <span class="math inline">\(b_1&gt;b\)</span>, stop. Otherwise <span class="math inline">\(b_1\in[a,b]\)</span>, and <span class="math inline">\(b_1\notin(a_1,b_1)\)</span>, so another interval
+<span class="math inline">\((a_2,b_2)\)</span> in the list contains
+<span class="math inline">\(b_1\)</span>. Then <span class="math inline">\(a_2&lt;b_1&lt;b_2\)</span>. If <span class="math inline">\(b_2&gt;b\)</span>, stop. Otherwise continue in the
+same way. The right endpoints <span class="math inline">\(b_1&lt;b_2&lt;\cdots\)</span> increase, so no
+interval is chosen twice. Since the list is finite, the process stops,
+with an interval <span class="math inline">\((a_k,b_k)\)</span> such
+that <span class="math inline">\(b_k&gt;b\)</span>. Since <span class="math inline">\(a_{i+1}&lt;b_i\)</span> for each <span class="math inline">\(i\)</span>, <span class="math display">\[\sum_{i=1}^k(b_i-a_i)=(b_k-a_1)+\sum_{i=1}^{k-1}(b_i-a_{i+1})&gt;b_k-a_1&gt;b-a.\]</span>
+The chosen intervals are distinct members of <span class="math inline">\(\{I_n\}\)</span>, so <span class="math inline">\(\sum\ell(I_n)\ge\sum_{i=1}^k(b_i-a_i)&gt;b-a\)</span>.
+Taking the infimum over all covers, <span class="math inline">\(m^*([a,b])\ge b-a\)</span>.</p>
+<p><em>Other bounded intervals.</em> Let <span class="math inline">\(I\)</span> be a bounded interval with endpoints
+<span class="math inline">\(a&lt;b\)</span>. Then <span class="math inline">\(I\subset[a,b]\)</span>, so <span class="math inline">\(m^*(I)\le b-a\)</span> by <a href="#lem-outer-measure-monotone">Lemma 14.1.3</a>. For <span class="math inline">\(0&lt;\varepsilon&lt;\frac{b-a}{2}\)</span>, the
+closed interval <span class="math inline">\([a+\varepsilon,b-\varepsilon]\)</span> is
+contained in <span class="math inline">\(I\)</span>, so <span class="math inline">\(m^*(I)\ge b-a-2\varepsilon\)</span>. So <span class="math inline">\(m^*(I)=b-a=\ell(I)\)</span>.</p>
+<p><em>Unbounded intervals.</em> If <span class="math inline">\(I\)</span> is unbounded, then for every <span class="math inline">\(M&gt;0\)</span> it contains a closed interval
+<span class="math inline">\(J\)</span> with <span class="math inline">\(\ell(J)=M\)</span>. So <span class="math inline">\(m^*(I)\ge m^*(J)=M\)</span> for every <span class="math inline">\(M&gt;0\)</span>, and <span class="math inline">\(m^*(I)=\infty=\ell(I)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<figure class="figure" id="fig-interval-chain"><div class="figure-images"><img alt="The interval [a,b] on a number line with a chain of overlapping open intervals above it. The first contains a, each next interval contains the right endpoint of the previous one, and the last extends past b." height="113" src="figs/fig16.svg" width="626"/></div><figcaption><strong>Figure 14.1.</strong> The chain of intervals in the proof of
+<a href="#thm-outer-measure-interval">Theorem 14.1.4</a>. Each interval
+contains the right endpoint of the one before. The last one reaches past
+<span class="math inline">\(b\)</span>, so the lengths add up to more
+than <span class="math inline">\(b-a\)</span>.</figcaption></figure>
+<div class="theorembox" id="thm-outer-measure-translation">
+
+<p><strong>Theorem 14.1.5.</strong> <span class="math inline">\(m^*\)</span> is translation invariant. That is,
+<span class="math inline">\(m^*(A+y)=m^*(A)\)</span> for all <span class="math inline">\(A\subset\mathbb{R}\)</span> and <span class="math inline">\(y\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-outer-measure-translation">Exercise 14.1.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-outer-measure-subadditive">
+
+<p><strong>Theorem 14.1.6.</strong> Let <span class="math inline">\(\{A_n\}\)</span> be a countable collection of sets
+of real numbers. Then <span class="math display">\[m^*\left(\bigcup_{n\in\mathbb{N}}A_n\right)\le
+\sum_{n\in\mathbb{N}}m^*(A_n).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(\sum m^*(A_n)=\infty\)</span>, there
+is nothing to prove. So assume each <span class="math inline">\(m^*(A_n)\)</span> is finite. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. For each <span class="math inline">\(n\)</span>, the definition of <span class="math inline">\(m^*(A_n)\)</span> as an infimum gives a countable
+collection <span class="math inline">\(\{I_{n,i}\}_{i\in\mathbb{N}}\)</span> of open
+intervals that covers <span class="math inline">\(A_n\)</span> with
+<span class="math display">\[\sum_{i\in\mathbb{N}}\ell(I_{n,i})&lt;m^*(A_n)+\frac{\varepsilon}{2^n}.\]</span>
+The collection of all the intervals <span class="math inline">\(I_{n,i}\)</span> is countable, as a countable
+union of countable collections (<a href="ch-cardinality.html#thm-countable-union">Theorem
+2.2.6</a>). It covers <span class="math inline">\(\bigcup_nA_n\)</span>.
+List it as one sequence <span class="math inline">\(J_1,J_2,\dots\)</span>. Any partial sum <span class="math inline">\(\sum_{k=1}^K\ell(J_k)\)</span> uses finitely many
+intervals <span class="math inline">\(I_{n,i}\)</span>, all with <span class="math inline">\(n\le N\)</span> for some <span class="math inline">\(N\)</span>. Since the lengths are nonnegative,
+<span class="math display">\[\sum_{k=1}^K\ell(J_k)\le\sum_{n=1}^N\sum_{i\in\mathbb{N}}\ell(I_{n,i})&lt;\sum_{n=1}^N\left(m^*(A_n)+\frac{\varepsilon}{2^n}\right)&lt;\sum_{n\in\mathbb{N}}m^*(A_n)+\varepsilon.\]</span>
+So <span class="math inline">\(\sum_k\ell(J_k)\le\sum_nm^*(A_n)+\varepsilon\)</span>,
+and therefore <span class="math inline">\(m^*\left(\bigcup_nA_n\right)\le\sum_nm^*(A_n)+\varepsilon\)</span>.
+Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
+arbitrary, the result follows.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Splitting <span class="math inline">\(\varepsilon\)</span> Over Countably Many
+Steps).</strong></p>
+<p>The proof of <a href="#thm-outer-measure-subadditive">Theorem
+14.1.6</a> makes countably many choices, one for each <span class="math inline">\(A_n\)</span>, and each choice costs a small error.
+If every error were <span class="math inline">\(\varepsilon\)</span>,
+the total error would be infinite. So the <span class="math inline">\(n\)</span>th choice is allowed an error of only
+<span class="math inline">\(\frac{\varepsilon}{2^n}\)</span>. Since
+<span class="math inline">\(\sum_{n=1}^\infty\frac{1}{2^n}=1\)</span>,
+the total error is at most <span class="math inline">\(\varepsilon\)</span>. This is the countable
+version of Splitting <span class="math inline">\(\varepsilon\)</span>
+from <a href="ch-sequences.html">Chapter 3</a>. <a href="ch-integrals.html#ex-countable-measure-zero">Example 9.2.7</a> used the same idea.
+Any convergent series of positive terms with sum <span class="math inline">\(1\)</span> would do, but <span class="math inline">\(\frac{1}{2^n}\)</span> is the usual choice.</p>
+</div>
+<div class="corollarybox" id="cor-countable-outer-measure-zero">
+
+<p><strong>Corollary 14.1.7.</strong> If <span class="math inline">\(A\)</span> is countable, <span class="math inline">\(m^*(A)=0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Enumerate the elements of <span class="math inline">\(A\)</span>, say <span class="math inline">\(A=\{x_1,x_2,\dots\}\)</span>. Let <span class="math inline">\(A_n=\{x_n\}\)</span> for <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math display">\[m^*(A)\le
+m^*\left(\bigcup_{n\in\mathbb{N}}A_n\right)\le\sum_{n\in\mathbb{N}}
+m^*(A_n)=0.\]</span> Here <span class="math inline">\(m^*(\{x_n\})=m^*([x_n,x_n])=0\)</span> by <a href="#thm-outer-measure-interval">Theorem 14.1.4</a>. A finite set is
+handled the same way.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-interval-uncountable">
+
+<p><strong>Example 14.1.8.</strong> The set <span class="math inline">\([0,1]\)</span> is not countable. This gives a
+second proof of <a href="ch-cardinality.html#thm-interval-uncountable">Theorem
+2.3.2</a>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> <span class="math inline">\(m^*([0,1])=1\ne0\)</span>. Thus <span class="math inline">\([0,1]\)</span> is not countable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-rationals-finite-covers">
+
+<p><strong>Example 14.1.9.</strong> Let <span class="math inline">\(A=\mathbb{Q}\cap[0,1]\)</span>. Let <span class="math inline">\(\{I_n\}\)</span> be a finite collection of open
+intervals covering <span class="math inline">\(A\)</span>. Then <span class="math inline">\(\sum \ell(I_n)\ge 1\)</span>. However, <span class="math inline">\(m^*(A)=0\)</span>. So countable covers, not just
+finite ones, are essential in <a href="#def-outer-measure">Definition
+14.1.2</a>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-rationals-finite-covers">Exercise
+14.1.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-outer-measure-open">
+
+<p><strong>Theorem 14.1.10.</strong> Given any set <span class="math inline">\(A\)</span>, for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an open
+set <span class="math inline">\(U\)</span> such that <span class="math inline">\(A\subset U\)</span> and <span class="math inline">\(m^*(U)\le m^*(A)+\varepsilon\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-outer-measure-open">Exercise
+14.1.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-46">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-outer-measure-monotone">
+
+<p><strong>Exercise 14.1.1.</strong> Prove <a href="#lem-outer-measure-monotone">Lemma 14.1.3</a>. That is, prove that
+if <span class="math inline">\(A\subset B\)</span>, then <span class="math inline">\(m^*(A)\le m^*(B)\)</span>. <a aria-label="Solution for Exercise 14.1.1" href="solutions-ch14.html#sol-exer-outer-measure-monotone">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-outer-measure-translation">
+
+<p><strong>Exercise 14.1.2.</strong> Prove that <span class="math inline">\(m^*\)</span> is translation invariant. <a aria-label="Solution for Exercise 14.1.2" href="solutions-ch14.html#sol-exer-outer-measure-translation">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-rationals-finite-covers">
+
+<p><strong>Exercise 14.1.3.</strong> Let <span class="math inline">\(A=\mathbb{Q}\cap[0,1]\)</span>. Let <span class="math inline">\(\{I_n\}\)</span> be a finite collection of open
+intervals covering <span class="math inline">\(A\)</span>. Prove <span class="math inline">\(\sum \ell(I_n)\ge 1\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-outer-measure-open">
+
+<p><strong>Exercise 14.1.4.</strong> If <span class="math inline">\(A\subset\mathbb{R}\)</span>, prove that for all
+<span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an
+open set <span class="math inline">\(U\)</span> such that <span class="math inline">\(A\subset U\)</span> and <span class="math inline">\(m^*(U)\le m^*(A)+\varepsilon\)</span>. <a aria-label="Solution for Exercise 14.1.4" href="solutions-ch14.html#sol-exer-outer-measure-open">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-outer-measure-null-union">
+
+<p><strong>Exercise 14.1.5.</strong> Prove that if <span class="math inline">\(m^*(A)=0\)</span>, then <span class="math inline">\(m^*(A\cup B)=m^*(B)\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-outer-measure-closed-intervals">
+
+<p><strong>Exercise 14.1.6.</strong> Prove that <span class="math inline">\(m^*(A)\)</span> does not change if, in <a href="#def-outer-measure">Definition 14.1.2</a>, open intervals are
+replaced by closed intervals. <a aria-label="Hint for Exercise 14.1.6" href="solutions-ch14.html#sol-exer-outer-measure-closed-intervals">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-outer-measure-scaling">
+
+<p><strong>Exercise 14.1.7.</strong> For <span class="math inline">\(c&gt;0\)</span> and <span class="math inline">\(A\subset\mathbb{R}\)</span>, let <span class="math inline">\(cA=\{cx:x\in A\}\)</span>. Prove that <span class="math inline">\(m^*(cA)=c\,m^*(A)\)</span>. <a aria-label="Hint for Exercise 14.1.7" href="solutions-ch14.html#sol-exer-outer-measure-scaling">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-lebesgue-measurable">
+<h2>14.2 Lebesgue Measurable Sets</h2>
+<p>Outer measure is defined for every set, but it is not a measure on
+<span class="math inline">\(\mathcal{P}(\mathbb{R})\)</span>. There are
+disjoint sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(m^*(A\cup B)&lt;m^*(A)+m^*(B)\)</span>, although
+they cannot be described explicitly (see <a href="#sec-nonmeasurable">Section 14.4</a>). The fix is to keep only the
+sets <span class="math inline">\(E\)</span> that split every set <span class="math inline">\(A\)</span> additively. These are the measurable
+sets.</p>
+<div class="definitionbox" id="def-lebesgue-measurable">
+
+<p><strong>Definition 14.2.1.</strong> A set <span class="math inline">\(E\subset\mathbb{R}\)</span> is said to be
+<em>measurable</em> if for each set <span class="math inline">\(A\subset\mathbb{R}\)</span>, <span class="math display">\[m^*(A)=m^*(A\cap E)+m^*(A\cap E^c).\]</span> If
+<span class="math inline">\(E\)</span> is measurable, define the
+<em>Lebesgue measure</em> <span class="math inline">\(m(E)\)</span> to
+be the outer measure of <span class="math inline">\(E\)</span>, <span class="math inline">\(m(E)=m^*(E)\)</span>. The collection of measurable
+sets is denoted <span class="math inline">\(\mathcal{M}\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-caratheodory-inequality">
+
+<p><strong>Remark 14.2.2.</strong> Since <span class="math inline">\(A=(A\cap E)\cup(A\cap E^c)\)</span>, <span class="math inline">\(m^*(A)\le m^*(A\cap E)+m^*(A\cap E^c)\)</span> by
+<a href="#thm-outer-measure-subadditive">Theorem 14.1.6</a>. So <span class="math inline">\(E\)</span> is measurable if for each set <span class="math inline">\(A\subset\mathbb{R}\)</span>, <span class="math display">\[m^*(A)\ge m^*(A\cap E)+m^*(A\cap E^c).\]</span>
+This is automatic when <span class="math inline">\(m^*(A)=\infty\)</span>. So it only needs to be
+checked for sets <span class="math inline">\(A\)</span> with <span class="math inline">\(m^*(A)&lt;\infty\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Set Is Measurable).</strong></p>
+<p>To prove <span class="math inline">\(E\)</span> is measurable, fix an
+arbitrary “test set” <span class="math inline">\(A\subset\mathbb{R}\)</span>. By <a href="#rem-caratheodory-inequality">Remark 14.2.2</a>, only one
+inequality is needed, <span class="math inline">\(m^*(A)\ge m^*(A\cap
+E)+m^*(A\cap E^c)\)</span>, and only for <span class="math inline">\(m^*(A)&lt;\infty\)</span>. Then either use what is
+known about <span class="math inline">\(E\)</span> to split <span class="math inline">\(A\)</span>, as in the proofs of <a href="#lem-union-measurable">Lemma 14.2.5</a> and <a href="#thm-lebesgue-sigma-algebra">Theorem 14.2.8</a>, or go back to a
+cover of <span class="math inline">\(A\)</span> by intervals with total
+length close to <span class="math inline">\(m^*(A)\)</span> and split
+the cover, as in the proof of <a href="#lem-ray-measurable">Lemma
+14.2.9</a>. The test set <span class="math inline">\(A\)</span> is
+arbitrary. It does not have to be measurable, and usually nothing is
+known about it.</p>
+</div>
+<div class="lemmabox" id="lem-null-measurable">
+
+<p><strong>Lemma 14.2.3.</strong> If <span class="math inline">\(m^*(E)=0\)</span>, then <span class="math inline">\(E\)</span> is measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(A\)</span> be any
+set. Then <span class="math inline">\(A\cap E\subset E\)</span> and so
+<span class="math inline">\(m^*(A\cap E)\le m^*(E)=0\)</span>. Also,
+<span class="math inline">\(A\supset A\cap E^c\)</span>, and so <span class="math display">\[m^*(A)\ge m^*(A\cap E^c)=m^*(A\cap E^c)+m^*(A\cap
+E).\]</span> Thus <span class="math inline">\(E\)</span> is
+measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-subset-null-measurable">
+
+<p><strong>Lemma 14.2.4.</strong> If <span class="math inline">\(F\subset E\)</span> and <span class="math inline">\(E\)</span> is measurable with <span class="math inline">\(m(E)=0\)</span>, <span class="math inline">\(F\)</span> is measurable and <span class="math inline">\(m(F)=0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(A\)</span> be a set.
+Since <span class="math inline">\(E\)</span> is measurable, <span class="math display">\[m^*(A)=m^*(A\cap E)+m^*(A\cap E^c).\]</span>
+Since <span class="math inline">\(A\cap E\subset E\)</span>, <span class="math inline">\(m^*(A\cap E)=0\)</span>. So <span class="math inline">\(m^*(A\cap E^c)=m^*(A)\)</span>. Thus, since <span class="math inline">\(A\cap F\subset A\cap E\)</span> and <span class="math inline">\(A\cap F^c\subset A\)</span>, <span class="math display">\[m^*(A)=m^*(A\cap E)+m^*(A\cap E^c)\ge m^*(A\cap
+F) + m^*(A)\ge m^*(A\cap F) + m^*(A\cap F^c).\]</span> So <span class="math inline">\(F\)</span> is measurable. Since <span class="math inline">\(F\subset E\)</span>, <span class="math inline">\(m(F)\le m(E)\)</span> and so <span class="math inline">\(m(F)=0\)</span>. (A shorter proof. By <a href="#lem-outer-measure-monotone">Lemma 14.1.3</a>, <span class="math inline">\(m^*(F)\le m^*(E)=0\)</span>, so <span class="math inline">\(F\)</span> is measurable by <a href="#lem-null-measurable">Lemma 14.2.3</a>.)</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-union-measurable">
+
+<p><strong>Lemma 14.2.5.</strong> If <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_2\)</span> are measurable, <span class="math inline">\(E_1\cup E_2\)</span> is measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(A\subset\mathbb{R}\)</span>. Split
+<span class="math inline">\(A\)</span> with <span class="math inline">\(E_1\)</span>, and then split the part of <span class="math inline">\(A\)</span> outside <span class="math inline">\(E_1\)</span> with <span class="math inline">\(E_2\)</span>. Since <span class="math inline">\(E_1\)</span> is measurable, <span class="math display">\[m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_1^c).\]</span>
+Since <span class="math inline">\(E_2\)</span> is measurable, using the
+test set <span class="math inline">\(A\cap E_1^c\)</span>, <span class="math display">\[m^*(A\cap E_1^c)=m^*(A\cap E_1^c\cap
+E_2)+m^*(A\cap E_1^c\cap E_2^c).\]</span> By De Morgan’s Laws, <span class="math inline">\(E_1^c\cap E_2^c=(E_1\cup E_2)^c\)</span>. Also
+<span class="math inline">\(A\cap(E_1\cup E_2)=(A\cap E_1)\cup(A\cap
+E_1^c\cap E_2)\)</span>, so by subadditivity, <span class="math display">\[m^*(A\cap(E_1\cup E_2))\le m^*(A\cap
+E_1)+m^*(A\cap E_1^c\cap E_2).\]</span> Putting these together, <span class="math display">\[\begin{aligned}
+m^*(A)&amp;=m^*(A\cap E_1)+m^*(A\cap E_1^c\cap E_2)+m^*(A\cap(E_1\cup
+E_2)^c)\\
+&amp;\ge m^*(A\cap(E_1\cup E_2))+m^*(A\cap(E_1\cup E_2)^c).
+\end{aligned}\]</span> So <span class="math inline">\(E_1\cup
+E_2\)</span> is measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-lebesgue-algebra">
+
+<p><strong>Corollary 14.2.6.</strong> The family <span class="math inline">\(\mathcal{M}\)</span> of measurable sets of real
+numbers forms an algebra.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Using <a href="#lem-union-measurable">Lemma
+14.2.5</a> and an induction argument shows that if <span class="math inline">\(E_1,\dots,E_n\)</span> are measurable, then <span class="math inline">\(\bigcup_{i=1}^n E_i\)</span> is measurable. Also,
+if <span class="math inline">\(E\)</span> is measurable, then for any
+set <span class="math inline">\(A\)</span>, <span class="math display">\[m^*(A)=m^*(A\cap E)+m^*(A\cap E^c)=m^*(A\cap
+E^c)+m^*(A\cap (E^c)^c).\]</span> So <span class="math inline">\(E^c\)</span> is measurable and <span class="math inline">\(\mathcal{M}\)</span> is an algebra. It is
+nonempty, since <span class="math inline">\(\emptyset\)</span> is
+measurable by <a href="#lem-null-measurable">Lemma 14.2.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-finite-additivity-test">
+
+<p><strong>Lemma 14.2.7.</strong> Let <span class="math inline">\(A\)</span> be any set and let <span class="math inline">\(E_1,\dots,E_n\)</span> be a finite sequence of
+disjoint measurable sets. Then <span class="math display">\[m^*\left(A\cap\left[\bigcup_{i=1}^nE_i\right]\right)=\sum_{i=1}^n
+m^*(A\cap E_i).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Induct on <span class="math inline">\(n\)</span>. For <span class="math inline">\(n=1\)</span> there is nothing to prove. Suppose
+the statement holds for <span class="math inline">\(n=k\)</span>, and
+let <span class="math inline">\(B=A\cap\bigcup_{i=1}^{k+1}E_i\)</span>.
+Test <span class="math inline">\(B\)</span> with the measurable set
+<span class="math inline">\(E_{k+1}\)</span>. Since the sets <span class="math inline">\(E_i\)</span> are disjoint, <span class="math inline">\(B\cap E_{k+1}=A\cap E_{k+1}\)</span> and <span class="math inline">\(B\cap E_{k+1}^c=A\cap\bigcup_{i=1}^kE_i\)</span>.
+So <span class="math display">\[m^*(B)=m^*(A\cap
+E_{k+1})+m^*\left(A\cap\bigcup_{i=1}^kE_i\right)=m^*(A\cap
+E_{k+1})+\sum_{i=1}^km^*(A\cap E_i),\]</span> using the case <span class="math inline">\(n=k\)</span>. This is the case <span class="math inline">\(n=k+1\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-lebesgue-sigma-algebra">
+
+<p><strong>Theorem 14.2.8.</strong> The collection <span class="math inline">\(\mathcal{M}\)</span> of measurable subsets of
+<span class="math inline">\(\mathbb{R}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#cor-lebesgue-algebra">Corollary 14.2.6</a>, <span class="math inline">\(\mathcal{M}\)</span> is an algebra. By <a href="ch-measures.html#thm-sigma-algebra-disjoint">Theorem 13.1.4</a>, it is enough to
+show that the union <span class="math inline">\(E=\bigcup_{i=1}^\infty
+E_i\)</span> of a sequence of pairwise disjoint measurable sets is
+measurable. Let <span class="math inline">\(A\subset\mathbb{R}\)</span>,
+and let <span class="math inline">\(F_n=\bigcup_{i=1}^nE_i\)</span>.
+Then <span class="math inline">\(F_n\in\mathcal{M}\)</span> and <span class="math inline">\(E^c\subset F_n^c\)</span>. Testing <span class="math inline">\(A\)</span> with <span class="math inline">\(F_n\)</span> and using <a href="#lem-finite-additivity-test">Lemma 14.2.7</a>, <span class="math display">\[m^*(A)=m^*(A\cap F_n)+m^*(A\cap
+F_n^c)\ge\sum_{i=1}^nm^*(A\cap E_i)+m^*(A\cap E^c).\]</span> This holds
+for every <span class="math inline">\(n\in\mathbb{N}\)</span>. Letting
+<span class="math inline">\(n\to\infty\)</span> and then using
+subadditivity on <span class="math inline">\(A\cap E=\bigcup_i(A\cap
+E_i)\)</span>, <span id="eq-caratheodory-countable"></span> <span class="math display">\[m^*(A)\ge\sum_{i=1}^\infty m^*(A\cap
+E_i)+m^*(A\cap E^c)\ge m^*(A\cap E)+m^*(A\cap E^c).
+\tag{14.2.1}\]</span> So <span class="math inline">\(E\in\mathcal{M}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-ray-measurable">
+
+<p><strong>Lemma 14.2.9.</strong> The interval <span class="math inline">\((a,\infty)\)</span> is measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(A\subset\mathbb{R}\)</span> with
+<span class="math inline">\(m^*(A)&lt;\infty\)</span>. Let <span class="math inline">\(A_1=A\cap(a,\infty)\)</span> and <span class="math inline">\(A_2=A\cap(-\infty,a]\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>, and choose a countable
+collection <span class="math inline">\(\{I_n\}\)</span> of open
+intervals covering <span class="math inline">\(A\)</span> with <span class="math inline">\(\sum\ell(I_n)&lt;m^*(A)+\varepsilon\)</span>. Cut
+each interval at <span class="math inline">\(a\)</span>. Let <span class="math inline">\(I_n'=I_n\cap(a,\infty)\)</span> and <span class="math inline">\(I_n''=I_n\cap(-\infty,a]\)</span>. Each is
+an interval or empty, and <span class="math inline">\(\ell(I_n)=\ell(I_n')+\ell(I_n'')\)</span>.
+The sets <span class="math inline">\(I_n'\)</span> cover <span class="math inline">\(A_1\)</span> and the sets <span class="math inline">\(I_n''\)</span> cover <span class="math inline">\(A_2\)</span>. They need not be open, but by <a href="#lem-outer-measure-monotone">Lemma 14.1.3</a> and Theorems <a href="#thm-outer-measure-subadditive">14.1.6</a> and <a href="#thm-outer-measure-interval">14.1.4</a>, <span class="math display">\[m^*(A_1)\le\sum
+m^*(I_n')=\sum\ell(I_n')\quad\text{and}\quad
+m^*(A_2)\le\sum\ell(I_n'').\]</span> Adding, <span class="math display">\[m^*(A\cap(a,\infty))+m^*(A\cap(a,\infty)^c)\le\sum\left(\ell(I_n')+\ell(I_n'')\right)=\sum\ell(I_n)&lt;m^*(A)+\varepsilon.\]</span>
+Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
+arbitrary, <span class="math inline">\((a,\infty)\)</span> is
+measurable, by <a href="#rem-caratheodory-inequality">Remark
+14.2.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-borel-measurable">
+
+<p><strong>Theorem 14.2.10.</strong> Every Borel set is measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By <a href="ch-measures.html#thm-borel-generators">Theorem
+13.2.5</a> (4), <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span> is generated by
+<span class="math inline">\(\{(a,\infty):a\in\mathbb{R}\}\)</span>.
+Since, by <a href="#lem-ray-measurable">Lemma 14.2.9</a>, <span class="math inline">\((a,\infty)\in\mathcal{M}\)</span> and <span class="math inline">\(\mathcal{M}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\mathcal{M}\)</span>
+by <a href="ch-measures.html#lem-generated-subset">Lemma 13.1.11</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>In particular, open sets, closed sets, <span class="math inline">\(G_\delta\)</span> sets and <span class="math inline">\(F_\sigma\)</span> sets are measurable, and so is
+every interval. By <a href="#thm-outer-measure-interval">Theorem
+14.1.4</a>, <span class="math inline">\(m(I)=\ell(I)\)</span> for every
+interval <span class="math inline">\(I\)</span>.</p>
+<div class="theorembox" id="thm-measurable-translation">
+
+<p><strong>Theorem 14.2.11.</strong> If <span class="math inline">\(E\)</span> is a measurable set, then <span class="math inline">\(E+y\)</span> is measurable and <span class="math inline">\(m(E+y)=m(E)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> This is a direct result of <a href="#thm-outer-measure-translation">Theorem 14.1.5</a>. Let <span class="math inline">\(A\subset\mathbb{R}\)</span>. Then <span class="math inline">\((A-y)\cap E=(A\cap(E+y))-y\)</span>, and similarly
+for complements. Since <span class="math inline">\(E\)</span> is
+measurable and <span class="math inline">\(m^*\)</span> is translation
+invariant, <span class="math display">\[m^*(A)=m^*(A-y)=m^*((A-y)\cap
+E)+m^*((A-y)\cap E^c)=m^*(A\cap(E+y))+m^*(A\cap(E+y)^c).\]</span> So
+<span class="math inline">\(E+y\)</span> is measurable, and <span class="math inline">\(m(E+y)=m^*(E+y)=m^*(E)=m(E)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-lebesgue-measure-space">
+
+<p><strong>Theorem 14.2.12.</strong> Let <span class="math inline">\(\mathcal{M}\)</span> be the collection of
+measurable subsets of <span class="math inline">\(\mathbb{R}\)</span>.
+<span class="math inline">\((\mathbb{R},\mathcal{M},m)\)</span> is a
+measure space.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> First, note that since <span class="math inline">\(\emptyset\)</span> is countable, by <a href="#cor-countable-outer-measure-zero">Corollary 14.1.7</a>, <span class="math inline">\(m(\emptyset)=0\)</span>. Now, let <span class="math inline">\(\{E_i\}_{i=1}^\infty\)</span> be a disjoint
+sequence of measurable sets, and let <span class="math inline">\(E=\bigcup_iE_i\)</span>. Taking <span class="math inline">\(A=E\)</span> in <a href="#eq-caratheodory-countable">(14.2.1)</a> gives <span class="math inline">\(m(E)\ge\sum_{i=1}^\infty m(E_i)\)</span>. The
+reverse inequality is subadditivity. So <span class="math display">\[m\left(\bigcup_{i=1}^\infty
+E_i\right)=\sum^\infty_{i=1}m(E_i).\]</span> So <span class="math inline">\(m\)</span> is a measure and <span class="math inline">\((\mathbb{R},\mathcal{M},m)\)</span> is a measure
+space.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So Lebesgue measure has properties (2), (3) and (4) of <a href="#rem-measure-wishlist">Remark 14.1.1</a>, on the <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{M}\)</span>. Every result of <a href="ch-measures.html#sec-measures">Section 13.3</a> applies to it. For example, <span class="math inline">\(m\)</span> is continuous from below, and from
+above on sets of finite measure.</p>
+<section class="level5 unnumbered" id="exercises-47">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-countable-measurable">
+
+<p><strong>Exercise 14.2.1.</strong> Prove that every countable set is
+measurable with measure <span class="math inline">\(0\)</span>. Prove
+that <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span>
+is measurable, and find <span class="math inline">\(m\bigl([0,1]\setminus\mathbb{Q}\bigr)\)</span>. <a aria-label="Hint for Exercise 14.2.1" href="solutions-ch14.html#sol-exer-countable-measurable">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-null-difference">
+
+<p><strong>Exercise 14.2.2.</strong> Let <span class="math inline">\(E\)</span> be measurable and let <span class="math inline">\(F\subset\mathbb{R}\)</span> with <span class="math inline">\(m^*(E\setminus F)=m^*(F\setminus E)=0\)</span>.
+Prove that <span class="math inline">\(F\)</span> is measurable and
+<span class="math inline">\(m(F)=m(E)\)</span>. <a aria-label="Hint for Exercise 14.2.2" href="solutions-ch14.html#sol-exer-null-difference">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-lebesgue-inclusion-exclusion">
+
+<p><strong>Exercise 14.2.3.</strong> Prove that if <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_2\)</span> are measurable, then <span class="math inline">\(m(E_1\cup E_2)+m(E_1\cap
+E_2)=m(E_1)+m(E_2)\)</span>. (Compare <a href="ch-measures.html#exer-inclusion-exclusion">Exercise 13.3.3</a>.)</p>
+</div>
+<div class="exercisebox" id="exer-outer-measure-measurable-subset">
+
+<p><strong>Exercise 14.2.4.</strong> Let <span class="math inline">\(E\)</span> be measurable and let <span class="math inline">\(A\subset\mathbb{R}\)</span>. Prove that <span class="math inline">\(m^*(A\cup E)+m^*(A\cap E)=m^*(A)+m(E)\)</span>. <a aria-label="Hint for Exercise 14.2.4" href="solutions-ch14.html#sol-exer-outer-measure-measurable-subset">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-measure-zero-nowhere">
+
+<p><strong>Exercise 14.2.5.</strong> Let <span class="math inline">\(E\)</span> be measurable with <span class="math inline">\(m(E)&gt;0\)</span>. Prove that <span class="math inline">\(E\)</span> is uncountable. <a aria-label="Hint for Exercise 14.2.5" href="solutions-ch14.html#sol-exer-measure-zero-nowhere">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-approximation">
+<h2>14.3 Approximation by Open and Closed Sets</h2>
+<p>Measurable sets can be very complicated. The next theorem says they
+are never far from simple sets. Every measurable set lies between an
+<span class="math inline">\(F_\sigma\)</span> set and a <span class="math inline">\(G_\delta\)</span> set that differ by a set of
+measure zero. When <span class="math inline">\(m(E)&lt;\infty\)</span>,
+<span class="math inline">\(E\)</span> is even close to a finite union
+of intervals.</p>
+<div class="theorembox" id="thm-measurable-approximation">
+
+<p><strong>Theorem 14.3.1.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>. The following are
+equivalent.</p>
+<ol>
+<li><p><span class="math inline">\(E\)</span> is measurable.</p></li>
+<li><p>For all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists an open set <span class="math inline">\(U\supset E\)</span>
+such that <span class="math inline">\(m^*(U\setminus
+E)&lt;\varepsilon\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists a closed set <span class="math inline">\(F\subset
+E\)</span> such that <span class="math inline">\(m^*(E\setminus
+F)&lt;\varepsilon\)</span>.</p></li>
+<li><p>There exists a <span class="math inline">\(G_\delta\)</span> set
+<span class="math inline">\(G\supset E\)</span> such that <span class="math inline">\(m^*(G\setminus E)=0\)</span>.</p></li>
+<li><p>There exists an <span class="math inline">\(F_\sigma\)</span> set
+<span class="math inline">\(F\subset E\)</span> such that <span class="math inline">\(m^*(E\setminus F)=0\)</span>.</p></li>
+</ol>
+<p>If <span class="math inline">\(m^*(E)&lt;\infty\)</span>, the above
+are equivalent to:</p>
+<ol>
+<li><p>for all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists a finite union <span class="math inline">\(O\)</span> of
+open intervals such that <span class="math inline">\(m^*(O\triangle
+E)&lt;\varepsilon\)</span>, where <span class="math inline">\(O\triangle
+E=(O\setminus E)\cup(E\setminus O)\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See Exercises <a href="#exer-measurable-approximation">14.3.1</a> and <a href="#exer-measurable-approximation-6">14.3.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="remarkbox" id="rem-lebesgue-not-borel">
+
+<p><strong>Remark 14.3.2.</strong> By (4), every measurable set is a
+Borel set with a set of measure zero removed. So <span class="math inline">\(\mathcal{M}\)</span> is the <span class="math inline">\(\sigma\)</span>-algebra generated by <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span> together with the
+sets of measure zero. There are measurable sets that are not Borel sets.
+Every subset of the Cantor set is measurable with measure <span class="math inline">\(0\)</span>, by <a href="ch-integrals.html#ex-cantor-measure-zero">Example 9.2.8</a> and <a href="#lem-null-measurable">Lemma 14.2.3</a>. A counting argument from
+set theory shows there are more subsets of the Cantor set than there are
+Borel sets, so some of them are not Borel sets. That argument is beyond
+this book. <a href="ch-differentiation.html#exer-cantor-non-borel">Exercise 17.6.3</a> gives a
+different argument, using the Cantor function.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-48">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-measurable-approximation">
+
+<p><strong>Exercise 14.3.1.</strong> Prove that (1)–(5) in <a href="#thm-measurable-approximation">Theorem 14.3.1</a> are equivalent.
+<a aria-label="Hint for Exercise 14.3.1" href="solutions-ch14.html#sol-exer-measurable-approximation">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-measurable-approximation-6">
+
+<p><strong>Exercise 14.3.2.</strong> Prove that (6) is equivalent to
+(1)–(5) when <span class="math inline">\(m^*(E)&lt;\infty\)</span>. <a aria-label="Hint for Exercise 14.3.2" href="solutions-ch14.html#sol-exer-measurable-approximation-6">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-inner-regularity">
+
+<p><strong>Exercise 14.3.3.</strong> Let <span class="math inline">\(E\)</span> be measurable with <span class="math inline">\(m(E)&lt;\infty\)</span>. Prove that for every
+<span class="math inline">\(\varepsilon&gt;0\)</span> there is a compact
+set <span class="math inline">\(K\subset E\)</span> with <span class="math inline">\(m(E\setminus K)&lt;\varepsilon\)</span>. <a aria-label="Hint for Exercise 14.3.3" href="solutions-ch14.html#sol-exer-inner-regularity">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-positive-measure-interval">
+
+<p><strong>Exercise 14.3.4.</strong> Let <span class="math inline">\(E\)</span> be measurable with <span class="math inline">\(m(E)&gt;0\)</span>. Prove that for every <span class="math inline">\(\alpha&lt;1\)</span> there is an open interval
+<span class="math inline">\(I\)</span> with <span class="math inline">\(m(E\cap I)&gt;\alpha\,\ell(I)\)</span>. <a aria-label="Hint for Exercise 14.3.4" href="solutions-ch14.html#sol-exer-positive-measure-interval">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-nonmeasurable">
+<h2>14.4 A Nonmeasurable Set<sup>*</sup></h2>
+<p>This section can be skipped. Nothing later depends on it.</p>
+<p>Is every subset of <span class="math inline">\(\mathbb{R}\)</span>
+measurable? This section shows the answer is no. The proof uses the
+Axiom of Choice. It works inside <span class="math inline">\([0,1)\)</span>, where it is convenient to add
+numbers “around a circle,” wrapping past <span class="math inline">\(1\)</span> back to <span class="math inline">\(0\)</span>.</p>
+<div class="definitionbox" id="def-sum-mod-1">
+
+<p><strong>Definition 14.4.1.</strong> If <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are real numbers in <span class="math inline">\([0,1)\)</span>, define the <em>sum modulo <span class="math inline">\(1\)</span></em> of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to be <span class="math inline">\(x+y\)</span> if <span class="math inline">\(x+y&lt;1\)</span> and to be <span class="math inline">\(x+y-1\)</span> if <span class="math inline">\(x+y\ge 1\)</span>. Denote the sum modulo <span class="math inline">\(1\)</span> of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> by <span class="math inline">\(x\mathbin{\overset{\circ}{+}}y\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-sum-mod-1">
+
+<p><strong>Remark 14.4.2.</strong> <span class="math inline">\(\mathbin{\overset{\circ}{+}}\)</span> is
+commutative and associative. If for each <span class="math inline">\(x\in[0,1)\)</span>, the angle <span class="math inline">\(2\pi x\)</span> is assigned to <span class="math inline">\(x\)</span>, <span class="math inline">\(\mathbin{\overset{\circ}{+}}\)</span> corresponds
+to the addition of angles.</p>
+</div>
+<div class="definitionbox" id="def-translation-mod-1">
+
+<p><strong>Definition 14.4.3.</strong> If <span class="math inline">\(E\subset [0,1)\)</span> and <span class="math inline">\(y\in[0,1)\)</span>, define the <em>translation
+modulo <span class="math inline">\(1\)</span></em> of <span class="math inline">\(E\)</span> to be the set <span class="math display">\[E\mathbin{\overset{\circ}{+}}y=\{z:z=x\mathbin{\overset{\circ}{+}}y\text{
+for some }x\in E\}.\]</span></p>
+</div>
+<div class="lemmabox" id="lem-translation-mod-1">
+
+<p><strong>Lemma 14.4.4.</strong> Let <span class="math inline">\(E\subset [0,1)\)</span> be a measurable set. Then
+for each <span class="math inline">\(y\in[0,1)\)</span>, the set <span class="math inline">\(E\mathbin{\overset{\circ}{+}}y\)</span> is
+measurable and <span class="math inline">\(m(E\mathbin{\overset{\circ}{+}}y)=m(E)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Split <span class="math inline">\(E\)</span> at <span class="math inline">\(1-y\)</span>. Let <span class="math inline">\(E_1=E\cap[0,1-y)\)</span> and <span class="math inline">\(E_2=E\cap[1-y,1)\)</span>. Both are measurable,
+they are disjoint, and <span class="math inline">\(m(E)=m(E_1)+m(E_2)\)</span>. On <span class="math inline">\(E_1\)</span>, adding <span class="math inline">\(y\)</span> modulo <span class="math inline">\(1\)</span> is ordinary addition, so <span class="math inline">\(E_1\mathbin{\overset{\circ}{+}}y=E_1+y\)</span>.
+On <span class="math inline">\(E_2\)</span>, it wraps around, so <span class="math inline">\(E_2\mathbin{\overset{\circ}{+}}y=E_2+(y-1)\)</span>.
+By <a href="#thm-measurable-translation">Theorem 14.2.11</a>, both sets
+are measurable, with <span class="math inline">\(m(E_1\mathbin{\overset{\circ}{+}}y)=m(E_1)\)</span>
+and <span class="math inline">\(m(E_2\mathbin{\overset{\circ}{+}}y)=m(E_2)\)</span>.
+They are disjoint, since <span class="math inline">\(E_1\mathbin{\overset{\circ}{+}}y\subset[y,1)\)</span>
+and <span class="math inline">\(E_2\mathbin{\overset{\circ}{+}}y\subset[0,y)\)</span>.
+Their union is <span class="math inline">\(E\mathbin{\overset{\circ}{+}}y\)</span>. So <span class="math inline">\(E\mathbin{\overset{\circ}{+}}y\)</span> is
+measurable and <span class="math display">\[m(E\mathbin{\overset{\circ}{+}}y)=m(E_1\mathbin{\overset{\circ}{+}}y)+m(E_2\mathbin{\overset{\circ}{+}}y)=m(E_1)+m(E_2)=m(E).\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="axiombox" id="ax-choice">
+
+<p><strong>Axiom 14.4.5</strong> (Axiom of Choice)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{E_\alpha\}_{\alpha\in\Lambda}\)</span> be a
+family of nonempty sets. There exists a set <span class="math inline">\(\{x_\alpha\}_{\alpha\in\Lambda}\)</span> such that
+<span class="math inline">\(x_\alpha\in E_\alpha\)</span> for all <span class="math inline">\(\alpha\in\Lambda\)</span>.</p>
+</div>
+<p>The proof below also uses equivalence classes. If <span class="math inline">\(\sim\)</span> is an equivalence relation on a set
+<span class="math inline">\(S\)</span> (<a href="ch-real-numbers.html#def-relation">Definition 1.1.16</a>), the <em>equivalence
+class</em> of <span class="math inline">\(x\in S\)</span> is <span class="math inline">\([x]=\{y\in S:y\sim x\}\)</span>. Two equivalence
+classes are either equal or disjoint, and every element of <span class="math inline">\(S\)</span> is in its own class. So the classes
+split <span class="math inline">\(S\)</span> into disjoint pieces.</p>
+<div class="theorembox" id="thm-nonmeasurable">
+
+<p><strong>Theorem 14.4.6.</strong> There exists a set <span class="math inline">\(P\subset \mathbb{R}\)</span> such that <span class="math inline">\(P\)</span> is nonmeasurable in the Lebesgue
+sense.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>For <span class="math inline">\(x,y\in[0,1)\)</span>, write <span class="math inline">\(x\sim y\)</span> if <span class="math inline">\(x-y\in\mathbb{Q}\)</span>. This is an equivalence
+relation on <span class="math inline">\([0,1)\)</span>. Its equivalence
+classes are disjoint, and their union is <span class="math inline">\([0,1)\)</span>. By the Axiom of Choice, there is a
+set <span class="math inline">\(P\subset[0,1)\)</span> that contains
+exactly one element of each equivalence class. So two different elements
+of <span class="math inline">\(P\)</span> never differ by a rational
+number.</p>
+<p>List the rational numbers in <span class="math inline">\([0,1)\)</span> as <span class="math inline">\(r_0,r_1,r_2,\dots\)</span>, with <span class="math inline">\(r_0=0\)</span>, and let <span class="math inline">\(P_i=P\mathbin{\overset{\circ}{+}}r_i\)</span>. So
+<span class="math inline">\(P_0=P\)</span>.</p>
+<p><em>The sets <span class="math inline">\(P_i\)</span> are
+disjoint.</em> Suppose <span class="math inline">\(x\in P_i\cap
+P_j\)</span>. Then <span class="math inline">\(x=p\mathbin{\overset{\circ}{+}}r_i=q\mathbin{\overset{\circ}{+}}r_j\)</span>
+for some <span class="math inline">\(p,q\in P\)</span>. So <span class="math inline">\(p-q\)</span> is <span class="math inline">\(r_j-r_i\)</span>, or <span class="math inline">\(r_j-r_i\pm1\)</span>. In every case <span class="math inline">\(p-q\in\mathbb{Q}\)</span>, so <span class="math inline">\(p\sim q\)</span>, and therefore <span class="math inline">\(p=q\)</span>. Then <span class="math inline">\(p\mathbin{\overset{\circ}{+}}r_i=p\mathbin{\overset{\circ}{+}}r_j\)</span>,
+which forces <span class="math inline">\(r_i=r_j\)</span>, so <span class="math inline">\(i=j\)</span>.</p>
+<p><em>The sets <span class="math inline">\(P_i\)</span> cover <span class="math inline">\([0,1)\)</span>.</em> Let <span class="math inline">\(x\in[0,1)\)</span>. Then <span class="math inline">\(x\sim p\)</span> for some <span class="math inline">\(p\in P\)</span>. Let <span class="math inline">\(r=x-p\)</span> if <span class="math inline">\(x\ge
+p\)</span>, and <span class="math inline">\(r=x-p+1\)</span> if <span class="math inline">\(x&lt;p\)</span>. Then <span class="math inline">\(r\in\mathbb{Q}\cap[0,1)\)</span>, so <span class="math inline">\(r=r_i\)</span> for some <span class="math inline">\(i\)</span>, and <span class="math inline">\(x=p\mathbin{\overset{\circ}{+}}r_i\in
+P_i\)</span>.</p>
+<p>Now suppose <span class="math inline">\(P\)</span> were measurable.
+By <a href="#lem-translation-mod-1">Lemma 14.4.4</a>, each <span class="math inline">\(P_i\)</span> would be measurable with <span class="math inline">\(m(P_i)=m(P)\)</span>. By countable additivity,
+<span class="math display">\[1=m([0,1))=\sum_{i=0}^\infty
+m(P_i)=\sum_{i=0}^\infty m(P).\]</span> The right side is <span class="math inline">\(0\)</span> if <span class="math inline">\(m(P)=0\)</span> and <span class="math inline">\(\infty\)</span> if <span class="math inline">\(m(P)&gt;0\)</span>. Neither is <span class="math inline">\(1\)</span>. So <span class="math inline">\(P\)</span> is not measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-no-invariant-measure">
+
+<p><strong>Corollary 14.4.7.</strong> Define <span class="math inline">\(P\)</span> as before. Let <span class="math inline">\(\mu\)</span> be a measure on a <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{N}\)</span> of subsets of <span class="math inline">\(\mathbb{R}\)</span>. Suppose <span class="math inline">\(\mathcal{N}\)</span> contains <span class="math inline">\(P\)</span> and every interval, and that <span class="math inline">\(E+y\in\mathcal{N}\)</span> and <span class="math inline">\(\mu(E+y)=\mu(E)\)</span> for all <span class="math inline">\(E\in\mathcal{N}\)</span> and <span class="math inline">\(y\in\mathbb{R}\)</span>. Then <span class="math inline">\(\mu([0,1))=0\)</span> or <span class="math inline">\(\mu([0,1))=\infty\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The proof of <a href="#lem-translation-mod-1">Lemma 14.4.4</a> uses
+only these properties of <span class="math inline">\(m\)</span>. So it
+applies to <span class="math inline">\(\mu\)</span>, and <span class="math inline">\(\mu(P_i)=\mu(P)\)</span> for every <span class="math inline">\(i\)</span>. As in the proof of <a href="#thm-nonmeasurable">Theorem 14.4.6</a>, <span class="math inline">\(\mu([0,1))=\sum_{i=0}^\infty\mu(P)\)</span>, which
+is <span class="math inline">\(0\)</span> or <span class="math inline">\(\infty\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>In particular, no measure on all of <span class="math inline">\(\mathcal{P}(\mathbb{R})\)</span> is translation
+invariant and gives <span class="math inline">\([0,1)\)</span> measure
+<span class="math inline">\(1\)</span>. So properties (1)–(4) in <a href="#rem-measure-wishlist">Remark 14.1.1</a> cannot all hold. Lebesgue
+measure gives up (1).</p>
+<section class="level5 unnumbered" id="exercises-49">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-nonmeasurable-positive">
+
+<p><strong>Exercise 14.4.1.</strong> Prove that the set <span class="math inline">\(P\)</span> in the proof of <a href="#thm-nonmeasurable">Theorem 14.4.6</a> has <span class="math inline">\(m^*(P)&gt;0\)</span>. <a aria-label="Hint for Exercise 14.4.1" href="solutions-ch14.html#sol-exer-nonmeasurable-positive">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-outer-measure-not-additive">
+
+<p><strong>Exercise 14.4.2.</strong> Use the sets <span class="math inline">\(P_i\)</span> to show that <span class="math inline">\(m^*\)</span> is not countably additive on <span class="math inline">\(\mathcal{P}(\mathbb{R})\)</span>. That is, find
+disjoint sets <span class="math inline">\(A_1,A_2,\dots\)</span> with
+<span class="math inline">\(m^*\left(\bigcup A_i\right)&lt;\sum
+m^*(A_i)\)</span>. <a aria-label="Hint for Exercise 14.4.2" href="solutions-ch14.html#sol-exer-outer-measure-not-additive">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-nonmeasurable-subset">
+
+<p><strong>Exercise 14.4.3.</strong> Let <span class="math inline">\(E\subset[0,1)\)</span> be measurable with <span class="math inline">\(m(E)&gt;0\)</span>. Prove that <span class="math inline">\(E\)</span> contains a nonmeasurable set. <a aria-label="Hint for Exercise 14.4.3" href="solutions-ch14.html#sol-exer-nonmeasurable-subset">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-13">
+<h2>Notes</h2>
+<p>Émile Borel showed in 1898 how to assign lengths to the sets now
+called Borel sets [<a href="bibliography.html#bib-borel1898">7</a>]. Henri Lebesgue’s
+1902 thesis defined outer measure by countable covers, as in <a href="#def-outer-measure">Definition 14.1.2</a>, and built the measure
+that bears his name [<a href="bibliography.html#bib-lebesgue1902">41</a>]. Lebesgue
+called a set measurable when its outer and inner measures agree. The
+condition in <a href="#def-lebesgue-measurable">Definition 14.2.1</a> is
+due to Constantin Carathéodory in 1914 [<a href="bibliography.html#bib-caratheodory1914">14</a>]. It works for any outer measure,
+which is why it is now the standard definition. Giuseppe Vitali
+constructed the first nonmeasurable set in 1905 [<a href="bibliography.html#bib-vitali1905">73</a>]. Ernst Zermelo had stated the Axiom of
+Choice the year before [<a href="bibliography.html#bib-zermelo1904">78</a>]. Robert
+Solovay showed in 1970 that the Axiom of Choice cannot be avoided
+completely here. Without it, it is consistent that every subset of <span class="math inline">\(\mathbb{R}\)</span> is Lebesgue measurable [<a href="bibliography.html#bib-solovay1970">67</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-measures.html"><span class="dir">Previous</span> Chapter 13. σ-Algebras and Measures</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-measurable-functions.html"><span class="dir">Next</span> Chapter 15. Measurable Functions</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

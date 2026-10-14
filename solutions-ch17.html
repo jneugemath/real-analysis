@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 17. Differentiation and Integration | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch16.html"><span class="dir">Previous</span> Solutions for Chapter 16. The Lebesgue Integral</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-appa.html"><span class="dir">Next</span> Solutions for Appendix A. Construction of the Real Numbers by Cuts</a>
+</nav>
+<main id="main">
+<article id="solutions-ch17">
+<h1>Solutions for Chapter 17. Differentiation and Integration</h1>
+<div class="solutionbox" id="sol-exer-vitali-needed">
+
+<p><strong><a href="ch-differentiation.html#exer-vitali-needed">Exercise 17.1.1</a>.</strong>
+The union of the two intervals is <span class="math inline">\([0,1]\)</span>, so <span class="math inline">\(\mathcal{I}\)</span> covers <span class="math inline">\(E\)</span>. The two intervals overlap on <span class="math inline">\(\left[\frac13,\frac23\right]\)</span>. So a
+disjoint subcollection has at most one of them. If it is <span class="math inline">\(\left[0,\frac23\right]\)</span>, it misses <span class="math inline">\(\left(\frac23,1\right]\)</span>. If it is <span class="math inline">\(\left[\frac13,1\right]\)</span>, it misses <span class="math inline">\(\left[0,\frac13\right)\)</span>. If it is empty,
+it misses all of <span class="math inline">\([0,1]\)</span>. In every
+case the part of <span class="math inline">\(E\)</span> that is missed
+has measure at least <span class="math inline">\(\frac13\)</span>.</p>
+<p>Here <span class="math inline">\(m^*(E)=1&lt;\infty\)</span>. The
+hypothesis that fails is that <span class="math inline">\(\mathcal{I}\)</span> covers <span class="math inline">\(E\)</span> in the sense of Vitali. For example,
+the only interval of <span class="math inline">\(\mathcal{I}\)</span>
+that contains <span class="math inline">\(0\)</span> has length <span class="math inline">\(\frac23\)</span>. So for <span class="math inline">\(\varepsilon\le\frac23\)</span>, no interval of
+<span class="math inline">\(\mathcal{I}\)</span> contains <span class="math inline">\(0\)</span> and has length less than <span class="math inline">\(\varepsilon\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-vitali-countable">
+
+<p><strong><a href="ch-differentiation.html#exer-vitali-countable">Exercise
+17.1.2</a>.</strong> <em>Hint.</em> Look at Step 3 of the proof.</p>
+</div>
+<div class="solutionbox" id="sol-exer-vitali-rational">
+
+<p><strong><a href="ch-differentiation.html#exer-vitali-rational">Exercise 17.1.3</a>.</strong>
+<em>Hint.</em> Given <span class="math inline">\(x\in E\)</span> and
+<span class="math inline">\(\varepsilon&gt;0\)</span>, use the density
+of <span class="math inline">\(\mathbb{Q}\)</span> to find rational
+numbers <span class="math inline">\(p&lt;x&lt;q\)</span> with <span class="math inline">\(q-p&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-dini-monotone">
+
+<p><strong><a href="ch-differentiation.html#exer-dini-monotone">Exercise 17.2.1</a>.</strong>
+<em>Hint.</em> Suppose <span class="math inline">\(f(c)&gt;f(d)\)</span>
+with <span class="math inline">\(c&lt;d\)</span>. Choose <span class="math inline">\(\varepsilon&gt;0\)</span> so that <span class="math inline">\(g(x)=f(x)+\varepsilon x\)</span> still has <span class="math inline">\(g(c)&gt;g(d)\)</span>, and choose <span class="math inline">\(r\)</span> with <span class="math inline">\(g(d)&lt;r&lt;g(c)\)</span>. Look at the largest
+<span class="math inline">\(x\in[c,d]\)</span> with <span class="math inline">\(g(x)\ge r\)</span>.</p>
+<p><em>Solution.</em> Two facts are used. First, for any <span class="math inline">\(c\)</span>, the difference quotients of <span class="math inline">\(g(x)=f(x)+cx\)</span> are those of <span class="math inline">\(f\)</span> plus <span class="math inline">\(c\)</span>. So each Dini derivative of <span class="math inline">\(g\)</span> is the matching Dini derivative of
+<span class="math inline">\(f\)</span> plus <span class="math inline">\(c\)</span>. Second, it is enough to show <span class="math inline">\(f(c)\le f(d)\)</span> whenever <span class="math inline">\(a&lt;c&lt;d&lt;b\)</span>. Indeed, if <span class="math inline">\(a\le x&lt;y\le b\)</span>, choose <span class="math inline">\(c_k\to x\)</span> and <span class="math inline">\(d_k\to y\)</span> with <span class="math inline">\(a&lt;c_k&lt;d_k&lt;b\)</span>. Then <span class="math inline">\(f(c_k)\le f(d_k)\)</span>, and <span class="math inline">\(f(x)\le f(y)\)</span> by continuity.</p>
+<p><em>The case <span class="math inline">\(D_+f\ge0\)</span>.</em>
+Suppose <span class="math inline">\(a&lt;c&lt;d&lt;b\)</span> and <span class="math inline">\(f(c)&gt;f(d)\)</span>. Choose <span class="math inline">\(\varepsilon&gt;0\)</span> with <span class="math inline">\(\varepsilon(d-c)&lt;f(c)-f(d)\)</span>, and let
+<span class="math inline">\(g(x)=f(x)+\varepsilon x\)</span>. Then <span class="math inline">\(g(c)&gt;g(d)\)</span>. Choose <span class="math inline">\(r\)</span> with <span class="math inline">\(g(d)&lt;r&lt;g(c)\)</span>. Let <span class="math inline">\(x_0=\sup\{x\in[c,d]:g(x)\ge r\}\)</span>. Since
+<span class="math inline">\(g\)</span> is continuous, <span class="math inline">\(g(x_0)\ge r\)</span>. (Take points of this set
+that tend to <span class="math inline">\(x_0\)</span>.) So <span class="math inline">\(x_0\ne d\)</span>, and <span class="math inline">\(c\le x_0&lt;d\)</span>. For <span class="math inline">\(x_0&lt;x\le d\)</span>, <span class="math inline">\(g(x)&lt;r\le g(x_0)\)</span>. So every difference
+quotient <span class="math inline">\(\frac{g(x_0+h)-g(x_0)}{h}\)</span>
+with <span class="math inline">\(0&lt;h\le d-x_0\)</span> is negative.
+So <span class="math inline">\(D^+g(x_0)\le0\)</span>, and then <span class="math inline">\(D_+g(x_0)\le0\)</span>. But <span class="math inline">\(D_+g(x_0)=D_+f(x_0)+\varepsilon\ge\varepsilon&gt;0\)</span>,
+since <span class="math inline">\(x_0\in(a,b)\)</span>. This
+contradiction shows <span class="math inline">\(f(c)\le
+f(d)\)</span>.</p>
+<p><em>The case <span class="math inline">\(D^-f\ge0\)</span>.</em>
+Suppose <span class="math inline">\(a&lt;c&lt;d&lt;b\)</span> and <span class="math inline">\(f(c)&gt;f(d)\)</span>. Define <span class="math inline">\(\varepsilon\)</span>, <span class="math inline">\(g\)</span> and <span class="math inline">\(r\)</span> as before. Let <span class="math inline">\(x_1=\inf\{x\in[c,d]:g(x)\le r\}\)</span>. By
+continuity, <span class="math inline">\(g(x_1)\le r\)</span>. So <span class="math inline">\(x_1\ne c\)</span>, and <span class="math inline">\(c&lt;x_1\le d\)</span>. For <span class="math inline">\(c\le x&lt;x_1\)</span>, <span class="math inline">\(g(x)&gt;r\ge g(x_1)\)</span>. So every difference
+quotient <span class="math inline">\(\frac{g(x_1)-g(x_1-h)}{h}\)</span>
+with <span class="math inline">\(0&lt;h\le x_1-c\)</span> is negative,
+and <span class="math inline">\(D^-g(x_1)\le0\)</span>. But <span class="math inline">\(D^-g(x_1)=D^-f(x_1)+\varepsilon\ge\varepsilon&gt;0\)</span>.
+This contradiction shows <span class="math inline">\(f(c)\le
+f(d)\)</span>.</p>
+<p><em>All four derivatives.</em> The first argument showed <span class="math inline">\(D^+g(x_0)\le0\)</span>. So it also proves the
+theorem when <span class="math inline">\(D^+f\ge0\)</span>. The second
+proves it when <span class="math inline">\(D^-f\ge0\)</span>. Since
+<span class="math inline">\(D_+f\le D^+f\)</span> and <span class="math inline">\(D_-f\le D^-f\)</span>, the hypothesis <span class="math inline">\(D_+f\ge0\)</span> implies <span class="math inline">\(D^+f\ge0\)</span>, and <span class="math inline">\(D_-f\ge0\)</span> implies <span class="math inline">\(D^-f\ge0\)</span>. So the cases <span class="math inline">\(D^+f\ge0\)</span> and <span class="math inline">\(D^-f\ge0\)</span> cover all four.</p>
+</div>
+<div class="solutionbox" id="sol-exer-dini-examples">
+
+<p><strong><a href="ch-differentiation.html#exer-dini-examples">Exercise 17.2.2</a>.</strong>
+<em>Hint.</em> For <span class="math inline">\(x\sin\frac1x\)</span>,
+the difference quotient at <span class="math inline">\(0\)</span> is
+<span class="math inline">\(\sin\frac1h\)</span>. For <span class="math inline">\(\chi_\mathbb{Q}\)</span>, treat rational and
+irrational <span class="math inline">\(h\)</span> separately.</p>
+</div>
+<div class="solutionbox" id="sol-exer-dini-negative">
+
+<p><strong><a href="ch-differentiation.html#exer-dini-negative">Exercise 17.2.3</a>.</strong>
+<em>Hint.</em> For any function <span class="math inline">\(a_h\)</span>
+of <span class="math inline">\(h\)</span>, <span class="math inline">\(\limsup(-a_h)=-\liminf a_h\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-decreasing-differentiable">
+
+<p><strong><a href="ch-differentiation.html#exer-decreasing-differentiable">Exercise
+17.2.4</a>.</strong> <em>Hint.</em> Apply <a href="ch-differentiation.html#thm-monotone-differentiable">Theorem 17.2.3</a> to <span class="math inline">\(-f\)</span>.</p>
+<p><em>Solution.</em> The function <span class="math inline">\(-f\)</span> is increasing on <span class="math inline">\([a,b]\)</span>. By <a href="ch-differentiation.html#thm-monotone-differentiable">Theorem 17.2.3</a>, <span class="math inline">\(-f\)</span> is differentiable a.e., <span class="math inline">\((-f)'\)</span> is measurable, and <span class="math display">\[\int_{[a,b]}(-f)'\le-f(b)-\bigl(-f(a)\bigr)=f(a)-f(b).\]</span>
+Wherever <span class="math inline">\(-f\)</span> is differentiable, so
+is <span class="math inline">\(f\)</span>, with <span class="math inline">\(f'=-(-f)'\)</span>. So <span class="math inline">\(f\)</span> is differentiable a.e. Since <span class="math inline">\((-f)'\ge0\)</span> and its integral is finite,
+<span class="math inline">\((-f)'\)</span> is integrable. By <a href="ch-lebesgue-integral.html#thm-lebesgue-integral-properties">Theorem 16.5.4</a> (1), <span class="math inline">\(f'\)</span> is integrable and <span class="math display">\[\int_{[a,b]}f'=-\int_{[a,b]}(-f)'\ge-\bigl(f(a)-f(b)\bigr)=f(b)-f(a).\]</span></p>
+</div>
+<div class="solutionbox" id="sol-exer-jumps-at-rationals">
+
+<p><strong><a href="ch-differentiation.html#exer-jumps-at-rationals">Exercise
+17.2.5</a>.</strong> <em>Hint.</em> If <span class="math inline">\(x&lt;y\)</span>, then <span class="math inline">\(f(y)-f(x)=\sum_{x&lt;r_n\le y}2^{-n}\ge0\)</span>.
+If <span class="math inline">\(x&lt;r_m\)</span>, then <span class="math inline">\(f(r_m)-f(x)\ge2^{-m}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-pn-increasing">
+
+<p><strong><a href="ch-differentiation.html#exer-pn-increasing">Exercise 17.3.1</a>.</strong>
+<em>Hint.</em> Add the point <span class="math inline">\(y\)</span> to a
+partition of <span class="math inline">\([a,x]\)</span>.</p>
+<p><em>Solution.</em> If <span class="math inline">\(x=a\)</span>, then
+<span class="math inline">\(P_f[a,a]=N_f[a,a]=0\)</span> by convention,
+as in the proof of <a href="ch-differentiation.html#thm-jordan-pn">Theorem 17.3.3</a>, and
+there is nothing to prove. Suppose <span class="math inline">\(a&lt;x&lt;y\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_k\}\)</span> be a
+partition of <span class="math inline">\([a,x]\)</span>. Then <span class="math inline">\(\mathcal{P}'=\mathcal{P}\cup\{y\}\)</span> is
+a partition of <span class="math inline">\([a,y]\)</span>, with one more
+subinterval <span class="math inline">\([x,y]\)</span>. So <span class="math display">\[p(\mathcal{P}')=p(\mathcal{P})+[f(y)-f(x)]^+\ge
+p(\mathcal{P}).\]</span> So <span class="math inline">\(p(\mathcal{P})\le p(\mathcal{P}')\le
+P_f[a,y]\)</span>. Taking the supremum over all partitions <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,x]\)</span> gives <span class="math inline">\(P_f[a,x]\le P_f[a,y]\)</span>. The same argument
+with <span class="math inline">\(n(\mathcal{P})\)</span> gives <span class="math inline">\(N_f[a,x]\le N_f[a,y]\)</span>. (These hold in
+<span class="math inline">\([0,\infty]\)</span>, even if <span class="math inline">\(f\)</span> is not of bounded variation.)</p>
+</div>
+<div class="solutionbox" id="sol-exer-variation-lower-semicontinuous">
+
+<p><strong><a href="ch-differentiation.html#exer-variation-lower-semicontinuous">Exercise
+17.3.2</a>.</strong> <em>Hint.</em> Try <span class="math inline">\(f_n(x)=\frac1n\sin(n^2x)\)</span> on <span class="math inline">\([0,\pi]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-pn-formulas">
+
+<p><strong><a href="ch-differentiation.html#exer-pn-formulas">Exercise 17.3.3</a>.</strong>
+<em>Hint.</em> Apply <a href="ch-differentiation.html#lem-positive-negative-variation">Lemma
+17.3.2</a> on <span class="math inline">\([a,x]\)</span>, and solve the
+two equations for <span class="math inline">\(P_f[a,x]\)</span> and
+<span class="math inline">\(N_f[a,x]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sin-variations">
+
+<p><strong><a href="ch-differentiation.html#exer-sin-variations">Exercise 17.3.4</a>.</strong>
+<em>Hint.</em> <span class="math inline">\(\sin x\)</span> increases on
+<span class="math inline">\([0,\frac\pi2]\)</span>, decreases on <span class="math inline">\([\frac\pi2,\frac{3\pi}2]\)</span>, and increases
+on <span class="math inline">\([\frac{3\pi}2,2\pi]\)</span>. Find <span class="math inline">\(V_f\)</span> with <a href="ch-bounded-variation.html#thm-variation-additive">Theorem 8.2.1</a>, then use <a href="ch-differentiation.html#exer-pn-formulas">Exercise 17.3.3</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bv-derivative-integral">
+
+<p><strong><a href="ch-differentiation.html#exer-bv-derivative-integral">Exercise
+17.3.5</a>.</strong> <em>Hint.</em> Let <span class="math inline">\(V_f(x)=V_f[a,x]\)</span>. Show that <span class="math inline">\(|f'|\le V_f'\)</span> a.e.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(V_f(x)=V_f[a,x]\)</span>, with <span class="math inline">\(V_f(a)=0\)</span>. By <a href="ch-bounded-variation.html#thm-variation-increasing">Theorem 8.2.2</a>, <span class="math inline">\(V_f\)</span> is increasing. By <a href="ch-differentiation.html#thm-monotone-differentiable">Theorem 17.2.3</a>, <span class="math inline">\(V_f\)</span> is differentiable a.e., and <span class="math display">\[\int_{[a,b]}V_f'\le
+V_f(b)-V_f(a)=V_f[a,b].\]</span> By <a href="ch-differentiation.html#cor-bv-differentiable">Corollary 17.3.4</a>, <span class="math inline">\(f\)</span> is differentiable a.e., and <span class="math inline">\(f'\)</span> is integrable.</p>
+<p>Let <span class="math inline">\(a\le x&lt;y\le b\)</span>. By <a href="ch-bounded-variation.html#rem-variation-endpoints">Remark 8.1.6</a> and <a href="ch-bounded-variation.html#thm-variation-additive">Theorem 8.2.1</a>, <span class="math display">\[|f(y)-f(x)|\le V_f[x,y]=V_f(y)-V_f(x).\]</span>
+Let <span class="math inline">\(x\in[a,b)\)</span> be a point where both
+<span class="math inline">\(f\)</span> and <span class="math inline">\(V_f\)</span> are differentiable. For <span class="math inline">\(h&gt;0\)</span> small, divide by <span class="math inline">\(h\)</span> with <span class="math inline">\(y=x+h\)</span>. Then <span class="math inline">\(\left|\frac{f(x+h)-f(x)}{h}\right|\le\frac{V_f(x+h)-V_f(x)}{h}\)</span>.
+Letting <span class="math inline">\(h\to0^+\)</span> gives <span class="math inline">\(|f'(x)|\le V_f'(x)\)</span>. So <span class="math inline">\(|f'|\le V_f'\)</span> a.e. By <a href="ch-lebesgue-integral.html#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (3),
+<span class="math display">\[\int_{[a,b]}|f'|\le\int_{[a,b]}V_f'\le
+V_f[a,b].\]</span></p>
+</div>
+<div class="solutionbox" id="sol-exer-averages-converge">
+
+<p><strong><a href="ch-differentiation.html#exer-averages-converge">Exercise
+17.4.1</a>.</strong> <em>Hint.</em> <span class="math inline">\(\frac1h\int_{[x,x+h]}f=\frac{F(x+h)-F(x)}h\)</span>,
+where <span class="math inline">\(F\)</span> is the indefinite integral
+of <span class="math inline">\(f\)</span>. Use <a href="ch-differentiation.html#thm-derivative-of-integral">Theorem 17.4.5</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-density-theorem">
+
+<p><strong><a href="ch-differentiation.html#exer-density-theorem">Exercise 17.4.2</a>.</strong>
+<em>Hint.</em> Apply <a href="ch-differentiation.html#exer-averages-converge">Exercise
+17.4.1</a> to <span class="math inline">\(f=\chi_E\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-indefinite-integral-lipschitz">
+
+<p><strong><a href="ch-differentiation.html#exer-indefinite-integral-lipschitz">Exercise
+17.4.3</a>.</strong> <em>Hint.</em> <span class="math inline">\(|F(y)-F(x)|=\left|\int_{[x,y]}f\right|\le\int_{[x,y]}|f|\)</span>.</p>
+<p><em>Solution.</em> Since <span class="math inline">\(f\)</span> is
+measurable and <span class="math inline">\(|f|\le K\)</span> on <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(f\)</span> is integrable, with <span class="math inline">\(\int_{[a,b]}|f|\le K(b-a)\)</span>. Let <span class="math inline">\(F(x)=F(a)+\int_{[a,x]}f\)</span>. Let <span class="math inline">\(a\le x&lt;y\le b\)</span>. Since <span class="math inline">\([a,y]\)</span> is the disjoint union of <span class="math inline">\([a,x]\)</span> and <span class="math inline">\((x,y]\)</span>, <a href="ch-lebesgue-integral.html#thm-lebesgue-integral-properties">Theorem 16.5.4</a> (4) gives
+<span class="math inline">\(F(y)-F(x)=\int_{(x,y]}f\)</span>. By <a href="ch-lebesgue-integral.html#exer-abs-integral">Exercise 16.5.3</a> and <a href="ch-lebesgue-integral.html#thm-bounded-integral-properties">Theorem 16.3.5</a> (5), <span class="math display">\[|F(y)-F(x)|=\left|\int_{(x,y]}f\right|\le\int_{(x,y]}|f|\le
+K\,m\bigl((x,y]\bigr)=K(y-x).\]</span> By symmetry, and trivially when
+<span class="math inline">\(x=y\)</span>, <span class="math inline">\(|F(x)-F(y)|\le K|x-y|\)</span> for all <span class="math inline">\(x,y\in[a,b]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-rational-intervals-zero">
+
+<p><strong><a href="ch-differentiation.html#exer-rational-intervals-zero">Exercise
+17.4.4</a>.</strong> <em>Hint.</em> The indefinite integral <span class="math inline">\(F\)</span> is continuous, and <span class="math inline">\(F(c)=F(d)\)</span> for rational <span class="math inline">\(c&lt;d\)</span>. So <span class="math inline">\(F\)</span> is constant. Then use <a href="ch-differentiation.html#lem-integral-zero-intervals">Lemma 17.4.3</a>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(F(x)=\int_{[a,x]}f\)</span>. By <a href="ch-differentiation.html#lem-indefinite-integral-bv">Lemma 17.4.2</a>, <span class="math inline">\(F\)</span> is continuous on <span class="math inline">\([a,b]\)</span>. Let <span class="math inline">\(c&lt;d\)</span> be rational numbers in <span class="math inline">\([a,b]\)</span>. As in the proof of <a href="ch-differentiation.html#exer-indefinite-integral-lipschitz">Exercise 17.4.3</a>, <span class="math inline">\(F(d)-F(c)=\int_{(c,d]}f\)</span>. The sets <span class="math inline">\([c,d]\)</span> and <span class="math inline">\((c,d]\)</span> differ by one point, which has
+measure zero, so <span class="math inline">\(\int_{(c,d]}f=\int_{[c,d]}f=0\)</span>. So <span class="math inline">\(F\)</span> takes the same value at all rational
+points of <span class="math inline">\([a,b]\)</span>.</p>
+<p>Fix a rational <span class="math inline">\(q_0\in[a,b]\)</span>.
+Every <span class="math inline">\(x\in[a,b]\)</span> is the limit of a
+sequence of rational numbers in <span class="math inline">\([a,b]\)</span>, by the density of <span class="math inline">\(\mathbb{Q}\)</span> (<a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>). Since <span class="math inline">\(F\)</span> is continuous, <span class="math inline">\(F(x)=F(q_0)\)</span>. So <span class="math inline">\(F\)</span> is constant on <span class="math inline">\([a,b]\)</span>. Since <span class="math inline">\(F(a)=0\)</span>, <span class="math inline">\(\int_{[a,x]}f=0\)</span> for every <span class="math inline">\(x\in[a,b]\)</span>. By <a href="ch-differentiation.html#lem-integral-zero-intervals">Lemma 17.4.3</a>, <span class="math inline">\(f=0\)</span> a.e. on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-derivative-fails-dense">
+
+<p><strong><a href="ch-differentiation.html#exer-derivative-fails-dense">Exercise
+17.4.5</a>.</strong> <em>Hint.</em> <span class="math inline">\(\chi_\mathbb{Q}=0\)</span> a.e., so <span class="math inline">\(F=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-monotone-ac-singular">
+
+<p><strong><a href="ch-differentiation.html#exer-monotone-ac-singular">Exercise
+17.5.1</a>.</strong> <em>Hint.</em> Let <span class="math inline">\(g(x)=\int_{[a,x]}f'\)</span>. Use <a href="ch-differentiation.html#thm-monotone-differentiable">Theorem 17.2.3</a> on <span class="math inline">\([x,y]\)</span> to show <span class="math inline">\(f-g\)</span> is increasing.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(f\)</span> be
+increasing on <span class="math inline">\([a,b]\)</span>. By <a href="ch-differentiation.html#thm-monotone-differentiable">Theorem 17.2.3</a>, <span class="math inline">\(f'\)</span> exists a.e., <span class="math inline">\(f'\ge0\)</span>, and <span class="math inline">\(\int_{[a,b]}f'\le
+f(b)-f(a)&lt;\infty\)</span>. So <span class="math inline">\(f'\)</span> is integrable. Let <span class="math display">\[g(x)=\int_{[a,x]}f'\quad\text{and}\quad
+h=f-g.\]</span> Then <span class="math inline">\(g\)</span> is an
+indefinite integral, so <span class="math inline">\(g\in
+AC[a,b]\)</span> by <a href="ch-differentiation.html#thm-ac-indefinite-integral">Theorem
+17.5.8</a> (see <a href="ch-differentiation.html#exer-indefinite-integral-ac">Exercise
+17.5.2</a>).</p>
+<p>The function <span class="math inline">\(h\)</span> is increasing.
+Let <span class="math inline">\(a\le x&lt;y\le b\)</span>. Then <span class="math inline">\(g(y)-g(x)=\int_{(x,y]}f'=\int_{[x,y]}f'\)</span>,
+since one point has measure zero. The function <span class="math inline">\(f\)</span> is increasing on <span class="math inline">\([x,y]\)</span>, so <a href="ch-differentiation.html#thm-monotone-differentiable">Theorem 17.2.3</a> on <span class="math inline">\([x,y]\)</span> gives <span class="math inline">\(\int_{[x,y]}f'\le f(y)-f(x)\)</span>. So <span class="math display">\[h(y)-h(x)=\bigl(f(y)-f(x)\bigr)-\int_{[x,y]}f'\ge0.\]</span>
+By <a href="ch-differentiation.html#thm-derivative-of-integral">Theorem 17.4.5</a>, <span class="math inline">\(g'=f'\)</span> a.e. So <span class="math inline">\(h'=f'-g'=0\)</span> a.e., and <span class="math inline">\(h\)</span> is singular. Thus <span class="math inline">\(f=g+h\)</span> is the sum of an absolutely
+continuous function and a singular function.</p>
+</div>
+<div class="solutionbox" id="sol-exer-indefinite-integral-ac">
+
+<p><strong><a href="ch-differentiation.html#exer-indefinite-integral-ac">Exercise
+17.5.2</a>.</strong> <em>Hint.</em> Use <a href="ch-lebesgue-integral.html#thm-absolute-continuity-integral">Theorem 16.4.14</a>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(F(x)=F(a)+\int_{[a,x]}f\)</span>, where <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\([a,b]\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-lebesgue-integral.html#thm-absolute-continuity-integral">Theorem 16.4.14</a>, applied to
+<span class="math inline">\(|f|\)</span>, there is a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(\int_A|f|&lt;\varepsilon\)</span> for every
+measurable <span class="math inline">\(A\subset[a,b]\)</span> with <span class="math inline">\(m(A)&lt;\delta\)</span>.</p>
+<p>Let <span class="math inline">\(\{(x_i,x_i')\}_{i=1}^n\)</span>
+be nonoverlapping subintervals of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(x_i&lt;x_i'\)</span> and <span class="math inline">\(\sum_{i=1}^n(x_i'-x_i)&lt;\delta\)</span>. As
+in <a href="ch-differentiation.html#exer-indefinite-integral-lipschitz">Exercise 17.4.3</a>,
+<span class="math inline">\(F(x_i')-F(x_i)=\int_{(x_i,x_i']}f\)</span>.
+The half-open intervals <span class="math inline">\((x_i,x_i']\)</span> are pairwise disjoint,
+since the open intervals are. Let <span class="math inline">\(A\)</span>
+be their union. Then <span class="math inline">\(m(A)=\sum_i(x_i'-x_i)&lt;\delta\)</span>. By
+<a href="ch-lebesgue-integral.html#exer-abs-integral">Exercise 16.5.3</a> and <a href="ch-lebesgue-integral.html#thm-integral-countably-additive">Theorem 16.4.10</a>, <span class="math display">\[\sum_{i=1}^n|F(x_i')-F(x_i)|\le\sum_{i=1}^n\int_{(x_i,x_i']}|f|=\int_A|f|&lt;\varepsilon.\]</span>
+So <span class="math inline">\(F\)</span> is absolutely continuous on
+<span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ac-algebra">
+
+<p><strong><a href="ch-differentiation.html#exer-ac-algebra">Exercise 17.5.3</a>.</strong>
+<em>Hint.</em> Continuous functions on <span class="math inline">\([a,b]\)</span> are bounded. For <span class="math inline">\(fg\)</span>, use <span class="math inline">\(|f(y)g(y)-f(x)g(x)|\le|f(y)||g(y)-g(x)|+|g(x)||f(y)-f(x)|\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(\{(x_i,x_i')\}\)</span> denote a finite
+collection of nonoverlapping subintervals of <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<p><em>The sum.</em> Choose <span class="math inline">\(\delta_1\)</span> for <span class="math inline">\(f\)</span> and <span class="math inline">\(\delta_2\)</span> for <span class="math inline">\(g\)</span> in <a href="ch-differentiation.html#def-absolutely-continuous">Definition 17.5.1</a>, both with <span class="math inline">\(\frac\varepsilon 2\)</span>, and let <span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>. If
+<span class="math inline">\(\sum|x_i'-x_i|&lt;\delta\)</span>, then
+by the Triangle Inequality <span class="math display">\[\sum|(f+g)(x_i')-(f+g)(x_i)|\le\sum|f(x_i')-f(x_i)|+\sum|g(x_i')-g(x_i)|&lt;\frac\varepsilon
+2+\frac\varepsilon 2=\varepsilon.\]</span></p>
+<p><em>The multiple.</em> If <span class="math inline">\(c=0\)</span>,
+then <span class="math inline">\(cf=0\)</span> is constant. Otherwise
+choose <span class="math inline">\(\delta\)</span> for <span class="math inline">\(f\)</span> with <span class="math inline">\(\frac{\varepsilon}{|c|}\)</span>. Then <span class="math inline">\(\sum|cf(x_i')-cf(x_i)|=|c|\sum|f(x_i')-f(x_i)|&lt;\varepsilon\)</span>.</p>
+<p><em>The product.</em> An absolutely continuous function is
+continuous, so <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are bounded on <span class="math inline">\([a,b]\)</span> (<a href="ch-continuity.html#thm-continuous-bounded">Theorem 6.3.14</a>). Choose <span class="math inline">\(K&gt;0\)</span> with <span class="math inline">\(|f|\le K\)</span> and <span class="math inline">\(|g|\le K\)</span>. For <span class="math inline">\(x,y\in[a,b]\)</span>, <span class="math display">\[|f(y)g(y)-f(x)g(x)|\le|f(y)||g(y)-g(x)|+|g(x)||f(y)-f(x)|\le
+K\bigl(|g(y)-g(x)|+|f(y)-f(x)|\bigr).\]</span> Choose <span class="math inline">\(\delta\)</span> for both <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> with <span class="math inline">\(\frac{\varepsilon}{2K}\)</span>. If <span class="math inline">\(\sum|x_i'-x_i|&lt;\delta\)</span>, then <span class="math display">\[\sum|fg(x_i')-fg(x_i)|\le
+K\left(\sum|g(x_i')-g(x_i)|+\sum|f(x_i')-f(x_i)|\right)&lt;K\left(\frac{\varepsilon}{2K}+\frac{\varepsilon}{2K}\right)=\varepsilon.\]</span>
+So <span class="math inline">\(f+g\)</span>, <span class="math inline">\(cf\)</span> and <span class="math inline">\(fg\)</span> are in <span class="math inline">\(AC[a,b]\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ac-variation">
+
+<p><strong><a href="ch-differentiation.html#exer-ac-variation">Exercise 17.5.4</a>.</strong>
+<em>Hint.</em> One inequality is <a href="ch-differentiation.html#exer-bv-derivative-integral">Exercise 17.3.5</a>. For the other,
+use <a href="ch-differentiation.html#cor-ftc-lebesgue">Corollary 17.5.9</a> on each subinterval
+of a partition.</p>
+</div>
+<div class="solutionbox" id="sol-exer-lipschitz-ac">
+
+<p><strong><a href="ch-differentiation.html#exer-lipschitz-ac">Exercise 17.5.5</a>.</strong>
+<em>Hint.</em> (a) Take <span class="math inline">\(\delta=\frac\varepsilon M\)</span>. (b) For (<span class="math inline">\(\Leftarrow\)</span>), use <a href="ch-differentiation.html#cor-ftc-lebesgue">Corollary 17.5.9</a> to write <span class="math inline">\(f(y)-f(x)=\int_{[x,y]}f'\)</span>. (c) Apply
+<a href="ch-differentiation.html#thm-dini-monotone">Theorem 17.2.2</a> to <span class="math inline">\(Mx+f(x)\)</span> and <span class="math inline">\(Mx-f(x)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-sqrt-ac">
+
+<p><strong><a href="ch-differentiation.html#exer-sqrt-ac">Exercise 17.5.6</a>.</strong>
+<em>Hint.</em> <span class="math inline">\(\sqrt
+x=\int_{[0,x]}\frac{1}{2\sqrt t}\)</span>. Use <a href="ch-lebesgue-integral.html#prop-improper-lebesgue">Proposition 16.4.15</a> and <a href="ch-differentiation.html#thm-ac-indefinite-integral">Theorem 17.5.8</a>. For the Lipschitz
+condition, look at <span class="math inline">\(\frac{\sqrt
+h}{h}\)</span> as <span class="math inline">\(h\to0^+\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ac-null-sets">
+
+<p><strong><a href="ch-differentiation.html#exer-ac-null-sets">Exercise 17.5.7</a>.</strong>
+<em>Hint.</em> Cover <span class="math inline">\(Z\)</span> by open
+intervals of small total length, and use that <span class="math inline">\(f\)</span> has a maximum and a minimum on each
+closed subinterval.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ac-parts">
+
+<p><strong><a href="ch-differentiation.html#exer-ac-parts">Exercise 17.5.8</a>.</strong>
+<em>Hint.</em> By <a href="ch-differentiation.html#exer-ac-algebra">Exercise 17.5.3</a>, <span class="math inline">\(fg\in AC[a,b]\)</span>. Use <span class="math inline">\((fg)'=f'g+fg'\)</span> a.e., and apply
+<a href="ch-differentiation.html#cor-ftc-lebesgue">Corollary 17.5.9</a> to <span class="math inline">\(fg\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cantor-symmetry">
+
+<p><strong><a href="ch-differentiation.html#exer-cantor-symmetry">Exercise 17.6.1</a>.</strong>
+<em>Hint.</em> Prove versions of both identities for the functions <span class="math inline">\(\phi_n\)</span>, using the symmetry of <span class="math inline">\(C_n\)</span>, and let <span class="math inline">\(n\to\infty\)</span>. For the integral, <span class="math inline">\(\phi\)</span> is continuous. Use <a href="ch-lebesgue-integral.html#thm-riemann-lebesgue">Theorem 16.3.3</a> and the substitution
+<span class="math inline">\(x\mapsto1-x\)</span>.</p>
+<p><em>Solution.</em> By <a href="ch-cantor.html#lem-cantor-intervals">Lemma
+5.1.2</a> (2), <span class="math inline">\(C_n\)</span> is the union of
+the intervals <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span>, where <span class="math inline">\(s=\sum_{k=1}^n\frac{d_k}{3^k}\)</span> with each
+<span class="math inline">\(d_k\in\{0,2\}\)</span>. Also <span class="math inline">\(\phi_n(x)=\left(\frac32\right)^nm\bigl(C_n\cap[0,x]\bigr)\)</span>,
+by <a href="ch-lebesgue-integral.html#def-simple-integral">Definition 16.2.1</a>.</p>
+<p><em>Symmetry.</em> The reflection <span class="math inline">\(t\mapsto1-t\)</span> maps <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span> onto <span class="math inline">\(\left[1-s-3^{-n},1-s\right]\)</span>. Since <span class="math inline">\(\sum_{k=1}^n\frac2{3^k}=1-3^{-n}\)</span>, <span class="math display">\[1-s-3^{-n}=\sum_{k=1}^n\frac{2-d_k}{3^k},\]</span>
+and each <span class="math inline">\(2-d_k\in\{0,2\}\)</span>. So the
+reflection maps <span class="math inline">\(C_n\)</span> onto itself. It
+maps <span class="math inline">\(C_n\cap[0,1-x]\)</span> onto <span class="math inline">\(C_n\cap[x,1]\)</span>. Both are finite unions of
+intervals, and the reflection does not change lengths. So <span class="math display">\[\phi_n(1-x)=\left(\tfrac32\right)^nm\bigl(C_n\cap[x,1]\bigr)=\left(\tfrac32\right)^n\Bigl(m(C_n)-m\bigl(C_n\cap[0,x]\bigr)\Bigr)=1-\phi_n(x),\]</span>
+using <span class="math inline">\(m(C_n)=\left(\frac23\right)^n\)</span>
+and <span class="math inline">\(m(\{x\})=0\)</span>. Letting <span class="math inline">\(n\to\infty\)</span> gives <span class="math inline">\(\phi(1-x)=1-\phi(x)\)</span>.</p>
+<p><em>Scaling.</em> The map <span class="math inline">\(t\mapsto\frac
+t3\)</span> sends <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span> to <span class="math inline">\(\left[\frac s3,\frac
+s3+3^{-(n+1)}\right]\)</span>, and <span class="math inline">\(\frac
+s3=\sum_{k=1}^{n+1}\frac{d_k'}{3^k}\)</span> with <span class="math inline">\(d_1'=0\)</span> and <span class="math inline">\(d_{k+1}'=d_k\)</span>. These are exactly the
+intervals of <span class="math inline">\(C_{n+1}\)</span> whose first
+digit is <span class="math inline">\(0\)</span>, which are the intervals
+of <span class="math inline">\(C_{n+1}\)</span> inside <span class="math inline">\(\left[0,\frac13\right]\)</span>. So <span class="math inline">\(\frac13C_n=C_{n+1}\cap\left[0,\frac13\right]\)</span>.
+For <span class="math inline">\(x\in[0,1]\)</span>, this gives <span class="math inline">\(C_{n+1}\cap\left[0,\frac
+x3\right]=\frac13\bigl(C_n\cap[0,x]\bigr)\)</span>. Scaling by <span class="math inline">\(\frac13\)</span> multiplies the lengths of
+intervals by <span class="math inline">\(\frac13\)</span>. So <span class="math display">\[\phi_{n+1}\left(\tfrac
+x3\right)=\left(\tfrac32\right)^{n+1}\cdot\tfrac13\,m\bigl(C_n\cap[0,x]\bigr)=\tfrac12\phi_n(x).\]</span>
+Letting <span class="math inline">\(n\to\infty\)</span> gives <span class="math inline">\(\phi\left(\frac
+x3\right)=\frac12\phi(x)\)</span>.</p>
+<p><em>The integral.</em> Since <span class="math inline">\(\phi\)</span> is continuous, <span class="math inline">\(\int_{[0,1]}\phi=\int_0^1\phi\)</span>, by <a href="ch-lebesgue-integral.html#thm-riemann-lebesgue">Theorem 16.3.3</a>. The substitution <span class="math inline">\(x=1-t\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.4.3</a>) gives <span class="math inline">\(\int_0^1\phi(1-t)\,dt=\int_0^1\phi(x)\,dx\)</span>.
+So, by the symmetry, <span class="math display">\[\int_0^1\phi=\int_0^1\phi(1-t)\,dt=\int_0^1\bigl(1-\phi(t)\bigr)\,dt=1-\int_0^1\phi.\]</span>
+So <span class="math inline">\(\int_{[0,1]}\phi=\frac12\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cantor-ternary">
+
+<p><strong><a href="ch-differentiation.html#exer-cantor-ternary">Exercise 17.6.2</a>.</strong>
+<em>Hint.</em> The first <span class="math inline">\(n\)</span> digits
+of <span class="math inline">\(x\)</span> determine the interval <span class="math inline">\(J_{n,i}\)</span> of <span class="math inline">\(C_n\)</span> that contains <span class="math inline">\(x\)</span>. Use <a href="ch-differentiation.html#lem-cantor-approx">Lemma
+17.6.1</a> (2).</p>
+</div>
+<div class="solutionbox" id="sol-exer-cantor-non-borel">
+
+<p><strong><a href="ch-differentiation.html#exer-cantor-non-borel">Exercise
+17.6.3</a>.</strong> <em>Hint.</em> (c) If <span class="math inline">\(B\)</span> were a Borel set, then <span class="math inline">\(A=(\psi^{-1})^{-1}[B]\)</span> would be a Borel
+set, by an argument like <a href="ch-measurable-functions.html#exer-borel-preimage">Exercise
+15.1.3</a>.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch16.html"><span class="dir">Previous</span> Solutions for Chapter 16. The Lebesgue Integral</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-appa.html"><span class="dir">Next</span> Solutions for Appendix A. Construction of the Real Numbers by Cuts</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

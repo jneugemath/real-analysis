@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 2. Cardinality | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch01.html"><span class="dir">Previous</span> Solutions for Chapter 1. The Real Number System</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch03.html"><span class="dir">Next</span> Solutions for Chapter 3. Sequences of Real Numbers</a>
+</nav>
+<main id="main">
+<article id="solutions-ch02">
+<h1>Solutions for Chapter 2. Cardinality</h1>
+<div class="solutionbox" id="sol-exer-Z-countable">
+
+<p><strong><a href="ch-cardinality.html#exer-Z-countable">Exercise 2.1.1</a>.</strong>
+Suppose <span class="math inline">\(f(n)=f(k)\)</span>. Now <span class="math inline">\(f(n)&gt;0\)</span> or <span class="math inline">\(f(n)\le 0\)</span>. First, suppose <span class="math inline">\(f(n)&gt;0\)</span>. Then <span class="math inline">\(f(k)&gt;0\)</span>, so <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> are both even, and <span class="math inline">\(f(n)=\frac{n}{2}=\frac{k}{2}=f(k)\)</span>. So
+<span class="math inline">\(k=n\)</span>. Now suppose <span class="math inline">\(f(n)\le 0\)</span>. Then <span class="math inline">\(f(k)\le 0\)</span>, so <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> are both odd, and so <span class="math inline">\(f(n)=-\frac{n-1}{2}=-\frac{k-1}{2}=f(k)\)</span>.
+So <span class="math inline">\(k=n\)</span>. Thus <span class="math inline">\(f\)</span> is an injection.</p>
+<p>Now let <span class="math inline">\(n\in\mathbb{Z}\)</span>. If <span class="math inline">\(n&gt; 0\)</span>, <span class="math inline">\(2n\in\mathbb{N}\)</span> and <span class="math inline">\(f(2n)=\frac{2n}{2}=n\)</span>. If <span class="math inline">\(n\le0\)</span>, <span class="math inline">\(-2n+1\in\mathbb{N}\)</span> and <span class="math inline">\(f(-2n+1)=-\frac{-2n+1-1}{2}=n\)</span>. So <span class="math inline">\(f\)</span> is a surjection. Therefore, <span class="math inline">\(f\)</span> is a bijection and <span class="math inline">\(\mathbb{N}\sim\mathbb{Z}\)</span>. So <span class="math inline">\(\mathbb{Z}\)</span> is countable.</p>
+</div>
+<div class="solutionbox" id="sol-exer-odds-countable">
+
+<p><strong><a href="ch-cardinality.html#exer-odds-countable">Exercise 2.1.2</a>.</strong>
+Define <span class="math inline">\(g:\mathbb{Z}\to\mathbb{O}\)</span> by
+<span class="math inline">\(g(k)=2k-1\)</span>. Each <span class="math inline">\(2k-1=2(k-1)+1\)</span> is odd, so <span class="math inline">\(g\)</span> maps into <span class="math inline">\(\mathbb{O}\)</span>. If <span class="math inline">\(g(k)=g(j)\)</span>, then <span class="math inline">\(2k-1=2j-1\)</span>, so <span class="math inline">\(k=j\)</span>. So <span class="math inline">\(g\)</span> is one-to-one. If <span class="math inline">\(m\in\mathbb{O}\)</span>, then <span class="math inline">\(m=2j+1\)</span> for some <span class="math inline">\(j\in\mathbb{Z}\)</span>, and <span class="math inline">\(g(j+1)=m\)</span>. So <span class="math inline">\(g\)</span> is onto. Thus <span class="math inline">\(\mathbb{Z}\sim\mathbb{O}\)</span>. By <a href="ch-cardinality.html#exer-Z-countable">Exercise 2.1.1</a>, <span class="math inline">\(\mathbb{N}\sim\mathbb{Z}\)</span>. By <a href="ch-cardinality.html#thm-cardinal-equivalence">Theorem 2.1.8</a> (3), <span class="math inline">\(\mathbb{N}\sim\mathbb{O}\)</span>, so <span class="math inline">\(\mathbb{O}\)</span> is countable.</p>
+<p>The same idea shows that the odd <em>positive</em> integers are
+countable. The function <span class="math inline">\(n\mapsto\frac{n+1}{2}\)</span> is a bijection from
+them onto <span class="math inline">\(\mathbb{N}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-image-intersection">
+
+<p><strong><a href="ch-cardinality.html#exer-image-intersection">Exercise
+2.1.5</a>.</strong> <em>Hint.</em> The function cannot be
+one-to-one.</p>
+</div>
+<div class="solutionbox" id="sol-exer-Nn-countable">
+
+<p><strong><a href="ch-cardinality.html#exer-Nn-countable">Exercise 2.2.1</a>.</strong>
+<em>Hint.</em> Use induction on <span class="math inline">\(n\)</span>
+and <a href="ch-cardinality.html#thm-NxN-countable">Theorem 2.2.1</a>, since <span class="math inline">\(\mathbb{N}^{n+1}\sim\mathbb{N}^n\times\mathbb{N}\)</span>.</p>
+<p><em>Solution.</em> Use induction on <span class="math inline">\(n\)</span>. For <span class="math inline">\(n=1\)</span>, <span class="math inline">\(\mathbb{N}^1=\mathbb{N}\)</span>, and the identity
+map is a bijection. So <span class="math inline">\(\mathbb{N}^1\)</span>
+is countable.</p>
+<p>Now suppose <span class="math inline">\(\mathbb{N}^n\)</span> is
+countable, and let <span class="math inline">\(g:\mathbb{N}^n\to\mathbb{N}\)</span> be a
+bijection. Define <span class="math inline">\(h:\mathbb{N}^{n+1}\to\mathbb{N}\times\mathbb{N}\)</span>
+by <span class="math display">\[h(x_1,\dots,x_n,x_{n+1})=\bigl(g(x_1,\dots,x_n),x_{n+1}\bigr).\]</span>
+If <span class="math inline">\(h(x)=h(y)\)</span>, then <span class="math inline">\(g(x_1,\dots,x_n)=g(y_1,\dots,y_n)\)</span> and
+<span class="math inline">\(x_{n+1}=y_{n+1}\)</span>. Since <span class="math inline">\(g\)</span> is one-to-one, <span class="math inline">\(x_i=y_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. So <span class="math inline">\(x=y\)</span> and <span class="math inline">\(h\)</span> is one-to-one. If <span class="math inline">\((a,b)\in\mathbb{N}\times\mathbb{N}\)</span>, let
+<span class="math inline">\((x_1,\dots,x_n)=g^{-1}(a)\)</span> and <span class="math inline">\(x_{n+1}=b\)</span>. Then <span class="math inline">\(h(x_1,\dots,x_{n+1})=(a,b)\)</span>. So <span class="math inline">\(h\)</span> is onto. Thus <span class="math inline">\(\mathbb{N}^{n+1}\sim\mathbb{N}\times\mathbb{N}\)</span>.
+By <a href="ch-cardinality.html#thm-NxN-countable">Theorem 2.2.1</a>, <span class="math inline">\(\mathbb{N}\times\mathbb{N}\sim\mathbb{N}\)</span>.
+By <a href="ch-cardinality.html#thm-cardinal-equivalence">Theorem 2.1.8</a> (3), <span class="math inline">\(\mathbb{N}^{n+1}\sim\mathbb{N}\)</span>. By
+induction, <span class="math inline">\(\mathbb{N}^n\)</span> is
+countable for every <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-irrationals-uncountable">
+
+<p><strong><a href="ch-cardinality.html#exer-irrationals-uncountable">Exercise
+2.3.2</a>.</strong> <em>Hint.</em> If <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> were
+countable, then <span class="math inline">\(\mathbb{R}=\mathbb{Q}\cup(\mathbb{R}\setminus\mathbb{Q})\)</span>
+would be countable by <a href="ch-cardinality.html#thm-countable-union">Theorem
+2.2.6</a>.</p>
+<p><em>Solution.</em> Suppose <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> is
+countable. Let <span class="math inline">\(E_1=\mathbb{Q}\)</span> and
+<span class="math inline">\(E_n=\mathbb{R}\setminus\mathbb{Q}\)</span>
+for <span class="math inline">\(n\ge2\)</span>. Each <span class="math inline">\(E_n\)</span> is countable, so <span class="math inline">\(\mathbb{R}=\bigcup_{n=1}^\infty E_n\)</span> is
+countable by <a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>. Then
+<span class="math inline">\([0,1]\)</span> is an infinite subset of a
+countable set. By <a href="ch-cardinality.html#thm-infinite-subset-countable">Theorem
+2.2.4</a>, <span class="math inline">\([0,1]\)</span> is countable. This
+contradicts <a href="ch-cardinality.html#thm-interval-uncountable">Theorem 2.3.2</a>. So
+<span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> is
+uncountable.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch01.html"><span class="dir">Previous</span> Solutions for Chapter 1. The Real Number System</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch03.html"><span class="dir">Next</span> Solutions for Chapter 3. Sequences of Real Numbers</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

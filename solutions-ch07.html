@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 7. The Derivative | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch06.html"><span class="dir">Previous</span> Solutions for Chapter 6. Functions and Continuity</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch08.html"><span class="dir">Next</span> Solutions for Chapter 8. Functions of Bounded Variation</a>
+</nav>
+<main id="main">
+<article id="solutions-ch07">
+<h1>Solutions for Chapter 7. The Derivative</h1>
+<div class="solutionbox" id="sol-exer-power-rule-natural">
+
+<p><strong><a href="ch-derivative.html#exer-power-rule-natural">Exercise
+7.1.2</a>.</strong> <em>Hint.</em> Use induction and the product
+rule.</p>
+<p><em>Solution.</em> For <span class="math inline">\(n=0\)</span>,
+<span class="math inline">\(x^0=1\)</span> is constant, so its
+derivative is <span class="math inline">\(0\)</span>. That is the
+formula with <span class="math inline">\(n=0\)</span>. For <span class="math inline">\(n=1\)</span>, the difference quotient of <span class="math inline">\(f(x)=x\)</span> at <span class="math inline">\(c\)</span> is <span class="math inline">\(\frac{x-c}{x-c}=1\)</span> for <span class="math inline">\(x\ne c\)</span>, so <span class="math inline">\(f'(c)=1=1\cdot c^0\)</span>.</p>
+<p>Now suppose <span class="math inline">\(\frac{d}{dx}x^k=kx^{k-1}\)</span> for some <span class="math inline">\(k\in\mathbb{N}\)</span>. Since <span class="math inline">\(x^{k+1}=x\cdot x^k\)</span>, the product rule (<a href="ch-derivative.html#thm-derivative-algebra">Theorem 7.1.5</a> (2)) gives <span class="math display">\[\frac{d}{dx}x^{k+1}=1\cdot x^k+x\cdot
+kx^{k-1}=(k+1)x^k.\]</span> By induction, <span class="math inline">\(\frac{d}{dx}x^n=nx^{n-1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, and so for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-power-rule-integer">
+
+<p><strong><a href="ch-derivative.html#exer-power-rule-integer">Exercise
+7.1.3</a>.</strong> <em>Hint.</em> For <span class="math inline">\(n&lt;0\)</span>, write <span class="math inline">\(x^n=\frac{1}{x^{-n}}\)</span> and use the quotient
+rule.</p>
+</div>
+<div class="solutionbox" id="sol-exer-abs-not-differentiable">
+
+<p><strong><a href="ch-derivative.html#exer-abs-not-differentiable">Exercise
+7.1.4</a>.</strong> The difference quotient at <span class="math inline">\(0\)</span> is <span class="math inline">\(q(x)=\frac{|x|-0}{x-0}=\frac{|x|}{x}\)</span>. It
+equals <span class="math inline">\(1\)</span> for <span class="math inline">\(x&gt;0\)</span> and <span class="math inline">\(-1\)</span> for <span class="math inline">\(x&lt;0\)</span>. Suppose <span class="math inline">\(\lim_{x\to0}q(x)=L\)</span>. With <span class="math inline">\(\varepsilon=1\)</span>, there is a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|q(x)-L|&lt;1\)</span> whenever <span class="math inline">\(0&lt;|x|&lt;\delta\)</span>. Taking <span class="math inline">\(x=\frac\delta2\)</span> and <span class="math inline">\(x=-\frac\delta2\)</span> gives <span class="math inline">\(|1-L|&lt;1\)</span> and <span class="math inline">\(|-1-L|&lt;1\)</span>. Then, by the Triangle
+Inequality, <span class="math display">\[2=|1-(-1)|\le|1-L|+|L-(-1)|&lt;1+1=2,\]</span>
+which is impossible. So the limit does not exist, and <span class="math inline">\(f\)</span> is not differentiable at <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-x2-sin-derivative">
+
+<p><strong><a href="ch-derivative.html#exer-x2-sin-derivative">Exercise
+7.1.5</a>.</strong> <em>Hint.</em> Find <span class="math inline">\(f'(0)\)</span> from the definition. For <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\(f'(x)=2x\sin\frac1x-\cos\frac1x\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-exp-inequality">
+
+<p><strong><a href="ch-derivative.html#exer-exp-inequality">Exercise 7.2.1</a>.</strong>
+<em>Hint.</em> Apply the Mean Value Theorem to <span class="math inline">\(e^t\)</span> on the interval between <span class="math inline">\(0\)</span> and <span class="math inline">\(x\)</span>.</p>
+<p><em>Solution.</em> For <span class="math inline">\(x=0\)</span>, both
+sides equal <span class="math inline">\(1\)</span>. Since <span class="math inline">\(\frac{d}{dt}e^t=e^t&gt;0\)</span>, <span class="math inline">\(e^t\)</span> is strictly increasing by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (2).</p>
+<p>Suppose <span class="math inline">\(x&gt;0\)</span>. By the Mean
+Value Theorem (<a href="ch-derivative.html#thm-mvt">Theorem 7.2.4</a>) on <span class="math inline">\([0,x]\)</span>, there is a <span class="math inline">\(c\in(0,x)\)</span> with <span class="math inline">\(e^x-1=e^c x\)</span>. Since <span class="math inline">\(c&gt;0\)</span>, <span class="math inline">\(e^c&gt;e^0=1\)</span>. So <span class="math inline">\(e^x-1&gt;x\)</span>.</p>
+<p>Suppose <span class="math inline">\(x&lt;0\)</span>. By the Mean
+Value Theorem on <span class="math inline">\([x,0]\)</span>, there is a
+<span class="math inline">\(c\in(x,0)\)</span> with <span class="math inline">\(1-e^x=e^c(0-x)\)</span>. Since <span class="math inline">\(c&lt;0\)</span>, <span class="math inline">\(e^c&lt;1\)</span>, and <span class="math inline">\(-x&gt;0\)</span>. So <span class="math inline">\(1-e^x&lt;-x\)</span>, that is, <span class="math inline">\(e^x&gt;1+x\)</span>.</p>
+<p>In every case, <span class="math inline">\(e^x\ge1+x\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-holder-constant">
+
+<p><strong><a href="ch-derivative.html#exer-holder-constant">Exercise 7.2.2</a>.</strong>
+<em>Hint.</em> Show <span class="math inline">\(f'(x)=0\)</span> for
+every <span class="math inline">\(x\)</span>, since <span class="math inline">\(\frac{|f(x+h)-f(x)|}{|h|}\le
+M|h|^{\alpha-1}\)</span>. Then use <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(x\in(a,b)\)</span>. For <span class="math inline">\(y\in(a,b)\)</span> with <span class="math inline">\(y\ne x\)</span>, <span class="math display">\[\left|\frac{f(y)-f(x)}{y-x}\right|\le\frac{M|y-x|^\alpha}{|y-x|}=M|y-x|^{\alpha-1}.\]</span>
+Since <span class="math inline">\(\alpha&gt;1\)</span>, <span class="math inline">\(M|y-x|^{\alpha-1}\to0\)</span> as <span class="math inline">\(y\to x\)</span>. By the Squeeze Theorem, <span class="math inline">\(f'(x)=\lim_{y\to
+x}\frac{f(y)-f(x)}{y-x}=0\)</span>. So <span class="math inline">\(f'(x)=0\)</span> for every <span class="math inline">\(x\in(a,b)\)</span>. By <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5), <span class="math inline">\(f\)</span> is constant on <span class="math inline">\((a,b)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-root-derivative">
+
+<p><strong><a href="ch-derivative.html#exer-root-derivative">Exercise 7.2.5</a>.</strong>
+<em>Hint.</em> Use the Inverse Function Theorem (<a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a>) with <span class="math inline">\(f(x)=x^n\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bounded-derivative-lipschitz">
+
+<p><strong><a href="ch-derivative.html#exer-bounded-derivative-lipschitz">Exercise
+7.2.7</a>.</strong> Assume <span class="math inline">\(M&gt;0\)</span>.
+If not, replace <span class="math inline">\(M\)</span> by <span class="math inline">\(M+1\)</span>. Let <span class="math inline">\(x,y\in I\)</span> with <span class="math inline">\(x&lt;y\)</span>. Since <span class="math inline">\(f\)</span> is differentiable on <span class="math inline">\(I\)</span>, it is continuous on <span class="math inline">\([x,y]\)</span> by <a href="ch-derivative.html#thm-differentiable-continuous">Theorem 7.1.3</a>. By the Mean
+Value Theorem (<a href="ch-derivative.html#thm-mvt">Theorem 7.2.4</a>), there is a <span class="math inline">\(c\in(x,y)\)</span> with <span class="math inline">\(f(y)-f(x)=f'(c)(y-x)\)</span>. So <span class="math display">\[|f(y)-f(x)|=|f'(c)||y-x|\le M|y-x|.\]</span>
+The same holds with the roles of <span class="math inline">\(x\)</span>
+and <span class="math inline">\(y\)</span> switched, and trivially when
+<span class="math inline">\(x=y\)</span>. So <span class="math inline">\(f\)</span> is Lipschitz continuous on <span class="math inline">\(I\)</span>.</p>
+<p>For the second part, <span class="math inline">\(\frac{d}{dx}\sin
+x=\cos x\)</span> and <span class="math inline">\(|\cos x|\le1\)</span>
+for all <span class="math inline">\(x\)</span>. So <span class="math inline">\(|\sin x-\sin y|\le|x-y|\)</span> for all <span class="math inline">\(x,y\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-no-jump">
+
+<p><strong><a href="ch-derivative.html#exer-no-jump">Exercise 7.2.8</a>.</strong>
+<em>Hint.</em> Use <a href="ch-derivative.html#thm-darboux">Theorem 7.2.8</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-lhospital-limits">
+
+<p><strong><a href="ch-derivative.html#exer-lhospital-limits">Exercise 7.3.2</a>.</strong>
+(a) Let <span class="math inline">\(f(x)=\ln(1+x)\)</span> and <span class="math inline">\(g(x)=x\)</span> on <span class="math inline">\((0,1)\)</span>. Then <span class="math inline">\(f(x)\to0\)</span> and <span class="math inline">\(g(x)\to0\)</span> as <span class="math inline">\(x\to0^+\)</span>, and <span class="math inline">\(g'(x)=1\ne0\)</span>. Since <span class="math inline">\(\frac{f'(x)}{g'(x)}=\frac{1}{1+x}\to1\)</span>,
+L’Hospital’s Rule (<a href="ch-derivative.html#thm-lhospital">Theorem 7.3.1</a>) gives
+<span class="math inline">\(\lim_{x\to0^+}\frac{\ln(1+x)}{x}=1\)</span>.</p>
+<p>(b) First, <span class="math inline">\(\lim_{x\to0^+}\frac{\sin
+x}{2x}=\frac12\)</span>. Indeed, <span class="math inline">\(\sin
+x\to0\)</span> and <span class="math inline">\(2x\to0\)</span>, <span class="math inline">\(\frac{d}{dx}(2x)=2\ne0\)</span>, and <span class="math inline">\(\frac{\cos x}{2}\to\frac12\)</span>. Now let <span class="math inline">\(f(x)=1-\cos x\)</span> and <span class="math inline">\(g(x)=x^2\)</span> on <span class="math inline">\((0,\pi)\)</span>. Then <span class="math inline">\(f(x)\to0\)</span>, <span class="math inline">\(g(x)\to0\)</span> and <span class="math inline">\(g'(x)=2x\ne0\)</span>. Since <span class="math inline">\(\frac{f'(x)}{g'(x)}=\frac{\sin
+x}{2x}\to\frac12\)</span>, L’Hospital’s Rule gives <span class="math inline">\(\lim_{x\to0^+}\frac{1-\cos
+x}{x^2}=\frac12\)</span>.</p>
+<p>(c) Applying the rule to <span class="math inline">\(\frac{e^{-1/x}}{x}\)</span> directly makes things
+worse. Instead, write <span class="math inline">\(\frac{e^{-1/x}}{x}=\frac{1/x}{e^{1/x}}\)</span>.
+Let <span class="math inline">\(f(x)=\frac1x\)</span> and <span class="math inline">\(g(x)=e^{1/x}\)</span> on <span class="math inline">\((0,1)\)</span>. Then <span class="math inline">\(g(x)\to\infty\)</span> as <span class="math inline">\(x\to0^+\)</span>, and <span class="math inline">\(g'(x)=-\frac{e^{1/x}}{x^2}\ne0\)</span>. Since
+<span class="math display">\[\frac{f'(x)}{g'(x)}=\frac{-1/x^2}{-e^{1/x}/x^2}=e^{-1/x}\to0\]</span>
+as <span class="math inline">\(x\to0^+\)</span>, case (2) of
+L’Hospital’s Rule gives <span class="math inline">\(\lim_{x\to0^+}\frac{e^{-1/x}}{x}=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-convex-slopes">
+
+<p><strong><a href="ch-derivative.html#exer-convex-slopes">Exercise 7.4.1</a>.</strong>
+Let <span class="math inline">\(a&lt;x&lt;b\)</span> in <span class="math inline">\(I\)</span> and set <span class="math inline">\(t=\frac{b-x}{b-a}\)</span>. Then <span class="math inline">\(0&lt;t&lt;1\)</span>, <span class="math inline">\(1-t=\frac{x-a}{b-a}\)</span>, and <span class="math inline">\(ta+(1-t)b=b-t(b-a)=x\)</span>. Multiplying by
+<span class="math inline">\(b-a&gt;0\)</span> and writing <span class="math inline">\(b-a=(b-x)+(x-a)\)</span> shows that <span class="math display">\[f(x)\le tf(a)+(1-t)f(b)\]</span> is the same as
+<span class="math inline">\((b-x)f(x)+(x-a)f(x)\le(b-x)f(a)+(x-a)f(b)\)</span>,
+which is the same as <span class="math inline">\((b-x)\bigl(f(x)-f(a)\bigr)\le(x-a)\bigl(f(b)-f(x)\bigr)\)</span>.
+Dividing by <span class="math inline">\((x-a)(b-x)&gt;0\)</span>, this
+is the same as <span class="math display">\[\frac{f(x)-f(a)}{x-a}\le\frac{f(b)-f(x)}{b-x}.\tag{$\ast$}\]</span></p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) If <span class="math inline">\(f\)</span> is convex, the first inequality holds,
+so (<span class="math inline">\(\ast\)</span>) holds.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose (<span class="math inline">\(\ast\)</span>) holds whenever <span class="math inline">\(a&lt;x&lt;b\)</span>. Let <span class="math inline">\(a,b\in I\)</span> and <span class="math inline">\(0\le t\le1\)</span>. If <span class="math inline">\(a=b\)</span>, <span class="math inline">\(t=0\)</span> or <span class="math inline">\(t=1\)</span>, then <span class="math inline">\(f(ta+(1-t)b)=tf(a)+(1-t)f(b)\)</span>. If <span class="math inline">\(a&gt;b\)</span>, switch the names of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and replace <span class="math inline">\(t\)</span> by <span class="math inline">\(1-t\)</span>. So assume <span class="math inline">\(a&lt;b\)</span> and <span class="math inline">\(0&lt;t&lt;1\)</span>, and let <span class="math inline">\(x=ta+(1-t)b\)</span>. Then <span class="math inline">\(a&lt;x&lt;b\)</span> and <span class="math inline">\(t=\frac{b-x}{b-a}\)</span>. By (<span class="math inline">\(\ast\)</span>) and the equivalences above, <span class="math inline">\(f(x)\le tf(a)+(1-t)f(b)\)</span>. So <span class="math inline">\(f\)</span> is convex.</p>
+<p>The statement for concave functions follows in the same way with
+every inequality reversed, or by applying the first part to <span class="math inline">\(-f\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-second-derivative-convex">
+
+<p><strong><a href="ch-derivative.html#exer-second-derivative-convex">Exercise
+7.4.2</a>.</strong> <em>Hint.</em> Use <a href="ch-derivative.html#thm-convex-slopes">Theorem 7.4.2</a> and the Mean Value
+Theorem.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch06.html"><span class="dir">Previous</span> Solutions for Chapter 6. Functions and Continuity</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch08.html"><span class="dir">Next</span> Solutions for Chapter 8. Functions of Bounded Variation</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

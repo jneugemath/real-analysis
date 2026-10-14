@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 3. Sequences of Real Numbers | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch02.html"><span class="dir">Previous</span> Solutions for Chapter 2. Cardinality</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch04.html"><span class="dir">Next</span> Solutions for Chapter 4. Topological Properties of the Real Line</a>
+</nav>
+<main id="main">
+<article id="solutions-ch03">
+<h1>Solutions for Chapter 3. Sequences of Real Numbers</h1>
+<div class="solutionbox" id="sol-exer-eps-N-limits">
+
+<p><strong><a href="ch-sequences.html#exer-eps-N-limits">Exercise 3.1.1</a>.</strong> (a)
+Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\frac{10}{9\varepsilon}\)</span>. Then, for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\left|x_n-\frac{5}{3}\right|=\left|\frac{5n}{3n+2}-\frac{5}{3}\right|=\left|\frac{15n-15n-10}{9n+6}\right|=\frac{10}{9n+6}\le
+\frac{10}{9n}&lt;\frac{10}{9\left(\frac{10}{9\varepsilon}\right)}=\varepsilon.\]</span>
+So <span class="math inline">\(x_n\to\frac{5}{3}\)</span>.</p>
+<p>(b) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\left(\frac{5}{2\varepsilon}\right)^{2/3}\)</span>.
+Then, for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_n-6|=\left|\frac{12n^2+5\sqrt{n}}{2n^2}-6\right|=\left|\frac{12n^2+5\sqrt{n}-12n^2}{2n^2}\right|=\frac{5\sqrt{n}}{2n^2}=\frac{5}{2n^{3/2}}&lt;\frac{5}{2\left(\left(\frac{5}{2\varepsilon}\right)^{2/3}\right)^{3/2}}=\varepsilon.\]</span>
+So <span class="math inline">\(x_n\to6\)</span>.</p>
+<p>(c) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\frac{1}{\varepsilon}\)</span>. Then, for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_n-1|=\left|1-\frac{(-1)^n}{n} -
+1\right|=\frac{1}{n}&lt;\frac{1}{\frac{1}{\varepsilon}}=\varepsilon.\]</span>
+So <span class="math inline">\(x_n\to 1\)</span>.</p>
+<p>(d) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\max\left\{75,\frac{16}{9\varepsilon},\sqrt{\frac{67}{\varepsilon}}\right\}\)</span>.
+Then, for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\left|x_n-\frac{8}{3}\right|=\left|\frac{(1+4n)^2}{6n^2+n-75}-\frac{8}{3}\right|=\left|\frac{48n^2+24n+3-48n^2-8n+600}{18n^2+3n-225}\right|=\left|\frac{16n+603}{18n^2+3n-225}\right|.\]</span>
+Since for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(n&gt;75\)</span>, <span class="math inline">\(3n-225&gt;0\)</span>. So <span class="math inline">\(|18n^2+3n-225|=18n^2+3n-225&gt;18n^2\)</span>. So
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\left|x_n-\frac{8}{3}\right|\le
+\frac{16n+603}{18n^2}=\frac{8}{9n}+\frac{67}{2n^2}&lt;\frac{8}{9\left(\frac{16}{9\varepsilon}\right)}+\frac{67}{2\left(\sqrt{\frac{67}{\varepsilon}}\right)^2}=\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.\]</span>
+Thus <span class="math inline">\(x_n\to \frac{8}{3}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-bounded-times-null">
+
+<p><strong><a href="ch-sequences.html#exer-bounded-times-null">Exercise
+3.2.2</a>.</strong> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\{y_n\}\)</span> is bounded, there exists an <span class="math inline">\(M&gt;0\)</span> such that for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(|y_n|\le M\)</span>. Since <span class="math inline">\(x_n\to0\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-0|&lt;\frac{\varepsilon}{M}\)</span>. Thus,
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_ny_n-0|=|y_n||x_n-0|\le
+M|x_n-0|&lt;M\frac{\varepsilon}{M}=\varepsilon.\]</span> So <span class="math inline">\(x_ny_n\to0\)</span>.</p>
+<p>Notice that if <span class="math inline">\(\{y_n\}\)</span> is
+unbounded, the conclusion may not be true. For example, consider <span class="math inline">\(x_n=\frac{1}{n}\)</span> and <span class="math inline">\(y_n=n\)</span>. Then <span class="math inline">\(x_n\to 0\)</span>, but <span class="math inline">\(x_ny_n=1\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, and so <span class="math inline">\(x_ny_n\to 1\ne 0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-recursive-linear">
+
+<p><strong><a href="ch-sequences.html#exer-recursive-linear">Exercise 3.3.1</a>.</strong>
+First, note that <span class="math inline">\(x_1=2&gt;\frac{7}{6}\)</span>. Now, assume for
+some <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(x_k&gt;\frac{7}{6}\)</span>. Then <span class="math display">\[x_{k+1}=\frac{4x_k+7}{10}&gt;\frac{\frac{14}{3}+7}{10}=\frac{7}{6}.\]</span>
+So by induction, for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(x_n&gt;\frac{7}{6}\)</span>. So <span class="math inline">\(\{x_n\}\)</span> is bounded below.</p>
+<p>Next, notice that <span class="math inline">\(x_1=2&gt;\frac{3}{2}=x_2\)</span>. Now assume for
+some <span class="math inline">\(k\ge2\)</span> that <span class="math inline">\(x_{k-1}&gt;x_k\)</span>. Then <span class="math display">\[x_{k+1}=\frac{4x_k+7}{10}&lt;\frac{4x_{k-1}+7}{10}=x_k.\]</span>
+Therefore, by induction, <span class="math inline">\(x_{n-1}&gt;x_n\)</span> for all <span class="math inline">\(n\ge 2\)</span>. Since <span class="math inline">\(\{x_n\}\)</span> is bounded below by <span class="math inline">\(\frac76\)</span> and decreasing, it is also
+bounded above by <span class="math inline">\(x_1\)</span>. So <span class="math inline">\(\{x_n\}\)</span> is bounded and monotone.
+Therefore, <span class="math inline">\(\{x_n\}\)</span> converges by <a href="ch-sequences.html#thm-monotone-convergence">Theorem 3.2.13</a>, say <span class="math inline">\(x_n\to a\)</span>.</p>
+<p>Now, since <span class="math inline">\(x_n\to a\)</span>, <span class="math inline">\(x_{n+1}\to a\)</span> and so <span class="math inline">\(a=\frac{4a+7}{10}\)</span>. Therefore, <span class="math inline">\(a=\frac{7}{6}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-unbounded-subsequence">
+
+<p><strong><a href="ch-sequences.html#exer-unbounded-subsequence">Exercise
+3.4.1</a>.</strong> <em>Hint.</em> Choose <span class="math inline">\(n_1\)</span> with <span class="math inline">\(x_{n_1}&gt;1\)</span>. Given <span class="math inline">\(n_k\)</span>, use that <span class="math inline">\(\{x_n:n&gt;n_k\}\)</span> is not bounded above
+either.</p>
+<p><em>Solution.</em> First, for every <span class="math inline">\(N\in\mathbb{N}\)</span>, the set <span class="math inline">\(\{x_n:n&gt;N\}\)</span> is not bounded above.
+Otherwise there is an <span class="math inline">\(M\)</span> with <span class="math inline">\(x_n\le M\)</span> for all <span class="math inline">\(n&gt;N\)</span>. Then every term is at most <span class="math inline">\(\max\{M,x_1,\dots,x_N\}\)</span>, and <span class="math inline">\(\{x_n\}\)</span> is bounded above. That is a
+contradiction.</p>
+<p>Now choose the indices one at a time. Since <span class="math inline">\(\{x_n\}\)</span> is not bounded above, <span class="math inline">\(1\)</span> is not an upper bound, so there is an
+<span class="math inline">\(n_1\)</span> with <span class="math inline">\(x_{n_1}&gt;1\)</span>. Suppose <span class="math inline">\(n_1&lt;n_2&lt;\cdots&lt;n_k\)</span> have been
+chosen with <span class="math inline">\(x_{n_j}&gt;j\)</span> for <span class="math inline">\(j=1,\dots,k\)</span>. Since <span class="math inline">\(\{x_n:n&gt;n_k\}\)</span> is not bounded above,
+there is an <span class="math inline">\(n_{k+1}&gt;n_k\)</span> with
+<span class="math inline">\(x_{n_{k+1}}&gt;k+1\)</span>. This defines a
+strictly increasing sequence <span class="math inline">\(\{n_k\}\)</span> with <span class="math inline">\(x_{n_k}&gt;k\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>. By <a href="ch-sequences.html#def-subsequence">Definition 3.4.1</a>, <span class="math inline">\(\{x_{n_k}\}\)</span> is the required
+subsequence.</p>
+</div>
+<div class="solutionbox" id="sol-exer-factorial-cauchy">
+
+<p><strong><a href="ch-sequences.html#exer-factorial-cauchy">Exercise 3.5.1</a>.</strong>
+<em>Hint.</em> For <span class="math inline">\(m&gt;n\)</span>, bound
+<span class="math inline">\(x_m-x_n\)</span> using <span class="math inline">\(k!\ge2^{k-1}\)</span> (<a href="ch-real-numbers.html#exer-factorial-bound">Exercise 1.2.10</a>) and <a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-harmonic-not-cauchy">
+
+<p><strong><a href="ch-sequences.html#exer-harmonic-not-cauchy">Exercise
+3.5.2</a>.</strong> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math display">\[x_{2n}-x_n=\sum_{k=n+1}^{2n}\frac1k\ge\sum_{k=n+1}^{2n}\frac{1}{2n}=n\cdot\frac{1}{2n}=\frac12,\]</span>
+since each of the <span class="math inline">\(n\)</span> terms is at
+least <span class="math inline">\(\frac{1}{2n}\)</span>.</p>
+<p>Suppose <span class="math inline">\(\{x_n\}\)</span> is Cauchy. With
+<span class="math inline">\(\varepsilon=\frac12\)</span>, there is an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|x_m-x_n|&lt;\frac12\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Take <span class="math inline">\(n=N\)</span> and <span class="math inline">\(m=2N\)</span>. Then <span class="math inline">\(x_{2N}-x_N&lt;\frac12\)</span>, which contradicts
+the inequality above. So <span class="math inline">\(\{x_n\}\)</span> is
+not Cauchy. By the Cauchy Criterion (<a href="ch-sequences.html#thm-cauchy-criterion">Theorem 3.5.2</a>), <span class="math inline">\(\{x_n\}\)</span> diverges.</p>
+</div>
+<div class="solutionbox" id="sol-exer-limsup-cluster-points">
+
+<p><strong><a href="ch-sequences.html#exer-limsup-cluster-points">Exercise
+3.6.1</a>.</strong> Let <span class="math inline">\(a=\limsup
+x_n\)</span>. If <span class="math inline">\(a=\infty\)</span>, then
+<span class="math inline">\(\infty\)</span> is a cluster point by <a href="ch-sequences.html#thm-limsup-infinite">Theorem 3.6.12</a> (1), and it is the
+largest one. If <span class="math inline">\(a=-\infty\)</span>, then
+<span class="math inline">\(x_n\to-\infty\)</span> by <a href="ch-sequences.html#thm-limsup-infinite">Theorem 3.6.12</a> (2), so every subsequence
+diverges to <span class="math inline">\(-\infty\)</span>, and <span class="math inline">\(-\infty\)</span> is the only cluster point. So
+suppose <span class="math inline">\(a\in\mathbb{R}\)</span>.</p>
+<p>First, <span class="math inline">\(a\)</span> is a cluster point.
+Choose <span class="math inline">\(n_1&lt;n_2&lt;\cdots\)</span> as
+follows. For each <span class="math inline">\(k\in\mathbb{N}\)</span>,
+by <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a> with <span class="math inline">\(\varepsilon=\frac1k\)</span>, there exists an
+<span class="math inline">\(N_k\in\mathbb{N}\)</span> such that <span class="math inline">\(x_n&lt;a+\frac1k\)</span> for all <span class="math inline">\(n\ge N_k\)</span>. By the same theorem, there
+exists an <span class="math inline">\(n_k\ge\max\{N_k,n_{k-1}+1\}\)</span> with <span class="math inline">\(x_{n_k}&gt;a-\frac1k\)</span> (take <span class="math inline">\(n_0=0\)</span>). Then <span class="math inline">\(|x_{n_k}-a|&lt;\frac1k\)</span> for every <span class="math inline">\(k\)</span>. So <span class="math inline">\(x_{n_k}\to a\)</span>, and <span class="math inline">\(a\)</span> is a cluster point of <span class="math inline">\(\{x_n\}\)</span>.</p>
+<p>Now, by way of contradiction, assume <span class="math inline">\(b\)</span> is a cluster point of <span class="math inline">\(\{x_n\}\)</span> with <span class="math inline">\(b&gt;a\)</span>. Define <span class="math inline">\(\varepsilon=\frac{b-a}{2}&gt;0\)</span>. Since
+<span class="math inline">\(b\)</span> is a cluster point of <span class="math inline">\(\{x_n\}\)</span>, there exists a subsequence <span class="math inline">\(x_{n_j}\to b\)</span>. So there exists a <span class="math inline">\(J\in\mathbb{N}\)</span> such that for all <span class="math inline">\(j\ge J\)</span>, <span class="math inline">\(|x_{n_j}-b|&lt;\frac{b-a}{2}\)</span>. This
+implies that for all <span class="math inline">\(j\ge J\)</span>, <span class="math inline">\(x_{n_j}&gt;b-\frac{b-a}{2}=\frac{a+b}{2}\)</span>.
+But, by <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a>, there
+exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_n&lt;a+\frac{b-a}{2}=\frac{a+b}{2}\)</span>.
+Choose <span class="math inline">\(j_0\ge J\)</span> with <span class="math inline">\(n_{j_0}\ge N\)</span>. Then <span class="math display">\[\frac{a+b}{2}&lt;x_{n_{j_0}}&lt;\frac{a+b}{2},\]</span>
+a contradiction. So <span class="math inline">\(a\)</span> is the
+largest cluster point of <span class="math inline">\(\{x_n\}\)</span>. A
+similar argument shows <span class="math inline">\(\liminf x_n\)</span>
+is the smallest cluster point of <span class="math inline">\(\{x_n\}\)</span>. Alternatively, apply the result
+to <span class="math inline">\(\{-x_n\}\)</span> and use <a href="ch-sequences.html#thm-limsup-basic">Theorem 3.6.10</a> (1).</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch02.html"><span class="dir">Previous</span> Solutions for Chapter 2. Cardinality</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch04.html"><span class="dir">Next</span> Solutions for Chapter 4. Topological Properties of the Real Line</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

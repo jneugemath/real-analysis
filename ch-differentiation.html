@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 17. Differentiation and Integration | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-lebesgue-integral.html"><span class="dir">Previous</span> Chapter 16. The Lebesgue Integral</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="part-appendices.html"><span class="dir">Next</span> Appendices</a>
+</nav>
+<main id="main">
+<article id="ch-differentiation">
+<h1>Chapter 17. Differentiation and Integration</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-vitali">17.1 The Vitali Covering Lemma<sup>*</sup></a></li><li><a href="#sec-monotone-differentiation">17.2 Differentiating Monotone Functions</a></li><li><a href="#sec-bv-revisited">17.3 Functions of Bounded Variation
+Revisited</a></li><li><a href="#sec-differentiating-integral">17.4 Differentiating an Integral</a></li><li><a href="#sec-absolute-continuity">17.5 Absolute Continuity</a></li><li><a href="#sec-cantor-function">17.6 The Cantor Function<sup>*</sup></a></li><li><a href="#notes-16">Notes</a></li></ul></nav>
+<p>The Fundamental Theorem of Calculus in <a href="ch-integrals.html#sec-ftc">Section
+9.3</a> has two halves. If <span class="math inline">\(f\)</span> is
+continuous, then <span class="math inline">\(\int_a^xf\)</span> has
+derivative <span class="math inline">\(f\)</span>. If <span class="math inline">\(F'\)</span> is Riemann integrable, then <span class="math inline">\(\int_a^bF'=F(b)-F(a)\)</span>. This chapter
+proves versions of both halves for the Lebesgue integral. The first half
+holds for every integrable <span class="math inline">\(f\)</span>,
+almost everywhere. The second half needs the right class of functions
+<span class="math inline">\(F\)</span>. It is not enough for <span class="math inline">\(F\)</span> to be continuous and differentiable
+almost everywhere. The right class is the absolutely continuous
+functions.</p>
+<p><a href="#sec-vitali">Section 17.1</a>, which is marked with a star,
+proves the Vitali Covering Lemma, a tool for choosing disjoint
+intervals. <a href="#sec-monotone-differentiation">Section 17.2</a> uses
+it to show that monotone functions are differentiable almost everywhere.
+<a href="#sec-bv-revisited">Section 17.3</a> returns to functions of
+bounded variation, which are differences of monotone functions. <a href="#sec-differentiating-integral">Section 17.4</a> differentiates
+integrals. <a href="#sec-absolute-continuity">Section 17.5</a>
+introduces absolute continuity and proves the Fundamental Theorem of
+Calculus for the Lebesgue integral. <a href="#sec-cantor-function">Section 17.6</a>, also starred, builds the
+Cantor function. It is continuous and increasing, and its derivative is
+<span class="math inline">\(0\)</span> almost everywhere, but it is not
+constant.</p>
+<p><em>What this chapter uses from earlier chapters.</em> Limits
+superior and inferior (<a href="ch-sequences.html#sec-limsup">Section 3.6</a>), the
+Fundamental Theorem of Calculus and the Mean Value Theorem for Integrals
+(<a href="ch-integrals.html">Chapter 9</a>), the definitions in <a href="ch-bounded-variation.html#sec-bv">Section 8.1</a>, outer measure (<a href="ch-lebesgue-measure.html">Chapter 14</a>), and the integral and the
+convergence theorems (<a href="ch-lebesgue-integral.html">Chapter 16</a>).
+<a href="#sec-cantor-function">Section 17.6</a> uses the Cantor set (<a href="ch-cantor.html">Chapter 5</a>).</p>
+<section class="level3 unnumbered" id="sec-vitali">
+<h2>17.1 The Vitali Covering Lemma<sup>*</sup></h2>
+<p>This section can be skipped. Later sections use the statement of the
+Vitali Covering Lemma, <a href="#lem-vitali">Lemma 17.1.2</a>, but not
+its proof.</p>
+<p>To show that a set is small, we cover it by intervals with small
+total length. Sometimes the opposite is needed. We are handed many
+intervals around the points of a set <span class="math inline">\(E\)</span>, and we want to pick finitely many
+<em>disjoint</em> ones that cover almost all of <span class="math inline">\(E\)</span>. This is possible when the intervals
+around each point can be as short as we like.</p>
+<div class="definitionbox" id="def-vitali-covering">
+
+<p><strong>Definition 17.1.1.</strong> Let <span class="math inline">\(\mathcal{I}\)</span> be a collection of intervals.
+Then <span class="math inline">\(\mathcal{I}\)</span> covers a set <span class="math inline">\(E\)</span> <em>in the sense of Vitali</em> if for
+all <span class="math inline">\(\varepsilon&gt;0\)</span> and for all
+<span class="math inline">\(x\in E\)</span>, there exists an <span class="math inline">\(I\in\mathcal{I}\)</span> such that <span class="math inline">\(x\in I\)</span> and <span class="math inline">\(\ell(I)&lt;\varepsilon\)</span>. The intervals may
+be open, half open, or closed, but must not be degenerate intervals
+consisting of only one point. Such a collection is called a <em>Vitali
+covering</em> of <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-vitali">
+
+<p><strong>Lemma 17.1.2</strong> (Vitali Covering
+Lemma)<strong>.</strong></p>
+<p>Let <span class="math inline">\(E\)</span> be a set with <span class="math inline">\(m^*(E)&lt;\infty\)</span> and <span class="math inline">\(\mathcal{I}\)</span> a collection of intervals
+that cover <span class="math inline">\(E\)</span> in the sense of
+Vitali. Then for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a finite
+disjoint collection <span class="math inline">\(\{I_1,\dots,I_N\}\)</span> of intervals in <span class="math inline">\(\mathcal{I}\)</span> such that <span class="math display">\[m^*\left(E\setminus\bigcup_{n=1}^NI_n\right)&lt;\varepsilon.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>Step 1. Two reductions.</em> Replace each interval of <span class="math inline">\(\mathcal{I}\)</span> by its closure. This changes
+no lengths. It changes a union of finitely many intervals by finitely
+many points, which does not change outer measure. If the closures are
+disjoint, so are the original intervals. So we may assume every interval
+in <span class="math inline">\(\mathcal{I}\)</span> is closed. Next, by
+<a href="ch-lebesgue-measure.html#thm-outer-measure-open">Theorem 14.1.10</a>, there is an open
+set <span class="math inline">\(U\supset E\)</span> with <span class="math inline">\(m(U)&lt;\infty\)</span>. Discard the intervals of
+<span class="math inline">\(\mathcal{I}\)</span> that are not contained
+in <span class="math inline">\(U\)</span>. What is left still covers
+<span class="math inline">\(E\)</span> in the sense of Vitali. Indeed,
+each <span class="math inline">\(x\in E\)</span> has a neighborhood
+<span class="math inline">\((x-r,x+r)\subset U\)</span>, and every
+interval of <span class="math inline">\(\mathcal{I}\)</span> that
+contains <span class="math inline">\(x\)</span> and is shorter than
+<span class="math inline">\(r\)</span> lies in it.</p>
+<p><em>Step 2. A greedy choice.</em> Choose any <span class="math inline">\(I_1\in\mathcal{I}\)</span>. Suppose <span class="math inline">\(I_1,\dots,I_n\)</span> have been chosen and are
+pairwise disjoint. If <span class="math inline">\(E\subset
+I_1\cup\cdots\cup I_n\)</span>, stop. The lemma holds with <span class="math inline">\(N=n\)</span>. Otherwise, let <span class="math display">\[k_n=\sup\{\ell(I):I\in\mathcal{I}\text{ and
+}I\text{ is disjoint from }I_1,\dots,I_n\}.\]</span> This set of lengths
+is not empty. A point <span class="math inline">\(x\in E\)</span>
+outside the closed set <span class="math inline">\(I_1\cup\cdots\cup
+I_n\)</span> has a neighborhood that misses this set, and some interval
+of <span class="math inline">\(\mathcal{I}\)</span> that contains <span class="math inline">\(x\)</span> lies in that neighborhood. Also <span class="math inline">\(k_n\le m(U)&lt;\infty\)</span>. Choose <span class="math inline">\(I_{n+1}\in\mathcal{I}\)</span>, disjoint from
+<span class="math inline">\(I_1,\dots,I_n\)</span>, with <span class="math inline">\(\ell(I_{n+1})&gt;\frac12k_n\)</span>.</p>
+<p>If the process never stops, it produces pairwise disjoint intervals
+<span class="math inline">\(I_1,I_2,\dots\)</span> in <span class="math inline">\(U\)</span>. By countable additivity, <span class="math inline">\(\sum_n\ell(I_n)\le m(U)&lt;\infty\)</span>. In
+particular, <span class="math inline">\(\ell(I_n)\to0\)</span>. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(\sum_{n=N+1}^\infty\ell(I_n)&lt;\frac\varepsilon
+5\)</span>.</p>
+<p><em>Step 3. The leftover set is small.</em> Let <span class="math inline">\(R=E\setminus\bigcup_{n=1}^NI_n\)</span>. For each
+<span class="math inline">\(n\)</span>, let <span class="math inline">\(J_n\)</span> be the closed interval with the same
+midpoint as <span class="math inline">\(I_n\)</span> and five times its
+length. We show <span class="math inline">\(R\subset\bigcup_{n=N+1}^\infty J_n\)</span>. Then
+<span class="math display">\[m^*(R)\le\sum_{n=N+1}^\infty\ell(J_n)=5\sum_{n=N+1}^\infty\ell(I_n)&lt;\varepsilon.\]</span></p>
+<p>Let <span class="math inline">\(x\in R\)</span>. As in Step 2, there
+is an <span class="math inline">\(I\in\mathcal{I}\)</span> with <span class="math inline">\(x\in I\)</span> that is disjoint from <span class="math inline">\(I_1,\dots,I_N\)</span>. The interval <span class="math inline">\(I\)</span> must meet some <span class="math inline">\(I_n\)</span>. Otherwise <span class="math inline">\(I\)</span> would be disjoint from <span class="math inline">\(I_1,\dots,I_n\)</span> for every <span class="math inline">\(n\)</span>, and so <span class="math inline">\(\ell(I)\le k_n&lt;2\ell(I_{n+1})\)</span> for
+every <span class="math inline">\(n\)</span>. This would force <span class="math inline">\(\ell(I)=0\)</span>, but <span class="math inline">\(I\)</span> is not degenerate. Let <span class="math inline">\(n_0\)</span> be the smallest index with <span class="math inline">\(I\cap I_{n_0}\ne\emptyset\)</span>. Then <span class="math inline">\(n_0&gt;N\)</span>. Also <span class="math inline">\(I\)</span> is disjoint from <span class="math inline">\(I_1,\dots,I_{n_0-1}\)</span>, so <span class="math inline">\(\ell(I)\le k_{n_0-1}&lt;2\ell(I_{n_0})\)</span>.
+Let <span class="math inline">\(z\)</span> be the midpoint of <span class="math inline">\(I_{n_0}\)</span>. Since <span class="math inline">\(x\in I\)</span> and <span class="math inline">\(I\)</span> meets <span class="math inline">\(I_{n_0}\)</span>, <span class="math display">\[|x-z|\le\ell(I)+\frac12\ell(I_{n_0})&lt;\frac52\ell(I_{n_0}).\]</span>
+So <span class="math inline">\(x\in J_{n_0}\)</span>. See <a href="#fig-vitali">Figure 17.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<figure class="figure" id="fig-vitali"><div class="figure-images"><img alt="A number line showing an interval I_{n_0} with midpoint z, a shorter interval I that contains x and overlaps I_{n_0}, and a much wider interval J_{n_0} with the same midpoint z and five times the length, which contains all of I." height="162" src="figs/fig21.svg" width="598"/></div><figcaption><strong>Figure 17.1.</strong> The key step in the proof of the Vitali
+Covering Lemma. The interval <span class="math inline">\(I\)</span>
+contains <span class="math inline">\(x\)</span>, meets <span class="math inline">\(I_{n_0}\)</span>, and is less than twice as long
+as <span class="math inline">\(I_{n_0}\)</span>. So <span class="math inline">\(x\)</span> lies in the interval <span class="math inline">\(J_{n_0}\)</span> that has the same midpoint <span class="math inline">\(z\)</span> as <span class="math inline">\(I_{n_0}\)</span> and five times its length.</figcaption></figure>
+<div class="techniquebox">
+<p><strong>Proof Technique (Greedy Choices).</strong></p>
+<p>The proof of <a href="#lem-vitali">Lemma 17.1.2</a> picks intervals
+one at a time, each time taking one that is nearly as long as possible
+among those still allowed. This is a <em>greedy</em> construction. The
+longest allowed interval may not exist, since a supremum need not be
+attained. So the proof settles for one longer than half the supremum.
+The payoff comes at the end. Any interval that was passed over is not
+much longer than one that was chosen, so a fixed enlargement of the
+chosen intervals covers everything that was missed.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-59">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-vitali-needed">
+
+<p><strong>Exercise 17.1.1.</strong> Let <span class="math inline">\(E=[0,1]\)</span> and <span class="math inline">\(\mathcal{I}=\left\{\left[0,\frac23\right],\left[\frac13,1\right]\right\}\)</span>.
+Show that <span class="math inline">\(\mathcal{I}\)</span> covers <span class="math inline">\(E\)</span>, but every disjoint subcollection of
+<span class="math inline">\(\mathcal{I}\)</span> misses a part of <span class="math inline">\(E\)</span> of measure at least <span class="math inline">\(\frac13\)</span>. Which hypothesis of <a href="#lem-vitali">Lemma 17.1.2</a> fails? <a aria-label="Solution for Exercise 17.1.1" href="solutions-ch17.html#sol-exer-vitali-needed">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-vitali-countable">
+
+<p><strong>Exercise 17.1.2.</strong> Under the hypotheses of <a href="#lem-vitali">Lemma 17.1.2</a>, prove that there is a countable
+disjoint collection <span class="math inline">\(\{I_n\}\)</span> of
+intervals in <span class="math inline">\(\mathcal{I}\)</span> with <span class="math inline">\(m^*\bigl(E\setminus\bigcup_nI_n\bigr)=0\)</span>.
+<a aria-label="Hint for Exercise 17.1.2" href="solutions-ch17.html#sol-exer-vitali-countable">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-vitali-rational">
+
+<p><strong>Exercise 17.1.3.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>. Show that the closed
+intervals with rational endpoints that meet <span class="math inline">\(E\)</span> form a Vitali covering of <span class="math inline">\(E\)</span>. <a aria-label="Hint for Exercise 17.1.3" href="solutions-ch17.html#sol-exer-vitali-rational">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-monotone-differentiation">
+<h2>17.2 Differentiating Monotone Functions</h2>
+<p>A continuous function can fail to be differentiable at every point,
+as the Weierstrass function in <a href="ch-function-sequences.html#sec-weierstrass">Section
+11.3</a> shows. A monotone function cannot be that bad. This section
+proves that a monotone function is differentiable almost everywhere. To
+handle points where the derivative might not exist, we use four
+one-sided substitutes that always exist.</p>
+<div class="definitionbox" id="def-dini-derivatives">
+
+<p><strong>Definition 17.2.1.</strong> Let <span class="math inline">\(f\)</span> be a real-valued function defined on an
+interval containing <span class="math inline">\(x\)</span>. Define the
+<em>(Dini) derivatives</em> of <span class="math inline">\(f\)</span> as
+follows: <span class="math display">\[D^+f(x)=\limsup_{h\to0^+}\frac{f(x+h)-f(x)}{h},\qquad
+D^-f(x)=\limsup_{h\to0^{+}}\frac{f(x)-f(x-h)}{h},\]</span> <span class="math display">\[D_+f(x)=\liminf_{h\to0^+}\frac{f(x+h)-f(x)}{h},\qquad
+D_-f(x)=\liminf_{h\to0^{+}}\frac{f(x)-f(x-h)}{h}.\]</span> By <a href="ch-derivative.html#def-derivative">Definition 7.1.1</a>, <span class="math inline">\(f\)</span> is differentiable at an interior point
+<span class="math inline">\(x\)</span> exactly when <span class="math inline">\(D^+f(x)=D_+f(x)=D^-f(x)=D_-f(x)\ne\pm\infty\)</span>,
+and then <span class="math inline">\(f'(x)\)</span> is the common
+value of the derivatives at <span class="math inline">\(x\)</span>. If
+<span class="math inline">\(D^+f(x)=D_+f(x)\)</span>, <span class="math inline">\(f\)</span> has a right-hand derivative, denoted
+<span class="math inline">\(f'(x+)\)</span>. If <span class="math inline">\(D^-f(x)=D_-f(x)\)</span>, <span class="math inline">\(f\)</span> has a left-hand derivative, denoted
+<span class="math inline">\(f'(x-)\)</span>.</p>
+</div>
+<p>Here <span class="math inline">\(\limsup_{h\to0^+}g(h)\)</span> means
+<span class="math inline">\(\inf_{\delta&gt;0}\sup\{g(h):0&lt;h&lt;\delta\}\)</span>,
+and <span class="math inline">\(\liminf_{h\to0^+}g(h)\)</span> means
+<span class="math inline">\(\sup_{\delta&gt;0}\inf\{g(h):0&lt;h&lt;\delta\}\)</span>.
+As <span class="math inline">\(\delta\)</span> decreases, <span class="math inline">\(\sup\{g(h):0&lt;h&lt;\delta\}\)</span> decreases.
+So, as with sequences in <a href="ch-sequences.html#sec-limsup">Section 3.6</a>, these
+always exist as values in <span class="math inline">\([-\infty,\infty]\)</span>. Also <span class="math inline">\(D_+f(x)\le D^+f(x)\)</span> and <span class="math inline">\(D_-f(x)\le D^-f(x)\)</span>. The right derivatives
+<span class="math inline">\(D^+f\)</span> and <span class="math inline">\(D_+f\)</span> look only to the right of <span class="math inline">\(x\)</span>, and the left derivatives <span class="math inline">\(D^-f\)</span> and <span class="math inline">\(D_-f\)</span> only to the left. For example, if
+<span class="math inline">\(f(x)=|x|\)</span>, then <span class="math inline">\(D^+f(0)=D_+f(0)=1\)</span> and <span class="math inline">\(D^-f(0)=D_-f(0)=-1\)</span>. If <span class="math inline">\(f\)</span> is increasing, every difference
+quotient is at least <span class="math inline">\(0\)</span>, so all four
+Dini derivatives are at least <span class="math inline">\(0\)</span>.</p>
+<div class="theorembox" id="thm-dini-monotone">
+
+<p><strong>Theorem 17.2.2.</strong> If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([a,b]\)</span> and one of its derivatives is
+everywhere nonnegative on <span class="math inline">\((a,b)\)</span>,
+then <span class="math inline">\(f\)</span> is nondecreasing on <span class="math inline">\([a,b]\)</span>. That is, <span class="math inline">\(f(x)\le f(y)\)</span> for <span class="math inline">\(x\le y\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-dini-monotone">Exercise
+17.2.1</a>, which treats <span class="math inline">\(D_+f\)</span>. The
+other three cases are similar.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-monotone-differentiable">
+
+<p><strong>Theorem 17.2.3</strong> (Lebesgue’s Differentiation
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f\)</span> be an increasing
+real-valued function on the interval <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(f\)</span> is differentiable almost everywhere,
+the derivative <span class="math inline">\(f'\)</span> is measurable
+and <span class="math display">\[\int_{[a,b]}f'\le
+f(b)-f(a).\]</span> (Here <span class="math inline">\(f'\)</span> is
+defined only almost everywhere. Its values on a set of measure zero do
+not affect measurability or the integral.)</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>Step 1. <span class="math inline">\(D^+f\le D_-f\)</span>
+a.e.</em> Let <span class="math inline">\(E\)</span> be the set of <span class="math inline">\(x\in(a,b)\)</span> with <span class="math inline">\(D^+f(x)&gt;D_-f(x)\)</span>. For rational numbers
+<span class="math inline">\(u&gt;v\)</span>, let <span class="math display">\[E_{u,v}=\{x\in(a,b):D^+f(x)&gt;u&gt;v&gt;D_-f(x)\}.\]</span>
+Between two extended real numbers there is a rational number. So <span class="math inline">\(E\)</span> is the union of the countably many sets
+<span class="math inline">\(E_{u,v}\)</span>, and it is enough to show
+<span class="math inline">\(m^*(E_{u,v})=0\)</span>. Fix <span class="math inline">\(u&gt;v\)</span> and let <span class="math inline">\(s=m^*(E_{u,v})\le b-a\)</span>. Since <span class="math inline">\(f\)</span> is increasing, <span class="math inline">\(D_-f\ge0\)</span>. So <span class="math inline">\(v&gt;0\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>, and choose an open set
+<span class="math inline">\(U\supset E_{u,v}\)</span> with <span class="math inline">\(m(U)&lt;s+\varepsilon\)</span> (<a href="ch-lebesgue-measure.html#thm-outer-measure-open">Theorem 14.1.10</a>). Replacing <span class="math inline">\(U\)</span> by <span class="math inline">\(U\cap(a,b)\)</span>, we may assume <span class="math inline">\(U\subset(a,b)\)</span>.</p>
+<p>Let <span class="math inline">\(x\in E_{u,v}\)</span>. Since <span class="math inline">\(D_-f(x)&lt;v\)</span>, there are arbitrarily small
+<span class="math inline">\(h&gt;0\)</span> with <span class="math inline">\(f(x)-f(x-h)&lt;vh\)</span>. If <span class="math inline">\(h\)</span> is small, <span class="math inline">\([x-h,x]\subset U\)</span>. These intervals form a
+Vitali covering of <span class="math inline">\(E_{u,v}\)</span>. By the
+Vitali Covering Lemma, there are disjoint intervals <span class="math inline">\(I_n=[x_n-h_n,x_n]\)</span>, <span class="math inline">\(n=1,\dots,N\)</span>, of this kind with <span class="math inline">\(m^*\bigl(E_{u,v}\setminus\bigcup_nI_n\bigr)&lt;\varepsilon\)</span>.
+Let <span class="math inline">\(A\)</span> be the set of points of <span class="math inline">\(E_{u,v}\)</span> in the interiors <span class="math inline">\((x_n-h_n,x_n)\)</span>. Removing the finitely many
+endpoints does not change outer measure, so by subadditivity <span class="math inline">\(m^*(A)&gt;s-\varepsilon\)</span>. The intervals
+<span class="math inline">\(I_n\)</span> are disjoint and lie in <span class="math inline">\(U\)</span>, so <span class="math inline">\(\sum_nh_n\le m(U)\)</span>. Thus <span id="eq-vitali-left"></span> <span class="math display">\[\sum_{n=1}^N\bigl[f(x_n)-f(x_n-h_n)\bigr]&lt;v\sum_{n=1}^Nh_n\le
+v\,m(U)&lt;v(s+\varepsilon).
+\tag{17.2.1}\]</span></p>
+<p>Now let <span class="math inline">\(y\in A\)</span>. Since <span class="math inline">\(D^+f(y)&gt;u\)</span>, there are arbitrarily small
+<span class="math inline">\(k&gt;0\)</span> with <span class="math inline">\(f(y+k)-f(y)&gt;uk\)</span>. If <span class="math inline">\(k\)</span> is small, <span class="math inline">\([y,y+k]\)</span> lies inside the interval <span class="math inline">\((x_n-h_n,x_n)\)</span> that contains <span class="math inline">\(y\)</span>. These intervals form a Vitali covering
+of <span class="math inline">\(A\)</span>. By the Vitali Covering Lemma
+again, there are disjoint intervals <span class="math inline">\([y_j,y_j+k_j]\)</span>, <span class="math inline">\(j=1,\dots,M\)</span>, of this kind that cover all
+of <span class="math inline">\(A\)</span> except a set of outer measure
+less than <span class="math inline">\(\varepsilon\)</span>. So <span class="math inline">\(\sum_jk_j&gt;m^*(A)-\varepsilon&gt;s-2\varepsilon\)</span>,
+and <span id="eq-vitali-right"></span> <span class="math display">\[\sum_{j=1}^M\bigl[f(y_j+k_j)-f(y_j)\bigr]&gt;u\sum_{j=1}^Mk_j&gt;u(s-2\varepsilon).
+\tag{17.2.2}\]</span></p>
+<p>Each interval <span class="math inline">\([y_j,y_j+k_j]\)</span> lies
+inside some <span class="math inline">\(I_n\)</span>. Fix <span class="math inline">\(n\)</span>, and list the intervals <span class="math inline">\([y_j,y_j+k_j]\)</span> inside <span class="math inline">\(I_n\)</span> from left to right. They are disjoint
+and <span class="math inline">\(f\)</span> is increasing, so the sum of
+the increases of <span class="math inline">\(f\)</span> over them is at
+most the increase <span class="math inline">\(f(x_n)-f(x_n-h_n)\)</span>
+over all of <span class="math inline">\(I_n\)</span>. Summing over <span class="math inline">\(n\)</span>, and using <a href="#eq-vitali-left">(17.2.1)</a> and <a href="#eq-vitali-right">(17.2.2)</a>, <span class="math display">\[u(s-2\varepsilon)&lt;\sum_{j=1}^M\bigl[f(y_j+k_j)-f(y_j)\bigr]\le\sum_{n=1}^N\bigl[f(x_n)-f(x_n-h_n)\bigr]&lt;v(s+\varepsilon).\]</span>
+This holds for every <span class="math inline">\(\varepsilon&gt;0\)</span>, so <span class="math inline">\(us\le vs\)</span>. Since <span class="math inline">\(u&gt;v\)</span> and <span class="math inline">\(s\ge0\)</span>, <span class="math inline">\(s=0\)</span>.</p>
+<p><em>Step 2. All four Dini derivatives agree a.e.</em> The function
+<span class="math inline">\(\tilde f(x)=-f(-x)\)</span> is increasing on
+<span class="math inline">\([-b,-a]\)</span>. Directly from the
+definitions, <span class="math inline">\(D^+\tilde
+f(x)=D^-f(-x)\)</span> and <span class="math inline">\(D_-\tilde
+f(x)=D_+f(-x)\)</span>. So Step 1 applied to <span class="math inline">\(\tilde f\)</span> gives <span class="math inline">\(D^-f\le D_+f\)</span> a.e. Together with Step 1,
+<span class="math display">\[D^+f\le D_-f\le D^-f\le D_+f\le
+D^+f\quad\text{a.e.}\]</span> So the four Dini derivatives are equal
+a.e. Call the common value <span class="math inline">\(g(x)\)</span>. It
+lies in <span class="math inline">\([0,\infty]\)</span>.</p>
+<p><em>Step 3. The integral.</em> Extend <span class="math inline">\(f\)</span> to <span class="math inline">\([a,b+1]\)</span> by <span class="math inline">\(f(x)=f(b)\)</span> for <span class="math inline">\(x&gt;b\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(x\in[a,b]\)</span>, let <span class="math display">\[g_n(x)=n\left[f\left(x+\frac1n\right)-f(x)\right].\]</span>
+Each <span class="math inline">\(g_n\)</span> is measurable, since
+increasing functions are measurable (<a href="ch-measurable-functions.html#ex-measurable-examples">Example 15.1.3</a>). Also <span class="math inline">\(g_n\ge0\)</span>, and <span class="math inline">\(g_n\to g\)</span> a.e. So <span class="math inline">\(g\)</span> is measurable, and by Fatou’s Lemma,
+<span class="math display">\[\int_{[a,b]}g\le\liminf\int_{[a,b]}g_n.\]</span>
+Monotone functions are Riemann integrable (<a href="ch-integrals.html#thm-continuous-monotone-integrable">Theorem 9.2.2</a>), so the
+integrals of <span class="math inline">\(g_n\)</span> are Riemann
+integrals by <a href="ch-lebesgue-integral.html#thm-riemann-lebesgue">Theorem 16.3.3</a>. The
+upper and lower sums of <span class="math inline">\(x\mapsto
+f\left(x+\frac1n\right)\)</span> for a partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> are the upper and lower sums of
+<span class="math inline">\(f\)</span> for the shifted partition <span class="math inline">\(\mathcal{P}+\frac1n\)</span>. So <span class="math inline">\(\int_a^bf\left(x+\frac1n\right)dx=\int_{a+1/n}^{b+1/n}f\)</span>.
+By <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>, <span class="math display">\[\int_{[a,b]}g_n=n\int_b^{b+1/n}f-n\int_a^{a+1/n}f=f(b)-n\int_a^{a+1/n}f\le
+f(b)-f(a),\]</span> since <span class="math inline">\(f=f(b)\)</span> on
+<span class="math inline">\(\left[b,b+\frac1n\right]\)</span> and <span class="math inline">\(f\ge f(a)\)</span> on <span class="math inline">\(\left[a,a+\frac1n\right]\)</span>. Thus <span class="math inline">\(\int_{[a,b]}g\le f(b)-f(a)&lt;\infty\)</span>. By
+<a href="ch-lebesgue-integral.html#lem-integrable-finite-ae">Lemma 16.4.12</a>, <span class="math inline">\(g&lt;\infty\)</span> a.e. So at almost every <span class="math inline">\(x\)</span>, the four Dini derivatives are equal
+and finite. There <span class="math inline">\(f\)</span> is
+differentiable and <span class="math inline">\(f'(x)=g(x)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The inequality can be strict. Let <span class="math inline">\(f=\chi_{[1/2,1]}\)</span> on <span class="math inline">\([0,1]\)</span>. Then <span class="math inline">\(f'=0\)</span> except at <span class="math inline">\(\frac12\)</span>, so <span class="math inline">\(\int_{[0,1]}f'=0&lt;1=f(1)-f(0)\)</span>. The
+jump at <span class="math inline">\(\frac12\)</span> counts in <span class="math inline">\(f(1)-f(0)\)</span> but not in the integral. <a href="#sec-cantor-function">Section 17.6</a> gives a <em>continuous</em>
+increasing function with the same behavior.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Splitting a Bad Set Using
+Rationals).</strong></p>
+<p>To show that an inequality <span class="math inline">\(A(x)\le
+B(x)\)</span> holds almost everywhere, look at the bad set <span class="math inline">\(\{A&gt;B\}\)</span>. Whenever <span class="math inline">\(A(x)&gt;B(x)\)</span>, there are rational numbers
+<span class="math inline">\(u&gt;v\)</span> with <span class="math inline">\(A(x)&gt;u&gt;v&gt;B(x)\)</span>. So the bad set is
+a countable union of the sets <span class="math inline">\(\{A&gt;u&gt;v&gt;B\}\)</span>, and it is enough to
+show each of these has measure zero. Fixing <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> turns a comparison between two varying
+quantities into two comparisons with fixed numbers, which are much
+easier to use. Step 1 of the proof of <a href="#thm-monotone-differentiable">Theorem 17.2.3</a> works this way.
+The same trick, with one rational number, appeared in the proof of <a href="ch-measurable-functions.html#thm-measurable-algebra">Theorem 15.1.4</a>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-60">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-dini-monotone">
+
+<p><strong>Exercise 17.2.1.</strong> If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(D_+f\)</span> is everywhere nonnegative on <span class="math inline">\((a,b)\)</span>, prove <span class="math inline">\(f\)</span> is nondecreasing on <span class="math inline">\([a,b]\)</span>. Then prove <a href="#thm-dini-monotone">Theorem 17.2.2</a> when <span class="math inline">\(D^-f\ge0\)</span>, and explain why this proves <a href="#thm-dini-monotone">Theorem 17.2.2</a> for all four Dini
+derivatives. <a aria-label="Hint for Exercise 17.2.1" href="solutions-ch17.html#sol-exer-dini-monotone">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dini-examples">
+
+<p><strong>Exercise 17.2.2.</strong> Find the four Dini derivatives at
+<span class="math inline">\(0\)</span> of <span class="math inline">\(f(x)=x\sin\frac1x\)</span>, <span class="math inline">\(f(0)=0\)</span>, and of the Dirichlet function
+<span class="math inline">\(\chi_\mathbb{Q}\)</span>. <a aria-label="Hint for Exercise 17.2.2" href="solutions-ch17.html#sol-exer-dini-examples">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dini-negative">
+
+<p><strong>Exercise 17.2.3.</strong> Prove that <span class="math inline">\(D^+(-f)(x)=-D_+f(x)\)</span> and <span class="math inline">\(D^-(-f)(x)=-D_-f(x)\)</span>. <a aria-label="Hint for Exercise 17.2.3" href="solutions-ch17.html#sol-exer-dini-negative">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-decreasing-differentiable">
+
+<p><strong>Exercise 17.2.4.</strong> Let <span class="math inline">\(f\)</span> be decreasing on <span class="math inline">\([a,b]\)</span>. Prove that <span class="math inline">\(f\)</span> is differentiable a.e. and <span class="math inline">\(\int_{[a,b]}f'\ge f(b)-f(a)\)</span>. <a aria-label="Hint for Exercise 17.2.4" href="solutions-ch17.html#sol-exer-decreasing-differentiable">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-jumps-at-rationals">
+
+<p><strong>Exercise 17.2.5.</strong> Let <span class="math inline">\(\{r_n\}\)</span> be an enumeration of the rational
+numbers in <span class="math inline">\((0,1)\)</span>, and let <span class="math inline">\(f(x)=\sum_{n:\,r_n\le x}2^{-n}\)</span> for <span class="math inline">\(x\in[0,1]\)</span>. Prove that <span class="math inline">\(f\)</span> is increasing and discontinuous at
+every rational number in <span class="math inline">\((0,1)\)</span>.
+Conclude that <span class="math inline">\(f\)</span> is differentiable
+almost everywhere. <a aria-label="Hint for Exercise 17.2.5" href="solutions-ch17.html#sol-exer-jumps-at-rationals">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-bv-revisited">
+<h2>17.3 Functions of Bounded Variation
+Revisited</h2>
+<p>Functions of bounded variation were studied in <a href="ch-bounded-variation.html">Chapter 8</a>, which was optional. Here are
+the definitions again. For a partition <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_k\}\)</span> of <span class="math inline">\([a,b]\)</span>, let <span class="math inline">\(V(\mathcal{P})=\sum_{i=1}^k|f(x_i)-f(x_{i-1})|\)</span>.
+The total variation of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> is <span class="math inline">\(V_f[a,b]=\sup_\mathcal{P}V(\mathcal{P})\)</span>,
+and <span class="math inline">\(f\)</span> is of bounded variation,
+written <span class="math inline">\(f\in BV[a,b]\)</span>, if <span class="math inline">\(V_f[a,b]&lt;\infty\)</span> (<a href="ch-bounded-variation.html#def-bounded-variation">Definition 8.1.5</a>). The Jordan
+Decomposition Theorem (<a href="ch-bounded-variation.html#thm-jordan-decomposition">Theorem
+8.2.5</a>) says <span class="math inline">\(f\in BV[a,b]\)</span>
+exactly when <span class="math inline">\(f\)</span> is a difference of
+two increasing functions. This section gives a second proof, using the
+variation up and the variation down separately. Then <a href="#thm-monotone-differentiable">Theorem 17.2.3</a> applies to
+functions of bounded variation.</p>
+<div class="definitionbox" id="def-positive-negative-variation">
+
+<p><strong>Definition 17.3.1.</strong> Let <span class="math inline">\(f\)</span> be a real-valued function on <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_k\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Define <span class="math display">\[p(\mathcal{P})=\sum_{i=1}^k[f(x_i)-f(x_{i-1})]^+,\qquad
+n(\mathcal{P})=\sum_{i=1}^k[f(x_i)-f(x_{i-1})]^-,\]</span> and <span class="math display">\[V(\mathcal{P})=p(\mathcal{P})+n(\mathcal{P})=\sum_{i=1}^k|f(x_i)-f(x_{i-1})|,\]</span>
+where <span class="math inline">\(r^+\)</span> is <span class="math inline">\(r\)</span> if <span class="math inline">\(r\ge
+0\)</span> and <span class="math inline">\(0\)</span> if <span class="math inline">\(r\le 0\)</span> and set <span class="math inline">\(r^-=|r|-r^+\)</span>. Note <span class="math inline">\(f(b)-f(a)=p(\mathcal{P})-n(\mathcal{P})\)</span>.</p>
+<p>Set <span class="math display">\[P_f[a,b]=\sup_{\mathcal{P}}
+p(\mathcal{P}),\qquad N_f[a,b]=\sup_{\mathcal{P}}
+n(\mathcal{P}),\qquad\text{and}\qquad V_f[a,b]=\sup_{\mathcal{P}}
+V(\mathcal{P}),\]</span> where the supremum is taken over all possible
+partitions of <span class="math inline">\([a,b]\)</span>.</p>
+<p>Notice <span class="math inline">\(P_f[a,b]\le V_f[a,b]\le
+P_f[a,b]+N_f[a,b]\)</span>. The quantities <span class="math inline">\(P_f[a,b]\)</span>, <span class="math inline">\(N_f[a,b]\)</span> and <span class="math inline">\(V_f[a,b]\)</span> are the <em>positive</em>,
+<em>negative</em>, and <em>total variations</em> of <span class="math inline">\(f\)</span> over <span class="math inline">\([a,b]\)</span>. If <span class="math inline">\(V_f[a,b]&lt;\infty\)</span>, <span class="math inline">\(f\)</span> is of bounded variation over <span class="math inline">\([a,b]\)</span>, written <span class="math inline">\(f\in BV[a,b]\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-positive-negative-variation">
+
+<p><strong>Lemma 17.3.2.</strong> If <span class="math inline">\(f\in
+BV[a,b]\)</span>, then <span class="math display">\[V_f[a,b]=P_f[a,b]+N_f[a,b]\quad\text{and}\quad
+f(b)-f(a)=P_f[a,b]-N_f[a,b].\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> For any partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>, <span class="math display">\[p(\mathcal{P})=n(\mathcal{P})+f(b)-f(a).\]</span>
+Both <span class="math inline">\(p(\mathcal{P})\)</span> and <span class="math inline">\(n(\mathcal{P})\)</span> are at most <span class="math inline">\(V(\mathcal{P})\le V_f[a,b]&lt;\infty\)</span>.
+Taking the supremum over <span class="math inline">\(\mathcal{P}\)</span> on both sides gives <span class="math display">\[P_f[a,b]=N_f[a,b]+f(b)-f(a).\]</span> Also, <span class="math display">\[V(\mathcal{P})=p(\mathcal{P})+n(\mathcal{P})=2p(\mathcal{P})-\bigl(f(b)-f(a)\bigr).\]</span>
+So <span class="math display">\[V_f[a,b]=2P_f[a,b]-\bigl(f(b)-f(a)\bigr)=P_f[a,b]+N_f[a,b].\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-jordan-pn">
+
+<p><strong>Theorem 17.3.3</strong> (Jordan Decomposition
+Theorem)<strong>.</strong></p>
+<p>A function <span class="math inline">\(f\)</span> is of bounded
+variation on <span class="math inline">\([a,b]\)</span> if and only if
+it is the difference of two monotone real-valued functions on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Let <span class="math inline">\(f\)</span> be of bounded variation on
+<span class="math inline">\([a,b]\)</span> and set <span class="math inline">\(g(x)=P_f[a,x]\)</span> and <span class="math inline">\(h(x)=N_f[a,x]\)</span>, with <span class="math inline">\(g(a)=h(a)=0\)</span>. Then <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are monotone increasing functions (<a href="#exer-pn-increasing">Exercise 17.3.1</a>) which are real-valued,
+since <span class="math inline">\(0\le P_f[a,x]\le V_f[a,x]\le
+V_f[a,b]&lt;\infty\)</span> and <span class="math inline">\(0\le
+N_f[a,x]\le V_f[a,x]\le V_f[a,b]&lt;\infty\)</span>, by <a href="ch-bounded-variation.html#thm-variation-additive">Theorem 8.2.1</a>. But by <a href="#lem-positive-negative-variation">Lemma 17.3.2</a> on <span class="math inline">\([a,x]\)</span>, <span class="math inline">\(f(x)=g(x)-h(x)+f(a)\)</span>. Since <span class="math inline">\(h-f(a)\)</span> is a monotone function, <span class="math inline">\(f\)</span> is the difference of two monotone
+functions.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) If <span class="math inline">\(f=g-h\)</span> on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> increasing, then for a partition <span class="math inline">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span> of <span class="math inline">\([a,b]\)</span>, <span class="math display">\[\begin{aligned}
+\sum_{i=1}^n|f(x_i)-f(x_{i-1})|&amp;\le\sum_{i=1}^n[g(x_i)-g(x_{i-1})]+\sum_{i=1}^n[h(x_i)-h(x_{i-1})]\\
+&amp;=g(b)-g(a)+h(b)-h(a).
+\end{aligned}\]</span> Hence <span class="math inline">\(V_f[a,b]\)</span><span class="math inline">\(\le
+g(b)-g(a)+h(b)-h(a)&lt;\infty\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This is a second proof of <a href="ch-bounded-variation.html#thm-jordan-decomposition">Theorem
+8.2.5</a>. The decomposition there was <span class="math inline">\(f=V_f-(V_f-f)\)</span>, where <span class="math inline">\(V_f(x)=V_f[a,x]\)</span>. <a href="#exer-pn-formulas">Exercise 17.3.3</a> shows how the two
+decompositions are related.</p>
+<div class="corollarybox" id="cor-bv-differentiable">
+
+<p><strong>Corollary 17.3.4.</strong> If <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(f'(x)\)</span> exists a.e. on <span class="math inline">\([a,b]\)</span>, and <span class="math inline">\(f'\)</span> is integrable over <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> This is an immediate consequence of <a href="#thm-jordan-pn">Theorem 17.3.3</a> and <a href="#thm-monotone-differentiable">Theorem 17.2.3</a>. Write <span class="math inline">\(f=g-h\)</span> with <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> increasing. Then <span class="math inline">\(f'=g'-h'\)</span> wherever <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are both differentiable, which is
+almost everywhere. Also <span class="math inline">\(|f'|\le
+g'+h'\)</span> a.e., and <span class="math inline">\(\int_{[a,b]}(g'+h')\le
+g(b)-g(a)+h(b)-h(a)&lt;\infty\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-variation-lower-semicontinuous">
+
+<p><strong>Theorem 17.3.5.</strong> Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of functions on
+<span class="math inline">\([a,b]\)</span> with <span class="math inline">\(f_n\to f\)</span> on <span class="math inline">\([a,b]\)</span>. Then <span class="math display">\[V_f[a,b]\le\liminf V_{f_n}[a,b].\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-variation-lower-semicontinuous">Exercise 17.3.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-61">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-pn-increasing">
+
+<p><strong>Exercise 17.3.1.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> and <span class="math inline">\(a\le x&lt;y\le b\)</span>. Prove that <span class="math inline">\(P_f[a,x]\le P_f[a,y]\)</span> and <span class="math inline">\(N_f[a,x]\le N_f[a,y]\)</span>. <a aria-label="Hint for Exercise 17.3.1" href="solutions-ch17.html#sol-exer-pn-increasing">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-variation-lower-semicontinuous">
+
+<p><strong>Exercise 17.3.2.</strong> Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of functions on
+<span class="math inline">\([a,b]\)</span> with <span class="math inline">\(f_n\to f\)</span> on <span class="math inline">\([a,b]\)</span>. Prove <span class="math inline">\(V_f[a,b]\le\liminf V_{f_n}[a,b]\)</span>. Then
+show that the inequality can be strict. <a aria-label="Hint for Exercise 17.3.2" href="solutions-ch17.html#sol-exer-variation-lower-semicontinuous">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-pn-formulas">
+
+<p><strong>Exercise 17.3.3.</strong> Let <span class="math inline">\(f\in BV[a,b]\)</span>. Prove that <span class="math inline">\(P_f[a,x]=\frac12\bigl(V_f[a,x]+f(x)-f(a)\bigr)\)</span>
+and <span class="math inline">\(N_f[a,x]=\frac12\bigl(V_f[a,x]-f(x)+f(a)\bigr)\)</span>.
+<a aria-label="Hint for Exercise 17.3.3" href="solutions-ch17.html#sol-exer-pn-formulas">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sin-variations">
+
+<p><strong>Exercise 17.3.4.</strong> Find <span class="math inline">\(P_f[0,2\pi]\)</span>, <span class="math inline">\(N_f[0,2\pi]\)</span> and <span class="math inline">\(V_f[0,2\pi]\)</span> for <span class="math inline">\(f(x)=\sin x\)</span>. <a aria-label="Hint for Exercise 17.3.4" href="solutions-ch17.html#sol-exer-sin-variations">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-bv-derivative-integral">
+
+<p><strong>Exercise 17.3.5.</strong> Let <span class="math inline">\(f\)</span> be of bounded variation on <span class="math inline">\([a,b]\)</span>. Prove <span class="math inline">\(V_f[a,b]\ge\int_{[a,b]}|f'|\)</span>. <a aria-label="Hint for Exercise 17.3.5" href="solutions-ch17.html#sol-exer-bv-derivative-integral">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-differentiating-integral">
+<h2>17.4 Differentiating an Integral</h2>
+<p>The first half of the Fundamental Theorem of Calculus says that the
+derivative of an integral is the integrand. For Riemann integrals this
+needs continuity at the point (<a href="ch-integrals.html#thm-ftc-derivative">Theorem
+9.3.7</a>). For Lebesgue integrals it holds almost everywhere, for every
+integrable function.</p>
+<div class="definitionbox" id="def-indefinite-integral">
+
+<p><strong>Definition 17.4.1.</strong> If <span class="math inline">\(f\)</span> is an integrable function on <span class="math inline">\([a,b]\)</span>, the function <span class="math inline">\(F\)</span> defined on <span class="math inline">\([a,b]\)</span> by <span class="math display">\[F(x)=\int_{[a,x]}f\]</span> is called the
+<em>indefinite integral</em> of <span class="math inline">\(f\)</span>.
+More generally, a function of the form <span class="math inline">\(F(x)=F(a)+\int_{[a,x]}f\)</span>, where <span class="math inline">\(F(a)\)</span> is a constant, is called an
+indefinite integral of <span class="math inline">\(f\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-indefinite-integral-bv">
+
+<p><strong>Lemma 17.4.2.</strong> If <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\([a,b]\)</span>, then the indefinite integral <span class="math inline">\(F\)</span> of <span class="math inline">\(f\)</span> is a continuous function of bounded
+variation.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-lebesgue-integral.html#thm-absolute-continuity-integral">Theorem 16.4.14</a>, applied to
+<span class="math inline">\(|f|\)</span>, there is a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(\int_A|f|&lt;\varepsilon\)</span> for every
+measurable set <span class="math inline">\(A\subset[a,b]\)</span> with
+<span class="math inline">\(m(A)&lt;\delta\)</span>. Let <span class="math inline">\(x,y\in[a,b]\)</span> with <span class="math inline">\(x&lt;y&lt;x+\delta\)</span>. By <a href="ch-lebesgue-integral.html#thm-lebesgue-integral-properties">Theorem 16.5.4</a> (4), <span class="math inline">\(\int_{[a,y]}f=\int_{[a,x]}f+\int_{(x,y]}f\)</span>.
+So, by <a href="ch-lebesgue-integral.html#exer-abs-integral">Exercise 16.5.3</a>, <span class="math display">\[|F(y)-F(x)|=\left|\int_{(x,y]}f\right|\le\int_{(x,y]}|f|&lt;\varepsilon.\]</span>
+So <span class="math inline">\(F\)</span> is continuous, and in fact
+uniformly continuous.</p>
+<p>Now let <span class="math inline">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Then <span class="math display">\[\begin{aligned}
+\sum^n_{i=1}|F(x_i)-F(x_{i-1})|&amp;=\sum^n_{i=1}\left|\int_{(x_{i-1},x_i]}f\right|\\
+&amp;\le \sum^n_{i=1}\int_{(x_{i-1},x_i]}|f|\\
+&amp;\le \int_{[a,b]}|f|&lt;\infty.
+\end{aligned}\]</span> Thus <span class="math inline">\(V_F[a,b]\)</span><span class="math inline">\(\le
+\int_{[a,b]}|f|&lt;\infty\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-integral-zero-intervals">
+
+<p><strong>Lemma 17.4.3.</strong> If <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\([a,b]\)</span> and <span class="math display">\[\int_{[a,x]} f=0\]</span> for all <span class="math inline">\(x\in[a,b]\)</span>, then <span class="math inline">\(f(x)=0\)</span> a.e. on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>We show that <span class="math inline">\(\int_Af=0\)</span> for every
+measurable set <span class="math inline">\(A\subset[a,b]\)</span>,
+starting with intervals and building up. Integrals over sets of measure
+zero are <span class="math inline">\(0\)</span>, by <a href="ch-lebesgue-integral.html#lem-integral-subset-nonneg">Lemma 16.4.4</a> (3) applied to <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span>.</p>
+<p><em>Intervals.</em> If <span class="math inline">\(a\le c&lt;d\le
+b\)</span>, then <span class="math inline">\(\int_{(c,d)}f=\int_{[a,d]}f-\int_{[a,c]}f-\int_{\{d\}}f=0\)</span>.</p>
+<p><em>Open sets.</em> Let <span class="math inline">\(O\)</span> be
+open. Then <span class="math inline">\(O\cap(a,b)\)</span> is open, so
+by <a href="ch-topology.html#thm-open-set-structure">Theorem 4.1.12</a> it is the union
+of countably many disjoint open intervals <span class="math inline">\((c_k,d_k)\subset(a,b)\)</span>. Applying <a href="ch-lebesgue-integral.html#thm-integral-countably-additive">Theorem 16.4.10</a> to <span class="math inline">\(f^+\)</span> and to <span class="math inline">\(f^-\)</span>, and subtracting, <span class="math display">\[\int_{O\cap(a,b)}f=\sum_k\int_{(c_k,d_k)}f=0.\]</span></p>
+<p><em>Measurable sets.</em> Let <span class="math inline">\(A\subset[a,b]\)</span> be measurable. By <a href="ch-lebesgue-measure.html#thm-measurable-approximation">Theorem 14.3.1</a> (4), there is a
+<span class="math inline">\(G_\delta\)</span> set <span class="math inline">\(G\supset A\)</span> with <span class="math inline">\(m(G\setminus A)=0\)</span>. Write <span class="math inline">\(G=\bigcap_kO_k\)</span> with each <span class="math inline">\(O_k\)</span> open. Replacing <span class="math inline">\(O_k\)</span> by <span class="math inline">\(O_1\cap\cdots\cap O_k\)</span>, we may assume
+<span class="math inline">\(O_1\supset O_2\supset\cdots\)</span>. Then
+<span class="math inline">\(f\chi_{O_k\cap(a,b)}\to
+f\chi_{G\cap(a,b)}\)</span> at every point, and <span class="math inline">\(|f\chi_{O_k\cap(a,b)}|\le|f|\)</span>. By the
+Dominated Convergence Theorem, <span class="math display">\[\int_{G\cap(a,b)}f=\lim_{k\to\infty}\int_{O_k\cap(a,b)}f=0.\]</span>
+The sets <span class="math inline">\(A\)</span> and <span class="math inline">\(G\cap(a,b)\)</span> differ by a subset of <span class="math inline">\((G\setminus A)\cup\{a,b\}\)</span>, which has
+measure zero. So <span class="math inline">\(\int_Af=0\)</span>.</p>
+<p><em>Conclusion.</em> Let <span class="math inline">\(A=\{x\in[a,b]:f(x)&gt;0\}\)</span>. Then <span class="math inline">\(\int_{[a,b]}f^+=\int_Af=0\)</span>, so <span class="math inline">\(f^+=0\)</span> a.e. by <a href="ch-lebesgue-integral.html#thm-integral-zero-ae">Theorem 16.4.3</a>. Similarly, taking <span class="math inline">\(A=\{f&lt;0\}\)</span> gives <span class="math inline">\(f^-=0\)</span> a.e. So <span class="math inline">\(f=0\)</span> a.e.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (From Intervals to All Measurable
+Sets).</strong></p>
+<p>The proof of <a href="#lem-integral-zero-intervals">Lemma 17.4.3</a>
+proves a statement about every measurable set by climbing a ladder.
+Intervals come first, because the hypothesis is about intervals. Open
+sets are countable disjoint unions of intervals. <span class="math inline">\(G_\delta\)</span> sets are decreasing limits of
+open sets. Measurable sets are <span class="math inline">\(G_\delta\)</span> sets minus sets of measure zero.
+Each rung needs one tool, here countable additivity, the Dominated
+Convergence Theorem, and <a href="ch-lebesgue-measure.html#thm-measurable-approximation">Theorem
+14.3.1</a>. The Good Sets Principle of <a href="ch-measures.html">Chapter
+13</a> is another way to make the same climb.</p>
+</div>
+<div class="lemmabox" id="lem-bounded-derivative-integral">
+
+<p><strong>Lemma 17.4.4.</strong> If <span class="math inline">\(f\)</span> is bounded and measurable on <span class="math inline">\([a,b]\)</span> and <span class="math display">\[F(x)=\int_{[a,x]}f+F(a),\]</span> then <span class="math inline">\(F'(x)=f(x)\)</span> a.e. on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#lem-indefinite-integral-bv">Lemma 17.4.2</a>, <span class="math inline">\(F\)</span> is continuous and of bounded variation.
+So by <a href="#cor-bv-differentiable">Corollary 17.3.4</a>, <span class="math inline">\(F'(x)\)</span> exists for almost every <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(|f|\le K\)</span>. Extend <span class="math inline">\(f\)</span> by <span class="math inline">\(0\)</span> to <span class="math inline">\((b,b+1]\)</span>, so that the formula for <span class="math inline">\(F\)</span> makes sense on <span class="math inline">\([a,b+1]\)</span> and <span class="math inline">\(F=F(b)\)</span> on <span class="math inline">\([b,b+1]\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(x\in[a,b]\)</span>, let <span class="math inline">\(h=\frac1n\)</span> and <span class="math display">\[f_n(x)=\frac{F(x+h)-F(x)}{h}=\frac1h\int_{(x,x+h]}f.\]</span>
+Then <span class="math inline">\(|f_n|\le K\)</span>, and <span class="math inline">\(f_n\to F'\)</span> a.e. on <span class="math inline">\([a,b]\)</span>. The function <span class="math inline">\(g=\limsup f_n\)</span> is measurable, <span class="math inline">\(|g|\le K\)</span>, and <span class="math inline">\(g=F'\)</span> a.e. Let <span class="math inline">\(c\in[a,b]\)</span>. By the Bounded Convergence
+Theorem (<a href="ch-lebesgue-integral.html#cor-bct-ae">Corollary 16.3.7</a>), <span class="math display">\[\int_{[a,c]}F'=\int_{[a,c]}g=\lim_{n\to\infty}\int_{[a,c]}f_n=\lim_{h\to0^+}\frac1h\int_a^c\bigl(F(x+h)-F(x)\bigr)\,dx.\]</span>
+The last integral is a Riemann integral, since <span class="math inline">\(F\)</span> is continuous. By <span class="math inline">\(u\)</span>-Substitution with <span class="math inline">\(\varphi(t)=t+h\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.4.3</a>) and <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>, <span class="math display">\[\int_a^c\bigl(F(x+h)-F(x)\bigr)\,dx=\int_{a+h}^{c+h}F-\int_a^cF=\int_c^{c+h}F-\int_a^{a+h}F.\]</span>
+By the Mean Value Theorem for Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.4.1</a>), <span class="math inline">\(\frac1h\int_c^{c+h}F=F(\xi_h)\)</span> for some
+<span class="math inline">\(\xi_h\in[c,c+h]\)</span>. Since <span class="math inline">\(F\)</span> is continuous, this tends to <span class="math inline">\(F(c)\)</span>. In the same way, <span class="math inline">\(\frac1h\int_a^{a+h}F\to F(a)\)</span>. So <span class="math display">\[\int_{[a,c]}F'=F(c)-F(a)=\int_{[a,c]}f.\]</span>
+Hence <span class="math inline">\(\int_{[a,c]}(F'-f)=0\)</span> for
+all <span class="math inline">\(c\in[a,b]\)</span>. By <a href="#lem-integral-zero-intervals">Lemma 17.4.3</a>, <span class="math inline">\(F'=f\)</span> a.e. on <span class="math inline">\([a,b]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-derivative-of-integral">
+
+<p><strong>Theorem 17.4.5.</strong> Let <span class="math inline">\(f\)</span> be an integrable function on <span class="math inline">\([a,b]\)</span> and suppose that <span class="math display">\[F(x)=F(a)+\int_{[a,x]}f.\]</span> Then <span class="math inline">\(F'(x)=f(x)\)</span> a.e. on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>First suppose <span class="math inline">\(f\ge0\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(f_n=\min\{f,n\}\)</span>. Split the integral into
+a bounded part and a remainder, <span class="math display">\[F(x)=F(a)+\int_{[a,x]}f_n+G_n(x),\quad\text{where
+}G_n(x)=\int_{[a,x]}(f-f_n).\]</span> Since <span class="math inline">\(f-f_n\ge0\)</span>, <span class="math inline">\(G_n\)</span> is increasing. By <a href="#thm-monotone-differentiable">Theorem 17.2.3</a>, <span class="math inline">\(G_n'\)</span> exists and is at least <span class="math inline">\(0\)</span> almost everywhere. By <a href="#lem-bounded-derivative-integral">Lemma 17.4.4</a>, the derivative
+of <span class="math inline">\(\int_{[a,x]}f_n\)</span> is <span class="math inline">\(f_n(x)\)</span> almost everywhere. So <span class="math inline">\(F'\ge f_n\)</span> a.e. Discarding countably
+many sets of measure zero, one for each <span class="math inline">\(n\)</span>, we get <span class="math inline">\(F'(x)\ge f_n(x)\)</span> for every <span class="math inline">\(n\)</span>, for almost every <span class="math inline">\(x\)</span>. Letting <span class="math inline">\(n\to\infty\)</span>, <span class="math inline">\(F'\ge f\)</span> a.e. So <span class="math display">\[\int_{[a,b]}F'\ge\int_{[a,b]}f=F(b)-F(a).\]</span>
+On the other hand, <span class="math inline">\(F\)</span> is increasing,
+since <span class="math inline">\(f\ge0\)</span>. So <span class="math inline">\(\int_{[a,b]}F'\le F(b)-F(a)\)</span> by <a href="#thm-monotone-differentiable">Theorem 17.2.3</a>. Thus <span class="math inline">\(\int_{[a,b]}(F'-f)=0\)</span>. Since <span class="math inline">\(F'-f\ge0\)</span> a.e., <a href="ch-lebesgue-integral.html#thm-integral-zero-ae">Theorem 16.4.3</a> gives <span class="math inline">\(F'=f\)</span> a.e.</p>
+<p>For general <span class="math inline">\(f\)</span>, write <span class="math inline">\(f=f^+-f^-\)</span>. Then <span class="math inline">\(F(x)=F(a)+\int_{[a,x]}f^+-\int_{[a,x]}f^-\)</span>.
+By the first case, the two integrals have derivatives <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span> almost everywhere. So <span class="math inline">\(F'=f^+-f^-=f\)</span> a.e.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Compare <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, which needs
+<span class="math inline">\(f\)</span> to be continuous at <span class="math inline">\(x\)</span> and then gives <span class="math inline">\(F'(x)=f(x)\)</span> at that point. Here <span class="math inline">\(f\)</span> is only integrable, and the conclusion
+holds almost everywhere. It can fail at particular points. If <span class="math inline">\(f=\chi_{[0,1/2]}\)</span> on <span class="math inline">\([0,1]\)</span>, then <span class="math inline">\(F(x)=\min\left\{x,\frac12\right\}\)</span>, which
+is not differentiable at <span class="math inline">\(\frac12\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-62">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-averages-converge">
+
+<p><strong>Exercise 17.4.1.</strong> Let <span class="math inline">\(f\)</span> be integrable on <span class="math inline">\([a,b]\)</span>. Prove that <span class="math inline">\(\lim_{h\to0^+}\frac1h\int_{[x,x+h]}f=f(x)\)</span>
+for almost every <span class="math inline">\(x\in[a,b)\)</span>. <a aria-label="Hint for Exercise 17.4.1" href="solutions-ch17.html#sol-exer-averages-converge">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-density-theorem">
+
+<p><strong>Exercise 17.4.2.</strong> (Lebesgue’s Density Theorem,
+one-sided.) Let <span class="math inline">\(E\subset[a,b]\)</span> be
+measurable. Prove that <span class="math inline">\(\lim_{h\to0^+}\frac{m(E\cap[x,x+h])}{h}\)</span>
+is <span class="math inline">\(1\)</span> for almost every <span class="math inline">\(x\in E\)</span> and <span class="math inline">\(0\)</span> for almost every <span class="math inline">\(x\in[a,b)\setminus E\)</span>. <a aria-label="Hint for Exercise 17.4.2" href="solutions-ch17.html#sol-exer-density-theorem">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-indefinite-integral-lipschitz">
+
+<p><strong>Exercise 17.4.3.</strong> Let <span class="math inline">\(f\)</span> be measurable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(|f|\le K\)</span>. Prove that its indefinite
+integral satisfies <span class="math inline">\(|F(x)-F(y)|\le
+K|x-y|\)</span>. <a aria-label="Hint for Exercise 17.4.3" href="solutions-ch17.html#sol-exer-indefinite-integral-lipschitz">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rational-intervals-zero">
+
+<p><strong>Exercise 17.4.4.</strong> Let <span class="math inline">\(f\)</span> be integrable on <span class="math inline">\([a,b]\)</span>. Suppose <span class="math inline">\(\int_{[c,d]}f=0\)</span> whenever <span class="math inline">\(c&lt;d\)</span> are rational numbers in <span class="math inline">\([a,b]\)</span>. Prove that <span class="math inline">\(f=0\)</span> a.e. <a aria-label="Hint for Exercise 17.4.4" href="solutions-ch17.html#sol-exer-rational-intervals-zero">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-derivative-fails-dense">
+
+<p><strong>Exercise 17.4.5.</strong> Let <span class="math inline">\(f=\chi_\mathbb{Q}\)</span> on <span class="math inline">\([0,1]\)</span>. Find its indefinite integral <span class="math inline">\(F\)</span>. Show that <span class="math inline">\(F'(x)\ne f(x)\)</span> for every rational
+<span class="math inline">\(x\)</span>. <a aria-label="Hint for Exercise 17.4.5" href="solutions-ch17.html#sol-exer-derivative-fails-dense">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-absolute-continuity">
+<h2>17.5 Absolute Continuity</h2>
+<p>Which functions <span class="math inline">\(F\)</span> satisfy <span class="math inline">\(F(x)=F(a)+\int_{[a,x]}F'\)</span>? <a href="#thm-derivative-of-integral">Theorem 17.4.5</a> says this happens
+exactly when <span class="math inline">\(F\)</span> is an indefinite
+integral of some integrable function. Being continuous and
+differentiable almost everywhere is not enough, as the Cantor function
+in <a href="#sec-cantor-function">Section 17.6</a> shows. The right
+condition strengthens uniform continuity. Uniform continuity controls
+the change of <span class="math inline">\(f\)</span> over one short
+interval. Absolute continuity controls the total change over many short
+intervals.</p>
+<div class="definitionbox" id="def-absolutely-continuous">
+
+<p><strong>Definition 17.5.1.</strong> A real-valued function <span class="math inline">\(f\)</span> defined on <span class="math inline">\([a,b]\)</span> is said to be <em>absolutely
+continuous</em> on <span class="math inline">\([a,b]\)</span> if for all
+<span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a
+<span class="math inline">\(\delta&gt;0\)</span> such that <span class="math display">\[\sum_{i=1}^n|f(x_i')-f(x_i)|&lt;\varepsilon\]</span>
+for every finite collection <span class="math inline">\(\{(x_i,x_i')\}\)</span> of nonoverlapping
+subintervals of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\sum^n_{i=1}|x_i'-x_i|&lt;\delta\)</span>. If
+<span class="math inline">\(f\)</span> is absolutely continuous on <span class="math inline">\([a,b]\)</span>, write <span class="math inline">\(f\in AC[a,b]\)</span> or <span class="math inline">\(f\in AC\)</span>.</p>
+</div>
+<p>Here <em>nonoverlapping</em> means the open intervals <span class="math inline">\((x_i,x_i')\)</span> are pairwise disjoint.
+Taking a single interval shows that an absolutely continuous function is
+uniformly continuous. Every Lipschitz function is absolutely continuous
+(<a href="#exer-lipschitz-ac">Exercise 17.5.5</a>). By <a href="ch-lebesgue-integral.html#thm-absolute-continuity-integral">Theorem 16.4.14</a>, every
+indefinite integral is absolutely continuous (<a href="#exer-indefinite-integral-ac">Exercise 17.5.2</a>).</p>
+<div class="lemmabox" id="lem-ac-bv">
+
+<p><strong>Lemma 17.5.2.</strong> If <span class="math inline">\(f\)</span> is absolutely continuous on <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(f\)</span> is of bounded variation on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\delta&gt;0\)</span> be as in <a href="#def-absolutely-continuous">Definition 17.5.1</a> for <span class="math inline">\(\varepsilon=1\)</span>. Choose <span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(\frac{b-a}{K}&lt;\delta\)</span>, and let <span class="math inline">\(c_j=a+j\frac{b-a}{K}\)</span> for <span class="math inline">\(j=0,\dots,K\)</span>. Let <span class="math inline">\(\mathcal{P}\)</span> be a partition of <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(\mathcal{P}^*=\mathcal{P}\cup\{c_0,\dots,c_K\}\)</span>.
+By <a href="ch-bounded-variation.html#lem-variation-refinement">Lemma 8.1.7</a>, <span class="math inline">\(V(\mathcal{P})\le V(\mathcal{P}^*)\)</span>. For
+each <span class="math inline">\(j\)</span>, the subintervals of <span class="math inline">\(\mathcal{P}^*\)</span> that lie in <span class="math inline">\([c_{j-1},c_j]\)</span> are nonoverlapping with
+total length less than <span class="math inline">\(\delta\)</span>. So
+their terms in <span class="math inline">\(V(\mathcal{P}^*)\)</span> add
+up to less than <span class="math inline">\(1\)</span>. There are <span class="math inline">\(K\)</span> values of <span class="math inline">\(j\)</span>, so <span class="math inline">\(V(\mathcal{P})\le V(\mathcal{P}^*)&lt;K\)</span>.
+Thus <span class="math inline">\(V_f[a,b]\le K\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-ac-differentiable">
+
+<p><strong>Corollary 17.5.3.</strong> If <span class="math inline">\(f\)</span> is absolutely continuous on <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(f\)</span> has a derivative a.e. on <span class="math inline">\([a,b]\)</span>, and <span class="math inline">\(f'\)</span> is integrable over <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> This is a direct consequence of <a href="#lem-ac-bv">Lemma 17.5.2</a> and <a href="#cor-bv-differentiable">Corollary 17.3.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-x-sin-not-ac">
+
+<p><strong>Example 17.5.4.</strong> The function <span class="math display">\[f(x)=\begin{cases} x\sin(1/x), &amp; x
+\in(0,1],\\ 0, &amp; x=0,\end{cases}\]</span> is continuous but not
+absolutely continuous since it is not of bounded variation. See <a href="ch-bounded-variation.html#exer-x-sin-not-bv">Exercise 8.1.4</a> and <a href="#lem-ac-bv">Lemma 17.5.2</a>.</p>
+</div>
+<div class="lemmabox" id="lem-ac-zero-derivative">
+
+<p><strong>Lemma 17.5.5.</strong> If <span class="math inline">\(f\)</span> is absolutely continuous on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(f'(x)=0\)</span> a.e., then <span class="math inline">\(f\)</span> is a constant function.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(c\in(a,b]\)</span>. We show <span class="math inline">\(f(c)=f(a)\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(\eta&gt;0\)</span>, and let <span class="math inline">\(\delta&gt;0\)</span> be as in <a href="#def-absolutely-continuous">Definition 17.5.1</a> for this <span class="math inline">\(\varepsilon\)</span>. Let <span class="math inline">\(E\)</span> be the set of <span class="math inline">\(x\in(a,c)\)</span> with <span class="math inline">\(f'(x)=0\)</span>. Then <span class="math inline">\(m(E)=c-a\)</span>.</p>
+<p>Let <span class="math inline">\(x\in E\)</span>. Since <span class="math inline">\(f'(x)=0\)</span>, there are arbitrarily small
+<span class="math inline">\(h&gt;0\)</span> with <span class="math inline">\([x,x+h]\subset(a,c)\)</span> and <span class="math inline">\(|f(x+h)-f(x)|&lt;\eta h\)</span>. These intervals
+form a Vitali covering of <span class="math inline">\(E\)</span>. By the
+Vitali Covering Lemma, there are disjoint intervals <span class="math inline">\([x_1,y_1],\dots,[x_n,y_n]\)</span> of this kind
+with <span class="math inline">\(m^*\bigl(E\setminus\bigcup_k[x_k,y_k]\bigr)&lt;\delta\)</span>.
+Number them so that <span class="math display">\[y_0=a&lt;x_1&lt;y_1&lt;x_2&lt;y_2&lt;\cdots&lt;x_n&lt;y_n&lt;c=x_{n+1}.\]</span>
+Since <span class="math inline">\(m(E)=c-a\)</span>, the chosen
+intervals have total length <span class="math inline">\(\sum_k(y_k-x_k)&gt;c-a-\delta\)</span>. So the
+gaps <span class="math inline">\([y_k,x_{k+1}]\)</span>, <span class="math inline">\(k=0,\dots,n\)</span>, have total length less than
+<span class="math inline">\(\delta\)</span>. By absolute continuity,
+<span class="math display">\[\sum_{k=0}^n|f(x_{k+1})-f(y_k)|&lt;\varepsilon.\]</span>
+On the chosen intervals, <span class="math display">\[\sum_{k=1}^n|f(y_k)-f(x_k)|&lt;\eta\sum_{k=1}^n(y_k-x_k)\le\eta(c-a).\]</span>
+The difference <span class="math inline">\(f(c)-f(a)\)</span> is the sum
+of the changes of <span class="math inline">\(f\)</span> over the gaps
+and over the chosen intervals. So <span class="math display">\[|f(c)-f(a)|\le\sum_{k=0}^n|f(x_{k+1})-f(y_k)|+\sum_{k=1}^n|f(y_k)-f(x_k)|&lt;\varepsilon+\eta(c-a).\]</span>
+Since <span class="math inline">\(\varepsilon\)</span> and <span class="math inline">\(\eta\)</span> were arbitrary, <span class="math inline">\(f(c)=f(a)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-singular">
+
+<p><strong>Definition 17.5.6.</strong> A monotone function <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> is called <em>singular</em> if
+<span class="math inline">\(f'=0\)</span> a.e. on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-monotone-ac-singular">
+
+<p><strong>Theorem 17.5.7.</strong> A monotone increasing function is
+the sum of an absolutely continuous function and a singular
+function.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-monotone-ac-singular">Exercise
+17.5.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-ac-indefinite-integral">
+
+<p><strong>Theorem 17.5.8.</strong> A function <span class="math inline">\(F\)</span> is an indefinite integral if and only
+if it is absolutely continuous.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Exercise. See <a href="#exer-indefinite-integral-ac">Exercise
+17.5.2</a>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose that <span class="math inline">\(F\)</span> is absolutely continuous on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(F\)</span> is of bounded variation and so <span class="math inline">\(F(x)=F_1(x)-F_2(x)\)</span>, where <span class="math inline">\(F_1\)</span> and <span class="math inline">\(F_2\)</span> are monotone increasing functions.
+Hence <span class="math inline">\(F'(x)\)</span> exists a.e. and
+<span class="math inline">\(|F'(x)|\le
+F_1'(x)+F_2'(x)\)</span> a.e. Thus <span class="math display">\[\int_{[a,b]}|F'(x)|\,dm(x)\le
+F_1(b)+F_2(b)-F_1(a)-F_2(a)&lt;\infty.\]</span> So <span class="math inline">\(F'(x)\)</span> is integrable.</p>
+<p>Let <span class="math display">\[G(x)=\int_{[a,x]} F'.\]</span>
+Then <span class="math inline">\(G\)</span> is an indefinite integral
+and so <span class="math inline">\(G\in AC[a,b]\)</span>. Thus <span class="math inline">\(f=F-G\in AC[a,b]\)</span> by <a href="#exer-ac-algebra">Exercise 17.5.3</a>. Now <span class="math inline">\(f'(x)=F'(x)-G'(x)=0\)</span> a.e., by
+<a href="#thm-derivative-of-integral">Theorem 17.4.5</a>, and so <span class="math inline">\(f\)</span> is constant by <a href="#lem-ac-zero-derivative">Lemma 17.5.5</a>. Since <span class="math inline">\(G(a)=0\)</span>, the constant is <span class="math inline">\(F(a)\)</span>. Thus <span class="math display">\[F(x)=\int_{[a,x]}F' + F(a).\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-ftc-lebesgue">
+
+<p><strong>Corollary 17.5.9</strong> (Fundamental Theorem of Calculus
+for Lebesgue Integrals)<strong>.</strong></p>
+<p>Every absolutely continuous function is the indefinite integral of
+its derivative. That is, if <span class="math inline">\(F\in
+AC[a,b]\)</span>, then <span class="math inline">\(F'\)</span> is
+integrable and <span class="math inline">\(F(x)=F(a)+\int_{[a,x]}F'\)</span> for all
+<span class="math inline">\(x\in[a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> This is a direct consequence of <a href="#thm-ac-indefinite-integral">Theorem 17.5.8</a> and <a href="#thm-derivative-of-integral">Theorem 17.4.5</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Together, <a href="#thm-derivative-of-integral">Theorem 17.4.5</a>
+and <a href="#cor-ftc-lebesgue">Corollary 17.5.9</a> are the two halves
+of the Fundamental Theorem of Calculus for the Lebesgue integral.
+Compare <a href="ch-integrals.html#thm-ftc-evaluation">Theorem 9.3.6</a>. There <span class="math inline">\(F\)</span> is differentiable everywhere and <span class="math inline">\(F'\)</span> is assumed Riemann integrable.
+Here <span class="math inline">\(F\)</span> need only be absolutely
+continuous, and <span class="math inline">\(F'\)</span> is
+automatically integrable. For example, if <span class="math inline">\(F\)</span> is differentiable everywhere on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(|F'|\le M\)</span>, then <span class="math inline">\(F\)</span> is Lipschitz (<a href="ch-derivative.html#exer-bounded-derivative-lipschitz">Exercise 7.2.7</a>), so it is
+absolutely continuous, and <span class="math inline">\(\int_{[a,b]}F'=F(b)-F(a)\)</span>. This holds
+even if <span class="math inline">\(F'\)</span> is not Riemann
+integrable.</p>
+<p><a href="#thm-monotone-ac-singular">Theorem 17.5.7</a> splits an
+increasing function into the part that is recovered by integrating its
+derivative and a singular part that the derivative cannot see. Jumps are
+singular, as in the example <span class="math inline">\(\chi_{[1/2,1]}\)</span> after <a href="#thm-monotone-differentiable">Theorem 17.2.3</a>. <a href="#sec-cantor-function">Section 17.6</a> gives a continuous singular
+function that is not constant.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Showing a Function Is Absolutely
+Continuous).</strong></p>
+<p>The definition is rarely used directly. Instead, try these.</p>
+<ul>
+<li><p>If <span class="math inline">\(|f(x)-f(y)|\le M|x-y|\)</span>,
+then <span class="math inline">\(f\)</span> is absolutely continuous
+with <span class="math inline">\(\delta=\frac\varepsilon
+M\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\)</span> is an indefinite
+integral, it is absolutely continuous by <a href="#thm-ac-indefinite-integral">Theorem 17.5.8</a>.</p></li>
+<li><p>Sums, differences and products of absolutely continuous functions
+are absolutely continuous (<a href="#exer-ac-algebra">Exercise
+17.5.3</a>).</p></li>
+</ul>
+<p>To show that <span class="math inline">\(f\)</span> is not absolutely
+continuous, show that it is not of bounded variation, as in <a href="#ex-x-sin-not-ac">Example 17.5.4</a>, or show that <span class="math inline">\(f(b)-f(a)\ne\int_{[a,b]}f'\)</span>, as for
+the Cantor function.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-63">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-monotone-ac-singular">
+
+<p><strong>Exercise 17.5.1.</strong> Prove a monotone increasing
+function is the sum of an absolutely continuous function and a singular
+function. <a aria-label="Hint for Exercise 17.5.1" href="solutions-ch17.html#sol-exer-monotone-ac-singular">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-indefinite-integral-ac">
+
+<p><strong>Exercise 17.5.2.</strong> Prove if a function <span class="math inline">\(F\)</span> is an indefinite integral, then it is
+absolutely continuous. <a aria-label="Hint for Exercise 17.5.2" href="solutions-ch17.html#sol-exer-indefinite-integral-ac">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-ac-algebra">
+
+<p><strong>Exercise 17.5.3.</strong> Let <span class="math inline">\(f,g\in AC[a,b]\)</span> and <span class="math inline">\(c\in\mathbb{R}\)</span>. Prove that <span class="math inline">\(f+g\)</span>, <span class="math inline">\(cf\)</span> and <span class="math inline">\(fg\)</span> are in <span class="math inline">\(AC[a,b]\)</span>. <a aria-label="Hint for Exercise 17.5.3" href="solutions-ch17.html#sol-exer-ac-algebra">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-ac-variation">
+
+<p><strong>Exercise 17.5.4.</strong> Let <span class="math inline">\(f\)</span> be absolutely continuous on <span class="math inline">\([a,b]\)</span>. Prove <span class="math inline">\(V_f[a,b]=\int_{[a,b]}|f'|\)</span>. <a aria-label="Hint for Exercise 17.5.4" href="solutions-ch17.html#sol-exer-ac-variation">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-lipschitz-ac">
+
+<p><strong>Exercise 17.5.5.</strong> A function <span class="math inline">\(f\)</span> satisfies a Lipschitz condition on an
+interval <span class="math inline">\([a,b]\)</span> if there is a
+constant <span class="math inline">\(M\)</span> such that <span class="math inline">\(|f(x)-f(y)|\le M|x-y|\)</span> for all <span class="math inline">\(x,y\in[a,b]\)</span>.</p>
+<ol type="a">
+<li><p>Prove that a function <span class="math inline">\(f\)</span>
+satisfying a Lipschitz condition is absolutely continuous.</p></li>
+<li><p>Prove that an absolutely continuous function <span class="math inline">\(f\)</span> satisfies a Lipschitz condition if and
+only if <span class="math inline">\(|f'|\)</span> is bounded a.e.
+That is, there is an <span class="math inline">\(M\)</span> with <span class="math inline">\(|f'|\le M\)</span> a.e.</p></li>
+<li><p>Let <span class="math inline">\(f\)</span> be continuous on <span class="math inline">\([a,b]\)</span>. Prove that <span class="math inline">\(f\)</span> satisfies a Lipschitz condition if one
+of its Dini derivatives is bounded on <span class="math inline">\((a,b)\)</span>. Show by example that continuity is
+needed.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 17.5.5" href="solutions-ch17.html#sol-exer-lipschitz-ac">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sqrt-ac">
+
+<p><strong>Exercise 17.5.6.</strong> Show that <span class="math inline">\(f(x)=\sqrt x\)</span> is absolutely continuous on
+<span class="math inline">\([0,1]\)</span> but does not satisfy a
+Lipschitz condition there. <a aria-label="Hint for Exercise 17.5.6" href="solutions-ch17.html#sol-exer-sqrt-ac">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-ac-null-sets">
+
+<p><strong>Exercise 17.5.7.</strong> Let <span class="math inline">\(f\in AC[a,b]\)</span> and let <span class="math inline">\(Z\subset[a,b]\)</span> with <span class="math inline">\(m(Z)=0\)</span>. Prove that <span class="math inline">\(m^*(f[Z])=0\)</span>. <a aria-label="Hint for Exercise 17.5.7" href="solutions-ch17.html#sol-exer-ac-null-sets">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-ac-parts">
+
+<p><strong>Exercise 17.5.8.</strong> (Integration by parts.) Let <span class="math inline">\(f,g\in AC[a,b]\)</span>. Prove that <span class="math inline">\(\int_{[a,b]}fg'=f(b)g(b)-f(a)g(a)-\int_{[a,b]}f'g\)</span>.
+<a aria-label="Hint for Exercise 17.5.8" href="solutions-ch17.html#sol-exer-ac-parts">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cantor-function">
+<h2>17.6 The Cantor Function<sup>*</sup></h2>
+<p>This section can be skipped. Nothing later depends on it.</p>
+<p>This section builds a function <span class="math inline">\(\phi\)</span> on <span class="math inline">\([0,1]\)</span> that is continuous and increasing,
+with <span class="math inline">\(\phi(0)=0\)</span> and <span class="math inline">\(\phi(1)=1\)</span>, and whose derivative is <span class="math inline">\(0\)</span> at every point outside the Cantor set
+<span class="math inline">\(C\)</span>. Since <span class="math inline">\(m(C)=0\)</span>, <span class="math inline">\(\phi\)</span> is singular. So <span class="math inline">\(\int_{[0,1]}\phi'=0&lt;1=\phi(1)-\phi(0)\)</span>,
+and <span class="math inline">\(\phi\)</span> is not absolutely
+continuous. Continuity and differentiability almost everywhere are not
+enough for the Fundamental Theorem of Calculus.</p>
+<p>The idea is to spread one unit of increase evenly over <span class="math inline">\(C\)</span>. At stage <span class="math inline">\(n\)</span>, spread it evenly over <span class="math inline">\(C_n\)</span>. Recall from <a href="ch-cantor.html#def-cantor-set">Definition 5.1.1</a> and <a href="ch-cantor.html#lem-cantor-intervals">Lemma 5.1.2</a> that <span class="math inline">\(C_n\)</span> is the union of <span class="math inline">\(2^n\)</span> disjoint closed intervals <span class="math inline">\(J_{n,1},\dots,J_{n,2^n}\)</span>, numbered from
+left to right, each of length <span class="math inline">\(3^{-n}\)</span>. So <span class="math inline">\(m(C_n)=\left(\frac23\right)^n\)</span>. Each <span class="math inline">\(J_{n,i}\)</span> contains exactly <span class="math inline">\(2^{m-n}\)</span> of the intervals of <span class="math inline">\(C_m\)</span> for <span class="math inline">\(m\ge
+n\)</span>, since each interval splits in two at each stage.</p>
+<div class="lemmabox" id="lem-cantor-approx">
+
+<p><strong>Lemma 17.6.1.</strong> For <span class="math inline">\(n\in\mathbb{N}_0\)</span> and <span class="math inline">\(x\in[0,1]\)</span>, let <span class="math display">\[\phi_n(x)=\left(\frac32\right)^n\int_{[0,x]}\chi_{C_n}.\]</span>
+Then the following hold.</p>
+<ol>
+<li><p><span class="math inline">\(\phi_n\)</span> is continuous and
+increasing on <span class="math inline">\([0,1]\)</span>, with <span class="math inline">\(\phi_n(0)=0\)</span> and <span class="math inline">\(\phi_n(1)=1\)</span>.</p></li>
+<li><p>If <span class="math inline">\(J_{n,i}=[s,t]\)</span>, then <span class="math inline">\(\phi_n(s)=\frac{i-1}{2^n}\)</span> and <span class="math inline">\(\phi_n(t)=\frac{i}{2^n}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(m\ge n\)</span>, then <span class="math inline">\(\phi_m=\phi_n\)</span> at the endpoints of each
+<span class="math inline">\(J_{n,i}\)</span> and on <span class="math inline">\([0,1]\setminus C_n\)</span>.</p></li>
+<li><p>If <span class="math inline">\(m\ge n\)</span>, then <span class="math inline">\(|\phi_m(x)-\phi_n(x)|\le\frac{1}{2^n}\)</span> for
+all <span class="math inline">\(x\in[0,1]\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) By <a href="#lem-indefinite-integral-bv">Lemma 17.4.2</a>, <span class="math inline">\(\phi_n\)</span> is continuous. It is increasing
+since <span class="math inline">\(\chi_{C_n}\ge0\)</span>. Also <span class="math inline">\(\phi_n(0)=0\)</span> and <span class="math inline">\(\phi_n(1)=\left(\frac32\right)^nm(C_n)=1\)</span>.</p>
+<p>(2) The set <span class="math inline">\(C_n\cap[0,s]\)</span> is
+<span class="math inline">\(J_{n,1}\cup\cdots\cup J_{n,i-1}\)</span>,
+together with the point <span class="math inline">\(s\)</span>. So <span class="math inline">\(\phi_n(s)=\left(\frac32\right)^n(i-1)3^{-n}=\frac{i-1}{2^n}\)</span>.
+The same argument with <span class="math inline">\(J_{n,i}\)</span>
+included gives <span class="math inline">\(\phi_n(t)=\frac
+i{2^n}\)</span>.</p>
+<p>(3) Let <span class="math inline">\(m\ge n\)</span>. The set <span class="math inline">\(C_m\cap[0,s]\)</span> consists of the <span class="math inline">\((i-1)2^{m-n}\)</span> intervals of <span class="math inline">\(C_m\)</span> inside <span class="math inline">\(J_{n,1},\dots,J_{n,i-1}\)</span>, together with
+the point <span class="math inline">\(s\)</span>. So <span class="math inline">\(\phi_m(s)=\left(\frac32\right)^m(i-1)2^{m-n}3^{-m}=\frac{i-1}{2^n}=\phi_n(s)\)</span>.
+The same holds at <span class="math inline">\(t\)</span>. Each interval
+of <span class="math inline">\([0,1]\setminus C_n\)</span> lies between
+two consecutive intervals <span class="math inline">\(J_{n,i}\)</span>
+and <span class="math inline">\(J_{n,i+1}\)</span>. Since <span class="math inline">\(C_m\subset C_n\)</span>, both <span class="math inline">\(\phi_m\)</span> and <span class="math inline">\(\phi_n\)</span> are constant there, and they agree
+at the right endpoint of <span class="math inline">\(J_{n,i}\)</span>.
+So they agree on the whole gap.</p>
+<p>(4) Off <span class="math inline">\(C_n\)</span> the two functions
+are equal, by (3). On <span class="math inline">\(J_{n,i}\)</span>, both
+are increasing and, by (2) and (3), take values between <span class="math inline">\(\frac{i-1}{2^n}\)</span> and <span class="math inline">\(\frac i{2^n}\)</span>. So they differ by at most
+<span class="math inline">\(\frac1{2^n}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-cantor-function">
+
+<p><strong>Definition 17.6.2.</strong> By <a href="#lem-cantor-approx">Lemma 17.6.1</a> (4) and the Cauchy Criterion
+(<a href="ch-function-sequences.html#thm-cauchy-criterion-uniform">Theorem 11.2.5</a>), the
+sequence <span class="math inline">\(\{\phi_n\}\)</span> converges
+uniformly on <span class="math inline">\([0,1]\)</span>. Its limit <span class="math inline">\(\phi=\lim_{n\to\infty}\phi_n\)</span> is the
+<em>Cantor function</em>.</p>
+</div>
+<figure class="figure" id="fig-cantor-function"><div class="figure-images"><img alt="A staircase graph rising from (0,0) to (1,1). It is flat on many intervals, the longest being at height 1/2 over [1/3, 2/3], with ever smaller steps between them." height="348" src="figs/fig22.svg" width="490"/></div><figcaption><strong>Figure 17.2.</strong> The Cantor function. The graph shown is
+<span class="math inline">\(\phi_6\)</span>, which equals <span class="math inline">\(\phi\)</span> off <span class="math inline">\(C_6\)</span> and is within <span class="math inline">\(\frac{1}{64}\)</span> of <span class="math inline">\(\phi\)</span> everywhere. The function is constant
+on every interval removed in building the Cantor set, yet it climbs from
+<span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>.</figcaption></figure>
+<div class="theorembox" id="thm-cantor-function">
+
+<p><strong>Theorem 17.6.3.</strong> The Cantor function <span class="math inline">\(\phi\)</span> is continuous and increasing on
+<span class="math inline">\([0,1]\)</span>, with <span class="math inline">\(\phi(0)=0\)</span> and <span class="math inline">\(\phi(1)=1\)</span>. It is constant on each
+interval of <span class="math inline">\([0,1]\setminus C\)</span>, and
+<span class="math inline">\(\phi'(x)=0\)</span> for every <span class="math inline">\(x\in(0,1)\setminus C\)</span>. So <span class="math inline">\(\phi\)</span> is singular, <span class="math inline">\(\int_{[0,1]}\phi'=0&lt;\phi(1)-\phi(0)\)</span>,
+and <span class="math inline">\(\phi\)</span> is not absolutely
+continuous.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The limit is continuous by <a href="ch-function-sequences.html#cor-uniform-limit-continuous">Corollary 11.2.16</a>, and
+increasing since each <span class="math inline">\(\phi_n\)</span> is.
+Also <span class="math inline">\(\phi(0)=0\)</span> and <span class="math inline">\(\phi(1)=1\)</span>. Let <span class="math inline">\(x\in(0,1)\setminus C\)</span>. Then <span class="math inline">\(x\notin C_n\)</span> for some <span class="math inline">\(n\)</span>. The set <span class="math inline">\(C_n\)</span> is closed, so <span class="math inline">\(x\)</span> lies in an open interval <span class="math inline">\(O\)</span> that misses <span class="math inline">\(C_n\)</span>. By <a href="#lem-cantor-approx">Lemma 17.6.1</a> (3), <span class="math inline">\(\phi_m=\phi_n\)</span> on <span class="math inline">\(O\)</span> for all <span class="math inline">\(m\ge n\)</span>, so <span class="math inline">\(\phi=\phi_n\)</span> on <span class="math inline">\(O\)</span>. Since <span class="math inline">\(\phi_n\)</span> is constant on <span class="math inline">\(O\)</span>, so is <span class="math inline">\(\phi\)</span>, and <span class="math inline">\(\phi'(x)=0\)</span>. The Cantor set has
+measure zero (<a href="ch-integrals.html#ex-cantor-measure-zero">Example 9.2.8</a>), so
+<span class="math inline">\(\phi'=0\)</span> a.e. If <span class="math inline">\(\phi\)</span> were absolutely continuous, <a href="#cor-ftc-lebesgue">Corollary 17.5.9</a> would give <span class="math inline">\(\phi(1)-\phi(0)=\int_{[0,1]}\phi'=0\)</span>,
+which is false.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The failure of absolute continuity can also be seen directly. The set
+<span class="math inline">\(C_n\)</span> is a union of <span class="math inline">\(2^n\)</span> nonoverlapping intervals of total
+length <span class="math inline">\(\left(\frac23\right)^n\)</span>,
+which is as small as we like. But <span class="math inline">\(\phi\)</span> increases by <span class="math inline">\(\frac{1}{2^n}\)</span> on each of them, by <a href="#lem-cantor-approx">Lemma 17.6.1</a> (2) and (3), for a total of
+<span class="math inline">\(1\)</span>. So no <span class="math inline">\(\delta\)</span> works for <span class="math inline">\(\varepsilon=1\)</span> in <a href="#def-absolutely-continuous">Definition 17.5.1</a>.</p>
+<section class="level5 unnumbered" id="exercises-64">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cantor-symmetry">
+
+<p><strong>Exercise 17.6.1.</strong> Prove that <span class="math inline">\(\phi(1-x)=1-\phi(x)\)</span> and <span class="math inline">\(\phi\left(\frac x3\right)=\frac12\phi(x)\)</span>
+for <span class="math inline">\(x\in[0,1]\)</span>. Conclude that <span class="math inline">\(\int_{[0,1]}\phi=\frac12\)</span>. <a aria-label="Hint for Exercise 17.6.1" href="solutions-ch17.html#sol-exer-cantor-symmetry">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cantor-ternary">
+
+<p><strong>Exercise 17.6.2.</strong> Let <span class="math inline">\(x=\sum_{k=1}^\infty\frac{d_k}{3^k}\)</span> with
+each <span class="math inline">\(d_k\in\{0,2\}\)</span>. Prove that
+<span class="math inline">\(x\in C\)</span> and <span class="math inline">\(\phi(x)=\sum_{k=1}^\infty\frac{d_k/2}{2^k}\)</span>.
+Conclude that <span class="math inline">\(\phi\)</span> maps <span class="math inline">\(C\)</span> onto <span class="math inline">\([0,1]\)</span>. This gives another proof that
+<span class="math inline">\(C\)</span> is uncountable (<a href="ch-cantor.html#thm-cantor-uncountable">Theorem 5.2.8</a>). <a aria-label="Hint for Exercise 17.6.2" href="solutions-ch17.html#sol-exer-cantor-ternary">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cantor-non-borel">
+
+<p><strong>Exercise 17.6.3.</strong> Let <span class="math inline">\(\psi(x)=x+\phi(x)\)</span> on <span class="math inline">\([0,1]\)</span>.</p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\(\psi\)</span> is
+continuous and strictly increasing, and maps <span class="math inline">\([0,1]\)</span> onto <span class="math inline">\([0,2]\)</span>. Conclude that its inverse <span class="math inline">\(\psi^{-1}:[0,2]\to[0,1]\)</span> is
+continuous.</p></li>
+<li><p>Prove that <span class="math inline">\(\psi\)</span> maps each
+interval of <span class="math inline">\([0,1]\setminus C\)</span> onto
+an interval of the same length. Conclude that <span class="math inline">\(m(\psi[C])=1\)</span>.</p></li>
+<li><p>Use <a href="ch-lebesgue-measure.html#exer-nonmeasurable-subset">Exercise 14.4.3</a>,
+applied to <span class="math inline">\(\psi[C]\cap[0,1)\)</span> or to a
+translate of <span class="math inline">\(\psi[C]\cap[1,2]\)</span>, to
+find a nonmeasurable set <span class="math inline">\(A\subset\psi[C]\)</span>. Let <span class="math inline">\(B=\psi^{-1}[A]\)</span>. Prove that <span class="math inline">\(B\)</span> is measurable but is not a Borel
+set.</p></li>
+</ol>
+<p>This gives an example for <a href="ch-lebesgue-measure.html#rem-lebesgue-not-borel">Remark
+14.3.2</a>. <a aria-label="Hint for Exercise 17.6.3" href="solutions-ch17.html#sol-exer-cantor-non-borel">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-16">
+<h2>Notes</h2>
+<p>Ulisse Dini introduced the four derivatives that bear his name in
+1878 [<a href="bibliography.html#bib-dini1878">23</a>]. Camille Jordan introduced
+functions of bounded variation in 1881 [<a href="bibliography.html#bib-jordan1881">38</a>]. In his 1904 lectures [<a href="bibliography.html#bib-lebesgue1904">42</a>], Henri Lebesgue proved that continuous
+monotone functions are differentiable almost everywhere, and that the
+derivative of an indefinite integral equals the integrand almost
+everywhere. Giuseppe Vitali introduced absolute continuity in 1905, and
+proved that the absolutely continuous functions are exactly the
+indefinite integrals [<a href="bibliography.html#bib-vitali1905b">74</a>]. He proved his
+covering lemma in 1908 [<a href="bibliography.html#bib-vitali1908">75</a>]. Georg Cantor
+described the Cantor function in 1884 [<a href="bibliography.html#bib-cantor1884">12</a>]. The same year, Ludwig Scheeffer used it
+as a counterexample to a claimed extension of the Fundamental Theorem of
+Calculus [<a href="bibliography.html#bib-scheeffer1884">63</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-lebesgue-integral.html"><span class="dir">Previous</span> Chapter 16. The Lebesgue Integral</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="part-appendices.html"><span class="dir">Next</span> Appendices</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 15. Measurable Functions | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch14.html"><span class="dir">Previous</span> Solutions for Chapter 14. Lebesgue Measure</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch16.html"><span class="dir">Next</span> Solutions for Chapter 16. The Lebesgue Integral</a>
+</nav>
+<main id="main">
+<article id="solutions-ch15">
+<h1>Solutions for Chapter 15. Measurable Functions</h1>
+<div class="solutionbox" id="sol-exer-characteristic-algebra">
+
+<p><strong><a href="ch-measurable-functions.html#exer-characteristic-algebra">Exercise
+15.1.1</a>.</strong> We prove a little more. For any measurable sets
+<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(\chi_{A\cup B}=\chi_A+\chi_B-\chi_{A\cap
+B}\)</span> and <span class="math inline">\(\chi_{A\cap
+B}=\chi_A\cdot\chi_B\)</span>. Check the four cases for a point <span class="math inline">\(x\)</span>.</p>
+<p>Let <span class="math inline">\(x\notin A\)</span>, <span class="math inline">\(x\notin B\)</span>. Then <span class="math inline">\(\chi_{A\cup B}(x) = 0 = 0 + 0 - 0=\chi_A(x) +
+\chi_B(x) - \chi_{A\cap B}(x)\)</span> and <span class="math inline">\(\chi_{A\cap B}(x)= 0 =
+0\cdot0=\chi_A(x)\cdot\chi_B(x)\)</span>.</p>
+<p>Let <span class="math inline">\(x\in A\)</span>, <span class="math inline">\(x\notin B\)</span>. Then <span class="math inline">\(\chi_{A\cup B}(x) = 1 = 1 + 0 - 0=\chi_A(x) +
+\chi_B(x) - \chi_{A\cap B}(x)\)</span> and <span class="math inline">\(\chi_{A\cap B}(x)= 0 =
+1\cdot0=\chi_A(x)\cdot\chi_B(x)\)</span>.</p>
+<p>Let <span class="math inline">\(x\notin A\)</span>, <span class="math inline">\(x\in B\)</span>. Then <span class="math inline">\(\chi_{A\cup B}(x) = 1 = 0 + 1 - 0=\chi_A(x) +
+\chi_B(x) - \chi_{A\cap B}(x)\)</span> and <span class="math inline">\(\chi_{A\cap B}(x)= 0 =
+0\cdot1=\chi_A(x)\cdot\chi_B(x)\)</span>.</p>
+<p>Let <span class="math inline">\(x\in A\)</span>, <span class="math inline">\(x\in B\)</span>. Then <span class="math inline">\(\chi_{A\cup B}(x) = 1 = 1 + 1 - 1=\chi_A(x) +
+\chi_B(x) - \chi_{A\cap B}(x)\)</span> and <span class="math inline">\(\chi_{A\cap B}(x)= 1 =
+1\cdot1=\chi_A(x)\cdot\chi_B(x)\)</span>.</p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint, then <span class="math inline">\(A\cap B=\emptyset\)</span>, so <span class="math inline">\(\chi_{A\cap B}=0\)</span> and <span class="math inline">\(\chi_{A\cup B}=\chi_A+\chi_B\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-borel-preimage">
+
+<p><strong><a href="ch-measurable-functions.html#exer-borel-preimage">Exercise 15.1.3</a>.</strong>
+Define <span class="math inline">\(\mathcal{S}=\{A\subset \mathbb{R}:
+f^{-1}[A]\in \mathcal{M}\}\)</span>. First, <span class="math inline">\(\mathbb{R}\in\mathcal{S}\)</span>, since <span class="math inline">\(f^{-1}[\mathbb{R}]=E\in\mathcal{M}\)</span>. Let
+<span class="math inline">\(A\in \mathcal{S}\)</span>. Then <span class="math inline">\(f^{-1}[A]\in\mathcal{M}\)</span>. Since <span class="math inline">\(\mathcal{M}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, <span class="math inline">\(E\setminus
+f^{-1}[A]=E\cap(f^{-1}[A])^c\in\mathcal{M}\)</span> as well. Let <span class="math inline">\(x\in f^{-1}[A^c]\)</span>. Then <span class="math inline">\(f(x)\in A^c\)</span>. So <span class="math inline">\(f(x)\notin A\)</span> and <span class="math inline">\(x\in E\setminus f^{-1}[A]\)</span>. Thus <span class="math inline">\(f^{-1}[A^c]\subset E\setminus f^{-1}[A]\)</span>.
+Now let <span class="math inline">\(x\in E\setminus f^{-1}[A]\)</span>.
+So <span class="math inline">\(f(x)\notin A\)</span>, and <span class="math inline">\(f(x)\in A^c\)</span>. Thus <span class="math inline">\(x\in f^{-1}[A^c]\)</span> and <span class="math inline">\(E\setminus f^{-1}[A]\subset f^{-1}[A^c]\)</span>.
+So <span class="math inline">\(f^{-1}[A^c]=E\setminus
+f^{-1}[A]\in\mathcal{M}\)</span> and <span class="math inline">\(A^c\in
+\mathcal{S}\)</span>.</p>
+<p>Now let <span class="math inline">\(\{A_n\}\subset
+\mathcal{S}\)</span>. So for each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(f^{-1}[A_n]\in\mathcal{M}\)</span>, and since
+<span class="math inline">\(\mathcal{M}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, <span class="math inline">\(\bigcup_{n\in\mathbb{N}}f^{-1}[A_n]\in\mathcal{M}\)</span>.
+Let <span class="math inline">\(x\in
+f^{-1}\left[\bigcup_{n\in\mathbb{N}} A_n\right]\)</span>. Then <span class="math inline">\(f(x)\in \bigcup_{n\in\mathbb{N}} A_n\)</span>. So
+there exists an <span class="math inline">\(n_0\in \mathbb{N}\)</span>
+such that <span class="math inline">\(f(x)\in A_{n_0}\)</span>. So <span class="math inline">\(x\in f^{-1}[A_{n_0}]\subset
+\bigcup_{n\in\mathbb{N}}f^{-1}[A_n]\)</span> and <span class="math inline">\(f^{-1}\left[\bigcup_{n\in\mathbb{N}}
+A_n\right]\subset \bigcup_{n\in\mathbb{N}}f^{-1}[A_n]\)</span>. Now let
+<span class="math inline">\(x\in\bigcup_{n\in\mathbb{N}}f^{-1}[A_n]\)</span>.
+So there exists an <span class="math inline">\(n_0\in
+\mathbb{N}\)</span> such that <span class="math inline">\(x\in
+f^{-1}[A_{n_0}]\)</span>, implying <span class="math inline">\(f(x)\in
+A_{n_0}\subset \bigcup_{n\in\mathbb{N}} A_n\)</span>. So <span class="math inline">\(x\in f^{-1}\left[\bigcup_{n\in\mathbb{N}}
+A_n\right]\)</span>, and <span class="math inline">\(\bigcup_{n\in\mathbb{N}}f^{-1}[A_n]\subset
+f^{-1}\left[\bigcup_{n\in\mathbb{N}} A_n\right]\)</span>. Thus <span class="math display">\[f^{-1}\left[\bigcup_{n\in\mathbb{N}} A_n\right]=
+\bigcup_{n\in\mathbb{N}}f^{-1}[A_n]\in\mathcal{M}.\]</span> So <span class="math inline">\(\bigcup_{n\in\mathbb{N}} A_n\in
+\mathcal{S}\)</span> and <span class="math inline">\(\mathcal{S}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</p>
+<p>It remains to show that <span class="math inline">\(\mathcal{S}\)</span> contains the open sets. Let
+<span class="math inline">\(\alpha,\beta\in\mathbb{R}\)</span>. Since
+<span class="math inline">\(f\)</span> is measurable, <span class="math inline">\(f^{-1}[(\alpha,\infty)]=\{x:f(x)&gt;\alpha\}\)</span>
+and <span class="math inline">\(f^{-1}[(-\infty,\beta)]=\{x:f(x)&lt;\beta\}\)</span>
+are measurable, by <a href="ch-measurable-functions.html#thm-measurable-equivalent">Theorem
+15.1.1</a>. So <span class="math inline">\((\alpha,\infty)\)</span> and
+<span class="math inline">\((-\infty,\beta)\)</span> are in <span class="math inline">\(\mathcal{S}\)</span>. Since <span class="math inline">\(\mathcal{S}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, <span class="math inline">\((\alpha,\beta)=(\alpha,\infty)\cap(-\infty,\beta)\in\mathcal{S}\)</span>
+by <a href="ch-measures.html#prop-algebra-intersections">Proposition 13.1.2</a>. Also
+<span class="math inline">\(\mathbb{R}\in\mathcal{S}\)</span>. So every
+open interval, bounded or not, is in <span class="math inline">\(\mathcal{S}\)</span>. By <a href="ch-topology.html#thm-open-set-structure">Theorem 4.1.12</a>, every nonempty open
+set is a countable union of open intervals, so it is in <span class="math inline">\(\mathcal{S}\)</span>. Also <span class="math inline">\(\emptyset=\mathbb{R}^c\in\mathcal{S}\)</span>.</p>
+<p>Finally, <span class="math inline">\(\mathcal{B}_\mathbb{R}\)</span>
+is the smallest <span class="math inline">\(\sigma\)</span>-algebra
+containing the open sets, and <span class="math inline">\(\mathcal{S}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra containing the open sets.
+So <span class="math inline">\(\mathcal{B}_\mathbb{R}\subset\mathcal{S}\)</span>.
+That is, <span class="math inline">\(f^{-1}[B]\in\mathcal{M}\)</span>
+for every Borel set <span class="math inline">\(B\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-continuous-of-measurable">
+
+<p><strong><a href="ch-measurable-functions.html#exer-continuous-of-measurable">Exercise
+15.1.4</a>.</strong> <em>Hint.</em> <span class="math inline">\(\{g\circ
+f&gt;\alpha\}=f^{-1}\bigl[g^{-1}[(\alpha,\infty)]\bigr]\)</span>, and
+<span class="math inline">\(g^{-1}[(\alpha,\infty)]\)</span> is open.
+Use <a href="ch-measurable-functions.html#exer-borel-preimage">Exercise 15.1.3</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-max-measurable">
+
+<p><strong><a href="ch-measurable-functions.html#exer-max-measurable">Exercise 15.1.5</a>.</strong>
+<em>Hint.</em> <span class="math inline">\(\{\max\{f,g\}&gt;\alpha\}=\{f&gt;\alpha\}\cup\{g&gt;\alpha\}\)</span>.
+For the second proof, use <a href="ch-measurable-functions.html#thm-measurable-algebra">Theorem
+15.1.4</a> and <a href="ch-measurable-functions.html#exer-continuous-of-measurable">Exercise
+15.1.4</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-measurable-not-continuous">
+
+<p><strong><a href="ch-measurable-functions.html#exer-measurable-not-continuous">Exercise
+15.1.6</a>.</strong> <em>Hint.</em> Try <span class="math inline">\(\chi_{[0,\frac12]}\)</span>. A set of measure zero
+contains no interval. So a continuous function equal to it a.e. agrees
+with it on a dense set.</p>
+</div>
+<div class="solutionbox" id="sol-exer-measurable-bounded-mostly">
+
+<p><strong><a href="ch-measurable-functions.html#exer-measurable-bounded-mostly">Exercise
+15.2.1</a>.</strong> <em>Hint.</em> The sets <span class="math inline">\(\{|f|&gt;n\}\)</span> decrease, and their
+intersection is <span class="math inline">\(\{|f|=\infty\}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-simple-approximation">
+
+<p><strong><a href="ch-measurable-functions.html#exer-simple-approximation">Exercise
+15.2.2</a>.</strong> <em>Hint.</em> Cut <span class="math inline">\([-M,M]\)</span> into intervals of length less than
+<span class="math inline">\(\varepsilon\)</span>, and let <span class="math inline">\(\varphi\)</span> be constant on the set where
+<span class="math inline">\(f\)</span> lies in each one.</p>
+<p><em>Solution.</em>Let <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math inline">\(M&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\frac{M}{\varepsilon}\)</span>. Define <span class="math inline">\(A_i=\left\{x:\frac{(i+1)M}{N}&gt;
+f(x)\geq\frac{iM}{N}\right\}\)</span> for <span class="math inline">\(-N\leq i\leq N-1\)</span>. Each <span class="math inline">\(A_i\)</span> is measurable since <span class="math inline">\(f\)</span> is. Note <span class="math inline">\(\frac{(i+1)M-iM}{N}=\frac{M}{N}&lt;\varepsilon\)</span>.
+Define <span class="math inline">\(\varphi(x)=\sum_{i=-N}^{N-1}\frac{iM}{N}\chi_{A_i}\)</span>.
+So <span class="math inline">\(\varphi\)</span> is a simple function. If
+<span class="math inline">\(x\in[a,b]\)</span> and <span class="math inline">\(|f(x)|&lt;M\)</span>, then there exists an <span class="math inline">\(A_i\)</span> such that <span class="math inline">\(x\in A_i\)</span>. So <span class="math inline">\(|f(x)-\varphi(x)|&lt;\left|\frac{(i+1)M}{N}-\frac{iM}{N}\right|&lt;\varepsilon\)</span>.
+Indeed, <span class="math inline">\(0\le f(x)-\frac{iM}{N}&lt;\frac
+MN\)</span>.</p>
+<p>Now suppose <span class="math inline">\(\alpha\le f\le\beta\)</span>.
+Let <span class="math inline">\(\psi=\min\{\max\{\varphi,\alpha\},\beta\}\)</span>.
+That is, <span class="math inline">\(\psi(x)=\alpha\)</span> where <span class="math inline">\(\varphi(x)&lt;\alpha\)</span>, <span class="math inline">\(\psi(x)=\beta\)</span> where <span class="math inline">\(\varphi(x)&gt;\beta\)</span>, and <span class="math inline">\(\psi(x)=\varphi(x)\)</span> otherwise. Then <span class="math inline">\(\psi\)</span> takes finitely many values, each on
+a measurable set. So <span class="math inline">\(\psi\)</span> is
+simple, and <span class="math inline">\(\alpha\le\psi\le\beta\)</span>.
+Moving <span class="math inline">\(\varphi(x)\)</span> toward the
+interval <span class="math inline">\([\alpha,\beta]\)</span>, which
+contains <span class="math inline">\(f(x)\)</span>, cannot increase its
+distance from <span class="math inline">\(f(x)\)</span>. So <span class="math inline">\(|f(x)-\psi(x)|\le|f(x)-\varphi(x)|&lt;\varepsilon\)</span>
+whenever <span class="math inline">\(|f(x)|&lt;M\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-step-approximation">
+
+<p><strong><a href="ch-measurable-functions.html#exer-step-approximation">Exercise
+15.2.3</a>.</strong> <em>Hint.</em> Use the fact that if <span class="math inline">\(A\)</span> is a measurable set with <span class="math inline">\(m(A)&lt;\infty\)</span>, there exists a finite
+union of open intervals <span class="math inline">\(U\)</span> such that
+<span class="math inline">\(m(A\triangle U)&lt;\varepsilon\)</span>.
+This is (6) in <a href="ch-lebesgue-measure.html#thm-measurable-approximation">Theorem
+14.3.1</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-continuous-approximation">
+
+<p><strong><a href="ch-measurable-functions.html#exer-continuous-approximation">Exercise
+15.2.4</a>.</strong> <em>Hint.</em> Near each jump of <span class="math inline">\(g\)</span>, replace <span class="math inline">\(g\)</span> by a short line segment.</p>
+</div>
+<div class="solutionbox" id="sol-exer-measurable-approx-continuous">
+
+<p><strong><a href="ch-measurable-functions.html#exer-measurable-approx-continuous">Exercise
+15.2.5</a>.</strong> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(f\)</span> takes on the values of <span class="math inline">\(\pm\infty\)</span> only on a set of measure zero,
+by <a href="ch-measurable-functions.html#lem-measurable-bounded-mostly">Lemma 15.2.3</a> there
+exists an <span class="math inline">\(M&gt;0\)</span> such that <span class="math inline">\(m(\{x:|f(x)|&gt;M\})&lt;\frac\varepsilon
+3\)</span>. Define <span class="math inline">\(A=\{x:|f(x)|\le
+M\}\)</span>. Now there exists a simple function <span class="math inline">\(\varphi\)</span> such that <span class="math inline">\(|f(x)-\varphi(x)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(x\in A\)</span> by <a href="ch-measurable-functions.html#lem-simple-approximation">Lemma 15.2.4</a>, applied with <span class="math inline">\(M+1\)</span> in place of <span class="math inline">\(M\)</span>. Since <span class="math inline">\(\varphi\)</span> is simple, there exists a step
+function <span class="math inline">\(g\)</span> such that <span class="math inline">\(m(\{x:g(x)\neq \varphi(x)\})&lt;\frac\varepsilon
+3\)</span> by <a href="ch-measurable-functions.html#lem-step-approximation">Lemma 15.2.5</a>. But if
+<span class="math inline">\(x\in A\)</span> with <span class="math inline">\(g(x){}={}\varphi(x)\)</span>, then <span class="math inline">\(|f(x)-g(x)|&lt;\varepsilon\)</span>. Thus <span class="math display">\[\{x:|f(x)-g(x)|\geq\varepsilon\}\subset
+\{x:g(x)\ne\varphi(x)\}\cup \{x:|f(x)|&gt;M\},\]</span> implying <span class="math display">\[m(\{x:|f(x)-g(x)|\geq\varepsilon\})\le
+m(\{x:g(x)\ne\varphi(x)\})+ m(\{x:|f(x)|&gt;M\})&lt;\frac\varepsilon
+3+\frac\varepsilon 3&lt;\varepsilon.\]</span> Also, there exists a
+continuous function <span class="math inline">\(h\)</span> such that
+<span class="math inline">\(m(\{x:g(x)\neq h(x)\})&lt;\frac\varepsilon
+3\)</span> by <a href="ch-measurable-functions.html#lem-continuous-approximation">Lemma 15.2.6</a>.
+But if <span class="math inline">\(x\in A\)</span> with <span class="math inline">\(h(x)=g(x)=\varphi(x)\)</span>, then <span class="math inline">\(|f(x)-h(x)|&lt;\varepsilon\)</span>. So <span class="math display">\[\{x:|f(x)-h(x)|\geq\varepsilon\}\subset
+\{x:h(x)\ne
+g(x)\}\cup\{x:g(x)\ne\varphi(x)\}\cup\{x:|f(x)|&gt;M\},\]</span>
+implying <span class="math inline">\(m(\{x:|f(x)-h(x)|\geq\varepsilon\})&lt;\frac\varepsilon
+3+\frac\varepsilon 3+\frac\varepsilon 3=\varepsilon\)</span>.</p>
+<p>If <span class="math inline">\(\alpha\leq f\leq \beta\)</span>, <span class="math inline">\(\varphi\)</span> can be chosen so that <span class="math inline">\(\alpha\leq \varphi\leq \beta\)</span>. Since <span class="math inline">\(\alpha\leq \varphi\leq \beta\)</span>, <span class="math inline">\(g\)</span> can be chosen so that <span class="math inline">\(\alpha\leq g\leq \beta\)</span>. Since <span class="math inline">\(\alpha\leq g\leq \beta\)</span>, <span class="math inline">\(h\)</span> can be chosen so that <span class="math inline">\(\alpha\leq h\leq \beta\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-egoroff-example">
+
+<p><strong><a href="ch-measurable-functions.html#exer-egoroff-example">Exercise 15.3.1</a>.</strong>
+<em>Hint.</em> Remove a short interval <span class="math inline">\((1-\delta,1]\)</span>. On <span class="math inline">\([0,1-\delta]\)</span>, <span class="math inline">\(x^n\le(1-\delta)^n\)</span>.</p>
+<p><em>Solution.</em> For <span class="math inline">\(0\le
+x&lt;1\)</span>, <span class="math inline">\(x^n\to0\)</span> by <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>, and <span class="math inline">\(1^n=1\)</span>. So the pointwise limit is <span class="math inline">\(f(x)=0\)</span> for <span class="math inline">\(x\in[0,1)\)</span> and <span class="math inline">\(f(1)=1\)</span>.</p>
+<p>Let <span class="math inline">\(\eta&gt;0\)</span>, let <span class="math inline">\(\delta=\min\left\{\frac\eta2,\frac12\right\}\)</span>,
+and let <span class="math inline">\(A=(1-\delta,1]\)</span>. Then <span class="math inline">\(m(A)=\delta&lt;\eta\)</span>, and <span class="math inline">\([0,1]\setminus A=[0,1-\delta]\)</span>. For <span class="math inline">\(x\in[0,1-\delta]\)</span>, <span class="math inline">\(f(x)=0\)</span> and <span class="math display">\[|f_n(x)-f(x)|=x^n\le(1-\delta)^n.\]</span> So
+<span class="math inline">\(\sup_{x\in[0,1-\delta]}|f_n(x)-f(x)|\le(1-\delta)^n\to0\)</span>,
+since <span class="math inline">\(0&lt;1-\delta&lt;1\)</span>. By <a href="ch-function-sequences.html#thm-uniform-sup">Theorem 11.2.7</a>, <span class="math inline">\(f_n\to f\)</span> uniformly on <span class="math inline">\([0,1]\setminus A\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-egoroff-not-null">
+
+<p><strong><a href="ch-measurable-functions.html#exer-egoroff-not-null">Exercise
+15.3.2</a>.</strong> <em>Hint.</em> Use <span class="math inline">\(f_n(x)=x^n\)</span> on <span class="math inline">\([0,1]\)</span> again.</p>
+</div>
+<div class="solutionbox" id="sol-exer-lusin-not-zero">
+
+<p><strong><a href="ch-measurable-functions.html#exer-lusin-not-zero">Exercise 15.4.1</a>.</strong>
+<em>Hint.</em> Try <span class="math inline">\(f=\chi_{[0,1/2]}\)</span>
+on <span class="math inline">\([0,1]\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(f=\chi_{[0,1/2]}\)</span> on <span class="math inline">\([0,1]\)</span>. It is measurable by <a href="ch-measurable-functions.html#lem-characteristic-measurable">Lemma 15.1.11</a>. Suppose <span class="math inline">\(\varphi\)</span> is continuous on <span class="math inline">\([0,1]\)</span> and <span class="math inline">\(Z=\{x:f(x)\ne\varphi(x)\}\)</span> has <span class="math inline">\(m(Z)=0\)</span>. Then <span class="math inline">\(Z\)</span> contains no interval of positive
+length, since such an interval has positive measure and <span class="math inline">\(m^*\)</span> is monotone.</p>
+<p>For <span class="math inline">\(n\ge2\)</span>, the interval <span class="math inline">\(\left(\frac12-\frac1n,\frac12\right)\)</span> is
+not contained in <span class="math inline">\(Z\)</span>. So it contains
+a point <span class="math inline">\(s_n\)</span> with <span class="math inline">\(\varphi(s_n)=f(s_n)=1\)</span>. In the same way,
+<span class="math inline">\(\left(\frac12,\frac12+\frac1n\right)\)</span>
+contains a point <span class="math inline">\(t_n\)</span> with <span class="math inline">\(\varphi(t_n)=f(t_n)=0\)</span>. Both <span class="math inline">\(s_n\to\frac12\)</span> and <span class="math inline">\(t_n\to\frac12\)</span>. Since <span class="math inline">\(\varphi\)</span> is continuous, <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a> gives <span class="math display">\[\varphi\left(\tfrac12\right)=\lim_{n\to\infty}\varphi(s_n)=1\quad\text{and}\quad\varphi\left(\tfrac12\right)=\lim_{n\to\infty}\varphi(t_n)=0.\]</span>
+This is impossible. So no continuous <span class="math inline">\(\varphi\)</span> equals <span class="math inline">\(f\)</span> almost everywhere, and <span class="math inline">\(m(\{f\ne\varphi\})&lt;\delta\)</span> cannot be
+improved to <span class="math inline">\(m(\{f\ne\varphi\})=0\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-lusin-bounded">
+
+<p><strong><a href="ch-measurable-functions.html#exer-lusin-bounded">Exercise 15.4.2</a>.</strong>
+<em>Hint.</em> Replace <span class="math inline">\(\varphi\)</span> by
+<span class="math inline">\(\max\{-M,\min\{\varphi,M\}\}\)</span>. It is
+still continuous, and it equals <span class="math inline">\(f\)</span>
+wherever <span class="math inline">\(\varphi\)</span> does.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch14.html"><span class="dir">Previous</span> Solutions for Chapter 14. Lebesgue Measure</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch16.html"><span class="dir">Next</span> Solutions for Chapter 16. The Lebesgue Integral</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 6. Functions and Continuity | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-cantor.html"><span class="dir">Previous</span> Chapter 5. The Cantor Set*</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-derivative.html"><span class="dir">Next</span> Chapter 7. The Derivative</a>
+</nav>
+<main id="main">
+<article id="ch-continuity">
+<h1>Chapter 6. Functions and Continuity</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-function-limits">6.1 Limits</a></li><li><a href="#sec-infinite-limits">6.2 Infinite Limits and Limits at Infinity</a></li><li><a href="#sec-continuity">6.3 Continuity</a></li><li><a href="#sec-uniform-continuity">6.4 Uniform Continuity</a></li><li><a href="#sec-monotone-functions">6.5 Monotonicity</a></li><li><a href="#notes-5">Notes</a></li></ul></nav>
+<p><a href="ch-sequences.html">Chapter 3</a> defined the limit of a
+sequence. This chapter defines the limit of a function at a point and
+uses it to define continuity. The definitions follow the same pattern as
+before. The number <span class="math inline">\(\varepsilon\)</span>
+still says how close the outputs must be. A new number <span class="math inline">\(\delta\)</span> says how close the inputs must
+be.</p>
+<p>The main results are about continuous functions on a closed and
+bounded interval <span class="math inline">\([a,b]\)</span>. Such a
+function takes every value between any two of its values. This is the
+Intermediate Value Theorem. It has a largest and a smallest value. This
+is the Extreme Value Theorem. It is also uniformly continuous. Each of
+these facts uses the completeness of <span class="math inline">\(\mathbb{R}\)</span>, and each fails over <span class="math inline">\(\mathbb{Q}\)</span>. For example, <span class="math inline">\(f(x)=x^2-2\)</span> is negative at <span class="math inline">\(0\)</span> and positive at <span class="math inline">\(2\)</span>, but it has no rational zero.</p>
+<section class="level3 unnumbered" id="sec-function-limits">
+<h2>6.1 Limits</h2>
+<p>The limit of <span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span> describes what <span class="math inline">\(f(x)\)</span> does as <span class="math inline">\(x\)</span> gets close to <span class="math inline">\(c\)</span>. The value <span class="math inline">\(f(c)\)</span> plays no role. The function does not
+even have to be defined at <span class="math inline">\(c\)</span>. This
+is why the definition uses <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>.</p>
+<div class="definitionbox" id="def-function-limit">
+
+<p><strong>Definition 6.1.1.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Let <span class="math inline">\(c\)</span> be a limit point of <span class="math inline">\(E\)</span>. Then <span class="math inline">\(f\)</span> has a <em>limit</em> of <span class="math inline">\(L\)</span> at <span class="math inline">\(c\)</span>, denoted <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span> or <span class="math inline">\(f(x)\to L\)</span> as <span class="math inline">\(x\to c\)</span>, if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a <span class="math inline">\(\delta(c,\varepsilon)&gt;0\)</span> such that for
+all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>.</p>
+</div>
+<p>The point <span class="math inline">\(c\)</span> must be a limit
+point of <span class="math inline">\(E\)</span>. Then for every <span class="math inline">\(\delta&gt;0\)</span> there are points <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>. Without this, every
+number <span class="math inline">\(L\)</span> would satisfy the
+definition. The notation <span class="math inline">\(\delta(c,\varepsilon)\)</span> is a reminder that
+<span class="math inline">\(\delta\)</span> may depend on both <span class="math inline">\(c\)</span> and <span class="math inline">\(\varepsilon\)</span>.</p>
+<div class="examplebox" id="ex-limit-linear">
+
+<p><strong>Example 6.1.2.</strong> The limit <span class="math inline">\(\lim_{x\to 3}(5x+7)=22\)</span>. To show this, let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\frac{\varepsilon}{5}\)</span>. Then for
+all <span class="math inline">\(x\in\mathbb{R}\)</span> with <span class="math inline">\(0&lt;|x-3|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+|(5x+7)-22|&amp;=|5x-15|\\
+&amp;=5|x-3|\\
+&amp;&lt;5\delta=\frac{5\varepsilon}{5}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(5x+7\to
+22\)</span> as <span class="math inline">\(x\to 3\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-limit-quadratic">
+
+<p><strong>Example 6.1.3.</strong> The limit <span class="math inline">\(\lim_{x\to 6}(x^2+2x-7)=41\)</span>. To see this,
+let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\min\left\{1,\frac{\varepsilon}{15}\right\}\)</span>.
+Then for all <span class="math inline">\(x\in\mathbb{R}\)</span> with
+<span class="math inline">\(0&lt;|x-6|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+|(x^2+2x-7)-41|&amp;=|x^2+2x-48|\\
+&amp;=|x-6||x+8|\\
+&amp;\le 15|x-6|\\
+&amp;&lt;15\delta\le\frac{15\varepsilon}{15}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x^2+2x-7\to
+41\)</span> as <span class="math inline">\(x\to 6\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Finding <span class="math inline">\(\delta\)</span>).</strong></p>
+<p>The scratch work for a limit of a function is like the scratch work
+for a sequence. Start with <span class="math inline">\(|f(x)-L|\)</span>
+and pull out a factor of <span class="math inline">\(|x-c|\)</span>. In
+<a href="#ex-limit-linear">Example 6.1.2</a>, <span class="math inline">\(|f(x)-L|=5|x-3|\)</span>, so <span class="math inline">\(\delta=\frac{\varepsilon}{5}\)</span> works. In <a href="#ex-limit-quadratic">Example 6.1.3</a>, the other factor <span class="math inline">\(|x+8|\)</span> depends on <span class="math inline">\(x\)</span>. The trick is to first make sure <span class="math inline">\(\delta\le1\)</span>. Then <span class="math inline">\(|x-6|&lt;1\)</span>, so <span class="math inline">\(5&lt;x&lt;7\)</span>, and <span class="math inline">\(|x+8|&lt;15\)</span>. Now <span class="math inline">\(|f(x)-L|\le15|x-6|\)</span>, and <span class="math inline">\(\delta\le\frac{\varepsilon}{15}\)</span> finishes
+the job. Taking <span class="math inline">\(\delta=\min\left\{1,\frac{\varepsilon}{15}\right\}\)</span>
+makes both conditions hold at once. <a href="#ex-limit-reciprocal-square">Example 6.1.7</a> shows that <span class="math inline">\(\delta\le1\)</span> is not always the right first
+restriction.</p>
+</div>
+<div class="examplebox" id="ex-limit-quadratic-2">
+
+<p><strong>Example 6.1.4.</strong> The limit <span class="math inline">\(\lim_{x\to 2}(x^2-7x)=-10\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\min\left\{1,\frac{\varepsilon}{4}\right\}\)</span>.
+Then for all <span class="math inline">\(x\in\mathbb{R}\)</span> with
+<span class="math inline">\(0&lt;|x-2|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+|(x^2-7x)+10|&amp;=|x-2||x-5|\\
+&amp;\le 4|x-2|\\
+&amp;&lt;4\delta \le\frac{4\varepsilon}{4}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x^2-7x\to-10\)</span> as <span class="math inline">\(x\to 2\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-limit-reciprocal">
+
+<p><strong>Example 6.1.5.</strong> <span class="math inline">\(\lim_{x\to 7}\frac{1}{x-4}=\frac{1}{3}\)</span>.
+Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\min\{1,\varepsilon\}\)</span>. Then for
+all <span class="math inline">\(x\in\mathbb{R}\setminus\{4\}\)</span>
+with <span class="math inline">\(0&lt;|x-7|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+\left|\frac{1}{x-4}-\frac{1}{3}\right|&amp;=\left|\frac{3-(x-4)}{3(x-4)}\right|\\
+&amp;=\left|\frac{-x+7}{3(x-4)}\right|\\
+&amp;=\frac{|x-7|}{3|x-4|}\\
+&amp;\le \frac{|x-7|}{6}\\
+&amp;&lt;|x-7|&lt;\delta\le \varepsilon.
+\end{aligned}\]</span> The fourth line holds since <span class="math inline">\(|x-7|&lt;1\)</span> gives <span class="math inline">\(x&gt;6\)</span>, so <span class="math inline">\(3|x-4|&gt;6\)</span>. So <span class="math inline">\(\frac{1}{x-4}\to\frac{1}{3}\)</span> as <span class="math inline">\(x\to 7\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-limit-removable">
+
+<p><strong>Example 6.1.6.</strong> <span class="math inline">\(\lim_{x\to2}\frac{x^2-4}{x-2}=4\)</span>. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\varepsilon\)</span>. Then for all <span class="math inline">\(x\in\mathbb{R}\setminus\{2\}\)</span> with <span class="math inline">\(0&lt;|x-2|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+\left|\frac{x^2-4}{x-2}-4\right|&amp;=|x+2-4|\\
+&amp;=|x-2|&lt;\delta=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\frac{x^2-4}{x-2}\to 4\)</span> as <span class="math inline">\(x\to 2\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Keeping <span class="math inline">\(\delta\)</span> Away from Trouble).</strong></p>
+<p>The next example uses <span class="math inline">\(\delta=\min\left\{\frac12,\frac{\varepsilon}{10}\right\}\)</span>
+instead of <span class="math inline">\(\min\{1,\dots\}\)</span>. The
+first restriction on <span class="math inline">\(\delta\)</span> has to
+keep <span class="math inline">\(x\)</span> away from every point where
+the other factor is unbounded. Usually that is a point where a
+denominator is <span class="math inline">\(0\)</span>. In <a href="#ex-limit-reciprocal-square">Example 6.1.7</a>, the other factor
+is <span class="math inline">\(\frac{|x+1|}{x^2}\)</span>, and the
+trouble is at <span class="math inline">\(x=0\)</span>. The restriction
+<span class="math inline">\(\delta\le1\)</span> only gives <span class="math inline">\(0&lt;x&lt;2\)</span>. Then <span class="math inline">\(x^2\)</span> can be arbitrarily close to <span class="math inline">\(0\)</span>, and <span class="math inline">\(\frac{|x+1|}{x^2}\)</span> has no upper bound. The
+restriction <span class="math inline">\(\delta\le\frac12\)</span> gives
+<span class="math inline">\(\frac12&lt;x&lt;\frac32\)</span>. Then <span class="math inline">\(x^2&gt;\frac14\)</span> and <span class="math inline">\(|x+1|&lt;\frac52\)</span>, so the factor is less
+than <span class="math inline">\(10\)</span>.</p>
+<p>A safe rule is to make the first restriction at most half the
+distance from <span class="math inline">\(c\)</span> to the nearest
+trouble point. Here <span class="math inline">\(c=1\)</span> and the
+trouble point is <span class="math inline">\(0\)</span>, so <span class="math inline">\(\frac12\)</span> works. In <a href="#ex-limit-reciprocal">Example 6.1.5</a>, <span class="math inline">\(c=7\)</span> and the trouble point is <span class="math inline">\(4\)</span>, so <span class="math inline">\(\delta\le1\)</span> is already safe. It gives
+<span class="math inline">\(6&lt;x&lt;8\)</span> and <span class="math inline">\(x-4&gt;2\)</span>. <a href="#exer-basic-limits">Exercise 6.1.1</a> (g) needs the same care,
+since its denominator is <span class="math inline">\(0\)</span> at <span class="math inline">\(x=3\)</span> and <span class="math inline">\(c=4\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-limit-reciprocal-square">
+
+<p><strong>Example 6.1.7.</strong> <span class="math inline">\(\lim_{x\to 1}\frac{1}{x^2}=1\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\min\left\{\frac{1}{2},\frac{\varepsilon}{10}\right\}\)</span>.
+Then for all <span class="math inline">\(x\in\mathbb{R}\setminus\{0\}\)</span> with <span class="math inline">\(0&lt;|x-1|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+\left|\frac{1}{x^2}-1\right|&amp;=\left|\frac{1-x^2}{x^2}\right|\\
+&amp;= \frac{|x+1||x-1|}{x^2} \\
+&amp;&lt;\frac{\frac52|x-1|}{\frac14}\\
+&amp;=10|x-1|\\
+&amp;&lt; 10\delta\le10\cdot\frac{\varepsilon}{10}=\varepsilon.
+\end{aligned}\]</span> The third line holds since <span class="math inline">\(|x-1|&lt;\frac12\)</span> gives <span class="math inline">\(\frac12&lt;x&lt;\frac32\)</span>, so <span class="math inline">\(|x+1|&lt;\frac52\)</span> and <span class="math inline">\(x^2&gt;\frac14\)</span>. So <span class="math inline">\(\frac{1}{x^2}\to 1\)</span> as <span class="math inline">\(x\to 1\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-limit-x-squared">
+
+<p><strong>Example 6.1.8.</strong> <span class="math inline">\(\lim_{x\to c}x^2=c^2\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\min\left\{1,\frac{\varepsilon}{2|c|+1}\right\}\)</span>.
+Then for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+|x^2-c^2|&amp;=|x+c||x-c|\\
+&amp;\le(|x|+|c|)|x-c|\\
+&amp;&lt;(2|c|+1)|x-c|\\
+&amp;&lt;(2|c|+1)\delta\le(2|c|+1)\frac{\varepsilon}{2|c|+1}=\varepsilon.
+\end{aligned}\]</span> The third line holds since <span class="math inline">\(|x|\le|x-c|+|c|&lt;1+|c|\)</span>. So <span class="math inline">\(x^2\to c^2\)</span> as <span class="math inline">\(x\to c\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-dirichlet-function">
+
+<p><strong>Example 6.1.9.</strong> The function <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> defined by
+<span class="math display">\[f(x)=\begin{cases} 1, &amp; x\in\mathbb{Q},
+\\ 0, &amp; x\notin \mathbb{Q}, \end{cases}\]</span> does not have a
+limit at any point. To show this, start by letting <span class="math inline">\(c\in\mathbb{R}\)</span>. Assume by way of
+contradiction that <span class="math inline">\(f(x)\to
+L\in\mathbb{R}\)</span> as <span class="math inline">\(x\to c\)</span>.
+Let <span class="math inline">\(\varepsilon=\frac{1}{2}\)</span>. So
+there exists a <span class="math inline">\(\delta&gt;0\)</span> such
+that for all <span class="math inline">\(x\in\mathbb{R}\)</span> with
+<span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-L|&lt;\frac{1}{2}\)</span>. Now there exists
+an <span class="math inline">\(x_1\in\mathbb{Q}\)</span> and there
+exists an <span class="math inline">\(x_2\in\mathbb{R}\setminus\mathbb{Q}\)</span> such
+that <span class="math inline">\(x_1,x_2\in(c-\delta,c+\delta)\setminus
+\{c\}\)</span> by <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a> and <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.7.5</a>. Then <span class="math display">\[1=|f(x_1)-f(x_2)|=|f(x_1)-L+L-f(x_2)|\le
+|f(x_1)-L|+|f(x_2)-L|&lt;\frac{1}{2}+\frac{1}{2}=1,\]</span> a
+contradiction. So <span class="math inline">\(\lim_{x\to c}f(x)\)</span>
+does not exist. Since <span class="math inline">\(c\)</span> was
+arbitrary, <span class="math inline">\(\lim_{x\to c}f(x)\)</span> does
+not exist for all <span class="math inline">\(c\in\mathbb{R}\)</span>.
+This function is called the <em>Dirichlet function</em>.</p>
+</div>
+<div class="theorembox" id="thm-function-limit-unique">
+
+<p><strong>Theorem 6.1.10.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. If <span class="math inline">\(\lim_{x\to c}f(x)\)</span> exists, it is
+unique.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Suppose there exist <span class="math inline">\(L_1,L_2\in\mathbb{R}\)</span> with <span class="math inline">\(\lim_{x\to c}f(x)=L_1\)</span> and <span class="math inline">\(\lim_{x\to c}f(x)=L_2\)</span>. Assume by way of
+contradiction that <span class="math inline">\(L_1\ne L_2\)</span>. Let
+<span class="math inline">\(\varepsilon=\frac{|L_1-L_2|}{2}&gt;0\)</span>. So
+there exists a <span class="math inline">\(\delta_1&gt;0\)</span> such
+that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>, <span class="math inline">\(|f(x)-L_1|&lt;\frac{|L_1-L_2|}{2}\)</span> and
+there exists a <span class="math inline">\(\delta_2&gt;0\)</span> such
+that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_2\)</span>, <span class="math inline">\(|f(x)-L_2|&lt;\frac{|L_1-L_2|}{2}\)</span>. Since
+<span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(E\)</span>, we can choose <span class="math inline">\(x_0\in E\)</span> such that <span class="math inline">\(0&lt;|x_0-c|&lt;\min\{\delta_1,\delta_2\}\)</span>.
+Then <span class="math display">\[|L_1-L_2|=|L_1-f(x_0)+f(x_0)-L_2|\le
+|f(x_0)-L_1|+|f(x_0)-L_2|&lt;\frac{|L_1-L_2|}{2}+\frac{|L_1-L_2|}{2}=|L_1-L_2|,\]</span>
+a contradiction. So <span class="math inline">\(L_1=L_2\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-limit-sign">
+
+<p><strong>Lemma 6.1.11.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Suppose <span class="math inline">\(\lim_{x\to c}f(x)=L\ne 0\)</span>. If <span class="math inline">\(L&gt;0\)</span>, then there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(f(x)&gt;\frac{L}{2}&gt;0\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>. If <span class="math inline">\(L&lt;0\)</span>, then there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(f(x)&lt;\frac{L}{2}&lt;0\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-limit-sign">Exercise
+6.1.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-limit-locally-bounded">
+
+<p><strong>Lemma 6.1.12.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Suppose <span class="math inline">\(\lim_{x\to c}f(x)\)</span> exists. Then there
+exist <span class="math inline">\(M&gt;0\)</span> and <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-limit-locally-bounded">Exercise
+6.1.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-function-limit-laws">
+
+<p><strong>Theorem 6.1.13.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f,g:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Suppose <span class="math inline">\(f(x)\to L_1\)</span> and <span class="math inline">\(g(x)\to L_2\)</span> as <span class="math inline">\(x\to c\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\(f(x)+g(x)\to L_1+L_2\)</span> as
+<span class="math inline">\(x\to c\)</span>;</p></li>
+<li><p><span class="math inline">\(f(x)g(x)\to L_1 L_2\)</span> as <span class="math inline">\(x\to c\)</span>; and</p></li>
+<li><p>if <span class="math inline">\(L_2\ne 0\)</span>, <span class="math inline">\(\frac{f(x)}{g(x)}\to \frac{L_1}{L_2}\)</span> as
+<span class="math inline">\(x\to c\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Exercise.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>By <a href="#lem-limit-sign">Lemma 6.1.11</a>, there exists a
+<span class="math inline">\(\delta_1&gt;0\)</span> such that for all
+<span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>, <span class="math inline">\(|g(x)|&gt;\frac{|L_2|}{2}\)</span>, and hence,
+<span class="math inline">\(\frac{1}{|g(x)|}&lt;\frac{2}{|L_2|}\)</span>. In
+particular, <span class="math inline">\(g(x)\ne0\)</span>, so <span class="math inline">\(\frac{f(x)}{g(x)}\)</span> is defined for these
+<span class="math inline">\(x\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. So there exists a <span class="math inline">\(\delta_2&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_2\)</span>, <span class="math inline">\(|g(x)-L_2|&lt;\frac{|L_2|^2\varepsilon}{2}\)</span>.
+Set <span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>. So for
+all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+\left|\frac{1}{g(x)}-\frac{1}{L_2}\right|&amp;=\frac{|g(x)-L_2|}{|g(x)||L_2|}\\
+&amp;
+&lt;\frac{2}{|L_2|}\cdot\frac{1}{|L_2|}\cdot\frac{|L_2|^2}{2}\varepsilon=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\frac{1}{g(x)}\to\frac{1}{L_2}\)</span> as <span class="math inline">\(x\to c\)</span>. Then by (2), <span class="math inline">\(\frac{f(x)}{g(x)}\to\frac{L_1}{L_2}\)</span> as
+<span class="math inline">\(x\to c\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-polynomial-limits">
+
+<p><strong>Corollary 6.1.14.</strong> Let <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> be polynomials with <span class="math inline">\(q(c)\ne 0\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\(\lim_{x\to c}p(x)=p(c)\)</span>;
+and</p></li>
+<li><p><span class="math inline">\(\lim_{x\to
+c}\frac{p(x)}{q(x)}=\frac{p(c)}{q(c)}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#exer-basic-limits">Exercise 6.1.1</a>, <span class="math inline">\(\lim_{x\to c}k=k\)</span> for every constant <span class="math inline">\(k\)</span> and <span class="math inline">\(\lim_{x\to c}x=c\)</span>. Applying <a href="#thm-function-limit-laws">Theorem 6.1.13</a> (2) repeatedly gives
+<span class="math inline">\(\lim_{x\to c}x^j=c^j\)</span> for every
+<span class="math inline">\(j\in\mathbb{N}\)</span>, and then <span class="math inline">\(\lim_{x\to c}a_jx^j=a_jc^j\)</span> for every
+<span class="math inline">\(a_j\in\mathbb{R}\)</span>. A polynomial
+<span class="math inline">\(p(x)=a_nx^n+\cdots+a_1x+a_0\)</span> is a
+finite sum of such terms, so (1) follows from <a href="#thm-function-limit-laws">Theorem 6.1.13</a> (1). Part (2) follows
+from (1) and <a href="#thm-function-limit-laws">Theorem
+6.1.13</a> (3).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-function-order-limits">
+
+<p><strong>Theorem 6.1.15.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f,g:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Suppose there exists a <span class="math inline">\(\delta_0&gt;0\)</span> such that <span class="math inline">\(f(x)\le g(x)\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_0\)</span>. Then if <span class="math inline">\(f(x)\to L_1\)</span> and <span class="math inline">\(g(x)\to L_2\)</span> as <span class="math inline">\(x\to c\)</span>, <span class="math inline">\(L_1\le L_2\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume by way of contradiction that <span class="math inline">\(L_1&gt;L_2\)</span>. Then <span class="math inline">\(\lim_{x\to c}(f(x)-g(x))=L_1-L_2&gt;0\)</span>. So
+by <a href="#lem-limit-sign">Lemma 6.1.11</a>, there exists a <span class="math inline">\(\delta_1&gt;0\)</span> such that <span class="math inline">\(f(x)-g(x)&gt;\frac{L_1-L_2}{2}&gt;0\)</span> for
+all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>. Since <span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(E\)</span>, there exists an <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\min\{\delta_0,\delta_1\}\)</span>.
+For this <span class="math inline">\(x\)</span>, <span class="math inline">\(f(x)\le g(x)\)</span> and <span class="math inline">\(f(x)&gt;g(x)\)</span>, a contradiction.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-function-squeeze">
+
+<p><strong>Theorem 6.1.16</strong> (Squeeze/Sandwich
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f,g,h:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Suppose there exists a <span class="math inline">\(\delta_0&gt;0\)</span> such that <span class="math inline">\(f(x)\le g(x)\le h(x)\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_0\)</span>. If <span class="math inline">\(f(x)\to L\)</span> and <span class="math inline">\(h(x)\to L\)</span> as <span class="math inline">\(x\to c\)</span>, then <span class="math inline">\(g(x)\to L\)</span> as <span class="math inline">\(x\to c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(f(x)\to L\)</span> as <span class="math inline">\(x\to c\)</span>, there exists a <span class="math inline">\(\delta_1&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. So for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\min\{\delta_0,\delta_1\}\)</span>,
+<span class="math inline">\(-\varepsilon&lt;f(x)-L\le g(x)-L\)</span>.
+Also, since <span class="math inline">\(h(x)\to L\)</span> as <span class="math inline">\(x\to c\)</span>, there exists a <span class="math inline">\(\delta_2&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_2\)</span>, <span class="math inline">\(|h(x)-L|&lt;\varepsilon\)</span>. So for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\min\{\delta_0,\delta_2\}\)</span>,
+<span class="math inline">\(g(x)-L\le h(x)-L&lt;\varepsilon\)</span>.
+Set <span class="math inline">\(\delta=\min\{\delta_0,\delta_1,\delta_2\}\)</span>.
+So for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math display">\[-\varepsilon&lt;f(x)-L\le g(x)-L\le
+h(x)-L&lt;\varepsilon;\]</span> i.e. for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|g(x)-L|&lt;\varepsilon\)</span>. So <span class="math inline">\(g(x)\to L\)</span> as <span class="math inline">\(x\to c\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-x-sin-one-over-x">
+
+<p><strong>Example 6.1.17.</strong> The limit <span class="math inline">\(\lim_{x\to 0}x\sin\frac{1}{x}=0\)</span>. To use
+the Squeeze Theorem, notice for <span class="math inline">\(x\ne0\)</span>, <span class="math display">\[-1\le\sin\frac{1}{x}\le1,\]</span> and so <span class="math display">\[-|x|\le x\sin\frac{1}{x}\le|x|.\]</span> Now
+<span class="math inline">\(-|x|\to 0\)</span> and <span class="math inline">\(|x|\to 0\)</span> as <span class="math inline">\(x\to 0\)</span> by <a href="#exer-basic-limits">Exercise 6.1.1</a>, so by the Squeeze Theorem
+(<a href="#thm-function-squeeze">Theorem 6.1.16</a>), <span class="math inline">\(\lim_{x\to 0}x\sin\frac{1}{x}=0\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-sequential-limits">
+
+<p><strong>Theorem 6.1.18.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Then <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span> if and only if <span class="math inline">\(\lim_{n\to\infty}f(x_n)=L\)</span> for every
+sequence <span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\ne
+c\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>
+and <span class="math inline">\(x_n\to c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Suppose <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span>. Let
+<span class="math inline">\(\{x_n\}\)</span> be any sequence in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\ne
+c\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>
+and <span class="math inline">\(x_n\to c\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. Since <span class="math inline">\(x_n\to c\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(0&lt;|x_n-c|&lt;\delta\)</span>. Thus for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|f(x_n)-L|&lt;\varepsilon\)</span>. Therefore
+<span class="math inline">\(f(x_n)\to L\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Conversely, suppose
+<span class="math inline">\(f(x_n)\to L\)</span> for every sequence
+<span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\ne
+c\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>
+and <span class="math inline">\(x_n\to c\)</span>. Assume by way of
+contradiction <span class="math inline">\(\lim_{x\to c}f(x)\ne
+L\)</span>. Then there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that for all <span class="math inline">\(\delta&gt;0\)</span>, there exists an <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span> and <span class="math inline">\(|f(x)-L|\ge \varepsilon\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, define <span class="math inline">\(\delta_n=\frac{1}{n}\)</span>. So for all <span class="math inline">\(n\in \mathbb{N}\)</span>, there exists an <span class="math inline">\(x_n\in E\)</span> with <span class="math inline">\(0&lt;|x_n-c|&lt;\frac{1}{n}\)</span> and <span class="math inline">\(|f(x_n)-L|\ge \varepsilon\)</span>. Thus <span class="math inline">\(x_n\to c\)</span> but <span class="math inline">\(\{f(x_n)\}\)</span> does not converge to <span class="math inline">\(L\)</span>, a contradiction. So <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-sin-one-over-x">
+
+<p><strong>Example 6.1.19.</strong> Let <span class="math inline">\(f:\mathbb{R}\setminus\{0\}\to\mathbb{R}\)</span>
+be defined by <span class="math inline">\(f(x)=\sin\frac{1}{x}\)</span>.
+Define <span class="math inline">\(x_n=\frac{2}{(2n-1)\pi}\)</span>.
+Then <span class="math inline">\(f(x_n)=\sin\frac{(2n-1)\pi}{2}=(-1)^{n+1}\)</span>.
+So <span class="math inline">\(\{f(x_n)\}\)</span> does not converge.
+But <span class="math inline">\(x_n\to 0\)</span>. So <span class="math inline">\(\lim_{x\to 0}\sin\frac{1}{x}\)</span> does not
+exist.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Showing a Limit Does Not
+Exist).</strong></p>
+<p>By <a href="#thm-sequential-limits">Theorem 6.1.18</a>, <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span> means <span class="math inline">\(f(x_n)\to L\)</span> for every sequence <span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\ne
+c\)</span> and <span class="math inline">\(x_n\to c\)</span>. So to show
+the limit does not exist, find one such sequence for which <span class="math inline">\(\{f(x_n)\}\)</span> diverges. Or find two such
+sequences for which <span class="math inline">\(\{f(x_n)\}\)</span> has
+two different limits. <a href="#ex-sin-one-over-x">Example 6.1.19</a>
+uses one sequence. The Dirichlet function in <a href="#ex-dirichlet-function">Example 6.1.9</a> could be handled with
+two, one of rational numbers and one of irrational numbers.</p>
+</div>
+<div class="definitionbox" id="def-one-sided-limits">
+
+<p><strong>Definition 6.1.20.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Suppose <span class="math inline">\((c,b)\subset E\)</span> for some <span class="math inline">\(b&gt;c\)</span>. Then <span class="math inline">\(L\)</span> is the <em>right-hand limit</em> of
+<span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span>, denoted <span class="math inline">\(\lim_{x\to c^+}f(x)=L\)</span> or <span class="math inline">\(f(x)\to L\)</span> as <span class="math inline">\(x\to c^+\)</span>, if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>.</p>
+<p>Suppose <span class="math inline">\((a,c)\subset E\)</span> for some
+<span class="math inline">\(a&lt;c\)</span>. Then <span class="math inline">\(L\)</span> is the <em>left-hand limit</em> of
+<span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span>, denoted <span class="math inline">\(\lim_{x\to c^-}f(x)=L\)</span> or <span class="math inline">\(f(x)\to L\)</span> as <span class="math inline">\(x\to c^-\)</span>, if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(-\delta&lt;x-c&lt;0\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-sqrt-at-zero">
+
+<p><strong>Example 6.1.21.</strong> <span class="math inline">\(\lim_{x\to 0^+}\sqrt{x}=0\)</span> and <span class="math inline">\(\lim_{x\to 0}\sqrt{x}=0\)</span>. The second limit
+makes sense since the domain of <span class="math inline">\(\sqrt{x}\)</span> is <span class="math inline">\(E=[0,\infty)\)</span>, and <span class="math inline">\(0\)</span> is a limit point of <span class="math inline">\(E\)</span>. Only <span class="math inline">\(x\in
+E\)</span> count in <a href="#def-function-limit">Definition
+6.1.1</a>.</p>
+</div>
+<div class="examplebox" id="ex-floor-one-sided">
+
+<p><strong>Example 6.1.22.</strong> <span class="math inline">\(\lim_{x\to 5^-} \left\lfloor x\right\rfloor
+=4\)</span> and <span class="math inline">\(\lim_{x\to 5^+}\left\lfloor
+x\right\rfloor =5\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-one-sided-limits">
+
+<p><strong>Theorem 6.1.23.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Suppose <span class="math inline">\((c-r,c)\cup(c,c+r)\subset E\)</span> for some
+<span class="math inline">\(r&gt;0\)</span>. Then <span class="math inline">\(\lim_{x\to c}f(x)\)</span> exists and equals <span class="math inline">\(L\)</span> if and only if <span class="math inline">\(\lim_{x\to c^-}f(x)=\lim_{x\to c^+}
+f(x)=L\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-one-sided-limits">Exercise
+6.1.8</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-20">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-basic-limits">
+
+<p><strong>Exercise 6.1.1.</strong> Suppose <span class="math inline">\(c\)</span> and <span class="math inline">\(k\)</span> are real numbers. Prove each of the
+following limits using the <span class="math inline">\(\varepsilon\)</span>-<span class="math inline">\(\delta\)</span> definition of limits.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to c}
+k=k\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to c}
+x=c\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to c}
+|x|=|c|\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to c}
+\sqrt{x}=\sqrt{c}\)</span> for <span class="math inline">\(c&gt;0\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to
+3}(6x+7)=25\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to2}(x^2+5x)=14\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to 4}
+\frac{1}{x^2+5x-24}=\frac{1}{12}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to3}\frac{1}{x-2}=1\)</span></p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 6.1.1" href="solutions-ch06.html#sol-exer-basic-limits">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sign-function-limit">
+
+<p><strong>Exercise 6.1.2.</strong> Prove the function <span class="math inline">\(f:\mathbb{R}\setminus\{0\}\to\mathbb{R}\)</span>
+defined by <span class="math inline">\(f(x)=\frac{|x|}{x}\)</span> does
+not have a limit at <span class="math inline">\(c=0\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-limit-sign">
+
+<p><strong>Exercise 6.1.3.</strong> Prove <a href="#lem-limit-sign">Lemma 6.1.11</a>. <a aria-label="Solution for Exercise 6.1.3" href="solutions-ch06.html#sol-exer-limit-sign">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-limit-locally-bounded">
+
+<p><strong>Exercise 6.1.4.</strong> Prove <a href="#lem-limit-locally-bounded">Lemma 6.1.12</a>.</p>
+</div>
+<div class="exercisebox" id="exer-function-limit-laws">
+
+<p><strong>Exercise 6.1.5.</strong> Prove <a href="#thm-function-limit-laws">Theorem 6.1.13</a> (1)–(2). <a aria-label="Solution for Exercise 6.1.5" href="solutions-ch06.html#sol-exer-function-limit-laws">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-limit-lower-bound">
+
+<p><strong>Exercise 6.1.6.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Let <span class="math inline">\(k\in\mathbb{R}\)</span>. Prove that if there
+exists a <span class="math inline">\(\delta&gt;0\)</span> such that
+<span class="math inline">\(f(x)&gt;k\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, and if <span class="math inline">\(\lim_{x\to c} f(x)\)</span> exists, then <span class="math inline">\(\lim_{x\to c} f(x)\geq k\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-sin-x-over-x">
+
+<p><strong>Exercise 6.1.7.</strong> Prove, using the Squeeze Theorem,
+that <span class="math inline">\(\lim_{x\to0}\frac{\sin
+x}{x}=1\)</span>. Use this result to prove <span class="math inline">\(\lim_{x\to0}\frac{\cos x-1}{x}=0\)</span>. <a aria-label="Hint for Exercise 6.1.7" href="solutions-ch06.html#sol-exer-sin-x-over-x">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-one-sided-limits">
+
+<p><strong>Exercise 6.1.8.</strong> Prove <a href="#thm-one-sided-limits">Theorem 6.1.23</a>. <a aria-label="Solution for Exercise 6.1.8" href="solutions-ch06.html#sol-exer-one-sided-limits">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-on-rationals">
+
+<p><strong>Exercise 6.1.9.</strong> Define <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=x\)</span> if <span class="math inline">\(x\in\mathbb{Q}\)</span> and <span class="math inline">\(f(x)=0\)</span> if <span class="math inline">\(x\notin\mathbb{Q}\)</span>. Prove that <span class="math inline">\(\lim_{x\to0}f(x)=0\)</span> and that <span class="math inline">\(\lim_{x\to c}f(x)\)</span> does not exist for
+every <span class="math inline">\(c\ne0\)</span>. <a aria-label="Hint for Exercise 6.1.9" href="solutions-ch06.html#sol-exer-x-on-rationals">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cos-one-over-x">
+
+<p><strong>Exercise 6.1.10.</strong> Prove that <span class="math inline">\(\lim_{x\to0}\cos\frac1x\)</span> does not exist.
+<a aria-label="Hint for Exercise 6.1.10" href="solutions-ch06.html#sol-exer-cos-one-over-x">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-infinite-limits">
+<h2>6.2 Infinite Limits and Limits at Infinity</h2>
+<p><a href="#sec-function-limits">Section 6.1</a> gives meaning to <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span> when <span class="math inline">\(c\)</span> and <span class="math inline">\(L\)</span> are real numbers. This section allows
+<span class="math inline">\(c\)</span> or <span class="math inline">\(L\)</span> to be <span class="math inline">\(\infty\)</span> or <span class="math inline">\(-\infty\)</span>. Each definition follows the same
+pattern. When <span class="math inline">\(L=\infty\)</span>, “within
+<span class="math inline">\(\varepsilon\)</span> of <span class="math inline">\(L\)</span>” becomes “greater than <span class="math inline">\(M\)</span>.” When <span class="math inline">\(c=\infty\)</span>, “within <span class="math inline">\(\delta\)</span> of <span class="math inline">\(c\)</span>” becomes “greater than <span class="math inline">\(d\)</span>.” Remember that <span class="math inline">\(\infty\)</span> and <span class="math inline">\(-\infty\)</span> are not real numbers (<a href="ch-real-numbers.html#def-interval-notation">Definition 1.7.6</a>). A statement such as
+<span class="math inline">\(\lim_{x\to c}f(x)=\infty\)</span> describes
+how <span class="math inline">\(f\)</span> behaves. It does not say the
+limit exists in the sense of <a href="#def-function-limit">Definition
+6.1.1</a>.</p>
+<div class="definitionbox" id="def-infinite-limit">
+
+<p><strong>Definition 6.2.1.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\)</span> a limit point of <span class="math inline">\(E\)</span>. Then <span class="math inline">\(\lim_{x\to c} f(x)=\infty\)</span> if for all
+<span class="math inline">\(M&gt;0\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(f(x)&gt;M\)</span>.</p>
+<p><span class="math inline">\(\lim_{x\to c} f(x)=-\infty\)</span> if
+for all <span class="math inline">\(M&lt;0\)</span>, there exists a
+<span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(f(x)&lt;M\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-one-sided-infinite-limit">
+
+<p><strong>Definition 6.2.2.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Suppose <span class="math inline">\((c,b)\subset E\)</span> for some <span class="math inline">\(b&gt;c\)</span>. Then <span class="math inline">\(\lim_{x\to c^+}f(x)=\infty\)</span> if for all
+<span class="math inline">\(M&gt;0\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta\)</span>, <span class="math inline">\(f(x)&gt;M\)</span>. Also, <span class="math inline">\(\lim_{x\to c^+}f(x)=-\infty\)</span> if for all
+<span class="math inline">\(M&lt;0\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta\)</span>, <span class="math inline">\(f(x)&lt;M\)</span>. If <span class="math inline">\((a,c)\subset E\)</span> for some <span class="math inline">\(a&lt;c\)</span>, then <span class="math inline">\(\lim_{x\to c^-}f(x)=\infty\)</span> and <span class="math inline">\(\lim_{x\to c^-}f(x)=-\infty\)</span> are defined
+in the same way, using <span class="math inline">\(-\delta&lt;x-c&lt;0\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-one-over-x-squared-infinity">
+
+<p><strong>Example 6.2.3.</strong> <span class="math inline">\(\lim_{x\to 0}\frac{1}{x^2}=\infty\)</span>. Let
+<span class="math inline">\(M&gt;0\)</span>. Choose <span class="math inline">\(\delta=\frac{1}{\sqrt{M}}\)</span>. Then for all
+<span class="math inline">\(x\in\mathbb{R}\setminus\{0\}\)</span> with
+<span class="math inline">\(0&lt;|x|&lt;\delta\)</span>, <span class="math display">\[\frac{1}{x^2}&gt;\frac{1}{\delta^2}=\frac{1}{(1/\sqrt{M})^2}=M.\]</span>
+So <span class="math inline">\(\lim_{x\to
+0}\frac{1}{x^2}=\infty\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-one-over-x-one-sided">
+
+<p><strong>Example 6.2.4.</strong> <span class="math inline">\(\lim_{x\to0^+}\frac1x=\infty\)</span> and <span class="math inline">\(\lim_{x\to0^-}\frac1x=-\infty\)</span>. For the
+first, let <span class="math inline">\(M&gt;0\)</span> and choose <span class="math inline">\(\delta=\frac1M\)</span>. Then for all <span class="math inline">\(x\)</span> with <span class="math inline">\(0&lt;x&lt;\delta\)</span>, <span class="math inline">\(\frac1x&gt;\frac1\delta=M\)</span>. The second is
+similar. So <span class="math inline">\(\frac1x\)</span> has neither a
+limit nor an infinite limit at <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-limit-at-infinity">
+
+<p><strong>Definition 6.2.5.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Suppose <span class="math inline">\((a,\infty)\subset E\)</span> for some <span class="math inline">\(a\in\mathbb{R}\)</span>. Then <span class="math inline">\(\lim_{x\to\infty} f(x)=L\)</span> if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a <span class="math inline">\(d&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(x&gt;d\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>.</p>
+<p>Suppose <span class="math inline">\((-\infty,b)\subset E\)</span> for
+some <span class="math inline">\(b\in\mathbb{R}\)</span>. Then <span class="math inline">\(\lim_{x\to-\infty} f(x)=L\)</span> if for all
+<span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a
+<span class="math inline">\(d&lt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(x&lt;d\)</span>, <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-infinite-limit-at-infinity">
+
+<p><strong>Definition 6.2.6.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Suppose <span class="math inline">\((a,\infty)\subset E\)</span> for some <span class="math inline">\(a\in\mathbb{R}\)</span>. Then <span class="math inline">\(\lim_{x\to\infty}f(x)=\infty\)</span> if for all
+<span class="math inline">\(M&gt;0\)</span>, there exists a <span class="math inline">\(d&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(x&gt;d\)</span>, <span class="math inline">\(f(x)&gt;M\)</span>. The statements <span class="math inline">\(\lim_{x\to\infty}f(x)=-\infty\)</span>, <span class="math inline">\(\lim_{x\to-\infty}f(x)=\infty\)</span> and <span class="math inline">\(\lim_{x\to-\infty}f(x)=-\infty\)</span> are
+defined in the same way.</p>
+</div>
+<div class="remarkbox" id="rem-limit-laws-extended">
+
+<p><strong>Remark 6.2.7.</strong> The limit laws (<a href="#thm-function-limit-laws">Theorem 6.1.13</a>), <a href="#thm-function-order-limits">Theorem 6.1.15</a> and the Squeeze
+Theorem (<a href="#thm-function-squeeze">Theorem 6.1.16</a>) also hold
+for one-sided limits and for limits as <span class="math inline">\(x\to\infty\)</span> or <span class="math inline">\(x\to-\infty\)</span>, when the limits <span class="math inline">\(L_1\)</span>, <span class="math inline">\(L_2\)</span> and <span class="math inline">\(L\)</span> are real numbers. The proofs are the
+same, with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>
+replaced by <span class="math inline">\(0&lt;x-c&lt;\delta\)</span>, by
+<span class="math inline">\(-\delta&lt;x-c&lt;0\)</span>, or by <span class="math inline">\(x&gt;d\)</span> or <span class="math inline">\(x&lt;d\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-sequential-limits-extended">
+
+<p><strong>Theorem 6.2.8.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. <a href="#thm-sequential-limits">Theorem 6.1.18</a> remains true in each of
+these cases.</p>
+<ol>
+<li><p>For a right-hand limit, using sequences in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n&gt;c\)</span> and <span class="math inline">\(x_n\to c\)</span>. For a left-hand limit, using
+sequences with <span class="math inline">\(x_n&lt;c\)</span>.</p></li>
+<li><p>When <span class="math inline">\(L=\infty\)</span> or <span class="math inline">\(L=-\infty\)</span>, where <span class="math inline">\(f(x_n)\to\pm\infty\)</span> is meant in the sense
+of <a href="ch-sequences.html#def-diverge-infinity">Definition 3.6.5</a>.</p></li>
+<li><p>For limits as <span class="math inline">\(x\to\infty\)</span> or
+<span class="math inline">\(x\to-\infty\)</span>, using sequences in
+<span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\to\infty\)</span> or <span class="math inline">\(x_n\to-\infty\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The proofs follow the proof of <a href="#thm-sequential-limits">Theorem 6.1.18</a>. Here is one case. The
+others are an exercise. Suppose <span class="math inline">\((c,b)\subset
+E\)</span>. The claim is that <span class="math inline">\(\lim_{x\to
+c^+}f(x)=\infty\)</span> if and only if <span class="math inline">\(f(x_n)\to\infty\)</span> for every sequence <span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n&gt;c\)</span> and <span class="math inline">\(x_n\to c\)</span>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(\{x_n\}\)</span> be such a sequence and let <span class="math inline">\(M&gt;0\)</span>. Choose <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(f(x)&gt;M\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta\)</span>. Since <span class="math inline">\(x_n\to c\)</span> and <span class="math inline">\(x_n&gt;c\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(0&lt;x_n-c&lt;\delta\)</span> for all <span class="math inline">\(n\ge N\)</span>. So <span class="math inline">\(f(x_n)&gt;M\)</span> for all <span class="math inline">\(n\ge N\)</span>. Thus <span class="math inline">\(f(x_n)\to\infty\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(\lim_{x\to c^+}f(x)\ne\infty\)</span>. Negating
+the definition, there exists an <span class="math inline">\(M&gt;0\)</span> such that for every <span class="math inline">\(\delta&gt;0\)</span>, there exists an <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta\)</span> and <span class="math inline">\(f(x)\le M\)</span>. Taking <span class="math inline">\(\delta=\frac1n\)</span> gives, for each <span class="math inline">\(n\in\mathbb{N}\)</span>, an <span class="math inline">\(x_n\in E\)</span> with <span class="math inline">\(c&lt;x_n&lt;c+\frac1n\)</span> and <span class="math inline">\(f(x_n)\le M\)</span>. Then <span class="math inline">\(x_n&gt;c\)</span> and <span class="math inline">\(x_n\to c\)</span>, but <span class="math inline">\(\{f(x_n)\}\)</span> does not diverge to <span class="math inline">\(\infty\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-21">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-one-over-x-at-infinity">
+
+<p><strong>Exercise 6.2.1.</strong> Prove <span class="math inline">\(\lim_{x\to\infty}\frac{1}{x}=0\)</span>. <a aria-label="Solution for Exercise 6.2.1" href="solutions-ch06.html#sol-exer-one-over-x-at-infinity">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-infinite-limits-practice">
+
+<p><strong>Exercise 6.2.2.</strong> Prove that <span class="math inline">\(\lim_{x\to\infty}x^2=\infty\)</span> and <span class="math inline">\(\lim_{x\to-\infty}x^3=-\infty\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-rational-at-infinity">
+
+<p><strong>Exercise 6.2.3.</strong> Prove <span class="math inline">\(\lim_{x\to\infty}\frac{2x+1}{x+3}=2\)</span>. <a aria-label="Hint for Exercise 6.2.3" href="solutions-ch06.html#sol-exer-rational-at-infinity">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sequential-limits-extended">
+
+<p><strong>Exercise 6.2.4.</strong> Prove the remaining cases of <a href="#thm-sequential-limits-extended">Theorem 6.2.8</a>.</p>
+</div>
+<div class="exercisebox" id="exer-one-sided-limits-infinite">
+
+<p><strong>Exercise 6.2.5.</strong> Prove that <a href="#thm-one-sided-limits">Theorem 6.1.23</a> holds when <span class="math inline">\(L=\infty\)</span> or <span class="math inline">\(L=-\infty\)</span>.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-continuity">
+<h2>6.3 Continuity</h2>
+<p>In calculus, a function is continuous if its graph can be drawn
+without lifting the pencil. The definition here says <span class="math inline">\(f(x)\)</span> is close to <span class="math inline">\(f(c)\)</span> whenever <span class="math inline">\(x\)</span> is close to <span class="math inline">\(c\)</span>. The precise definition can behave in
+ways the pencil picture does not predict. <a href="#ex-thomae">Example
+6.3.2</a> is a function that is continuous at every irrational number
+and at no rational number.</p>
+<div class="definitionbox" id="def-continuity">
+
+<p><strong>Definition 6.3.1.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\in E\)</span>. Suppose <span class="math inline">\((c-r,c+r)\subset E\)</span> for some <span class="math inline">\(r&gt;0\)</span>. Then <span class="math inline">\(f\)</span> is <em>continuous</em> at <span class="math inline">\(c\)</span> if <span class="math inline">\(\lim_{x\to c}f(x)=f(c)\)</span>. If <span class="math inline">\(f\)</span> is continuous at every point in an
+interval <span class="math inline">\(I\subset E\)</span>, <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(I\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-thomae">
+
+<p><strong>Example 6.3.2.</strong> The function <span class="math inline">\(f:(0,1)\to\mathbb{R}\)</span> defined by <span class="math display">\[f(x)=\begin{cases} 0, &amp; x\in(0,1)\setminus
+\mathbb{Q}, \\ \frac{1}{n}, &amp; x\in\mathbb{Q}\cap(0,1)\text{ with
+}x=\frac{m}{n}\text{ in lowest terms},\end{cases}\]</span> is continuous
+at every irrational number in <span class="math inline">\((0,1)\)</span>
+and is not continuous at any rational number in <span class="math inline">\((0,1)\)</span>. Here <span class="math inline">\(x=\frac{m}{n}\)</span> in lowest terms means <span class="math inline">\(n\)</span> is the smallest positive integer such
+that <span class="math inline">\(x=\frac{m}{n}\)</span> for some integer
+<span class="math inline">\(m\)</span>. Such an <span class="math inline">\(n\)</span> exists by the Well-Ordering
+Principle.</p>
+<p>Let <span class="math inline">\(c\in(0,1)\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N&gt;\frac{1}{\varepsilon}\)</span>. There exist
+only finitely many <span class="math inline">\(x\in(0,1)\cap
+\mathbb{Q}\)</span> with <span class="math inline">\(x=\frac{m}{n}\)</span> in lowest terms and <span class="math inline">\(n\le N\)</span>. For each <span class="math inline">\(n\le N\)</span>, there are at most <span class="math inline">\(n-1\)</span> of them, namely some of <span class="math inline">\(\frac1n,\frac2n,\dots,\frac{n-1}{n}\)</span>.
+Denote these rationals by <span class="math inline">\(r_1,\dots,r_k\)</span>. Set <span class="math display">\[\delta=\min\{|r_i-c|:i=1,\dots,k,\ r_i\ne
+c\}.\]</span> (If no <span class="math inline">\(r_i\)</span> differs
+from <span class="math inline">\(c\)</span>, let <span class="math inline">\(\delta=1\)</span>.) Then for all <span class="math inline">\(x\in(0,1)\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>, <span class="math inline">\(f(x)=0\)</span> or <span class="math inline">\(f(x)=\frac{1}{n}\)</span> with <span class="math inline">\(n\ge N\)</span>. So for <span class="math inline">\(c\notin \mathbb{Q}\)</span>, <span class="math inline">\(|f(x)-f(c)|=0\)</span> or <span class="math inline">\(|f(x)-f(c)|=\frac{1}{n}&lt;\varepsilon\)</span>.
+So <span class="math inline">\(\lim_{x\to c}f(x)=0=f(c)\)</span>. So
+<span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>. The same argument shows <span class="math inline">\(\lim_{x\to c}f(x)=0\)</span> for every <span class="math inline">\(c\in(0,1)\)</span>, rational or not. Since <span class="math inline">\(\lim_{x\to c}f(x)=0\)</span>, if <span class="math inline">\(c\in\mathbb{Q}\)</span>, <span class="math inline">\(\lim_{x\to c}f(x)\ne f(c)\)</span>. So <span class="math inline">\(f\)</span> is not continuous at <span class="math inline">\(c\)</span>.</p>
+<p>This function is called <em>Thomae’s function</em>. See <a href="#fig-thomae">Figure 6.1</a>.</p>
+</div>
+<figure class="figure" id="fig-thomae"><div class="figure-images"><img alt="A scatter of points above the interval [0,1]. The highest points are at 0 and 1 with height 1, then 1/2 at x = 1/2, then points at heights 1/3, 1/4 and so on, getting denser and lower toward the x-axis." height="248" src="figs/fig06.svg" width="587"/></div><figcaption><strong>Figure 6.1.</strong> Thomae’s function, showing the points
+<span class="math inline">\(\left(\frac mn,\frac1n\right)\)</span> with
+<span class="math inline">\(n\le30\)</span>. At irrational numbers the
+value is <span class="math inline">\(0\)</span>, shown by the line along
+the bottom.</figcaption></figure>
+<div class="theorembox" id="thm-continuity-algebra">
+
+<p><strong>Theorem 6.3.3.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, <span class="math inline">\(f,g:E\to\mathbb{R}\)</span>, and <span class="math inline">\(c\in E\)</span>. Suppose <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are continuous at <span class="math inline">\(c\)</span>. Then the functions <span class="math inline">\(f+g\)</span>, <span class="math inline">\(fg\)</span>, and <span class="math inline">\(\frac{f}{g}\)</span>, if <span class="math inline">\(g(c)\ne 0\)</span>, are continuous at <span class="math inline">\(c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>This follows from <a href="#thm-function-limit-laws">Theorem
+6.1.13</a>. For example, <span class="math inline">\(\lim_{x\to
+c}(f(x)+g(x))=f(c)+g(c)\)</span>, so <span class="math inline">\(f+g\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-composition-continuous">
+
+<p><strong>Theorem 6.3.4.</strong> Let <span class="math inline">\(D,E\subset\mathbb{R}\)</span>, <span class="math inline">\(g:E\to\mathbb{R}\)</span> with <span class="math inline">\(g[E]\subset D\)</span>, <span class="math inline">\(f:D\to\mathbb{R}\)</span>, and <span class="math inline">\(c\in E\)</span>. Suppose <span class="math inline">\(g\)</span> is continuous at <span class="math inline">\(c\)</span> and <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(g(c)\)</span>. Then <span class="math inline">\(f\circ g\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Because <span class="math inline">\(\lim_{y\to g(c)}f(y)=f(g(c))\)</span>, there
+exists a <span class="math inline">\(\delta_1&gt;0\)</span> such that
+<span class="math inline">\(|f(y)-f(g(c))|&lt;\varepsilon\)</span> for
+all <span class="math inline">\(y\in D\)</span> with <span class="math inline">\(|y-g(c)|&lt;\delta_1\)</span>. Since <span class="math inline">\(\lim_{x\to c}g(x)=g(c)\)</span>, there exists a
+<span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>, <span class="math inline">\(|g(x)-g(c)|&lt;\delta_1\)</span>. So for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(g(x))-f(g(c))|&lt;\varepsilon\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-continuity-endpoints">
+
+<p><strong>Definition 6.3.5.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>. Then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(a\)</span> if <span class="math inline">\(\lim_{x\to a^+}f(x)=f(a)\)</span>. Similarly,
+<span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(b\)</span> if <span class="math inline">\(\lim_{x\to b^-}f(x)=f(b)\)</span>.</p>
+</div>
+<p>Definitions <a href="#def-continuity">6.3.1</a> and <a href="#def-continuity-endpoints">6.3.5</a> cover functions defined on
+intervals. Later results, such as <a href="#thm-compact-uniform">Theorem
+6.4.7</a>, need continuity on other sets. The next definition covers
+every case at once.</p>
+<div class="definitionbox" id="def-continuity-on-set">
+
+<p><strong>Definition 6.3.6.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, let <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and let <span class="math inline">\(c\in E\)</span>. Then <span class="math inline">\(f\)</span> is <em>continuous at <span class="math inline">\(c\)</span> relative to <span class="math inline">\(E\)</span></em> if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-f(c)|&lt;\varepsilon\)</span>. If <span class="math inline">\(f\)</span> is continuous relative to <span class="math inline">\(E\)</span> at every point of <span class="math inline">\(E\)</span>, then <span class="math inline">\(f\)</span> is <em>continuous on <span class="math inline">\(E\)</span></em>.</p>
+</div>
+<div class="remarkbox" id="rem-continuity-on-set">
+
+<p><strong>Remark 6.3.7.</strong> If <span class="math inline">\((c-r,c+r)\subset E\)</span> for some <span class="math inline">\(r&gt;0\)</span>, this agrees with <a href="#def-continuity">Definition 6.3.1</a>. If <span class="math inline">\(E=[a,b]\)</span> and <span class="math inline">\(c\)</span> is <span class="math inline">\(a\)</span> or <span class="math inline">\(b\)</span>, it agrees with <a href="#def-continuity-endpoints">Definition 6.3.5</a>. If <span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(E\)</span>, then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span> relative to <span class="math inline">\(E\)</span> if and only if <span class="math inline">\(\lim_{x\to c}f(x)=f(c)\)</span>. If <span class="math inline">\(c\)</span> is an isolated point of <span class="math inline">\(E\)</span>, every function on <span class="math inline">\(E\)</span> is continuous at <span class="math inline">\(c\)</span>. There is a <span class="math inline">\(\delta&gt;0\)</span> such that the only <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span> is <span class="math inline">\(x=c\)</span>. Theorems <a href="#thm-continuity-algebra">6.3.3</a> and <a href="#thm-composition-continuous">6.3.4</a> hold for this definition
+too, with the same proofs.</p>
+</div>
+<div class="definitionbox" id="def-continuous-functions">
+
+<p><strong>Definition 6.3.8.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>. The set of all
+functions <span class="math inline">\(f:E\to\mathbb{R}\)</span> that are
+continuous on <span class="math inline">\(E\)</span> is denoted <span class="math inline">\(C(E)\)</span>. For intervals, write <span class="math inline">\(C[a,b]\)</span> for <span class="math inline">\(C([a,b])\)</span>, <span class="math inline">\(C(a,b)\)</span> for <span class="math inline">\(C((a,b))\)</span>, and so on. By <a href="#thm-continuity-algebra">Theorem 6.3.3</a>, if <span class="math inline">\(f,g\in C(E)\)</span>, then <span class="math inline">\(f+g\in C(E)\)</span> and <span class="math inline">\(fg\in C(E)\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-sequential-continuity">
+
+<p><strong>Theorem 6.3.9.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>, let <span class="math inline">\(f:E\to\mathbb{R}\)</span>, and let <span class="math inline">\(c\in E\)</span>. Then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span> relative to <span class="math inline">\(E\)</span> if and only if <span class="math inline">\(f(x_n)\to f(c)\)</span> for every sequence <span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\to
+c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(\{x_n\}\)</span> be a sequence in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\to
+c\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|f(x)-f(c)|&lt;\varepsilon\)</span> for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>. Since <span class="math inline">\(x_n\to c\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|x_n-c|&lt;\delta\)</span> for all <span class="math inline">\(n\ge N\)</span>. So <span class="math inline">\(|f(x_n)-f(c)|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(n\ge N\)</span>. Thus <span class="math inline">\(f(x_n)\to f(c)\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(f\)</span> is not continuous at <span class="math inline">\(c\)</span> relative to <span class="math inline">\(E\)</span>. Then there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that for all <span class="math inline">\(\delta&gt;0\)</span>, there exists an <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span> and <span class="math inline">\(|f(x)-f(c)|\ge\varepsilon\)</span>. Taking <span class="math inline">\(\delta=\frac1n\)</span>, for each <span class="math inline">\(n\in\mathbb{N}\)</span> there exists an <span class="math inline">\(x_n\in E\)</span> with <span class="math inline">\(|x_n-c|&lt;\frac1n\)</span> and <span class="math inline">\(|f(x_n)-f(c)|\ge\varepsilon\)</span>. Then <span class="math inline">\(x_n\to c\)</span>, but <span class="math inline">\(\{f(x_n)\}\)</span> does not converge to <span class="math inline">\(f(c)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Unlike <a href="#thm-sequential-limits">Theorem 6.1.18</a>, this
+theorem allows <span class="math inline">\(x_n=c\)</span>. That is
+because continuity at <span class="math inline">\(c\)</span> is about
+<span class="math inline">\(f(c)\)</span> itself.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Locating a Point with a
+Supremum).</strong></p>
+<p>To find a point with some property, it often helps to define a set
+<span class="math inline">\(S\)</span> of points that are “on one side”
+and let <span class="math inline">\(c=\sup S\)</span>. Then use the two
+facts about suprema from <a href="ch-real-numbers.html#sec-completeness">Section 1.7</a>.
+Points of <span class="math inline">\(S\)</span> come arbitrarily close
+to <span class="math inline">\(c\)</span> from the left. Points to the
+right of <span class="math inline">\(c\)</span> are not in <span class="math inline">\(S\)</span>. Each fact gives an inequality, and
+together they pin down <span class="math inline">\(c\)</span>. The proof
+of the Intermediate Value Theorem below works this way. So did the proof
+of the Heine–Borel Theorem (<a href="ch-topology.html#thm-heine-borel">Theorem
+4.2.14</a>).</p>
+</div>
+<div class="theorembox" id="thm-ivt">
+
+<p><strong>Theorem 6.3.10</strong> (Intermediate Value
+Theorem)<strong>.</strong></p>
+<p>Suppose that <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> is continuous, <span class="math inline">\(f(a)\ne f(b)\)</span>, and <span class="math inline">\(k\)</span> is any number between <span class="math inline">\(f(a)\)</span> and <span class="math inline">\(f(b)\)</span>. Then there exists a <span class="math inline">\(c\in(a,b)\)</span> such that <span class="math inline">\(f(c)=k\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Suppose <span class="math inline">\(f(a)&lt;k&lt;f(b)\)</span>. Define the set <span class="math inline">\(S=\{x\in[a,b]:f(x)\le k\}\)</span>. Then <span class="math inline">\(a\in S\)</span>, so <span class="math inline">\(S\ne\emptyset\)</span>, and since <span class="math inline">\(S\subset [a,b]\)</span>, <span class="math inline">\(S\)</span> is bounded above. Thus, <span class="math inline">\(\sup S\in\mathbb{R}\)</span>, say <span class="math inline">\(c=\sup S\)</span>.</p>
+<p>If <span class="math inline">\(c=b\)</span>, then <span class="math inline">\(f(c)=f(b)&gt;k\)</span>. If <span class="math inline">\(c&lt;b\)</span>, then since <span class="math inline">\(c\)</span> is an upper bound of <span class="math inline">\(S\)</span>, for all <span class="math inline">\(x\)</span> with <span class="math inline">\(c&lt;x\le b\)</span>, <span class="math inline">\(x\notin S\)</span>. So for all <span class="math inline">\(x\)</span> with <span class="math inline">\(c&lt;x\le b\)</span>, <span class="math inline">\(f(x)&gt;k\)</span>. Therefore, <span class="math display">\[f(c)=\lim_{x\to c}f(x)=\lim_{x\to c^+}f(x)\ge
+k\]</span> by <a href="#exer-limit-lower-bound">Exercise 6.1.6</a>.</p>
+<p>Now, since <span class="math inline">\(c\)</span> is the supremum of
+<span class="math inline">\(S\)</span>, for all <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(x_n\in S\)</span> with <span class="math inline">\(c-\frac{1}{n}&lt;x_n\le c\)</span>. By the Squeeze
+Theorem, <span class="math inline">\(x_n\to c\)</span>. Also, <span class="math inline">\(f(x_n)\le k\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, since for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(x_n\in S\)</span>. Therefore, <span class="math display">\[f(c)=\lim_{n\to \infty}f(x_n)\le k\]</span> by
+Theorems <a href="#thm-sequential-continuity">6.3.9</a> and <a href="ch-sequences.html#thm-order-limits">3.2.7</a>. So <span class="math inline">\(f(c)=k\)</span>. Since <span class="math inline">\(f(a)&lt;k&lt;f(b)\)</span>, <span class="math inline">\(c\ne a\)</span> and <span class="math inline">\(c\ne b\)</span>. So <span class="math inline">\(c\in(a,b)\)</span>.</p>
+<p>Now suppose <span class="math inline">\(f(b)&lt;k&lt;f(a)\)</span>.
+Define <span class="math inline">\(g(x)=-f(x)\)</span>. Then <span class="math inline">\(g\)</span> is continuous on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(-f(a)=g(a)&lt;-k&lt;g(b)=-f(b)\)</span>. So there
+exists a <span class="math inline">\(c\in(a,b)\)</span> such that <span class="math inline">\(g(c)=-k\)</span>. So <span class="math inline">\(f(c)=k\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-continuous-image-interval">
+
+<p><strong>Corollary 6.3.11.</strong> If <span class="math inline">\(I\subset\mathbb{R}\)</span> is an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span> is continuous on
+<span class="math inline">\(I\)</span>, then <span class="math inline">\(f[I]\)</span> is an interval.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> If <span class="math inline">\(I\)</span> consists of
+a single point, <span class="math inline">\(f[I]\)</span> is a single
+point and the proof is complete. Assume now there exists <span class="math inline">\(s,t\in f[I]\)</span> with <span class="math inline">\(s&lt;t\)</span>. Then there exist <span class="math inline">\(x,y\in I\)</span> with <span class="math inline">\(f(x)=s\)</span>, <span class="math inline">\(f(y)=t\)</span>. Choose <span class="math inline">\(k\in(s,t)\)</span>. Then there exists a <span class="math inline">\(c\)</span> between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> with <span class="math inline">\(f(c)=k\)</span> by the Intermediate Value Theorem,
+applied on the closed interval with endpoints <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. This interval is a subset of <span class="math inline">\(I\)</span>, since <span class="math inline">\(I\)</span> is an interval. So <span class="math inline">\(k\in f[I]\)</span> and <span class="math inline">\(f[I]\)</span> is an interval.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-fixed-point">
+
+<p><strong>Corollary 6.3.12.</strong></p>
+<p>If <span class="math inline">\(f:[0,1]\to[0,1]\)</span> is
+continuous, there exists a <span class="math inline">\(c\in[0,1]\)</span> such that <span class="math inline">\(f(c)=c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(g(x)=f(x)-x\)</span>.
+Then <span class="math inline">\(g(0)=f(0)\ge 0\)</span> and <span class="math inline">\(g(1)=f(1)-1\le 0\)</span>. Thus there exists a
+<span class="math inline">\(c\in[0,1]\)</span> such that <span class="math inline">\(g(c)=0\)</span>; i.e. where <span class="math inline">\(f(c)=c\)</span>. If <span class="math inline">\(g(0)=0\)</span> or <span class="math inline">\(g(1)=0\)</span>, take <span class="math inline">\(c=0\)</span> or <span class="math inline">\(c=1\)</span>. Otherwise <span class="math inline">\(g(1)&lt;0&lt;g(0)\)</span>, and the Intermediate
+Value Theorem gives <span class="math inline">\(c\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-bounded-function">
+
+<p><strong>Definition 6.3.13.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Then <span class="math inline">\(f\)</span> is <em>bounded above</em> on <span class="math inline">\(E\)</span> if there exists an <span class="math inline">\(M\in\mathbb{R}\)</span> such that <span class="math inline">\(f(x)\le M\)</span> for all <span class="math inline">\(x\in E\)</span>. <span class="math inline">\(f\)</span> is <em>bounded below</em> on <span class="math inline">\(E\)</span> if there exists an <span class="math inline">\(M\in\mathbb{R}\)</span> such that <span class="math inline">\(f(x)\ge M\)</span> for all <span class="math inline">\(x\in E\)</span>. <span class="math inline">\(f\)</span> is <em>bounded</em> if it is both
+bounded above and below.</p>
+</div>
+<div class="theorembox" id="thm-continuous-bounded">
+
+<p><strong>Theorem 6.3.14.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be continuous. Then
+<span class="math inline">\(f\)</span> is bounded on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume by way of contradiction that <span class="math inline">\(f\)</span> is not bounded above on <span class="math inline">\([a,b]\)</span>. Then for all <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(x_n\in[a,b]\)</span> such that <span class="math inline">\(f(x_n)\ge n\)</span>. But <span class="math inline">\(\{x_n\}\)</span> is contained in <span class="math inline">\([a,b]\)</span>, and so by the Bolzano–Weierstrass
+Theorem (<a href="ch-sequences.html#cor-bolzano-weierstrass-interval">Corollary
+3.4.6</a>), <span class="math inline">\(\{x_n\}\)</span> has a
+convergent subsequence, say <span class="math inline">\(x_{n_k}\to
+c\in[a,b]\)</span>. Then <span class="math inline">\(\lim_{k\to\infty}f(x_{n_k})=f(c)\)</span> by <a href="#thm-sequential-continuity">Theorem 6.3.9</a>, a contradiction.
+The contradiction is that <span class="math inline">\(f(x_{n_k})\ge
+n_k\ge k\)</span> (since <span class="math inline">\(\{n_k\}\)</span> is
+a strictly increasing sequence of positive integers), so <span class="math inline">\(\{f(x_{n_k})\}\)</span> is not bounded, but
+convergent sequences are bounded by <a href="ch-sequences.html#thm-convergent-bounded">Theorem 3.2.3</a>. So <span class="math inline">\(f\)</span> is bounded above on <span class="math inline">\([a,b]\)</span>. Similarly, <span class="math inline">\(f\)</span> is bounded below on <span class="math inline">\([a,b]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-evt">
+
+<p><strong>Theorem 6.3.15</strong> (Extreme Value
+Theorem)<strong>.</strong></p>
+<p>Suppose that <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> is continuous. Then
+<span class="math inline">\(f\)</span> attains its maximum and minimum
+values on <span class="math inline">\([a,b]\)</span>; i.e. there exist
+<span class="math inline">\(c_1,c_2\in[a,b]\)</span> such that <span class="math inline">\(f(c_1)\le f(x)\le f(c_2)\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(W=\{f(x):a\le x\le
+b\}\)</span>. From <a href="#thm-continuous-bounded">Theorem 6.3.14</a>,
+<span class="math inline">\(W\)</span> is bounded. Also, <span class="math inline">\(W\ne\emptyset\)</span>. So <span class="math inline">\(\inf W,\sup W\in\mathbb{R}\)</span>, say <span class="math inline">\(\alpha=\inf W\)</span>, <span class="math inline">\(\beta=\sup W\)</span>.</p>
+<p>Since <span class="math inline">\(\alpha=\inf W\)</span>, for all
+<span class="math inline">\(n\in\mathbb{N}\)</span>, there exists a
+<span class="math inline">\(y_n\in W\)</span> such that <span class="math inline">\(\alpha\le y_n&lt;\alpha+\frac{1}{n}\)</span>. By
+the way <span class="math inline">\(W\)</span> is defined, there exists
+an <span class="math inline">\(x_n\in[a,b]\)</span> such that <span class="math inline">\(y_n=f(x_n)\)</span>. The sequence <span class="math inline">\(\{x_n\}\)</span> is contained in <span class="math inline">\([a,b]\)</span>, so it has a convergent
+subsequence, say <span class="math inline">\(x_{n_k}\to
+c_1\in[a,b]\)</span>. Since <span class="math inline">\(f\)</span> is
+continuous at <span class="math inline">\(c_1\)</span>, <span class="math inline">\(f(c_1)=\lim_{k\to\infty}f(x_{n_k})\)</span> by <a href="#thm-sequential-continuity">Theorem 6.3.9</a>. But for all <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math display">\[\alpha\le f(x_{n_k})&lt;\alpha+\frac{1}{n_k}\le
+\alpha+\frac{1}{k}.\]</span> Here <span class="math inline">\(n_k\ge
+k\)</span>, since <span class="math inline">\(\{n_k\}\)</span> is a
+strictly increasing sequence of positive integers. So <span class="math inline">\(f(c_1)=\alpha\)</span> by the Squeeze Theorem (<a href="ch-sequences.html#thm-squeeze">Theorem 3.2.10</a>). Similarly, there exists a <span class="math inline">\(c_2\in[a,b]\)</span> with <span class="math inline">\(f(c_2)=\beta\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Both hypotheses matter. The function <span class="math inline">\(f(x)=x\)</span> is continuous on <span class="math inline">\((0,1)\)</span> but has no largest or smallest
+value there. The function <span class="math inline">\(f(x)=\frac1x\)</span> is continuous on <span class="math inline">\((0,1]\)</span> but is not bounded. The function
+equal to <span class="math inline">\(x\)</span> on <span class="math inline">\([0,1)\)</span> and to <span class="math inline">\(0\)</span> at <span class="math inline">\(1\)</span> is bounded on <span class="math inline">\([0,1]\)</span> but has no largest value.</p>
+<p>Continuity can be described using open sets alone, with no <span class="math inline">\(\varepsilon\)</span> or <span class="math inline">\(\delta\)</span>. This description is the one used
+in topology, and Part III uses it to define measurable functions.</p>
+<div class="theorembox" id="thm-continuity-open-sets">
+
+<p><strong>Theorem 6.3.16.</strong> Let <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span>. Then <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(\mathbb{R}\)</span> if and only if for each open
+set <span class="math inline">\(U\subset\mathbb{R}\)</span>, <span class="math inline">\(f^{-1}[U]\)</span> is an open set.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Leftarrow\)</span>) Let
+<span class="math inline">\(c\in\mathbb{R}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. The interval <span class="math inline">\(I=(f(c)-\varepsilon,f(c)+\varepsilon)\)</span> is
+open and so <span class="math inline">\(f^{-1}[I]\)</span> is open.
+Since <span class="math inline">\(c\in f^{-1}[I]\)</span> and <span class="math inline">\(f^{-1}[I]\)</span> is open, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\((c-\delta,c+\delta)\subset f^{-1}[I]\)</span>. So
+if <span class="math inline">\(x\in(c-\delta,c+\delta)\)</span>, <span class="math inline">\(f(x)\in(f(c)-\varepsilon,f(c)+\varepsilon)\)</span>;
+i.e. if <span class="math inline">\(|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-f(c)|&lt;\varepsilon\)</span>. So <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(f\)</span> is continuous and let <span class="math inline">\(U\subset\mathbb{R}\)</span> be open. Let <span class="math inline">\(c\in f^{-1}[U]\)</span>. Then <span class="math inline">\(f(c)\in U\)</span> and since <span class="math inline">\(U\)</span> is open, there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((f(c)-\varepsilon,f(c)+\varepsilon)\subset
+U\)</span>. Since <span class="math inline">\(f\)</span> is continuous
+at <span class="math inline">\(c\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-f(c)|&lt;\varepsilon\)</span>. Thus for
+every <span class="math inline">\(x\in(c-\delta,c+\delta)\)</span>,
+<span class="math inline">\(f(x)\in(f(c)-\varepsilon,f(c)+\varepsilon)\subset
+U\)</span>. Hence <span class="math inline">\((c-\delta,c+\delta)\subset
+f^{-1}[U]\)</span>. So <span class="math inline">\(f^{-1}[U]\)</span> is
+open.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-22">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-x-sin-continuous">
+
+<p><strong>Exercise 6.3.1.</strong> Define <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=x\sin\frac1x\)</span> for <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(f(0)=0\)</span>. Prove <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(0\)</span>. <a aria-label="Hint for Exercise 6.3.1" href="solutions-ch06.html#sol-exer-x-sin-continuous">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-continuous-only-at-zero">
+
+<p><strong>Exercise 6.3.2.</strong> Let <span class="math inline">\(f\)</span> be the function in <a href="#exer-x-on-rationals">Exercise 6.1.9</a>. Prove that <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(0\)</span> and at no other point.</p>
+</div>
+<div class="exercisebox" id="exer-ivt-root">
+
+<p><strong>Exercise 6.3.3.</strong> Prove that the equation <span class="math inline">\(x^5-3x+1=0\)</span> has a solution in <span class="math inline">\((0,1)\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-ivt-two-functions">
+
+<p><strong>Exercise 6.3.4.</strong> Let <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be continuous on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(f(a)&lt;g(a)\)</span> and <span class="math inline">\(f(b)&gt;g(b)\)</span>. Prove there exists a <span class="math inline">\(c\in(a,b)\)</span> with <span class="math inline">\(f(c)=g(c)\)</span>. <a aria-label="Hint for Exercise 6.3.4" href="solutions-ch06.html#sol-exer-ivt-two-functions">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-zero-on-rationals">
+
+<p><strong>Exercise 6.3.5.</strong> Let <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> be continuous
+with <span class="math inline">\(f(q)=0\)</span> for every <span class="math inline">\(q\in\mathbb{Q}\)</span>. Prove <span class="math inline">\(f(x)=0\)</span> for every <span class="math inline">\(x\in\mathbb{R}\)</span>. <a aria-label="Hint for Exercise 6.3.5" href="solutions-ch06.html#sol-exer-zero-on-rationals">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-continuous-preimage-open">
+
+<p><strong>Exercise 6.3.6.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Prove that <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(E\)</span> if and only if for each open set <span class="math inline">\(O\)</span>, there is an open set <span class="math inline">\(U\)</span> such that <span class="math inline">\(f^{-1}[O]=E\cap U\)</span>. (This extends <a href="#thm-continuity-open-sets">Theorem 6.3.16</a> to functions on any
+set <span class="math inline">\(E\)</span>.) <a aria-label="Solution for Exercise 6.3.6" href="solutions-ch06.html#sol-exer-continuous-preimage-open">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-uniform-continuity">
+<h2>6.4 Uniform Continuity</h2>
+<p>If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(E\)</span>, then for each <span class="math inline">\(x\in E\)</span> and each <span class="math inline">\(\varepsilon&gt;0\)</span> there is a <span class="math inline">\(\delta\)</span>. That <span class="math inline">\(\delta\)</span> may depend on <span class="math inline">\(x\)</span>. Uniform continuity asks for one <span class="math inline">\(\delta\)</span> that works at every point of <span class="math inline">\(E\)</span> at once. In symbols, the only change is
+the order of “for all <span class="math inline">\(x\)</span>” and “there
+exists a <span class="math inline">\(\delta\)</span>.”</p>
+<div class="definitionbox" id="def-uniform-continuity">
+
+<p><strong>Definition 6.4.1.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. <span class="math inline">\(f\)</span> is <em>uniformly continuous</em> on
+<span class="math inline">\(E\)</span> if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a <span class="math inline">\(\delta(\varepsilon)&gt;0\)</span> such that for
+all <span class="math inline">\(x,y\in E\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-f(y)|&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-x-squared-uniform">
+
+<p><strong>Example 6.4.2.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> be bounded. Then <span class="math inline">\(f(x)=x^2\)</span> is uniformly continuous on <span class="math inline">\(E\)</span>. Since <span class="math inline">\(E\)</span> is bounded, there exists an <span class="math inline">\(M&gt;0\)</span> such that <span class="math inline">\(|x|&lt;M\)</span> for all <span class="math inline">\(x\in E\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\frac{\varepsilon}{2M}\)</span>. Then for
+all <span class="math inline">\(x,y\in E\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math display">\[|f(x)-f(y)|=|x^2-y^2|=|x+y||x-y|&lt;2M|x-y|&lt;2M\delta=\varepsilon.\]</span></p>
+</div>
+<div class="examplebox" id="ex-sine-uniform">
+
+<p><strong>Example 6.4.3.</strong> <span class="math inline">\(f(x)=\sin
+x\)</span> is uniformly continuous on <span class="math inline">\(\mathbb{R}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Define <span class="math inline">\(\delta=\varepsilon\)</span>. Then for all <span class="math inline">\(x,y\in\mathbb{R}\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+|f(x)-f(y)|&amp;=|\sin x- \sin y|\\
+&amp;=2\left|\cos\left[\tfrac{1}{2}(x+y)\right]\sin\left[\tfrac{1}{2}(x-y)\right]\right|\\
+&amp; \le 2\left|\sin\left[\tfrac{1}{2}(x-y)\right]\right|\\
+&amp;\le 2\left|\tfrac{1}{2}(x-y)\right|\\
+&amp;=|x-y|&lt;\delta=\varepsilon.
+\end{aligned}\]</span> This uses the identity <span class="math inline">\(\sin x-\sin
+y=2\cos\frac{x+y}{2}\sin\frac{x-y}{2}\)</span> and the inequality <span class="math inline">\(|\sin t|\le|t|\)</span>. See <a href="ch-sequences.html#rem-elementary-functions">Remark 3.1.1</a>.</p>
+</div>
+<div class="examplebox" id="ex-one-over-x-not-uniform">
+
+<p><strong>Example 6.4.4.</strong> The function <span class="math inline">\(f(x)=\frac{1}{x}\)</span> is not uniformly
+continuous on <span class="math inline">\((0,1)\)</span>. Assume by way
+of contradiction that <span class="math inline">\(f\)</span> is
+uniformly continuous on <span class="math inline">\((0,1)\)</span>. Let
+<span class="math inline">\(\varepsilon=1\)</span>. Then there exists a
+<span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(x,y\in (0,1)\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math inline">\(|f(x)-f(y)|&lt;\varepsilon\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N&gt;\frac{1}{\delta}\)</span> and <span class="math inline">\(N\ge2\)</span>. Define <span class="math inline">\(x=\frac{1}{N}\)</span>, <span class="math inline">\(y=\frac{1}{N+1}\)</span>. Then <span class="math display">\[|x-y|=\left|\frac{1}{N}-\frac{1}{N+1}\right|=\frac{1}{N(N+1)}&lt;\frac{1}{N}&lt;\delta,\]</span>
+but <span class="math inline">\(|f(x)-f(y)|=|N-(N+1)|=1=\varepsilon\)</span>, a
+contradiction. So <span class="math inline">\(f\)</span> is not
+uniformly continuous on <span class="math inline">\((0,1)\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Function Is Not Uniformly
+Continuous).</strong></p>
+<p>Negate the definition. A function <span class="math inline">\(f\)</span> is not uniformly continuous on <span class="math inline">\(E\)</span> if there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that for every
+<span class="math inline">\(\delta&gt;0\)</span>, there exist <span class="math inline">\(x,y\in E\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span> and <span class="math inline">\(|f(x)-f(y)|\ge\varepsilon\)</span>. So fix one
+<span class="math inline">\(\varepsilon\)</span>. Then, for an arbitrary
+<span class="math inline">\(\delta\)</span>, find two points closer than
+<span class="math inline">\(\delta\)</span> whose values are at least
+<span class="math inline">\(\varepsilon\)</span> apart. The points
+usually go where the graph is steepest. In <a href="#ex-one-over-x-not-uniform">Example 6.4.4</a>, they go near <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-lipschitz">
+
+<p><strong>Definition 6.4.5.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. <span class="math inline">\(f\)</span> is <em>Lipschitz continuous</em> on
+<span class="math inline">\(E\)</span> (or satisfies a <em>Lipschitz
+condition</em> on <span class="math inline">\(E\)</span>) if there
+exists an <span class="math inline">\(M&gt;0\)</span> such that for all
+<span class="math inline">\(x,y\in E\)</span>, <span class="math inline">\(|f(x)-f(y)|\le M|x-y|\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-lipschitz-uniform">
+
+<p><strong>Theorem 6.4.6.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is Lipschitz continuous on <span class="math inline">\(E\)</span>, <span class="math inline">\(f\)</span>
+is uniformly continuous on <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-lipschitz-uniform">Exercise
+6.4.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-compact-uniform">
+
+<p><strong>Theorem 6.4.7.</strong> Let <span class="math inline">\(K\subset\mathbb{R}\)</span> be compact and <span class="math inline">\(f:K\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(K\)</span>, <span class="math inline">\(f\)</span>
+is uniformly continuous on <span class="math inline">\(K\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\(K\)</span>, for all <span class="math inline">\(x\in K\)</span>, there exists a <span class="math inline">\(\delta_x&gt;0\)</span> such that for all <span class="math inline">\(y\in K\)</span> with <span class="math inline">\(0&lt;|y-x|&lt;2\delta_x\)</span>, <span class="math inline">\(|f(y)-f(x)|&lt;\frac{\varepsilon}{2}\)</span>. The
+collection <span class="math inline">\(\{(x-\delta_x,x+\delta_x)\}_{x\in
+K}\)</span> is an open cover of <span class="math inline">\(K\)</span>.
+Since <span class="math inline">\(K\)</span> is compact, there exists
+<span class="math inline">\(x_1,\dots,x_n\)</span> such that <span class="math inline">\(K\subset\bigcup_{i=1}^n(x_i-\delta_{x_i},
+x_i+\delta_{x_i})\)</span>. Define <span class="math inline">\(\delta=\min\{\delta_{x_1},\dots,\delta_{x_n}\}&gt;0\)</span>.
+Suppose <span class="math inline">\(x,y\in K\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>. Since <span class="math inline">\(x\in K\)</span>, there exists an <span class="math inline">\(x_i\)</span> such that <span class="math inline">\(x\in(x_i-\delta_{x_i},x_i+\delta_{x_i})\)</span>.
+Since <span class="math inline">\(|x-y|&lt;\delta\)</span>, <span class="math inline">\(y\in(x_i-2\delta_{x_i},x_i+2\delta_{x_i})\)</span>.
+Indeed, <span class="math inline">\(|y-x_i|\le|y-x|+|x-x_i|&lt;\delta+\delta_{x_i}\le2\delta_{x_i}\)</span>.
+Then <span class="math display">\[|f(x)-f(y)|\le
+|f(x)-f(x_i)|+|f(y)-f(x_i)|&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.\]</span>
+So <span class="math inline">\(f\)</span> is uniformly continuous on
+<span class="math inline">\(K\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-interval-uniform">
+
+<p><strong>Corollary 6.4.8.</strong> If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(f\)</span> is uniformly continuous on <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> This is an immediate consequence of <a href="#thm-compact-uniform">Theorem 6.4.7</a> and the Heine–Borel
+Theorem (<a href="ch-topology.html#thm-heine-borel">Theorem 4.2.14</a>).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-23">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-one-over-x-uniform">
+
+<p><strong>Exercise 6.4.1.</strong> Let <span class="math inline">\(a&gt;0\)</span>. Prove that <span class="math inline">\(f(x)=\frac{1}{x}\)</span> is uniformly continuous
+on <span class="math inline">\([a,\infty)\)</span>. <a aria-label="Solution for Exercise 6.4.1" href="solutions-ch06.html#sol-exer-one-over-x-uniform">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-squared-not-uniform">
+
+<p><strong>Exercise 6.4.2.</strong> Prove <span class="math inline">\(f(x)=x^2\)</span> is not uniformly continuous on
+<span class="math inline">\(\mathbb{R}\)</span>. <a aria-label="Solution for Exercise 6.4.2" href="solutions-ch06.html#sol-exer-x-squared-not-uniform">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-lipschitz-uniform">
+
+<p><strong>Exercise 6.4.3.</strong> Prove <a href="#thm-lipschitz-uniform">Theorem 6.4.6</a>.</p>
+</div>
+<div class="exercisebox" id="exer-sqrt-uniform">
+
+<p><strong>Exercise 6.4.4.</strong> Prove that <span class="math inline">\(f(x)=\sqrt{x}\)</span> is uniformly continuous on
+<span class="math inline">\([0,\infty)\)</span>. Show that <span class="math inline">\(f\)</span> is not Lipschitz continuous on <span class="math inline">\([0,1]\)</span>. <a aria-label="Hint for Exercise 6.4.4" href="solutions-ch06.html#sol-exer-sqrt-uniform">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-uniform-cauchy">
+
+<p><strong>Exercise 6.4.5.</strong> Let <span class="math inline">\(f\)</span> be uniformly continuous on <span class="math inline">\(E\)</span> and let <span class="math inline">\(\{x_n\}\)</span> be a Cauchy sequence in <span class="math inline">\(E\)</span>. Prove that <span class="math inline">\(\{f(x_n)\}\)</span> is a Cauchy sequence. Use this
+to give another proof that <span class="math inline">\(\frac1x\)</span>
+is not uniformly continuous on <span class="math inline">\((0,1)\)</span>. <a aria-label="Hint for Exercise 6.4.5" href="solutions-ch06.html#sol-exer-uniform-cauchy">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sin-one-over-x-not-uniform">
+
+<p><strong>Exercise 6.4.6.</strong> Prove that <span class="math inline">\(f(x)=\sin\frac1x\)</span> is not uniformly
+continuous on <span class="math inline">\((0,1)\)</span>. <a aria-label="Hint for Exercise 6.4.6" href="solutions-ch06.html#sol-exer-sin-one-over-x-not-uniform">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-monotone-functions">
+<h2>6.5 Monotonicity</h2>
+<p>Monotone functions are simpler than general functions. Their
+one-sided limits always exist, so the only way they can be discontinuous
+is to jump. This section shows they can jump at only countably many
+points. It also shows the inverse of a continuous strictly monotone
+function is continuous. That gives the continuity of <span class="math inline">\(\sqrt[n]{x}\)</span> with no extra work.</p>
+<div class="definitionbox" id="def-monotone-function">
+
+<p><strong>Definition 6.5.1.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\(f\)</span> is <em>increasing</em> on
+<span class="math inline">\(E\)</span> if <span class="math inline">\(f(x)\le f(y)\)</span> for all <span class="math inline">\(x,y\in E\)</span> with <span class="math inline">\(x&lt;y\)</span>;</p></li>
+<li><p><span class="math inline">\(f\)</span> is <em>strictly
+increasing</em> on <span class="math inline">\(E\)</span> if <span class="math inline">\(f(x)&lt;f(y)\)</span> for all <span class="math inline">\(x,y\in E\)</span> with <span class="math inline">\(x&lt;y\)</span>;</p></li>
+<li><p><span class="math inline">\(f\)</span> is <em>decreasing</em> on
+<span class="math inline">\(E\)</span> if <span class="math inline">\(f(x)\ge f(y)\)</span> for all <span class="math inline">\(x,y\in E\)</span> with <span class="math inline">\(x&lt;y\)</span>;</p></li>
+<li><p><span class="math inline">\(f\)</span> is <em>strictly
+decreasing</em> on <span class="math inline">\(E\)</span> if <span class="math inline">\(f(x)&gt; f(y)\)</span> for all <span class="math inline">\(x,y\in E\)</span> with <span class="math inline">\(x&lt;y\)</span>;</p></li>
+<li><p><span class="math inline">\(f\)</span> is <em>monotone</em> on
+<span class="math inline">\(E\)</span> if <span class="math inline">\(f\)</span> is increasing or decreasing on <span class="math inline">\(E\)</span>; and</p></li>
+<li><p><span class="math inline">\(f\)</span> is <em>strictly
+monotone</em> on <span class="math inline">\(E\)</span> if <span class="math inline">\(f\)</span> is strictly increasing or strictly
+decreasing on <span class="math inline">\(E\)</span>.</p></li>
+</ol>
+</div>
+<div class="theorembox" id="thm-monotone-one-sided">
+
+<p><strong>Theorem 6.5.2.</strong> Let <span class="math inline">\(I\subset \mathbb{R}\)</span> be an open interval
+and <span class="math inline">\(f:I\to\mathbb{R}\)</span> increasing on
+<span class="math inline">\(I\)</span>. Then for all <span class="math inline">\(c\in I\)</span>, <span class="math inline">\(\lim_{x\to c^+}f(x)\)</span> and <span class="math inline">\(\lim_{x\to c^-}f(x)\)</span> exist and <span class="math display">\[\sup\{f(x):x&lt;c,\ x\in I\}=\lim_{x\to
+c^-}f(x)\le f(c)\le \lim_{x\to c^+} f(x)=\inf\{f(x):x&gt;c,\ x\in
+I\}.\]</span> Furthermore, if <span class="math inline">\(c,d\in
+I\)</span> with <span class="math inline">\(c&lt;d\)</span>, <span class="math inline">\(\lim_{x\to c^+}f(x)\le\lim_{x\to
+d^-}f(x)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(c\in I\)</span> and let <span class="math inline">\(A=\{f(x):x\in I,\ x&lt;c\}\)</span>. Since <span class="math inline">\(I\)</span> is open, <span class="math inline">\(A\ne\emptyset\)</span>. Since <span class="math inline">\(f\)</span> is increasing, <span class="math inline">\(f(c)\)</span> is an upper bound of <span class="math inline">\(A\)</span>. So <span class="math inline">\(L=\sup
+A\)</span> exists and <span class="math inline">\(L\le f(c)\)</span>.
+Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.7.7</a>, there exists an <span class="math inline">\(x_0\in I\)</span> with <span class="math inline">\(x_0&lt;c\)</span> and <span class="math inline">\(L-\varepsilon&lt;f(x_0)\)</span>. Let <span class="math inline">\(\delta=c-x_0\)</span>. If <span class="math inline">\(c-\delta&lt;x&lt;c\)</span>, then <span class="math inline">\(x\in I\)</span>, since <span class="math inline">\(I\)</span> is an interval. So <span class="math inline">\(f(x_0)\le f(x)\le L\)</span>, and <span class="math inline">\(L-\varepsilon&lt;f(x)\le L\)</span>. Thus <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c^-}f(x)=L\)</span>. The same argument,
+with infima in place of suprema, shows <span class="math inline">\(\lim_{x\to c^+}f(x)=\inf\{f(x):x\in I,\
+x&gt;c\}\)</span> and that this infimum is at least <span class="math inline">\(f(c)\)</span>.</p>
+<p>Now let <span class="math inline">\(c,d\in I\)</span> with <span class="math inline">\(c&lt;d\)</span>. Every <span class="math inline">\(x\)</span> with <span class="math inline">\(c&lt;x&lt;d\)</span> is in <span class="math inline">\(I\)</span>. For such an <span class="math inline">\(x\)</span>, <span class="math display">\[\inf\{f(t):t\in I,\ t&gt;c\}\le
+f(x)\le\sup\{f(t):t\in I,\ t&lt;d\}.\]</span> There is at least one such
+<span class="math inline">\(x\)</span>. So <span class="math inline">\(\lim_{x\to c^+}f(x)\le\lim_{x\to
+d^-}f(x)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-monotone-discontinuities">
+
+<p><strong>Corollary 6.5.3.</strong> If <span class="math inline">\(f\)</span> is monotone on an open interval <span class="math inline">\(I\)</span>, then the set of discontinuities of
+<span class="math inline">\(f\)</span> is at most countable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(f\)</span> is decreasing, then <span class="math inline">\(-f\)</span> is increasing and has the same points
+of discontinuity. So assume <span class="math inline">\(f\)</span> is
+increasing. For <span class="math inline">\(c\in I\)</span>, write <span class="math inline">\(f(c^-)=\lim_{x\to c^-}f(x)\)</span> and <span class="math inline">\(f(c^+)=\lim_{x\to c^+}f(x)\)</span>. These exist
+and <span class="math inline">\(f(c^-)\le f(c)\le f(c^+)\)</span> by <a href="#thm-monotone-one-sided">Theorem 6.5.2</a>. If <span class="math inline">\(f(c^-)=f(c^+)\)</span>, then both equal <span class="math inline">\(f(c)\)</span>, and <span class="math inline">\(\lim_{x\to c}f(x)=f(c)\)</span> by <a href="#thm-one-sided-limits">Theorem 6.1.23</a>. So <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+<p>Let <span class="math inline">\(E\)</span> be the set of points of
+<span class="math inline">\(I\)</span> where <span class="math inline">\(f\)</span> is discontinuous. For each <span class="math inline">\(c\in E\)</span>, <span class="math inline">\(f(c^-)&lt;f(c^+)\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>, choose <span class="math inline">\(r_c\in\mathbb{Q}\)</span> with <span class="math inline">\(f(c^-)&lt;r_c&lt;f(c^+)\)</span>. If <span class="math inline">\(c,d\in E\)</span> with <span class="math inline">\(c&lt;d\)</span>, then <span class="math display">\[r_c&lt;f(c^+)\le f(d^-)&lt;r_d\]</span> by <a href="#thm-monotone-one-sided">Theorem 6.5.2</a>. So <span class="math inline">\(c\mapsto r_c\)</span> is a one-to-one map from
+<span class="math inline">\(E\)</span> into <span class="math inline">\(\mathbb{Q}\)</span>. Since <span class="math inline">\(\mathbb{Q}\)</span> is countable, <span class="math inline">\(E\)</span> is at most countable by <a href="ch-cardinality.html#thm-infinite-subset-countable">Theorem 2.2.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-inverse-function">
+
+<p><strong>Definition 6.5.4.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is one-to-one, define <span class="math inline">\(f^{-1}\)</span> on <span class="math inline">\(f[E]\)</span> by <span class="math inline">\(f^{-1}(y)=x\)</span> if <span class="math inline">\(f(x)=y\)</span>.</p>
+</div>
+<p>Since <span class="math inline">\(f\)</span> is one-to-one, each
+<span class="math inline">\(y\in f[E]\)</span> equals <span class="math inline">\(f(x)\)</span> for exactly one <span class="math inline">\(x\)</span>. So <span class="math inline">\(f^{-1}\)</span> is a function. The proof of <a href="ch-cardinality.html#thm-cardinal-equivalence">Theorem 2.1.8</a> (2) used the same
+construction. Do not confuse <span class="math inline">\(f^{-1}(y)\)</span> with the preimage <span class="math inline">\(f^{-1}[G]\)</span> of <a href="ch-cardinality.html#def-image-preimage">Definition 2.1.2</a>, which is defined for
+every function.</p>
+<div class="lemmabox" id="lem-inverse-one-to-one">
+
+<p><strong>Lemma 6.5.5.</strong> If <span class="math inline">\(f\)</span> is one-to-one, then <span class="math inline">\(f^{-1}\)</span> is one-to-one.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-inverse-one-to-one">Exercise
+6.5.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-strictly-monotone-one-to-one">
+
+<p><strong>Lemma 6.5.6.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span> and <span class="math inline">\(f:E\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is strictly monotone, <span class="math inline">\(f\)</span> is one-to-one.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-strictly-monotone-one-to-one">Exercise 6.5.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-inverse-continuous">
+
+<p><strong>Theorem 6.5.7.</strong> Let <span class="math inline">\(I\subset \mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span> strictly monotone
+and continuous on <span class="math inline">\(I\)</span>. Then <span class="math inline">\(f^{-1}\)</span> is strictly monotone and
+continuous on <span class="math inline">\(f[I]=J\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Without loss of generality, assume <span class="math inline">\(f\)</span> is strictly increasing. Since <span class="math inline">\(f\)</span> is continuous, by <a href="#cor-continuous-image-interval">Corollary 6.3.11</a>, <span class="math inline">\(f[I]=J\)</span> is an interval. Furthermore, by <a href="#lem-strictly-monotone-one-to-one">Lemma 6.5.6</a>, since <span class="math inline">\(f\)</span> is strictly increasing, <span class="math inline">\(f\)</span> is one-to-one. Hence by <a href="#lem-inverse-one-to-one">Lemma 6.5.5</a>, <span class="math inline">\(f^{-1}\)</span> is one-to-one.</p>
+<p>Now suppose <span class="math inline">\(y_1,y_2\in J\)</span> with
+<span class="math inline">\(y_1&lt;y_2\)</span>. Then there exists <span class="math inline">\(x_1,x_2\in I\)</span>, <span class="math inline">\(x_1\ne x_2\)</span> such that <span class="math inline">\(f(x_1)=y_1\)</span> and <span class="math inline">\(f(x_2)=y_2\)</span>. Since <span class="math inline">\(f\)</span> is strictly increasing, <span class="math inline">\(x_1&lt;x_2\)</span>. Otherwise <span class="math inline">\(x_1&gt;x_2\)</span> would give <span class="math inline">\(y_1&gt;y_2\)</span>. Thus <span class="math display">\[f^{-1}(y_1)=x_1&lt;x_2=f^{-1}(y_2).\]</span> So
+<span class="math inline">\(f^{-1}\)</span> is strictly increasing on
+<span class="math inline">\(J\)</span>.</p>
+<p>Choose <span class="math inline">\(d\in J\setminus\{\inf
+J\}\)</span>. So there exists an <span class="math inline">\(c\in
+I\)</span> with <span class="math inline">\(f(c)=d\)</span>. Also, note
+<span class="math inline">\((-\infty,c)\cap I\ne\emptyset\)</span>.
+Otherwise <span class="math inline">\(c\)</span> would be the smallest
+element of <span class="math inline">\(I\)</span>, and <span class="math inline">\(d=f(c)\)</span> would be the smallest element of
+<span class="math inline">\(J\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(a\in I\)</span> with <span class="math inline">\(a&lt;c\)</span>. Then <span class="math inline">\([a,c]\subset I\)</span>, since <span class="math inline">\(I\)</span> is an interval. A <span class="math inline">\(\delta\)</span> that works for <span class="math inline">\(\min\{\varepsilon,c-a\}\)</span> also works for
+<span class="math inline">\(\varepsilon\)</span>. So we may assume <span class="math inline">\(\varepsilon\le c-a\)</span>, and then <span class="math inline">\(c-\varepsilon\in I\)</span>. Define <span class="math inline">\(\delta_1=f(c)-f(c-\varepsilon)\)</span>. Since
+<span class="math inline">\(f\)</span> is continuous and strictly
+increasing, <span class="math display">\[f[(c-\varepsilon,c]]=(f(c-\varepsilon),f(c)]=(d-\delta_1,d]\]</span>
+by <a href="#cor-continuous-image-interval">Corollary 6.3.11</a> applied
+on <span class="math inline">\([c-\varepsilon,c]\)</span>. Thus, since
+<span class="math inline">\(f^{-1}\)</span> is strictly increasing, for
+all <span class="math inline">\(y\in(d-\delta_1,d)\)</span>, <span class="math display">\[c-\varepsilon=f^{-1}(d-\delta_1)&lt;f^{-1}(y)&lt;f^{-1}(d)=c.\]</span>
+Hence for all <span class="math inline">\(y\in J\)</span> with <span class="math inline">\(d-\delta_1&lt;y\le d\)</span>, <span class="math inline">\(|f^{-1}(d)-f^{-1}(y)|&lt;\varepsilon\)</span>. So
+<span class="math inline">\(\lim_{y\to d^-}
+f^{-1}(y)=f^{-1}(d)\)</span>. Notice if <span class="math inline">\(\sup
+J\in J\)</span>, this implies <span class="math inline">\(f^{-1}\)</span> is continuous at <span class="math inline">\(\sup J\)</span>. Using a similar argument, for
+<span class="math inline">\(d\in J\setminus\{\sup J\}\)</span>, there
+exists a <span class="math inline">\(\delta_2&gt;0\)</span> such that
+for all <span class="math inline">\(y\in J\)</span> with <span class="math inline">\(d\le y&lt;d+\delta_2\)</span>, <span class="math inline">\(|f^{-1}(d)-f^{-1}(y)|&lt;\varepsilon\)</span>. If
+<span class="math inline">\(\inf J\in J\)</span>, this implies <span class="math inline">\(f^{-1}\)</span> is continuous at <span class="math inline">\(\inf J\)</span>. Let <span class="math inline">\(d\in J^\circ\)</span>. Set <span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>. Then
+for all <span class="math inline">\(y\in J\)</span> with <span class="math inline">\(|y-d|&lt;\delta\)</span>, <span class="math inline">\(|f^{-1}(d)-f^{-1}(y)|&lt;\varepsilon\)</span>. So
+<span class="math inline">\(f^{-1}\)</span> is continuous at <span class="math inline">\(d\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-24">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-inverse-one-to-one">
+
+<p><strong>Exercise 6.5.1.</strong> Prove <a href="#lem-inverse-one-to-one">Lemma 6.5.5</a>. <a aria-label="Solution for Exercise 6.5.1" href="solutions-ch06.html#sol-exer-inverse-one-to-one">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-strictly-monotone-one-to-one">
+
+<p><strong>Exercise 6.5.2.</strong> Prove <a href="#lem-strictly-monotone-one-to-one">Lemma 6.5.6</a>. <a aria-label="Solution for Exercise 6.5.2" href="solutions-ch06.html#sol-exer-strictly-monotone-one-to-one">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-monotone-decreasing-version">
+
+<p><strong>Exercise 6.5.3.</strong> State and prove a version of <a href="#thm-monotone-one-sided">Theorem 6.5.2</a> for decreasing
+functions.</p>
+</div>
+<div class="exercisebox" id="exer-countably-many-jumps">
+
+<p><strong>Exercise 6.5.4.</strong> Define <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=x+\left\lfloor x\right\rfloor\)</span>. Prove
+that <span class="math inline">\(f\)</span> is strictly increasing on
+<span class="math inline">\(\mathbb{R}\)</span> and find every point
+where <span class="math inline">\(f\)</span> is discontinuous.</p>
+</div>
+<div class="exercisebox" id="exer-nth-root-continuous">
+
+<p><strong>Exercise 6.5.5.</strong> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. Use <a href="#thm-inverse-continuous">Theorem 6.5.7</a> to prove that <span class="math inline">\(f(x)=\sqrt[n]{x}\)</span> is continuous on <span class="math inline">\([0,\infty)\)</span>.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-5">
+<h2>Notes</h2>
+<p>Bernard Bolzano proved the Intermediate Value Theorem in 1817 [<a href="bibliography.html#bib-bolzano1817">5</a>]. He also proved the Extreme Value Theorem
+in the 1830s, but that work was not published until 1930. Karl
+Weierstrass found it independently around 1860. Augustin-Louis Cauchy
+defined continuity in his <em>Cours d’analyse</em> of 1821 [<a href="bibliography.html#bib-cauchy1821">15</a>]. The <span class="math inline">\(\varepsilon\)</span>-<span class="math inline">\(\delta\)</span> form used here is due to
+Weierstrass, in his lectures in Berlin. Peter Gustav Lejeune Dirichlet
+described the function in <a href="#ex-dirichlet-function">Example
+6.1.9</a> in 1829 [<a href="bibliography.html#bib-dirichlet1829">24</a>]. Carl Johannes
+Thomae described the function in <a href="#ex-thomae">Example 6.3.2</a>
+in 1875 [<a href="bibliography.html#bib-thomae1875">72</a>]. Eduard Heine defined uniform
+continuity and proved <a href="#thm-compact-uniform">Theorem 6.4.7</a>
+in 1872 [<a href="bibliography.html#bib-heine1872">37</a>]. Rudolf Lipschitz used his
+condition in 1876 to prove existence theorems for differential equations
+[<a href="bibliography.html#bib-lipschitz1876">49</a>]. The fact that a monotone function
+has only countably many discontinuities (<a href="#cor-monotone-discontinuities">Corollary 6.5.3</a>) is sometimes
+called Froda’s Theorem, after Alexandru Froda’s 1929 thesis [<a href="bibliography.html#bib-froda1929">32</a>]. Froda himself noted that it was already
+well known.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-cantor.html"><span class="dir">Previous</span> Chapter 5. The Cantor Set*</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-derivative.html"><span class="dir">Next</span> Chapter 7. The Derivative</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

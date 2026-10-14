@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 4. Topological Properties of the Real Line | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-sequences.html"><span class="dir">Previous</span> Chapter 3. Sequences of Real Numbers</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-cantor.html"><span class="dir">Next</span> Chapter 5. The Cantor Set*</a>
+</nav>
+<main id="main">
+<article id="ch-topology">
+<h1>Chapter 4. Topological Properties of the Real
+Line</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-open-closed">4.1 Open and Closed Sets</a></li><li><a href="#sec-compact">4.2 Compact Sets</a></li><li><a href="#notes-3">Notes</a></li></ul></nav>
+<p><a href="ch-sequences.html">Chapter 3</a> asked which points a sequence
+gets close to. This chapter asks the same question about sets. An open
+set is a set in which every point has some room around it. A closed set
+is a set that contains every point it gets close to. These ideas are
+called the <em>topology</em> of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>The most important idea in the chapter is compactness. A set is
+compact if every open cover of it can be cut down to a finite one. That
+sounds abstract. What it does is turn a fact that holds near each point
+into a fact that holds on the whole set. The main result, <a href="#thm-heine-borel-bw">Theorem 4.2.15</a>, says a subset of <span class="math inline">\(\mathbb{R}\)</span> is compact exactly when it is
+closed and bounded. <a href="ch-continuity.html">Chapter 6</a> uses
+compactness to prove that a continuous function on <span class="math inline">\([a,b]\)</span> is uniformly continuous.</p>
+<section class="level3 unnumbered" id="sec-open-closed">
+<h2>4.1 Open and Closed Sets</h2>
+<p>Every point of an open interval <span class="math inline">\((a,b)\)</span> has a little room on both sides
+that stays inside the interval. An open set is any set with this
+property. A closed set is the complement of an open set.</p>
+<div class="definitionbox" id="def-open-set">
+
+<p><strong>Definition 4.1.1.</strong> A set <span class="math inline">\(U\subset \mathbb{R}\)</span> is said to be
+<em>open</em> if for all <span class="math inline">\(x\in U\)</span>,
+there exists an <span class="math inline">\(\varepsilon(x)&gt;0\)</span>
+such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset
+U\)</span>.</p>
+</div>
+<p>The notation <span class="math inline">\(\varepsilon(x)\)</span> is a
+reminder that <span class="math inline">\(\varepsilon\)</span> may
+depend on <span class="math inline">\(x\)</span>. Points near the edge
+of <span class="math inline">\(U\)</span> usually need a smaller <span class="math inline">\(\varepsilon\)</span>.</p>
+<div class="definitionbox" id="def-interior">
+
+<p><strong>Definition 4.1.2.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>. A point <span class="math inline">\(x\in E\)</span> is said to be an <em>interior
+point</em> of <span class="math inline">\(E\)</span> if there exists an
+<span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset E\)</span>.
+The set of interior points of <span class="math inline">\(E\)</span> is
+denoted <span class="math inline">\(E^\circ\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-open-iff-interior">
+
+<p><strong>Theorem 4.1.3.</strong> A set <span class="math inline">\(U\subset \mathbb{R}\)</span> is open if and only
+if <span class="math inline">\(U=U^\circ\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-open-iff-interior">Exercise
+4.1.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Set Is Open).</strong></p>
+<p>To prove a set <span class="math inline">\(U\)</span> is open, start
+with an arbitrary <span class="math inline">\(x\in U\)</span>. Then find
+an <span class="math inline">\(\varepsilon&gt;0\)</span> that works for
+that <span class="math inline">\(x\)</span>. The choice of <span class="math inline">\(\varepsilon\)</span> is allowed to depend on <span class="math inline">\(x\)</span>. A good first guess is the distance
+from <span class="math inline">\(x\)</span> to the nearest point outside
+<span class="math inline">\(U\)</span>, or a fraction of it. Then check
+that every <span class="math inline">\(y\)</span> with <span class="math inline">\(|y-x|&lt;\varepsilon\)</span> is in <span class="math inline">\(U\)</span>. <a href="#ex-open-interval-01">Example
+4.1.4</a> does this for <span class="math inline">\((0,1)\)</span>.
+There, <span class="math inline">\(\varepsilon\)</span> is half the
+distance from <span class="math inline">\(x\)</span> to the nearer
+endpoint.</p>
+</div>
+<div class="examplebox" id="ex-open-interval-01">
+
+<p><strong>Example 4.1.4.</strong> The set <span class="math inline">\((0,1)\)</span> is open. By letting <span class="math inline">\(x\in(0,1)\)</span> and defining <span class="math inline">\(\varepsilon=\min\left\{\frac{x}{2},\frac{1-x}{2}\right\}\)</span>,
+<span class="math display">\[x-\varepsilon\ge
+x-\frac{x}{2}=\frac{x}{2}&gt;0,\]</span> and <span class="math display">\[x+\varepsilon\le
+x+\frac{1-x}{2}=\frac{1+x}{2}&lt;1.\]</span> So <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset(0,1)\)</span>
+and <span class="math inline">\((0,1)\)</span> is open. See <a href="#fig-open-interval">Figure 4.1</a>.</p>
+</div>
+<figure class="figure" id="fig-open-interval"><div class="figure-images"><img alt="The interval from 0 to 1 on a number line, with the smaller interval from 0.15 to 0.45 centered at 0.3 marked inside it." height="65" src="figs/fig04.svg" width="541"/></div><figcaption><strong>Figure 4.1.</strong> The interval <span class="math inline">\((x-\varepsilon,x+\varepsilon)\)</span> in <a href="#ex-open-interval-01">Example 4.1.4</a>, with <span class="math inline">\(x=0.3\)</span> and <span class="math inline">\(\varepsilon=\min\{0.15,0.35\}=0.15\)</span>. It
+stays inside <span class="math inline">\((0,1)\)</span>.</figcaption></figure>
+<div class="examplebox" id="ex-interior-half-open">
+
+<p><strong>Example 4.1.5.</strong> If <span class="math inline">\(E=(0,42]\)</span>, <span class="math inline">\(E^\circ=(0,42)\)</span>. The point <span class="math inline">\(42\)</span> is not an interior point, since every
+interval <span class="math inline">\((42-\varepsilon,42+\varepsilon)\)</span> contains
+numbers greater than <span class="math inline">\(42\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-interior-empty">
+
+<p><strong>Example 4.1.6.</strong> If <span class="math inline">\(E=\left\{\frac{1}{n}:n\in\mathbb{N}\right\}\)</span>,
+<span class="math inline">\(E^\circ=\emptyset\)</span>. Every interval
+<span class="math inline">\((x-\varepsilon,x+\varepsilon)\)</span>
+contains an irrational number by <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.7.5</a>, and <span class="math inline">\(E\)</span> has no irrational numbers. So no point
+of <span class="math inline">\(E\)</span> is an interior point.</p>
+</div>
+<div class="theorembox" id="thm-open-intervals-open">
+
+<p><strong>Theorem 4.1.7.</strong> Every open interval in <span class="math inline">\(\mathbb{R}\)</span> is an open subset of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-open-interval-open">Exercise
+4.1.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>By <a href="ch-real-numbers.html#def-interval-notation">Definition 1.7.6</a>, <span class="math inline">\((a,b)\)</span> is called an open interval only
+when <span class="math inline">\(a&lt;b\)</span> are real numbers. The
+sets <span class="math inline">\((a,\infty)\)</span>, <span class="math inline">\((-\infty,b)\)</span> and <span class="math inline">\((-\infty,\infty)=\mathbb{R}\)</span> are called
+<em>unbounded open intervals</em>. They are also open sets. See <a href="#exer-unbounded-open">Exercise 4.1.4</a> and <a href="#ex-R-empty-open-closed">Example 4.1.16</a>.</p>
+<p>Families of sets <span class="math inline">\(\{A_\alpha\}_{\alpha\in\Lambda}\)</span> and index
+sets were defined in <a href="ch-real-numbers.html#def-family">Definition 1.1.11</a>. The
+index set <span class="math inline">\(\Lambda\)</span> can be finite,
+countable or uncountable.</p>
+<div class="examplebox" id="ex-index-enumeration">
+
+<p><strong>Example 4.1.8.</strong> An enumeration of a set <span class="math inline">\(S\)</span> gives an index set <span class="math inline">\(J\subset \mathbb{N}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-index-countable">
+
+<p><strong>Example 4.1.9.</strong> Any countable set can be indexed by
+<span class="math inline">\(\mathbb{N}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-index-uncountable">
+
+<p><strong>Example 4.1.10.</strong> Uncountable sets can also be used to
+index. For example, with <span class="math inline">\(U_x=(x-1,x+1)\)</span>, <span class="math inline">\(\mathbb{R}\)</span> is the index set of the
+collection <span class="math inline">\(\{U_x\}_{x\in\mathbb{R}}\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-open-union-intersection">
+
+<p><strong>Theorem 4.1.11.</strong></p>
+<ol>
+<li><p>If <span class="math inline">\(\{U_\alpha\}_{\alpha\in\Lambda}\)</span> is a
+collection of open subsets of <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(\bigcup_{\alpha\in\Lambda}U_\alpha\)</span> is
+open.</p></li>
+<li><p>If <span class="math inline">\(\{U_1,\dots,U_n\}\)</span> is a
+finite collection of open subsets of <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(\bigcap_{i=1}^n U_i\)</span> is open.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x\in \bigcup_{\alpha\in\Lambda}
+U_\alpha\)</span>. So there exists an <span class="math inline">\(\alpha_0\in\Lambda\)</span> such that <span class="math inline">\(x\in U_{\alpha_0}\)</span>. Since <span class="math inline">\(U_{\alpha_0}\)</span> is open, there exists an
+<span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math display">\[(x-\varepsilon,x+\varepsilon)\subset
+U_{\alpha_0}\subset\bigcup_{\alpha\in\Lambda} U_\alpha.\]</span> So
+<span class="math inline">\(\bigcup_{\alpha\in\Lambda} U_\alpha\)</span>
+is open.</p></li>
+<li><p>Let <span class="math inline">\(x\in\bigcap_{i=1}^n U_i\)</span>.
+So <span class="math inline">\(x\in U_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Since each <span class="math inline">\(U_i\)</span> is open, there exists an <span class="math inline">\(\varepsilon_i&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon_i,x+\varepsilon_i)\subset
+U_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Set
+<span class="math inline">\(\varepsilon=\min\{\varepsilon_1,\dots,\varepsilon_n\}&gt;0\)</span>.
+Then <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset
+U_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>,
+implying <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset
+\bigcap_{i=1}^n U_i\)</span>. So <span class="math inline">\(\bigcap_{i=1}^n U_i\)</span> is open.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Part (2) needs the collection to be finite. The proof takes the
+minimum of <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span>. The
+minimum of finitely many positive numbers is positive, but infinitely
+many positive numbers can have infimum <span class="math inline">\(0\)</span>. <a href="#ex-intersection-not-open">Example 4.1.18</a> gives infinitely
+many open sets whose intersection is not open.</p>
+<div class="theorembox" id="thm-open-set-structure">
+
+<p><strong>Theorem 4.1.12.</strong> Every nonempty open set of real
+numbers is the union of an at most countable collection of disjoint open
+intervals, bounded or unbounded.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(U\subset\mathbb{R}\)</span> be a
+nonempty open set, and let <span class="math inline">\(x\in U\)</span>.
+Since <span class="math inline">\(U\)</span> is open, there exists an
+<span class="math inline">\(\varepsilon&gt;0\)</span> with <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset U\)</span>.
+Let <span class="math display">\[a_x=\inf\{z&lt;x:(z,x)\subset
+U\}\quad\text{and}\quad b_x=\sup\{y&gt;x:(x,y)\subset U\}.\]</span>
+These sets are nonempty, since <span class="math inline">\(x-\varepsilon\)</span> is in the first one and
+<span class="math inline">\(x+\varepsilon\)</span> is in the second one.
+If the first set is not bounded below, <span class="math inline">\(a_x=-\infty\)</span>. If the second set is not
+bounded above, <span class="math inline">\(b_x=\infty\)</span>. (See <a href="ch-sequences.html#rem-sup-infinity">Remark 3.6.7</a>.) So <span class="math inline">\(a_x\le x-\varepsilon&lt;x&lt;x+\varepsilon\le
+b_x\)</span>. Let <span class="math inline">\(I_x=(a_x,b_x)\)</span>. It
+is an open interval, possibly unbounded, and <span class="math inline">\(x\in I_x\)</span>.</p>
+<p>First, <span class="math inline">\(I_x\subset U\)</span>. Let <span class="math inline">\(w\in I_x\)</span>. If <span class="math inline">\(w=x\)</span>, then <span class="math inline">\(w\in U\)</span>. Suppose <span class="math inline">\(x&lt;w&lt;b_x\)</span>. Since <span class="math inline">\(w\)</span> is less than the supremum <span class="math inline">\(b_x\)</span>, <span class="math inline">\(w\)</span> is not an upper bound of <span class="math inline">\(\{y&gt;x:(x,y)\subset U\}\)</span>. So there
+exists a <span class="math inline">\(y&gt;w\)</span> with <span class="math inline">\((x,y)\subset U\)</span>. Thus <span class="math inline">\(w\in(x,y)\subset U\)</span>. The case <span class="math inline">\(a_x&lt;w&lt;x\)</span> is similar.</p>
+<p>Second, if <span class="math inline">\(b_x\)</span> is a real number,
+then <span class="math inline">\(b_x\notin U\)</span>. Suppose <span class="math inline">\(b_x\in U\)</span>. Since <span class="math inline">\(U\)</span> is open, there exists a <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\((b_x-\delta,b_x+\delta)\subset U\)</span>. Since
+<span class="math inline">\((x,b_x)\subset I_x\subset U\)</span>, this
+gives <span class="math inline">\((x,b_x+\delta)\subset U\)</span>. So
+<span class="math inline">\(b_x+\delta\)</span> is in the set whose
+supremum is <span class="math inline">\(b_x\)</span>, a contradiction.
+In the same way, if <span class="math inline">\(a_x\)</span> is a real
+number, then <span class="math inline">\(a_x\notin U\)</span>.</p>
+<p>Third, <span class="math inline">\(U=\bigcup_{x\in U}I_x\)</span>.
+Each <span class="math inline">\(x\in U\)</span> lies in <span class="math inline">\(I_x\)</span>, and each <span class="math inline">\(I_x\)</span> is a subset of <span class="math inline">\(U\)</span>.</p>
+<p>Fourth, any two of the intervals <span class="math inline">\(I_x\)</span> are either equal or disjoint. Suppose
+<span class="math inline">\(I_x=(a,b)\)</span> and <span class="math inline">\(I_y=(c,d)\)</span> have a point <span class="math inline">\(w\)</span> in common. Suppose <span class="math inline">\(a&lt;c\)</span>. Then <span class="math inline">\(c\)</span> is a real number and <span class="math inline">\(a&lt;c&lt;w&lt;b\)</span>. So <span class="math inline">\(c\in I_x\subset U\)</span>. But <span class="math inline">\(c\notin U\)</span> by the second step, a
+contradiction. So <span class="math inline">\(c\le a\)</span>. Switching
+the roles of <span class="math inline">\(I_x\)</span> and <span class="math inline">\(I_y\)</span> gives <span class="math inline">\(a\le c\)</span>. So <span class="math inline">\(a=c\)</span>. The same argument gives <span class="math inline">\(b=d\)</span>. Thus <span class="math inline">\(I_x=I_y\)</span>.</p>
+<p>Last, the collection of distinct intervals <span class="math inline">\(I_x\)</span> is at most countable. Each of them
+contains a rational number by <a href="ch-real-numbers.html#thm-density-of-Q">Theorem
+1.7.11</a>. Choose one rational number in each of them. Since distinct
+intervals are disjoint, distinct intervals get distinct rational
+numbers. So the collection is in one-to-one correspondence with a subset
+of <span class="math inline">\(\mathbb{Q}\)</span>. Since <span class="math inline">\(\mathbb{Q}\)</span> is countable by <a href="ch-cardinality.html#cor-Q-countable">Corollary 2.2.7</a>, the collection is at most
+countable by <a href="ch-cardinality.html#thm-infinite-subset-countable">Theorem
+2.2.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-open-set-intervals">
+
+<p><strong>Corollary 4.1.13.</strong> Every nonempty open set of real
+numbers is the union of an at most countable collection of open
+intervals.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> From the proof of <a href="#thm-open-set-structure">Theorem 4.1.12</a>, each open set is the
+disjoint union of open intervals. But an open interval <span class="math inline">\((a,\infty)=\bigcup_{n\in\mathbb{Z},
+n&gt;a}(a,n)\)</span> and an open interval <span class="math inline">\((-\infty,b)=\bigcup_{n\in\mathbb{Z},
+n&lt;b}(n,b)\)</span>. Also, <span class="math inline">\((-\infty,\infty)=\bigcup_{n\in\mathbb{N}}(-n,n)\)</span>.
+So each open set is the union of a countable collection of open
+intervals. The collection is at most countable by <a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-lindelof">
+
+<p><strong>Theorem 4.1.14</strong> (Lindelöf)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{U_\alpha\}_{\alpha\in
+\Lambda}\)</span> be a collection of open sets of real numbers. Then
+there is a countable subcollection <span class="math inline">\(\{U_n\}_{n\in\mathbb{N}}\)</span> of <span class="math inline">\(\{U_\alpha\}_{\alpha\in \Lambda}\)</span> such
+that <span class="math inline">\(\bigcup_{\alpha\in
+\Lambda}U_\alpha=\bigcup_{n\in\mathbb{N}}U_n\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(U=\bigcup_{\alpha\in
+\Lambda}U_\alpha\)</span>. If <span class="math inline">\(U=\emptyset\)</span>, then every <span class="math inline">\(U_\alpha\)</span> is empty, and any one of them,
+repeated, works. So assume <span class="math inline">\(U\ne\emptyset\)</span>.</p>
+<p>Let <span class="math inline">\(\mathcal{J}\)</span> be the
+collection of open intervals <span class="math inline">\((p,q)\)</span>
+with <span class="math inline">\(p,q\in\mathbb{Q}\)</span> and <span class="math inline">\(p&lt;q\)</span>. Each interval in <span class="math inline">\(\mathcal{J}\)</span> is determined by its
+endpoints. So sending the interval <span class="math inline">\((p,q)\)</span> to the ordered pair <span class="math inline">\((p,q)\)</span> gives a one-to-one map from <span class="math inline">\(\mathcal{J}\)</span> into <span class="math inline">\(\mathbb{Q}\times\mathbb{Q}\)</span>. Since <span class="math inline">\(\mathbb{Q}\sim\mathbb{N}\)</span> by <a href="ch-cardinality.html#cor-Q-countable">Corollary 2.2.7</a>, <span class="math inline">\(\mathbb{Q}\times\mathbb{Q}\sim\mathbb{N}\times\mathbb{N}\)</span>,
+which is countable by <a href="ch-cardinality.html#thm-NxN-countable">Theorem 2.2.1</a>. So
+<span class="math inline">\(\mathcal{J}\)</span> is at most countable by
+<a href="ch-cardinality.html#thm-infinite-subset-countable">Theorem 2.2.4</a>.</p>
+<p>Let <span class="math inline">\(\mathcal{J}_0\)</span> be the
+collection of <span class="math inline">\(J\in\mathcal{J}\)</span> such
+that <span class="math inline">\(J\subset U_\alpha\)</span> for some
+<span class="math inline">\(\alpha\in\Lambda\)</span>. For each <span class="math inline">\(J\in\mathcal{J}_0\)</span>, choose one <span class="math inline">\(\alpha_J\in\Lambda\)</span> with <span class="math inline">\(J\subset U_{\alpha_J}\)</span>. Then <span class="math display">\[\bigcup_{J\in\mathcal{J}_0}U_{\alpha_J}\subset
+U.\]</span> Now let <span class="math inline">\(x\in U\)</span>. Then
+<span class="math inline">\(x\in U_\alpha\)</span> for some <span class="math inline">\(\alpha\in\Lambda\)</span>. Since <span class="math inline">\(U_\alpha\)</span> is open, there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset
+U_\alpha\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>,
+there exist <span class="math inline">\(p,q\in\mathbb{Q}\)</span> with
+<span class="math inline">\(x-\varepsilon&lt;p&lt;x&lt;q&lt;x+\varepsilon\)</span>.
+Then <span class="math inline">\(J=(p,q)\subset U_\alpha\)</span>, so
+<span class="math inline">\(J\in\mathcal{J}_0\)</span>. Thus <span class="math inline">\(x\in J\subset U_{\alpha_J}\)</span>. So <span class="math display">\[U=\bigcup_{J\in\mathcal{J}_0}U_{\alpha_J}.\]</span>
+The collection <span class="math inline">\(\mathcal{J}_0\)</span> is
+nonempty and at most countable. So the sets <span class="math inline">\(U_{\alpha_J}\)</span>, <span class="math inline">\(J\in\mathcal{J}_0\)</span>, can be listed as <span class="math inline">\(U_1,U_2,U_3,\dots\)</span>, repeating sets if
+there are only finitely many. Then <span class="math inline">\(U=\bigcup_{n\in\mathbb{N}}U_n\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-closed-set">
+
+<p><strong>Definition 4.1.15.</strong> A set <span class="math inline">\(F\subset \mathbb{R}\)</span> is said to be
+<em>closed</em> if <span class="math inline">\(F^c=\mathbb{R}\setminus
+F\)</span> is open.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Vacuous Truth).</strong></p>
+<p>A statement of the form “for all <span class="math inline">\(x\in
+A\)</span>, <span class="math inline">\(P(x)\)</span>” is true when
+<span class="math inline">\(A=\emptyset\)</span>. There is no <span class="math inline">\(x\)</span> in <span class="math inline">\(A\)</span> for which <span class="math inline">\(P(x)\)</span> could fail. Such a statement is
+called <em>vacuously true</em>. The empty set satisfies the definition
+of an open set for this reason. See <a href="#ex-R-empty-open-closed">Example 4.1.16</a>.</p>
+</div>
+<div class="examplebox" id="ex-R-empty-open-closed">
+
+<p><strong>Example 4.1.16.</strong> <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(\emptyset\)</span> are both open and closed. Let
+<span class="math inline">\(x\in\mathbb{R}\)</span>. Then <span class="math inline">\((x-1,x+1)\subset\mathbb{R}\)</span>. So <span class="math inline">\(\mathbb{R}\)</span> is open. So <span class="math inline">\(\emptyset=\mathbb{R}^c\)</span> is closed.</p>
+<p>Now, let <span class="math inline">\(x\in\emptyset\)</span>. So for
+<span class="math inline">\(\varepsilon=1\)</span>, <span class="math inline">\((x-1,x+1)\subset\emptyset\)</span>. This is
+vacuously true, since there is no <span class="math inline">\(x\in\emptyset\)</span>. So <span class="math inline">\(\emptyset\)</span> is open. Thus <span class="math inline">\(\mathbb{R}=\emptyset^c\)</span> is closed.</p>
+</div>
+<p>“Closed” does not mean “not open.” The sets <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(\emptyset\)</span> are both. The interval <span class="math inline">\([0,1)\)</span> is neither. It is not open, since
+every interval <span class="math inline">\((-\varepsilon,\varepsilon)\)</span> around <span class="math inline">\(0\)</span> contains negative numbers. It is not
+closed, since its complement contains <span class="math inline">\(1\)</span> and every interval <span class="math inline">\((1-\varepsilon,1+\varepsilon)\)</span> contains
+points of <span class="math inline">\([0,1)\)</span>.</p>
+<div class="theorembox" id="thm-closed-union-intersection">
+
+<p><strong>Theorem 4.1.17.</strong></p>
+<ol>
+<li><p>If <span class="math inline">\(\{F_\alpha\}_{\alpha\in\Lambda}\)</span> is a
+collection of closed subsets of <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(\bigcap_{\alpha\in \Lambda}F_\alpha\)</span> is
+closed.</p></li>
+<li><p>If <span class="math inline">\(\{F_1,\dots,F_n\}\)</span> is a
+finite collection of closed subsets of <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(\bigcup_{i=1}^n F_i\)</span> is closed.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> This follows directly from <a href="#thm-open-union-intersection">Theorem 4.1.11</a> and De Morgan’s
+Laws (<a href="ch-real-numbers.html#thm-de-morgan-families">Theorem 1.1.13</a>) and is an
+exercise.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Using Complements).</strong></p>
+<p>Every statement about closed sets is a statement about open sets in
+disguise. To prove something about a closed set <span class="math inline">\(F\)</span>, look at the open set <span class="math inline">\(F^c\)</span>. De Morgan’s Laws turn the complement
+of a union into an intersection of complements. So facts about unions of
+open sets become facts about intersections of closed sets. <a href="#exer-closed-union-intersection">Exercise 4.1.5</a> uses this idea
+to prove <a href="#thm-closed-union-intersection">Theorem
+4.1.17</a>.</p>
+</div>
+<div class="examplebox" id="ex-intersection-not-open">
+
+<p><strong>Example 4.1.18.</strong> Let <span class="math inline">\(U_n=\left(-\frac{1}{n},\frac{1}{n}\right)\)</span>.
+Then <span class="math inline">\(\bigcap_{n=1}^\infty U_n=\{0\}\)</span>
+is closed. To see the intersection is <span class="math inline">\(\{0\}\)</span>, notice <span class="math inline">\(0\in U_n\)</span> for all <span class="math inline">\(n\)</span>. If <span class="math inline">\(x\ne0\)</span>, then by the Archimedean Principle
+(<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a>) there is an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(\frac1n&lt;|x|\)</span>, and <span class="math inline">\(x\notin U_n\)</span>. So an intersection of
+infinitely many open sets need not be open.</p>
+</div>
+<div class="examplebox" id="ex-intersection-half-open">
+
+<p><strong>Example 4.1.19.</strong> Let <span class="math inline">\(G_n=\left(0,1+\frac{1}{n}\right)\)</span>. Then
+<span class="math inline">\(\bigcap_{n=1}^\infty G_n=(0,1]\)</span>.
+This set is neither open nor closed.</p>
+</div>
+<div class="definitionbox" id="def-limit-point">
+
+<p><strong>Definition 4.1.20.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>.</p>
+<ol>
+<li><p>A point <span class="math inline">\(a\in\mathbb{R}\)</span> is
+called a <em>limit point</em> of <span class="math inline">\(E\)</span>
+if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there
+exists an <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(x\ne a\)</span>, with <span class="math inline">\(|x-a|&lt;\varepsilon\)</span>.</p></li>
+<li><p>A point <span class="math inline">\(a\in E\)</span> is called an
+<em>isolated point</em> of <span class="math inline">\(E\)</span> if it
+is not a limit point.</p></li>
+</ol>
+</div>
+<div class="examplebox" id="ex-limit-points-interval">
+
+<p><strong>Example 4.1.21.</strong> <span class="math inline">\((0,1)\)</span> has limit points <span class="math inline">\([0,1]\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-limit-points-reciprocals">
+
+<p><strong>Example 4.1.22.</strong> <span class="math inline">\(\left\{\frac{1}{n}:n\in\mathbb{N}\right\}\)</span>
+has limit point <span class="math inline">\(0\)</span>. Every point of
+this set is an isolated point.</p>
+</div>
+<p>A limit point of <span class="math inline">\(E\)</span> does not have
+to be in <span class="math inline">\(E\)</span>, as both examples show.
+A limit point of a set is also not the same as a cluster point of a
+sequence (<a href="ch-sequences.html#def-cluster-point">Definition 3.6.1</a>). The
+constant sequence <span class="math inline">\(x_n=1\)</span> has cluster
+point <span class="math inline">\(1\)</span>. The set <span class="math inline">\(\{x_n:n\in\mathbb{N}\}=\{1\}\)</span> has no limit
+points.</p>
+<div class="theorembox" id="thm-limit-point-sequence">
+
+<p><strong>Theorem 4.1.23.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span>. The point <span class="math inline">\(a\in\mathbb{R}\)</span> is a limit point of <span class="math inline">\(E\)</span> if and only if there exists a sequence
+<span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\ne
+a\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>
+such that <span class="math inline">\(\lim_{n\to\infty}
+x_n=a\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Let <span class="math inline">\(a\)</span> be a limit point of <span class="math inline">\(E\)</span>. Then for all <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(x_n\in E\)</span> such that <span class="math inline">\(x_n\ne a\)</span> and <span class="math inline">\(|x_n-a|&lt;\frac{1}{n}\)</span>. Then by the
+Squeeze Theorem (<a href="ch-sequences.html#thm-squeeze">Theorem 3.2.10</a>), <span class="math inline">\(x_n\to a\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose there
+exists a sequence <span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\ne
+a\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>
+such that <span class="math inline">\(\lim_{n\to\infty} x_n=a\)</span>.
+Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then there
+exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span>. In particular,
+<span class="math inline">\(x_N\in E\)</span>, <span class="math inline">\(x_N\ne a\)</span>, and <span class="math inline">\(|x_N-a|&lt;\varepsilon\)</span>. So <span class="math inline">\(a\)</span> is a limit point of <span class="math inline">\(E\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-closed-limit-points">
+
+<p><strong>Theorem 4.1.24.</strong> The set <span class="math inline">\(F\subset \mathbb{R}\)</span> is closed if and only
+if <span class="math inline">\(F\)</span> contains all of its limit
+points.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Let <span class="math inline">\(F\)</span> be closed. Then <span class="math inline">\(F^c\)</span> is open. So if <span class="math inline">\(x\in F^c\)</span>, there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset F^c\)</span>.
+So <span class="math inline">\((x-\varepsilon,x+\varepsilon)\cap
+F=\emptyset\)</span>, and therefore <span class="math inline">\(x\)</span> is not a limit point of <span class="math inline">\(F\)</span>. So <span class="math inline">\(F\)</span> contains all of its limit points.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(F\subset \mathbb{R}\)</span> be a set that
+contains all of its limit points. Let <span class="math inline">\(x\in
+F^c\)</span>. Since <span class="math inline">\(F\)</span> contains all
+of its limit points, <span class="math inline">\(x\)</span> is not a
+limit point of <span class="math inline">\(F\)</span>. So there exists
+an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\cap
+F=\emptyset\)</span>. So <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset F^c\)</span>
+and <span class="math inline">\(F^c\)</span> is open. So <span class="math inline">\(F\)</span> is closed.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-closure">
+
+<p><strong>Definition 4.1.25.</strong> For <span class="math inline">\(E\subset \mathbb{R}\)</span>, <span class="math inline">\(E'\)</span> denotes the set of limit points of
+<span class="math inline">\(E\)</span>. The <em>closure</em> of <span class="math inline">\(E\)</span>, <span class="math inline">\(\overline{E}\)</span>, is <span class="math display">\[\overline{E}=E\cup E'.\]</span></p>
+</div>
+<div class="theorembox" id="thm-closure">
+
+<p><strong>Theorem 4.1.26.</strong> If <span class="math inline">\(E\subset\mathbb{R}\)</span>, then</p>
+<ol>
+<li><p><span class="math inline">\(\overline{E}\)</span> is
+closed;</p></li>
+<li><p><span class="math inline">\(E=\overline{E}\)</span> if and only
+if <span class="math inline">\(E\)</span> is closed; and</p></li>
+<li><p><span class="math inline">\(\overline{E}\subset F\)</span> for
+every closed set <span class="math inline">\(F\subset
+\mathbb{R}\)</span> such that <span class="math inline">\(E\subset
+F\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x\in\overline{E}^c\)</span>. Then
+<span class="math inline">\(x\notin E\)</span> and <span class="math inline">\(x\)</span> is also not a limit point of <span class="math inline">\(E\)</span>. Thus there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\cap
+E=\emptyset\)</span>.</p>
+<p>Assume by way of contradiction that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\cap
+E'\ne\emptyset\)</span>. So there exists a <span class="math inline">\(y\in(x-\varepsilon,x+\varepsilon)\cap
+E'\)</span>. So <span class="math inline">\(y\)</span> is a limit
+point of <span class="math inline">\(E\)</span>. Since <span class="math inline">\((x-\varepsilon,x+\varepsilon)\)</span> is open,
+there exists a <span class="math inline">\(\delta&gt;0\)</span> such
+that <span class="math inline">\((y-\delta,y+\delta)\subset(x-\varepsilon,x+\varepsilon)\)</span>.
+But since <span class="math inline">\(y\in E'\)</span>, <span class="math inline">\((y-\delta,y+\delta)\cap E\ne\emptyset\)</span>, a
+contradiction. So <span class="math inline">\((x-\varepsilon,x+\varepsilon)\cap
+\overline{E}=\emptyset\)</span> and <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset
+\overline{E}^c\)</span>. So <span class="math inline">\(\overline{E}^c\)</span> is open and <span class="math inline">\(\overline{E}\)</span> is closed.</p></li>
+<li><p>If <span class="math inline">\(E=\overline{E}\)</span>, then by
+(1), <span class="math inline">\(E\)</span> is closed. If <span class="math inline">\(E\)</span> is closed, <span class="math inline">\(E'\subset E\)</span> by <a href="#thm-closed-limit-points">Theorem 4.1.24</a> and <span class="math inline">\(\overline{E}=E\)</span>.</p></li>
+<li><p>If <span class="math inline">\(E\subset F\)</span> and <span class="math inline">\(F\)</span> is closed, then <span class="math inline">\(E'\subset F\)</span>. To see this, notice
+every limit point of <span class="math inline">\(E\)</span> is a limit
+point of <span class="math inline">\(F\)</span>, since <span class="math inline">\(E\subset F\)</span>. So <span class="math inline">\(E'\subset F'\subset F\)</span> by <a href="#thm-closed-limit-points">Theorem 4.1.24</a>. Thus <span class="math inline">\(\overline{E}\subset F\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(\overline{E}\)</span> is the smallest
+closed set containing <span class="math inline">\(E\)</span>.</p>
+<div class="definitionbox" id="def-dense">
+
+<p><strong>Definition 4.1.27.</strong> A set <span class="math inline">\(D\subset \mathbb{R}\)</span> is <em>dense</em> in
+<span class="math inline">\(\mathbb{R}\)</span> if <span class="math inline">\(\overline{D}=\mathbb{R}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-Q-dense">
+
+<p><strong>Example 4.1.28.</strong> <span class="math inline">\(\mathbb{Q}\)</span> and <span class="math inline">\(\mathbb{R}\setminus \mathbb{Q}\)</span> are dense
+in <span class="math inline">\(\mathbb{R}\)</span>. Let <span class="math inline">\(x\in\mathbb{R}\)</span> and <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>, there is a rational number
+in <span class="math inline">\((x,x+\varepsilon)\)</span>. It is not
+<span class="math inline">\(x\)</span>. So <span class="math inline">\(x\)</span> is a limit point of <span class="math inline">\(\mathbb{Q}\)</span>, and <span class="math inline">\(\overline{\mathbb{Q}}=\mathbb{R}\)</span>. <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.7.5</a> gives the same for
+<span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-connected">
+
+<p><strong>Definition 4.1.29.</strong> A set <span class="math inline">\(A\subset\mathbb{R}\)</span> is <em>connected</em>
+if there do not exist two disjoint open sets <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> such that <span class="math inline">\(A\cap U\ne\emptyset\)</span>, <span class="math inline">\(A\cap V\ne\emptyset\)</span>, and <span class="math inline">\((A\cap U)\cup (A\cap V)=A\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-connected-interval">
+
+<p><strong>Theorem 4.1.30.</strong> A nonempty subset <span class="math inline">\(A\)</span> of <span class="math inline">\(\mathbb{R}\)</span> is connected if and only if it
+is an interval.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Assume <span class="math inline">\(A\)</span> is not an interval. Then
+there exist <span class="math inline">\(a,b\in A\)</span> with <span class="math inline">\(a&lt;b\)</span> and <span class="math inline">\(t\in(a,b)\)</span> with <span class="math inline">\(t\notin A\)</span>. Define <span class="math inline">\(U=(-\infty,t)\)</span> and <span class="math inline">\(V=(t,\infty)\)</span>. Then <span class="math inline">\(U\cap V=\emptyset\)</span>. Also <span class="math inline">\(a\in A\cap U\)</span> and <span class="math inline">\(b\in A\cap V\)</span>, so <span class="math inline">\(A\cap U\ne\emptyset\)</span>, <span class="math inline">\(A\cap V\ne \emptyset\)</span>. Last, since <span class="math inline">\(t\notin A\)</span>, <span class="math inline">\((A\cap U)\cup (A\cap V)=A\)</span>, so <span class="math inline">\(A\)</span> is not connected.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Exercise.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-16">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-open-iff-interior">
+
+<p><strong>Exercise 4.1.1.</strong> Let <span class="math inline">\(U\subset\mathbb{R}\)</span>. Prove <span class="math inline">\(U\)</span> is open if and only if <span class="math inline">\(U=U^\circ\)</span>. <a aria-label="Solution for Exercise 4.1.1" href="solutions-ch04.html#sol-exer-open-iff-interior">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-open-interval-open">
+
+<p><strong>Exercise 4.1.2.</strong> Prove that an open interval in <span class="math inline">\(\mathbb{R}\)</span> is an open set. <a aria-label="Solution for Exercise 4.1.2" href="solutions-ch04.html#sol-exer-open-interval-open">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-closed-union-not-closed">
+
+<p><strong>Exercise 4.1.3.</strong> Find an example of an infinite
+collection of closed sets whose union is not closed.</p>
+</div>
+<div class="exercisebox" id="exer-unbounded-open">
+
+<p><strong>Exercise 4.1.4.</strong> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span>. Prove that <span class="math inline">\((a,\infty)\)</span> and <span class="math inline">\((-\infty,b)\)</span> are open sets.</p>
+</div>
+<div class="exercisebox" id="exer-closed-union-intersection">
+
+<p><strong>Exercise 4.1.5.</strong> Prove <a href="#thm-closed-union-intersection">Theorem 4.1.17</a>.</p>
+</div>
+<div class="exercisebox" id="exer-Q-neither">
+
+<p><strong>Exercise 4.1.6.</strong> Prove that <span class="math inline">\(\mathbb{Q}\)</span> is neither open nor closed. <a aria-label="Hint for Exercise 4.1.6" href="solutions-ch04.html#sol-exer-Q-neither">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-closure-sequence">
+
+<p><strong>Exercise 4.1.7.</strong> Prove that <span class="math inline">\(x\in\overline{E}\)</span> if and only if there is
+a sequence <span class="math inline">\(\{x_n\}\)</span> with <span class="math inline">\(x_n\in E\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> such that <span class="math inline">\(\lim_{n\to\infty}x_n=x\)</span>. <a aria-label="Solution for Exercise 4.1.7" href="solutions-ch04.html#sol-exer-closure-sequence">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-closure-computation">
+
+<p><strong>Exercise 4.1.8.</strong> Let <span class="math inline">\(E=\left\{\frac1n:n\in\mathbb{N}\right\}\cup(2,3)\)</span>.
+Find <span class="math inline">\(E^\circ\)</span>, <span class="math inline">\(E'\)</span> and <span class="math inline">\(\overline{E}\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-limit-point-infinite">
+
+<p><strong>Exercise 4.1.9.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span> and let <span class="math inline">\(a\)</span> be a limit point of <span class="math inline">\(E\)</span>. Prove that for every <span class="math inline">\(\varepsilon&gt;0\)</span>, the interval <span class="math inline">\((a-\varepsilon,a+\varepsilon)\)</span> contains
+infinitely many points of <span class="math inline">\(E\)</span>.
+Conclude that a finite set has no limit points. <a aria-label="Hint for Exercise 4.1.9" href="solutions-ch04.html#sol-exer-limit-point-infinite">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-interval-connected">
+
+<p><strong>Exercise 4.1.10.</strong> Prove the (<span class="math inline">\(\Leftarrow\)</span>) direction of <a href="#thm-connected-interval">Theorem 4.1.30</a>. <a aria-label="Hint for Exercise 4.1.10" href="solutions-ch04.html#sol-exer-interval-connected">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-compact">
+<h2>4.2 Compact Sets</h2>
+<p>Many facts are easy for finite sets and false for infinite ones. A
+finite set of numbers has a largest element. A finite set of positive
+numbers has a positive minimum. Compact sets are infinite sets that
+behave like finite sets in one precise way. This section defines
+compactness and proves that the compact subsets of <span class="math inline">\(\mathbb{R}\)</span> are exactly the closed and
+bounded sets.</p>
+<div class="definitionbox" id="def-open-cover">
+
+<p><strong>Definition 4.2.1.</strong> Let <span class="math inline">\(E\subset\mathbb{R}\)</span>. A collection <span class="math inline">\(\mathcal{U}=\{U_\alpha\}_{\alpha\in\Lambda}\)</span>
+of open subsets of <span class="math inline">\(\mathbb{R}\)</span> is
+called an <em>open cover</em> of <span class="math inline">\(E\)</span>
+if <span class="math inline">\(E\subset \bigcup_{\alpha\in\Lambda}
+U_\alpha\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-open-cover-01">
+
+<p><strong>Example 4.2.2.</strong> Let <span class="math inline">\(E=(0,1)\)</span> and let <span class="math inline">\(U_n=\left(0,1-\frac{1}{n}\right)\)</span>. Then
+<span class="math inline">\(\{U_n\}_{n\in\mathbb{N}}\)</span> is an open
+cover of <span class="math inline">\(E\)</span>. Each <span class="math inline">\(x\in(0,1)\)</span> is in <span class="math inline">\(U_n\)</span> once <span class="math inline">\(\frac1n&lt;1-x\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-open-cover-R">
+
+<p><strong>Example 4.2.3.</strong> Let <span class="math inline">\(E=\mathbb{R}\)</span> and let <span class="math inline">\(U_x=(x-1,x+1)\)</span>. Then <span class="math inline">\(\{U_x\}_{x\in\mathbb{R}}\)</span> is an open cover
+of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-subcover">
+
+<p><strong>Definition 4.2.4.</strong> Let <span class="math inline">\(E\subset \mathbb{R}\)</span> and <span class="math inline">\(\{U_\alpha\}_{\alpha\in\Lambda}\)</span> be an
+open cover of <span class="math inline">\(E\)</span>. If there exists a
+<span class="math inline">\(\Lambda_0\subset\Lambda\)</span> such that
+<span class="math inline">\(\{U_\beta\}_{\beta\in\Lambda_0}\)</span> is
+an open cover of <span class="math inline">\(E\)</span>, <span class="math inline">\(\{U_\beta\}_{\beta\in\Lambda_0}\)</span> is called
+a <em>subcover</em> of <span class="math inline">\(\{U_\alpha\}_{\alpha\in\Lambda}\)</span>. If <span class="math inline">\(\Lambda_0\)</span> is finite, it is called a
+<em>finite subcover</em>.</p>
+</div>
+<div class="definitionbox" id="def-compact">
+
+<p><strong>Definition 4.2.5.</strong> A subset <span class="math inline">\(K\subset \mathbb{R}\)</span> is <em>compact</em>
+if every open cover of <span class="math inline">\(K\)</span> has a
+finite subcover.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Set Is Not Compact).</strong></p>
+<p>To prove a set <span class="math inline">\(K\)</span> is compact,
+every open cover of <span class="math inline">\(K\)</span> has to be
+handled. To prove <span class="math inline">\(K\)</span> is not compact,
+one open cover is enough. Find an open cover of <span class="math inline">\(K\)</span> with no finite subcover. A good choice
+is a sequence of open sets <span class="math inline">\(U_1\subset
+U_2\subset U_3\subset\cdots\)</span> whose union contains <span class="math inline">\(K\)</span> but none of which contains <span class="math inline">\(K\)</span>. The union of finitely many of them is
+the one with the largest index, and it misses part of <span class="math inline">\(K\)</span>. <a href="#ex-01-not-compact">Example
+4.2.6</a> does this.</p>
+</div>
+<div class="examplebox" id="ex-01-not-compact">
+
+<p><strong>Example 4.2.6.</strong> <span class="math inline">\((0,1)\)</span> is not compact. To show this,
+assume by way of contradiction that <span class="math inline">\((0,1)\)</span> is compact. Then, since <span class="math inline">\(\{U_n\}_{n\in\mathbb{N}}=\left\{\left(0,1-\frac{1}{n}\right)\right\}_{n\in\mathbb{N}}\)</span>
+covers <span class="math inline">\((0,1)\)</span>, there exists <span class="math inline">\(n_1&lt;n_2&lt;\cdots&lt;n_k\)</span> such that
+<span class="math display">\[(0,1)\subset \bigcup_{i=1}^k
+\left(0,1-\frac{1}{n_i}\right)=\left(0,1-\frac{1}{n_k}\right),\]</span>
+a contradiction, since <span class="math inline">\(1-\frac{1}{2n_k}\)</span> is in <span class="math inline">\((0,1)\)</span> but not in <span class="math inline">\(\left(0,1-\frac{1}{n_k}\right)\)</span>. So <span class="math inline">\((0,1)\)</span> is not compact.</p>
+</div>
+<div class="examplebox" id="ex-half-line-not-compact">
+
+<p><strong>Example 4.2.7.</strong> <span class="math inline">\([0,\infty)\)</span> is not compact. See <a href="#exer-half-line-not-compact">Exercise 4.2.1</a>.</p>
+</div>
+<div class="examplebox" id="ex-finite-compact">
+
+<p><strong>Example 4.2.8.</strong> A finite set is compact. To see this,
+let <span class="math inline">\(P=\{p_1,\dots,p_n\}\)</span> be a finite
+set. Let <span class="math inline">\(\{U_\alpha\}_{\alpha\in\Lambda}\)</span> be an
+open cover of <span class="math inline">\(P\)</span>. So for each <span class="math inline">\(p_k\in P\)</span>, <span class="math inline">\(k=1,\dots,n\)</span>, there exists an <span class="math inline">\(\alpha_{k}\in\Lambda\)</span> such that <span class="math inline">\(p_k\in U_{\alpha_k}\)</span>. So <span class="math inline">\(\{U_{\alpha_k}\}_{k=1}^n\)</span> is a finite
+subcover of <span class="math inline">\(P\)</span> and hence, <span class="math inline">\(P\)</span> is compact.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Finite Subcover Arguments).</strong></p>
+<p>Many proofs about a compact set <span class="math inline">\(K\)</span> follow one pattern. For each point
+<span class="math inline">\(y\in K\)</span>, choose an open set around
+<span class="math inline">\(y\)</span> with some useful property. These
+sets form an open cover of <span class="math inline">\(K\)</span>.
+Compactness gives finitely many of them that still cover <span class="math inline">\(K\)</span>. Then take a minimum or a maximum over
+the finitely many choices. The minimum of finitely many positive numbers
+is positive. The minimum of infinitely many might not exist, and their
+infimum might be <span class="math inline">\(0\)</span>. The proof of <a href="#thm-compact-closed-bounded">Theorem 4.2.9</a> uses this pattern
+twice.</p>
+</div>
+<div class="theorembox" id="thm-compact-closed-bounded">
+
+<p><strong>Theorem 4.2.9.</strong> A compact subset of <span class="math inline">\(\mathbb{R}\)</span> is closed and bounded.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(K\subset \mathbb{R}\)</span> be
+compact. If <span class="math inline">\(K=\emptyset\)</span>, then <span class="math inline">\(K\)</span> is closed and bounded. So assume <span class="math inline">\(K\ne\emptyset\)</span>.</p>
+<p>First, <span class="math inline">\(K\)</span> is bounded. Every real
+number is in <span class="math inline">\((-n,n)\)</span> for some <span class="math inline">\(n\in\mathbb{N}\)</span>, by the Archimedean
+Principle. So the intervals <span class="math inline">\((-n,n)\)</span>,
+<span class="math inline">\(n\in\mathbb{N}\)</span>, form an open cover
+of <span class="math inline">\(K\)</span>. Since <span class="math inline">\(K\)</span> is compact, finitely many of them cover
+<span class="math inline">\(K\)</span>, say <span class="math inline">\((-n_1,n_1),\dots,(-n_m,n_m)\)</span>. Let <span class="math inline">\(N=\max\{n_1,\dots,n_m\}\)</span>. Each of these
+intervals is a subset of <span class="math inline">\((-N,N)\)</span>. So
+<span class="math inline">\(K\subset(-N,N)\)</span>, and <span class="math inline">\(K\)</span> is bounded.</p>
+<p>Next, <span class="math inline">\(K\)</span> is closed. Let <span class="math inline">\(x\in K^c\)</span>. For each <span class="math inline">\(y\in K\)</span>, <span class="math inline">\(y\ne
+x\)</span>. Let <span class="math inline">\(\varepsilon_y=\frac12|x-y|&gt;0\)</span>. The
+intervals <span class="math inline">\((x-\varepsilon_y,x+\varepsilon_y)\)</span> and
+<span class="math inline">\((y-\varepsilon_y,y+\varepsilon_y)\)</span>
+are disjoint. Indeed, if <span class="math inline">\(z\)</span> were in
+both, then <span class="math display">\[|x-y|\le|x-z|+|z-y|&lt;2\varepsilon_y=|x-y|.\]</span>
+The intervals <span class="math inline">\((y-\varepsilon_y,y+\varepsilon_y)\)</span>, <span class="math inline">\(y\in K\)</span>, form an open cover of <span class="math inline">\(K\)</span>. Since <span class="math inline">\(K\)</span> is compact, there exist <span class="math inline">\(y_1,\dots,y_n\in K\)</span> such that <span class="math display">\[K\subset\bigcup_{i=1}^n(y_i-\varepsilon_{y_i},y_i+\varepsilon_{y_i}).\]</span>
+Let <span class="math inline">\(\varepsilon=\min\{\varepsilon_{y_1},\dots,\varepsilon_{y_n}\}&gt;0\)</span>.
+For each <span class="math inline">\(i\)</span>, <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset(x-\varepsilon_{y_i},x+\varepsilon_{y_i})\)</span>,
+which is disjoint from <span class="math inline">\((y_i-\varepsilon_{y_i},y_i+\varepsilon_{y_i})\)</span>.
+So <span class="math inline">\((x-\varepsilon,x+\varepsilon)\cap
+K=\emptyset\)</span>, and <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset K^c\)</span>.
+Thus <span class="math inline">\(K^c\)</span> is open and <span class="math inline">\(K\)</span> is closed.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-closed-subset-compact">
+
+<p><strong>Lemma 4.2.10.</strong> Every closed subset of a compact set
+is compact.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(K\)</span> be compact and let <span class="math inline">\(F\subset K\)</span> be closed. Let <span class="math inline">\(\{U_\alpha\}_{\alpha\in\Lambda}\)</span> be an
+open cover of <span class="math inline">\(F\)</span>. Since <span class="math inline">\(F\)</span> is closed, <span class="math inline">\(F^c\)</span> is open. Each point of <span class="math inline">\(K\)</span> is either in <span class="math inline">\(F\)</span>, and so in some <span class="math inline">\(U_\alpha\)</span>, or in <span class="math inline">\(F^c\)</span>. So the sets <span class="math inline">\(U_\alpha\)</span>, <span class="math inline">\(\alpha\in\Lambda\)</span>, together with <span class="math inline">\(F^c\)</span> form an open cover of <span class="math inline">\(K\)</span>. Since <span class="math inline">\(K\)</span> is compact, finitely many of these sets
+cover <span class="math inline">\(K\)</span>. Adding <span class="math inline">\(F^c\)</span> to the list if needed, <span class="math display">\[K\subset U_{\alpha_1}\cup\cdots\cup
+U_{\alpha_n}\cup F^c\]</span> for some <span class="math inline">\(\alpha_1,\dots,\alpha_n\in\Lambda\)</span>. No
+point of <span class="math inline">\(F\)</span> is in <span class="math inline">\(F^c\)</span>. So <span class="math inline">\(F\subset U_{\alpha_1}\cup\cdots\cup
+U_{\alpha_n}\)</span>, and <span class="math inline">\(F\)</span> is
+compact.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-bw-property">
+
+<p><strong>Theorem 4.2.11</strong> (Bolzano–Weierstrass
+Property)<strong>.</strong></p>
+<p>If <span class="math inline">\(S\)</span> is an infinite subset of a
+compact set <span class="math inline">\(K\)</span>, then <span class="math inline">\(S\)</span> has a limit point in <span class="math inline">\(K\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Assume by way of contradiction that no point of <span class="math inline">\(K\)</span> is a limit point of <span class="math inline">\(S\)</span>. Then for each <span class="math inline">\(x\in K\)</span>, there exists an <span class="math inline">\(\varepsilon_x&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon_x,x+\varepsilon_x)\)</span>
+contains no point of <span class="math inline">\(S\)</span> other than
+<span class="math inline">\(x\)</span>. So each interval <span class="math inline">\((x-\varepsilon_x,x+\varepsilon_x)\)</span>
+contains at most one point of <span class="math inline">\(S\)</span>.
+These intervals, for <span class="math inline">\(x\in K\)</span>, form
+an open cover of <span class="math inline">\(K\)</span>. Since <span class="math inline">\(K\)</span> is compact, finitely many of them cover
+<span class="math inline">\(K\)</span>, and so they cover <span class="math inline">\(S\)</span>. Since each of them contains at most
+one point of <span class="math inline">\(S\)</span>, <span class="math inline">\(S\)</span> is finite. This is a contradiction. So
+<span class="math inline">\(S\)</span> has a limit point in <span class="math inline">\(K\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cantor-intersection">
+
+<p><strong>Theorem 4.2.12</strong> (Cantor’s Intersection
+Theorem)<strong>.</strong></p>
+<p>If <span class="math inline">\(\{K_n\}_{n=1}^\infty\)</span> is a
+sequence of nonempty compact subsets of <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(K_n\supset K_{n+1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, then <span class="math inline">\(K=\bigcap_{n=1}^\infty K_n\)</span> is nonempty
+and compact.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(U_n=K_n^c\)</span>.
+By <a href="#thm-compact-closed-bounded">Theorem 4.2.9</a>, <span class="math inline">\(K_n\)</span> is closed and therefore <span class="math inline">\(U_n\)</span> is open. Assume by way of
+contradiction that <span class="math inline">\(K=\emptyset\)</span>.
+Then <span class="math inline">\(\bigcup_{n=1}^\infty
+U_n=\mathbb{R}\)</span>. So <span class="math inline">\(\{U_n\}\)</span>
+is an open cover of <span class="math inline">\(\mathbb{R}\)</span> and
+hence <span class="math inline">\(K_1\)</span>. So there exists <span class="math inline">\(n_1&lt;n_2&lt;\cdots&lt;n_k\)</span> such that
+<span class="math inline">\(K_1\subset\bigcup_{j=1}^k U_{n_j}\)</span>.
+This implies <span class="math inline">\(K_1^c\supset \bigcap_{j=1}^k
+K_{n_j}\)</span>, or <span class="math display">\[K_1\cap K_{n_1}\cap
+K_{n_2}\cap\cdots\cap K_{n_k}=\emptyset,\]</span> a contradiction, since
+the sets are nested and so this intersection is <span class="math inline">\(K_{n_k}\)</span>, which is nonempty. Thus <span class="math inline">\(K\ne\emptyset\)</span>. By <a href="#thm-closed-union-intersection">Theorem 4.1.17</a>, <span class="math inline">\(K\)</span> is closed and since <span class="math inline">\(K\subset K_1\)</span>, by <a href="#lem-closed-subset-compact">Lemma 4.2.10</a>, <span class="math inline">\(K\)</span> is compact.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>A collection of sets has the <em>finite intersection property</em> if
+every finite subcollection has a nonempty intersection. The nested
+compact sets in Cantor’s Intersection Theorem have it. The next
+corollary drops the nesting.</p>
+<div class="corollarybox" id="cor-finite-intersection">
+
+<p><strong>Corollary 4.2.13.</strong> Let <span class="math inline">\(\{F_\alpha\}_{\alpha\in\Lambda}\)</span> be a
+collection of closed sets with the property that every finite
+subcollection of <span class="math inline">\(\{F_\alpha\}_{\alpha\in\Lambda}\)</span> has a
+nonempty intersection. Suppose one of the sets <span class="math inline">\(F_\alpha\)</span> is bounded. Then <span class="math inline">\(\bigcap_{\alpha\in\Lambda}F_\alpha\ne\emptyset\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-finite-intersection">Exercise
+4.2.7</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This extends the Nested Interval Theorem (<a href="ch-sequences.html#thm-nested-intervals">Theorem 3.4.4</a>) from closed intervals to
+compact sets. Compactness cannot be dropped. For example, <span class="math inline">\(\bigcap_{n=1}^\infty[n,\infty)=\emptyset\)</span>.</p>
+<div class="theorembox" id="thm-heine-borel">
+
+<p><strong>Theorem 4.2.14</strong> (Heine–Borel)<strong>.</strong></p>
+<p>Every closed and bounded interval <span class="math inline">\([a,b]\)</span> is compact.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\mathcal{U}=\{U_\alpha\}_{\alpha\in\Lambda}\)</span>
+be an open cover of <span class="math inline">\([a,b]\)</span>. Call a
+point <span class="math inline">\(r\in[a,b]\)</span> <em>good</em> if
+<span class="math inline">\([a,r]\)</span> is covered by finitely many
+of the sets in <span class="math inline">\(\mathcal{U}\)</span>. Let
+<span class="math inline">\(E\)</span> be the set of good points. Some
+<span class="math inline">\(U_\alpha\)</span> contains <span class="math inline">\(a\)</span>, so <span class="math inline">\([a,a]=\{a\}\)</span> is covered by one set in
+<span class="math inline">\(\mathcal{U}\)</span>. So <span class="math inline">\(a\in E\)</span>, and <span class="math inline">\(E\ne\emptyset\)</span>. Also, <span class="math inline">\(E\)</span> is bounded above by <span class="math inline">\(b\)</span>. By the least upper bound property,
+<span class="math inline">\(c=\sup E\)</span> exists, and <span class="math inline">\(a\le c\le b\)</span>.</p>
+<p>Since <span class="math inline">\(c\in[a,b]\)</span>, there exists an
+<span class="math inline">\(\alpha_c\in\Lambda\)</span> with <span class="math inline">\(c\in U_{\alpha_c}\)</span>. Since <span class="math inline">\(U_{\alpha_c}\)</span> is open, there exists an
+<span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((c-\varepsilon,c+\varepsilon)\subset
+U_{\alpha_c}\)</span>. By <a href="ch-real-numbers.html#thm-sup-approximation">Theorem
+1.7.7</a>, there exists a good point <span class="math inline">\(r\)</span> with <span class="math inline">\(c-\varepsilon&lt;r\le c\)</span>. So <span class="math display">\[[a,r]\subset U_{\alpha_1}\cup\cdots\cup
+U_{\alpha_n}\]</span> for some <span class="math inline">\(\alpha_1,\dots,\alpha_n\in\Lambda\)</span>. Let
+<span class="math inline">\(t=\min\left\{b,c+\frac{\varepsilon}{2}\right\}\)</span>.
+Then <span class="math inline">\([r,t]\subset(c-\varepsilon,c+\varepsilon)\subset
+U_{\alpha_c}\)</span>. So <span class="math display">\[[a,t]\subset
+U_{\alpha_1}\cup\cdots\cup U_{\alpha_n}\cup U_{\alpha_c},\]</span> and
+<span class="math inline">\(t\)</span> is good. Since <span class="math inline">\(c=\sup E\)</span>, <span class="math inline">\(t\le c\)</span>. If <span class="math inline">\(c&lt;b\)</span>, then <span class="math inline">\(t&gt;c\)</span>, a contradiction. So <span class="math inline">\(c=b\)</span>, and then <span class="math inline">\(t=b\)</span>. Thus <span class="math inline">\(b\)</span> is good. That is, <span class="math inline">\([a,b]\)</span> is covered by finitely many of the
+sets in <span class="math inline">\(\mathcal{U}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving Several Statements Are
+Equivalent).</strong></p>
+<p>To prove statements (1), (2) and (3) are equivalent, it is enough to
+prove (1)<span class="math inline">\(\Rightarrow\)</span>(2), (2)<span class="math inline">\(\Rightarrow\)</span>(3) and (3)<span class="math inline">\(\Rightarrow\)</span>(1). This is a cycle of
+implications. Any one statement implies any other by following the
+cycle. For example, (2)<span class="math inline">\(\Rightarrow\)</span>(1) follows from (2)<span class="math inline">\(\Rightarrow\)</span>(3) and (3)<span class="math inline">\(\Rightarrow\)</span>(1). Three proofs replace six.
+<a href="#thm-heine-borel-bw">Theorem 4.2.15</a> is proved this way.</p>
+</div>
+<div class="theorembox" id="thm-heine-borel-bw">
+
+<p><strong>Theorem 4.2.15</strong>
+(Heine–Borel–Bolzano–Weierstrass)<strong>.</strong></p>
+<p>Let <span class="math inline">\(K\subset \mathbb{R}\)</span>. The
+following are equivalent.</p>
+<ol>
+<li><p><span class="math inline">\(K\)</span> is closed and
+bounded.</p></li>
+<li><p><span class="math inline">\(K\)</span> is compact.</p></li>
+<li><p>Every infinite subset of <span class="math inline">\(K\)</span>
+has a limit point in <span class="math inline">\(K\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (1)<span class="math inline">\(\Rightarrow\)</span>(2) Since <span class="math inline">\(K\)</span> is bounded, there exists an <span class="math inline">\(M&gt;0\)</span> such that <span class="math inline">\(K\subset [-M,M]\)</span>. Now, by the Heine–Borel
+Theorem (<a href="#thm-heine-borel">Theorem 4.2.14</a>), <span class="math inline">\([-M,M]\)</span> is compact. So by <a href="#lem-closed-subset-compact">Lemma 4.2.10</a>, <span class="math inline">\(K\)</span> is compact.</p>
+<p>(2)<span class="math inline">\(\Rightarrow\)</span>(3) <a href="#thm-bw-property">Theorem 4.2.11</a>.</p>
+<p>(3)<span class="math inline">\(\Rightarrow\)</span>(1) Suppose every
+infinite subset of <span class="math inline">\(K\)</span> has a limit
+point in <span class="math inline">\(K\)</span>.</p>
+<p>First, <span class="math inline">\(K\)</span> is bounded. Assume by
+way of contradiction that <span class="math inline">\(K\)</span> is not
+bounded. Choose <span class="math inline">\(x_1\in K\)</span> with <span class="math inline">\(|x_1|&gt;1\)</span>. Having chosen <span class="math inline">\(x_1,\dots,x_n\)</span>, choose <span class="math inline">\(x_{n+1}\in K\)</span> with <span class="math inline">\(|x_{n+1}|&gt;\max\{n+1,|x_n|\}\)</span>. This is
+possible since <span class="math inline">\(K\)</span> is not bounded.
+Then <span class="math inline">\(|x_1|&lt;|x_2|&lt;|x_3|&lt;\cdots\)</span>, so the
+points <span class="math inline">\(x_n\)</span> are distinct, and <span class="math inline">\(|x_n|&gt;n\)</span> for all <span class="math inline">\(n\)</span>. Let <span class="math inline">\(S=\{x_n:n\in\mathbb{N}\}\)</span>. Then <span class="math inline">\(S\)</span> is an infinite subset of <span class="math inline">\(K\)</span>. Let <span class="math inline">\(y\in\mathbb{R}\)</span>, and choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N&gt;|y|+1\)</span>. By the Reverse Triangle
+Inequality (<a href="ch-real-numbers.html#thm-absolute-value">Theorem 1.6.3</a>), for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_n-y|\ge|x_n|-|y|&gt;n-|y|\ge
+N-|y|&gt;1.\]</span> So <span class="math inline">\((y-1,y+1)\)</span>
+contains at most the finitely many points <span class="math inline">\(x_1,\dots,x_{N-1}\)</span> of <span class="math inline">\(S\)</span>. By <a href="#exer-limit-point-infinite">Exercise 4.1.9</a>, <span class="math inline">\(y\)</span> is not a limit point of <span class="math inline">\(S\)</span>. So <span class="math inline">\(S\)</span> has no limit point in <span class="math inline">\(\mathbb{R}\)</span>, and so none in <span class="math inline">\(K\)</span>. This contradicts (3). So <span class="math inline">\(K\)</span> is bounded.</p>
+<p>Next, <span class="math inline">\(K\)</span> is closed. Let <span class="math inline">\(x\)</span> be a limit point of <span class="math inline">\(K\)</span>. By <a href="#thm-closed-limit-points">Theorem 4.1.24</a>, it is enough to show
+<span class="math inline">\(x\in K\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(x_n\in K\)</span> with <span class="math inline">\(x_n\ne x\)</span> and <span class="math inline">\(|x_n-x|&lt;\frac{1}{n}\)</span>. Let <span class="math inline">\(S=\{x_n:n\in\mathbb{N}\}\)</span>. If <span class="math inline">\(S\)</span> were finite, then <span class="math inline">\(\delta=\min\{|s-x|:s\in S\}\)</span> would be
+positive, and <span class="math inline">\(|x_n-x|&lt;\frac1n&lt;\delta\)</span> for large
+<span class="math inline">\(n\)</span>. This is impossible, since each
+<span class="math inline">\(x_n\)</span> is in <span class="math inline">\(S\)</span>. So <span class="math inline">\(S\)</span> is infinite. By (3), <span class="math inline">\(S\)</span> has a limit point <span class="math inline">\(z\in K\)</span>. Suppose <span class="math inline">\(z\ne x\)</span>. Let <span class="math inline">\(\varepsilon=\frac{1}{2}|z-x|\)</span>, and choose
+<span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(\frac{1}{N}&lt;\varepsilon\)</span>. For all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_n-z|\ge|z-x|-|x_n-x|&gt;2\varepsilon-\varepsilon=\varepsilon.\]</span>
+So <span class="math inline">\((z-\varepsilon,z+\varepsilon)\)</span>
+contains at most the finitely many points <span class="math inline">\(x_1,\dots,x_{N-1}\)</span> of <span class="math inline">\(S\)</span>. By <a href="#exer-limit-point-infinite">Exercise 4.1.9</a>, <span class="math inline">\(z\)</span> is not a limit point of <span class="math inline">\(S\)</span>, a contradiction. So <span class="math inline">\(z=x\)</span>. Thus <span class="math inline">\(x\in K\)</span>, and <span class="math inline">\(K\)</span> is closed.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Closed and bounded is the easiest of the three conditions to check.
+Compactness is the most useful in proofs. The third condition connects
+compactness to sequences, as <a href="#cor-compact-sequences">Corollary
+4.2.16</a> shows.</p>
+<div class="corollarybox" id="cor-compact-sequences">
+
+<p><strong>Corollary 4.2.16.</strong> Let <span class="math inline">\(K\)</span> be a nonempty compact subset of <span class="math inline">\(\mathbb{R}\)</span>. Then every sequence in <span class="math inline">\(K\)</span> has a convergent subsequence that
+converges to a point in <span class="math inline">\(K\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-compact-sequences">Exercise
+4.2.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-17">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-half-line-not-compact">
+
+<p><strong>Exercise 4.2.1.</strong> Use the definition of a compact set
+to prove the interval <span class="math inline">\([0,\infty)\)</span> is
+not compact.</p>
+</div>
+<div class="exercisebox" id="exer-convergent-sequence-compact">
+
+<p><strong>Exercise 4.2.2.</strong> Let <span class="math inline">\(\{x_n\}\)</span> be a sequence in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\to a\)</span>. Use the definition of a compact
+set to prove the set <span class="math inline">\(\{x_n:n\in\mathbb{N}\}\cup\{a\}\)</span> is
+compact. <a aria-label="Solution for Exercise 4.2.2" href="solutions-ch04.html#sol-exer-convergent-sequence-compact">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-compact-sequences">
+
+<p><strong>Exercise 4.2.3.</strong> Prove <a href="#cor-compact-sequences">Corollary 4.2.16</a>. <a aria-label="Hint for Exercise 4.2.3" href="solutions-ch04.html#sol-exer-compact-sequences">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-closed-not-compact">
+
+<p><strong>Exercise 4.2.4.</strong> Give an example of a closed set that
+is not compact, and an example of a bounded set that is not compact.</p>
+</div>
+<div class="exercisebox" id="exer-union-compact">
+
+<p><strong>Exercise 4.2.5.</strong> Use the definition of a compact set
+to prove that the union of finitely many compact sets is compact. <a aria-label="Hint for Exercise 4.2.5" href="solutions-ch04.html#sol-exer-union-compact">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-intersection-compact">
+
+<p><strong>Exercise 4.2.6.</strong> Prove that the intersection of any
+collection of compact sets is compact. <a aria-label="Hint for Exercise 4.2.6" href="solutions-ch04.html#sol-exer-intersection-compact">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-finite-intersection">
+
+<p><strong>Exercise 4.2.7.</strong> Prove <a href="#cor-finite-intersection">Corollary 4.2.13</a>. Give an example to
+show that the conclusion may be false if all of the sets are unbounded.
+<a aria-label="Solution for Exercise 4.2.7" href="solutions-ch04.html#sol-exer-finite-intersection">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-3">
+<h2>Notes</h2>
+<p>Peter Gustav Lejeune Dirichlet used the idea behind the Heine–Borel
+Theorem in his 1852 lectures, to prove that a continuous function on a
+closed interval is uniformly continuous. Eduard Heine published that
+result in 1872 [<a href="bibliography.html#bib-heine1872">37</a>]. Émile Borel proved the
+Heine–Borel Theorem for countable open covers in 1895 [<a href="bibliography.html#bib-borel1895">6</a>]. Pierre Cousin proved a version for
+arbitrary covers the same year [<a href="bibliography.html#bib-cousin1895">17</a>], and
+Henri Lebesgue gave a proof for arbitrary covers in his 1904 lectures
+[<a href="bibliography.html#bib-lebesgue1904">42</a>]. The name Heine–Borel Theorem is
+due to Arthur Schoenflies [<a href="bibliography.html#bib-schoenflies1900">64</a>]. Ernst
+Lindelöf proved his theorem in 1903 [<a href="bibliography.html#bib-lindelof1903">47</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-sequences.html"><span class="dir">Previous</span> Chapter 3. Sequences of Real Numbers</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-cantor.html"><span class="dir">Next</span> Chapter 5. The Cantor Set*</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

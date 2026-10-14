@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Appendix B. Construction of the Real Numbers by Cauchy Sequences | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="app-cuts.html"><span class="dir">Previous</span> Appendix A. Construction of the Real Numbers by Cuts</a>
+<a rel="up" href="part-appendices.html"><span class="dir">Up</span> Appendices</a>
+<a rel="next" href="app-solutions.html"><span class="dir">Next</span> Appendix C. Hints and Solutions</a>
+</nav>
+<main id="main">
+<article id="app-cauchy">
+<h1>Appendix B. Construction of the Real Numbers by
+Cauchy Sequences</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-cauchy-construction-sequences">B.1 Cauchy Sequences of Rational Numbers</a></li><li><a href="#sec-cauchy-construction-arithmetic">B.2 Addition and Multiplication</a></li><li><a href="#sec-cauchy-construction-order">B.3 Order</a></li><li><a href="#sec-cauchy-construction-completeness">B.4 Completeness</a></li><li><a href="#sec-cauchy-construction-uniqueness">B.5 Uniqueness of the Real
+Numbers<sup>*</sup></a></li><li><a href="#notes-18">Notes</a></li></ul></nav>
+<p>This appendix gives a second proof of <a href="ch-real-numbers.html#thm-existence-of-R">Theorem 1.7.2</a>, due to Georg Cantor. It
+builds <span class="math inline">\(\mathbb{R}\)</span> out of Cauchy
+sequences of rational numbers, as in <a href="ch-sequences.html#sec-cauchy-sequences">Section 3.5</a>.</p>
+<p>In <span class="math inline">\(\mathbb{Q}\)</span>, a Cauchy sequence
+need not converge. A sequence of rational numbers can close in on <span class="math inline">\(\sqrt2\)</span>, with its terms getting closer and
+closer together, and still have no rational limit (<a href="#exer-newton-cauchy-Q">Exercise B.1.1</a>). Cantor’s idea was to
+let such a sequence stand for the number it ought to converge to. Two
+Cauchy sequences whose difference tends to <span class="math inline">\(0\)</span> should stand for the same number. So a
+real number will be a whole class of Cauchy sequences, all of them
+closing in on the same point.</p>
+<p>As in <a href="app-cuts.html">Appendix A</a>, only <span class="math inline">\(\mathbb{Q}\)</span> is assumed, with its usual
+operations and order. The results of Sections <a href="ch-real-numbers.html#sec-ordered-sets">1.4</a>, <a href="ch-real-numbers.html#sec-fields">1.5</a> and <a href="ch-real-numbers.html#sec-absolute-value">1.6</a> hold in <span class="math inline">\(\mathbb{Q}\)</span>, and nothing from <a href="ch-real-numbers.html#sec-completeness">Section 1.7</a> or later is used. In
+particular, every <span class="math inline">\(\varepsilon\)</span> in
+this appendix is a positive rational number. <a href="app-cuts.html">Appendix A</a> is not needed, except for <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>, the Archimedean Principle for
+<span class="math inline">\(\mathbb{Q}\)</span>. In this appendix, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>
+and <span class="math inline">\(z\)</span> denote sequences <span class="math inline">\(\{x_n\}\)</span>, <span class="math inline">\(\{y_n\}\)</span> and <span class="math inline">\(\{z_n\}\)</span> of rational numbers, and <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>, <span class="math inline">\(r\)</span>
+and <span class="math inline">\(c\)</span> denote rational numbers.</p>
+<section class="level3 unnumbered" id="sec-cauchy-construction-sequences">
+<h2>B.1 Cauchy Sequences of Rational Numbers</h2>
+<div class="definitionbox" id="def-cauchy-Q">
+
+<p><strong>Definition B.1.1.</strong> A sequence <span class="math inline">\(x=\{x_n\}\)</span> of rational numbers is a
+<em>Cauchy sequence in <span class="math inline">\(\mathbb{Q}\)</span></em> if for every rational
+<span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|x_m-x_n|&lt;\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. It is a <em>null sequence</em>
+if for every rational <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|x_n|&lt;\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>. Let <span class="math inline">\(\mathcal{C}\)</span> denote the set of all Cauchy
+sequences in <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+</div>
+<p>Sums, differences and products of sequences are taken term by term.
+So <span class="math inline">\(x+y\)</span> is the sequence <span class="math inline">\(\{x_n+y_n\}\)</span>, and <span class="math inline">\(xy\)</span> is <span class="math inline">\(\{x_ny_n\}\)</span>. A rational number <span class="math inline">\(q\)</span> also stands for the constant sequence
+<span class="math inline">\(q,q,q,\dots\)</span>. Every constant
+sequence is Cauchy. By <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>, the
+sequence <span class="math inline">\(\left\{\frac1n\right\}\)</span> is
+a null sequence. Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N\varepsilon&gt;1\)</span>. Then <span class="math inline">\(\left|\frac1n\right|\le\frac1N&lt;\varepsilon\)</span>
+for <span class="math inline">\(n\ge N\)</span>.</p>
+<div class="lemmabox" id="lem-cauchy-Q-algebra">
+
+<p><strong>Lemma B.1.2.</strong> Let <span class="math inline">\(x,y\in\mathcal{C}\)</span>, and let <span class="math inline">\(z\)</span> and <span class="math inline">\(w\)</span> be null sequences.</p>
+<ol>
+<li><p>There is a rational <span class="math inline">\(M&gt;0\)</span>
+with <span class="math inline">\(|x_n|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p></li>
+<li><p>The sequences <span class="math inline">\(x+y\)</span>, <span class="math inline">\(x-y\)</span> and <span class="math inline">\(xy\)</span> are in <span class="math inline">\(\mathcal{C}\)</span>.</p></li>
+<li><p>The sequences <span class="math inline">\(z\)</span>, <span class="math inline">\(z+w\)</span> and <span class="math inline">\(xz\)</span> are null sequences, and <span class="math inline">\(z\in\mathcal{C}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_m-x_n|&lt;1\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Then <span class="math inline">\(|x_n|&lt;1+|x_N|\)</span> for <span class="math inline">\(n\ge N\)</span>. Let <span class="math inline">\(M=\max\{|x_1|,\dots,|x_{N-1}|,1+|x_N|\}\)</span>,
+as in the proof of <a href="ch-sequences.html#thm-cauchy-criterion">Theorem
+3.5.2</a>.</p>
+<p>(2) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
+<span class="math inline">\(M\)</span> as in (1) for both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_m-x_n|&lt;\frac{\varepsilon}{2M}\)</span> and
+<span class="math inline">\(|y_m-y_n|&lt;\frac{\varepsilon}{2M}\)</span>
+for all <span class="math inline">\(m,n\ge N\)</span>. Then for <span class="math inline">\(m,n\ge N\)</span>, <span class="math display">\[|x_my_m-x_ny_n|=|x_m(y_m-y_n)+y_n(x_m-x_n)|\le
+M|y_m-y_n|+M|x_m-x_n|&lt;\varepsilon.\]</span> So <span class="math inline">\(xy\in\mathcal{C}\)</span>. The proofs for <span class="math inline">\(x+y\)</span> and <span class="math inline">\(x-y\)</span> are the same, with <span class="math inline">\(\frac\varepsilon 2\)</span> in place of <span class="math inline">\(\frac\varepsilon{2M}\)</span> and <span class="math inline">\(|(x_m\pm y_m)-(x_n\pm
+y_n)|\le|x_m-x_n|+|y_m-y_n|\)</span>.</p>
+<p>(3) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
+<span class="math inline">\(N\)</span> with <span class="math inline">\(|z_n|&lt;\frac\varepsilon 2\)</span> and <span class="math inline">\(|w_n|&lt;\frac\varepsilon 2\)</span> for <span class="math inline">\(n\ge N\)</span>. Then <span class="math inline">\(|z_n+w_n|&lt;\varepsilon\)</span> and <span class="math inline">\(|z_m-z_n|\le|z_m|+|z_n|&lt;\varepsilon\)</span>
+for <span class="math inline">\(m,n\ge N\)</span>. So <span class="math inline">\(z+w\)</span> is null and <span class="math inline">\(z\in\mathcal{C}\)</span>. With <span class="math inline">\(M\)</span> as in (1), choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|z_n|&lt;\frac\varepsilon M\)</span> for <span class="math inline">\(n\ge N\)</span>. Then <span class="math inline">\(|x_nz_n|\le M|z_n|&lt;\varepsilon\)</span>. So
+<span class="math inline">\(xz\)</span> is null.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-cauchy-equivalent">
+
+<p><strong>Definition B.1.3.</strong> For <span class="math inline">\(x,y\in\mathcal{C}\)</span>, write <span class="math inline">\(x\sim y\)</span> if <span class="math inline">\(x-y\)</span> is a null sequence.</p>
+</div>
+<div class="lemmabox" id="lem-cauchy-equivalence">
+
+<p><strong>Lemma B.1.4.</strong> The relation <span class="math inline">\(\sim\)</span> is an equivalence relation on <span class="math inline">\(\mathcal{C}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(x-x\)</span> is the constant
+sequence <span class="math inline">\(0\)</span>, <span class="math inline">\(x\sim x\)</span>. If <span class="math inline">\(x\sim y\)</span>, then <span class="math inline">\(y\sim x\)</span>, since <span class="math inline">\(|y_n-x_n|=|x_n-y_n|\)</span>. If <span class="math inline">\(x\sim y\)</span> and <span class="math inline">\(y\sim z\)</span>, then <span class="math inline">\(x-z=(x-y)+(y-z)\)</span> is null by <a href="#lem-cauchy-Q-algebra">Lemma B.1.2</a> (3). So <span class="math inline">\(x\sim z\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-cauchy-reals">
+
+<p><strong>Definition B.1.5.</strong> For <span class="math inline">\(x\in\mathcal{C}\)</span>, let <span class="math inline">\([x]=\{y\in\mathcal{C}:y\sim x\}\)</span> be its
+equivalence class. In this appendix, <span class="math inline">\(\mathbb{R}\)</span> denotes the set of all
+equivalence classes <span class="math inline">\([x]\)</span> with <span class="math inline">\(x\in\mathcal{C}\)</span>. For <span class="math inline">\(q\in\mathbb{Q}\)</span>, <span class="math inline">\([q]\)</span> denotes the class of the constant
+sequence <span class="math inline">\(q,q,q,\dots\)</span>.</p>
+</div>
+<p>So <span class="math inline">\([x]=[y]\)</span> exactly when <span class="math inline">\(x\sim y\)</span>, and <span class="math inline">\([x]=[0]\)</span> exactly when <span class="math inline">\(x\)</span> is a null sequence. For example, <span class="math inline">\(\left[\left\{\frac1n\right\}\right]=[0]\)</span>
+and <span class="math inline">\(\left[\left\{1+\frac1n\right\}\right]=[1]\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-70">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-newton-cauchy-Q">
+
+<p><strong>Exercise B.1.1.</strong> Define <span class="math inline">\(x_1=2\)</span> and <span class="math inline">\(x_{n+1}=\frac{x_n}2+\frac1{x_n}\)</span>. Prove
+that each <span class="math inline">\(x_n\)</span> is rational, that
+<span class="math inline">\(\{x_n\}\)</span> is a Cauchy sequence in
+<span class="math inline">\(\mathbb{Q}\)</span>, and that no rational
+number <span class="math inline">\(L\)</span> has <span class="math inline">\(|x_n-L|\to0\)</span>. <a aria-label="Solution for Exercise B.1.1" href="solutions-appb.html#sol-exer-newton-cauchy-Q">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-convergent-in-Q">
+
+<p><strong>Exercise B.1.2.</strong> Let <span class="math inline">\(x\)</span> be a sequence of rational numbers, and
+let <span class="math inline">\(L\in\mathbb{Q}\)</span>. Suppose that
+for every rational <span class="math inline">\(\varepsilon&gt;0\)</span>
+there is an <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_n-L|&lt;\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>. Prove that <span class="math inline">\(x\in\mathcal{C}\)</span> and that <span class="math inline">\([x]=[L]\)</span>. <a aria-label="Hint for Exercise B.1.2" href="solutions-appb.html#sol-exer-convergent-in-Q">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cauchy-construction-arithmetic">
+<h2>B.2 Addition and Multiplication</h2>
+<div class="definitionbox" id="def-cauchy-operations">
+
+<p><strong>Definition B.2.1.</strong> For <span class="math inline">\([x],[y]\in\mathbb{R}\)</span>, define <span class="math inline">\([x]+[y]=[x+y]\)</span> and <span class="math inline">\([x][y]=[xy]\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-cauchy-well-defined">
+
+<p><strong>Lemma B.2.2.</strong> These operations are well defined. That
+is, if <span class="math inline">\(x\sim x'\)</span> and <span class="math inline">\(y\sim y'\)</span>, then <span class="math inline">\(x+y\sim x'+y'\)</span> and <span class="math inline">\(xy\sim x'y'\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#lem-cauchy-Q-algebra">Lemma B.1.2</a> (2), all four
+sequences are in <span class="math inline">\(\mathcal{C}\)</span>. Now
+<span class="math inline">\((x+y)-(x'+y')=(x-x')+(y-y')\)</span>
+is a sum of two null sequences, so it is null. Also <span class="math display">\[xy-x'y'=x(y-y')+y'(x-x').\]</span>
+Each term is a Cauchy sequence times a null sequence, so it is null by
+<a href="#lem-cauchy-Q-algebra">Lemma B.1.2</a> (3). So their sum is
+null.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Checking That an Operation Is Well
+Defined).</strong></p>
+<p>A real number in this appendix is a class with many representatives.
+The sum <span class="math inline">\([x]+[y]\)</span> is computed from
+one representative of each class. If another choice of representatives
+gave a different class, the sum would not make sense. So every
+definition made through representatives needs a check that the answer
+does not depend on the choice. <a href="#lem-cauchy-well-defined">Lemma
+B.2.2</a> is that check for sums and products, and <a href="#lem-cauchy-positive">Lemma B.3.2</a> (1) is that check for the
+order. The same issue comes up whenever objects are defined as
+equivalence classes, as in the definition of <span class="math inline">\(\mathbb{Q}\)</span> itself, where <span class="math inline">\(\frac12=\frac24\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-cauchy-away-from-zero">
+
+<p><strong>Lemma B.2.3.</strong> Let <span class="math inline">\(x\in\mathcal{C}\)</span> be a sequence that is not
+null. Then there are a rational <span class="math inline">\(c&gt;0\)</span> and an <span class="math inline">\(N\in\mathbb{N}\)</span> such that either <span class="math inline">\(x_n\ge c\)</span> for all <span class="math inline">\(n\ge N\)</span>, or <span class="math inline">\(x_n\le-c\)</span> for all <span class="math inline">\(n\ge N\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(x\)</span> is not null, there is a
+rational <span class="math inline">\(\varepsilon&gt;0\)</span> such that
+for every <span class="math inline">\(N\)</span>, some <span class="math inline">\(n\ge N\)</span> has <span class="math inline">\(|x_n|\ge\varepsilon\)</span>. Let <span class="math inline">\(c=\frac\varepsilon 2\)</span>. Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_m-x_n|&lt;c\)</span> for all <span class="math inline">\(m,n\ge N\)</span>, and then choose <span class="math inline">\(k\ge N\)</span> with <span class="math inline">\(|x_k|\ge2c\)</span>. If <span class="math inline">\(x_k\ge2c\)</span>, then <span class="math inline">\(x_n&gt;x_k-c\ge c\)</span> for all <span class="math inline">\(n\ge N\)</span>. If <span class="math inline">\(x_k\le-2c\)</span>, then <span class="math inline">\(x_n&lt;x_k+c\le-c\)</span> for all <span class="math inline">\(n\ge N\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cauchy-field">
+
+<p><strong>Theorem B.2.4.</strong> With the operations of <a href="#def-cauchy-operations">Definition B.2.1</a>, <span class="math inline">\(\mathbb{R}\)</span> is a field. Its zero is <span class="math inline">\([0]\)</span> and its one is <span class="math inline">\([1]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Axioms (1) and (6) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> hold
+by Lemmas <a href="#lem-cauchy-Q-algebra">B.1.2</a> and <a href="#lem-cauchy-well-defined">B.2.2</a>. Axioms (2), (3), (7), (8) and
+(11) hold because they hold term by term in <span class="math inline">\(\mathbb{Q}\)</span>. For example, <span class="math display">\[[x]\bigl([y]+[z]\bigr)=[x(y+z)]=[xy+xz]=[x][y]+[x][z],\]</span>
+since <span class="math inline">\(x_n(y_n+z_n)=x_ny_n+x_nz_n\)</span>
+for every <span class="math inline">\(n\)</span>. For (4) and (5), <span class="math inline">\([0]+[x]=[x]\)</span> and <span class="math inline">\([x]+[-x]=[0]\)</span>, where <span class="math inline">\(-x=\{-x_n\}\)</span>. For (9), <span class="math inline">\([1][x]=[x]\)</span>, and <span class="math inline">\([1]\ne[0]\)</span>, since the constant sequence
+<span class="math inline">\(1\)</span> is not null.</p>
+<p>For (10), let <span class="math inline">\([x]\ne[0]\)</span>. Then
+<span class="math inline">\(x\)</span> is not null. By <a href="#lem-cauchy-away-from-zero">Lemma B.2.3</a>, there are a rational
+<span class="math inline">\(c&gt;0\)</span> and an <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_n|\ge c\)</span> for all <span class="math inline">\(n\ge N\)</span>. Define <span class="math inline">\(y_n=\frac1{x_n}\)</span> for <span class="math inline">\(n\ge N\)</span> and <span class="math inline">\(y_n=0\)</span> for <span class="math inline">\(n&lt;N\)</span>. For <span class="math inline">\(m,n\ge N\)</span>, <span class="math display">\[|y_m-y_n|=\frac{|x_n-x_m|}{|x_m||x_n|}\le\frac{|x_m-x_n|}{c^2}.\]</span>
+Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose
+<span class="math inline">\(N'\ge N\)</span> with <span class="math inline">\(|x_m-x_n|&lt;c^2\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N'\)</span>. Then <span class="math inline">\(|y_m-y_n|&lt;\varepsilon\)</span> for <span class="math inline">\(m,n\ge N'\)</span>. So <span class="math inline">\(y\in\mathcal{C}\)</span>. Also <span class="math inline">\(x_ny_n=1\)</span> for all <span class="math inline">\(n\ge N\)</span>, so <span class="math inline">\(xy-1\)</span> is null, and <span class="math inline">\([x][y]=[1]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-71">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-reciprocal-not-cauchy">
+
+<p><strong>Exercise B.2.1.</strong> Give an example of an <span class="math inline">\(x\in\mathcal{C}\)</span> with <span class="math inline">\(x_n\ne0\)</span> for every <span class="math inline">\(n\)</span> such that <span class="math inline">\(\left\{\frac1{x_n}\right\}\)</span> is not in
+<span class="math inline">\(\mathcal{C}\)</span>. Then prove that if
+<span class="math inline">\([x]\ne[0]\)</span> and <span class="math inline">\(x_n\ne0\)</span> for every <span class="math inline">\(n\)</span>, then <span class="math inline">\(\left\{\frac1{x_n}\right\}\in\mathcal{C}\)</span>
+and <span class="math inline">\([x]^{-1}=\left[\left\{\frac1{x_n}\right\}\right]\)</span>.
+<a aria-label="Solution for Exercise B.2.1" href="solutions-appb.html#sol-exer-reciprocal-not-cauchy">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cauchy-construction-order">
+<h2>B.3 Order</h2>
+<div class="definitionbox" id="def-cauchy-positive">
+
+<p><strong>Definition B.3.1.</strong> A sequence <span class="math inline">\(x\in\mathcal{C}\)</span> is <em>positive</em> if
+there are a rational <span class="math inline">\(c&gt;0\)</span> and an
+<span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(x_n\ge c\)</span> for all <span class="math inline">\(n\ge N\)</span>. For <span class="math inline">\([x],[y]\in\mathbb{R}\)</span>, define <span class="math inline">\([x]&lt;[y]\)</span> to mean that <span class="math inline">\(y-x\)</span> is positive.</p>
+</div>
+<div class="lemmabox" id="lem-cauchy-positive">
+
+<p><strong>Lemma B.3.2.</strong> Let <span class="math inline">\(x,y\in\mathcal{C}\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(x\)</span> is positive and <span class="math inline">\(y\sim x\)</span>, then <span class="math inline">\(y\)</span> is positive.</p></li>
+<li><p>Exactly one of the following holds. The sequence <span class="math inline">\(x\)</span> is positive, <span class="math inline">\(x\)</span> is null, or <span class="math inline">\(-x\)</span> is positive.</p></li>
+<li><p>If <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are positive, so are <span class="math inline">\(x+y\)</span> and <span class="math inline">\(xy\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Let <span class="math inline">\(x_n\ge c\)</span> for <span class="math inline">\(n\ge N\)</span>. Choose <span class="math inline">\(N'\ge N\)</span> with <span class="math inline">\(|y_n-x_n|&lt;\frac c2\)</span> for <span class="math inline">\(n\ge N'\)</span>. Then <span class="math inline">\(y_n&gt;x_n-\frac c2\ge\frac c2\)</span> for <span class="math inline">\(n\ge N'\)</span>.</p>
+<p>(2) If <span class="math inline">\(x\)</span> is null, then <span class="math inline">\(|x_n|&lt;c\)</span> for large <span class="math inline">\(n\)</span>, for every <span class="math inline">\(c&gt;0\)</span>. So neither <span class="math inline">\(x\)</span> nor <span class="math inline">\(-x\)</span> is positive. If <span class="math inline">\(x\)</span> and <span class="math inline">\(-x\)</span> were both positive, then <span class="math inline">\(x_n\ge c\)</span> and <span class="math inline">\(-x_n\ge c'\)</span> for large <span class="math inline">\(n\)</span>, which is impossible. So at most one of
+the three holds. If <span class="math inline">\(x\)</span> is not null,
+<a href="#lem-cauchy-away-from-zero">Lemma B.2.3</a> shows that <span class="math inline">\(x\)</span> or <span class="math inline">\(-x\)</span> is positive.</p>
+<p>(3) If <span class="math inline">\(x_n\ge c\)</span> for <span class="math inline">\(n\ge N\)</span> and <span class="math inline">\(y_n\ge c'\)</span> for <span class="math inline">\(n\ge N'\)</span>, then for <span class="math inline">\(n\ge\max\{N,N'\}\)</span>, <span class="math inline">\(x_n+y_n\ge c+c'\)</span> and <span class="math inline">\(x_ny_n\ge cc'\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cauchy-ordered-field">
+
+<p><strong>Theorem B.3.3.</strong> With the order of <a href="#def-cauchy-positive">Definition B.3.1</a>, <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. An
+element <span class="math inline">\([x]\)</span> is positive in the
+sense of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a> if and only
+if the sequence <span class="math inline">\(x\)</span> is positive.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(x\sim x'\)</span> and <span class="math inline">\(y\sim y'\)</span>, then <span class="math inline">\(y-x\sim y'-x'\)</span>. So by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (1), whether <span class="math inline">\(y-x\)</span> is positive does not depend on the
+choice of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in their classes. So <span class="math inline">\(&lt;\)</span> is well defined.</p>
+<p><em>Trichotomy.</em> Let <span class="math inline">\(a=[x]\)</span>
+and <span class="math inline">\(b=[y]\)</span>. By <a href="#lem-cauchy-positive">Lemma B.3.2</a> (2), exactly one of the
+following holds. The sequence <span class="math inline">\(y-x\)</span>
+is positive, <span class="math inline">\(y-x\)</span> is null, or <span class="math inline">\(x-y\)</span> is positive. These say <span class="math inline">\(a&lt;b\)</span>, <span class="math inline">\(a=b\)</span> and <span class="math inline">\(b&lt;a\)</span>.</p>
+<p><em>Transitivity.</em> If <span class="math inline">\([x]&lt;[y]\)</span> and <span class="math inline">\([y]&lt;[z]\)</span>, then <span class="math inline">\(z-x=(z-y)+(y-x)\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3). So <span class="math inline">\([x]&lt;[z]\)</span>.</p>
+<p><em>Property (1) of <a href="ch-real-numbers.html#def-ordered-field">Definition
+1.5.6</a>.</em> Since <span class="math inline">\((y+z)-(x+z)=y-x\)</span>, <span class="math inline">\([x]\le[y]\)</span> implies <span class="math inline">\([x]+[z]\le[y]+[z]\)</span>.</p>
+<p><em>Property (2) of <a href="ch-real-numbers.html#def-ordered-field">Definition
+1.5.6</a>.</em> Let <span class="math inline">\([0]\le[x]\)</span> and
+<span class="math inline">\([0]\le[y]\)</span>. If either is <span class="math inline">\([0]\)</span>, then <span class="math inline">\([x][y]=[0]\)</span>. Otherwise <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are positive, so <span class="math inline">\(xy\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3), and <span class="math inline">\([0]&lt;[x][y]\)</span>.</p>
+<p>Finally, <span class="math inline">\([0]&lt;[x]\)</span> means <span class="math inline">\(x-0=x\)</span> is positive.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-cauchy-compare">
+
+<p><strong>Lemma B.3.4.</strong> Let <span class="math inline">\(x,y\in\mathcal{C}\)</span>. If there is an <span class="math inline">\(N\)</span> with <span class="math inline">\(x_n\le
+y_n\)</span> for all <span class="math inline">\(n\ge N\)</span>, then
+<span class="math inline">\([x]\le[y]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Suppose <span class="math inline">\([y]&lt;[x]\)</span>. Then <span class="math inline">\(x-y\)</span> is positive, so there are <span class="math inline">\(c&gt;0\)</span> and <span class="math inline">\(N'\)</span> with <span class="math inline">\(x_n-y_n\ge c\)</span> for <span class="math inline">\(n\ge N'\)</span>. For <span class="math inline">\(n\ge\max\{N,N'\}\)</span>, this contradicts
+<span class="math inline">\(x_n\le y_n\)</span>. So <span class="math inline">\([x]\le[y]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cauchy-contain-Q">
+
+<p><strong>Theorem B.3.5.</strong> For all <span class="math inline">\(p,q\in\mathbb{Q}\)</span>, <span class="math inline">\([p+q]=[p]+[q]\)</span> and <span class="math inline">\([pq]=[p][q]\)</span>, and <span class="math inline">\(p&lt;q\)</span> if and only if <span class="math inline">\([p]&lt;[q]\)</span>. So the map <span class="math inline">\(q\mapsto[q]\)</span> is one-to-one, and <span class="math inline">\(\{[q]:q\in\mathbb{Q}\}\)</span> is a subfield of
+<span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The first two statements hold by <a href="#def-cauchy-operations">Definition B.2.1</a>, since the operations
+on constant sequences are the operations of <span class="math inline">\(\mathbb{Q}\)</span>. The class <span class="math inline">\([q]-[p]=[q-p]\)</span> is positive exactly when
+the constant sequence <span class="math inline">\(q-p\)</span> is at
+least some <span class="math inline">\(c&gt;0\)</span>, that is, when
+<span class="math inline">\(q-p&gt;0\)</span>. So <span class="math inline">\(p&lt;q\)</span> if and only if <span class="math inline">\([p]&lt;[q]\)</span>. In particular, <span class="math inline">\(p\ne q\)</span> implies <span class="math inline">\([p]\ne[q]\)</span>. Also <span class="math inline">\([q]^{-1}=\bigl[\frac1q\bigr]\)</span> for <span class="math inline">\(q\ne0\)</span>. So <span class="math inline">\(\{[q]:q\in\mathbb{Q}\}\)</span> contains <span class="math inline">\([0]\)</span> and <span class="math inline">\([1]\)</span> and is closed under sums, products,
+negatives and reciprocals. As in the proof of <a href="app-cuts.html#thm-cuts-contain-Q">Theorem A.5.2</a>, it is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>As in <a href="app-cuts.html#sec-cuts-rationals">Section A.5</a>, identify each
+<span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\([q]\)</span>. Then <span class="math inline">\(\mathbb{Q}\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>. In particular, if <span class="math inline">\(x\in\mathcal{C}\)</span>, then each term <span class="math inline">\(x_n\)</span> is also a real number, namely <span class="math inline">\([x_n]\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-72">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cauchy-abs">
+
+<p><strong>Exercise B.3.1.</strong> Let <span class="math inline">\(x\in\mathcal{C}\)</span>, and let <span class="math inline">\(|x|\)</span> denote the sequence <span class="math inline">\(\{|x_n|\}\)</span>. Prove that <span class="math inline">\(|x|\in\mathcal{C}\)</span> and that <span class="math inline">\(\bigl|[x]\bigr|=\bigl[|x|\bigr]\)</span>. <a aria-label="Solution for Exercise B.3.1" href="solutions-appb.html#sol-exer-cauchy-abs">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-cauchy-strict">
+
+<p><strong>Exercise B.3.2.</strong> Find <span class="math inline">\(x,y\in\mathcal{C}\)</span> with <span class="math inline">\(x_n&lt;y_n\)</span> for every <span class="math inline">\(n\)</span> but <span class="math inline">\([x]=[y]\)</span>. So <a href="#lem-cauchy-compare">Lemma B.3.4</a> cannot be improved to strict
+inequalities. <a aria-label="Hint for Exercise B.3.2" href="solutions-appb.html#sol-exer-cauchy-strict">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cauchy-construction-completeness">
+<h2>B.4 Completeness</h2>
+<p>The field <span class="math inline">\(\mathbb{R}\)</span> is now an
+ordered field containing <span class="math inline">\(\mathbb{Q}\)</span>. It remains to prove the least
+upper bound property. The proof uses bisection, as in the proof of the
+Nested Interval Theorem (<a href="ch-sequences.html#thm-nested-intervals">Theorem
+3.4.4</a>). The endpoints are rational numbers, so the sequences of
+endpoints are Cauchy sequences in <span class="math inline">\(\mathbb{Q}\)</span>, and they define a real
+number. Two lemmas come first. The first says <span class="math inline">\(\mathbb{Q}\)</span> is spread throughout <span class="math inline">\(\mathbb{R}\)</span>. The second says a Cauchy
+sequence converges to its own class.</p>
+<div class="lemmabox" id="lem-cauchy-density">
+
+<p><strong>Lemma B.4.1.</strong></p>
+<ol>
+<li><p>For every <span class="math inline">\(a\in\mathbb{R}\)</span>,
+there is an <span class="math inline">\(n\in\mathbb{N}\)</span> with
+<span class="math inline">\(a&lt;n\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(a,b\in\mathbb{R}\)</span>
+with <span class="math inline">\(a&lt;b\)</span>, there is a <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(a&lt;q&lt;b\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Let <span class="math inline">\(a=[x]\)</span>. By <a href="#lem-cauchy-Q-algebra">Lemma B.1.2</a> (1), <span class="math inline">\(x_n\le M\)</span> for all <span class="math inline">\(n\)</span>, for some rational <span class="math inline">\(M\)</span>. By <a href="#lem-cauchy-compare">Lemma
+B.3.4</a>, <span class="math inline">\(a\le M\)</span>. By <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>, <span class="math inline">\(M&lt;n\)</span> for some <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(a&lt;n\)</span>.</p>
+<p>(2) Let <span class="math inline">\(a=[x]\)</span> and <span class="math inline">\(b=[y]\)</span>. Since <span class="math inline">\(y-x\)</span> is positive, there are <span class="math inline">\(c&gt;0\)</span> and <span class="math inline">\(N_1\)</span> with <span class="math inline">\(y_n-x_n\ge c\)</span> for all <span class="math inline">\(n\ge N_1\)</span>. Choose <span class="math inline">\(N\ge N_1\)</span> with <span class="math inline">\(|x_m-x_n|&lt;\frac c4\)</span> and <span class="math inline">\(|y_m-y_n|&lt;\frac c4\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Let <span class="math inline">\(q=\frac12(x_N+y_N)\)</span>. For <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[q-x_n=\frac12(y_N-x_N)+(x_N-x_n)&gt;\frac
+c2-\frac c4=\frac c4,\]</span> and in the same way <span class="math inline">\(y_n-q=\frac12(y_N-x_N)+(y_n-y_N)&gt;\frac
+c4\)</span>. So the sequences <span class="math inline">\(q-x\)</span>
+and <span class="math inline">\(y-q\)</span> are positive. That is,
+<span class="math inline">\(a&lt;q\)</span> and <span class="math inline">\(q&lt;b\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-cauchy-converges-to-class">
+
+<p><strong>Lemma B.4.2.</strong> Let <span class="math inline">\(x\in\mathcal{C}\)</span> and <span class="math inline">\(a=[x]\)</span>. For every rational <span class="math inline">\(\varepsilon&gt;0\)</span>, there is an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|a-x_n|\le\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_m-x_n|&lt;\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Fix <span class="math inline">\(n\ge N\)</span>. The class of the sequence <span class="math inline">\(\{x_m-x_n\}_{m=1}^\infty\)</span> is <span class="math inline">\(a-x_n\)</span>. For <span class="math inline">\(m\ge N\)</span>, <span class="math inline">\(-\varepsilon&lt;x_m-x_n&lt;\varepsilon\)</span>.
+By <a href="#lem-cauchy-compare">Lemma B.3.4</a>, <span class="math inline">\(-\varepsilon\le a-x_n\le\varepsilon\)</span>. So
+<span class="math inline">\(|a-x_n|\le\varepsilon\)</span> by <a href="ch-real-numbers.html#thm-absolute-value-basic">Theorem 1.6.2</a> (4).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cauchy-lub">
+
+<p><strong>Theorem B.4.3.</strong> The ordered field <span class="math inline">\(\mathbb{R}\)</span> has the least upper bound
+property.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(E\subset\mathbb{R}\)</span> be
+nonempty and bounded above, say by <span class="math inline">\(B\)</span>. Choose <span class="math inline">\(e_0\in E\)</span>. By <a href="#lem-cauchy-density">Lemma B.4.1</a> (1), there are <span class="math inline">\(j,k\in\mathbb{N}\)</span> with <span class="math inline">\(B&lt;k\)</span> and <span class="math inline">\(-e_0&lt;j\)</span>. Let <span class="math inline">\(a_0=-j\)</span> and <span class="math inline">\(b_0=k\)</span>. Then <span class="math inline">\(a_0&lt;e_0\le B&lt;b_0\)</span>. So <span class="math inline">\(a_0\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, and <span class="math inline">\(b_0\)</span> is an upper bound of <span class="math inline">\(E\)</span>.</p>
+<p><em>Bisection.</em> Suppose rational numbers <span class="math inline">\(a_n&lt;b_n\)</span> have been chosen, where <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span> and <span class="math inline">\(b_n\)</span> is. Let <span class="math inline">\(m=\frac12(a_n+b_n)\)</span>. If <span class="math inline">\(m\)</span> is an upper bound of <span class="math inline">\(E\)</span>, let <span class="math inline">\(a_{n+1}=a_n\)</span> and <span class="math inline">\(b_{n+1}=m\)</span>. Otherwise let <span class="math inline">\(a_{n+1}=m\)</span> and <span class="math inline">\(b_{n+1}=b_n\)</span>. By induction, for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>, <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, <span class="math inline">\(b_n\)</span> is an upper bound of <span class="math inline">\(E\)</span>, <span class="math display">\[a_n\le
+a_{n+1}&lt;b_{n+1}\le b_n,\quad\text{and}\quad
+b_n-a_n=\frac{b_0-a_0}{2^n}.\]</span></p>
+<p><em>The endpoints are Cauchy sequences in <span class="math inline">\(\mathbb{Q}\)</span>.</em> Let <span class="math inline">\(d=b_0-a_0\)</span>. If <span class="math inline">\(m\ge n\ge1\)</span>, then <span class="math inline">\(a_n\le a_m&lt;b_m\le b_n\)</span>. So <span class="math inline">\(|a_m-a_n|\)</span> and <span class="math inline">\(|b_m-b_n|\)</span> are at most <span class="math inline">\(\frac d{2^n}&lt;\frac dn\)</span>, using <span class="math inline">\(2^n&gt;n\)</span> (<a href="ch-real-numbers.html#exer-two-to-n">Exercise 1.2.9</a>). Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N\varepsilon&gt;d\)</span> by <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>. Then <span class="math inline">\(|a_m-a_n|&lt;\varepsilon\)</span> and <span class="math inline">\(|b_m-b_n|&lt;\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Also <span class="math inline">\(b_n-a_n&lt;\frac dn\)</span>, so <span class="math inline">\(\{b_n-a_n\}\)</span> is null. Thus the sequences
+<span class="math inline">\(a=\{a_n\}\)</span> and <span class="math inline">\(b=\{b_n\}\)</span> are in <span class="math inline">\(\mathcal{C}\)</span>, and <span class="math inline">\(a\sim b\)</span>. Let <span class="math inline">\(s=[a]=[b]\)</span>.</p>
+<p><em>The number <span class="math inline">\(s\)</span> is an upper
+bound of <span class="math inline">\(E\)</span>.</em> Let <span class="math inline">\(e\in E\)</span>, and suppose <span class="math inline">\(e&gt;s\)</span>. By <a href="#lem-cauchy-density">Lemma B.4.1</a> (2), there is a rational
+<span class="math inline">\(\varepsilon\)</span> with <span class="math inline">\(0&lt;\varepsilon&lt;e-s\)</span>. By <a href="#lem-cauchy-converges-to-class">Lemma B.4.2</a>, there is an <span class="math inline">\(n\)</span> with <span class="math inline">\(|s-b_n|\le\varepsilon\)</span>. Then <span class="math inline">\(b_n\le s+\varepsilon&lt;e\)</span>. This
+contradicts the fact that <span class="math inline">\(b_n\)</span> is an
+upper bound of <span class="math inline">\(E\)</span>. So <span class="math inline">\(e\le s\)</span>.</p>
+<p><em>No smaller number is an upper bound of <span class="math inline">\(E\)</span>.</em> Let <span class="math inline">\(t&lt;s\)</span>. Choose a rational <span class="math inline">\(\varepsilon\)</span> with <span class="math inline">\(0&lt;\varepsilon&lt;s-t\)</span>, and an <span class="math inline">\(n\)</span> with <span class="math inline">\(|s-a_n|\le\varepsilon\)</span>. Then <span class="math inline">\(a_n\ge s-\varepsilon&gt;t\)</span>. Since <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, some <span class="math inline">\(e\in
+E\)</span> has <span class="math inline">\(e&gt;a_n&gt;t\)</span>. So
+<span class="math inline">\(t\)</span> is not an upper bound of <span class="math inline">\(E\)</span>. Therefore <span class="math inline">\(s=\sup E\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="proofbox">
+<p><em>Second proof of <a href="ch-real-numbers.html#thm-existence-of-R">Theorem
+1.7.2</a>.</em></p>
+<p>By <a href="#thm-cauchy-ordered-field">Theorem B.3.3</a>, <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. By <a href="#thm-cauchy-lub">Theorem B.4.3</a>, it has the least upper bound
+property. By <a href="#thm-cauchy-contain-Q">Theorem B.3.5</a>, after
+each <span class="math inline">\(q\in\mathbb{Q}\)</span> is identified
+with <span class="math inline">\([q]\)</span>, <span class="math inline">\(\mathbb{Q}\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-73">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cauchy-complete-direct">
+
+<p><strong>Exercise B.4.1.</strong> Let <span class="math inline">\(\{a_k\}\)</span> be a Cauchy sequence in <span class="math inline">\(\mathbb{R}\)</span>, in the sense of <a href="ch-sequences.html#def-cauchy-sequence">Definition 3.5.1</a>. Prove directly that it
+converges, without the least upper bound property. Choose <span class="math inline">\(q_k\in\mathbb{Q}\)</span> with <span class="math inline">\(|a_k-q_k|&lt;\frac1k\)</span>, show that <span class="math inline">\(q=\{q_k\}\)</span> is in <span class="math inline">\(\mathcal{C}\)</span>, and show that <span class="math inline">\(a_k\to[q]\)</span>. <a aria-label="Solution for Exercise B.4.1" href="solutions-appb.html#sol-exer-cauchy-complete-direct">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-increasing-rationals">
+
+<p><strong>Exercise B.4.2.</strong> Prove that every <span class="math inline">\(a\in\mathbb{R}\)</span> is the limit of a strictly
+increasing sequence of rational numbers. <a aria-label="Hint for Exercise B.4.2" href="solutions-appb.html#sol-exer-increasing-rationals">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cauchy-construction-uniqueness">
+<h2>B.5 Uniqueness of the Real
+Numbers<sup>*</sup></h2>
+<p>This section can be skipped. Nothing else depends on it.</p>
+<p>Appendices <a href="app-cuts.html">A</a> and <a href="#app-cauchy">B</a>
+build two different objects. A real number is a set of rational numbers
+in one, and a class of sequences of rational numbers in the other. This
+section shows that the difference does not matter. Any two ordered
+fields with the least upper bound property are copies of each other.
+Every sum, product and inequality in one matches a sum, product and
+inequality in the other. So <a href="ch-real-numbers.html#thm-existence-of-R">Theorem
+1.7.2</a> describes <span class="math inline">\(\mathbb{R}\)</span>
+completely, and it makes sense to speak of the real numbers.</p>
+<p>First, every ordered field contains a copy of <span class="math inline">\(\mathbb{Q}\)</span>. For an ordered field <span class="math inline">\(\mathbb{F}\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(n_\mathbb{F}=1+1+\cdots+1\)</span>, with <span class="math inline">\(n\)</span> terms. That is, <span class="math inline">\(1_\mathbb{F}=1\)</span> and <span class="math inline">\((n+1)_\mathbb{F}=n_\mathbb{F}+1\)</span>. Let
+<span class="math inline">\(0_\mathbb{F}=0\)</span> and <span class="math inline">\((-n)_\mathbb{F}=-n_\mathbb{F}\)</span>. This
+defines <span class="math inline">\(m_\mathbb{F}\)</span> for every
+<span class="math inline">\(m\in\mathbb{Z}\)</span>.</p>
+<div class="lemmabox" id="lem-Q-in-ordered-field">
+
+<p><strong>Lemma B.5.1.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field. For <span class="math inline">\(m\in\mathbb{Z}\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>, define <span class="math inline">\(\iota_\mathbb{F}\bigl(\frac
+mn\bigr)=m_\mathbb{F}\,n_\mathbb{F}^{-1}\)</span>. Then <span class="math inline">\(\iota_\mathbb{F}:\mathbb{Q}\to\mathbb{F}\)</span>
+is well defined, and for all <span class="math inline">\(p,q\in\mathbb{Q}\)</span>, <span class="math display">\[\iota_\mathbb{F}(p+q)=\iota_\mathbb{F}(p)+\iota_\mathbb{F}(q),\quad\iota_\mathbb{F}(pq)=\iota_\mathbb{F}(p)\,\iota_\mathbb{F}(q),\quad\text{and}\quad
+p&lt;q\iff\iota_\mathbb{F}(p)&lt;\iota_\mathbb{F}(q).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>For all <span class="math inline">\(m,k\in\mathbb{Z}\)</span>, <span class="math inline">\((m+k)_\mathbb{F}=m_\mathbb{F}+k_\mathbb{F}\)</span>
+and <span class="math inline">\((mk)_\mathbb{F}=m_\mathbb{F}\,k_\mathbb{F}\)</span>,
+and <span class="math inline">\(m&lt;k\)</span> implies <span class="math inline">\(m_\mathbb{F}&lt;k_\mathbb{F}\)</span>. These are
+proved by induction, in <a href="#exer-Q-in-ordered-field">Exercise
+B.5.1</a>. In particular, <span class="math inline">\(n_\mathbb{F}&gt;0\)</span> for <span class="math inline">\(n\in\mathbb{N}\)</span>, so <span class="math inline">\(n_\mathbb{F}^{-1}\)</span> exists.</p>
+<p>If <span class="math inline">\(\frac mn=\frac jk\)</span> with <span class="math inline">\(n,k\in\mathbb{N}\)</span>, then <span class="math inline">\(mk=nj\)</span>. So <span class="math inline">\(m_\mathbb{F}\,k_\mathbb{F}=n_\mathbb{F}\,j_\mathbb{F}\)</span>,
+and dividing by <span class="math inline">\(n_\mathbb{F}\,k_\mathbb{F}\)</span> gives <span class="math inline">\(m_\mathbb{F}\,n_\mathbb{F}^{-1}=j_\mathbb{F}\,k_\mathbb{F}^{-1}\)</span>.
+So <span class="math inline">\(\iota_\mathbb{F}\)</span> is well
+defined. For sums, <span class="math display">\[\iota_\mathbb{F}\Bigl(\frac mn+\frac
+jk\Bigr)=\iota_\mathbb{F}\Bigl(\frac{mk+nj}{nk}\Bigr)=\frac{m_\mathbb{F}\,k_\mathbb{F}+n_\mathbb{F}\,j_\mathbb{F}}{n_\mathbb{F}\,k_\mathbb{F}}=\frac{m_\mathbb{F}}{n_\mathbb{F}}+\frac{j_\mathbb{F}}{k_\mathbb{F}}.\]</span>
+Products are similar. For the order, <span class="math inline">\(\frac
+mn&lt;\frac jk\)</span> if and only if <span class="math inline">\(mk&lt;nj\)</span>, which holds if and only if
+<span class="math inline">\(m_\mathbb{F}\,k_\mathbb{F}&lt;n_\mathbb{F}\,j_\mathbb{F}\)</span>.
+Since <span class="math inline">\(n_\mathbb{F}\,k_\mathbb{F}&gt;0\)</span>, this
+holds if and only if <span class="math inline">\(\frac{m_\mathbb{F}}{n_\mathbb{F}}&lt;\frac{j_\mathbb{F}}{k_\mathbb{F}}\)</span>,
+by <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.5.8</a> (3) and
+(6).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>If <span class="math inline">\(\mathbb{F}\)</span> also has the least
+upper bound property, then the proofs of the Archimedean Principle (<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a>), of <a href="ch-real-numbers.html#thm-floor">Theorem 1.7.9</a>, and of the density of the rational
+numbers (<a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>) work in <span class="math inline">\(\mathbb{F}\)</span> word for word. They use only
+the axioms of an ordered field, the least upper bound property and the
+Well-Ordering Principle, with each integer <span class="math inline">\(n\)</span> read as <span class="math inline">\(n_\mathbb{F}\)</span>. So for all <span class="math inline">\(x,y\in\mathbb{F}\)</span> with <span class="math inline">\(x&lt;y\)</span>, there is a <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(x&lt;\iota_\mathbb{F}(q)&lt;y\)</span>. It follows
+that two elements <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> of <span class="math inline">\(\mathbb{F}\)</span> are equal if and only if <span class="math display">\[\{q\in\mathbb{Q}:\iota_\mathbb{F}(q)&lt;x\}=\{q\in\mathbb{Q}:\iota_\mathbb{F}(q)&lt;y\}.\]</span>
+Indeed, if <span class="math inline">\(x&lt;y\)</span>, a rational
+number between them belongs to the second set and not the first. So an
+element of <span class="math inline">\(\mathbb{F}\)</span> is determined
+by the rational numbers below it.</p>
+<div class="theorembox" id="thm-R-unique">
+
+<p><strong>Theorem B.5.2.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> and <span class="math inline">\(\mathbb{G}\)</span> be ordered fields with the
+least upper bound property. Then there is a one-to-one function <span class="math inline">\(\varphi\)</span> from <span class="math inline">\(\mathbb{F}\)</span> onto <span class="math inline">\(\mathbb{G}\)</span> such that for all <span class="math inline">\(x,y\in\mathbb{F}\)</span>, <span class="math display">\[\varphi(x+y)=\varphi(x)+\varphi(y),\quad\varphi(xy)=\varphi(x)\varphi(y),\quad\text{and}\quad
+x&lt;y\iff\varphi(x)&lt;\varphi(y).\]</span> Also <span class="math inline">\(\varphi(\iota_\mathbb{F}(q))=\iota_{\mathbb{G}}(q)\)</span>
+for every <span class="math inline">\(q\in\mathbb{Q}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Write <span class="math inline">\(\iota=\iota_\mathbb{F}\)</span> and
+<span class="math inline">\(\kappa=\iota_{\mathbb{G}}\)</span>. For
+<span class="math inline">\(x\in\mathbb{F}\)</span>, let <span class="math inline">\(C(x)=\{q\in\mathbb{Q}:\iota(q)&lt;x\}\)</span>. By
+the Archimedean Principle in <span class="math inline">\(\mathbb{F}\)</span>, there are <span class="math inline">\(j,k\in\mathbb{N}\)</span> with <span class="math inline">\(-j_\mathbb{F}&lt;x&lt;k_\mathbb{F}\)</span>. So
+<span class="math inline">\(-j\in C(x)\)</span>, and every <span class="math inline">\(q\in C(x)\)</span> has <span class="math inline">\(q&lt;k\)</span>, so <span class="math inline">\(\kappa(q)&lt;k_{\mathbb{G}}\)</span>. Define <span class="math display">\[\varphi(x)=\sup\{\kappa(q):q\in C(x)\},\]</span>
+which exists in <span class="math inline">\(\mathbb{G}\)</span> by the
+least upper bound property.</p>
+<p><em>Step 1. For <span class="math inline">\(q\in\mathbb{Q}\)</span>,
+<span class="math inline">\(\kappa(q)&lt;\varphi(x)\)</span> if and only
+if <span class="math inline">\(\iota(q)&lt;x\)</span>.</em> Suppose
+<span class="math inline">\(\iota(q)&lt;x\)</span>. By density in <span class="math inline">\(\mathbb{F}\)</span>, there is an <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(\iota(q)&lt;\iota(r)&lt;x\)</span>. Then <span class="math inline">\(r\in C(x)\)</span> and <span class="math inline">\(q&lt;r\)</span>, so <span class="math inline">\(\kappa(q)&lt;\kappa(r)\le\varphi(x)\)</span>.
+Conversely, suppose <span class="math inline">\(\kappa(q)&lt;\varphi(x)\)</span>. Then <span class="math inline">\(\kappa(q)\)</span> is not an upper bound of <span class="math inline">\(\{\kappa(r):r\in C(x)\}\)</span>. So <span class="math inline">\(\kappa(q)&lt;\kappa(r)\)</span> for some <span class="math inline">\(r\in C(x)\)</span>. Then <span class="math inline">\(q&lt;r\)</span>, and <span class="math inline">\(\iota(q)&lt;\iota(r)&lt;x\)</span>.</p>
+<p><em>Step 2. Rational numbers.</em> For <span class="math inline">\(p,q\in\mathbb{Q}\)</span>, Step 1 gives <span class="math inline">\(\kappa(q)&lt;\varphi(\iota(p))\)</span> if and
+only if <span class="math inline">\(\iota(q)&lt;\iota(p)\)</span>, that
+is, <span class="math inline">\(q&lt;p\)</span>, that is, <span class="math inline">\(\kappa(q)&lt;\kappa(p)\)</span>. So <span class="math inline">\(\varphi(\iota(p))\)</span> and <span class="math inline">\(\kappa(p)\)</span> have the same rational numbers
+below them, and <span class="math inline">\(\varphi(\iota(p))=\kappa(p)\)</span>. In
+particular <span class="math inline">\(\varphi(0)=0\)</span>.</p>
+<p><em>Step 3. Order.</em> Let <span class="math inline">\(x&lt;y\)</span>. By density in <span class="math inline">\(\mathbb{F}\)</span>, there is a <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(x&lt;\iota(q)&lt;y\)</span>. By Step 1, <span class="math inline">\(\kappa(q)&lt;\varphi(y)\)</span>, and <span class="math inline">\(\kappa(q)\not&lt;\varphi(x)\)</span>. So <span class="math inline">\(\varphi(x)\le\kappa(q)&lt;\varphi(y)\)</span>.
+Conversely, if <span class="math inline">\(\varphi(x)&lt;\varphi(y)\)</span>, then <span class="math inline">\(x&lt;y\)</span>, since <span class="math inline">\(x=y\)</span> and <span class="math inline">\(y&lt;x\)</span> are ruled out. In particular,
+<span class="math inline">\(\varphi\)</span> is one-to-one.</p>
+<p><em>Step 4. Onto.</em> Define <span class="math inline">\(\psi:\mathbb{G}\to\mathbb{F}\)</span> in the same
+way, with the roles of <span class="math inline">\(\mathbb{F}\)</span>
+and <span class="math inline">\(\mathbb{G}\)</span> exchanged. By Step 1
+for <span class="math inline">\(\psi\)</span> and then for <span class="math inline">\(\varphi\)</span>, for every <span class="math inline">\(q\in\mathbb{Q}\)</span>, <span class="math display">\[\iota(q)&lt;\psi(\varphi(x))\iff\kappa(q)&lt;\varphi(x)\iff\iota(q)&lt;x.\]</span>
+So <span class="math inline">\(\psi(\varphi(x))=x\)</span> for every
+<span class="math inline">\(x\in\mathbb{F}\)</span>. In the same way,
+<span class="math inline">\(\varphi(\psi(g))=g\)</span> for every <span class="math inline">\(g\in\mathbb{G}\)</span>. So <span class="math inline">\(\varphi\)</span> maps <span class="math inline">\(\mathbb{F}\)</span> onto <span class="math inline">\(\mathbb{G}\)</span>.</p>
+<p><em>Step 5. Sums.</em> Let <span class="math inline">\(x,y\in\mathbb{F}\)</span> and <span class="math inline">\(q\in\mathbb{Q}\)</span>. Suppose <span class="math inline">\(\kappa(q)&lt;\varphi(x)+\varphi(y)\)</span>. Then
+<span class="math inline">\(\kappa(q)-\varphi(y)&lt;\varphi(x)\)</span>.
+By density in <span class="math inline">\(\mathbb{G}\)</span>, there is
+an <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(\kappa(q)-\varphi(y)&lt;\kappa(r)&lt;\varphi(x)\)</span>.
+Then <span class="math inline">\(\kappa(q-r)&lt;\varphi(y)\)</span> and
+<span class="math inline">\(\kappa(r)&lt;\varphi(x)\)</span>. By Step 1,
+<span class="math inline">\(\iota(q-r)&lt;y\)</span> and <span class="math inline">\(\iota(r)&lt;x\)</span>. Adding, <span class="math inline">\(\iota(q)&lt;x+y\)</span>, and so <span class="math inline">\(\kappa(q)&lt;\varphi(x+y)\)</span> by Step 1. The
+same argument in <span class="math inline">\(\mathbb{F}\)</span> shows
+that <span class="math inline">\(\kappa(q)&lt;\varphi(x+y)\)</span>
+implies <span class="math inline">\(\kappa(q)&lt;\varphi(x)+\varphi(y)\)</span>. So
+<span class="math inline">\(\varphi(x+y)=\varphi(x)+\varphi(y)\)</span>.
+In particular, <span class="math inline">\(\varphi(-x)=-\varphi(x)\)</span>, since <span class="math inline">\(\varphi(x)+\varphi(-x)=\varphi(0)=0\)</span>.</p>
+<p><em>Step 6. Products.</em> First let <span class="math inline">\(x,y&gt;0\)</span>. Then <span class="math inline">\(\varphi(x),\varphi(y)&gt;0\)</span> by Steps 2 and
+3. Let <span class="math inline">\(q\in\mathbb{Q}\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(\kappa(q)\le0&lt;\varphi(x)\varphi(y)\)</span>,
+and <span class="math inline">\(\iota(q)\le0&lt;xy\)</span>, so <span class="math inline">\(\kappa(q)&lt;\varphi(xy)\)</span>. Now let <span class="math inline">\(q&gt;0\)</span>, and suppose <span class="math inline">\(\kappa(q)&lt;\varphi(x)\varphi(y)\)</span>. Then
+<span class="math inline">\(0&lt;\kappa(q)\varphi(y)^{-1}&lt;\varphi(x)\)</span>.
+By density in <span class="math inline">\(\mathbb{G}\)</span>, there is
+an <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(\kappa(q)\varphi(y)^{-1}&lt;\kappa(r)&lt;\varphi(x)\)</span>.
+Then <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(\kappa(r)&lt;\varphi(x)\)</span> and <span class="math inline">\(\kappa\bigl(\frac qr\bigr)&lt;\varphi(y)\)</span>.
+By Step 1, <span class="math inline">\(0&lt;\iota(r)&lt;x\)</span> and
+<span class="math inline">\(0&lt;\iota\bigl(\frac
+qr\bigr)&lt;y\)</span>. Multiplying, <span class="math inline">\(\iota(q)&lt;xy\)</span>, so <span class="math inline">\(\kappa(q)&lt;\varphi(xy)\)</span>. The same
+argument in <span class="math inline">\(\mathbb{F}\)</span> gives the
+converse. So <span class="math inline">\(\varphi(xy)=\varphi(x)\varphi(y)\)</span> when
+<span class="math inline">\(x,y&gt;0\)</span>. The other cases follow
+from this one, since <span class="math inline">\(\varphi(0)=0\)</span>
+and <span class="math inline">\(\varphi(-x)=-\varphi(x)\)</span>. For
+example, if <span class="math inline">\(x&lt;0&lt;y\)</span>, then <span class="math inline">\(\varphi(xy)=-\varphi((-x)y)=-\varphi(-x)\varphi(y)=\varphi(x)\varphi(y)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Applied to the ordered fields of Appendices <a href="app-cuts.html">A</a>
+and <a href="#app-cauchy">B</a>, <a href="#thm-R-unique">Theorem
+B.5.2</a> matches each cut with a class of Cauchy sequences. The cut of
+rational numbers below <span class="math inline">\(\sqrt2\)</span> is
+matched with the class of every sequence of rational numbers that
+converges to <span class="math inline">\(\sqrt2\)</span>. Since the two
+constructions give copies of the same ordered field, the rest of the
+book never needs to know which one was used.</p>
+<section class="level5 unnumbered" id="exercises-74">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-Q-in-ordered-field">
+
+<p><strong>Exercise B.5.1.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field. Prove
+that for all <span class="math inline">\(m,k\in\mathbb{Z}\)</span>,
+<span class="math inline">\((m+k)_\mathbb{F}=m_\mathbb{F}+k_\mathbb{F}\)</span>,
+<span class="math inline">\((mk)_\mathbb{F}=m_\mathbb{F}\,k_\mathbb{F}\)</span>,
+and <span class="math inline">\(m&lt;k\)</span> implies <span class="math inline">\(m_\mathbb{F}&lt;k_\mathbb{F}\)</span>. <a aria-label="Solution for Exercise B.5.1" href="solutions-appb.html#sol-exer-Q-in-ordered-field">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-R-automorphism">
+
+<p><strong>Exercise B.5.2.</strong> Let <span class="math inline">\(\varphi:\mathbb{R}\to\mathbb{R}\)</span> be
+one-to-one and onto, with <span class="math inline">\(\varphi(x+y)=\varphi(x)+\varphi(y)\)</span> and
+<span class="math inline">\(\varphi(xy)=\varphi(x)\varphi(y)\)</span>
+for all <span class="math inline">\(x,y\in\mathbb{R}\)</span>. Prove
+that <span class="math inline">\(\varphi(x)=x\)</span> for every <span class="math inline">\(x\in\mathbb{R}\)</span>. First show that <span class="math inline">\(\varphi(q)=q\)</span> for <span class="math inline">\(q\in\mathbb{Q}\)</span>. Then use <a href="ch-real-numbers.html#thm-nth-root">Theorem 1.7.13</a> to show that <span class="math inline">\(\varphi\)</span> preserves order. <a aria-label="Hint for Exercise B.5.2" href="solutions-appb.html#sol-exer-R-automorphism">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-18">
+<h2>Notes</h2>
+<p>Charles Méray gave a construction of the real numbers from Cauchy
+sequences of rational numbers in 1869. Cantor gave his in 1872, in a
+paper on trigonometric series [<a href="bibliography.html#bib-cantor1872">8</a>], the
+same year as Dedekind’s cuts. Eduard Heine published Cantor’s
+construction, with credit to Cantor, in the same year [<a href="bibliography.html#bib-heine1872">37</a>]. The same idea, applied to an arbitrary
+metric space instead of <span class="math inline">\(\mathbb{Q}\)</span>,
+gives the completion of a metric space. <a href="#thm-R-unique">Theorem
+B.5.2</a> shows that the least upper bound property, together with the
+axioms of an ordered field, describes <span class="math inline">\(\mathbb{R}\)</span> completely. Edward V.
+Huntington gave one of the first such complete sets of axioms in
+1903.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="app-cuts.html"><span class="dir">Previous</span> Appendix A. Construction of the Real Numbers by Cuts</a>
+<a rel="up" href="part-appendices.html"><span class="dir">Up</span> Appendices</a>
+<a rel="next" href="app-solutions.html"><span class="dir">Next</span> Appendix C. Hints and Solutions</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

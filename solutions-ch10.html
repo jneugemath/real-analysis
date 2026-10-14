@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 10. Series of Real Numbers | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch09.html"><span class="dir">Previous</span> Solutions for Chapter 9. Integrals</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch11.html"><span class="dir">Next</span> Solutions for Chapter 11. Sequences and Series of Functions</a>
+</nav>
+<main id="main">
+<article id="solutions-ch10">
+<h1>Solutions for Chapter 10. Series of Real Numbers</h1>
+<div class="solutionbox" id="sol-exer-nth-term-test">
+
+<p><strong><a href="ch-series.html#exer-nth-term-test">Exercise 10.2.1</a>.</strong>
+<em>Hint.</em> Write <span class="math inline">\(a_k=S_k-S_{k-1}\)</span>, where <span class="math inline">\(S_k\)</span> is the <span class="math inline">\(k\)</span>th partial sum.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(s_n=\sum_{k=1}^na_k\)</span>, and suppose <span class="math inline">\(s_n\to s\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. There is an <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(|s_n-s|&lt;\frac\varepsilon 2\)</span> for all
+<span class="math inline">\(n\ge N\)</span>. Let <span class="math inline">\(k\ge N+1\)</span>. Then <span class="math inline">\(k-1\ge N\)</span>, and <span class="math inline">\(a_k=s_k-s_{k-1}\)</span>. So <span class="math display">\[|a_k|=|(s_k-s)+(s-s_{k-1})|\le|s_k-s|+|s_{k-1}-s|&lt;\frac\varepsilon
+2+\frac\varepsilon 2=\varepsilon.\]</span> So <span class="math inline">\(a_k\to0\)</span>. The second statement is the
+contrapositive of the first.</p>
+</div>
+<div class="solutionbox" id="sol-exer-limit-comparison-series">
+
+<p><strong><a href="ch-series.html#exer-limit-comparison-series">Exercise
+10.2.3</a>.</strong> <em>Hint.</em> In (1), <span class="math inline">\(\frac L2b_k&lt;a_k&lt;\frac{3L}2b_k\)</span> for
+large <span class="math inline">\(k\)</span>. In (2), <span class="math inline">\(a_k&lt;b_k\)</span> for large <span class="math inline">\(k\)</span>. Use <a href="ch-series.html#thm-comparison-test-series">Theorem 10.2.7</a>.</p>
+<p><em>Solution.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(\varepsilon=\frac L2\)</span>.
+There is a <span class="math inline">\(K\in\mathbb{N}\)</span> such that
+<span class="math inline">\(\left|\frac{a_k}{b_k}-L\right|&lt;\frac
+L2\)</span> for all <span class="math inline">\(k\ge K\)</span>. Since
+<span class="math inline">\(b_k&gt;0\)</span>, this gives <span class="math display">\[\frac L2b_k&lt;a_k&lt;\frac{3L}2b_k\quad\text{for
+all }k\ge K.\]</span> If <span class="math inline">\(\sum b_k\)</span>
+converges, then <span class="math inline">\(\sum a_k\)</span> converges
+by the Comparison Test (<a href="ch-series.html#thm-comparison-test-series">Theorem
+10.2.7</a>), with <span class="math inline">\(M=\frac{3L}2\)</span>. If
+<span class="math inline">\(\sum a_k\)</span> converges, then <span class="math inline">\(\sum b_k\)</span> converges by the Comparison
+Test, since <span class="math inline">\(b_k&lt;\frac2La_k\)</span> for
+all <span class="math inline">\(k\ge K\)</span>.</p></li>
+<li><p>With <span class="math inline">\(\varepsilon=1\)</span>, there is
+a <span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(\frac{a_k}{b_k}&lt;1\)</span>, that is, <span class="math inline">\(0&lt;a_k&lt;b_k\)</span>, for all <span class="math inline">\(k\ge K\)</span>. If <span class="math inline">\(\sum b_k\)</span> converges, then <span class="math inline">\(\sum a_k\)</span> converges by the Comparison
+Test, with <span class="math inline">\(M=1\)</span>.</p></li>
+</ol>
+</div>
+<div class="solutionbox" id="sol-exer-root-test-inconclusive">
+
+<p><strong><a href="ch-series.html#exer-root-test-inconclusive">Exercise
+10.2.4</a>.</strong> <em>Hint.</em> Use the series <span class="math inline">\(\sum\frac1k\)</span> and <span class="math inline">\(\sum\frac1{k^2}\)</span>. To find <span class="math inline">\(\limsup\sqrt[k]{a_k}\)</span>, first show <span class="math inline">\(\sqrt[k]{k}\to1\)</span>. One way is to write
+<span class="math inline">\(\sqrt[k]{k}=1+h_k\)</span> with <span class="math inline">\(h_k\ge0\)</span> and use the Binomial Theorem to
+get <span class="math inline">\(k\ge\binom{k}{2}h_k^2\)</span> for <span class="math inline">\(k\ge2\)</span>.</p>
+<p><em>Solution.</em> First, <span class="math inline">\(\sqrt[k]{k}\to1\)</span>. Since <span class="math inline">\(k\ge1\)</span>, <span class="math inline">\(\sqrt[k]{k}\ge1\)</span>. Write <span class="math inline">\(\sqrt[k]{k}=1+h_k\)</span> with <span class="math inline">\(h_k\ge0\)</span>. For <span class="math inline">\(k\ge2\)</span>, every term in the Binomial Theorem
+(<a href="ch-integrals.html#exer-binomial">Exercise 9.3.4</a>) is nonnegative. So <span class="math display">\[k=(1+h_k)^k\ge\binom
+k2h_k^2=\frac{k(k-1)}2h_k^2.\]</span> So <span class="math inline">\(0\le h_k^2\le\frac2{k-1}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. If <span class="math inline">\(k&gt;1+\frac2{\varepsilon^2}\)</span>, then <span class="math inline">\(h_k^2&lt;\varepsilon^2\)</span>, so <span class="math inline">\(h_k&lt;\varepsilon\)</span>. So <span class="math inline">\(h_k\to0\)</span>, and <span class="math inline">\(\sqrt[k]{k}\to1\)</span>.</p>
+<p>Now let <span class="math inline">\(a_k=\frac1k\)</span>. Then <span class="math inline">\(\sqrt[k]{a_k}=\frac{1}{\sqrt[k]{k}}\to1\)</span>.
+Let <span class="math inline">\(a_k=\frac1{k^2}\)</span>. Then <span class="math inline">\(\sqrt[k]{a_k}=\left(\frac{1}{\sqrt[k]{k}}\right)^2\to1\)</span>.
+In both cases the sequence <span class="math inline">\(\{\sqrt[k]{a_k}\}\)</span> converges to <span class="math inline">\(1\)</span>, so <span class="math inline">\(\alpha=\limsup\sqrt[k]{a_k}=1\)</span> by <a href="ch-sequences.html#cor-limsup-equals-liminf">Corollary 3.6.14</a>. But <span class="math inline">\(\sum\frac1k\)</span> diverges and <span class="math inline">\(\sum\frac1{k^2}\)</span> converges, by <a href="ch-series.html#ex-p-series">Example 10.2.11</a>. So when <span class="math inline">\(\alpha=1\)</span>, the series may converge or
+diverge, and the Root Test gives no information.</p>
+</div>
+<div class="solutionbox" id="sol-exer-ast-decreasing">
+
+<p><strong><a href="ch-series.html#exer-ast-decreasing">Exercise 10.2.6</a>.</strong>
+<em>Hint.</em> Let <span class="math inline">\(b_k=\frac1k\)</span> for
+even <span class="math inline">\(k\)</span> and <span class="math inline">\(b_k=\frac1{k^2}\)</span> for odd <span class="math inline">\(k\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-abel-test">
+
+<p><strong><a href="ch-series.html#exer-abel-test">Exercise 10.2.7</a>.</strong>
+<em>Hint.</em> If <span class="math inline">\(\{b_k\}\)</span> is
+decreasing, let <span class="math inline">\(b=\lim_{k\to\infty}b_k\)</span> and apply the
+Dirichlet Test to <span class="math inline">\(\sum
+a_k(b_k-b)\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-harmonic-grouping">
+
+<p><strong><a href="ch-series.html#exer-harmonic-grouping">Exercise
+10.2.8</a>.</strong> <em>Hint.</em> Each group <span class="math inline">\(\frac{1}{2^{j-1}+1}+\cdots+\frac{1}{2^j}\)</span>
+has <span class="math inline">\(2^{j-1}\)</span> terms, each at least
+<span class="math inline">\(\frac1{2^j}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-trig-cos">
+
+<p><strong><a href="ch-series.html#exer-trig-cos">Exercise 10.2.9</a>.</strong>
+<em>Hint.</em> Use the identity <span class="math inline">\(2\sin\frac
+t2\cos
+kt=\sin\bigl((k+\frac12)t\bigr)-\sin\bigl((k-\frac12)t\bigr)\)</span>.</p>
+<p><em>Solution.</em> Since <span class="math inline">\(\{b_k\}\)</span>
+decreases to <span class="math inline">\(0\)</span>, <span class="math inline">\(b_k\ge0\)</span> for all <span class="math inline">\(k\)</span>. Let <span class="math inline">\(t\ne2p\pi\)</span> for every <span class="math inline">\(p\in\mathbb{Z}\)</span>. Then <span class="math inline">\(\frac t2\)</span> is not a multiple of <span class="math inline">\(\pi\)</span>, so <span class="math inline">\(\sin\frac t2\ne0\)</span>. Let <span class="math inline">\(A_n=\sum_{k=1}^n\cos kt\)</span>. By the identity
+<span class="math inline">\(\sin A\cos
+B=\frac12[\sin(A+B)+\sin(A-B)]\)</span>, with <span class="math inline">\(A=\frac t2\)</span> and <span class="math inline">\(B=kt\)</span>, <span class="math display">\[2\sin\frac t2\cos
+kt=\sin\left(\left(k+\frac12\right)t\right)-\sin\left(\left(k-\frac12\right)t\right).\]</span>
+Adding over <span class="math inline">\(k=1,\dots,n\)</span>, the sum
+telescopes. So <span class="math display">\[2\sin\frac
+t2\,A_n=\sin\left(\left(n+\frac12\right)t\right)-\sin\frac t2,
+\quad\text{and}\quad
+|A_n|\le\frac{2}{2\left|\sin\frac t2\right|}=\frac{1}{\left|\sin\frac
+t2\right|}.\]</span> So the partial sums <span class="math inline">\(A_n\)</span> are bounded. By the Dirichlet Test
+(<a href="ch-series.html#thm-dirichlet-test">Theorem 10.2.15</a>) with <span class="math inline">\(a_k=\cos kt\)</span>, <span class="math inline">\(\sum b_k\cos kt\)</span> converges.</p>
+</div>
+<div class="solutionbox" id="sol-exer-series-practice">
+
+<p><strong><a href="ch-series.html#exer-series-practice">Exercise
+10.2.10</a>.</strong> <em>Hint.</em> (a) Ratio Test. (c) Integral Test.
+(d) Root Test. (e) and (f) Limit Comparison Test, with <span class="math inline">\(\frac1k\)</span> and with <span class="math inline">\(\frac1{k^2}\)</span>. (g) Alternating Series Test.
+(b) Ratio Test. Use <span class="math inline">\(\left(1+\frac1k\right)^k\to e\)</span> from <a href="ch-integrals.html#ex-exp-ln">Example 9.3.8</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-telescoping-bound-absolute">
+
+<p><strong><a href="ch-series.html#exer-telescoping-bound-absolute">Exercise
+10.3.1</a>.</strong> <em>Hint.</em> The partial sums of <span class="math inline">\(\sum(b_k-b_{k+1})\)</span> are <span class="math inline">\(b_1-b_{n+1}\)</span>. Use the Comparison Test.</p>
+</div>
+<div class="solutionbox" id="sol-exer-kp-ak">
+
+<p><strong><a href="ch-series.html#exer-kp-ak">Exercise 10.3.2</a>.</strong>
+<em>Hint.</em> For large <span class="math inline">\(k\)</span>, <span class="math inline">\(|k^pa_k|\le|A|+1\)</span>. Compare with <span class="math inline">\(\sum\frac1{k^p}\)</span>.</p>
+<p><em>Solution.</em> With <span class="math inline">\(\varepsilon=1\)</span>, there is a <span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(|k^pa_k-A|&lt;1\)</span> for all <span class="math inline">\(k\ge K\)</span>. Then <span class="math inline">\(|k^pa_k|&lt;|A|+1\)</span>, so <span class="math display">\[0\le|a_k|\le\frac{|A|+1}{k^p}\quad\text{for all
+}k\ge K.\]</span> Since <span class="math inline">\(p&gt;1\)</span>,
+<span class="math inline">\(\sum\frac1{k^p}\)</span> converges (<a href="ch-series.html#ex-p-series">Example 10.2.11</a>). By the Comparison Test (<a href="ch-series.html#thm-comparison-test-series">Theorem 10.2.7</a>) with <span class="math inline">\(M=|A|+1\)</span>, <span class="math inline">\(\sum|a_k|\)</span> converges. So <span class="math inline">\(\sum a_k\)</span> converges absolutely.</p>
+</div>
+<div class="solutionbox" id="sol-exer-squares-absolute">
+
+<p><strong><a href="ch-series.html#exer-squares-absolute">Exercise
+10.3.3</a>.</strong> <em>Hint.</em> Since <span class="math inline">\(a_k\to0\)</span>, eventually <span class="math inline">\(|a_k|\le1\)</span> and <span class="math inline">\(a_k^2\le|a_k|\)</span>. For the example, try <span class="math inline">\(a_k=\frac{(-1)^k}{\sqrt k}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-positive-negative-parts">
+
+<p><strong><a href="ch-series.html#exer-positive-negative-parts">Exercise
+10.3.4</a>.</strong> <em>Hint.</em> Use <span class="math inline">\(a_k^++a_k^-=|a_k|\)</span>, <span class="math inline">\(a_k^+-a_k^-=a_k\)</span> and <span class="math inline">\(0\le a_k^\pm\le|a_k|\)</span>.</p>
+<p><em>Solution.</em> If <span class="math inline">\(a_k\ge0\)</span>,
+then <span class="math inline">\(a_k^+=a_k\)</span> and <span class="math inline">\(a_k^-=0\)</span>. If <span class="math inline">\(a_k&lt;0\)</span>, then <span class="math inline">\(a_k^+=0\)</span> and <span class="math inline">\(a_k^-=-a_k\)</span>. In both cases, <span class="math display">\[a_k^++a_k^-=|a_k|,\quad
+a_k^+-a_k^-=a_k,\quad\text{and}\quad0\le a_k^\pm\le|a_k|.\]</span></p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(\sum|a_k|\)</span> converges. Since <span class="math inline">\(0\le a_k^+\le|a_k|\)</span>, <span class="math inline">\(\sum a_k^+\)</span> converges by the Comparison
+Test (<a href="ch-series.html#thm-comparison-test-series">Theorem 10.2.7</a>). In the
+same way, <span class="math inline">\(\sum a_k^-\)</span> converges.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(\sum a_k^+\)</span> and <span class="math inline">\(\sum a_k^-\)</span> converge. By <a href="ch-series.html#thm-series-linear">Theorem 10.2.4</a> (2), <span class="math inline">\(\sum(a_k^++a_k^-)=\sum|a_k|\)</span> converges. So
+<span class="math inline">\(\sum a_k\)</span> converges absolutely.</p>
+<p>In this case, by <a href="ch-series.html#thm-series-linear">Theorem 10.2.4</a> (1)
+with <span class="math inline">\(c=-1\)</span> and <a href="ch-series.html#thm-series-linear">Theorem 10.2.4</a> (2), <span class="math display">\[\sum a_k=\sum\bigl(a_k^+-a_k^-\bigr)=\sum
+a_k^+-\sum a_k^-.\]</span></p>
+</div>
+<div class="solutionbox" id="sol-exer-rearrangement-infinity">
+
+<p><strong><a href="ch-series.html#exer-rearrangement-infinity">Exercise
+10.3.5</a>.</strong> <em>Hint.</em> Modify the construction in the proof
+of <a href="ch-series.html#thm-riemann-rearrangement">Theorem 10.3.9</a>. Add positive
+terms until the total passes <span class="math inline">\(1\)</span>,
+then one negative term. Then add positive terms until the total passes
+<span class="math inline">\(2\)</span>, then one negative term, and so
+on.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch09.html"><span class="dir">Previous</span> Solutions for Chapter 9. Integrals</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch11.html"><span class="dir">Next</span> Solutions for Chapter 11. Sequences and Series of Functions</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

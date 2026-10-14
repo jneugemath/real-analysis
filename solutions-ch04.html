@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Solutions for Chapter 4. Topological Properties of the Real Line | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="solutions-ch03.html"><span class="dir">Previous</span> Solutions for Chapter 3. Sequences of Real Numbers</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch05.html"><span class="dir">Next</span> Solutions for Chapter 5. The Cantor Set</a>
+</nav>
+<main id="main">
+<article id="solutions-ch04">
+<h1>Solutions for Chapter 4. Topological Properties of the Real
+Line</h1>
+<div class="solutionbox" id="sol-exer-open-iff-interior">
+
+<p><strong><a href="ch-topology.html#exer-open-iff-interior">Exercise
+4.1.1</a>.</strong> (<span class="math inline">\(\Rightarrow\)</span>)
+Let <span class="math inline">\(x\in U^\circ\)</span>. Then, by
+definition, <span class="math inline">\(x\in U\)</span> and so <span class="math inline">\(U^\circ\subset U\)</span>. Now, let <span class="math inline">\(x\in U\)</span>. Since <span class="math inline">\(U\)</span> is open, there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset U\)</span>.
+So <span class="math inline">\(x\in U^\circ\)</span>. So <span class="math inline">\(U\subset U^\circ\)</span> and consequently, <span class="math inline">\(U=U^\circ\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(x\in U\)</span>. Since <span class="math inline">\(U=U^\circ\)</span>, <span class="math inline">\(x\in U^\circ\)</span>. So there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset U\)</span>.
+So <span class="math inline">\(U\)</span> is open.</p>
+</div>
+<div class="solutionbox" id="sol-exer-open-interval-open">
+
+<p><strong><a href="ch-topology.html#exer-open-interval-open">Exercise
+4.1.2</a>.</strong> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span> with <span class="math inline">\(a&lt;b\)</span>. First, consider the interval
+<span class="math inline">\((-\infty, b)\)</span>. Let <span class="math inline">\(x\in(-\infty, b)\)</span> and define <span class="math inline">\(\varepsilon=\frac{b-x}{2}&gt;0\)</span>. Then
+<span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset(-\infty,b)\)</span>
+and <span class="math inline">\((-\infty, b)\)</span> is open.</p>
+<p>Next, consider the interval <span class="math inline">\((a,\infty)\)</span>. Let <span class="math inline">\(x\in (a,\infty)\)</span> and define <span class="math inline">\(\varepsilon=\frac{x-a}{2}&gt;0\)</span>. Then
+<span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset(a,\infty)\)</span>
+and <span class="math inline">\((a,\infty)\)</span> is open.</p>
+<p>Last, consider the interval <span class="math inline">\((a,b)\)</span>. Let <span class="math inline">\(x\in (a,b)\)</span> and define <span class="math inline">\(\varepsilon=\min\left\{\frac{x-a}{2},\frac{b-x}{2}\right\}\)</span>.
+Then <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset
+(a,b)\)</span> and <span class="math inline">\((a,b)\)</span> is open.
+The interval <span class="math inline">\((-\infty,\infty)=\mathbb{R}\)</span> is open,
+since every interval <span class="math inline">\((x-1,x+1)\)</span> lies
+in <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-Q-neither">
+
+<p><strong><a href="ch-topology.html#exer-Q-neither">Exercise 4.1.6</a>.</strong>
+<em>Hint.</em> Every open interval contains rational and irrational
+numbers, by <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a> and <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.7.5</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-closure-sequence">
+
+<p><strong><a href="ch-topology.html#exer-closure-sequence">Exercise 4.1.7</a>.</strong>
+(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(x\in\overline{E}\)</span>. If <span class="math inline">\(x\in E\)</span>, the constant sequence <span class="math inline">\(x_n=x\)</span> works. Otherwise <span class="math inline">\(x\)</span> is a limit point of <span class="math inline">\(E\)</span>. So for all <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(x_n\in E\)</span> such that <span class="math inline">\(|x_n-x|&lt;1/n\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then by the Archimedean
+Principle, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;1/\varepsilon\)</span>. So for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(|x_n-x|&lt;1/n\leq 1/N&lt;\varepsilon\)</span>. So
+<span class="math inline">\(\{x_n:n\in\mathbb{N}\}\subset E\)</span> and
+<span class="math inline">\(x_n\to x\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Assume <span class="math inline">\(\{x_n\}\)</span> is a sequence in <span class="math inline">\(E\)</span> with <span class="math inline">\(x_n\to
+x\)</span>. If <span class="math inline">\(x\in E\)</span>, then <span class="math inline">\(x\in\overline{E}\)</span>. Suppose <span class="math inline">\(x\notin E\)</span>. Then <span class="math inline">\(x_n\ne x\)</span> for all <span class="math inline">\(n\)</span>. Let <span class="math inline">\(\delta&gt;0\)</span>. Since <span class="math inline">\(x_n\to x\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(|x_n-x|&lt;\delta\)</span>. In particular, <span class="math inline">\(x_N\in E\)</span>, <span class="math inline">\(x_N\ne x\)</span>, and <span class="math inline">\(|x_N-x|&lt;\delta\)</span>. So <span class="math inline">\(x\)</span> is a limit point of <span class="math inline">\(E\)</span>, and <span class="math inline">\(x\in\overline{E}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-limit-point-infinite">
+
+<p><strong><a href="ch-topology.html#exer-limit-point-infinite">Exercise
+4.1.9</a>.</strong> <em>Hint.</em> If only finitely many points of <span class="math inline">\(E\)</span> other than <span class="math inline">\(a\)</span> lie in the interval, choose a smaller
+<span class="math inline">\(\varepsilon\)</span> that misses all of
+them.</p>
+</div>
+<div class="solutionbox" id="sol-exer-interval-connected">
+
+<p><strong><a href="ch-topology.html#exer-interval-connected">Exercise
+4.1.10</a>.</strong> <em>Hint.</em> Let <span class="math inline">\(A\)</span> be an interval. Suppose <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are disjoint open sets with <span class="math inline">\(A\cap U\ne\emptyset\)</span>, <span class="math inline">\(A\cap V\ne\emptyset\)</span> and <span class="math inline">\((A\cap U)\cup(A\cap V)=A\)</span>. Choose <span class="math inline">\(a\in A\cap U\)</span> and <span class="math inline">\(b\in A\cap V\)</span>. Assume <span class="math inline">\(a&lt;b\)</span>. Let <span class="math inline">\(c=\sup\{t\in[a,b]:[a,t]\subset U\}\)</span>. Show
+that <span class="math inline">\(c\in A\)</span>, <span class="math inline">\(c\notin U\)</span> and <span class="math inline">\(c\notin V\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(A\)</span> be an
+interval, and suppose <span class="math inline">\(A\)</span> is not
+connected. Then there are disjoint open sets <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> with <span class="math inline">\(A\cap
+U\ne\emptyset\)</span>, <span class="math inline">\(A\cap
+V\ne\emptyset\)</span> and <span class="math inline">\((A\cap
+U)\cup(A\cap V)=A\)</span>. Choose <span class="math inline">\(a\in
+A\cap U\)</span> and <span class="math inline">\(b\in A\cap V\)</span>.
+Since <span class="math inline">\(U\cap V=\emptyset\)</span>, <span class="math inline">\(a\ne b\)</span>. By switching the names of <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> if needed, assume <span class="math inline">\(a&lt;b\)</span>. Since <span class="math inline">\(A\)</span> is an interval, <span class="math inline">\([a,b]\subset A\)</span>.</p>
+<p>Let <span class="math inline">\(S=\{t\in[a,b]:[a,t]\subset
+U\}\)</span>. Then <span class="math inline">\(a\in S\)</span> and <span class="math inline">\(S\)</span> is bounded above by <span class="math inline">\(b\)</span>. Let <span class="math inline">\(c=\sup
+S\)</span>. Then <span class="math inline">\(a\le c\le b\)</span>, so
+<span class="math inline">\(c\in A\)</span>. So <span class="math inline">\(c\in U\)</span> or <span class="math inline">\(c\in V\)</span>.</p>
+<p>Suppose <span class="math inline">\(c\in U\)</span>. Then <span class="math inline">\(c\ne b\)</span>, since <span class="math inline">\(b\in V\)</span>. Since <span class="math inline">\(U\)</span> is open, there is an <span class="math inline">\(\varepsilon&gt;0\)</span> with <span class="math inline">\((c-\varepsilon,c+\varepsilon)\subset U\)</span>,
+and we may take <span class="math inline">\(\varepsilon&lt;b-c\)</span>.
+If <span class="math inline">\(c=a\)</span>, then <span class="math inline">\([a,c+\frac\varepsilon 2]\subset U\)</span>. If
+<span class="math inline">\(c&gt;a\)</span>, there is a <span class="math inline">\(t\in S\)</span> with <span class="math inline">\(c-\varepsilon&lt;t\le c\)</span>, so <span class="math inline">\([a,t]\subset U\)</span>, and then <span class="math inline">\([a,c+\frac\varepsilon
+2]\subset[a,t]\cup(c-\varepsilon,c+\varepsilon)\subset U\)</span>.
+Either way <span class="math inline">\(c+\frac\varepsilon 2\in
+S\)</span>, which contradicts <span class="math inline">\(c=\sup
+S\)</span>.</p>
+<p>Suppose <span class="math inline">\(c\in V\)</span>. Then <span class="math inline">\(c\ne a\)</span>, since <span class="math inline">\(a\in U\)</span>. Since <span class="math inline">\(V\)</span> is open, there is an <span class="math inline">\(\varepsilon&gt;0\)</span> with <span class="math inline">\((c-\varepsilon,c+\varepsilon)\subset V\)</span>,
+and we may take <span class="math inline">\(\varepsilon&lt;c-a\)</span>.
+Since <span class="math inline">\(c=\sup S\)</span>, there is a <span class="math inline">\(t\in S\)</span> with <span class="math inline">\(c-\varepsilon&lt;t\le c\)</span>. Then <span class="math inline">\(t\in[a,t]\subset U\)</span> and <span class="math inline">\(t\in(c-\varepsilon,c+\varepsilon)\subset
+V\)</span>. This contradicts <span class="math inline">\(U\cap
+V=\emptyset\)</span>.</p>
+<p>Both cases are impossible. So <span class="math inline">\(A\)</span>
+is connected.</p>
+</div>
+<div class="solutionbox" id="sol-exer-convergent-sequence-compact">
+
+<p><strong><a href="ch-topology.html#exer-convergent-sequence-compact">Exercise
+4.2.2</a>.</strong> Let <span class="math inline">\(S=\{x_n:n\in\mathbb{N}\}\cup\{a\}\)</span>, and
+let <span class="math inline">\(\mathcal{U}\)</span> be an open cover of
+<span class="math inline">\(S\)</span>. So there exists a <span class="math inline">\(U_a\in\mathcal{U}\)</span> such that <span class="math inline">\(a\in U_a\)</span>. Since <span class="math inline">\(U_a\)</span> is open, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\((a-\delta,a+\delta)\subset U_a\)</span>. Since
+<span class="math inline">\(x_n\to a\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(|x_n-a|&lt;\delta\)</span>. So for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(x_n\in(a-\delta,a+\delta)\subset U_a\)</span>. Now
+for <span class="math inline">\(i=1,\dots, N-1\)</span>, there is a
+<span class="math inline">\(U_i\in\mathcal{U}\)</span> such that <span class="math inline">\(x_i\in U_i\)</span>. So <span class="math inline">\(\{U_1,\dots,U_{N-1},U_a\}\)</span> is a finite
+subcover of <span class="math inline">\(\mathcal{U}\)</span> that covers
+<span class="math inline">\(S\)</span>. So <span class="math inline">\(S\)</span> is compact.</p>
+</div>
+<div class="solutionbox" id="sol-exer-compact-sequences">
+
+<p><strong><a href="ch-topology.html#exer-compact-sequences">Exercise
+4.2.3</a>.</strong> <em>Hint.</em> Use the Bolzano–Weierstrass Theorem
+(<a href="ch-sequences.html#thm-bolzano-weierstrass">Theorem 3.4.5</a>) and <a href="ch-topology.html#thm-heine-borel-bw">Theorem 4.2.15</a>.</p>
+<p><em>Solution.</em> Let <span class="math inline">\(\{x_n\}\)</span>
+be a sequence in <span class="math inline">\(K\)</span>. By <a href="ch-topology.html#thm-compact-closed-bounded">Theorem 4.2.9</a>, <span class="math inline">\(K\)</span> is closed and bounded. Since <span class="math inline">\(K\)</span> is bounded, so is <span class="math inline">\(\{x_n\}\)</span>. By the Bolzano–Weierstrass
+Theorem, there is a subsequence with <span class="math inline">\(x_{n_k}\to a\)</span> for some <span class="math inline">\(a\in\mathbb{R}\)</span>. Each <span class="math inline">\(x_{n_k}\)</span> is in <span class="math inline">\(K\)</span>, so <span class="math inline">\(a\in\overline{K}\)</span> by <a href="ch-topology.html#exer-closure-sequence">Exercise 4.1.7</a>. Since <span class="math inline">\(K\)</span> is closed, <span class="math inline">\(\overline{K}=K\)</span> by <a href="ch-topology.html#thm-closure">Theorem 4.1.26</a> (2). So <span class="math inline">\(a\in K\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-union-compact">
+
+<p><strong><a href="ch-topology.html#exer-union-compact">Exercise 4.2.5</a>.</strong>
+<em>Hint.</em> Take a finite subcover for each set and combine them.</p>
+</div>
+<div class="solutionbox" id="sol-exer-intersection-compact">
+
+<p><strong><a href="ch-topology.html#exer-intersection-compact">Exercise
+4.2.6</a>.</strong> <em>Hint.</em> The intersection is closed and lies
+inside one compact set. Use <a href="ch-topology.html#lem-closed-subset-compact">Lemma
+4.2.10</a>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-finite-intersection">
+
+<p><strong><a href="ch-topology.html#exer-finite-intersection">Exercise
+4.2.7</a>.</strong> Let <span class="math inline">\(F\)</span> be one of
+the sets <span class="math inline">\(F_\alpha\)</span> such that <span class="math inline">\(F\)</span> is bounded. So <span class="math inline">\(F\)</span> is closed and bounded. Therefore, by
+the Heine–Borel Theorem, <span class="math inline">\(F\)</span> is
+compact. Now, assume by way of contradiction that <span class="math inline">\(\bigcap_{\alpha\in
+\Lambda}F_\alpha=\emptyset\)</span>. So <span class="math inline">\(\left(\bigcap_{\alpha\in
+\Lambda}F_\alpha\right)^c=\bigcup_{\alpha\in
+\Lambda}F_\alpha^c=\mathbb{R}\)</span>. Thus, <span class="math inline">\(F\subset\bigcup_{\alpha\in
+\Lambda}F_\alpha^c\)</span>. But since each <span class="math inline">\(F_\alpha\)</span> is closed, each <span class="math inline">\(F_\alpha^c\)</span> is open. So <span class="math inline">\(\{F_\alpha^c\}_{\alpha\in \Lambda}\)</span> is an
+open cover of <span class="math inline">\(F\)</span>. Since <span class="math inline">\(F\)</span> is compact, there exist <span class="math inline">\(\alpha_1,\dots,\alpha_n\)</span> such that <span class="math inline">\(F\subset \bigcup_{i=1}^n F_{\alpha_i}^c\)</span>.
+So <span class="math inline">\(F\cap \left[\bigcap_{i=1}^n
+F_{\alpha_i}\right]=\emptyset\)</span>, a contradiction to the finite
+intersection property. So <span class="math inline">\(\bigcap_{\alpha\in
+\Lambda}F_\alpha\neq\emptyset\)</span>.</p>
+<p>Let <span class="math inline">\(\mathcal{U}=\{[n,\infty)\}_{n\in\mathbb{N}}\)</span>.
+Then each element of <span class="math inline">\(\mathcal{U}\)</span> is
+closed and unbounded, and every finite subcollection has nonempty
+intersection. But <span class="math inline">\(\bigcap_{n\in\mathbb{N}}
+[n,\infty)=\emptyset\)</span>.</p>
+</div>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="solutions-ch03.html"><span class="dir">Previous</span> Solutions for Chapter 3. Sequences of Real Numbers</a>
+<a rel="up" href="app-solutions.html"><span class="dir">Up</span> Appendix C. Hints and Solutions</a>
+<a rel="next" href="solutions-ch05.html"><span class="dir">Next</span> Solutions for Chapter 5. The Cantor Set</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 7. The Derivative | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-continuity.html"><span class="dir">Previous</span> Chapter 6. Functions and Continuity</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="part-riemann.html"><span class="dir">Next</span> Part II. Riemann Integrals and Series</a>
+</nav>
+<main id="main">
+<article id="ch-derivative">
+<h1>Chapter 7. The Derivative</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-derivative-properties">7.1 Properties of the Derivative</a></li><li><a href="#sec-mvt">7.2 The Mean Value Theorem</a></li><li><a href="#sec-lhospital">7.3 L’Hospital’s Rule<sup>*</sup></a></li><li><a href="#sec-convexity">7.4 Concavity and Convexity<sup>*</sup></a></li><li><a href="#notes-6">Notes</a></li></ul></nav>
+<p>The derivative is the first new idea built from the limits of <a href="ch-continuity.html">Chapter 6</a>. It is a limit of difference
+quotients. <a href="#sec-derivative-properties">Section 7.1</a> proves
+the rules from calculus, including the Chain Rule. <a href="#sec-mvt">Section 7.2</a> proves the Mean Value Theorem. It is the
+most important result in the chapter, because it turns information about
+<span class="math inline">\(f'\)</span> into information about <span class="math inline">\(f\)</span>. Almost everything after it, here and
+in later chapters, depends on it.</p>
+<p>Sections <a href="#sec-lhospital">7.3</a> and <a href="#sec-convexity">7.4</a> are marked with a star. They can be
+skipped. Nothing later in the book depends on them.</p>
+<p>Examples and exercises use the derivatives of <span class="math inline">\(\sin x\)</span>, <span class="math inline">\(\cos
+x\)</span>, <span class="math inline">\(\ln x\)</span> and <span class="math inline">\(e^x\)</span> from calculus. As in <a href="ch-sequences.html#rem-elementary-functions">Remark 3.1.1</a>, these are assumed for
+now.</p>
+<section class="level3 unnumbered" id="sec-derivative-properties">
+<h2>7.1 Properties of the Derivative</h2>
+<div class="definitionbox" id="def-derivative">
+
+<p><strong>Definition 7.1.1.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>. For <span class="math inline">\(c\in I\)</span>, the <em>derivative</em> of <span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span>, denoted <span class="math inline">\(f'(c)\)</span>, is <span class="math display">\[f'(c)=\lim_{x\to
+c}\frac{f(x)-f(c)}{x-c},\]</span> provided the limit exists. If <span class="math inline">\(f'(c)\)</span> exists, <span class="math inline">\(f\)</span> is <em>differentiable</em> at <span class="math inline">\(c\)</span>. If <span class="math inline">\(f\)</span> is differentiable at every point of
+<span class="math inline">\(I\)</span>, then <span class="math inline">\(f\)</span> is differentiable on <span class="math inline">\(I\)</span>, and <span class="math inline">\(f'\)</span> is the function <span class="math inline">\(c\mapsto f'(c)\)</span> on <span class="math inline">\(I\)</span>. If <span class="math inline">\(f'\)</span> is differentiable at <span class="math inline">\(c\)</span>, its derivative is the <em>second
+derivative</em> <span class="math inline">\(f''(c)\)</span>. In
+general, <span class="math inline">\(f^{(0)}=f\)</span>, and <span class="math inline">\(f^{(n)}=\bigl(f^{(n-1)}\bigr)'\)</span> is the
+<em><span class="math inline">\(n\)</span>th derivative</em> when it
+exists. The derivative is also written <span class="math inline">\(\frac{d}{dx}f(x)\)</span>.</p>
+</div>
+<p>The difference quotient <span class="math inline">\(\frac{f(x)-f(c)}{x-c}\)</span> is a function of
+<span class="math inline">\(x\)</span> on <span class="math inline">\(I\setminus\{c\}\)</span>. The limit makes sense
+because <span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(I\setminus\{c\}\)</span>. This uses that <span class="math inline">\(I\)</span> is an interval with more than one
+point.</p>
+<div class="remarkbox" id="rem-derivative-h">
+
+<p><strong>Remark 7.1.2.</strong> If <span class="math inline">\(c\in
+I^\circ\)</span>, there exists an <span class="math inline">\(r&gt;0\)</span> such that <span class="math inline">\((c-r,c+r)\subset I\)</span>. Set <span class="math inline">\(x=c+h\)</span> with <span class="math inline">\(0&lt;|h|&lt;r\)</span>. Then <span class="math display">\[f'(c)=\lim_{h\to0}\frac{f(c+h)-f(c)}{h},\]</span>
+provided the limit exists.</p>
+<p>If <span class="math inline">\(c\in I\)</span> is a left endpoint,
+then <span class="math display">\[f'(c)=\lim_{h\to
+0^+}\frac{f(c+h)-f(c)}{h},\]</span> provided the limit exists.</p>
+<p>If <span class="math inline">\(c\in I\)</span> is a right endpoint,
+then <span class="math display">\[f'(c)=\lim_{h\to
+0^-}\frac{f(c+h)-f(c)}{h},\]</span> provided the limit exists.</p>
+</div>
+<div class="theorembox" id="thm-differentiable-continuous">
+
+<p><strong>Theorem 7.1.3.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval, <span class="math inline">\(f:I\to\mathbb{R}\)</span>, and <span class="math inline">\(c\in I\)</span>. If <span class="math inline">\(f\)</span> is differentiable at <span class="math inline">\(c\)</span>, then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> For <span class="math inline">\(x\ne c\)</span>,
+<span class="math inline">\(x\in I\)</span>, <span class="math display">\[f(x)-f(c)=\left(\frac{f(x)-f(c)}{x-c}\right)(x-c).\]</span>
+Since <span class="math inline">\(f'(c)\)</span> exists, by <a href="ch-continuity.html#thm-function-limit-laws">Theorem 6.1.13</a> (2), <span class="math display">\[\lim_{x\to c}(f(x)-f(c))=\lim_{x\to
+c}\left(\frac{f(x)-f(c)}{x-c}\right)(x-c)=f'(c)\cdot 0=0.\]</span>
+So <span class="math inline">\(\lim_{x\to c}f(x)=f(c)\)</span> and <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span> (relative to <span class="math inline">\(I\)</span>, as in <a href="ch-continuity.html#rem-continuity-on-set">Remark 6.3.7</a>).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The converse is false. The function <span class="math inline">\(f(x)=|x|\)</span> is continuous at <span class="math inline">\(0\)</span> but not differentiable there. See <a href="#exer-abs-not-differentiable">Exercise 7.1.4</a>.</p>
+<div class="definitionbox" id="def-continuously-differentiable">
+
+<p><strong>Definition 7.1.4.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval. A
+function <span class="math inline">\(f:I\to\mathbb{R}\)</span> is
+<em>continuously differentiable</em> on <span class="math inline">\(I\)</span> if <span class="math inline">\(f\)</span> is differentiable on <span class="math inline">\(I\)</span> and <span class="math inline">\(f'\in C(I)\)</span>. The set of such functions
+is denoted <span class="math inline">\(C^{(1)}(I)\)</span>. More
+generally, for <span class="math inline">\(n\in\mathbb{N}\)</span>,
+<span class="math inline">\(C^{(n)}(I)\)</span> is the set of <span class="math inline">\(f:I\to\mathbb{R}\)</span> such that <span class="math inline">\(f^{(n)}\)</span> exists on <span class="math inline">\(I\)</span> and <span class="math inline">\(f^{(n)}\in C(I)\)</span>. Write <span class="math inline">\(C^{(n)}[a,b]\)</span> for <span class="math inline">\(C^{(n)}([a,b])\)</span>.</p>
+</div>
+<p>By <a href="#thm-differentiable-continuous">Theorem 7.1.3</a>, <span class="math inline">\(C^{(1)}(I)\subset C(I)\)</span>. A differentiable
+function need not be in <span class="math inline">\(C^{(1)}(I)\)</span>.
+See <a href="#exer-x2-sin-derivative">Exercise 7.1.5</a>.</p>
+<div class="theorembox" id="thm-derivative-algebra">
+
+<p><strong>Theorem 7.1.5.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f,g:I\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are differentiable at <span class="math inline">\(c\in I\)</span>, then <span class="math inline">\(f+g\)</span>, <span class="math inline">\(fg\)</span>, and <span class="math inline">\(f/g\)</span> (if <span class="math inline">\(g(c)\ne 0\)</span>) are differentiable at <span class="math inline">\(c\)</span> and</p>
+<ol>
+<li><p><span class="math inline">\((f+g)'(c)=f'(c)+g'(c)\)</span>;</p></li>
+<li><p><span class="math inline">\((fg)'(c)=f'(c)g(c)+f(c)g'(c)\)</span>;
+and</p></li>
+<li><p><span class="math inline">\((f/g)'(c)=\frac{f'(c)g(c)-f(c)g'(c)}{[g(c)]^2}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Exercise.</p></li>
+<li><p>By adding and subtracting <span class="math inline">\(f(c+h)g(c)\)</span>, <span class="math inline">\(h\ne 0\)</span>, <span class="math display">\[\frac{(fg)(c+h)-(fg)(c)}{h}=f(c+h)\left(\frac{g(c+h)-g(c)}{h}\right)
++ \left(\frac{f(c+h)-f(c)}{h}\right)g(c).\]</span> So <span class="math display">\[\begin{aligned}
+(fg)'(c)&amp;=\lim_{h\to 0}\frac{(fg)(c+h)-(fg)(c)}{h}\\
+&amp;=\lim_{h\to0}\left[f(c+h)\left(\frac{g(c+h)-g(c)}{h}\right) +
+\left(\frac{f(c+h)-f(c)}{h}\right)g(c)\right]\\
+&amp;=f(c)g'(c)+f'(c)g(c).
+\end{aligned}\]</span> The last step uses <span class="math inline">\(f(c+h)\to f(c)\)</span> as <span class="math inline">\(h\to0\)</span>, since <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span> by <a href="#thm-differentiable-continuous">Theorem 7.1.3</a>.</p></li>
+<li><p>First, consider <span class="math inline">\((1/g)'(c)\)</span>. Since <span class="math inline">\(g(c)\ne0\)</span> and <span class="math inline">\(g\)</span> is continuous at <span class="math inline">\(c\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(h\)</span> with <span class="math inline">\(|h|&lt;\delta\)</span> and <span class="math inline">\(c+h\in I\)</span>, <span class="math inline">\(g(c+h)\ne 0\)</span> by <a href="ch-continuity.html#lem-limit-sign">Lemma 6.1.11</a>. Thus, for <span class="math inline">\(0&lt;|h|&lt;\delta\)</span> with <span class="math inline">\(c+h\in I\)</span>, <span class="math display">\[\frac{\frac{1}{g(c+h)}-\frac{1}{g(c)}}{h}=\frac{-(g(c+h)-g(c))}{h}\left(\frac{1}{g(c)g(c+h)}\right).\]</span>
+So <span class="math display">\[\begin{aligned}
+\left(\frac{1}{g}\right)'(c)&amp;=\lim_{h\to0}\frac{\frac{1}{g(c+h)}-\frac{1}{g(c)}}{h}\\
+&amp;=\lim_{h\to0}\frac{-(g(c+h)-g(c))}{h}\left(\frac{1}{g(c)g(c+h)}\right)\\
+&amp;=-g'(c)\cdot\frac{1}{[g(c)]^2}.
+\end{aligned}\]</span> Now apply the product rule to obtain <span class="math display">\[\begin{aligned}
+\left(\frac{f}{g}\right)'(c)&amp;=\left(f\cdot\frac{1}{g}\right)'(c)\\
+&amp;=f'(c)\cdot\frac{1}{g(c)}+f(c)\cdot\frac{-g'(c)}{[g(c)]^2}\\
+&amp;=\frac{f'(c)g(c)-f(c)g'(c)}{[g(c)]^2}.
+\end{aligned}\]</span></p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Avoiding Division by Zero).</strong></p>
+<p>A tempting proof of the Chain Rule writes <span class="math display">\[\frac{g(f(t))-g(f(c))}{t-c}=\frac{g(f(t))-g(f(c))}{f(t)-f(c)}\cdot\frac{f(t)-f(c)}{t-c}\]</span>
+and takes limits. This fails if <span class="math inline">\(f(t)=f(c)\)</span> for <span class="math inline">\(t\)</span> arbitrarily close to <span class="math inline">\(c\)</span>, since then the first fraction is <span class="math inline">\(0/0\)</span>. For example, with <span class="math inline">\(c=0\)</span>, <span class="math inline">\(f(t)=t^2\sin\frac1t\)</span> (and <span class="math inline">\(f(0)=0\)</span>) has <span class="math inline">\(f(t)=0\)</span> at <span class="math inline">\(t=\frac{1}{n\pi}\)</span> for every <span class="math inline">\(n\in\mathbb{N}\)</span>. The proof below avoids
+the division. It writes each difference as a product, <span class="math inline">\(f(t)-f(c)=(t-c)\bigl(f'(c)+u(t)\bigr)\)</span>,
+where <span class="math inline">\(u(t)\to0\)</span>. Products can be
+substituted into each other without dividing by anything. Whenever a
+proof divides, check that the denominator cannot be <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-chain-rule">
+
+<p><strong>Theorem 7.1.6</strong> (Chain Rule)<strong>.</strong></p>
+<p>Let <span class="math inline">\(I,J\subset\mathbb{R}\)</span> be
+intervals, <span class="math inline">\(f:I\to\mathbb{R}\)</span> with
+<span class="math inline">\(f[I]\subset J\)</span>, and <span class="math inline">\(g:J\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is differentiable at <span class="math inline">\(c\in I\)</span> and <span class="math inline">\(g\)</span> is differentiable at <span class="math inline">\(f(c)\in J\)</span>, then <span class="math inline">\(g\circ f\)</span> is differentiable at <span class="math inline">\(c\)</span> and <span class="math display">\[(g\circ
+f)'(c)=g'(f(c))f'(c).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(d=f(c)\)</span>. Define <span class="math inline">\(u:I\to\mathbb{R}\)</span> and <span class="math inline">\(v:J\to\mathbb{R}\)</span> by <span class="math display">\[u(t)=\begin{cases}\frac{f(t)-f(c)}{t-c}-f'(c),
+&amp; t\ne c,\\ 0, &amp; t=c,\end{cases}
+\qquad
+v(s)=\begin{cases}\frac{g(s)-g(d)}{s-d}-g'(d), &amp; s\ne d,\\ 0,
+&amp; s=d.\end{cases}\]</span> Since <span class="math inline">\(f'(c)\)</span> and <span class="math inline">\(g'(d)\)</span> exist, <span class="math inline">\(\lim_{t\to c}u(t)=0=u(c)\)</span> and <span class="math inline">\(\lim_{s\to d}v(s)=0=v(d)\)</span>. So <span class="math inline">\(u\)</span> is continuous at <span class="math inline">\(c\)</span> and <span class="math inline">\(v\)</span> is continuous at <span class="math inline">\(d\)</span>. For every <span class="math inline">\(t\in I\)</span> and <span class="math inline">\(s\in J\)</span>, <span class="math display">\[f(t)-f(c)=(t-c)\bigl(f'(c)+u(t)\bigr)\quad\text{and}\quad
+g(s)-g(d)=(s-d)\bigl(g'(d)+v(s)\bigr).\]</span> Both sides of the
+first equation are <span class="math inline">\(0\)</span> when <span class="math inline">\(t=c\)</span>, and both sides of the second are
+<span class="math inline">\(0\)</span> when <span class="math inline">\(s=d\)</span>. Put <span class="math inline">\(s=f(t)\)</span> in the second equation, and then
+use the first. This gives <span class="math display">\[\begin{aligned}
+(g\circ f)(t)-(g\circ
+f)(c)&amp;=\bigl(f(t)-f(c)\bigr)\bigl(g'(d)+v(f(t))\bigr)\\
+&amp;=(t-c)\bigl(f'(c)+u(t)\bigr)\bigl(g'(d)+v(f(t))\bigr).
+\end{aligned}\]</span> So for <span class="math inline">\(t\in
+I\)</span> with <span class="math inline">\(t\ne c\)</span>, <span class="math display">\[\frac{(g\circ f)(t)-(g\circ
+f)(c)}{t-c}=\bigl(f'(c)+u(t)\bigr)\bigl(g'(d)+v(f(t))\bigr).\]</span>
+By <a href="#thm-differentiable-continuous">Theorem 7.1.3</a>, <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>. Since <span class="math inline">\(v\)</span> is continuous at <span class="math inline">\(d=f(c)\)</span>, <span class="math inline">\(v\circ f\)</span> is continuous at <span class="math inline">\(c\)</span> by <a href="ch-continuity.html#thm-composition-continuous">Theorem 6.3.4</a>. So <span class="math inline">\(v(f(t))\to v(d)=0\)</span> as <span class="math inline">\(t\to c\)</span>. Also <span class="math inline">\(u(t)\to0\)</span>. By <a href="ch-continuity.html#thm-function-limit-laws">Theorem 6.1.13</a>, the right side
+converges to <span class="math inline">\(f'(c)g'(d)\)</span> as
+<span class="math inline">\(t\to c\)</span>. Thus <span class="math display">\[(g\circ
+f)'(c)=g'(d)f'(c)=g'(f(c))f'(c).\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-extrema">
+
+<p><strong>Definition 7.1.7.</strong> Let <span class="math inline">\(S\subset\mathbb{R}\)</span> and <span class="math inline">\(f:S\to\mathbb{R}\)</span>.</p>
+<ol>
+<li><p><span class="math inline">\(f\)</span> has a <em>relative
+maximum</em> at a point <span class="math inline">\(c\in S\)</span> if
+there exists a <span class="math inline">\(\delta&gt;0\)</span> such
+that <span class="math inline">\(f(x)\le f(c)\)</span> for all <span class="math inline">\(x\in S\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> has a <em>relative
+minimum</em> at a point <span class="math inline">\(c\in S\)</span> if
+there exists a <span class="math inline">\(\delta&gt;0\)</span> such
+that <span class="math inline">\(f(x)\ge f(c)\)</span> for all <span class="math inline">\(x\in S\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> has an <em>absolute
+maximum</em> at <span class="math inline">\(c\in S\)</span> if <span class="math inline">\(f(x)\le f(c)\)</span> for all <span class="math inline">\(x\in S\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> has an <em>absolute
+minimum</em> at <span class="math inline">\(c\in S\)</span> if <span class="math inline">\(f(x)\ge f(c)\)</span> for all <span class="math inline">\(x\in S\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> has a <em>relative
+extremum</em> at <span class="math inline">\(c\in S\)</span> if <span class="math inline">\(f\)</span> has a relative maximum or minimum at
+<span class="math inline">\(c\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> has an <em>absolute
+extremum</em> at <span class="math inline">\(c\in S\)</span> if <span class="math inline">\(f\)</span> has an absolute maximum or minimum at
+<span class="math inline">\(c\)</span>.</p></li>
+</ol>
+<p>A relative maximum or minimum is also called a <em>local</em> maximum
+or minimum.</p>
+</div>
+<div class="theorembox" id="thm-interior-extremum">
+
+<p><strong>Theorem 7.1.8.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>. Suppose <span class="math inline">\(f\)</span> has a relative extremum at <span class="math inline">\(c\in I^\circ\)</span>. If <span class="math inline">\(f\)</span> is differentiable at <span class="math inline">\(c\)</span>, then <span class="math inline">\(f'(c)=0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume without loss of generality that <span class="math inline">\(f\)</span> has a local maximum at <span class="math inline">\(c\)</span>. (Otherwise, replace <span class="math inline">\(f\)</span> by <span class="math inline">\(-f\)</span>.) Then there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(f(x)\le f(c)\)</span> for all <span class="math inline">\(x\in I\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>. In particular, if <span class="math inline">\(c&lt;x&lt;c+\delta\)</span>, <span class="math inline">\(x\in I\)</span>, then <span class="math display">\[\frac{f(x)-f(c)}{x-c}\le 0.\]</span> Similarly if
+<span class="math inline">\(c-\delta&lt;x&lt;c\)</span>, <span class="math inline">\(x\in I\)</span>, then <span class="math display">\[\frac{f(x)-f(c)}{x-c}\ge 0.\]</span> Since <span class="math inline">\(f'(c)\)</span> exists, <span class="math inline">\(\lim_{x\to c}\frac{f(x)-f(c)}{x-c}\)</span> exists
+and <span class="math display">\[0\ge \lim_{x\to
+c^+}\frac{f(x)-f(c)}{x-c}=\lim_{x\to c^-}\frac{f(x)-f(c)}{x-c}\ge
+0,\]</span> by Theorems <a href="ch-continuity.html#thm-one-sided-limits">6.1.23</a> and
+<a href="ch-continuity.html#thm-function-order-limits">6.1.15</a>. Here <span class="math inline">\(c\in I^\circ\)</span> is used, so that both
+one-sided limits make sense. So <span class="math inline">\(\lim_{x\to
+c}\frac{f(x)-f(c)}{x-c}=0\)</span>. So <span class="math inline">\(f'(c)=0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-critical-point">
+
+<p><strong>Corollary 7.1.9.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be continuous. If
+<span class="math inline">\(f\)</span> has a relative extremum at <span class="math inline">\(c\in(a,b)\)</span>, then either <span class="math inline">\(f'(c)\)</span> does not exist or <span class="math inline">\(f'(c)=0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(f'(c)\)</span> exists, then <span class="math inline">\(f'(c)=0\)</span> by <a href="#thm-interior-extremum">Theorem 7.1.8</a>, since <span class="math inline">\(c\in(a,b)=[a,b]^\circ\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-25">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-sum-rule">
+
+<p><strong>Exercise 7.1.1.</strong> Prove <a href="#thm-derivative-algebra">Theorem 7.1.5</a> (1).</p>
+</div>
+<div class="exercisebox" id="exer-power-rule-natural">
+
+<p><strong>Exercise 7.1.2.</strong> Prove <span class="math inline">\(\frac{d}{dx}x^n=nx^{n-1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>. <a aria-label="Hint for Exercise 7.1.2" href="solutions-ch07.html#sol-exer-power-rule-natural">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-power-rule-integer">
+
+<p><strong>Exercise 7.1.3.</strong> Prove <span class="math inline">\(\frac{d}{dx}x^n=nx^{n-1}\)</span> for all <span class="math inline">\(n\in\mathbb{Z}\)</span> and <span class="math inline">\(x\ne0\)</span>. <a aria-label="Hint for Exercise 7.1.3" href="solutions-ch07.html#sol-exer-power-rule-integer">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-abs-not-differentiable">
+
+<p><strong>Exercise 7.1.4.</strong> Prove that <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=|x|\)</span>, is not differentiable at <span class="math inline">\(0\)</span>. <a aria-label="Solution for Exercise 7.1.4" href="solutions-ch07.html#sol-exer-abs-not-differentiable">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-x2-sin-derivative">
+
+<p><strong>Exercise 7.1.5.</strong> Define <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=x^2\sin\frac1x\)</span> for <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(f(0)=0\)</span>. Prove that <span class="math inline">\(f\)</span> is differentiable on <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(f'(0)=0\)</span>, and that <span class="math inline">\(f'\)</span> is not continuous at <span class="math inline">\(0\)</span>. <a aria-label="Hint for Exercise 7.1.5" href="solutions-ch07.html#sol-exer-x2-sin-derivative">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-mvt">
+<h2>7.2 The Mean Value Theorem</h2>
+<p>The Mean Value Theorem says that somewhere between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, the tangent line to the graph of <span class="math inline">\(f\)</span> is parallel to the secant line through
+<span class="math inline">\((a,f(a))\)</span> and <span class="math inline">\((b,f(b))\)</span>. See <a href="#fig-mvt">Figure
+7.1</a>. Rolle’s Theorem is the special case where the secant line is
+horizontal.</p>
+<figure class="figure" id="fig-mvt"><div class="figure-images"><img alt="A smooth curve from (a, f(a)) to (b, f(b)) with the secant line joining these two points. At a point c between a and b, the tangent line to the curve is drawn parallel to the secant line." height="278" src="figs/fig07.svg" width="501"/></div><figcaption><strong>Figure 7.1.</strong> The Mean Value Theorem. The tangent line
+at <span class="math inline">\(c\)</span> is parallel to the secant line
+through <span class="math inline">\((a,f(a))\)</span> and <span class="math inline">\((b,f(b))\)</span>.</figcaption></figure>
+<div class="theorembox" id="thm-rolle">
+
+<p><strong>Theorem 7.2.1</strong> (Rolle’s
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+continuous on <span class="math inline">\([a,b]\)</span> and
+differentiable on <span class="math inline">\((a,b)\)</span>, with <span class="math inline">\(f(a)=f(b)\)</span>. Then there exists a <span class="math inline">\(c\in(a,b)\)</span> such that <span class="math inline">\(f'(c)=0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> If <span class="math inline">\(f\)</span> is constant
+on <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(f'(x)=0\)</span> for all <span class="math inline">\(x\in(a,b)\)</span>.</p>
+<p>Now assume <span class="math inline">\(f\)</span> is not constant. By
+the Extreme Value Theorem (<a href="ch-continuity.html#thm-evt">Theorem 6.3.15</a>), <span class="math inline">\(f\)</span> has a maximum and a minimum on <span class="math inline">\([a,b]\)</span>. Choose some <span class="math inline">\(t\in(a,b)\)</span> such that <span class="math inline">\(f(t)\ne f(a)\)</span>. If <span class="math inline">\(f(t)&gt;f(a)\)</span>, then <span class="math inline">\(f\)</span> has a maximum at some <span class="math inline">\(c\in(a,b)\)</span>. The maximum value is at least
+<span class="math inline">\(f(t)&gt;f(a)=f(b)\)</span>, so it is not
+attained at <span class="math inline">\(a\)</span> or <span class="math inline">\(b\)</span>. An absolute maximum at <span class="math inline">\(c\in(a,b)\)</span> is also a relative maximum.
+Thus, by <a href="#thm-interior-extremum">Theorem 7.1.8</a>, <span class="math inline">\(f'(c)=0\)</span>. If <span class="math inline">\(f(t)&lt;f(a)\)</span>, then <span class="math inline">\(f\)</span> has a local minimum at some <span class="math inline">\(c\in(a,b)\)</span>. Thus <span class="math inline">\(f'(c)=0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-rolle-continuity">
+
+<p><strong>Example 7.2.2.</strong> Continuity in Rolle’s Theorem is
+required. Consider <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> defined by <span class="math display">\[f(x)=\begin{cases} x, &amp; 0\le x&lt;1, \\ 0,
+&amp; x=1.\end{cases}\]</span> <span class="math inline">\(f\)</span> is
+differentiable on <span class="math inline">\((0,1)\)</span> and <span class="math inline">\(f(0)=f(1)\)</span>, but <span class="math inline">\(f'(x)\ne 0\)</span> for all <span class="math inline">\(x\in (0,1)\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-rolle-endpoints">
+
+<p><strong>Example 7.2.3.</strong> Differentiability at the endpoints in
+Rolle’s Theorem is not required. Consider <span class="math inline">\(f:[-2,2]\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=\sqrt{4-x^2}\)</span>. Then <span class="math inline">\(f(-2)=0=f(2)\)</span>, and <span class="math inline">\(f'(x)=\frac{-x}{\sqrt{4-x^2}}\)</span> does
+not exist at <span class="math inline">\(-2\)</span> and <span class="math inline">\(2\)</span>. But <span class="math inline">\(f'(0)=0\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-mvt">
+
+<p><strong>Theorem 7.2.4</strong> (Mean Value
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+continuous on <span class="math inline">\([a,b]\)</span> and
+differentiable on <span class="math inline">\((a,b)\)</span>. Then there
+exists a <span class="math inline">\(c\in(a,b)\)</span> such that <span class="math display">\[f(b)-f(a)=f'(c)(b-a).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Define the function <span class="math inline">\(g:[a,b]\to\mathbb{R}\)</span> by <span class="math display">\[g(x)=f(x)-f(a)-\left[\frac{f(b)-f(a)}{b-a}\right](x-a).\]</span>
+Then <span class="math inline">\(g\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, differentiable on <span class="math inline">\((a,b)\)</span>, and <span class="math inline">\(g(a)=g(b)\)</span>. Thus, by Rolle’s Theorem,
+there exists a <span class="math inline">\(c\in(a,b)\)</span> such that
+<span class="math inline">\(g'(c)=0\)</span>. But <span class="math display">\[g'(x)=f'(x)-\frac{f(b)-f(a)}{b-a}\]</span>
+for all <span class="math inline">\(x\in (a,b)\)</span>. So <span class="math display">\[g'(c)=f'(c)-\frac{f(b)-f(a)}{b-a}=0.\]</span>
+Thus <span class="math inline">\(f'(c)=\frac{f(b)-f(a)}{b-a}\)</span>. So <span class="math inline">\(f(b)-f(a)=f'(c)(b-a)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Auxiliary Functions).</strong></p>
+<p>The proof of the Mean Value Theorem does not work with <span class="math inline">\(f\)</span> directly. It builds a new function
+<span class="math inline">\(g\)</span> that satisfies the hypotheses of
+Rolle’s Theorem, applies Rolle’s Theorem to <span class="math inline">\(g\)</span>, and translates the answer back to
+<span class="math inline">\(f\)</span>. The function <span class="math inline">\(g\)</span> is <span class="math inline">\(f\)</span> minus the secant line, chosen so that
+<span class="math inline">\(g(a)=g(b)\)</span>. A function built for one
+proof like this is called an <em>auxiliary function</em>. Finding it is
+the creative step. The proofs of Theorems <a href="#thm-cauchy-mvt">7.2.6</a> and <a href="#thm-darboux">7.2.8</a>
+use the same idea.</p>
+</div>
+<div class="examplebox" id="ex-ln-inequality">
+
+<p><strong>Example 7.2.5.</strong> The inequality <span class="math inline">\(\frac{x}{1+x}\le \ln(1+x)\le x\)</span> holds for
+all <span class="math inline">\(x&gt;-1\)</span>. To show this, assume
+<span class="math inline">\(\frac{d}{dx}\ln x=\frac{1}{x}\)</span>. Let
+<span class="math inline">\(f:(-1,\infty)\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=\ln(1+x)\)</span>. Then <span class="math inline">\(f(0)=0\)</span>. If <span class="math inline">\(x&gt;0\)</span>, then by the Mean Value Theorem,
+there exists a <span class="math inline">\(c\in(0,x)\)</span> such that
+<span class="math display">\[\ln(1+x)=f(x)-f(0)=f'(c)x.\]</span> But
+<span class="math inline">\(f'(c)=\frac{1}{1+c}\)</span> and <span class="math inline">\(\frac{1}{1+x}&lt;\frac{1}{1+c}&lt;1\)</span> for
+all <span class="math inline">\(c\in(0,x)\)</span>. Therefore, <span class="math inline">\(\frac{x}{1+x}&lt;f'(c)x&lt;x\)</span>. So
+<span class="math inline">\(\frac{x}{1+x}\le \ln(1+x)\le x\)</span> for
+all <span class="math inline">\(x\ge 0\)</span>.</p>
+<p>Now suppose <span class="math inline">\(-1&lt;x&lt;0\)</span>. Then
+again, by the Mean Value Theorem, there exists a <span class="math inline">\(c\in(x,0)\)</span> such that <span class="math display">\[\ln(1+x)=f(x)-f(0)=\frac{x}{1+c}.\]</span> But
+since <span class="math inline">\(x&lt;c&lt;0\)</span>, <span class="math inline">\(1&lt;\frac{1}{1+c}&lt;\frac{1}{1+x}\)</span>, and
+since <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(\frac{x}{1+x}&lt;\frac{x}{1+c}&lt;x\)</span>. So
+<span class="math display">\[\frac{x}{1+x}&lt;\ln(1+x)&lt;x\]</span> for
+<span class="math inline">\(-1&lt;x&lt;0\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-cauchy-mvt">
+
+<p><strong>Theorem 7.2.6</strong> (Cauchy Mean Value
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f,g:[a,b]\to\mathbb{R}\)</span> be
+continuous on <span class="math inline">\([a,b]\)</span> and
+differentiable on <span class="math inline">\((a,b)\)</span>. Then there
+exists a <span class="math inline">\(c\in(a,b)\)</span> such that <span class="math display">\[[f(b)-f(a)]g'(c)=[g(b)-g(a)]f'(c).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(h(x)=[f(b)-f(a)]g(x)-[g(b)-g(a)]f(x)\)</span>.
+Then <span class="math inline">\(h\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, differentiable on <span class="math inline">\((a,b)\)</span>, and <span class="math display">\[h(a)=f(b)g(a)-f(a)g(b)=h(b).\]</span> Thus by
+Rolle’s Theorem, there exists a <span class="math inline">\(c\in(a,b)\)</span> such that <span class="math inline">\(h'(c)=0\)</span>. Therefore, <span class="math display">\[[f(b)-f(a)]g'(c)-[g(b)-g(a)]f'(c)=0,\]</span>
+which gives the result.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-derivative-sign">
+
+<p><strong>Theorem 7.2.7.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span> be differentiable
+on <span class="math inline">\(I\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(f'(x)\ge 0\)</span> for all
+<span class="math inline">\(x\in I\)</span>, then <span class="math inline">\(f\)</span> is increasing on <span class="math inline">\(I\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f'(x)&gt; 0\)</span> for all
+<span class="math inline">\(x\in I\)</span>, then <span class="math inline">\(f\)</span> is strictly increasing on <span class="math inline">\(I\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f'(x)\le 0\)</span> for all
+<span class="math inline">\(x\in I\)</span>, then <span class="math inline">\(f\)</span> is decreasing on <span class="math inline">\(I\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f'(x)&lt;0\)</span> for all
+<span class="math inline">\(x\in I\)</span>, then <span class="math inline">\(f\)</span> is strictly decreasing on <span class="math inline">\(I\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f'(x)=0\)</span> for all <span class="math inline">\(x\in I\)</span>, then <span class="math inline">\(f\)</span> is constant on <span class="math inline">\(I\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Suppose <span class="math inline">\(x_1,x_2\in
+I\)</span> with <span class="math inline">\(x_1&lt;x_2\)</span>. By the
+Mean Value Theorem, there exists a <span class="math inline">\(c\in(x_1,x_2)\)</span> such that <span class="math display">\[f(x_2)-f(x_1)=f'(c)(x_2-x_1).\]</span> The
+results for (1)–(5) follow directly. For example, in (1), <span class="math inline">\(f'(c)\ge0\)</span> and <span class="math inline">\(x_2-x_1&gt;0\)</span>, so <span class="math inline">\(f(x_2)\ge f(x_1)\)</span>. The Mean Value Theorem
+applies on <span class="math inline">\([x_1,x_2]\)</span> since <span class="math inline">\(f\)</span> is continuous there by <a href="#thm-differentiable-continuous">Theorem 7.1.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-darboux">
+
+<p><strong>Theorem 7.2.8</strong> (Intermediate Value Theorem for
+Derivatives)<strong>.</strong></p>
+<p>Let <span class="math inline">\(I\subset \mathbb{R}\)</span> be an
+interval and <span class="math inline">\(f:I\to\mathbb{R}\)</span> be
+differentiable on <span class="math inline">\(I\)</span>. Then, given
+<span class="math inline">\(a,b\in I\)</span> with <span class="math inline">\(a&lt;b\)</span> and a real number <span class="math inline">\(k\)</span> between <span class="math inline">\(f'(a)\)</span> and <span class="math inline">\(f'(b)\)</span>, there exists a <span class="math inline">\(c\in(a,b)\)</span> such that <span class="math inline">\(f'(c)=k\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Define <span class="math inline">\(g:I\to\mathbb{R}\)</span> by <span class="math inline">\(g(x)=f(x)-k x\)</span>. Then <span class="math inline">\(g\)</span> is differentiable on <span class="math inline">\(I\)</span> with <span class="math inline">\(g'(x)=f'(x)-k\)</span>.</p>
+<p>Assume without loss of generality that <span class="math inline">\(f'(a)&lt;k&lt;f'(b)\)</span>. Then <span class="math inline">\(g'(a)&lt;0\)</span> and <span class="math inline">\(g'(b)&gt;0\)</span>. Since <span class="math inline">\(g'(a)&lt;0\)</span>, there exists an <span class="math inline">\(x_1\in(a,b)\)</span> such that <span class="math inline">\(g(x_1)&lt;g(a)\)</span>. Indeed, by <a href="ch-continuity.html#lem-limit-sign">Lemma 6.1.11</a> there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(\frac{g(x)-g(a)}{x-a}&lt;0\)</span> for all <span class="math inline">\(x\in I\)</span> with <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span>. Any <span class="math inline">\(x_1\in(a,b)\)</span> with <span class="math inline">\(x_1&lt;a+\delta\)</span> works. Also, since <span class="math inline">\(g'(b)&gt;0\)</span>, there exists an <span class="math inline">\(x_2\in(a,b)\)</span> such that <span class="math inline">\(g(x_2)&lt;g(b)\)</span>. So <span class="math inline">\(g\)</span> has an absolute minimum at some point
+<span class="math inline">\(c\in(a,b)\)</span>. By the Extreme Value
+Theorem, <span class="math inline">\(g\)</span> has an absolute minimum
+on <span class="math inline">\([a,b]\)</span> at some <span class="math inline">\(c\)</span>. It is not at <span class="math inline">\(a\)</span>, since <span class="math inline">\(g(x_1)&lt;g(a)\)</span>, and not at <span class="math inline">\(b\)</span>, since <span class="math inline">\(g(x_2)&lt;g(b)\)</span>. By <a href="#thm-interior-extremum">Theorem 7.1.8</a>, <span class="math inline">\(g'(c)=f'(c)-k=0\)</span>. So <span class="math inline">\(f'(c)=k\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This result is also called <em>Darboux’s Theorem</em>. A derivative
+does not have to be continuous (<a href="#exer-x2-sin-derivative">Exercise 7.1.5</a>). Even so, it has the
+intermediate value property, just like a continuous function. One
+consequence is that a derivative cannot have a jump. See <a href="#exer-no-jump">Exercise 7.2.8</a>.</p>
+<div class="theorembox" id="thm-inverse-function">
+
+<p><strong>Theorem 7.2.9</strong> (Inverse Function
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(I\subset \mathbb{R}\)</span> be an
+interval and <span class="math inline">\(f:I\to\mathbb{R}\)</span> be
+differentiable on <span class="math inline">\(I\)</span> with <span class="math inline">\(f'(x)\ne 0\)</span> for all <span class="math inline">\(x\in I\)</span>. Then <span class="math inline">\(f\)</span> is one-to-one on <span class="math inline">\(I\)</span> and the inverse function <span class="math inline">\(f^{-1}\)</span> is continuous and differentiable
+on <span class="math inline">\(J=f[I]\)</span> with <span class="math display">\[(f^{-1})'(f(c))=\frac{1}{f'(c)}\]</span>
+for all <span class="math inline">\(c\in I\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(f'(x)\ne
+0\)</span> for all <span class="math inline">\(x\in I\)</span>, by <a href="#thm-darboux">Theorem 7.2.8</a>, <span class="math inline">\(f'\)</span> is either always positive or
+always negative on all of <span class="math inline">\(I\)</span>. Assume
+without loss of generality that <span class="math inline">\(f'(x)&gt;0\)</span> for all <span class="math inline">\(x\in I\)</span>. Then by <a href="#thm-derivative-sign">Theorem 7.2.7</a>, <span class="math inline">\(f\)</span> is strictly increasing on <span class="math inline">\(I\)</span>, and by <a href="ch-continuity.html#thm-inverse-continuous">Theorem 6.5.7</a>, <span class="math inline">\(f^{-1}\)</span> is continuous on <span class="math inline">\(J=f[I]\)</span>.</p>
+<p>Let <span class="math inline">\(d\in J\)</span> and let <span class="math inline">\(\{y_n\}\)</span> be a sequence in <span class="math inline">\(J\)</span> with <span class="math inline">\(y_n\to
+d\)</span>, <span class="math inline">\(y_n\ne d\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(x_n\in I\)</span> with <span class="math inline">\(f(x_n)=y_n\)</span>. Since <span class="math inline">\(f^{-1}\)</span> is continuous, <span class="math inline">\(x_n\to c=f^{-1}(d)\)</span>. Since <span class="math inline">\(f^{-1}\)</span> is one-to-one, <span class="math inline">\(x_n\ne c\)</span> for all <span class="math inline">\(n\)</span>. So <span class="math inline">\(\frac{f(x_n)-f(c)}{x_n-c}\to
+f'(c)\ne0\)</span> by <a href="ch-continuity.html#thm-sequential-limits">Theorem
+6.1.18</a>. Hence <span class="math display">\[\lim_{n\to\infty}\frac{f^{-1}(y_n)-f^{-1}(d)}{y_n-d}=\lim_{n\to\infty}\frac{x_n-c}{f(x_n)-f(c)}=\frac{1}{f'(c)}.\]</span>
+Since this holds for any sequence <span class="math inline">\(\{y_n\}\)</span> in <span class="math inline">\(J\)</span> such that <span class="math inline">\(y_n\to d\)</span>, <span class="math inline">\(y_n\ne d\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, by <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a>, <span class="math display">\[(f^{-1})'(d)=\lim_{y\to
+d}\frac{f^{-1}(y)-f^{-1}(d)}{y-d}=\frac{1}{f'(c)}.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-arccos">
+
+<p><strong>Example 7.2.10.</strong> Let <span class="math inline">\(f:[0,\pi]\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=\cos x\)</span>. Since <span class="math inline">\(f'(x)=-\sin x&lt;0\)</span> for all <span class="math inline">\(x\in(0,\pi)\)</span>, <span class="math inline">\(f(x)=\cos x\)</span> is strictly decreasing on
+<span class="math inline">\([0,\pi]\)</span>. Also, <span class="math inline">\(f[[0,\pi]]=[-1,1]\)</span> and so <span class="math inline">\(f^{-1}(y)=\arccos y\)</span> exists on <span class="math inline">\([-1,1]\)</span>. Since <span class="math inline">\(f'(0)=f'(\pi)=0\)</span>, apply <a href="#thm-inverse-function">Theorem 7.2.9</a> on <span class="math inline">\(I=(0,\pi)\)</span>, where <span class="math inline">\(J=(-1,1)\)</span>. For <span class="math inline">\(x\in(0,\pi)\)</span>, <span class="math inline">\(\sin x&gt;0\)</span>, so <span class="math inline">\(\sin x=\sqrt{1-\cos^2x}\)</span>. Now <span class="math display">\[(f^{-1})'(f(x))=\frac{1}{f'(x)}=\frac{1}{-\sin
+x}=\frac{-1}{\sqrt{1-\cos^2x}}=\frac{-1}{\sqrt{1-[f(x)]^2}}.\]</span> So
+<span class="math display">\[(f^{-1})'(y)=\frac{-1}{\sqrt{1-y^2}}\]</span>
+for <span class="math inline">\(y\in(-1,1)\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-26">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-exp-inequality">
+
+<p><strong>Exercise 7.2.1.</strong> Use the Mean Value Theorem to
+establish the inequality <span class="math inline">\(e^x\geq
+1+x\)</span>. You may assume <span class="math inline">\(\frac{d}{dx}e^x=e^x\)</span>. <a aria-label="Hint for Exercise 7.2.1" href="solutions-ch07.html#sol-exer-exp-inequality">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-holder-constant">
+
+<p><strong>Exercise 7.2.2.</strong> Suppose <span class="math inline">\(f:(a,b)\to\mathbb{R}\)</span> satisfies <span class="math inline">\(|f(x)-f(y)|\leq M|x-y|^\alpha\)</span> for some
+<span class="math inline">\(\alpha&gt;1\)</span> and for all <span class="math inline">\(x,y\in (a,b)\)</span>. Prove that <span class="math inline">\(f\)</span> is a constant function on <span class="math inline">\((a,b)\)</span>. <a aria-label="Hint for Exercise 7.2.2" href="solutions-ch07.html#sol-exer-holder-constant">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-first-derivative-test">
+
+<p><strong>Exercise 7.2.3.</strong> (The First Derivative Test) Let
+<span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+differentiable on <span class="math inline">\((a,b)\)</span>. Suppose
+<span class="math inline">\(c\in (a,b)\)</span> is such that <span class="math inline">\(f'(c)=0\)</span>.</p>
+<ol type="a">
+<li><p>If there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(f'(x)&gt;0\)</span> for all <span class="math inline">\(x\in(c-\delta,c)\)</span> and <span class="math inline">\(f'(x)&lt;0\)</span> for all <span class="math inline">\(x\in(c,c+\delta)\)</span>, prove <span class="math inline">\(f\)</span> has a local maximum at <span class="math inline">\(x=c\)</span>.</p></li>
+<li><p>If there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(f'(x)&lt;0\)</span> for all <span class="math inline">\(x\in(c-\delta,c)\)</span> and <span class="math inline">\(f'(x)&gt;0\)</span> for all <span class="math inline">\(x\in(c,c+\delta)\)</span>, prove <span class="math inline">\(f\)</span> has a local minimum at <span class="math inline">\(x=c\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercisebox" id="exer-second-derivative-test">
+
+<p><strong>Exercise 7.2.4.</strong> (The Second Derivative Test) Let
+<span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+differentiable on <span class="math inline">\((a,b)\)</span>. Suppose
+<span class="math inline">\(c\in (a,b)\)</span> is such that <span class="math inline">\(f'(c)=0\)</span>, and <span class="math inline">\(f''(c)\)</span> exists.</p>
+<ol type="a">
+<li><p>If <span class="math inline">\(f''(c)&gt;0\)</span>,
+prove that <span class="math inline">\(f\)</span> has a local minimum at
+<span class="math inline">\(c\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f''(c)&lt;0\)</span>,
+prove that <span class="math inline">\(f\)</span> has a local maximum at
+<span class="math inline">\(c\)</span>.</p></li>
+<li><p>Show, using two specific examples, that no conclusion can be made
+if <span class="math inline">\(f''(c)=0\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercisebox" id="exer-root-derivative">
+
+<p><strong>Exercise 7.2.5.</strong> Prove <span class="math inline">\(\frac{d}{dx}x^{1/n}=\frac{1}{n}x^{1/n -
+1}\)</span> for all <span class="math inline">\(x\in(0,\infty)\)</span>,
+<span class="math inline">\(n\in\mathbb{N}\)</span>. <a aria-label="Hint for Exercise 7.2.5" href="solutions-ch07.html#sol-exer-root-derivative">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rational-power-derivative">
+
+<p><strong>Exercise 7.2.6.</strong> Prove <span class="math inline">\(\frac{d}{dx}x^{m/n}=\frac{d}{dx}(x^{1/n})^m=\frac{m}{n}x^{m/n-1}\)</span>
+for all <span class="math inline">\(x\in(0,\infty)\)</span>, <span class="math inline">\(m\in\mathbb{Z}\)</span>, <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-bounded-derivative-lipschitz">
+
+<p><strong>Exercise 7.2.7.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span> be differentiable
+on <span class="math inline">\(I\)</span> with <span class="math inline">\(|f'(x)|\le M\)</span> for all <span class="math inline">\(x\in I\)</span>. Prove that <span class="math inline">\(f\)</span> is Lipschitz continuous on <span class="math inline">\(I\)</span>. Use this to show <span class="math inline">\(|\sin x-\sin y|\le|x-y|\)</span> for all <span class="math inline">\(x,y\in\mathbb{R}\)</span>. <a aria-label="Solution for Exercise 7.2.7" href="solutions-ch07.html#sol-exer-bounded-derivative-lipschitz">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-no-jump">
+
+<p><strong>Exercise 7.2.8.</strong> Define <span class="math inline">\(g:\mathbb{R}\to\mathbb{R}\)</span> by <span class="math inline">\(g(x)=0\)</span> for <span class="math inline">\(x&lt;0\)</span> and <span class="math inline">\(g(x)=1\)</span> for <span class="math inline">\(x\ge0\)</span>. Prove that there is no
+differentiable function <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> with <span class="math inline">\(f'=g\)</span>. <a aria-label="Hint for Exercise 7.2.8" href="solutions-ch07.html#sol-exer-no-jump">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-lhospital">
+<h2>7.3 L’Hospital’s Rule<sup>*</sup></h2>
+<p>This section can be skipped. Nothing later in the book depends on
+it.</p>
+<p>L’Hospital’s Rule computes limits of the forms <span class="math inline">\(\frac00\)</span> and <span class="math inline">\(\frac{\infty}{\infty}\)</span>. The statement
+allows <span class="math inline">\(a=-\infty\)</span> and <span class="math inline">\(L=\pm\infty\)</span>. The limits involved are
+defined in <a href="ch-continuity.html#sec-infinite-limits">Section 6.2</a>.</p>
+<div class="theorembox" id="thm-lhospital">
+
+<p><strong>Theorem 7.3.1</strong> (L’Hospital’s
+Rule)<strong>.</strong></p>
+<p>Let <span class="math inline">\(-\infty\le a&lt;b\le \infty\)</span>,
+and let <span class="math inline">\(f,g:(a,b)\to\mathbb{R}\)</span> be
+differentiable on <span class="math inline">\((a,b)\)</span> with <span class="math inline">\(g'(x)\ne 0\)</span> for all <span class="math inline">\(x\in(a,b)\)</span>. Suppose <span class="math display">\[\lim_{x\to
+a^+}\frac{f'(x)}{g'(x)}=L,\]</span> where <span class="math inline">\(L\in\mathbb{R}\cup\{-\infty,\infty\}\)</span>.
+If</p>
+<ol>
+<li><p><span class="math inline">\(\lim_{x\to a^+}f(x)=\lim_{x\to
+a^+}g(x)=0\)</span>, or</p></li>
+<li><p><span class="math inline">\(\lim_{x\to
+a^+}g(x)=\pm\infty\)</span>,</p></li>
+</ol>
+<p>then <span class="math display">\[\lim_{x\to
+a^+}\frac{f(x)}{g(x)}=L.\]</span> The analogous result is true for <span class="math inline">\(x\to b^-\)</span>. When <span class="math inline">\(a=-\infty\)</span>, <span class="math inline">\(x\to a^+\)</span> means <span class="math inline">\(x\to-\infty\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Suppose <span class="math inline">\(a\)</span> is finite. Let
+<span class="math inline">\(\{x_n\}\)</span> be a sequence in <span class="math inline">\((a,b)\)</span> with <span class="math inline">\(x_n\to a\)</span> and <span class="math inline">\(x_n\ne a\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Define <span class="math inline">\(f(a)=g(a)=0\)</span>. Then <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are continuous at <span class="math inline">\(a\)</span> as functions on <span class="math inline">\([a,b)\)</span>. Thus by Cauchy’s Mean Value
+Theorem on <span class="math inline">\([a,x_n]\)</span>, for each <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists a <span class="math inline">\(c_n\in(a,x_n)\)</span> such that <span class="math display">\[[f(x_n)-f(a)]g'(c_n)=[g(x_n)-g(a)]f'(c_n),\]</span>
+implying <span class="math display">\[\frac{f(x_n)}{g(x_n)}=\frac{f'(c_n)}{g'(c_n)}.\]</span>
+Since <span class="math inline">\(g'(x)\ne 0\)</span> for all <span class="math inline">\(x\in(a,b)\)</span>, <span class="math inline">\(g(x_n)\ne g(a)\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> by Rolle’s Theorem. As
+<span class="math inline">\(n\to \infty\)</span>, <span class="math inline">\(c_n\to a\)</span> by the Squeeze Theorem. Thus by
+<a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> and <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>, <span class="math display">\[\lim_{n\to\infty}\frac{f(x_n)}{g(x_n)}=\lim_{n\to\infty}
+\frac{f'(c_n)}{g'(c_n)}=\lim_{x\to
+a^+}\frac{f'(x)}{g'(x)}=L.\]</span> Since the above holds for
+every sequence <span class="math inline">\(\{x_n\}\)</span> in <span class="math inline">\((a,b)\)</span> with <span class="math inline">\(x_n\to a\)</span> and <span class="math inline">\(x_n\ne a\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, by <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a>, the result follows.
+Here the domain is <span class="math inline">\((a,b)\)</span>, so the
+limit as <span class="math inline">\(x\to a\)</span> over <span class="math inline">\((a,b)\)</span> is the right-hand limit.</p>
+<p>Suppose <span class="math inline">\(a=-\infty\)</span>. Make the
+substitution <span class="math inline">\(x=-\frac{1}{t}\)</span>. Then
+as <span class="math inline">\(t\to0^+\)</span>, <span class="math inline">\(x\to-\infty\)</span>. For some <span class="math inline">\(c&gt;0\)</span>, define the functions <span class="math inline">\(\varphi(t)\)</span> and <span class="math inline">\(\psi(t)\)</span> on <span class="math inline">\((0,c)\)</span> by <span class="math display">\[\varphi(t)=f\left(-\frac{1}{t}\right)\text{ and
+}\psi(t)=g\left(-\frac{1}{t}\right).\]</span> See <a href="#exer-substitution">Exercise 7.3.1</a> for the choice of <span class="math inline">\(c\)</span>. By the Chain Rule, <span class="math inline">\(\varphi'(t)=\frac{1}{t^2}f'\left(-\frac1t\right)\)</span>
+and <span class="math inline">\(\psi'(t)=\frac{1}{t^2}g'\left(-\frac1t\right)\ne0\)</span>.
+Then <span class="math display">\[\lim_{t\to0^+}\frac{\varphi'(t)}{\psi'(t)}=\lim_{x\to-\infty}
+\frac{f'(x)}{g'(x)}=L,\]</span> and <span class="math display">\[\lim_{t\to
+0^+}\varphi(t)=\lim_{t\to0^+}\psi(t)=0.\]</span> Since <span class="math inline">\(0\)</span> is finite, <span class="math display">\[\lim_{x\to-\infty}\frac{f(x)}{g(x)}
+=\lim_{t\to0^+}\frac{\varphi(t)}{\psi(t)}=\lim_{t\to0^+}\frac{\varphi'(t)}{\psi'(t)}=L.\]</span></p></li>
+<li><p>Suppose <span class="math inline">\(\lim_{x\to
+a^+}g(x)=\infty\)</span>. If the limit is <span class="math inline">\(-\infty\)</span>, apply this case to <span class="math inline">\(-f\)</span> and <span class="math inline">\(-g\)</span>, since <span class="math inline">\(\frac{-f}{-g}=\frac fg\)</span> and <span class="math inline">\(\frac{(-f)'}{(-g)'}=\frac{f'}{g'}\)</span>.
+The proof works for <span class="math inline">\(a=-\infty\)</span> as
+written, reading <span class="math inline">\((a,c)\)</span> as <span class="math inline">\((-\infty,c)\)</span>.</p>
+<p>First suppose <span class="math inline">\(L&lt;\infty\)</span>. The
+claim is that for every <span class="math inline">\(\beta&gt;L\)</span>,
+there exists a <span class="math inline">\(c\in(a,b)\)</span> such that
+<span class="math inline">\(\frac{f(x)}{g(x)}&lt;\beta\)</span> for all
+<span class="math inline">\(x\in(a,c)\)</span>. Let <span class="math inline">\(\beta&gt;L\)</span> and choose <span class="math inline">\(r\)</span> with <span class="math inline">\(L&lt;r&lt;\beta\)</span>. Since <span class="math inline">\(\frac{f'(t)}{g'(t)}\to L&lt;r\)</span> as
+<span class="math inline">\(t\to a^+\)</span>, there exists a <span class="math inline">\(c_1\in(a,b)\)</span> such that <span class="math inline">\(\frac{f'(t)}{g'(t)}&lt;r\)</span> for all
+<span class="math inline">\(t\in(a,c_1)\)</span>. Fix <span class="math inline">\(y\in(a,c_1)\)</span>. Since <span class="math inline">\(g(x)\to\infty\)</span> as <span class="math inline">\(x\to a^+\)</span>, there exists a <span class="math inline">\(c_2\in(a,y)\)</span> such that <span class="math inline">\(g(x)&gt;\max\{g(y),0\}\)</span> for all <span class="math inline">\(x\in(a,c_2)\)</span>. Let <span class="math inline">\(x\in(a,c_2)\)</span>. By the Cauchy Mean Value
+Theorem on <span class="math inline">\([x,y]\)</span>, there exists a
+<span class="math inline">\(t\in(x,y)\)</span> with <span class="math inline">\([f(y)-f(x)]g'(t)=[g(y)-g(x)]f'(t)\)</span>.
+Since <span class="math inline">\(g'(t)\ne0\)</span> and <span class="math inline">\(g(x)\ne g(y)\)</span>, <span class="math display">\[\frac{f(x)-f(y)}{g(x)-g(y)}=\frac{f'(t)}{g'(t)}&lt;r.\]</span>
+The number <span class="math inline">\(\frac{g(x)-g(y)}{g(x)}\)</span>
+is positive. Multiplying by it gives <span class="math display">\[\frac{f(x)-f(y)}{g(x)}&lt;r\left(1-\frac{g(y)}{g(x)}\right),
+\quad\text{so}\quad
+\frac{f(x)}{g(x)}&lt;r+\frac{f(y)-rg(y)}{g(x)}\]</span> for all <span class="math inline">\(x\in(a,c_2)\)</span>. Since <span class="math inline">\(y\)</span> is fixed and <span class="math inline">\(g(x)\to\infty\)</span>, the last fraction
+converges to <span class="math inline">\(0\)</span> as <span class="math inline">\(x\to a^+\)</span>. So the right side converges to
+<span class="math inline">\(r&lt;\beta\)</span>. Hence there exists a
+<span class="math inline">\(c\in(a,c_2)\)</span> such that the right
+side is less than <span class="math inline">\(\beta\)</span>, and so
+<span class="math inline">\(\frac{f(x)}{g(x)}&lt;\beta\)</span>, for all
+<span class="math inline">\(x\in(a,c)\)</span>.</p>
+<p>In the same way, if <span class="math inline">\(L&gt;-\infty\)</span>, then for every <span class="math inline">\(\alpha&lt;L\)</span>, there exists a <span class="math inline">\(c'\in(a,b)\)</span> such that <span class="math inline">\(\frac{f(x)}{g(x)}&gt;\alpha\)</span> for all <span class="math inline">\(x\in(a,c')\)</span>.</p>
+<p>If <span class="math inline">\(L\)</span> is finite, let <span class="math inline">\(\varepsilon&gt;0\)</span> and apply both
+statements with <span class="math inline">\(\alpha=L-\varepsilon\)</span> and <span class="math inline">\(\beta=L+\varepsilon\)</span>. Then <span class="math inline">\(\left|\frac{f(x)}{g(x)}-L\right|&lt;\varepsilon\)</span>
+for all <span class="math inline">\(x\in(a,\min\{c,c'\})\)</span>.
+If <span class="math inline">\(L=-\infty\)</span>, the first statement
+holds for every <span class="math inline">\(\beta\in\mathbb{R}\)</span>,
+which says <span class="math inline">\(\frac{f(x)}{g(x)}\to-\infty\)</span>. If <span class="math inline">\(L=\infty\)</span>, the second statement holds for
+every <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, which
+says <span class="math inline">\(\frac{f(x)}{g(x)}\to\infty\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Reducing to a Case Already
+Proved).</strong></p>
+<p>The proof of L’Hospital’s Rule handles <span class="math inline">\(a=-\infty\)</span> by substituting <span class="math inline">\(x=-\frac1t\)</span>. That turns a limit as <span class="math inline">\(x\to-\infty\)</span> into a limit as <span class="math inline">\(t\to0^+\)</span>, which is a finite case already
+proved. It handles <span class="math inline">\(g\to-\infty\)</span> by
+replacing <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> with <span class="math inline">\(-f\)</span> and <span class="math inline">\(-g\)</span>. When a new case looks hard, look for
+a change of variables or a simple transformation that turns it into a
+case already done.</p>
+</div>
+<div class="corollarybox" id="cor-lhospital-two-sided">
+
+<p><strong>Corollary 7.3.2</strong> (L’Hospital’s
+Rule)<strong>.</strong> Let <span class="math inline">\(-\infty\le
+a&lt;c&lt;b\le\infty\)</span>, and let <span class="math inline">\(f,g:(a,c)\cup(c,b)\to\mathbb{R}\)</span> be
+differentiable with <span class="math inline">\(g'(x)\ne 0\)</span>
+for all <span class="math inline">\(x\in(a,c)\cup(c,b)\)</span>. Suppose
+<span class="math display">\[\lim_{x\to
+c}\frac{f'(x)}{g'(x)}=L,\]</span> where <span class="math inline">\(L\in\mathbb{R}\cup\{-\infty,\infty\}\)</span>.
+If</p>
+<ol>
+<li><p><span class="math inline">\(\lim_{x\to c}f(x)=\lim_{x\to
+c}g(x)=0\)</span>, or</p></li>
+<li><p><span class="math inline">\(\lim_{x\to
+c}g(x)=\pm\infty\)</span>,</p></li>
+</ol>
+<p>then <span class="math display">\[\lim_{x\to
+c}\frac{f(x)}{g(x)}=L.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Apply <a href="#thm-lhospital">Theorem 7.3.1</a> on <span class="math inline">\((c,b)\)</span> to get the right-hand limit, and
+its analogue for <span class="math inline">\(x\to b^-\)</span> on <span class="math inline">\((a,c)\)</span> to get the left-hand limit. Both
+equal <span class="math inline">\(L\)</span>. So the limit is <span class="math inline">\(L\)</span> by <a href="ch-continuity.html#thm-one-sided-limits">Theorem 6.1.23</a> (or by <a href="ch-continuity.html#exer-one-sided-limits-infinite">Exercise 6.2.5</a>, if <span class="math inline">\(L=\pm\infty\)</span>).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-27">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-substitution">
+
+<p><strong>Exercise 7.3.1.</strong> Let <span class="math inline">\(h:(-\infty,b)\to\mathbb{R}\)</span>. Show that
+there exists a <span class="math inline">\(c&gt;0\)</span> such that
+<span class="math inline">\(\varphi(t)=h\left(-\frac{1}{t}\right)\)</span> is
+defined on <span class="math inline">\((0,c)\)</span> and that <span class="math inline">\(\lim_{x\to -\infty}h(x)=\lim_{t\to
+0^+}\varphi(t)\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-lhospital-limits">
+
+<p><strong>Exercise 7.3.2.</strong> Use L’Hospital’s Rule to prove the
+following limits.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to
+0^+}\frac{\ln(1+x)}{x}=1\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to
+0^+}\frac{1-\cos x}{x^2}=\frac{1}{2}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to
+0^+}\frac{e^{-1/x}}{x}=0\)</span></p></li>
+</ol>
+<p><a aria-label="Solution for Exercise 7.3.2" href="solutions-ch07.html#sol-exer-lhospital-limits">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-convexity">
+<h2>7.4 Concavity and Convexity<sup>*</sup></h2>
+<p>This section can be skipped. Nothing later in the book depends on
+it.</p>
+<div class="definitionbox" id="def-convex">
+
+<p><strong>Definition 7.4.1.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>. Then <span class="math inline">\(f\)</span> is a <em>convex</em> function on <span class="math inline">\(I\)</span> if for every <span class="math inline">\(a,b\in I\)</span> and <span class="math inline">\(0\le t\le 1\)</span>, <span class="math display">\[f(ta+(1-t)b)\le tf(a)+(1-t)f(b).\]</span> Also,
+<span class="math inline">\(f\)</span> is a <em>concave</em> function on
+<span class="math inline">\(I\)</span> if for every <span class="math inline">\(a,b\in I\)</span> and <span class="math inline">\(0\le t\le1\)</span>, <span class="math display">\[f(ta+(1-t)b)\ge tf(a)+(1-t)f(b).\]</span></p>
+</div>
+<p>As <span class="math inline">\(t\)</span> runs from <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>, the point <span class="math inline">\(ta+(1-t)b\)</span> runs over the interval between
+<span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, and <span class="math inline">\(tf(a)+(1-t)f(b)\)</span> runs over the chord
+joining <span class="math inline">\((a,f(a))\)</span> and <span class="math inline">\((b,f(b))\)</span>. So <span class="math inline">\(f\)</span> is convex when the graph lies on or
+below every chord.</p>
+<div class="theorembox" id="thm-convex-slopes">
+
+<p><strong>Theorem 7.4.2.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>. Then <span class="math inline">\(f\)</span> is convex on <span class="math inline">\(I\)</span> if and only if for all <span class="math inline">\(a,x,b\in I\)</span> with <span class="math inline">\(a&lt;x&lt;b\)</span>, <span class="math display">\[\frac{f(x)-f(a)}{x-a}\le
+\frac{f(b)-f(x)}{b-x}.\]</span> Similarly, <span class="math inline">\(f\)</span> is concave on <span class="math inline">\(I\)</span> if and only if for all <span class="math inline">\(a,x,b\in I\)</span> with <span class="math inline">\(a&lt;x&lt;b\)</span>, <span class="math display">\[\frac{f(x)-f(a)}{x-a}\ge
+\frac{f(b)-f(x)}{b-x}.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-convex-slopes">Exercise
+7.4.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-convex-derivative">
+
+<p><strong>Theorem 7.4.3.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span> be differentiable
+on <span class="math inline">\(I\)</span>. Then <span class="math inline">\(f\)</span> is convex on <span class="math inline">\(I\)</span> if and only if <span class="math inline">\(f'\)</span> is increasing on <span class="math inline">\(I\)</span>. Similarly, <span class="math inline">\(f\)</span> is concave on <span class="math inline">\(I\)</span> if and only if <span class="math inline">\(f'\)</span> is decreasing on <span class="math inline">\(I\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Let <span class="math inline">\(a,b\in I\)</span> with <span class="math inline">\(a&lt;b\)</span>. Then <span class="math display">\[\begin{aligned}
+f'(a)&amp;=\lim_{x\to a^+}\frac{f(x)-f(a)}{x-a}\\
+&amp;\le \lim_{x\to a^+}\frac{f(b)-f(x)}{b-x}\\
+&amp;=\frac{f(b)-f(a)}{b-a}\\
+&amp;=\lim_{x\to b^-}\frac{f(x)-f(a)}{x-a}\\
+&amp;\le \lim_{x\to b^-}\frac{f(b)-f(x)}{b-x}\\
+&amp;=f'(b).
+\end{aligned}\]</span> The inequalities come from <a href="#thm-convex-slopes">Theorem 7.4.2</a> with <span class="math inline">\(a&lt;x&lt;b\)</span>. The middle equalities use
+the continuity of <span class="math inline">\(f\)</span> at <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> (<a href="#thm-differentiable-continuous">Theorem 7.1.3</a>).</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(a,x,b\in I\)</span> with <span class="math inline">\(a&lt;x&lt;b\)</span>. Then by the Mean Value
+Theorem, there exists <span class="math inline">\(r\in(a,x)\)</span> and
+<span class="math inline">\(s\in(x,b)\)</span> such that <span class="math display">\[\frac{f(x)-f(a)}{x-a}=f'(r)\text{ and }
+\frac{f(b)-f(x)}{b-x}=f'(s).\]</span> Since <span class="math inline">\(f'\)</span> is increasing, <span class="math inline">\(f'(r)\le f'(s)\)</span>. So <span class="math display">\[\frac{f(x)-f(a)}{x-a}\le
+\frac{f(b)-f(x)}{b-x},\]</span> and by <a href="#thm-convex-slopes">Theorem 7.4.2</a>, <span class="math inline">\(f\)</span> is convex.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-convex-continuous">
+
+<p><strong>Theorem 7.4.4.</strong> Let <span class="math inline">\(f:(a,b)\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is convex on <span class="math inline">\((a,b)\)</span>, then <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\((a,b)\)</span>. Similarly, if <span class="math inline">\(f\)</span> is concave on <span class="math inline">\((a,b)\)</span>, then <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\((a,b)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(c\in(a,b)\)</span>.
+Choose <span class="math inline">\(u,w\in(a,b)\)</span> with <span class="math inline">\(u&lt;c&lt;w\)</span>, and let <span class="math inline">\(c&lt;v&lt;w\)</span>. Then <span class="math display">\[\frac{f(c)-f(u)}{c-u}\le\frac{f(v)-f(c)}{v-c}\le\frac{f(w)-f(c)}{w-c}.\]</span>
+The first inequality is <a href="#thm-convex-slopes">Theorem 7.4.2</a>.
+For the second, write <span class="math inline">\(v=tc+(1-t)w\)</span>
+with <span class="math inline">\(t=\frac{w-v}{w-c}\)</span>. By
+convexity, <span class="math inline">\(f(v)\le tf(c)+(1-t)f(w)\)</span>,
+so <span class="math inline">\(f(v)-f(c)\le(1-t)\bigl(f(w)-f(c)\bigr)=\frac{v-c}{w-c}\bigl(f(w)-f(c)\bigr)\)</span>.
+Solving for <span class="math inline">\(f(v)\)</span> gives <span class="math display">\[\frac{f(c)-f(u)}{c-u}(v-c)+f(c)\le f(v)\le
+\frac{f(w)-f(c)}{w-c}(v-c)+f(c).\]</span> Then by the Squeeze Theorem,
+since <span class="math inline">\(u\)</span> and <span class="math inline">\(w\)</span> are fixed, <span class="math display">\[\lim_{v\to c^+}f(v)=f(c).\]</span> A similar
+argument shows <span class="math display">\[\lim_{v\to
+c^-}f(v)=f(c).\]</span> So <span class="math inline">\(f\)</span> is
+continuous at <span class="math inline">\(c\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-convex-not-continuous">
+
+<p><strong>Example 7.4.5.</strong> The function <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> defined by <span class="math display">\[f(x)=\begin{cases}0, &amp; 0\le x&lt;1, \\ 1,
+&amp; x=1,\end{cases}\]</span> is convex on <span class="math inline">\([0,1]\)</span> but is not continuous at <span class="math inline">\(1\)</span>. So <a href="#thm-convex-continuous">Theorem 7.4.4</a> needs an open
+interval.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-28">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-convex-slopes">
+
+<p><strong>Exercise 7.4.1.</strong> Prove <a href="#thm-convex-slopes">Theorem 7.4.2</a>. <a aria-label="Solution for Exercise 7.4.1" href="solutions-ch07.html#sol-exer-convex-slopes">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-second-derivative-convex">
+
+<p><strong>Exercise 7.4.2.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span> be twice
+differentiable on <span class="math inline">\(I\)</span>. Prove that
+<span class="math inline">\(f\)</span> is convex on <span class="math inline">\(I\)</span> if and only if <span class="math inline">\(f''(x)\ge0\)</span> for all <span class="math inline">\(x\in I\)</span>. <a aria-label="Hint for Exercise 7.4.2" href="solutions-ch07.html#sol-exer-second-derivative-convex">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sum-max-convex">
+
+<p><strong>Exercise 7.4.3.</strong> Let <span class="math inline">\(f,g:I\to\mathbb{R}\)</span> be convex on an
+interval <span class="math inline">\(I\)</span>. Prove that <span class="math inline">\(f+g\)</span> and <span class="math inline">\(h(x)=\max\{f(x),g(x)\}\)</span> are convex on
+<span class="math inline">\(I\)</span>.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-6">
+<h2>Notes</h2>
+<p>Michel Rolle proved his theorem for polynomials in 1691 [<a href="bibliography.html#bib-rolle1691">59</a>]. The Mean Value Theorem is often called
+Lagrange’s theorem, after Joseph-Louis Lagrange’s 1797 book [<a href="bibliography.html#bib-lagrange1797">40</a>]. Augustin-Louis Cauchy stated and
+proved it in its modern form in 1823 [<a href="bibliography.html#bib-cauchy1823">16</a>].
+L’Hospital’s Rule appeared in the first calculus textbook, written by
+the Marquis de l’Hôpital in 1696 [<a href="bibliography.html#bib-lhopital1696">46</a>].
+The result is due to his teacher, Johann Bernoulli. Gaston Darboux
+proved <a href="#thm-darboux">Theorem 7.2.8</a> in 1875 [<a href="bibliography.html#bib-darboux1875">19</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-continuity.html"><span class="dir">Previous</span> Chapter 6. Functions and Continuity</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="part-riemann.html"><span class="dir">Next</span> Part II. Riemann Integrals and Series</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

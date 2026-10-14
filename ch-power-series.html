@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 12. Power Series Expansions | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-function-sequences.html"><span class="dir">Previous</span> Chapter 11. Sequences and Series of Functions</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="part-lebesgue.html"><span class="dir">Next</span> Part III. Measure and Lebesgue Integrals</a>
+</nav>
+<main id="main">
+<article id="ch-power-series">
+<h1>Chapter 12. Power Series Expansions</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-radius">12.1 Radius of Convergence</a></li><li><a href="#sec-power-series-calculus">12.2 Integrals and Derivatives of Power
+Series</a></li><li><a href="#sec-taylor">12.3 Taylor Series</a></li><li><a href="#notes-11">Notes</a></li></ul></nav>
+<p>A power series is a series of functions whose terms are constant
+multiples of <span class="math inline">\((x-c)^k\)</span>. It is the
+infinite analogue of a polynomial. This chapter shows that power series
+behave almost as well as polynomials. Each one converges on an interval
+centered at <span class="math inline">\(c\)</span>, and uniformly on
+smaller closed intervals. Inside that interval its sum is continuous,
+and it can be integrated and differentiated term by term. So the
+theorems of <a href="ch-function-sequences.html">Chapter 11</a> pay off
+here.</p>
+<p><a href="#sec-taylor">Section 12.3</a> turns the question around.
+Given a function <span class="math inline">\(f\)</span>, is it the sum
+of a power series? The only candidate is the Taylor series of <span class="math inline">\(f\)</span>. Taylor’s Theorem measures how far
+<span class="math inline">\(f\)</span> is from the partial sums of that
+series. Sometimes the answer is yes, as for <span class="math inline">\(\sin x\)</span>, <span class="math inline">\(e^x\)</span> and <span class="math inline">\(\ln(1+x)\)</span>. Sometimes it is no, even for a
+function with derivatives of every order.</p>
+<section class="level3 unnumbered" id="sec-radius">
+<h2>12.1 Radius of Convergence</h2>
+<div class="definitionbox" id="def-power-series">
+
+<p><strong>Definition 12.1.1.</strong> Let <span class="math inline">\(\{a_k\}\)</span> be a sequence of real numbers,
+and let <span class="math inline">\(c\in\mathbb{R}\)</span>. A series of
+the form <span class="math display">\[\sum^\infty_{k=0}a_k(x-c)^k=a_0+a_1(x-c)+a_2(x-c)^2+\cdots,\]</span>
+is called a <em>power series</em> in (powers of) <span class="math inline">\((x-c)\)</span>. When <span class="math inline">\(x=c\)</span>, it is assumed <span class="math inline">\((x-c)^0=1\)</span>. When <span class="math inline">\(c=0\)</span>, the series is called a power series
+in <span class="math inline">\(x\)</span>. The numbers <span class="math inline">\(a_k\)</span> are called the <em>coefficients</em>
+of the power series.</p>
+</div>
+<p>The radius of convergence is defined with a limit superior. The next
+lemma collects the facts about limits superior that this chapter needs.
+Here <span class="math inline">\(\infty\)</span> is allowed as a value,
+with <span class="math inline">\(t\cdot\infty=\infty\)</span> for <span class="math inline">\(t&gt;0\)</span>.</p>
+<div class="lemmabox" id="lem-limsup-scaling">
+
+<p><strong>Lemma 12.1.2.</strong> Let <span class="math inline">\(\{x_k\}\)</span> and <span class="math inline">\(\{z_k\}\)</span> be sequences of nonnegative real
+numbers.</p>
+<ol>
+<li><p>If <span class="math inline">\(x_k\le z_k\)</span> for all <span class="math inline">\(k\ge K\)</span>, for some <span class="math inline">\(K\in\mathbb{N}\)</span>, then <span class="math inline">\(\limsup x_k\le\limsup z_k\)</span>.</p></li>
+<li><p>If <span class="math inline">\(t&gt;0\)</span>, then <span class="math inline">\(\limsup tx_k=t\limsup x_k\)</span>.</p></li>
+<li><p>If <span class="math inline">\(y_k\to y\)</span> with <span class="math inline">\(0&lt;y&lt;\infty\)</span>, then <span class="math inline">\(\limsup x_ky_k=y\limsup x_k\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>For <span class="math inline">\(n\ge K\)</span>, every element of
+<span class="math inline">\(\{x_k:k\ge n\}\)</span> is at most the
+matching element of <span class="math inline">\(\{z_k:k\ge n\}\)</span>.
+So <span class="math inline">\(\sup\{x_k:k\ge n\}\le\sup\{z_k:k\ge
+n\}\)</span>. Let <span class="math inline">\(n\to\infty\)</span>.</p></li>
+<li><p>For each <span class="math inline">\(n\)</span>, <span class="math inline">\(\sup\{tx_k:k\ge n\}=t\sup\{x_k:k\ge n\}\)</span>.
+Let <span class="math inline">\(n\to\infty\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(0&lt;\varepsilon&lt;y\)</span>.
+There is a <span class="math inline">\(K\in\mathbb{N}\)</span> with
+<span class="math inline">\(y-\varepsilon&lt;y_k&lt;y+\varepsilon\)</span> for
+all <span class="math inline">\(k\ge K\)</span>. Then <span class="math inline">\((y-\varepsilon)x_k\le
+x_ky_k\le(y+\varepsilon)x_k\)</span> for <span class="math inline">\(k\ge K\)</span>. By (1) and (2), <span class="math display">\[(y-\varepsilon)\limsup x_k\le\limsup
+x_ky_k\le(y+\varepsilon)\limsup x_k.\]</span> If <span class="math inline">\(\limsup x_k=\infty\)</span>, the left inequality
+gives <span class="math inline">\(\limsup x_ky_k=\infty\)</span>.
+Otherwise let <span class="math inline">\(\varepsilon\to0\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-root-limits">
+
+<p><strong>Lemma 12.1.3.</strong> If <span class="math inline">\(b&gt;0\)</span>, then <span class="math inline">\(\sqrt[k]{b}\to1\)</span>. Also <span class="math inline">\(\sqrt[k]{k}\to1\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Suppose <span class="math inline">\(b\ge1\)</span>, and let <span class="math inline">\(h_k=\sqrt[k]{b}-1\ge0\)</span>. By the Binomial
+Theorem (<a href="ch-integrals.html#exer-binomial">Exercise 9.3.4</a>), <span class="math inline">\(b=(1+h_k)^k\ge1+kh_k\)</span>. So <span class="math inline">\(0\le h_k\le\frac{b-1}{k}\)</span>, and <span class="math inline">\(h_k\to0\)</span> by the Squeeze Theorem. If <span class="math inline">\(0&lt;b&lt;1\)</span>, then <span class="math inline">\(\sqrt[k]{b}=1/\sqrt[k]{1/b}\to1\)</span> by the
+first case and the limit laws.</p>
+<p>For the second limit, let <span class="math inline">\(h_k=\sqrt[k]{k}-1\ge0\)</span>. For <span class="math inline">\(k\ge2\)</span>, the Binomial Theorem gives <span class="math inline">\(k=(1+h_k)^k\ge\binom{k}{2}h_k^2=\frac{k(k-1)}{2}h_k^2\)</span>.
+So <span class="math inline">\(0\le h_k\le\sqrt{\frac{2}{k-1}}\)</span>,
+and <span class="math inline">\(h_k\to0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-radius-of-convergence">
+
+<p><strong>Definition 12.1.4.</strong> Given a power series <span class="math inline">\(\sum a_k(x-c)^k\)</span>, the <em>radius of
+convergence</em> <span class="math inline">\(R\)</span> is defined as
+<span class="math display">\[\frac{1}{R}=\limsup\sqrt[k]{|a_k|}.\]</span> If
+<span class="math inline">\(\limsup\sqrt[k]{|a_k|}=\infty\)</span>, set
+<span class="math inline">\(R=0\)</span>. If <span class="math inline">\(\limsup\sqrt[k]{|a_k|}=0\)</span>, set <span class="math inline">\(R=\infty\)</span>.</p>
+</div>
+<p>If the ratios <span class="math inline">\(\frac{|a_{k+1}|}{|a_k|}\)</span> have a limit,
+that limit is also <span class="math inline">\(\frac1R\)</span>, by the
+next theorem. This is usually the easier way to find <span class="math inline">\(R\)</span>. But the ratios do not always have a
+limit. See <a href="#ex-radius-alternating-coefficients">Example
+12.1.9</a>.</p>
+<div class="theorembox" id="thm-ratio-root-comparison">
+
+<p><strong>Theorem 12.1.5.</strong></p>
+<p>Let <span class="math inline">\(a_k&gt;0\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>. Then <span class="math display">\[\liminf\frac{a_{k+1}}{a_k}\le\liminf\sqrt[k]{a_k}\le\limsup\sqrt[k]{a_k}\le\limsup\frac{a_{k+1}}{a_k}.\]</span>
+In particular, if <span class="math inline">\(\frac{a_{k+1}}{a_k}\to
+L\)</span>, then <span class="math inline">\(\sqrt[k]{a_k}\to
+L\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The middle inequality is <a href="ch-sequences.html#thm-limsup-basic">Theorem
+3.6.10</a>. For the right inequality, let <span class="math inline">\(\beta=\limsup\frac{a_{k+1}}{a_k}\)</span>. If
+<span class="math inline">\(\beta=\infty\)</span>, there is nothing to
+prove. Otherwise let <span class="math inline">\(c&gt;\beta\)</span>. By
+<a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a>, there is a
+<span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(a_{k+1}\le ca_k\)</span> for all <span class="math inline">\(k\ge K\)</span>. By induction, <span class="math inline">\(a_k\le a_Kc^{k-K}\)</span> for all <span class="math inline">\(k\ge K\)</span>. So for <span class="math inline">\(k\ge K\)</span>, <span class="math display">\[\sqrt[k]{a_k}\le\sqrt[k]{a_Kc^{-K}}\cdot
+c.\]</span> The right side tends to <span class="math inline">\(c\)</span>, by <a href="#lem-root-limits">Lemma
+12.1.3</a>. So <span class="math inline">\(\limsup\sqrt[k]{a_k}\le
+c\)</span>, by <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (1) and <a href="ch-sequences.html#cor-limsup-equals-liminf">Corollary 3.6.14</a>. Since <span class="math inline">\(c&gt;\beta\)</span> was arbitrary, <span class="math inline">\(\limsup\sqrt[k]{a_k}\le\beta\)</span>. The left
+inequality is proved the same way, with <span class="math inline">\(c&lt;\liminf\frac{a_{k+1}}{a_k}\)</span> and the
+inequalities reversed. The last statement follows from <a href="ch-sequences.html#cor-limsup-equals-liminf">Corollary 3.6.14</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-radius-ratio">
+
+<p><strong>Corollary 12.1.6.</strong> If <span class="math inline">\(a_k\ne0\)</span> for all large <span class="math inline">\(k\)</span>, and <span class="math inline">\(\lim_{k\to\infty}\frac{|a_{k+1}|}{|a_k|}\)</span>
+exists (as a real number or <span class="math inline">\(\infty\)</span>), then this limit equals <span class="math inline">\(\frac1R\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Changing finitely many coefficients does not change <span class="math inline">\(\limsup\sqrt[k]{|a_k|}\)</span>, by <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (1). So we may assume <span class="math inline">\(a_k\ne0\)</span> for all <span class="math inline">\(k\)</span>. Apply <a href="#thm-ratio-root-comparison">Theorem 12.1.5</a> to <span class="math inline">\(\{|a_k|\}\)</span>. (If the limit is <span class="math inline">\(\infty\)</span>, the left inequality gives <span class="math inline">\(\liminf\sqrt[k]{|a_k|}=\infty\)</span>.)</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-radius-of-convergence">
+
+<p><strong>Theorem 12.1.7.</strong> Given a power series <span class="math inline">\(\sum a_k(x-c)^k\)</span> with radius of
+convergence <span class="math inline">\(R\)</span>, <span class="math inline">\(0&lt;R\le \infty\)</span>, the series</p>
+<ol>
+<li><p>converges absolutely for all <span class="math inline">\(x\)</span> with <span class="math inline">\(|x-c|&lt;R\)</span>, and</p></li>
+<li><p>diverges for all <span class="math inline">\(x\)</span> with
+<span class="math inline">\(|x-c|&gt;R\)</span>.</p></li>
+<li><p>Furthermore, if <span class="math inline">\(0&lt;\rho&lt;R\)</span>, then the series converges
+uniformly for all <span class="math inline">\(x\)</span> with <span class="math inline">\(|x-c|\le \rho\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>By the root test, <span class="math inline">\(\sum
+a_k(x-c)^k\)</span> converges absolutely if <span class="math inline">\(\limsup\sqrt[k]{|a_k||x-c|^k}&lt;1\)</span>. By <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (2), this <span class="math inline">\(\limsup\)</span> is <span class="math inline">\(|x-c|\cdot\frac1R\)</span> when <span class="math inline">\(x\ne c\)</span>, where <span class="math inline">\(|x-c|\cdot\frac1R=0\)</span> if <span class="math inline">\(R=\infty\)</span>. So the series converges if
+<span class="math inline">\(|x-c|\cdot\frac{1}{R}&lt;1\)</span>, or if
+<span class="math inline">\(|x-c|&lt;R\)</span>.</p></li>
+<li><p>By the root test (<a href="ch-series.html#thm-ratio-root-test">Theorem
+10.3.4</a>), <span class="math inline">\(\sum a_k(x-c)^k\)</span>
+diverges if <span class="math inline">\(\limsup\sqrt[k]{|a_k||x-c|^k}&gt;1\)</span>. So
+the series diverges if <span class="math inline">\(|x-c|\cdot\frac{1}{R}&gt;1\)</span>, or if <span class="math inline">\(|x-c|&gt;R\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(0&lt;\rho&lt;R\)</span>.
+Choose <span class="math inline">\(\beta\in(\rho,R)\)</span>. Since
+<span class="math display">\[\limsup\sqrt[k]{|a_k|}=\frac{1}{R}&lt;\frac{1}{\beta},\]</span>
+there exists a <span class="math inline">\(K\in\mathbb{N}\)</span> such
+that <span class="math inline">\(\sqrt[k]{|a_k|}&lt;\frac{1}{\beta}\)</span> for
+all <span class="math inline">\(k\ge K\)</span>. Hence for <span class="math inline">\(k\ge K\)</span> and <span class="math inline">\(|x-c|\le \rho\)</span>, <span class="math display">\[|a_k(x-c)^k|\le
+|a_k|\rho^k&lt;\left(\frac{\rho}{\beta}\right)^k.\]</span> But <span class="math inline">\(\frac{\rho}{\beta}&lt;1\)</span>, and thus <span class="math inline">\(\sum\left(\frac{\rho}{\beta}\right)^k\)</span>
+converges. Therefore, by the Weierstrass M-Test (<a href="ch-function-sequences.html#thm-weierstrass-m-test">Theorem 11.2.10</a>), the series
+converges uniformly on <span class="math inline">\(|x-c|\le
+\rho\)</span>. To apply the M-Test, take <span class="math inline">\(M_k=|a_k|\rho^k\)</span> for all <span class="math inline">\(k\)</span>. Then <span class="math inline">\(\sum
+M_k\)</span> converges by the Comparison Test, since <span class="math inline">\(M_k&lt;\left(\frac\rho\beta\right)^k\)</span> for
+<span class="math inline">\(k\ge K\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So a power series converges on an interval centered at <span class="math inline">\(c\)</span>, called its <em>interval of
+convergence</em>. The theorem says nothing about the endpoints <span class="math inline">\(c\pm R\)</span>. As the next example shows,
+anything can happen there.</p>
+<div class="examplebox" id="ex-radius-endpoints">
+
+<p><strong>Example 12.1.8.</strong> The series <span class="math inline">\(\sum_{k=0}^\infty x^k\)</span> has radius of
+convergence <span class="math inline">\(R=1\)</span> and diverges when
+<span class="math inline">\(x=-1\)</span> or <span class="math inline">\(x=1\)</span>.</p>
+<p>The series <span class="math inline">\(\sum_{k=1}^\infty
+\frac{x^k}{k}\)</span> has radius of convergence <span class="math inline">\(R=1\)</span>, converges when <span class="math inline">\(x=-1\)</span> but diverges when <span class="math inline">\(x=1\)</span>.</p>
+<p>The series <span class="math inline">\(\sum_{k=1}^\infty
+\frac{x^k}{k^2}\)</span> has radius of convergence <span class="math inline">\(R=1\)</span> and converges when <span class="math inline">\(x=-1\)</span> or <span class="math inline">\(x=1\)</span>.</p>
+<p>The radii follow from <a href="#lem-root-limits">Lemma 12.1.3</a>,
+since <span class="math inline">\(\sqrt[k]{k}\to1\)</span> and <span class="math inline">\(\sqrt[k]{k^2}=\left(\sqrt[k]{k}\right)^2\to1\)</span>.
+At <span class="math inline">\(x=\pm1\)</span>, use the <span class="math inline">\(n\)</span>th Term Test, the Alternating Series
+Test and <a href="ch-series.html#ex-p-series">Example 10.2.11</a>.</p>
+</div>
+<div class="examplebox" id="ex-radius-alternating-coefficients">
+
+<p><strong>Example 12.1.9.</strong> Consider the series <span class="math display">\[1+2x+3^2x^2+2^3x^3+3^4x^4+\cdots=\sum^\infty_{k=0}a_k
+x^k,\]</span> where <span class="math display">\[a_k=\begin{cases} 3^k,
+&amp; k\in\mathbb{E}, \\ 2^k, &amp; k\in\mathbb{O}.\end{cases}\]</span>
+So <span class="math inline">\(\limsup\sqrt[k]{|a_k|}=3\)</span>,
+implying <span class="math inline">\(R=\frac{1}{3}\)</span>. The series
+diverges at <span class="math inline">\(x=\frac{1}{3}\)</span> and <span class="math inline">\(x=-\frac{1}{3}\)</span>. There, the terms with
+<span class="math inline">\(k\)</span> even are <span class="math inline">\(1\)</span>, so the terms do not tend to <span class="math inline">\(0\)</span>. The ratios <span class="math inline">\(\frac{a_{k+1}}{a_k}\)</span> have no limit. They
+tend to <span class="math inline">\(0\)</span> along even <span class="math inline">\(k\)</span> and to <span class="math inline">\(\infty\)</span> along odd <span class="math inline">\(k\)</span>. So <a href="#cor-radius-ratio">Corollary 12.1.6</a> does not apply here.</p>
+</div>
+<div class="examplebox" id="ex-radius-zero">
+
+<p><strong>Example 12.1.10.</strong> The series <span class="math inline">\(\sum_{k=0}^\infty k!x^k\)</span> has radius of
+convergence <span class="math inline">\(R=0\)</span> and therefore, the
+power series converges only for <span class="math inline">\(x=0\)</span>. By <a href="#cor-radius-ratio">Corollary 12.1.6</a>, <span class="math inline">\(\frac1R=\lim_{k\to\infty}\frac{(k+1)!}{k!}=\lim_{k\to\infty}(k+1)=\infty\)</span>.
+For <span class="math inline">\(x\ne0\)</span>, the ratios of
+consecutive terms are <span class="math inline">\(\frac{|(k+1)!x^{k+1}|}{|k!x^k|}=(k+1)|x|\to\infty\)</span>,
+so the series diverges by <a href="ch-series.html#thm-ratio-root-test">Theorem
+10.3.4</a>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Finding a Radius of
+Convergence).</strong></p>
+<p>Start with the ratios <span class="math inline">\(\frac{|a_{k+1}|}{|a_k|}\)</span>. If they have a
+limit, it is <span class="math inline">\(\frac1R\)</span>, by <a href="#cor-radius-ratio">Corollary 12.1.6</a>. This works for
+coefficients built from factorials and powers, like <span class="math inline">\(\frac{k^2}{3^k}\)</span> or <span class="math inline">\(\frac{k!}{k^k}\)</span>. If the ratios have no
+limit, use the definition, <span class="math inline">\(\frac1R=\limsup\sqrt[k]{|a_k|}\)</span>. This
+works for coefficients given by powers, and for coefficients that follow
+different rules for even and odd <span class="math inline">\(k\)</span>.
+If the series has gaps, like <span class="math inline">\(\sum\frac{x^{3k}}{8^k}\)</span>, many coefficients
+are <span class="math inline">\(0\)</span> and the ratios are undefined.
+Then substitute. With <span class="math inline">\(u=x^3\)</span>, the
+series <span class="math inline">\(\sum\frac{u^k}{8^k}\)</span>
+converges for <span class="math inline">\(|u|&lt;8\)</span>. So the
+original converges for <span class="math inline">\(|x|&lt;2\)</span> and
+diverges for <span class="math inline">\(|x|&gt;2\)</span>, and <span class="math inline">\(R=2\)</span>. Finally, the endpoints <span class="math inline">\(c\pm R\)</span> always need separate work.</p>
+</div>
+<div class="definitionbox" id="def-analytic">
+
+<p><strong>Definition 12.1.11.</strong> A function <span class="math inline">\(f(x)=\sum^\infty_{k=0}a_k(x-c)^k\)</span> on <span class="math inline">\(|x-c|&lt;R\)</span> where <span class="math inline">\(R\)</span> is the radius of convergence of <span class="math inline">\(\sum a_k(x-c)^k\)</span> is called a <em>real
+analytic function</em>.</p>
+</div>
+<div class="remarkbox" id="rem-analytic">
+
+<p><strong>Remark 12.1.12.</strong> The usual definition is local. A
+function <span class="math inline">\(f:I\to\mathbb{R}\)</span> on an
+open interval <span class="math inline">\(I\)</span> is real analytic on
+<span class="math inline">\(I\)</span> if for every <span class="math inline">\(d\in I\)</span>, <span class="math inline">\(f\)</span> is the sum of a power series centered
+at <span class="math inline">\(d\)</span> on some interval <span class="math inline">\((d-r,d+r)\subset I\)</span>. Every function in <a href="#def-analytic">Definition 12.1.11</a> is analytic in this sense,
+but the proof is not given here. It requires rewriting a power series
+centered at <span class="math inline">\(c\)</span> as one centered at
+<span class="math inline">\(d\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-40">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-radius-gaps-1">
+
+<p><strong>Exercise 12.1.1.</strong> Find the radius of convergence of
+the power series <span class="math inline">\(\sum^{\infty}_{k=0}\frac{1}{4^k}(x+1)^{2k}\)</span>.
+<a aria-label="Hint for Exercise 12.1.1" href="solutions-ch12.html#sol-exer-radius-gaps-1">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-radius-gaps-2">
+
+<p><strong>Exercise 12.1.2.</strong> Find the radius of convergence of
+the power series <span class="math inline">\(\sum_{k=0}^\infty
+\frac{1}{8^k}x^{3k}\)</span>. <a aria-label="Hint for Exercise 12.1.2" href="solutions-ch12.html#sol-exer-radius-gaps-2">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-radius-practice">
+
+<p><strong>Exercise 12.1.3.</strong> Find the radius of convergence and
+the interval of convergence of each power series. Check the
+endpoints.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{k}{2^k}x^k\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=0}^\infty\frac{x^k}{k!}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{(x-3)^k}{k\,5^k}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{k!}{k^k}x^k\)</span></p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 12.1.3" href="solutions-ch12.html#sol-exer-radius-practice">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-liminf-ratio-root">
+
+<p><strong>Exercise 12.1.4.</strong> Complete the proof of <a href="#thm-ratio-root-comparison">Theorem 12.1.5</a> by proving the left
+inequality. <a aria-label="Hint for Exercise 12.1.4" href="solutions-ch12.html#sol-exer-liminf-ratio-root">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-power-series-calculus">
+<h2>12.2 Integrals and Derivatives of Power
+Series</h2>
+<p>Inside its interval of convergence, a power series can be treated
+like a polynomial. It can be integrated and differentiated term by term.
+At an endpoint where the series converges, Abel’s Theorem says the sum
+is still continuous from the inside.</p>
+<div class="theorembox" id="thm-abel">
+
+<p><strong>Theorem 12.2.1</strong> (Abel’s
+Theorem)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(f(x)=\sum^\infty_{k=0}a_kx^k\)</span> has radius
+of convergence <span class="math inline">\(R=1\)</span>, and <span class="math inline">\(\sum^\infty_{k=0} a_k\)</span> converges. Then
+<span class="math display">\[\lim_{x\to
+1^-}f(x)=\sum^\infty_{k=0}a_k.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The plan is to show that <span class="math inline">\(\sum
+a_kx^k\)</span> converges uniformly on <span class="math inline">\([0,1]\)</span>. Then its sum is continuous on
+<span class="math inline">\([0,1]\)</span>, in particular at <span class="math inline">\(1\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(\sum a_k\)</span> converges, the Cauchy
+Criterion (<a href="ch-series.html#thm-cauchy-criterion-series">Theorem 10.2.1</a>)
+gives an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+<span class="math display">\[\left|\sum_{k=n}^ja_k\right|&lt;\varepsilon\quad\text{for
+all }j\ge n&gt;N.\]</span> Fix <span class="math inline">\(m\ge
+n&gt;N\)</span> and <span class="math inline">\(x\in[0,1]\)</span>. For
+<span class="math inline">\(j=n,\dots,m\)</span>, let <span class="math inline">\(B_j=\sum_{k=n}^ja_k\)</span>, and let <span class="math inline">\(B_{n-1}=0\)</span>. Then <span class="math inline">\(|B_j|&lt;\varepsilon\)</span> and <span class="math inline">\(a_k=B_k-B_{k-1}\)</span> for <span class="math inline">\(n\le k\le m\)</span>. Summing by parts, exactly as
+in the proof of <a href="ch-series.html#thm-abel-summation">Theorem 10.2.14</a>, <span class="math display">\[\sum_{k=n}^ma_kx^k=\sum_{k=n}^m(B_k-B_{k-1})x^k=\sum_{k=n}^{m-1}B_k\left(x^k-x^{k+1}\right)+B_mx^m.\]</span>
+Since <span class="math inline">\(0\le x\le1\)</span>, each <span class="math inline">\(x^k-x^{k+1}\)</span> is nonnegative. So <span class="math display">\[\left|\sum_{k=n}^ma_kx^k\right|\le\varepsilon\left(\sum_{k=n}^{m-1}\left(x^k-x^{k+1}\right)+x^m\right)=\varepsilon
+x^n\le\varepsilon.\]</span> This holds for all <span class="math inline">\(m\ge n&gt;N\)</span> and all <span class="math inline">\(x\in[0,1]\)</span>. By <a href="ch-function-sequences.html#cor-cauchy-criterion-uniform-series">Corollary 11.2.6</a>, <span class="math inline">\(\sum a_kx^k\)</span> converges uniformly on <span class="math inline">\([0,1]\)</span>. Let <span class="math inline">\(g(x)=\sum_{k=0}^\infty a_kx^k\)</span> for <span class="math inline">\(x\in[0,1]\)</span>. Each term is continuous, so
+<span class="math inline">\(g\)</span> is continuous on <span class="math inline">\([0,1]\)</span>, by <a href="ch-function-sequences.html#cor-uniform-limit-continuous">Corollary 11.2.16</a>. Since <span class="math inline">\(g=f\)</span> on <span class="math inline">\([0,1)\)</span> and <span class="math inline">\(g(1)=\sum_{k=0}^\infty a_k\)</span>, <span class="math display">\[\lim_{x\to1^-}f(x)=\lim_{x\to1^-}g(x)=g(1)=\sum_{k=0}^\infty
+a_k.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-ln2">
+
+<p><strong>Example 12.2.2.</strong> Consider the series <span class="math inline">\(\sum^\infty_{k=0}(-1)^kt^k\)</span>. This series
+has radius of convergence <span class="math inline">\(R=1\)</span>. The
+series converges to <span class="math inline">\(f(t)=\frac{1}{1+t}\)</span> for all <span class="math inline">\(t\)</span> with <span class="math inline">\(|t|&lt;1\)</span>. Since the convergence is
+uniform on <span class="math inline">\(|t|\le |x|\)</span> when <span class="math inline">\(|x|&lt;1\)</span> (<a href="#thm-radius-of-convergence">Theorem 12.1.7</a>), by <a href="ch-function-sequences.html#cor-series-integral">Corollary 11.2.19</a>, <span class="math display">\[\begin{aligned}
+\ln(1+x)&amp;=\int^x_0\frac{1}{1+t}\,dt\\
+&amp;=\sum_{k=0}^\infty(-1)^k\int^x_0 t^k\, dt\\
+&amp;=\sum^\infty_{k=0}\frac{(-1)^k}{k+1}x^{k+1}\\
+&amp;=\sum^\infty_{k=1}\frac{(-1)^{k+1}}{k}x^k,
+\end{aligned}\]</span> for all <span class="math inline">\(x\)</span>
+with <span class="math inline">\(|x|&lt;1\)</span>. The first equality
+holds because both sides are <span class="math inline">\(0\)</span> at
+<span class="math inline">\(x=0\)</span> and have derivative <span class="math inline">\(\frac{1}{1+x}\)</span>, by <a href="ch-integrals.html#ex-exp-ln">Example 9.3.8</a> and <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>. When <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(\int_0^x\)</span> means <span class="math inline">\(-\int_x^0\)</span>. The series <span class="math inline">\(\sum^\infty_{k=1}\frac{(-1)^{k+1}}{k}x^k\)</span>
+has radius of convergence <span class="math inline">\(R=1\)</span> and
+also converges when <span class="math inline">\(x=1\)</span>. Thus by
+Abel’s Theorem, and since <span class="math inline">\(\ln\)</span> is
+continuous at <span class="math inline">\(2\)</span>, <span class="math display">\[\ln
+2=\sum^\infty_{k=1}\frac{(-1)^{k+1}}{k}=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots.\]</span>
+So the sum <span class="math inline">\(s\)</span> in <a href="ch-series.html#ex-rearrangement-harmonic">Example 10.3.7</a> is <span class="math inline">\(\ln2\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-power-series-derivative">
+
+<p><strong>Theorem 12.2.3.</strong> Suppose <span class="math inline">\(\sum^\infty_{k=0}a_k(x-c)^k\)</span> has radius of
+convergence <span class="math inline">\(R&gt;0\)</span> and <span class="math display">\[f(x)=\sum^\infty_{k=0}a_k(x-c)^k,\quad
+|x-c|&lt;R.\]</span> Then</p>
+<ol>
+<li><p><span class="math inline">\(\sum^\infty_{k=1}ka_k(x-c)^{k-1}\)</span> has
+radius of convergence <span class="math inline">\(R\)</span>,
+and</p></li>
+<li><p><span class="math inline">\(f'(x)=\sum^\infty_{k=1}ka_k(x-c)^{k-1}\)</span>
+for all <span class="math inline">\(x\)</span>, <span class="math inline">\(|x-c|&lt;R\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Without loss of generality, take <span class="math inline">\(c=0\)</span>. Consider the differentiated series
+<span class="math inline">\(\sum ka_kx^{k-1}\)</span>. For <span class="math inline">\(x\ne 0\)</span>, <span class="math display">\[\lim_{k\to\infty}\sqrt[k]{|x|^{k-1}}=\lim_{k\to\infty}\frac{|x|}{\sqrt[k]{|x|}}=|x|.\]</span>
+Therefore, since <span class="math inline">\(\sqrt[k]{k}\to 1\)</span>
+(<a href="#lem-root-limits">Lemma 12.1.3</a>), <span class="math display">\[\lim_{k\to\infty}\sqrt[k]{k|x|^{k-1}}=|x|.\]</span>
+Also, for <span class="math inline">\(x\ne 0\)</span>, by <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (3), <span class="math display">\[\begin{aligned}
+\limsup
+\sqrt[k]{|a_k|k|x|^{k-1}}&amp;=\limsup\left(\sqrt[k]{|a_k|}\cdot\sqrt[k]{k|x|^{k-1}}\right)\\
+&amp;=|x|\limsup\sqrt[k]{|a_k|}\\
+&amp;=|x|\cdot\frac{1}{R}.
+\end{aligned}\]</span> This is less than <span class="math inline">\(1\)</span> when <span class="math inline">\(|x|&lt;R\)</span> and greater than <span class="math inline">\(1\)</span> when <span class="math inline">\(|x|&gt;R\)</span>. Thus by the Root Test (<a href="ch-series.html#thm-ratio-root-test">Theorem 10.3.4</a>) the differentiated
+series converges for all <span class="math inline">\(|x|&lt;R\)</span>
+and diverges for all <span class="math inline">\(|x|&gt;R\)</span>. Thus
+the radius of convergence of <span class="math inline">\(\sum
+ka_kx^{k-1}\)</span> is <span class="math inline">\(R\)</span>.</p></li>
+<li><p>Choose <span class="math inline">\(\rho\in(0,R)\)</span>. Then by
+<a href="#thm-radius-of-convergence">Theorem 12.1.7</a>, <span class="math inline">\(\sum ka_kx^{k-1}\)</span> converges uniformly for
+all <span class="math inline">\(|x|\le \rho\)</span>. Thus by <a href="ch-function-sequences.html#thm-uniform-derivative">Theorem 11.2.22</a>, <span class="math display">\[f'(x)=\sum^\infty_{k=1}ka_kx^{k-1}.\]</span>
+In detail, apply <a href="ch-function-sequences.html#thm-uniform-derivative">Theorem 11.2.22</a>
+on <span class="math inline">\([-\rho,\rho]\)</span> to the partial sums
+<span class="math inline">\(S_n(x)=\sum_{k=0}^na_kx^k\)</span>. Their
+derivatives <span class="math inline">\(S_n'(x)=\sum_{k=1}^nka_kx^{k-1}\)</span>
+converge uniformly on <span class="math inline">\([-\rho,\rho]\)</span>,
+and <span class="math inline">\(S_n(0)=a_0\)</span> converges. So <span class="math inline">\(f'(x)=\lim_{n\to\infty}S_n'(x)\)</span>
+for <span class="math inline">\(|x|&lt;\rho\)</span>. Every <span class="math inline">\(x\)</span> with <span class="math inline">\(|x|&lt;R\)</span> satisfies <span class="math inline">\(|x|&lt;\rho\)</span> for some <span class="math inline">\(\rho&lt;R\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-power-series-derivatives">
+
+<p><strong>Corollary 12.2.4.</strong> Suppose <span class="math inline">\(\sum^\infty_{k=0}a_k(x-c)^k\)</span> has radius of
+convergence <span class="math inline">\(R&gt;0\)</span> and <span class="math display">\[f(x)=\sum^\infty_{k=0}a_k(x-c)^k,\quad
+|x-c|&lt;R.\]</span> Then <span class="math inline">\(f\)</span> has
+derivatives of all orders in <span class="math inline">\(|x-c|&lt;R\)</span>, and for every <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[f^{(n)}(x)=\sum^\infty_{k=n}\frac{k!}{(k-n)!}a_k(x-c)^{k-n}.\]</span>
+In particular, <span class="math display">\[f^{(n)}(c)=n!a_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The formula for <span class="math inline">\(f^{(n)}\)</span> follows
+by induction on <span class="math inline">\(n\)</span>. The case <span class="math inline">\(n=1\)</span> is <a href="#thm-power-series-derivative">Theorem 12.2.3</a>. If the formula
+holds for <span class="math inline">\(n\)</span>, then <span class="math inline">\(f^{(n)}\)</span> is the sum of a power series with
+radius of convergence <span class="math inline">\(R\)</span>, by part
+(1) of that theorem applied <span class="math inline">\(n\)</span>
+times. Applying the theorem to it gives the formula for <span class="math inline">\(n+1\)</span>, since <span class="math inline">\((k-n)\frac{k!}{(k-n)!}=\frac{k!}{(k-n-1)!}\)</span>.
+Setting <span class="math inline">\(x=c\)</span> leaves only the term
+<span class="math inline">\(k=n\)</span>, which is <span class="math inline">\(n!a_n\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-c-infinity">
+
+<p><strong>Definition 12.2.5.</strong> A function <span class="math inline">\(f:I\to\mathbb{R}\)</span> defined on an open
+interval <span class="math inline">\(I\)</span> is said to be
+<em>infinitely differentiable</em> on <span class="math inline">\(I\)</span> if <span class="math inline">\(f^{(n)}(x)\)</span> exists for all <span class="math inline">\(x\in I\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. The set of infinitely
+differentiable functions on an open interval <span class="math inline">\(I\)</span> is denoted by <span class="math inline">\(C^{\infty}(I)\)</span>. Since differentiable
+functions are continuous, <span class="math inline">\(C^\infty(I)\)</span> is the intersection of the
+sets <span class="math inline">\(C^{(n)}(I)\)</span> of <a href="ch-derivative.html#def-continuously-differentiable">Definition 7.1.4</a>.</p>
+</div>
+<div class="corollarybox" id="cor-analytic-smooth">
+
+<p><strong>Corollary 12.2.6.</strong> If <span class="math inline">\(f\)</span> is analytic, <span class="math inline">\(f\in C^\infty(I)\)</span>, where <span class="math inline">\(I=(c-R,c+R)\)</span> as in <a href="#def-analytic">Definition 12.1.11</a>.</p>
+</div>
+<div class="examplebox" id="ex-geometric-derivatives">
+
+<p><strong>Example 12.2.7.</strong> For <span class="math inline">\(|x|&lt;1\)</span>, <span class="math display">\[\frac{1}{1-x}=\sum^\infty_{k=0}x^k.\]</span> Thus
+by <a href="#cor-power-series-derivatives">Corollary 12.2.4</a>, <span class="math display">\[\frac{d^n}{dx^n}\frac{1}{1-x}=\frac{n!}{(1-x)^{n+1}}=\sum^\infty_{k=0}\frac{(k+n)!}{k!}x^k.\]</span>
+For example, with <span class="math inline">\(n=1\)</span>, <span class="math inline">\(\frac{1}{(1-x)^2}=\sum_{k=0}^\infty(k+1)x^k\)</span>
+for <span class="math inline">\(|x|&lt;1\)</span>.</p>
+</div>
+<div class="corollarybox" id="cor-power-series-unique">
+
+<p><strong>Corollary 12.2.8.</strong> Suppose <span class="math inline">\(\sum a_k(x-c)^k\)</span> and <span class="math inline">\(\sum b_k(x-c)^k\)</span> are two power series
+which converge for all <span class="math inline">\(|x-c|&lt;R\)</span>
+for some <span class="math inline">\(R&gt;0\)</span>. Then <span class="math display">\[\sum^\infty_{k=0}a_k(x-c)^k=\sum^\infty_{k=0}b_k(x-c)^k,\quad
+|x-c|&lt;R,\]</span> if and only if <span class="math inline">\(a_k=b_k\)</span> for all <span class="math inline">\(k\in\mathbb{N}_0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Leftarrow\)</span>)
+Clearly, if <span class="math inline">\(a_k=b_k\)</span> for all <span class="math inline">\(k\in\mathbb{N}_0\)</span>, then the two power
+series are equal.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Set <span class="math inline">\(f(x)=\sum^\infty_{k=0}a_k(x-c)^k\)</span> and
+<span class="math inline">\(g(x)=\sum^\infty_{k=0}b_k(x-c)^k\)</span>.
+Since <span class="math inline">\(f(x)=g(x)\)</span> for all <span class="math inline">\(x\)</span> with <span class="math inline">\(|x-c|&lt;R\)</span>, then <span class="math inline">\(f^{(n)}(x)=g^{(n)}(x)\)</span> for all <span class="math inline">\(n\in\mathbb{N}_0\)</span> and all <span class="math inline">\(x\)</span>, <span class="math inline">\(|x-c|&lt;R\)</span>. In particular, <span class="math inline">\(f^{(n)}(c)=g^{(n)}(c)\)</span> for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>. Thus by <a href="#cor-power-series-derivatives">Corollary 12.2.4</a>, <span class="math inline">\(a_k=b_k\)</span> for all <span class="math inline">\(k\in\mathbb{N}_0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The next example needs one more fact about <span class="math inline">\(e^x\)</span>. It grows faster than every power of
+<span class="math inline">\(x\)</span>.</p>
+<div class="lemmabox" id="lem-exp-dominates">
+
+<p><strong>Lemma 12.2.9.</strong> For all <span class="math inline">\(u\ge0\)</span> and all <span class="math inline">\(m\in\mathbb{N}_0\)</span>, <span class="math inline">\(e^u\ge\frac{u^m}{m!}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Recall that <span class="math inline">\(e^u=E(u)\)</span>, where
+<span class="math inline">\(E'=E\)</span>, <span class="math inline">\(E(0)=1\)</span> and <span class="math inline">\(E\)</span> is increasing (<a href="ch-integrals.html#exer-exp-function">Exercise 9.3.3</a>). For <span class="math inline">\(m\in\mathbb{N}_0\)</span> and <span class="math inline">\(u\ge0\)</span>, let <span class="math inline">\(g_m(u)=e^u-\sum_{k=0}^m\frac{u^k}{k!}\)</span>. We
+show <span class="math inline">\(g_m(u)\ge0\)</span> for <span class="math inline">\(u\ge0\)</span> by induction on <span class="math inline">\(m\)</span>. First, <span class="math inline">\(g_0(u)=e^u-1\ge0\)</span>, since <span class="math inline">\(E\)</span> is increasing. If <span class="math inline">\(g_{m-1}\ge0\)</span> on <span class="math inline">\([0,\infty)\)</span>, then <span class="math inline">\(g_m'=g_{m-1}\ge0\)</span> there, so <span class="math inline">\(g_m\)</span> is increasing on <span class="math inline">\([0,\infty)\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Since <span class="math inline">\(g_m(0)=0\)</span>, <span class="math inline">\(g_m(u)\ge0\)</span> for all <span class="math inline">\(u\ge0\)</span>. So <span class="math inline">\(e^u\ge\sum_{k=0}^m\frac{u^k}{k!}\ge\frac{u^m}{m!}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-flat-function">
+
+<p><strong>Example 12.2.10.</strong> <span class="math inline">\(f\in
+C^\infty(I)\)</span> does not imply <span class="math inline">\(f\)</span> has a power series representation with
+positive radius of convergence. For example, let <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> be defined by
+<span class="math display">\[f(x)=\begin{cases}e^{-1/x^2}, &amp; x\ne
+0,\\ 0, &amp; x=0.\end{cases}\]</span> See <a href="#fig-flat-function">Figure 12.1</a>. First, a limit. Let <span class="math inline">\(P\)</span> be a polynomial of degree <span class="math inline">\(d\)</span>. Then <span id="eq-flat-limit"></span>
+<span class="math display">\[\lim_{x\to0}P\left(\frac1x\right)e^{-1/x^2}=0.
+\tag{12.2.1}\]</span> To see this, let <span class="math inline">\(C\)</span> be the sum of the absolute values of
+the coefficients of <span class="math inline">\(P\)</span>. For <span class="math inline">\(0&lt;|x|\le1\)</span>, <span class="math inline">\(\left|P\left(\frac1x\right)\right|\le
+C|x|^{-d}\)</span>. By <a href="#lem-exp-dominates">Lemma 12.2.9</a>
+with <span class="math inline">\(u=\frac1{x^2}\)</span> and <span class="math inline">\(m=d+1\)</span>, <span class="math inline">\(e^{-1/x^2}\le(d+1)!\,x^{2d+2}\)</span>. So <span class="math inline">\(\left|P\left(\frac1x\right)e^{-1/x^2}\right|\le
+C(d+1)!\,|x|^{d+2}\)</span>, which tends to <span class="math inline">\(0\)</span>.</p>
+<p>Since <span class="math display">\[\lim_{x\to
+0}e^{-1/x^2}=0,\]</span> <span class="math inline">\(f\)</span> is
+continuous at <span class="math inline">\(0\)</span>. For <span class="math inline">\(x\ne 0\)</span>, <span class="math display">\[f'(x)=\frac{2e^{-1/x^2}}{x^3}\]</span> and
+<span class="math display">\[\begin{aligned}
+f'(0)&amp;=\lim_{h\to 0}\frac{f(h)-f(0)}{h}\\
+&amp;=\lim_{h\to0}\frac{e^{-1/h^2}}{h}\\
+&amp;=0,
+\end{aligned}\]</span> by <a href="#eq-flat-limit">(12.2.1)</a> with
+<span class="math inline">\(P(t)=t\)</span>. Thus <span class="math display">\[f'(x)=\begin{cases}\frac{2}{x^3}e^{-1/x^2},
+&amp; x\ne 0,\\ 0, &amp; x=0.\end{cases}\]</span></p>
+<p>Now assume for <span class="math inline">\(n=k\)</span>, <span class="math display">\[f^{(k)}(x)=\begin{cases}P\left(\frac{1}{x}\right)e^{-1/x^2},
+&amp; x\ne 0,\\ 0, &amp; x=0,\end{cases}\]</span> where <span class="math inline">\(P\)</span> is a polynomial of degree <span class="math inline">\(3k\)</span>. So for <span class="math inline">\(x\ne 0\)</span>, <span class="math display">\[\begin{aligned}
+f^{(k+1)}(x)&amp;=P'\left(\frac{1}{x}\right)\cdot\left(-\frac{1}{x^2}\right)e^{-1/x^2}+P\left(\frac{1}{x}\right)\cdot\frac{2}{x^3}e^{-1/x^2}\\
+&amp;=Q\left(\frac{1}{x}\right)e^{-1/x^2},
+\end{aligned}\]</span> where <span class="math display">\[Q\left(\frac{1}{x}\right)=P'\left(\frac{1}{x}\right)\cdot\left(-\frac{1}{x^2}\right)+P\left(\frac{1}{x}\right)\cdot\frac{2}{x^3}.\]</span>
+So <span class="math inline">\(Q\)</span> is a polynomial of degree
+<span class="math inline">\(3(k+1)\)</span>. Indeed, <span class="math inline">\(Q(t)=-t^2P'(t)+2t^3P(t)\)</span>. Also, for
+<span class="math inline">\(x=0\)</span>, <span class="math display">\[\begin{aligned}
+f^{(k+1)}(0)&amp;=\lim_{h\to0}\frac{f^{(k)}(h)-f^{(k)}(0)}{h}\\
+&amp;=\lim_{h\to0}\frac{P\left(\frac{1}{h}\right)e^{-1/h^2}}{h}\\
+&amp;=0,
+\end{aligned}\]</span> by <a href="#eq-flat-limit">(12.2.1)</a> with the
+polynomial <span class="math inline">\(tP(t)\)</span> in place of <span class="math inline">\(P\)</span>. Thus by induction, for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>, <span class="math display">\[f^{(n)}(x)=\begin{cases}P\left(\frac{1}{x}\right)e^{-1/x^2},
+&amp; x\ne 0,\\ 0, &amp; x=0,\end{cases}\]</span> where <span class="math inline">\(P\)</span> is a polynomial of degree <span class="math inline">\(3n\)</span>. (For <span class="math inline">\(n=0\)</span>, <span class="math inline">\(P=1\)</span>.)</p>
+<p>If there exists an <span class="math inline">\(R&gt;0\)</span> such
+that <span class="math display">\[f(x)=\sum^\infty_{k=0}a_k
+x^k,\quad|x|&lt;R,\]</span> then <span class="math inline">\(n!\,a_n=f^{(n)}(0)=0\)</span> for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>, by <a href="#cor-power-series-derivatives">Corollary 12.2.4</a>. So every
+<span class="math inline">\(a_n=0\)</span>, and <span class="math inline">\(f(x)=0\)</span> for <span class="math inline">\(|x|&lt;R\)</span>. But <span class="math inline">\(f(x)&gt;0\)</span> for <span class="math inline">\(x\ne0\)</span>. So <span class="math inline">\(f\)</span> cannot be written as a power series
+with positive radius of convergence that converges to <span class="math inline">\(f\)</span> on an interval <span class="math inline">\((-r,r)\)</span>.</p>
+</div>
+<figure class="figure" id="fig-flat-function"><div class="figure-images"><img alt="The graph of e to the minus 1 over x squared. It lies along the x-axis near 0, then rises smoothly and levels off toward height 1 on both sides." height="207" src="figs/fig14.svg" width="501"/></div><figcaption><strong>Figure 12.1.</strong> The function <span class="math inline">\(f\)</span> of <a href="#ex-flat-function">Example
+12.2.10</a>. It is extremely flat at <span class="math inline">\(0\)</span>. Every derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(0\)</span> is <span class="math inline">\(0\)</span>, but <span class="math inline">\(f\)</span> is not the zero function.</figcaption></figure>
+<section class="level5 unnumbered" id="exercises-41">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-power-series-integral">
+
+<p><strong>Exercise 12.2.1.</strong> Suppose <span class="math inline">\(f(x)=\sum^{\infty}_{k=0}a_k(x-c)^k\)</span> has
+radius of convergence <span class="math inline">\(R&gt;0\)</span>. For
+<span class="math inline">\(|x-c|&lt;R\)</span>, set <span class="math inline">\(F(x)=\int^{x}_{c}f(t)\,dt\)</span>. Prove that
+<span class="math inline">\(F(x)=\sum^{\infty}_{k=0}\frac{a_k}{k+1}(x-c)^{k+1}\)</span>,
+<span class="math inline">\(|x-c|&lt;R\)</span>.</p>
+<ol type="a">
+<li><p>Use the fact that <span class="math inline">\(\frac{d}{dx}\arctan
+x=\frac{1}{1+x^2}\)</span> to show <span class="math inline">\(\arctan
+x=\sum^{\infty}_{k=0}\frac{(-1)^k}{2k+1}x^{2k+1}\)</span> for <span class="math inline">\(x\in (-1,1)\)</span>.</p></li>
+<li><p>Use Abel’s theorem to show <span class="math inline">\(\sum^{\infty}_{k=0}\frac{(-1)^k}{2k+1}=\frac{\pi}{4}\)</span>.
+Then explain why the formula in (a) also holds at <span class="math inline">\(x=\pm1\)</span>.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 12.2.1" href="solutions-ch12.html#sol-exer-power-series-integral">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-abel-converse">
+
+<p><strong>Exercise 12.2.2.</strong> Show that <span class="math inline">\(\lim_{x\to1^-}\sum_{k=0}^\infty(-1)^kx^k\)</span>
+exists, although <span class="math inline">\(\sum_{k=0}^\infty(-1)^k\)</span> diverges. So the
+converse of Abel’s Theorem is false. <a aria-label="Hint for Exercise 12.2.2" href="solutions-ch12.html#sol-exer-abel-converse">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-power-series-practice">
+
+<p><strong>Exercise 12.2.3.</strong> Find power series centered at <span class="math inline">\(0\)</span>, with their radii of convergence, for
+<span class="math inline">\(\frac{x}{(1-x)^2}\)</span> and for <span class="math inline">\(\ln(1-x^2)\)</span>. <a aria-label="Hint for Exercise 12.2.3" href="solutions-ch12.html#sol-exer-power-series-practice">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-taylor">
+<h2>12.3 Taylor Series</h2>
+<p>By <a href="#cor-power-series-derivatives">Corollary 12.2.4</a>, if
+<span class="math inline">\(f\)</span> is the sum of a power series
+centered at <span class="math inline">\(c\)</span>, the coefficients
+must be <span class="math inline">\(a_k=\frac{f^{(k)}(c)}{k!}\)</span>.
+So the Taylor series below is the only power series centered at <span class="math inline">\(c\)</span> that could converge to <span class="math inline">\(f\)</span>. Whether it does is a question about
+the remainder <span class="math inline">\(f-T_n(f,c)\)</span>.</p>
+<div class="definitionbox" id="def-taylor-polynomial">
+
+<p><strong>Definition 12.3.1.</strong> Let <span class="math inline">\(I\)</span> be an open interval, let <span class="math inline">\(f:I\to\mathbb{R}\)</span>, and let <span class="math inline">\(c\in I\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. Suppose <span class="math inline">\(f^{(n)}(x)\)</span> exists for all <span class="math inline">\(x\in I\)</span>. The polynomial <span class="math display">\[T_n(f,c)(x)=\sum^n_{k=0}\frac{f^{(k)}(c)}{k!}(x-c)^k\]</span>
+is the <em>Taylor polynomial</em> of order <span class="math inline">\(n\)</span> of <span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span>. If <span class="math inline">\(f\in
+C^\infty(I)\)</span>, the series <span class="math display">\[T(f,c)(x)=\sum^\infty_{k=0}\frac{f^{(k)}(c)}{k!}(x-c)^k,\]</span>
+is called the <em>Taylor series</em> of <span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span>. If <span class="math inline">\(c=0\)</span>, the Taylor series of <span class="math inline">\(f\)</span> is the <em>Maclaurin series</em> of
+<span class="math inline">\(f\)</span>. The Taylor polynomial <span class="math inline">\(T_1(f,c)\)</span> is the linear approximation to
+<span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-taylor-derivatives">
+
+<p><strong>Remark 12.3.2.</strong> Differentiating term by term, the
+<span class="math inline">\(j\)</span>th derivative of <span class="math inline">\(\frac{(x-c)^k}{k!}\)</span> at <span class="math inline">\(x=c\)</span> is <span class="math inline">\(1\)</span> if <span class="math inline">\(j=k\)</span> and <span class="math inline">\(0\)</span> if <span class="math inline">\(j\ne
+k\)</span>. So <span class="math inline">\(T_n(f,c)\)</span> is the
+unique polynomial of degree at most <span class="math inline">\(n\)</span> whose value and first <span class="math inline">\(n\)</span> derivatives at <span class="math inline">\(c\)</span> agree with those of <span class="math inline">\(f\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-sqrt-25-7">
+
+<p><strong>Example 12.3.3.</strong> Consider <span class="math inline">\(\sqrt{25.7}\)</span>. Let <span class="math inline">\(f(x)=\sqrt{x}\)</span>, <span class="math inline">\(c=25\)</span>. Then <span class="math inline">\(f(25)=5\)</span>, <span class="math inline">\(f'(25)=\frac{1}{10}\)</span> and <span class="math inline">\(f''(25)=-\frac{1}{500}\)</span>. Then
+<span class="math display">\[\begin{aligned}
+T_2(f,25)(x)&amp;=f(c)+f'(c)(x-c)+\frac{f''(c)}{2}(x-c)^2\\
+&amp;=5+\frac{1}{10}(x-25)-\frac{1}{1000}(x-25)^2.
+\end{aligned}\]</span> So <span class="math display">\[\begin{aligned}
+f(25.7)&amp;\approx 5 +\frac{1}{10}(25.7-25)-\frac{1}{1000}(25.7-25)^2\\
+&amp;=5+\frac{7}{100}-\frac{49}{100000}\\
+&amp;=5.06951.
+\end{aligned}\]</span></p>
+</div>
+<div class="examplebox" id="ex-flat-taylor">
+
+<p><strong>Example 12.3.4.</strong> For the function <span class="math inline">\(f(x)=e^{-1/x^2}\)</span> of <a href="#ex-flat-function">Example 12.2.10</a>, <span class="math inline">\(T_n(f,0)(x)=0\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span> and for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>. So <span class="math inline">\(T_n\)</span> converges but not to <span class="math inline">\(f\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-remainder">
+
+<p><strong>Definition 12.3.5.</strong> Define the function <span class="math display">\[R_n(x)=R_n(f,c)(x)=f(x)-T_n(f,c)(x)\]</span> as
+the <em>remainder</em> or error function between <span class="math inline">\(f\)</span> and <span class="math inline">\(T_n(f,c)\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-taylor-series-converges">
+
+<p><strong>Theorem 12.3.6.</strong> Suppose <span class="math inline">\(f\in C^\infty(I)\)</span> and <span class="math inline">\(c\in I\)</span>. Then for <span class="math inline">\(x\in I\)</span>, <span class="math display">\[f(x)=\sum^\infty_{k=0}\frac{f^{(k)}(c)}{k!}(x-c)^k\]</span>
+if and only if <span class="math display">\[\lim_{n\to\infty}R_n(f,c)(x)=0.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The <span class="math inline">\(n\)</span>th partial sum of the
+Taylor series at <span class="math inline">\(x\)</span> is <span class="math inline">\(T_n(f,c)(x)=f(x)-R_n(f,c)(x)\)</span>. It
+converges to <span class="math inline">\(f(x)\)</span> if and only if
+<span class="math inline">\(R_n(f,c)(x)\to0\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-taylor-lagrange">
+
+<p><strong>Theorem 12.3.7</strong> (Taylor’s Theorem, Lagrange’s Form of
+the Remainder)<strong>.</strong></p>
+<p>Let <span class="math inline">\(I\)</span> be an open interval, let
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>, and let <span class="math inline">\(c\in I\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. If <span class="math inline">\(f^{(n+1)}(t)\)</span> exists for every <span class="math inline">\(t\in I\)</span>, then for any <span class="math inline">\(x\in I\)</span>, there exists a <span class="math inline">\(\xi\)</span> between <span class="math inline">\(x\)</span> and <span class="math inline">\(c\)</span> such that <span class="math display">\[R_n(x)=R_n(f,c)(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-c)^{n+1}.\]</span>
+Notice continuity of <span class="math inline">\(f^{(n+1)}\)</span> is
+not required.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(x=c\)</span>, both sides are <span class="math inline">\(0\)</span> with <span class="math inline">\(\xi=c\)</span>. So suppose <span class="math inline">\(x\ne c\)</span>. By symmetry we may assume <span class="math inline">\(x&gt;c\)</span>. Let <span class="math inline">\(M\)</span> be the number with <span class="math display">\[f(x)=T_n(f,c)(x)+M(x-c)^{n+1}.\]</span> The goal
+is to show <span class="math inline">\(M=\frac{f^{(n+1)}(\xi)}{(n+1)!}\)</span> for some
+<span class="math inline">\(\xi\in(c,x)\)</span>. Define <span class="math inline">\(g:I\to\mathbb{R}\)</span> by <span class="math display">\[g(t)=f(t)-T_n(f,c)(t)-M(t-c)^{n+1}.\]</span>
+Three facts about <span class="math inline">\(g\)</span> are needed.
+First, <span class="math inline">\(g(x)=0\)</span>, by the choice of
+<span class="math inline">\(M\)</span>. Second, <span class="math inline">\(g^{(j)}(c)=0\)</span> for <span class="math inline">\(j=0,1,\dots,n\)</span>. This holds because <span class="math inline">\(f\)</span> and <span class="math inline">\(T_n(f,c)\)</span> have the same derivatives of
+order at most <span class="math inline">\(n\)</span> at <span class="math inline">\(c\)</span> (<a href="#rem-taylor-derivatives">Remark 12.3.2</a>), and every derivative
+of <span class="math inline">\((t-c)^{n+1}\)</span> of order at most
+<span class="math inline">\(n\)</span> is <span class="math inline">\(0\)</span> at <span class="math inline">\(t=c\)</span>. Third, since <span class="math inline">\(T_n(f,c)\)</span> is a polynomial of degree at
+most <span class="math inline">\(n\)</span>, its <span class="math inline">\((n+1)\)</span>st derivative is <span class="math inline">\(0\)</span>. So <span class="math display">\[g^{(n+1)}(t)=f^{(n+1)}(t)-(n+1)!\,M\quad\text{for
+all }t\in I.\]</span></p>
+<p>Now apply Rolle’s Theorem <span class="math inline">\(n+1\)</span>
+times. Let <span class="math inline">\(x_0=x\)</span>. We find points
+<span class="math inline">\(c&lt;x_{n+1}&lt;x_n&lt;\cdots&lt;x_1&lt;x_0\)</span>
+with <span class="math inline">\(g^{(j)}(x_j)=0\)</span> for each <span class="math inline">\(j\)</span>. Suppose <span class="math inline">\(x_j\)</span> has been found for some <span class="math inline">\(j\le n\)</span>. Then <span class="math inline">\(g^{(j)}(c)=0=g^{(j)}(x_j)\)</span>, and <span class="math inline">\(g^{(j)}\)</span> is differentiable on <span class="math inline">\(I\)</span> because <span class="math inline">\(j\le n\)</span>. So Rolle’s Theorem (<a href="ch-derivative.html#thm-rolle">Theorem 7.2.1</a>) gives an <span class="math inline">\(x_{j+1}\in(c,x_j)\)</span> with <span class="math inline">\(g^{(j+1)}(x_{j+1})=0\)</span>. This starts with
+<span class="math inline">\(j=0\)</span>, since <span class="math inline">\(g(c)=0=g(x)\)</span>.</p>
+<p>Let <span class="math inline">\(\xi=x_{n+1}\)</span>. Then <span class="math inline">\(\xi\in(c,x)\)</span> and <span class="math inline">\(0=g^{(n+1)}(\xi)=f^{(n+1)}(\xi)-(n+1)!\,M\)</span>.
+So <span class="math inline">\(M=\frac{f^{(n+1)}(\xi)}{(n+1)!}\)</span>,
+and <span class="math inline">\(R_n(x)=M(x-c)^{n+1}\)</span> is the
+formula claimed.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Applying a Theorem Repeatedly).</strong></p>
+<p>Rolle’s Theorem turns two zeros of <span class="math inline">\(g\)</span> into one zero of <span class="math inline">\(g'\)</span>. The proof of Taylor’s Theorem
+uses this <span class="math inline">\(n+1\)</span> times. The auxiliary
+function <span class="math inline">\(g\)</span> is built so that the
+process never stops early. It has a zero at <span class="math inline">\(x\)</span>, and <span class="math inline">\(g,g',\dots,g^{(n)}\)</span> all vanish at
+<span class="math inline">\(c\)</span>. So each new zero <span class="math inline">\(x_j\)</span> of <span class="math inline">\(g^{(j)}\)</span>, together with the zero of <span class="math inline">\(g^{(j)}\)</span> at <span class="math inline">\(c\)</span>, gives the next one. When a single
+application of a theorem gives too little, look for a way to set up the
+next application with what the last one produced. Compare the Auxiliary
+Functions box in <a href="ch-derivative.html#sec-mvt">Section 7.2</a>.</p>
+</div>
+<div class="examplebox" id="ex-sqrt-1-plus-x">
+
+<p><strong>Example 12.3.8.</strong> Let <span class="math inline">\(f(x)=\sqrt{1+x}\)</span>, <span class="math inline">\(c=0\)</span>. So <span class="math inline">\(f(0)=1\)</span>, <span class="math inline">\(f'(0)=\frac{1}{2}\)</span> and <span class="math inline">\(f''(0)=-\frac{1}{4}\)</span>. Thus <span class="math display">\[T_2(f,0)(x)=1+\frac{1}{2}x-\frac{1}{8}x^2.\]</span>
+Therefore, <span class="math display">\[\sqrt{1+x}=1+\frac{1}{2}x-\frac{1}{8}x^2+R_2(f,0)(x).\]</span>
+For <span class="math inline">\(x&gt;0\)</span>, the Lagrange Form of
+the Remainder gives a <span class="math inline">\(\xi\in(0,x)\)</span>
+such that <span class="math display">\[\begin{aligned}
+R_2(f,0)(x)&amp;=\frac{f'''(\xi)}{3!}x^3\\
+&amp;=\frac{1}{16}(1+\xi)^{-5/2}x^3.
+\end{aligned}\]</span> Since <span class="math inline">\((1+\xi)^{-5/2}&lt;1\)</span> (because <span class="math inline">\(\xi&gt;0\)</span>), <span class="math display">\[\left|\sqrt{1+x}-T_2(f,0)(x)\right|&lt;\frac{1}{16}x^3.\]</span>
+Let <span class="math inline">\(x=0.4\)</span>. Then <span class="math display">\[T_2(f,0)(0.4)=1+\frac{1}{5}-\frac{1}{50}=1.18,\]</span>
+and <span class="math display">\[\left|\sqrt{1.4}-1.18\right|&lt;\frac{1}{16}(0.4)^3=\frac{1}{250}=0.004.\]</span>
+So <span class="math inline">\(\sqrt{1.4}\approx 1.18\)</span>, accurate
+to two decimal places.</p>
+<p>Notice <span class="math inline">\(0&lt;R_2(f,0)(x)&lt;\frac{1}{16}x^3\)</span> for
+<span class="math inline">\(x&gt;0\)</span>. Thus <span class="math display">\[1+\frac{1}{2}x-\frac{1}{8}x^2&lt;\sqrt{1+x}&lt;1+\frac{1}{2}x-\frac{1}{8}x^2+\frac{1}{16}x^3.\]</span></p>
+</div>
+<div class="theorembox" id="thm-taylor-integral">
+
+<p><strong>Theorem 12.3.9</strong> (Integral Form of the
+Remainder)<strong>.</strong></p>
+<p>Let <span class="math inline">\(I\)</span> be an open interval, let
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>, and let <span class="math inline">\(c\in I\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. If <span class="math inline">\(f^{(n+1)}(t)\)</span> exists for all <span class="math inline">\(t\in I\)</span> and <span class="math inline">\(f^{(n+1)}\in\mathcal{R}_{\mathrm{loc}}(I)\)</span>,
+then <span class="math display">\[R_n(x)=R_n(f,c)(x)=\frac{1}{n!}\int^x_c
+f^{(n+1)}(t)(x-t)^n\, dt,\quad x\in I.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Induct on <span class="math inline">\(n\)</span>.
+Suppose <span class="math inline">\(n=1\)</span>. Then, by the
+Fundamental Theorem of Calculus <span class="math display">\[\begin{aligned}
+R_1(x)&amp;=f(x)-f(c)-f'(c)(x-c)\\
+&amp;=\int^x_c f'(t)\, dt - f'(c)\int^x_c dt\\
+&amp;=\int^x_c[f'(t)-f'(c)]\, dt.
+\end{aligned}\]</span> Using integration by parts with <span class="math inline">\(u=f'(t)-f'(c)\)</span>, <span class="math inline">\(du=f''(t)\,dt\)</span>, <span class="math inline">\(dv=dt\)</span> and <span class="math inline">\(v=t-x\)</span>, <span class="math display">\[\begin{aligned}
+R_1(x)&amp;=\left.[f'(t)-f'(c)](t-x)\right|^x_c-\int^x_c
+f''(t)(t-x)\, dt\\
+&amp;=\int^x_c (x-t)f''(t)\, dt.
+\end{aligned}\]</span> Now assume the result holds for <span class="math inline">\(n=k\)</span>. Suppose <span class="math inline">\(f^{(k+2)}\)</span> exists on <span class="math inline">\(I\)</span> and <span class="math inline">\(f^{(k+2)}\in\mathcal{R}_{\mathrm{loc}}(I)\)</span>.
+Then <span class="math inline">\(f^{(k+1)}\)</span> is differentiable,
+hence continuous, hence in <span class="math inline">\(\mathcal{R}_{\mathrm{loc}}(I)\)</span>. So the
+result for <span class="math inline">\(n=k\)</span> applies. So <span class="math display">\[\begin{aligned}
+R_{k+1}(x)&amp;=f(x)-T_{k+1}(f,c)(x)\\
+&amp;=f(x)-T_k(f,c)(x)-\frac{f^{(k+1)}(c)}{(k+1)!}(x-c)^{k+1}\\
+&amp;=R_k(x)-\frac{f^{(k+1)}(c)}{(k+1)!}(x-c)^{k+1}\\
+&amp;=\frac{1}{k!}\int^x_c (x-t)^k f^{(k+1)}(t)\, dt
+-\frac{1}{k!}f^{(k+1)}(c)\int^x_c (x-t)^k\, dt\\
+&amp;=\frac{1}{k!}\int^x_c [f^{(k+1)}(t)-f^{(k+1)}(c)](x-t)^k\, dt\\
+&amp;=\frac{1}{(k+1)!}\int^x_c f^{(k+2)}(t)(x-t)^{k+1}\, dt.
+\end{aligned}\]</span> The fourth line uses <span class="math inline">\(\int_c^x(x-t)^k\,dt=\frac{(x-c)^{k+1}}{k+1}\)</span>.
+The last line is integration by parts with <span class="math inline">\(u=f^{(k+1)}(t)-f^{(k+1)}(c)\)</span> and <span class="math inline">\(v=-\frac{(x-t)^{k+1}}{k+1}\)</span>. The boundary
+terms vanish, since <span class="math inline">\(u=0\)</span> at <span class="math inline">\(t=c\)</span> and <span class="math inline">\(v=0\)</span> at <span class="math inline">\(t=x\)</span>. When <span class="math inline">\(x&lt;c\)</span>, read <span class="math inline">\(\int_c^x\)</span> as <span class="math inline">\(-\int_x^c\)</span>. The same computations hold.
+Thus by induction, the result holds.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-taylor-cauchy">
+
+<p><strong>Corollary 12.3.10</strong> (Cauchy’s Form of the
+Remainder)<strong>.</strong></p>
+<p>Let <span class="math inline">\(I\)</span> be an open interval, let
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>, and let <span class="math inline">\(c\in I\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. If <span class="math inline">\(f^{(n+1)}(t)\)</span> is continuous for all <span class="math inline">\(t\in I\)</span>, then for each <span class="math inline">\(x\in I\)</span>, there exists a <span class="math inline">\(\xi\)</span> between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span> such that <span class="math display">\[R_n(x)=R_n(f,c)(x)=\frac{f^{(n+1)}(\xi)}{n!}(x-c)(x-\xi)^n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(f^{(n+1)}(t)(x-t)^n\)</span> is continuous on the
+interval between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span>, by the Mean Value Theorem for
+Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.4.1</a>), there exists
+a <span class="math inline">\(\xi\)</span> between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span> such that <span class="math display">\[\int^x_c
+f^{(n+1)}(t)(x-t)^n\,dt=(x-c)f^{(n+1)}(\xi)(x-\xi)^n.\]</span> The
+result then follows from the Integral Form of the Remainder (<a href="#thm-taylor-integral">Theorem 12.3.9</a>).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Bounding a Remainder).</strong></p>
+<p>To show <span class="math inline">\(R_n(x)\to0\)</span>, bound the
+formula for <span class="math inline">\(R_n(x)\)</span> by something
+that does not depend on <span class="math inline">\(\xi\)</span>, and
+then let <span class="math inline">\(n\to\infty\)</span>. The point
+<span class="math inline">\(\xi\)</span> is not known. It depends on
+both <span class="math inline">\(x\)</span> and <span class="math inline">\(n\)</span>. So the bound on <span class="math inline">\(f^{(n+1)}(\xi)\)</span> must hold for every <span class="math inline">\(\xi\)</span> between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span>. For <span class="math inline">\(\sin
+x\)</span>, <span class="math inline">\(|f^{(n+1)}(\xi)|\le1\)</span>
+for every <span class="math inline">\(\xi\)</span>. In <a href="#ex-ln-taylor">Example 12.3.12</a>, <span class="math inline">\(\frac{1}{1+\xi}\)</span> is bounded by <span class="math inline">\(\frac{1}{1+x}\)</span> because <span class="math inline">\(\xi&gt;x\)</span>. A bound that is finite for each
+<span class="math inline">\(n\)</span>, but grows with <span class="math inline">\(n\)</span>, is not enough. If one form of the
+remainder gives a bound that does not tend to <span class="math inline">\(0\)</span>, try another form.</p>
+</div>
+<div class="examplebox" id="ex-sin-taylor">
+
+<p><strong>Example 12.3.11.</strong> Let <span class="math inline">\(f(x)=\sin x\)</span>, <span class="math inline">\(c=0\)</span>. Then <span class="math display">\[f^{(n)}(x)=\begin{cases}(-1)^k\cos x, &amp;
+n=2k+1,\\ (-1)^k\sin x, &amp; n=2k.\end{cases}\]</span> Thus <span class="math inline">\(f^{(n)}(0)=0\)</span> for all <span class="math inline">\(n\in\mathbb{E}\)</span> and <span class="math inline">\(f^{(n)}(0)=(-1)^k\)</span>, <span class="math inline">\(n=2k+1\)</span>, <span class="math inline">\(k\in\mathbb{N}_0\)</span>. Therefore, <span class="math display">\[T(\sin
+x,0)=\sum^\infty_{k=0}\frac{(-1)^k}{(2k+1)!}x^{2k+1}.\]</span> Notice
+<span class="math inline">\(R=\infty\)</span> for this power series. Let
+<span class="math inline">\(x\in\mathbb{R}\)</span>. Then by Lagrange’s
+Form of the Remainder, there exists a <span class="math inline">\(\xi\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(x\)</span> such that <span class="math display">\[R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}x^{n+1}.\]</span>
+Since <span class="math inline">\(|f^{(n+1)}(\xi)|\le 1\)</span>, <span class="math display">\[|R_n(x)|\le \frac{|x|^{n+1}}{(n+1)!}\to
+0\]</span> by <a href="ch-series.html#exer-pk-over-kfactorial">Exercise 10.2.5</a>.
+Thus <span class="math inline">\(R_n(x)\to 0\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span> and so <span class="math display">\[\sin
+x=\sum^\infty_{k=0}\frac{(-1)^k}{(2k+1)!}x^{2k+1},\quad
+x\in\mathbb{R}.\]</span> See <a href="#fig-sin-taylor">Figure
+12.2</a>.</p>
+</div>
+<figure class="figure" id="fig-sin-taylor"><div class="figure-images"><img alt="The sine curve in black with three Taylor polynomials of degree 3, 5 and 7. Each polynomial matches the sine curve near 0 and then breaks away, with higher degrees staying close over a wider interval." height="293" src="figs/fig15.svg" width="547"/></div><figcaption><strong>Figure 12.2.</strong> The function <span class="math inline">\(\sin x\)</span> (black) and its Taylor polynomials
+<span class="math inline">\(T_3\)</span>, <span class="math inline">\(T_5\)</span> and <span class="math inline">\(T_7\)</span> at <span class="math inline">\(0\)</span>. Each one is accurate on a longer
+interval than the one before.</figcaption></figure>
+<div class="examplebox" id="ex-ln-taylor">
+
+<p><strong>Example 12.3.12.</strong> Let <span class="math inline">\(f(x)=\ln(x+1)\)</span>. Then <span class="math inline">\(f(0)=\ln(1)=0\)</span>, and so, by the Fundamental
+Theorem of Calculus, <span class="math display">\[f'(x)=\frac{1}{1+x}.\]</span> Thus for <span class="math inline">\(n\in \mathbb{N}\)</span>, <span class="math display">\[f^{(n)}(x)=(-1)^{n+1}\frac{(n-1)!}{(1+x)^n}.\]</span>
+In particular, for <span class="math inline">\(n\in \mathbb{N}\)</span>,
+<span class="math display">\[f^{(n)}(0)=(-1)^{n+1}(n-1)!.\]</span> So
+<span class="math display">\[\begin{aligned}
+T(\ln(1+x),0)&amp;=\sum^\infty_{n=1}\frac{(-1)^{n+1}(n-1)!}{n!}x^n\\
+&amp;=\sum^\infty_{n=1}\frac{(-1)^{n+1}}{n}x^n.
+\end{aligned}\]</span> Since <span class="math inline">\(\sqrt[n]{\left|\frac{(-1)^{n+1}}{n}\right|}\to
+1\)</span>, <span class="math inline">\(R=1\)</span>.</p>
+<p>Suppose <span class="math inline">\(x\in(0,1]\)</span>. Then
+Lagrange’s Form of the Remainder gives a <span class="math inline">\(\xi\in(0,x)\)</span> with <span class="math display">\[R_n(x)=\frac{(-1)^{n}}{(n+1)(1+\xi)^{n+1}}x^{n+1}.\]</span>
+Since <span class="math inline">\((1+\xi)&gt;1\)</span>, <span class="math display">\[|R_n(x)|\le \frac{1}{n+1}x^{n+1}\le
+\frac{1}{n+1}\to 0.\]</span> So <span class="math inline">\(R_n(x)\to
+0\)</span> for all <span class="math inline">\(x\in[0,1]\)</span>.</p>
+<p>Now suppose <span class="math inline">\(x\in(-1,0)\)</span>. By
+Cauchy’s Form of the Remainder, there exists a <span class="math inline">\(\xi\in (x,0)\)</span> such that <span class="math display">\[R_n(x)=\frac{(-1)^{n+2}}{(1+\xi)^{n+1}}(x-\xi)^nx.\]</span>
+Therefore <span class="math display">\[|R_n(x)|\le
+\frac{|x|}{(1+\xi)}\left[\frac{\xi-x}{1+\xi}\right]^n.\]</span> Consider
+the function <span class="math inline">\(\varphi(t)\)</span> defined on
+<span class="math inline">\([x,0]\)</span> by <span class="math display">\[\varphi(t)=\frac{t-x}{1+t}.\]</span> Thus <span class="math display">\[\varphi'(t)=\frac{1+x}{(1+t)^2}\ge 0\]</span>
+for <span class="math inline">\(t\in[x,0]\)</span>. Therefore <span class="math display">\[\varphi(t)\le \varphi(0)=-x=|x|,\]</span> for all
+<span class="math inline">\(t\in[x,0]\)</span>. Thus since <span class="math inline">\(1+\xi&gt;1+x&gt;0\)</span>, <span class="math display">\[|R_n(x)|\le
+\frac{|x|}{1+\xi}|x|^n\le\frac{|x|^{n+1}}{1+x}.\]</span> Since <span class="math inline">\(|x|&lt;1\)</span>, <span class="math inline">\(R_n(x)\to 0\)</span>. Therefore <span class="math display">\[\ln(1+x)=\sum^\infty_{n=1}\frac{(-1)^{n+1}}{n}x^n,\quad
+x\in(-1,1].\]</span> This agrees with <a href="#ex-ln2">Example
+12.2.2</a>, which found the same series by integrating term by term.</p>
+</div>
+<div class="examplebox" id="ex-radius-singularity">
+
+<p><strong>Example 12.3.13.</strong> If <span class="math inline">\(f(x)=\frac{1}{1+x}\)</span>, <span class="math display">\[f(x)=\sum^\infty_{k=0}(-1)^k x^k,\quad
+x\in(-1,1).\]</span> Notice <span class="math inline">\(f\)</span> has a
+singularity at <span class="math inline">\(x=-1\)</span>, and the radius
+of convergence is <span class="math inline">\(R=1\)</span>, which is
+equal to the distance from <span class="math inline">\(c=0\)</span> to
+the singularity <span class="math inline">\(x=-1\)</span>.</p>
+<p>For <span class="math inline">\(g(x)=\frac{1}{1+x^2}\)</span>, <span class="math display">\[g(x)=\sum^\infty_{k=0}(-1)^k x^{2k},\quad
+x\in(-1,1).\]</span> Here <span class="math inline">\(R=1\)</span> but
+<span class="math inline">\(g\)</span> has no real singularities.
+However, <span class="math inline">\(g\)</span> has complex
+singularities at <span class="math inline">\(\pm i\)</span>, and the
+distance in the complex plane from <span class="math inline">\(c=0\)</span> to <span class="math inline">\(i\)</span> is <span class="math inline">\(1\)</span>, the radius of convergence of the power
+series. The explanation belongs to complex analysis, where power series
+are studied for complex <span class="math inline">\(x\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-42">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-taylor-polynomial-at-1">
+
+<p><strong>Exercise 12.3.1.</strong> Without expanding the right side,
+find constants <span class="math inline">\(a_0\)</span>, <span class="math inline">\(a_1\)</span>, <span class="math inline">\(a_2\)</span>, <span class="math inline">\(a_3\)</span>, <span class="math inline">\(a_4\)</span> such that <span class="math display">\[x^4+3x^2-2x+5=a_4(x-1)^4+a_3(x-1)^3+a_2(x-1)^2+a_1(x-1)+a_0.\]</span>
+<a aria-label="Hint for Exercise 12.3.1" href="solutions-ch12.html#sol-exer-taylor-polynomial-at-1">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-ln-1-2">
+
+<p><strong>Exercise 12.3.2.</strong> Use a third order Taylor polynomial
+to estimate <span class="math inline">\(\ln1.2\)</span>. Use a remainder
+to show this is accurate to three decimal places. <a aria-label="Hint for Exercise 12.3.2" href="solutions-ch12.html#sol-exer-ln-1-2">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-even-power-series">
+
+<p><strong>Exercise 12.3.3.</strong> Suppose <span class="math inline">\(f(x)=\sum^{\infty}_{k=0}a_kx^k\)</span>, <span class="math inline">\(|x|&lt;R\)</span>, where <span class="math inline">\(R&gt;0\)</span>. Prove that <span class="math inline">\(f(x)\)</span> is even if and only if <span class="math inline">\(a_k=0\)</span> for all odd <span class="math inline">\(k\)</span>. <a aria-label="Hint for Exercise 12.3.3" href="solutions-ch12.html#sol-exer-even-power-series">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-exp-taylor">
+
+<p><strong>Exercise 12.3.4.</strong> Prove that the Taylor series of
+<span class="math inline">\(e^x\)</span> centered at 0, <span class="math inline">\(T(e^x,0)=\sum^{\infty}_{k=0}\frac{x^k}{k!}\)</span>,
+converges to <span class="math inline">\(e^x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>. <a aria-label="Hint for Exercise 12.3.4" href="solutions-ch12.html#sol-exer-exp-taylor">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cos-taylor">
+
+<p><strong>Exercise 12.3.5.</strong> Find the Taylor series of <span class="math inline">\(\cos x\)</span> at <span class="math inline">\(0\)</span>, and prove that it converges to <span class="math inline">\(\cos x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>. <a aria-label="Hint for Exercise 12.3.5" href="solutions-ch12.html#sol-exer-cos-taylor">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-binomial-series">
+
+<p><strong>Exercise 12.3.6.</strong> Let <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, and let <span class="math inline">\(f(x)=(1+x)^\alpha\)</span> for <span class="math inline">\(x&gt;-1\)</span>. Define <span class="math inline">\(\binom{\alpha}{k}=\frac{\alpha(\alpha-1)\cdots(\alpha-k+1)}{k!}\)</span>,
+with <span class="math inline">\(\binom{\alpha}{0}=1\)</span>.</p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\(T(f,0)(x)=\sum_{k=0}^\infty\binom{\alpha}{k}x^k\)</span>,
+and that its radius of convergence is <span class="math inline">\(1\)</span> unless <span class="math inline">\(\alpha\in\mathbb{N}_0\)</span>.</p></li>
+<li><p>Use Cauchy’s Form of the Remainder, as in <a href="#ex-ln-taylor">Example 12.3.12</a>, to prove that <span class="math inline">\((1+x)^\alpha=\sum_{k=0}^\infty\binom{\alpha}{k}x^k\)</span>
+for <span class="math inline">\(|x|&lt;1\)</span>. This is the
+<em>binomial series</em>.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 12.3.6" href="solutions-ch12.html#sol-exer-binomial-series">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-11">
+<h2>Notes</h2>
+<p>Brook Taylor published the series that bears his name in 1715 [<a href="bibliography.html#bib-taylor1715">71</a>]. Colin Maclaurin used the special case
+<span class="math inline">\(c=0\)</span> in 1742 [<a href="bibliography.html#bib-maclaurin1742">52</a>]. Joseph-Louis Lagrange gave his form
+of the remainder in 1797 [<a href="bibliography.html#bib-lagrange1797">40</a>]. Cauchy
+gave his form in 1823, along with the function of <a href="#ex-flat-function">Example 12.2.10</a>, which shows that a Taylor
+series can converge to the wrong function [<a href="bibliography.html#bib-cauchy1823">16</a>]. Cauchy stated the formula <span class="math inline">\(\frac1R=\limsup\sqrt[k]{|a_k|}\)</span> in his
+<em>Cours d’analyse</em> [<a href="bibliography.html#bib-cauchy1821">15</a>]. Jacques
+Hadamard rediscovered it and made it widely known in 1892 [<a href="bibliography.html#bib-hadamard1892">34</a>], and it is now called the
+Cauchy–Hadamard formula. Abel proved <a href="#thm-abel">Theorem
+12.2.1</a> in 1826, in the same paper that first proved the binomial
+series of <a href="#exer-binomial-series">Exercise 12.3.6</a> converges
+[<a href="bibliography.html#bib-abel1826">1</a>]. Nicholas Mercator published the series
+for <span class="math inline">\(\ln(1+x)\)</span> in 1668 [<a href="bibliography.html#bib-mercator1668">53</a>]. Gottfried Wilhelm Leibniz published
+the series <span class="math inline">\(\frac\pi4=1-\frac13+\frac15-\cdots\)</span> in
+1682 [<a href="bibliography.html#bib-leibniz1682">44</a>]. Madhava of Sangamagrama had
+found it around 1400.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-function-sequences.html"><span class="dir">Previous</span> Chapter 11. Sequences and Series of Functions</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="part-lebesgue.html"><span class="dir">Next</span> Part III. Measure and Lebesgue Integrals</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

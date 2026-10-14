@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 15. Measurable Functions | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-lebesgue-measure.html"><span class="dir">Previous</span> Chapter 14. Lebesgue Measure</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-lebesgue-integral.html"><span class="dir">Next</span> Chapter 16. The Lebesgue Integral</a>
+</nav>
+<main id="main">
+<article id="ch-measurable-functions">
+<h1>Chapter 15. Measurable Functions</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-measurable-functions">15.1 Measurable Functions and “Almost
+Everywhere”</a></li><li><a href="#sec-simple-step">15.2 Simple Functions and Step Functions</a></li><li><a href="#sec-egoroff">15.3 Egoroff’s Theorem</a></li><li><a href="#sec-lusin">15.4 Lusin’s Theorem<sup>*</sup></a></li><li><a href="#notes-14">Notes</a></li></ul></nav>
+<p>The Lebesgue integral of <span class="math inline">\(f\)</span> will
+be built by measuring the sets where <span class="math inline">\(f\)</span> takes values in a given range. So <span class="math inline">\(f\)</span> must be a function for which those sets
+are measurable. Such functions are called measurable. This chapter shows
+that the class of measurable functions is very large. It contains the
+continuous functions, it is closed under the usual arithmetic, and,
+unlike the Riemann integrable functions, it is closed under pointwise
+limits.</p>
+<p><a href="#sec-measurable-functions">Section 15.1</a> defines
+measurable functions and the phrase “almost everywhere.” <a href="#sec-simple-step">Section 15.2</a> introduces simple functions and
+step functions, and shows that every measurable function on <span class="math inline">\([a,b]\)</span> is close to a step function and to
+a continuous function. <a href="#sec-egoroff">Section 15.3</a> shows
+that pointwise convergence is close to uniform convergence. <a href="#sec-lusin">Section 15.4</a>, which is marked with a star, proves
+Lusin’s Theorem, the sharpest form of “measurable functions are nearly
+continuous.”</p>
+<p><em>What this chapter uses from earlier chapters.</em> Lebesgue
+measure and its properties (<a href="ch-lebesgue-measure.html">Chapter
+14</a>), the continuity of measure (<a href="ch-measures.html#thm-measure-properties">Theorem 13.3.9</a>), limits superior and
+inferior (<a href="ch-sequences.html#sec-limsup">Section 3.6</a>), uniform convergence
+(<a href="ch-function-sequences.html#sec-uniform">Section 11.2</a>), and <a href="ch-continuity.html#thm-continuity-open-sets">Theorem 6.3.16</a>.</p>
+<section class="level3 unnumbered" id="sec-measurable-functions">
+<h2>15.1 Measurable Functions and “Almost
+Everywhere”</h2>
+<p>Measurable functions may take the values <span class="math inline">\(\infty\)</span> and <span class="math inline">\(-\infty\)</span>. The <em>extended real
+numbers</em> are <span class="math inline">\([-\infty,\infty]=\mathbb{R}\cup\{-\infty,\infty\}\)</span>,
+with <span class="math inline">\(-\infty&lt;x&lt;\infty\)</span> for
+every <span class="math inline">\(x\in\mathbb{R}\)</span>. An
+<em>extended real-valued function</em> is a function <span class="math inline">\(f:D\to[-\infty,\infty]\)</span>. The set <span class="math inline">\(\{x\in D:f(x)&gt;\alpha\}\)</span> is written
+<span class="math inline">\(\{x:f(x)&gt;\alpha\}\)</span>, or just <span class="math inline">\(\{f&gt;\alpha\}\)</span>, when the domain <span class="math inline">\(D\)</span> is clear.</p>
+<div class="theorembox" id="thm-measurable-equivalent">
+
+<p><strong>Theorem 15.1.1.</strong> Let <span class="math inline">\(D\subset\mathbb{R}\)</span> be measurable and let
+<span class="math inline">\(f:D\to[-\infty,\infty]\)</span>. The
+following are equivalent.</p>
+<ol>
+<li><p>For each <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, the set <span class="math inline">\(\{x:f(x)&gt;\alpha\}\)</span> is
+measurable.</p></li>
+<li><p>For each <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, the set <span class="math inline">\(\{x:f(x)\ge \alpha\}\)</span> is
+measurable.</p></li>
+<li><p>For each <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, the set <span class="math inline">\(\{x:f(x)&lt;\alpha\}\)</span> is
+measurable.</p></li>
+<li><p>For each <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, the set <span class="math inline">\(\{x:f(x)\le \alpha\}\)</span> is
+measurable.</p></li>
+</ol>
+<p>These statements imply:</p>
+<ol>
+<li><p>for each <span class="math inline">\(\alpha\in[-\infty,\infty]\)</span>, the set <span class="math inline">\(\{x:f(x)=\alpha\}\)</span> is measurable.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> ((1)<span class="math inline">\(\Rightarrow\)</span>(4)) Now <span class="math inline">\(\{x:f(x)\le
+\alpha\}=D\setminus\{x:f(x)&gt;\alpha\}\)</span>, and so <span class="math inline">\(\{x:f(x)\le \alpha\}\)</span> is measurable.</p>
+<p>((4)<span class="math inline">\(\Rightarrow\)</span>(1)) Now <span class="math inline">\(\{x:f(x)&gt;
+\alpha\}=D\setminus\{x:f(x)\le\alpha\}\)</span>, and so <span class="math inline">\(\{x:f(x)&gt; \alpha\}\)</span> is measurable.</p>
+<p>((2)<span class="math inline">\(\Rightarrow\)</span>(3)) Now <span class="math inline">\(\{x:f(x)&lt;
+\alpha\}=D\setminus\{x:f(x)\ge\alpha\}\)</span>, and so <span class="math inline">\(\{x:f(x)&lt; \alpha\}\)</span> is measurable.</p>
+<p>((3)<span class="math inline">\(\Rightarrow\)</span>(2)) Now <span class="math inline">\(\{x:f(x)\ge
+\alpha\}=D\setminus\{x:f(x)&lt;\alpha\}\)</span>, and so <span class="math inline">\(\{x:f(x)\ge \alpha\}\)</span> is measurable.</p>
+<p>((1)<span class="math inline">\(\Rightarrow\)</span>(2)) Since <span class="math inline">\(\{x:f(x)\ge
+\alpha\}=\bigcap_{n=1}^\infty\left\{x:f(x)&gt;\alpha-\frac{1}{n}\right\}\)</span>,
+<span class="math inline">\(\{x:f(x)\ge \alpha\}\)</span> is
+measurable.</p>
+<p>((2)<span class="math inline">\(\Rightarrow\)</span>(1)) Since <span class="math inline">\(\{x:f(x)&gt;
+\alpha\}=\bigcup_{n=1}^\infty\left\{x:f(x)\ge\alpha+\frac{1}{n}\right\}\)</span>,
+<span class="math inline">\(\{x:f(x)&gt; \alpha\}\)</span> is
+measurable. So (1)–(4) are equivalent.</p>
+<p>((2),(4)<span class="math inline">\(\Rightarrow\)</span>(5) if <span class="math inline">\(\alpha\in\mathbb{R}\)</span>) Let <span class="math inline">\(\alpha\in\mathbb{R}\)</span>. Then <span class="math inline">\(\{x:f(x)=\alpha\}=\{x:f(x)\ge
+\alpha\}\cap\{x:f(x)\le \alpha\}\)</span>. So <span class="math inline">\(\{x:f(x)=\alpha\}\)</span> is measurable.</p>
+<p>((2)<span class="math inline">\(\Rightarrow\)</span>(5) if <span class="math inline">\(\alpha=\infty\)</span>) Let <span class="math inline">\(\alpha=\infty\)</span>. Since <span class="math inline">\(\{x:f(x)=\infty\}=\bigcap_{n=1}^\infty\{x:f(x)\ge
+n\}\)</span>, <span class="math inline">\(\{x:f(x)=\infty\}\)</span> is
+measurable.</p>
+<p>((4)<span class="math inline">\(\Rightarrow\)</span>(5) if <span class="math inline">\(\alpha=-\infty\)</span>) Let <span class="math inline">\(\alpha=-\infty\)</span>. Since <span class="math inline">\(\{x:f(x)=-\infty\}=\bigcap_{n=1}^\infty\{x:f(x)\le
+-n\}\)</span>, <span class="math inline">\(\{x:f(x)=-\infty\}\)</span>
+is measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-measurable-function">
+
+<p><strong>Definition 15.1.2.</strong> An extended real-valued function
+is <em>measurable</em> if its domain is measurable and if it satisfies
+one of (1)–(4) in <a href="#thm-measurable-equivalent">Theorem
+15.1.1</a>.</p>
+</div>
+<div class="examplebox" id="ex-measurable-examples">
+
+<p><strong>Example 15.1.3.</strong> Let <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> be continuous.
+For each <span class="math inline">\(\alpha\)</span>, the set <span class="math inline">\(\{f&gt;\alpha\}=f^{-1}[(\alpha,\infty)]\)</span>
+is open, by <a href="ch-continuity.html#thm-continuity-open-sets">Theorem 6.3.16</a>. Open
+sets are measurable, so <span class="math inline">\(f\)</span> is
+measurable. If <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>
+is increasing, then each set <span class="math inline">\(\{f&gt;\alpha\}\)</span> is an interval, so <span class="math inline">\(f\)</span> is measurable. The same holds for
+decreasing functions.</p>
+</div>
+<p>Measurability is a weak version of continuity. A continuous function
+pulls open sets back to open sets. A measurable function pulls rays, and
+so all Borel sets, back to measurable sets (<a href="#exer-borel-preimage">Exercise 15.1.3</a>).</p>
+<div class="theorembox" id="thm-measurable-algebra">
+
+<p><strong>Theorem 15.1.4.</strong> Let <span class="math inline">\(c\in\mathbb{R}\)</span> and let <span class="math inline">\(D\)</span> be measurable and <span class="math inline">\(f,g:D\to\mathbb{R}\)</span> be measurable. Then
+the functions <span class="math inline">\(f+c\)</span>, <span class="math inline">\(cf\)</span>, <span class="math inline">\(f+g\)</span>, <span class="math inline">\(f-g\)</span>, <span class="math inline">\(g-f\)</span>, <span class="math inline">\(f^2\)</span>, and <span class="math inline">\(fg\)</span> are also measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Now <span class="math inline">\(\{x:f(x)+c&lt;\alpha\}=\{x:f(x)&lt;\alpha-c\}\)</span>.
+So <span class="math inline">\(f+c\)</span> is measurable since <span class="math inline">\(f\)</span> is measurable.</p>
+<p>If <span class="math inline">\(c=0\)</span>, <span class="math inline">\(0f(x)=0\)</span> for all <span class="math inline">\(x\)</span>, and so <span class="math inline">\(\{x:cf(x)&lt;\alpha\}=\emptyset\)</span> or <span class="math inline">\(\{x:cf(x)&lt;\alpha\}=D\)</span>. Either way,
+<span class="math inline">\(\{x:cf(x)&lt;\alpha\}\)</span> is
+measurable. If <span class="math inline">\(c&gt;0\)</span>, <span class="math inline">\(\{x:cf(x)&lt;\alpha\}=\left\{x:f(x)&lt;\frac{\alpha}{c}\right\}\)</span>
+is measurable. If <span class="math inline">\(c&lt;0\)</span>, <span class="math inline">\(\{x:cf(x)&lt;\alpha\}=\left\{x:f(x)&gt;\frac{\alpha}{c}\right\}\)</span>
+is measurable. So for all <span class="math inline">\(c\in\mathbb{R}\)</span>, <span class="math inline">\(\{x:cf(x)&lt;\alpha\}\)</span> is measurable. Thus
+<span class="math inline">\(cf\)</span> is measurable.</p>
+<p>If <span class="math inline">\(f(x)+g(x)&lt;\alpha\)</span>, then
+<span class="math inline">\(f(x)&lt;\alpha-g(x)\)</span>. So there
+exists an <span class="math inline">\(r\in\mathbb{Q}\)</span> such that
+<span class="math inline">\(f(x)&lt;r&lt;\alpha-g(x)\)</span> (<a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>). Hence <span class="math display">\[\{x:f(x)+g(x)&lt;\alpha\}=\bigcup_{r\in\mathbb{Q}}\bigl(\{x:f(x)&lt;r\}\cap\{x:g(x)&lt;\alpha-r\}\bigr).\]</span>
+Since <span class="math inline">\(\mathbb{Q}\)</span> is countable, this
+set is measurable. So <span class="math inline">\(f+g\)</span> is
+measurable.</p>
+<p>Since <span class="math inline">\(-g=(-1)g\)</span> is measurable,
+<span class="math inline">\(f+(-g)=f-g\)</span> is measurable. This
+implies <span class="math inline">\((-1)(f-g)=g-f\)</span> is also
+measurable.</p>
+<p>Lastly, <span class="math inline">\(\{x:f^2(x)&gt;\alpha\}=\{x:f(x)&gt;\sqrt{\alpha}\}\cup\{x:f(x)&lt;-\sqrt{\alpha}\}\)</span>
+for <span class="math inline">\(\alpha\ge 0\)</span> and <span class="math inline">\(\{x:f^2(x)&gt;\alpha\}=D\)</span> if <span class="math inline">\(\alpha&lt;0\)</span>, and so <span class="math inline">\(f^2\)</span> is measurable. Therefore <span class="math display">\[fg=\frac{1}{2}\left[(f+g)^2-f^2-g^2\right]\]</span>
+is measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-measurable-sup">
+
+<p><strong>Theorem 15.1.5.</strong> Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of measurable
+functions with the same domain <span class="math inline">\(D\)</span>.
+Then the functions <span class="math inline">\(\sup\{f_1,\dots,f_n\}\)</span>, <span class="math inline">\(\inf\{f_1,\dots,f_n\}\)</span>, <span class="math inline">\(\sup_{n\in\mathbb{N}} f_n\)</span>, <span class="math inline">\(\inf_{n\in\mathbb{N}}f_n\)</span>, <span class="math inline">\(\limsup f_n\)</span>, and <span class="math inline">\(\liminf f_n\)</span> are all measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> For each <span class="math inline">\(x\in D\)</span>,
+define <span class="math inline">\(h(x)=\sup\{f_1(x),\dots,f_n(x)\}\)</span>. Then
+<span class="math inline">\(\{x:h(x)&gt;\alpha\}=\bigcup_{i=1}^n\{x:f_i(x)&gt;\alpha\}\)</span>.
+So <span class="math inline">\(h\)</span> is measurable. Similarly, for
+each <span class="math inline">\(x\in D\)</span>, define <span class="math inline">\(g(x)=\sup_{n\in\mathbb{N}} f_n(x)\)</span>. Then
+<span class="math inline">\(\{x:g(x)&gt;\alpha\}=\bigcup_{n=1}^\infty\{x:f_n(x)&gt;\alpha\}\)</span>.
+So <span class="math inline">\(g\)</span> is measurable. A similar
+argument establishes the fact that <span class="math inline">\(\inf\{f_1,\dots,f_n\}\)</span> and <span class="math inline">\(\inf_{n\in\mathbb{N}}f_n\)</span> are measurable.
+For example, <span class="math inline">\(\{x:\inf_nf_n(x)&lt;\alpha\}=\bigcup_{n=1}^\infty\{x:f_n(x)&lt;\alpha\}\)</span>.
+Since <span class="math inline">\(\limsup
+f_n=\inf_{n\in\mathbb{N}}\left(\sup_{k\ge n}f_k\right)\)</span> and
+<span class="math inline">\(\liminf
+f_n=\sup_{n\in\mathbb{N}}\left(\inf_{k\ge n}f_k\right)\)</span>, <span class="math inline">\(\limsup f_n\)</span> and <span class="math inline">\(\liminf f_n\)</span> are measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-measurable-limit">
+
+<p><strong>Corollary 15.1.6.</strong> If <span class="math inline">\(\{f_n\}\)</span> is a sequence of measurable
+functions with domain <span class="math inline">\(D\)</span> and <span class="math inline">\(f_n(x)\to f(x)\)</span> for every <span class="math inline">\(x\in D\)</span>, then <span class="math inline">\(f\)</span> is measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Here <span class="math inline">\(f=\limsup f_n\)</span>, which is
+measurable by <a href="#thm-measurable-sup">Theorem 15.1.5</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This is a big improvement on the Riemann integrable functions. In <a href="ch-function-sequences.html#ex-rationals-enumeration">Example 11.1.6</a>, each <span class="math inline">\(f_n\)</span> is Riemann integrable but the
+pointwise limit is not. Each <span class="math inline">\(f_n\)</span>
+there is measurable, so the limit is measurable.</p>
+<div class="definitionbox" id="def-almost-everywhere">
+
+<p><strong>Definition 15.1.7.</strong> A property is said to hold
+<em>almost everywhere</em> (a.e.) if the set of points where it fails to
+hold is a set of measure zero.</p>
+</div>
+<p>For example, the Dirichlet function of <a href="ch-continuity.html#ex-dirichlet-function">Example 6.1.9</a> is <span class="math inline">\(0\)</span> almost everywhere, since it is nonzero
+only on <span class="math inline">\(\mathbb{Q}\)</span>, which has
+measure zero. Two functions that are equal almost everywhere will have
+the same integral. So in Lebesgue theory, sets of measure zero can
+usually be ignored.</p>
+<div class="theorembox" id="thm-ae-equal-measurable">
+
+<p><strong>Theorem 15.1.8.</strong> If <span class="math inline">\(f\)</span> is a measurable function and <span class="math inline">\(f=g\)</span> a.e., then <span class="math inline">\(g\)</span> is measurable. Here <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> have the same domain <span class="math inline">\(D\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(E\)</span> be the set
+<span class="math inline">\(\{x:f(x)\ne g(x)\}\)</span>. By hypothesis,
+<span class="math inline">\(m(E)=0\)</span>. Now <span class="math display">\[\{x:g(x)&gt;\alpha\}=\bigl[\{x:f(x)&gt;\alpha\}\cup\{x\in
+E:g(x)&gt;\alpha\}\bigr]\setminus\{x\in E:g(x)\le\alpha\}.\]</span> Now
+the sets <span class="math inline">\(\{x\in E:g(x)&gt;\alpha\}\)</span>
+and <span class="math inline">\(\{x\in E:g(x)\le\alpha\}\)</span> are
+both subsets of a measure zero set <span class="math inline">\(E\)</span>, so by <a href="ch-lebesgue-measure.html#lem-subset-null-measurable">Lemma 14.2.4</a>, they are both
+measurable. Also, since <span class="math inline">\(f\)</span> is
+measurable, <span class="math inline">\(\{x:f(x)&gt;\alpha\}\)</span> is
+measurable. So <span class="math inline">\(\{x:g(x)&gt;\alpha\}\)</span>
+is measurable, implying <span class="math inline">\(g\)</span> is
+measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-characteristic-function">
+
+<p><strong>Definition 15.1.9.</strong> If <span class="math inline">\(A\)</span> is any set, the <em>characteristic
+function</em> <span class="math inline">\(\chi_A\)</span> of the set
+<span class="math inline">\(A\)</span> is defined by <span class="math display">\[\chi_A(x)=\begin{cases}1, &amp; x\in A, \\ 0,
+&amp; x\notin A.\end{cases}\]</span> Here <span class="math inline">\(\chi_A:\mathbb{R}\to\mathbb{R}\)</span>. In
+probability, <span class="math inline">\(\chi_A\)</span> is called the
+<em>indicator function</em> of <span class="math inline">\(A\)</span>
+and is often written <span class="math inline">\(\mathbf{1}_A\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-characteristic-algebra">
+
+<p><strong>Lemma 15.1.10.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be disjoint measurable sets. Then <span class="math inline">\(\chi_{A\cup B}=\chi_A + \chi _B\)</span> and <span class="math inline">\(\chi_{A\cap B}=\chi_A\cdot\chi_B\)</span>. (The
+second identity holds for any sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.)</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-characteristic-algebra">Exercise
+15.1.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-characteristic-measurable">
+
+<p><strong>Lemma 15.1.11.</strong> <span class="math inline">\(\chi_A\)</span> is measurable if and only if <span class="math inline">\(A\)</span> is measurable.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The set <span class="math inline">\(\{x:\chi_A(x)&gt;\alpha\}\)</span> is <span class="math inline">\(\mathbb{R}\)</span> if <span class="math inline">\(\alpha&lt;0\)</span>, it is <span class="math inline">\(A\)</span> if <span class="math inline">\(0\le\alpha&lt;1\)</span>, and it is <span class="math inline">\(\emptyset\)</span> if <span class="math inline">\(\alpha\ge1\)</span>. The sets <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(\emptyset\)</span> are measurable. So every set
+<span class="math inline">\(\{x:\chi_A(x)&gt;\alpha\}\)</span> is
+measurable if and only if <span class="math inline">\(A\)</span> is
+measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-50">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-characteristic-algebra">
+
+<p><strong>Exercise 15.1.1.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be disjoint measurable sets. Prove that
+<span class="math inline">\(\chi_{A\cup B}=\chi_A + \chi _B\)</span> and
+<span class="math inline">\(\chi_{A\cap B}=\chi_A\cdot\chi_B\)</span>.
+<a aria-label="Solution for Exercise 15.1.1" href="solutions-ch15.html#sol-exer-characteristic-algebra">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-measurable-rationals">
+
+<p><strong>Exercise 15.1.2.</strong> Let <span class="math inline">\(f\)</span> be an extended real-valued function on
+<span class="math inline">\(\mathbb{R}\)</span> such that <span class="math inline">\(\{x:f(x)&gt;\alpha\}\)</span> is measurable for
+each <span class="math inline">\(\alpha\in\mathbb{Q}\)</span>. Prove
+<span class="math inline">\(f\)</span> is measurable.</p>
+</div>
+<div class="exercisebox" id="exer-borel-preimage">
+
+<p><strong>Exercise 15.1.3.</strong> Let <span class="math inline">\(\mathcal{M}\)</span> be the <span class="math inline">\(\sigma\)</span>-algebra of Lebesgue measurable
+sets on <span class="math inline">\(\mathbb{R}\)</span>, let <span class="math inline">\(E\)</span> be measurable, and let <span class="math inline">\(f:E\to \mathbb{R}\)</span> be a measurable
+function. Prove that <span class="math inline">\(\{A\subset \mathbb{R}:
+f^{-1}[A]\in \mathcal{M}\}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra containing all the open
+subsets of <span class="math inline">\(\mathbb{R}\)</span>. Conclude
+that <span class="math inline">\(f^{-1}[B]\)</span> is measurable for
+every Borel set <span class="math inline">\(B\)</span>. <a aria-label="Solution for Exercise 15.1.3" href="solutions-ch15.html#sol-exer-borel-preimage">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-continuous-of-measurable">
+
+<p><strong>Exercise 15.1.4.</strong> Let <span class="math inline">\(f:D\to\mathbb{R}\)</span> be measurable and let
+<span class="math inline">\(g:\mathbb{R}\to\mathbb{R}\)</span> be
+continuous. Prove that <span class="math inline">\(g\circ f\)</span> is
+measurable. Conclude that <span class="math inline">\(|f|\)</span> and
+<span class="math inline">\(|f|^p\)</span> for <span class="math inline">\(p&gt;0\)</span> are measurable. <a aria-label="Hint for Exercise 15.1.4" href="solutions-ch15.html#sol-exer-continuous-of-measurable">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-max-measurable">
+
+<p><strong>Exercise 15.1.5.</strong> Let <span class="math inline">\(f,g:D\to\mathbb{R}\)</span> be measurable. Prove
+directly from the definition that <span class="math inline">\(\max\{f,g\}\)</span> is measurable. Then prove it
+again using <span class="math inline">\(\max\{f,g\}=\frac12(f+g+|f-g|)\)</span>. <a aria-label="Hint for Exercise 15.1.5" href="solutions-ch15.html#sol-exer-max-measurable">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-measurable-not-continuous">
+
+<p><strong>Exercise 15.1.6.</strong> Give an example of a measurable
+function <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> that
+is not equal almost everywhere to any continuous function. <a aria-label="Hint for Exercise 15.1.6" href="solutions-ch15.html#sol-exer-measurable-not-continuous">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-simple-step">
+<h2>15.2 Simple Functions and Step Functions</h2>
+<p>Simple functions are to the Lebesgue integral what step functions are
+to the Riemann integral. A step function is constant on each of finitely
+many intervals. A simple function is constant on each of finitely many
+measurable sets. The lemmas below show that a measurable function on
+<span class="math inline">\([a,b]\)</span> can be approximated by simple
+functions, simple functions by step functions, and step functions by
+continuous functions. <a href="#thm-measurable-approx-continuous">Theorem 15.2.7</a> puts these
+together.</p>
+<div class="definitionbox" id="def-simple-function">
+
+<p><strong>Definition 15.2.1.</strong> A real-valued function <span class="math inline">\(\varphi\)</span> on a measurable set <span class="math inline">\(D\)</span> is <em>simple</em> if it is measurable
+and assumes only a finite number of values. If <span class="math inline">\(\varphi\)</span> is simple, and <span class="math inline">\(\{a_1,\dots,a_n\}\)</span> is the set of values
+<span class="math inline">\(\varphi\)</span> takes, <span class="math inline">\(\varphi=\sum^n_{i=1}a_i\chi_{A_i}\)</span> where
+for <span class="math inline">\(i=1,\dots,n\)</span>, <span class="math inline">\(A_i=\{x:\varphi(x)=a_i\}\)</span> is measurable.
+This representation is called the <em>canonical representation</em> of
+<span class="math inline">\(\varphi\)</span>. Notice <span class="math inline">\(A_i\cap A_j=\emptyset\)</span> for <span class="math inline">\(i\ne j\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-step-function">
+
+<p><strong>Definition 15.2.2.</strong> A real-valued function <span class="math inline">\(g\)</span> is a <em>step function</em> if <span class="math inline">\(g=\sum^n_{i=1}c_i\chi_{I_i}\)</span>, where <span class="math inline">\(I_1,\dots,I_n\)</span> are pairwise disjoint
+intervals and <span class="math inline">\(c_1,\dots,c_n\in\mathbb{R}\)</span>.</p>
+</div>
+<p>Intervals are measurable, so every step function is a simple
+function. The converse is false. The function <span class="math inline">\(\chi_\mathbb{Q}\)</span> is simple, but it is not
+a step function, since <span class="math inline">\(\mathbb{Q}\)</span>
+is not a finite union of intervals.</p>
+<div class="lemmabox" id="lem-measurable-bounded-mostly">
+
+<p><strong>Lemma 15.2.3.</strong> Let <span class="math inline">\(f\)</span> be a measurable function on <span class="math inline">\([a,b]\)</span> that takes the values <span class="math inline">\(\pm\infty\)</span> only on a set of measure zero.
+Then for all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists an <span class="math inline">\(M&gt;0\)</span> such that
+<span class="math inline">\(m(\{x:|f(x)|&gt;M\})&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-measurable-bounded-mostly">Exercise 15.2.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-simple-approximation">
+
+<p><strong>Lemma 15.2.4.</strong> Let <span class="math inline">\(f\)</span> be a measurable function on <span class="math inline">\([a,b]\)</span>. Then for all <span class="math inline">\(\varepsilon&gt;0\)</span> and for all <span class="math inline">\(M&gt;0\)</span>, there exists a simple function
+<span class="math inline">\(\varphi\)</span> such that <span class="math inline">\(|f(x)-\varphi(x)|&lt;\varepsilon\)</span> except
+when <span class="math inline">\(|f(x)|\ge M\)</span>. If <span class="math inline">\(\alpha\le f\le \beta\)</span>, <span class="math inline">\(\varphi\)</span> can be chosen so that <span class="math inline">\(\alpha\le \varphi\le \beta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-simple-approximation">Exercise
+15.2.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-step-approximation">
+
+<p><strong>Lemma 15.2.5.</strong> Let <span class="math inline">\(\varphi\)</span> be a simple function on <span class="math inline">\([a,b]\)</span>. Then for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a step
+function <span class="math inline">\(g\)</span> defined on <span class="math inline">\([a,b]\)</span> such that <span class="math inline">\(m(\{x:g(x)\ne
+\varphi(x)\})&lt;\varepsilon\)</span>. If <span class="math inline">\(\alpha\le \varphi\le \beta\)</span>, <span class="math inline">\(g\)</span> can be chosen so that <span class="math inline">\(\alpha\le g\le \beta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-step-approximation">Exercise
+15.2.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-continuous-approximation">
+
+<p><strong>Lemma 15.2.6.</strong> Let <span class="math inline">\(g\)</span> be a step function on <span class="math inline">\([a,b]\)</span>. Then for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a
+continuous function <span class="math inline">\(h\)</span> on <span class="math inline">\([a,b]\)</span> such that <span class="math inline">\(m(\{x:g(x)\ne h(x)\})&lt;\varepsilon\)</span>. If
+<span class="math inline">\(\alpha\le g\le \beta\)</span>, <span class="math inline">\(h\)</span> can be chosen so that <span class="math inline">\(\alpha\le h\le \beta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-continuous-approximation">Exercise
+15.2.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-measurable-approx-continuous">
+
+<p><strong>Theorem 15.2.7.</strong> Let <span class="math inline">\(f\)</span> be a measurable function defined on an
+interval <span class="math inline">\([a,b]\)</span>, and assume <span class="math inline">\(f\)</span> takes the values <span class="math inline">\(\pm\infty\)</span> only on a set of measure zero.
+Then for all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists a step function <span class="math inline">\(g\)</span> and
+a continuous function <span class="math inline">\(h\)</span> such that
+<span class="math inline">\(m(\{x:|f(x)-g(x)|\ge
+\varepsilon\})&lt;\varepsilon\)</span> and <span class="math inline">\(m(\{x:|f(x)-h(x)|\ge
+\varepsilon\})&lt;\varepsilon\)</span>. If <span class="math inline">\(\alpha\le f\le \beta\)</span>, <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> may be chosen so that <span class="math inline">\(\alpha\le g\le \beta\)</span> and <span class="math inline">\(\alpha\le h\le \beta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-measurable-approx-continuous">Exercise 15.2.5</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Approximating in Stages).</strong></p>
+<p><a href="#thm-measurable-approx-continuous">Theorem 15.2.7</a> goes
+from a measurable function to a continuous one in three steps,
+measurable to simple to step to continuous. Each step allows a small
+error. Spend <span class="math inline">\(\frac\varepsilon 3\)</span> on
+each, or <span class="math inline">\(\frac{\varepsilon}{2}\)</span> on
+each of the last two after the first is done. When a hard approximation
+is needed, look for a chain of easier ones. This is the same idea as the
+<span class="math inline">\(\varepsilon/3\)</span> argument in <a href="ch-function-sequences.html">Chapter 11</a>. Here the errors are
+measured by the size of the bad set instead of by a supremum.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-51">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-measurable-bounded-mostly">
+
+<p><strong>Exercise 15.2.1.</strong> Prove <a href="#lem-measurable-bounded-mostly">Lemma 15.2.3</a>. <a aria-label="Hint for Exercise 15.2.1" href="solutions-ch15.html#sol-exer-measurable-bounded-mostly">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-simple-approximation">
+
+<p><strong>Exercise 15.2.2.</strong> Prove <a href="#lem-simple-approximation">Lemma 15.2.4</a>. <a aria-label="Hint for Exercise 15.2.2" href="solutions-ch15.html#sol-exer-simple-approximation">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-step-approximation">
+
+<p><strong>Exercise 15.2.3.</strong> Prove <a href="#lem-step-approximation">Lemma 15.2.5</a>. <a aria-label="Hint for Exercise 15.2.3" href="solutions-ch15.html#sol-exer-step-approximation">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-continuous-approximation">
+
+<p><strong>Exercise 15.2.4.</strong> Prove <a href="#lem-continuous-approximation">Lemma 15.2.6</a>. <a aria-label="Hint for Exercise 15.2.4" href="solutions-ch15.html#sol-exer-continuous-approximation">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-measurable-approx-continuous">
+
+<p><strong>Exercise 15.2.5.</strong> Prove <a href="#thm-measurable-approx-continuous">Theorem 15.2.7</a>. <a aria-label="Solution for Exercise 15.2.5" href="solutions-ch15.html#sol-exer-measurable-approx-continuous">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-egoroff">
+<h2>15.3 Egoroff’s Theorem</h2>
+<div class="remarkbox" id="rem-littlewood">
+
+<p><strong>Remark 15.3.1.</strong> <em>Littlewood’s Three
+Principles</em>.</p>
+<ol>
+<li><p>Every measurable set is nearly a finite union of intervals. (<a href="ch-lebesgue-measure.html#thm-measurable-approximation">Theorem 14.3.1</a>.)</p></li>
+<li><p>Every measurable function is nearly continuous. (<a href="#thm-measurable-approx-continuous">Theorem 15.2.7</a> and Lusin’s
+Theorem, <a href="#thm-lusin">Theorem 15.4.2</a>.)</p></li>
+<li><p>Every convergent sequence of measurable functions is nearly
+uniformly convergent. (Weak form, Theorems <a href="#thm-nearly-uniform">15.3.2</a> and <a href="#thm-nearly-uniform-ae">15.3.4</a>. Stronger form, Egoroff’s
+Theorem, <a href="#thm-egoroff">Theorem 15.3.5</a>.)</p></li>
+</ol>
+</div>
+<div class="theorembox" id="thm-nearly-uniform">
+
+<p><strong>Theorem 15.3.2.</strong> Let <span class="math inline">\(E\)</span> be a measurable set of finite measure
+and <span class="math inline">\(\{f_n\}\)</span> a sequence of
+measurable real-valued functions defined on <span class="math inline">\(E\)</span>. Let <span class="math inline">\(f\)</span> be a real-valued function such that for
+all <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(f_n(x)\to f(x)\)</span>. Then for all <span class="math inline">\(\varepsilon&gt;0\)</span> and for all <span class="math inline">\(\delta&gt;0\)</span>, there exists a measurable
+set <span class="math inline">\(A\subset E\)</span> with <span class="math inline">\(m(A)&lt;\delta\)</span> and an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(x\in E\setminus A\)</span> and all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|f_n(x)-f(x)|&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By <a href="#cor-measurable-limit">Corollary
+15.1.6</a>, <span class="math inline">\(f\)</span> is measurable, so
+each <span class="math inline">\(f_n-f\)</span> is measurable. For each
+<span class="math inline">\(n\in\mathbb{N}\)</span>, set <span class="math inline">\(G_n=\{x\in E: |f_n(x)-f(x)|\ge
+\varepsilon\}\)</span> and set <span class="math display">\[E_N=\bigcup_{n=N}^\infty G_n=\{x\in E :
+|f_n(x)-f(x)|\ge \varepsilon\text{ for some }n\ge N\}.\]</span> Now
+<span class="math inline">\(E_{N+1}\subset E_N\)</span>, and for each
+<span class="math inline">\(x\in E\)</span>, there exists an <span class="math inline">\(E_{N_0}\)</span> such that <span class="math inline">\(x\notin E_{N_0}\)</span>, since <span class="math inline">\(f_n(x)\to f(x)\)</span>. Thus, <span class="math inline">\(\bigcap E_N=\emptyset\)</span> and so by <a href="ch-measures.html#thm-measure-properties">Theorem 13.3.9</a> (4), <span class="math inline">\(\lim_{N\to\infty}m(E_N)=0\)</span>. This uses
+<span class="math inline">\(m(E_1)\le m(E)&lt;\infty\)</span>. Now, let
+<span class="math inline">\(\delta&gt;0\)</span>. So there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(m(E_N)&lt;\delta\)</span>. Let <span class="math inline">\(A=E_N\)</span>. Then <span class="math inline">\(m(A)&lt;\delta\)</span> and <span class="math display">\[E\setminus A=\{x\in E:
+|f_n(x)-f(x)|&lt;\varepsilon\text{ for all }n\ge N\}.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-ae-convergence">
+
+<p><strong>Definition 15.3.3.</strong> If there exists a subset <span class="math inline">\(B\subset E\)</span> with <span class="math inline">\(m(B)=0\)</span> such that <span class="math inline">\(f_n\to f\)</span> pointwise on <span class="math inline">\(E\setminus B\)</span>, then <span class="math inline">\(f_n\to f\)</span> <em>a.e.</em> on <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-nearly-uniform-ae">
+
+<p><strong>Theorem 15.3.4.</strong> Let <span class="math inline">\(E\)</span> be a measurable set of finite measure,
+and <span class="math inline">\(\{f_n\}\)</span> a sequence of
+measurable real-valued functions that converge to a real-valued function
+<span class="math inline">\(f\)</span> a.e. on <span class="math inline">\(E\)</span>. Then for all <span class="math inline">\(\varepsilon&gt;0\)</span> and for all <span class="math inline">\(\delta&gt;0\)</span>, there exists a measurable
+set <span class="math inline">\(A\subset E\)</span> with <span class="math inline">\(m(A)&lt;\delta\)</span> and an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(x\in E\setminus A\)</span> and all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|f_n(x)-f(x)|&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(B\subset E\)</span> with <span class="math inline">\(m(B)=0\)</span> be a set off of which <span class="math inline">\(f_n\to f\)</span>. Apply <a href="#thm-nearly-uniform">Theorem 15.3.2</a> on <span class="math inline">\(E\setminus B\)</span>. It gives a measurable <span class="math inline">\(A'\subset E\setminus B\)</span> with <span class="math inline">\(m(A')&lt;\delta\)</span>, and an <span class="math inline">\(N\)</span>. Let <span class="math inline">\(A=A'\cup B\)</span>. Then <span class="math inline">\(m(A)&lt;\delta\)</span>, and <span class="math inline">\(E\setminus A=(E\setminus B)\setminus
+A'\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-egoroff">
+
+<p><strong>Theorem 15.3.5</strong> (Egoroff’s
+Theorem)<strong>.</strong></p>
+<p>If <span class="math inline">\(\{f_n\}\)</span> is a sequence of
+measurable real-valued functions that converge to a real-valued function
+<span class="math inline">\(f\)</span> a.e. on a measurable set <span class="math inline">\(E\)</span> of finite measure, then for all <span class="math inline">\(\eta&gt;0\)</span>, there exists a measurable
+subset <span class="math inline">\(A\subset E\)</span> with <span class="math inline">\(m(A)&lt;\eta\)</span> such that <span class="math inline">\(f_n\to f\)</span> uniformly on <span class="math inline">\(E\setminus A\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\eta&gt;0\)</span>. For each <span class="math inline">\(k\in\mathbb{N}\)</span>, apply <a href="#thm-nearly-uniform-ae">Theorem 15.3.4</a> with <span class="math inline">\(\varepsilon=\frac1k\)</span> and <span class="math inline">\(\delta=\frac{\eta}{2^k}\)</span>. It gives a
+measurable set <span class="math inline">\(A_k\subset E\)</span> with
+<span class="math inline">\(m(A_k)&lt;\frac{\eta}{2^k}\)</span>, and an
+<span class="math inline">\(N_k\in\mathbb{N}\)</span>, such that <span class="math display">\[|f_n(x)-f(x)|&lt;\frac1k\quad\text{for all }x\in
+E\setminus A_k\text{ and all }n\ge N_k.\]</span> Let <span class="math inline">\(A=\bigcup_{k\in\mathbb{N}}A_k\)</span>. Then <span class="math inline">\(A\)</span> is measurable, and <span class="math inline">\(m(A)\le\sum_km(A_k)&lt;\eta\)</span> by
+subadditivity. The set <span class="math inline">\(A\)</span> does not
+depend on any <span class="math inline">\(\varepsilon\)</span>. Now let
+<span class="math inline">\(\varepsilon&gt;0\)</span>, and choose <span class="math inline">\(k\)</span> with <span class="math inline">\(\frac1k&lt;\varepsilon\)</span>. If <span class="math inline">\(x\in E\setminus A\)</span>, then <span class="math inline">\(x\notin A_k\)</span>. So <span class="math inline">\(|f_n(x)-f(x)|&lt;\frac1k&lt;\varepsilon\)</span>
+for all <span class="math inline">\(n\ge N_k\)</span> and all <span class="math inline">\(x\in E\setminus A\)</span>. So <span class="math inline">\(f_n\to f\)</span> uniformly on <span class="math inline">\(E\setminus A\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The conclusion of Egoroff’s Theorem is called <em>almost uniform
+convergence</em>. The hypothesis <span class="math inline">\(m(E)&lt;\infty\)</span> cannot be dropped. Let
+<span class="math inline">\(f_n=\chi_{[n,\infty)}\)</span> on <span class="math inline">\(\mathbb{R}\)</span>. Then <span class="math inline">\(f_n\to0\)</span> everywhere. But if <span class="math inline">\(m(A)&lt;1\)</span>, then <span class="math inline">\([n,\infty)\setminus A\)</span> is nonempty for
+every <span class="math inline">\(n\)</span>, so <span class="math inline">\(\sup_{x\notin A}|f_n(x)|=1\)</span> for every
+<span class="math inline">\(n\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-52">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-egoroff-example">
+
+<p><strong>Exercise 15.3.1.</strong> Let <span class="math inline">\(f_n(x)=x^n\)</span> on <span class="math inline">\([0,1]\)</span>. Find the pointwise limit <span class="math inline">\(f\)</span>. Given <span class="math inline">\(\eta&gt;0\)</span>, find a set <span class="math inline">\(A\)</span> with <span class="math inline">\(m(A)&lt;\eta\)</span> such that <span class="math inline">\(f_n\to f\)</span> uniformly on <span class="math inline">\([0,1]\setminus A\)</span>. <a aria-label="Hint for Exercise 15.3.1" href="solutions-ch15.html#sol-exer-egoroff-example">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-egoroff-not-null">
+
+<p><strong>Exercise 15.3.2.</strong> Show that in Egoroff’s Theorem the
+set <span class="math inline">\(A\)</span> cannot always be taken to
+have measure zero. <a aria-label="Hint for Exercise 15.3.2" href="solutions-ch15.html#sol-exer-egoroff-not-null">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-lusin">
+<h2>15.4 Lusin’s Theorem<sup>*</sup></h2>
+<p>This section can be skipped. Nothing later depends on it.</p>
+<p><a href="#thm-measurable-approx-continuous">Theorem 15.2.7</a> says a
+measurable function <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> is close to a continuous function
+<span class="math inline">\(h\)</span>, in the sense that <span class="math inline">\(|f-h|\)</span> is small except on a small set.
+Lusin’s Theorem says more. There is a continuous function that
+<em>equals</em> <span class="math inline">\(f\)</span> except on a small
+set. The proof needs one lemma, which extends a continuous function from
+a closed set to a whole interval.</p>
+<div class="lemmabox" id="lem-continuous-extension">
+
+<p><strong>Lemma 15.4.1.</strong> Let <span class="math inline">\(F\subset[a,b]\)</span> be closed and nonempty, and
+let <span class="math inline">\(g:F\to\mathbb{R}\)</span> be continuous.
+Then there is a continuous function <span class="math inline">\(\varphi:[a,b]\to\mathbb{R}\)</span> with <span class="math inline">\(\varphi=g\)</span> on <span class="math inline">\(F\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The set <span class="math inline">\(U=[a,b]\setminus F\)</span> is
+open relative to <span class="math inline">\([a,b]\)</span>. By <a href="ch-topology.html#thm-open-set-structure">Theorem 4.1.12</a>, applied to <span class="math inline">\((a-1,b+1)\setminus F\)</span>, it is a union of
+countably many disjoint intervals, the <em>gaps</em> of <span class="math inline">\(F\)</span>. Each gap is an open interval <span class="math inline">\((c,d)\)</span> with <span class="math inline">\(c,d\in F\)</span>, or else an interval <span class="math inline">\([a,d)\)</span> or <span class="math inline">\((c,b]\)</span> that contains <span class="math inline">\(a\)</span> or <span class="math inline">\(b\)</span> and has one endpoint in <span class="math inline">\(F\)</span>. Define <span class="math inline">\(\varphi=g\)</span> on <span class="math inline">\(F\)</span>. On a gap <span class="math inline">\((c,d)\)</span> with both endpoints in <span class="math inline">\(F\)</span>, let <span class="math inline">\(\varphi\)</span> be linear, with <span class="math inline">\(\varphi(c)=g(c)\)</span> and <span class="math inline">\(\varphi(d)=g(d)\)</span>. On a gap containing
+<span class="math inline">\(a\)</span> or <span class="math inline">\(b\)</span>, let <span class="math inline">\(\varphi\)</span> be constant, equal to <span class="math inline">\(g\)</span> at the endpoint in <span class="math inline">\(F\)</span>.</p>
+<p>Then <span class="math inline">\(\varphi\)</span> is continuous at
+every point of a gap, and continuous from each side at the endpoints of
+each gap, since it is linear or constant there. It remains to check
+continuity at a point <span class="math inline">\(x\in F\)</span> from a
+side where <span class="math inline">\(x\)</span> is a limit of other
+gaps. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(F\)</span> is compact, <span class="math inline">\(g\)</span> is uniformly continuous on <span class="math inline">\(F\)</span> (<a href="ch-continuity.html#thm-compact-uniform">Theorem
+6.4.7</a>). Choose <span class="math inline">\(\delta&gt;0\)</span> with
+<span class="math inline">\(|g(s)-g(t)|&lt;\varepsilon\)</span> for
+<span class="math inline">\(s,t\in F\)</span> with <span class="math inline">\(|s-t|&lt;\delta\)</span>. Only finitely many gaps
+have length at least <span class="math inline">\(\frac\delta2\)</span>,
+since the gaps are disjoint and lie in <span class="math inline">\([a,b]\)</span>. Each of these is either a gap with
+endpoint <span class="math inline">\(x\)</span>, which is handled above,
+or is at a positive distance from <span class="math inline">\(x\)</span>. So there is a <span class="math inline">\(\delta'\in\left(0,\frac\delta2\right)\)</span>
+such that every point <span class="math inline">\(y\in[a,b]\)</span>
+with <span class="math inline">\(|y-x|&lt;\delta'\)</span> lies in
+<span class="math inline">\(F\)</span>, or in a gap with endpoint <span class="math inline">\(x\)</span>, or in a gap of length less than <span class="math inline">\(\frac\delta2\)</span>. In the last case, the
+endpoint of that gap on the side of <span class="math inline">\(x\)</span> is within <span class="math inline">\(\delta'\)</span> of <span class="math inline">\(x\)</span>, so every endpoint of the gap that lies
+in <span class="math inline">\(F\)</span> is within <span class="math inline">\(\delta'+\frac\delta2&lt;\delta\)</span> of
+<span class="math inline">\(x\)</span>. The value <span class="math inline">\(\varphi(y)\)</span> lies between the values of
+<span class="math inline">\(g\)</span> at those endpoints. So <span class="math display">\[|\varphi(y)-g(x)|\le\max\{|g(c)-g(x)|:c\text{ an
+endpoint of the gap in }F\}&lt;\varepsilon.\]</span> If <span class="math inline">\(y\in F\)</span>, then <span class="math inline">\(|\varphi(y)-g(x)|=|g(y)-g(x)|&lt;\varepsilon\)</span>.
+Together with continuity from the side of any gap with endpoint <span class="math inline">\(x\)</span>, this shows <span class="math inline">\(\varphi\)</span> is continuous at <span class="math inline">\(x\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-lusin">
+
+<p><strong>Theorem 15.4.2</strong> (Lusin’s
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f\)</span> be a measurable
+real-valued function on an interval <span class="math inline">\([a,b]\)</span>. Then for all <span class="math inline">\(\delta&gt;0\)</span>, there exists a continuous
+function <span class="math inline">\(\varphi\)</span> on <span class="math inline">\([a,b]\)</span> such that <span class="math inline">\(m(\{x:f(x)\ne
+\varphi(x)\})&lt;\delta\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>For each <span class="math inline">\(n\in\mathbb{N}\)</span>, <a href="#thm-measurable-approx-continuous">Theorem 15.2.7</a> with <span class="math inline">\(\varepsilon=\frac{1}{2^n}\)</span> gives a
+continuous function <span class="math inline">\(h_n\)</span> on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(m(E_n)&lt;\frac{1}{2^n}\)</span>, where <span class="math inline">\(E_n=\{x:|f(x)-h_n(x)|\ge\frac{1}{2^n}\}\)</span>.
+Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(\frac{1}{2^{N-1}}&lt;\frac\delta2\)</span>, and
+let <span class="math inline">\(B=\bigcup_{n\ge N}E_n\)</span>. Then
+<span class="math inline">\(m(B)\le\sum_{n\ge
+N}\frac{1}{2^n}=\frac{1}{2^{N-1}}&lt;\frac\delta2\)</span>. For <span class="math inline">\(x\in[a,b]\setminus B\)</span> and <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|f(x)-h_n(x)|&lt;\frac{1}{2^n}\)</span>. So <span class="math inline">\(h_n\to f\)</span> uniformly on <span class="math inline">\([a,b]\setminus B\)</span>.</p>
+<p>By <a href="ch-lebesgue-measure.html#thm-measurable-approximation">Theorem 14.3.1</a> (3),
+there is a closed set <span class="math inline">\(F\subset[a,b]\setminus
+B\)</span> with <span class="math inline">\(m\bigl(([a,b]\setminus
+B)\setminus F\bigr)&lt;\frac\delta2\)</span>. Then <span class="math inline">\(m([a,b]\setminus F)&lt;\delta\)</span>. (If <span class="math inline">\(F\)</span> is empty, then <span class="math inline">\(m([a,b])&lt;\delta\)</span>, and any continuous
+<span class="math inline">\(\varphi\)</span> works.) On <span class="math inline">\(F\)</span>, the continuous functions <span class="math inline">\(h_n\)</span> converge uniformly to <span class="math inline">\(f\)</span>. So <span class="math inline">\(f\)</span> restricted to <span class="math inline">\(F\)</span> is continuous, by <a href="ch-function-sequences.html#cor-uniform-limit-continuous">Corollary 11.2.16</a>. By <a href="#lem-continuous-extension">Lemma 15.4.1</a>, there is a continuous
+<span class="math inline">\(\varphi\)</span> on <span class="math inline">\([a,b]\)</span> that equals <span class="math inline">\(f\)</span> on <span class="math inline">\(F\)</span>. Then <span class="math inline">\(\{x:f(x)\ne\varphi(x)\}\subset[a,b]\setminus
+F\)</span>, which has measure less than <span class="math inline">\(\delta\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-53">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-lusin-not-zero">
+
+<p><strong>Exercise 15.4.1.</strong> Show that <span class="math inline">\(m(\{f\ne\varphi\})&lt;\delta\)</span> in Lusin’s
+Theorem cannot be replaced by <span class="math inline">\(m(\{f\ne\varphi\})=0\)</span>. <a aria-label="Hint for Exercise 15.4.1" href="solutions-ch15.html#sol-exer-lusin-not-zero">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-lusin-bounded">
+
+<p><strong>Exercise 15.4.2.</strong> Show that if <span class="math inline">\(|f|\le M\)</span> on <span class="math inline">\([a,b]\)</span>, then the function <span class="math inline">\(\varphi\)</span> in Lusin’s Theorem can be chosen
+with <span class="math inline">\(|\varphi|\le M\)</span>. <a aria-label="Hint for Exercise 15.4.2" href="solutions-ch15.html#sol-exer-lusin-bounded">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-14">
+<h2>Notes</h2>
+<p>Lebesgue introduced measurable functions in his 1902 thesis [<a href="bibliography.html#bib-lebesgue1902">41</a>]. Dmitri Egoroff proved his theorem in
+1911 [<a href="bibliography.html#bib-egoroff1911">27</a>]. Carlo Severini had found it
+independently a year earlier. Nikolai Lusin proved his theorem in 1912
+[<a href="bibliography.html#bib-lusin1912">51</a>], although Lebesgue and Vitali had
+stated forms of it earlier. John Edensor Littlewood stated his three
+principles in his 1944 lectures [<a href="bibliography.html#bib-littlewood1944">50</a>].
+His advice was that if a problem would be easy when one of the
+principles held exactly, the word “nearly” is usually good enough.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-lebesgue-measure.html"><span class="dir">Previous</span> Chapter 14. Lebesgue Measure</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-lebesgue-integral.html"><span class="dir">Next</span> Chapter 16. The Lebesgue Integral</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

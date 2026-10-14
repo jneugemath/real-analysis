@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Appendix A. Construction of the Real Numbers by Cuts | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="part-appendices.html"><span class="dir">Previous</span> Appendices</a>
+<a rel="up" href="part-appendices.html"><span class="dir">Up</span> Appendices</a>
+<a rel="next" href="app-cauchy.html"><span class="dir">Next</span> Appendix B. Construction of the Real Numbers by Cauchy Sequences</a>
+</nav>
+<main id="main">
+<article id="app-cuts">
+<h1>Appendix A. Construction of the Real Numbers by
+Cuts</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-cuts">A.1 Cuts</a></li><li><a href="#sec-cuts-order">A.2 Order and the Least Upper Bound Property</a></li><li><a href="#sec-cuts-addition">A.3 Addition</a></li><li><a href="#sec-cuts-multiplication">A.4 Multiplication</a></li><li><a href="#sec-cuts-rationals">A.5 The Rational Numbers as a Subfield</a></li><li><a href="#notes-17">Notes</a></li></ul></nav>
+<p>This appendix proves <a href="ch-real-numbers.html#thm-existence-of-R">Theorem 1.7.2</a>.
+It builds an ordered field with the least upper bound property out of
+<span class="math inline">\(\mathbb{Q}\)</span>. The construction is due
+to Richard Dedekind.</p>
+<p>The idea comes from <a href="ch-real-numbers.html#sec-rationals">Section 1.3</a>. The
+rational numbers <span class="math inline">\(p\)</span> with <span class="math inline">\(p\le0\)</span> or <span class="math inline">\(p^2&lt;2\)</span> form a left piece of <span class="math inline">\(\mathbb{Q}\)</span>. The positive rational numbers
+with <span class="math inline">\(p^2&gt;2\)</span> form a right piece.
+No rational number sits between the two pieces. Dedekind’s idea was to
+let the left piece itself be the missing number. So a real number will
+be a set of rational numbers, namely all the rational numbers to its
+left. A rational number <span class="math inline">\(q\)</span> gives
+such a set too, the set of all rational numbers less than <span class="math inline">\(q\)</span>.</p>
+<p>Only <span class="math inline">\(\mathbb{Q}\)</span> is assumed here,
+with its usual operations and order. So <span class="math inline">\(\mathbb{Q}\)</span> is an ordered field (<a href="ch-real-numbers.html#ex-Q-ordered-field">Example 1.5.7</a>), and the results of
+Sections <a href="ch-real-numbers.html#sec-ordered-sets">1.4</a>, <a href="ch-real-numbers.html#sec-fields">1.5</a> and <a href="ch-real-numbers.html#sec-absolute-value">1.6</a>
+hold in <span class="math inline">\(\mathbb{Q}\)</span>. Nothing from <a href="ch-real-numbers.html#sec-completeness">Section 1.7</a> or later is used, since those
+results assume that <span class="math inline">\(\mathbb{R}\)</span>
+exists. In this appendix the letters <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>, <span class="math inline">\(r\)</span>, <span class="math inline">\(s\)</span>, <span class="math inline">\(t\)</span>
+and <span class="math inline">\(u\)</span> always denote rational
+numbers, and Greek letters denote cuts.</p>
+<section class="level3 unnumbered" id="sec-cuts">
+<h2>A.1 Cuts</h2>
+<div class="definitionbox" id="def-cut">
+
+<p><strong>Definition A.1.1.</strong> A set <span class="math inline">\(\alpha\subset\mathbb{Q}\)</span> is a <em>cut</em>
+if it has the following three properties.</p>
+<ol>
+<li><p><span class="math inline">\(\alpha\ne\emptyset\)</span> and <span class="math inline">\(\alpha\ne\mathbb{Q}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(p\in\alpha\)</span> and <span class="math inline">\(q&lt;p\)</span>, then <span class="math inline">\(q\in\alpha\)</span>.</p></li>
+<li><p><span class="math inline">\(\alpha\)</span> has no largest
+element. That is, if <span class="math inline">\(p\in\alpha\)</span>,
+then <span class="math inline">\(p&lt;r\)</span> for some <span class="math inline">\(r\in\alpha\)</span>.</p></li>
+</ol>
+<p>In this appendix, <span class="math inline">\(\mathbb{R}\)</span>
+denotes the set of all cuts.</p>
+</div>
+<div class="remarkbox" id="rem-cut-consequences">
+
+<p><strong>Remark A.1.2.</strong> Property (2) has two consequences that
+are used constantly. Let <span class="math inline">\(\alpha\)</span> be
+a cut. If <span class="math inline">\(p\in\alpha\)</span> and <span class="math inline">\(u\notin\alpha\)</span>, then <span class="math inline">\(p&lt;u\)</span>. Indeed, <span class="math inline">\(u=p\)</span> is impossible, and <span class="math inline">\(u&lt;p\)</span> would put <span class="math inline">\(u\)</span> in <span class="math inline">\(\alpha\)</span>. Also, if <span class="math inline">\(u\notin\alpha\)</span> and <span class="math inline">\(u&lt;s\)</span>, then <span class="math inline">\(s\notin\alpha\)</span>. Indeed, <span class="math inline">\(s\in\alpha\)</span> would put <span class="math inline">\(u\)</span> in <span class="math inline">\(\alpha\)</span>. So everything below a member of
+<span class="math inline">\(\alpha\)</span> is in <span class="math inline">\(\alpha\)</span>, and everything above a nonmember
+is outside <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-rational-cut">
+
+<p><strong>Example A.1.3.</strong> Let <span class="math inline">\(q\in\mathbb{Q}\)</span>. Then <span class="math inline">\(q^*=\{p\in\mathbb{Q}:p&lt;q\}\)</span> is a cut,
+called a <em>rational cut</em>. To see this, note that <span class="math inline">\(q-1\in q^*\)</span> and <span class="math inline">\(q\notin q^*\)</span>. Property (2) is the
+transitivity of the order. For (3), if <span class="math inline">\(p&lt;q\)</span>, then <span class="math inline">\(p&lt;\frac{p+q}2&lt;q\)</span> by <a href="ch-real-numbers.html#exer-rational-midpoint">Exercise 1.3.3</a>. Notice that <span class="math inline">\(q\)</span> is the smallest element of <span class="math inline">\(\mathbb{Q}\setminus q^*\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-sqrt2-cut">
+
+<p><strong>Example A.1.4.</strong> Let <span class="math inline">\(\alpha=\{p\in\mathbb{Q}:p\le0\text{ or
+}p^2&lt;2\}\)</span>. Then <span class="math inline">\(\alpha\)</span>
+is a cut, and <span class="math inline">\(\alpha\ne q^*\)</span> for
+every <span class="math inline">\(q\in\mathbb{Q}\)</span>.</p>
+<p>First, <span class="math inline">\(0\in\alpha\)</span> and <span class="math inline">\(2\notin\alpha\)</span>. For (2), let <span class="math inline">\(p\in\alpha\)</span> and <span class="math inline">\(q&lt;p\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(q\in\alpha\)</span>. If <span class="math inline">\(q&gt;0\)</span>, then <span class="math inline">\(0&lt;q&lt;p\)</span>. So <span class="math inline">\(p^2&lt;2\)</span>, and <span class="math inline">\(q^2&lt;p^2&lt;2\)</span> by <a href="ch-real-numbers.html#exer-inequality-rules">Exercise 1.5.3</a>. So <span class="math inline">\(q\in\alpha\)</span>. For (3), let <span class="math inline">\(p\in\alpha\)</span>. If <span class="math inline">\(p\le0\)</span>, then <span class="math inline">\(1\in\alpha\)</span> and <span class="math inline">\(1&gt;p\)</span>. If <span class="math inline">\(p&gt;0\)</span>, then <span class="math inline">\(p\)</span> is in the set <span class="math inline">\(A\)</span> of <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.3.5</a>, which has no largest
+element. So <span class="math inline">\(\alpha\)</span> is a cut.</p>
+<p>The set <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> consists of the
+<span class="math inline">\(p&gt;0\)</span> with <span class="math inline">\(p^2\ge2\)</span>. By <a href="ch-real-numbers.html#thm-sqrt2-irrational">Theorem 1.3.4</a>, <span class="math inline">\(p^2\ne2\)</span>. So <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> is the set
+<span class="math inline">\(B\)</span> of <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.3.5</a>, which has no smallest
+element. By <a href="#ex-rational-cut">Example A.1.3</a>, <span class="math inline">\(\mathbb{Q}\setminus q^*\)</span> has a smallest
+element. So <span class="math inline">\(\alpha\ne q^*\)</span>. This cut
+will play the role of <span class="math inline">\(\sqrt2\)</span>.
+Compare <a href="ch-real-numbers.html#fig-sqrt2-gap">Figure 1.1</a>.</p>
+</div>
+<div class="lemmabox" id="lem-archimedean-Q">
+
+<p><strong>Lemma A.1.5.</strong> Let <span class="math inline">\(p,r\in\mathbb{Q}\)</span> with <span class="math inline">\(r&gt;0\)</span>. Then there exists an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(nr&gt;p\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(p\le0\)</span>, take <span class="math inline">\(n=1\)</span>. Suppose <span class="math inline">\(p&gt;0\)</span>. As in the proof of <a href="ch-real-numbers.html#lem-lowest-terms">Lemma 1.3.3</a>, write <span class="math inline">\(p=\frac ab\)</span> and <span class="math inline">\(r=\frac cd\)</span> with <span class="math inline">\(a,b,c,d\in\mathbb{N}\)</span>. Let <span class="math inline">\(n=ad+1\)</span>. Since <span class="math inline">\(b\ge1\)</span> and <span class="math inline">\(c\ge1\)</span>, <span class="math display">\[nr=\frac{(ad+1)c}{d}\ge\frac{ad+1}{d}&gt;a\ge\frac
+ab=p.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-cut-step">
+
+<p><strong>Lemma A.1.6.</strong> Let <span class="math inline">\(\alpha\)</span> be a cut and let <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(r&gt;0\)</span>. Then there exists a <span class="math inline">\(p\in\alpha\)</span> with <span class="math inline">\(p+r\notin\alpha\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Choose <span class="math inline">\(s\in\alpha\)</span> and <span class="math inline">\(u\notin\alpha\)</span>. By <a href="#lem-archimedean-Q">Lemma A.1.5</a>, <span class="math inline">\(nr&gt;u-s\)</span> for some <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math inline">\(s+nr&gt;u\)</span>, so <span class="math inline">\(s+nr\notin\alpha\)</span> by <a href="#rem-cut-consequences">Remark A.1.2</a>. So the set <span class="math inline">\(S=\{n\in\mathbb{N}:s+nr\notin\alpha\}\)</span> is
+not empty. By the Well-Ordering Principle, it has a smallest element
+<span class="math inline">\(n_0\)</span>. If <span class="math inline">\(n_0=1\)</span>, let <span class="math inline">\(p=s\)</span>. If <span class="math inline">\(n_0&gt;1\)</span>, let <span class="math inline">\(p=s+(n_0-1)r\)</span>. Then <span class="math inline">\(p\in\alpha\)</span>, since <span class="math inline">\(n_0-1\notin S\)</span>. In both cases <span class="math inline">\(p\in\alpha\)</span> and <span class="math inline">\(p+r=s+n_0r\notin\alpha\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>In words, steps of size <span class="math inline">\(r\)</span> that
+start inside <span class="math inline">\(\alpha\)</span> must eventually
+leave it, and <a href="#lem-cut-step">Lemma A.1.6</a> picks the last
+step inside. So the inside and the outside of a cut come within <span class="math inline">\(r\)</span> of each other, for every <span class="math inline">\(r&gt;0\)</span>. This lemma is the key to the
+negative of a cut in <a href="#sec-cuts-addition">Section A.3</a> and to
+the reciprocal in <a href="#sec-cuts-multiplication">Section
+A.4</a>.</p>
+<section class="level5 unnumbered" id="exercises-65">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cut-examples">
+
+<p><strong>Exercise A.1.1.</strong> Decide which of the following sets
+are cuts. Justify each answer.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\{p\in\mathbb{Q}:p^2&lt;2\}\)</span></p></li>
+<li><p><span class="math inline">\(\{p\in\mathbb{Q}:p\le1\}\)</span></p></li>
+<li><p><span class="math inline">\(\{p\in\mathbb{Q}:p&lt;0\text{ or
+}p^2&lt;3\}\)</span></p></li>
+<li><p><span class="math inline">\(\{p\in\mathbb{Q}:p&lt;\frac1n\text{
+for every }n\in\mathbb{N}\}\)</span></p></li>
+</ol>
+<p><a aria-label="Hint for Exercise A.1.1" href="solutions-appa.html#sol-exer-cut-examples">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cut-rational-iff">
+
+<p><strong>Exercise A.1.2.</strong> Let <span class="math inline">\(\alpha\)</span> be a cut. Prove that <span class="math inline">\(\alpha=q^*\)</span> for some <span class="math inline">\(q\in\mathbb{Q}\)</span> if and only if <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> has a smallest
+element. <a aria-label="Solution for Exercise A.1.2" href="solutions-appa.html#sol-exer-cut-rational-iff">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cuts-order">
+<h2>A.2 Order and the Least Upper Bound Property</h2>
+<p>Cuts are ordered by inclusion. A smaller real number has fewer
+rational numbers to its left.</p>
+<div class="definitionbox" id="def-cut-order">
+
+<p><strong>Definition A.2.1.</strong> For cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, define <span class="math inline">\(\alpha&lt;\beta\)</span> to mean <span class="math inline">\(\alpha\subsetneqq\beta\)</span>.</p>
+</div>
+<p>So <span class="math inline">\(\alpha\le\beta\)</span> means <span class="math inline">\(\alpha\subset\beta\)</span>. For rational cuts,
+<span class="math inline">\(p^*&lt;q^*\)</span> exactly when <span class="math inline">\(p&lt;q\)</span>, by <a href="#thm-rational-cuts">Theorem A.5.1</a>.</p>
+<div class="theorembox" id="thm-cut-order">
+
+<p><strong>Theorem A.2.2.</strong> The relation <span class="math inline">\(&lt;\)</span> is an order on <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>Transitivity.</em> Let <span class="math inline">\(\alpha&lt;\beta\)</span> and <span class="math inline">\(\beta&lt;\gamma\)</span>. Then <span class="math inline">\(\alpha\subset\beta\subset\gamma\)</span>, so <span class="math inline">\(\alpha\subset\gamma\)</span>. If <span class="math inline">\(\alpha=\gamma\)</span>, then <span class="math inline">\(\beta\subset\gamma=\alpha\subset\beta\)</span>, so
+<span class="math inline">\(\alpha=\beta\)</span>, which is false. So
+<span class="math inline">\(\alpha&lt;\gamma\)</span>.</p>
+<p><em>Trichotomy.</em> At most one of <span class="math inline">\(\alpha&lt;\beta\)</span>, <span class="math inline">\(\alpha=\beta\)</span> and <span class="math inline">\(\beta&lt;\alpha\)</span> holds. Indeed, <span class="math inline">\(\alpha&lt;\beta\)</span> and <span class="math inline">\(\beta&lt;\alpha\)</span> would give <span class="math inline">\(\alpha\subset\beta\subset\alpha\)</span>, so <span class="math inline">\(\alpha=\beta\)</span>, which is false. Now suppose
+<span class="math inline">\(\alpha\ne\beta\)</span> and <span class="math inline">\(\alpha\not&lt;\beta\)</span>. Then <span class="math inline">\(\alpha\not\subset\beta\)</span>. So there is a
+<span class="math inline">\(p\in\alpha\)</span> with <span class="math inline">\(p\notin\beta\)</span>. Let <span class="math inline">\(q\in\beta\)</span>. Since <span class="math inline">\(p\notin\beta\)</span>, <span class="math inline">\(q&lt;p\)</span> by <a href="#rem-cut-consequences">Remark A.1.2</a>. Since <span class="math inline">\(p\in\alpha\)</span>, <span class="math inline">\(q\in\alpha\)</span>. So <span class="math inline">\(\beta\subset\alpha\)</span>. Since <span class="math inline">\(\beta\ne\alpha\)</span>, <span class="math inline">\(\beta&lt;\alpha\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cut-lub">
+
+<p><strong>Theorem A.2.3.</strong> The ordered set <span class="math inline">\(\mathbb{R}\)</span> has the least upper bound
+property. If <span class="math inline">\(A\subset\mathbb{R}\)</span> is
+nonempty and bounded above, then <span class="math inline">\(\sup
+A\)</span> is the union of the cuts in <span class="math inline">\(A\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\beta\)</span> be an upper bound of
+<span class="math inline">\(A\)</span>, and let <span class="math inline">\(\gamma=\bigcup_{\alpha\in A}\alpha\)</span>.</p>
+<p><em>The set <span class="math inline">\(\gamma\)</span> is a
+cut.</em> Choose <span class="math inline">\(\alpha_0\in A\)</span>.
+Then <span class="math inline">\(\emptyset\ne\alpha_0\subset\gamma\)</span>. Each
+<span class="math inline">\(\alpha\in A\)</span> has <span class="math inline">\(\alpha\le\beta\)</span>, that is, <span class="math inline">\(\alpha\subset\beta\)</span>. So <span class="math inline">\(\gamma\subset\beta\ne\mathbb{Q}\)</span>, and
+<span class="math inline">\(\gamma\ne\mathbb{Q}\)</span>. For (2), let
+<span class="math inline">\(p\in\gamma\)</span> and <span class="math inline">\(q&lt;p\)</span>. Then <span class="math inline">\(p\in\alpha\)</span> for some <span class="math inline">\(\alpha\in A\)</span>. So <span class="math inline">\(q\in\alpha\subset\gamma\)</span>. For (3), let
+<span class="math inline">\(p\in\gamma\)</span>, say <span class="math inline">\(p\in\alpha\)</span> with <span class="math inline">\(\alpha\in A\)</span>. Then <span class="math inline">\(p&lt;r\)</span> for some <span class="math inline">\(r\in\alpha\)</span>, and <span class="math inline">\(r\in\gamma\)</span>.</p>
+<p><em>The cut <span class="math inline">\(\gamma\)</span> is an upper
+bound of <span class="math inline">\(A\)</span>.</em> Each <span class="math inline">\(\alpha\in A\)</span> satisfies <span class="math inline">\(\alpha\subset\gamma\)</span>, so <span class="math inline">\(\alpha\le\gamma\)</span>.</p>
+<p><em>No smaller cut is an upper bound of <span class="math inline">\(A\)</span>.</em> Let <span class="math inline">\(\delta&lt;\gamma\)</span>. Then there is a <span class="math inline">\(p\in\gamma\)</span> with <span class="math inline">\(p\notin\delta\)</span>. Say <span class="math inline">\(p\in\alpha\)</span> with <span class="math inline">\(\alpha\in A\)</span>. Then <span class="math inline">\(\alpha\not\subset\delta\)</span>, so <span class="math inline">\(\alpha\not\le\delta\)</span>. By <a href="#thm-cut-order">Theorem A.2.2</a>, <span class="math inline">\(\delta&lt;\alpha\)</span>. So <span class="math inline">\(\delta\)</span> is not an upper bound of <span class="math inline">\(A\)</span>. Thus <span class="math inline">\(\gamma=\sup A\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Notice how little work this took. The hole in <span class="math inline">\(\mathbb{Q}\)</span> at <span class="math inline">\(\sqrt2\)</span> was a gap between a left piece and
+a right piece. A cut is a left piece, so the gap is filled by
+definition. The real work in this appendix is the arithmetic.</p>
+<section class="level5 unnumbered" id="exercises-66">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cut-density">
+
+<p><strong>Exercise A.2.1.</strong> Let <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> be cuts with <span class="math inline">\(\alpha&lt;\beta\)</span>. Prove that there is a
+<span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(\alpha&lt;q^*&lt;\beta\)</span>. <a aria-label="Solution for Exercise A.2.1" href="solutions-appa.html#sol-exer-cut-density">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-cut-sup-rational">
+
+<p><strong>Exercise A.2.2.</strong> Let <span class="math inline">\(\alpha\)</span> be a cut. Prove that <span class="math inline">\(\alpha=\sup\{q^*:q\in\alpha\}\)</span>. <a aria-label="Hint for Exercise A.2.2" href="solutions-appa.html#sol-exer-cut-sup-rational">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cuts-addition">
+<h2>A.3 Addition</h2>
+<div class="definitionbox" id="def-cut-sum">
+
+<p><strong>Definition A.3.1.</strong> For cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, define <span class="math display">\[\alpha+\beta=\{r+s:r\in\alpha,\
+s\in\beta\}.\]</span> Let <span class="math inline">\(0^*=\{p\in\mathbb{Q}:p&lt;0\}\)</span>, the
+rational cut of <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-cut-sum">
+
+<p><strong>Lemma A.3.2.</strong> If <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are cuts, then <span class="math inline">\(\alpha+\beta\)</span> is a cut.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Clearly <span class="math inline">\(\alpha+\beta\ne\emptyset\)</span>. Choose <span class="math inline">\(u\notin\alpha\)</span> and <span class="math inline">\(t\notin\beta\)</span>. If <span class="math inline">\(r\in\alpha\)</span> and <span class="math inline">\(s\in\beta\)</span>, then <span class="math inline">\(r&lt;u\)</span> and <span class="math inline">\(s&lt;t\)</span>, so <span class="math inline">\(r+s&lt;u+t\)</span>. So <span class="math inline">\(u+t\notin\alpha+\beta\)</span>, and <span class="math inline">\(\alpha+\beta\ne\mathbb{Q}\)</span>. For (2), let
+<span class="math inline">\(p=r+s\)</span> with <span class="math inline">\(r\in\alpha\)</span> and <span class="math inline">\(s\in\beta\)</span>, and let <span class="math inline">\(q&lt;p\)</span>. Then <span class="math inline">\(q-s&lt;r\)</span>, so <span class="math inline">\(q-s\in\alpha\)</span>, and <span class="math inline">\(q=(q-s)+s\in\alpha+\beta\)</span>. For (3), choose
+<span class="math inline">\(r'\in\alpha\)</span> with <span class="math inline">\(r'&gt;r\)</span>. Then <span class="math inline">\(r'+s\in\alpha+\beta\)</span> and <span class="math inline">\(r'+s&gt;p\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-cut-negative">
+
+<p><strong>Definition A.3.3.</strong> For a cut <span class="math inline">\(\alpha\)</span>, let <span class="math inline">\(-\alpha\)</span> be the set of all <span class="math inline">\(p\in\mathbb{Q}\)</span> such that <span class="math inline">\(-p-r\notin\alpha\)</span> for some rational <span class="math inline">\(r&gt;0\)</span>.</p>
+</div>
+<p>In words, <span class="math inline">\(p\in-\alpha\)</span> when <span class="math inline">\(-p\)</span> lies outside <span class="math inline">\(\alpha\)</span> with some room to spare. For a
+rational cut, <span class="math inline">\(-(q^*)=(-q)^*\)</span>.
+Indeed, <span class="math inline">\(p\in-(q^*)\)</span> means <span class="math inline">\(-p-r\ge q\)</span> for some <span class="math inline">\(r&gt;0\)</span>, which happens exactly when <span class="math inline">\(-p&gt;q\)</span>, that is, <span class="math inline">\(p&lt;-q\)</span>. The room to spare matters.
+Without it, <span class="math inline">\(-(q^*)\)</span> would contain
+<span class="math inline">\(-q\)</span> as a largest element.</p>
+<div class="theorembox" id="thm-cut-addition">
+
+<p><strong>Theorem A.3.4.</strong> Let <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> be cuts.</p>
+<ol>
+<li><p><span class="math inline">\(\alpha+\beta=\beta+\alpha\)</span>.</p></li>
+<li><p><span class="math inline">\((\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)\)</span>.</p></li>
+<li><p><span class="math inline">\(\alpha+0^*=\alpha\)</span>.</p></li>
+<li><p><span class="math inline">\(-\alpha\)</span> is a cut, and <span class="math inline">\(\alpha+(-\alpha)=0^*\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\beta\le\gamma\)</span>, then
+<span class="math inline">\(\alpha+\beta\le\alpha+\gamma\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Parts (1) and (2) are <a href="#exer-cut-sum-laws">Exercise
+A.3.1</a>. Part (5) holds since <span class="math inline">\(\beta\subset\gamma\)</span> gives <span class="math inline">\(\alpha+\beta\subset\alpha+\gamma\)</span>.</p>
+<p>(3) Let <span class="math inline">\(r\in\alpha\)</span> and <span class="math inline">\(s\in0^*\)</span>. Then <span class="math inline">\(r+s&lt;r\)</span>, so <span class="math inline">\(r+s\in\alpha\)</span>. So <span class="math inline">\(\alpha+0^*\subset\alpha\)</span>. Conversely, let
+<span class="math inline">\(p\in\alpha\)</span>. Choose <span class="math inline">\(r\in\alpha\)</span> with <span class="math inline">\(r&gt;p\)</span>. Then <span class="math inline">\(p-r\in0^*\)</span>, and <span class="math inline">\(p=r+(p-r)\in\alpha+0^*\)</span>. So <span class="math inline">\(\alpha\subset\alpha+0^*\)</span>.</p>
+<p>(4) First, <span class="math inline">\(-\alpha\)</span> is a cut.
+Choose <span class="math inline">\(u\notin\alpha\)</span>, and let <span class="math inline">\(p=-u-1\)</span>. Then <span class="math inline">\(-p-1=u\notin\alpha\)</span>, so <span class="math inline">\(p\in-\alpha\)</span>. Next, let <span class="math inline">\(q\in\alpha\)</span>. For every <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(-(-q)-r=q-r&lt;q\)</span>, so <span class="math inline">\(q-r\in\alpha\)</span>. So <span class="math inline">\(-q\notin-\alpha\)</span>, and <span class="math inline">\(-\alpha\ne\mathbb{Q}\)</span>. For (2), let <span class="math inline">\(p\in-\alpha\)</span>, with <span class="math inline">\(-p-r\notin\alpha\)</span>, and let <span class="math inline">\(q&lt;p\)</span>. Then <span class="math inline">\(-q-r&gt;-p-r\)</span>, so <span class="math inline">\(-q-r\notin\alpha\)</span> by <a href="#rem-cut-consequences">Remark A.1.2</a>. So <span class="math inline">\(q\in-\alpha\)</span>. For (3), let <span class="math inline">\(p\in-\alpha\)</span>, with <span class="math inline">\(-p-r\notin\alpha\)</span>. Let <span class="math inline">\(t=p+\frac r2\)</span>. Then <span class="math inline">\(-t-\frac r2=-p-r\notin\alpha\)</span>, so <span class="math inline">\(t\in-\alpha\)</span>, and <span class="math inline">\(t&gt;p\)</span>.</p>
+<p>Next, <span class="math inline">\(\alpha+(-\alpha)\subset0^*\)</span>. Let <span class="math inline">\(r\in\alpha\)</span> and <span class="math inline">\(s\in-\alpha\)</span>, with <span class="math inline">\(-s-t\notin\alpha\)</span> for some <span class="math inline">\(t&gt;0\)</span>. Then <span class="math inline">\(r&lt;-s-t\)</span>, so <span class="math inline">\(r+s&lt;-t&lt;0\)</span>.</p>
+<p>Finally, <span class="math inline">\(0^*\subset\alpha+(-\alpha)\)</span>. Let <span class="math inline">\(v\in0^*\)</span>, and let <span class="math inline">\(w=-\frac v2&gt;0\)</span>. By <a href="#lem-cut-step">Lemma A.1.6</a>, there is a <span class="math inline">\(p\in\alpha\)</span> with <span class="math inline">\(p+w\notin\alpha\)</span>. Let <span class="math inline">\(q=-p-2w\)</span>. Then <span class="math inline">\(-q-w=p+w\notin\alpha\)</span>, so <span class="math inline">\(q\in-\alpha\)</span>. And <span class="math inline">\(p+q=-2w=v\)</span>. So <span class="math inline">\(v\in\alpha+(-\alpha)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving Two Cuts Are Equal).</strong></p>
+<p>Cuts are sets, so two cuts are equal when each is contained in the
+other. Usually one inclusion is easy, and it follows from the order of
+<span class="math inline">\(\mathbb{Q}\)</span>, as in the first half of
+the proof of <a href="#thm-cut-addition">Theorem A.3.4</a> (3). The
+other inclusion needs room to move. Given <span class="math inline">\(p\)</span> in one cut, it must be written as a sum
+or a product of elements of the other cuts. Property (3) of <a href="#def-cut">Definition A.1.1</a>, or <a href="#lem-cut-step">Lemma
+A.1.6</a>, gives the room.</p>
+</div>
+<div class="corollarybox" id="cor-cut-additive">
+
+<p><strong>Corollary A.3.5.</strong> Axioms (1)–(5) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> hold for cuts, with <span class="math inline">\(0^*\)</span> as the zero. So does property (1) of
+<a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a>. Therefore <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (1)–(4) and <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.5.8</a> (1) hold for
+cuts, since their proofs use only these facts. In particular, <span class="math inline">\(-\alpha\)</span> is the only cut with <span class="math inline">\(\alpha+(-\alpha)=0^*\)</span>, <span class="math inline">\(-(-\alpha)=\alpha\)</span>, and <span class="math inline">\(\alpha&gt;0^*\)</span> if and only if <span class="math inline">\(-\alpha&lt;0^*\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Axiom (1) is <a href="#lem-cut-sum">Lemma A.3.2</a>. Axioms (2)–(5)
+are <a href="#thm-cut-addition">Theorem A.3.4</a> (1)–(4), using (1) to
+write <span class="math inline">\(0^*+\alpha=\alpha\)</span>. Property
+(1) of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a> is <a href="#thm-cut-addition">Theorem A.3.4</a> (5), together with (1).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-67">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cut-sum-laws">
+
+<p><strong>Exercise A.3.1.</strong> Prove <a href="#thm-cut-addition">Theorem A.3.4</a> (1) and (2). <a aria-label="Solution for Exercise A.3.1" href="solutions-appa.html#sol-exer-cut-sum-laws">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-sqrt2-cut-negative">
+
+<p><strong>Exercise A.3.2.</strong> Let <span class="math inline">\(\alpha\)</span> be the cut of <a href="#ex-sqrt2-cut">Example A.1.4</a>. Prove that <span class="math inline">\(-\alpha=\{p\in\mathbb{Q}:p&lt;0\text{ and
+}p^2&gt;2\}\)</span>. <a aria-label="Hint for Exercise A.3.2" href="solutions-appa.html#sol-exer-sqrt2-cut-negative">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cuts-multiplication">
+<h2>A.4 Multiplication</h2>
+<p>Multiplying left pieces is harder than adding them, because
+multiplying by a negative number reverses the order. So multiplication
+is defined first for positive cuts. Then it is extended to all cuts by
+the usual rules of signs.</p>
+<div class="lemmabox" id="lem-positive-cut">
+
+<p><strong>Lemma A.4.1.</strong> Let <span class="math inline">\(\alpha\)</span> be a cut with <span class="math inline">\(\alpha&gt;0^*\)</span>. Then <span class="math inline">\(0\in\alpha\)</span>, <span class="math inline">\(\alpha\)</span> contains a positive rational
+number, and every <span class="math inline">\(u\notin\alpha\)</span> is
+positive.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(0^*\subsetneqq\alpha\)</span>,
+there is a <span class="math inline">\(p\in\alpha\)</span> with <span class="math inline">\(p\notin0^*\)</span>, that is, <span class="math inline">\(p\ge0\)</span>. So <span class="math inline">\(0\in\alpha\)</span>. By property (3) of <a href="#def-cut">Definition A.1.1</a>, some <span class="math inline">\(r\in\alpha\)</span> has <span class="math inline">\(r&gt;0\)</span>. If <span class="math inline">\(u\notin\alpha\)</span>, then <span class="math inline">\(u&gt;0\)</span> by <a href="#rem-cut-consequences">Remark A.1.2</a>, since <span class="math inline">\(0\in\alpha\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-cut-product-positive">
+
+<p><strong>Definition A.4.2.</strong> For a cut <span class="math inline">\(\alpha&gt;0^*\)</span>, let <span class="math inline">\(\alpha^+=\{p\in\alpha:p&gt;0\}\)</span>. For cuts
+<span class="math inline">\(\alpha,\beta&gt;0^*\)</span>, define <span class="math inline">\(\alpha\beta\)</span> to be the set of all <span class="math inline">\(p\in\mathbb{Q}\)</span> such that <span class="math display">\[p\le rs\quad\text{for some }r\in\alpha^+\text{
+and }s\in\beta^+.\]</span> Also define <span class="math inline">\(\alpha^{-1}\)</span> to be the set of all <span class="math inline">\(p\in\mathbb{Q}\)</span> such that <span class="math inline">\(p\le0\)</span>, or <span class="math inline">\(p&gt;0\)</span> and <span class="math inline">\(pu&lt;1\)</span> for some <span class="math inline">\(u\notin\alpha\)</span>. Let <span class="math inline">\(1^*=\{p\in\mathbb{Q}:p&lt;1\}\)</span>, the
+rational cut of <span class="math inline">\(1\)</span>.</p>
+</div>
+<p>The definition of <span class="math inline">\(\alpha^{-1}\)</span>
+follows the definition of <span class="math inline">\(-\alpha\)</span>.
+A positive <span class="math inline">\(p\)</span> is in <span class="math inline">\(\alpha^{-1}\)</span> when <span class="math inline">\(\frac1p\)</span> lies outside <span class="math inline">\(\alpha\)</span> with room to spare, namely when
+<span class="math inline">\(\frac1p&gt;u\)</span> for some <span class="math inline">\(u\notin\alpha\)</span>. For example, if <span class="math inline">\(q&gt;0\)</span>, then <span class="math inline">\((q^*)^{-1}=\bigl(\frac1q\bigr)^*\)</span>.</p>
+<div class="lemmabox" id="lem-cut-product-positive">
+
+<p><strong>Lemma A.4.3.</strong> Let <span class="math inline">\(\alpha,\beta&gt;0^*\)</span>. Then <span class="math inline">\(\alpha\beta\)</span> and <span class="math inline">\(\alpha^{-1}\)</span> are cuts, <span class="math inline">\(\alpha\beta&gt;0^*\)</span>, and <span class="math inline">\(\alpha^{-1}&gt;0^*\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>The product.</em> By <a href="#lem-positive-cut">Lemma A.4.1</a>,
+<span class="math inline">\(\alpha^+\)</span> and <span class="math inline">\(\beta^+\)</span> are not empty, so <span class="math inline">\(\alpha\beta\ne\emptyset\)</span>. Choose <span class="math inline">\(u\notin\alpha\)</span> and <span class="math inline">\(t\notin\beta\)</span>. Both are positive. If <span class="math inline">\(r\in\alpha^+\)</span> and <span class="math inline">\(s\in\beta^+\)</span>, then <span class="math inline">\(0&lt;r&lt;u\)</span> and <span class="math inline">\(0&lt;s&lt;t\)</span>, so <span class="math inline">\(rs&lt;ut\)</span> by <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.5.8</a> (3). So <span class="math inline">\(ut\notin\alpha\beta\)</span>, and <span class="math inline">\(\alpha\beta\ne\mathbb{Q}\)</span>. Property (2)
+holds, since <span class="math inline">\(q&lt;p\le rs\)</span> gives
+<span class="math inline">\(q\le rs\)</span>. For (3), let <span class="math inline">\(p\le rs\)</span> with <span class="math inline">\(r\in\alpha^+\)</span> and <span class="math inline">\(s\in\beta^+\)</span>. Choose <span class="math inline">\(r'\in\alpha\)</span> with <span class="math inline">\(r'&gt;r\)</span>. Then <span class="math inline">\(r's\in\alpha\beta\)</span> and <span class="math inline">\(r's&gt;rs\ge p\)</span>. Finally, <span class="math inline">\(0\le rs\)</span>, so <span class="math inline">\(0\in\alpha\beta\setminus0^*\)</span>. Every
+negative number is less than <span class="math inline">\(rs\)</span>, so
+<span class="math inline">\(0^*\subset\alpha\beta\)</span>. Thus <span class="math inline">\(\alpha\beta&gt;0^*\)</span>.</p>
+<p><em>The reciprocal.</em> Clearly <span class="math inline">\(0\in\alpha^{-1}\)</span>. Let <span class="math inline">\(t\in\alpha^+\)</span>. If <span class="math inline">\(u\notin\alpha\)</span>, then <span class="math inline">\(u&gt;t\)</span>, so <span class="math inline">\(\frac1t\cdot u&gt;1\)</span>. So <span class="math inline">\(\frac1t\notin\alpha^{-1}\)</span>, and <span class="math inline">\(\alpha^{-1}\ne\mathbb{Q}\)</span>. For (2), let
+<span class="math inline">\(p\in\alpha^{-1}\)</span> and <span class="math inline">\(q&lt;p\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(q\in\alpha^{-1}\)</span>. If <span class="math inline">\(q&gt;0\)</span>, then <span class="math inline">\(p&gt;0\)</span> and <span class="math inline">\(pu&lt;1\)</span> for some <span class="math inline">\(u\notin\alpha\)</span>. Since <span class="math inline">\(u&gt;0\)</span>, <span class="math inline">\(qu&lt;pu&lt;1\)</span>, so <span class="math inline">\(q\in\alpha^{-1}\)</span>. For (3), let <span class="math inline">\(p\in\alpha^{-1}\)</span>. If <span class="math inline">\(p\le0\)</span>, choose <span class="math inline">\(u\notin\alpha\)</span>. Then <span class="math inline">\(\frac1{2u}&gt;0\ge p\)</span> and <span class="math inline">\(\frac1{2u}\cdot u&lt;1\)</span>, so <span class="math inline">\(\frac1{2u}\in\alpha^{-1}\)</span>. If <span class="math inline">\(p&gt;0\)</span>, then <span class="math inline">\(p&lt;\frac1u\)</span> for some <span class="math inline">\(u\notin\alpha\)</span>. Let <span class="math inline">\(p'=\frac12\bigl(p+\frac1u\bigr)\)</span>. Then
+<span class="math inline">\(p&lt;p'&lt;\frac1u\)</span>, so <span class="math inline">\(p'u&lt;1\)</span> and <span class="math inline">\(p'\in\alpha^{-1}\)</span>. Thus <span class="math inline">\(\alpha^{-1}\)</span> is a cut. It contains <span class="math inline">\(0\)</span>, so <span class="math inline">\(\alpha^{-1}&gt;0^*\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="lem-cut-ratio-step">
+
+<p><strong>Lemma A.4.4.</strong> Let <span class="math inline">\(\alpha&gt;0^*\)</span> and let <span class="math inline">\(t\in\mathbb{Q}\)</span> with <span class="math inline">\(t&gt;1\)</span>. Then there exists a <span class="math inline">\(p\in\alpha^+\)</span> with <span class="math inline">\(pt\notin\alpha\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Choose <span class="math inline">\(p_0\in\alpha^+\)</span>, and let
+<span class="math inline">\(r=p_0(t-1)&gt;0\)</span>. By <a href="#lem-cut-step">Lemma A.1.6</a>, there is a <span class="math inline">\(p_1\in\alpha\)</span> with <span class="math inline">\(p_1+r\notin\alpha\)</span>. Let <span class="math inline">\(p=\max\{p_0,p_1\}\)</span>. Then <span class="math inline">\(p\in\alpha^+\)</span>. Since <span class="math inline">\(p\ge p_1\)</span>, <span class="math inline">\(p+r\notin\alpha\)</span>. Since <span class="math inline">\(p\ge p_0\)</span>, <span class="math display">\[pt=p+p(t-1)\ge p+p_0(t-1)=p+r.\]</span> So <span class="math inline">\(pt\notin\alpha\)</span> by <a href="#rem-cut-consequences">Remark A.1.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cut-multiplication-positive">
+
+<p><strong>Theorem A.4.5.</strong> Let <span class="math inline">\(\alpha,\beta,\gamma&gt;0^*\)</span>.</p>
+<ol>
+<li><p><span class="math inline">\(\alpha\beta=\beta\alpha\)</span>.</p></li>
+<li><p><span class="math inline">\((\alpha\beta)\gamma=\alpha(\beta\gamma)\)</span>.</p></li>
+<li><p><span class="math inline">\(1^*\alpha=\alpha\)</span>.</p></li>
+<li><p><span class="math inline">\(\alpha\alpha^{-1}=1^*\)</span>.</p></li>
+<li><p><span class="math inline">\(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) The definition of <span class="math inline">\(\alpha\beta\)</span> is symmetric in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, since <span class="math inline">\(rs=sr\)</span>.</p>
+<p>(2) Let <span class="math inline">\(p\in(\alpha\beta)\gamma\)</span>.
+Then <span class="math inline">\(p\le wt\)</span> with <span class="math inline">\(w\in(\alpha\beta)^+\)</span> and <span class="math inline">\(t\in\gamma^+\)</span>, and <span class="math inline">\(w\le rs\)</span> with <span class="math inline">\(r\in\alpha^+\)</span> and <span class="math inline">\(s\in\beta^+\)</span>. So <span class="math inline">\(p\le rst\)</span>. Conversely, if <span class="math inline">\(p\le rst\)</span> with <span class="math inline">\(r\in\alpha^+\)</span>, <span class="math inline">\(s\in\beta^+\)</span> and <span class="math inline">\(t\in\gamma^+\)</span>, then <span class="math inline">\(rs\in(\alpha\beta)^+\)</span>, so <span class="math inline">\(p\in(\alpha\beta)\gamma\)</span>. So <span class="math inline">\((\alpha\beta)\gamma\)</span> is the set of <span class="math inline">\(p\)</span> with <span class="math inline">\(p\le
+rst\)</span> for some <span class="math inline">\(r\in\alpha^+\)</span>,
+<span class="math inline">\(s\in\beta^+\)</span> and <span class="math inline">\(t\in\gamma^+\)</span>. The same argument gives the
+same description of <span class="math inline">\(\alpha(\beta\gamma)\)</span>.</p>
+<p>(3) Let <span class="math inline">\(p\in1^*\alpha\)</span>. Then
+<span class="math inline">\(p\le rs\)</span> with <span class="math inline">\(0&lt;r&lt;1\)</span> and <span class="math inline">\(s\in\alpha^+\)</span>. So <span class="math inline">\(p&lt;s\)</span>, and <span class="math inline">\(p\in\alpha\)</span>. Conversely, let <span class="math inline">\(p\in\alpha\)</span>. Choose <span class="math inline">\(s_0\in\alpha^+\)</span>. Then <span class="math inline">\(\max\{p,s_0\}\in\alpha\)</span>, so there is an
+<span class="math inline">\(s\in\alpha\)</span> with <span class="math inline">\(s&gt;\max\{p,s_0\}\)</span>. In particular <span class="math inline">\(s&gt;0\)</span>. If <span class="math inline">\(p\le0\)</span>, then <span class="math inline">\(p\le\frac12s\)</span> with <span class="math inline">\(\frac12\in(1^*)^+\)</span>. If <span class="math inline">\(p&gt;0\)</span>, then <span class="math inline">\(r=\frac ps\)</span> satisfies <span class="math inline">\(0&lt;r&lt;1\)</span> and <span class="math inline">\(p=rs\)</span>. Either way <span class="math inline">\(p\in1^*\alpha\)</span>.</p>
+<p>(4) Let <span class="math inline">\(p\in\alpha\alpha^{-1}\)</span>.
+Then <span class="math inline">\(p\le rs\)</span> with <span class="math inline">\(r\in\alpha^+\)</span>, <span class="math inline">\(s&gt;0\)</span> and <span class="math inline">\(su&lt;1\)</span> for some <span class="math inline">\(u\notin\alpha\)</span>. Since <span class="math inline">\(r&lt;u\)</span>, <span class="math inline">\(rs&lt;us&lt;1\)</span>. So <span class="math inline">\(p&lt;1\)</span>, and <span class="math inline">\(p\in1^*\)</span>. Conversely, let <span class="math inline">\(q\in1^*\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(q\in\alpha\alpha^{-1}\)</span>, since <span class="math inline">\(\alpha\alpha^{-1}&gt;0^*\)</span>. Let <span class="math inline">\(0&lt;q&lt;1\)</span>, and let <span class="math inline">\(t=\frac12\bigl(1+\frac1q\bigr)\)</span>. Then
+<span class="math inline">\(1&lt;t&lt;\frac1q\)</span>. By <a href="#lem-cut-ratio-step">Lemma A.4.4</a>, there is a <span class="math inline">\(p\in\alpha^+\)</span> with <span class="math inline">\(pt\notin\alpha\)</span>. Let <span class="math inline">\(s=\frac qp&gt;0\)</span>. Then <span class="math inline">\(s\cdot pt=qt&lt;1\)</span> and <span class="math inline">\(pt\notin\alpha\)</span>, so <span class="math inline">\(s\in\alpha^{-1}\)</span>. Since <span class="math inline">\(q=ps\)</span>, <span class="math inline">\(q\in\alpha\alpha^{-1}\)</span>.</p>
+<p>(5) First, <span class="math inline">\(\beta+\gamma&gt;0^*\)</span>,
+since <span class="math inline">\(\beta+\gamma\ge0^*+\gamma=\gamma&gt;0^*\)</span>
+by <a href="#thm-cut-addition">Theorem A.3.4</a>. Next, every <span class="math inline">\(w\in\beta+\gamma\)</span> satisfies <span class="math inline">\(w\le s+t\)</span> for some <span class="math inline">\(s\in\beta^+\)</span> and <span class="math inline">\(t\in\gamma^+\)</span>. Indeed, <span class="math inline">\(w=s_1+t_1\)</span> with <span class="math inline">\(s_1\in\beta\)</span> and <span class="math inline">\(t_1\in\gamma\)</span>. Choose <span class="math inline">\(s_0\in\beta^+\)</span> and <span class="math inline">\(t_0\in\gamma^+\)</span>, and let <span class="math inline">\(s=\max\{s_0,s_1\}\)</span> and <span class="math inline">\(t=\max\{t_0,t_1\}\)</span>.</p>
+<p>Let <span class="math inline">\(p\in\alpha(\beta+\gamma)\)</span>.
+Then <span class="math inline">\(p\le rw\)</span> with <span class="math inline">\(r\in\alpha^+\)</span> and <span class="math inline">\(w\in(\beta+\gamma)^+\)</span>. Choose <span class="math inline">\(s\in\beta^+\)</span> and <span class="math inline">\(t\in\gamma^+\)</span> with <span class="math inline">\(w\le s+t\)</span>. Then <span class="math inline">\(p\le rs+rt\)</span>. Since <span class="math inline">\(rs\in\alpha\beta\)</span> and <span class="math inline">\(rt\in\alpha\gamma\)</span>, <span class="math inline">\(rs+rt\in\alpha\beta+\alpha\gamma\)</span>, and so
+<span class="math inline">\(p\in\alpha\beta+\alpha\gamma\)</span>.</p>
+<p>Conversely, let <span class="math inline">\(p\in\alpha\beta+\alpha\gamma\)</span>. Then <span class="math inline">\(p=x+y\)</span> with <span class="math inline">\(x\le rs\)</span> and <span class="math inline">\(y\le r't\)</span>, where <span class="math inline">\(r,r'\in\alpha^+\)</span>, <span class="math inline">\(s\in\beta^+\)</span> and <span class="math inline">\(t\in\gamma^+\)</span>. Let <span class="math inline">\(R=\max\{r,r'\}\in\alpha^+\)</span>. Then <span class="math display">\[p\le rs+r't\le Rs+Rt=R(s+t).\]</span> Since
+<span class="math inline">\(s+t\in(\beta+\gamma)^+\)</span>, <span class="math inline">\(p\in\alpha(\beta+\gamma)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-cut-product">
+
+<p><strong>Definition A.4.6.</strong> For cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> that are not both positive, define
+<span class="math display">\[\alpha\beta=\begin{cases}
+(-\alpha)(-\beta), &amp; \alpha&lt;0^*\text{ and }\beta&lt;0^*,\\
+-\bigl((-\alpha)\beta\bigr), &amp; \alpha&lt;0^*&lt;\beta,\\
+-\bigl(\alpha(-\beta)\bigr), &amp; \beta&lt;0^*&lt;\alpha,\\
+0^*, &amp; \alpha=0^*\text{ or }\beta=0^*.
+\end{cases}\]</span> For <span class="math inline">\(\alpha&lt;0^*\)</span>, define <span class="math inline">\(\alpha^{-1}=-\bigl((-\alpha)^{-1}\bigr)\)</span>.</p>
+</div>
+<p>If <span class="math inline">\(\alpha&lt;0^*\)</span>, then <span class="math inline">\(-\alpha&gt;0^*\)</span> by <a href="#cor-cut-additive">Corollary A.3.5</a>. So every product on the
+right side is a product of positive cuts, from <a href="#def-cut-product-positive">Definition A.4.2</a>. These are the
+familiar rules of signs.</p>
+<div class="theorembox" id="thm-cuts-ordered-field">
+
+<p><strong>Theorem A.4.7.</strong> With the addition of <a href="#def-cut-sum">Definition A.3.1</a>, the multiplication of
+Definitions <a href="#def-cut-product-positive">A.4.2</a> and <a href="#def-cut-product">A.4.6</a>, and the order of <a href="#def-cut-order">Definition A.2.1</a>, <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. Its zero
+is <span class="math inline">\(0^*\)</span> and its one is <span class="math inline">\(1^*\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Axioms (1)–(5) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> hold by
+<a href="#cor-cut-additive">Corollary A.3.5</a>. Every product of cuts
+is a cut, by <a href="#lem-cut-product-positive">Lemma A.4.3</a>, <a href="#thm-cut-addition">Theorem A.3.4</a> (4) and <a href="#def-cut-product">Definition A.4.6</a>. So (6) holds. Each case of
+<a href="#def-cut-product">Definition A.4.6</a> is symmetric in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, by <a href="#thm-cut-multiplication-positive">Theorem A.4.5</a> (1). So (7)
+holds.</p>
+<p>For (9), note <span class="math inline">\(1^*\ne0^*\)</span>, since
+<span class="math inline">\(0\in1^*\)</span> and <span class="math inline">\(0\notin0^*\)</span>. If <span class="math inline">\(\alpha&gt;0^*\)</span>, then <span class="math inline">\(1^*\alpha=\alpha\)</span> by <a href="#thm-cut-multiplication-positive">Theorem A.4.5</a> (3). If <span class="math inline">\(\alpha&lt;0^*\)</span>, then <span class="math inline">\(1^*\alpha=-\bigl(1^*(-\alpha)\bigr)=-(-\alpha)=\alpha\)</span>.
+If <span class="math inline">\(\alpha=0^*\)</span>, then <span class="math inline">\(1^*\alpha=0^*=\alpha\)</span>.</p>
+<p>For (10), let <span class="math inline">\(\alpha\ne0^*\)</span>. If
+<span class="math inline">\(\alpha&gt;0^*\)</span>, then <span class="math inline">\(\alpha\alpha^{-1}=1^*\)</span> by <a href="#thm-cut-multiplication-positive">Theorem A.4.5</a> (4). If <span class="math inline">\(\alpha&lt;0^*\)</span>, then <span class="math inline">\((-\alpha)^{-1}&gt;0^*\)</span>, so <span class="math inline">\(\alpha^{-1}&lt;0^*\)</span>. So <span class="math inline">\(\alpha\alpha^{-1}=(-\alpha)\bigl(-\alpha^{-1}\bigr)=(-\alpha)(-\alpha)^{-1}=1^*\)</span>.</p>
+<p>Axioms (8) and (11) follow from <a href="#thm-cut-multiplication-positive">Theorem A.4.5</a> (2) and (5),
+by splitting into cases by signs. This is <a href="#exer-cut-field-signs">Exercise A.4.1</a>.</p>
+<p>Property (1) of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a>
+holds by <a href="#cor-cut-additive">Corollary A.3.5</a>. For (2), let
+<span class="math inline">\(0^*\le\alpha\)</span> and <span class="math inline">\(0^*\le\beta\)</span>. If <span class="math inline">\(\alpha=0^*\)</span> or <span class="math inline">\(\beta=0^*\)</span>, then <span class="math inline">\(\alpha\beta=0^*\)</span>. Otherwise <span class="math inline">\(\alpha\beta&gt;0^*\)</span> by <a href="#lem-cut-product-positive">Lemma A.4.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-68">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cut-field-signs">
+
+<p><strong>Exercise A.4.1.</strong> Complete the proof of <a href="#thm-cuts-ordered-field">Theorem A.4.7</a> by proving axioms (8)
+and (11) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> for cuts of all
+signs. First show that <span class="math inline">\((-\alpha)\beta=-(\alpha\beta)=\alpha(-\beta)\)</span>
+for all cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. <a aria-label="Solution for Exercise A.4.1" href="solutions-appa.html#sol-exer-cut-field-signs">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-sqrt2-cut-square">
+
+<p><strong>Exercise A.4.2.</strong> Let <span class="math inline">\(\alpha\)</span> be the cut of <a href="#ex-sqrt2-cut">Example A.1.4</a>. Prove that <span class="math inline">\(\alpha\alpha=2^*\)</span>. <a aria-label="Hint for Exercise A.4.2" href="solutions-appa.html#sol-exer-sqrt2-cut-square">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cuts-rationals">
+<h2>A.5 The Rational Numbers as a Subfield</h2>
+<p>It remains to find <span class="math inline">\(\mathbb{Q}\)</span>
+inside <span class="math inline">\(\mathbb{R}\)</span>. Each rational
+number <span class="math inline">\(q\)</span> has its rational cut <span class="math inline">\(q^*\)</span>. The next theorem shows that the
+rational cuts add, multiply and compare exactly as the rational numbers
+do.</p>
+<div class="theorembox" id="thm-rational-cuts">
+
+<p><strong>Theorem A.5.1.</strong> Let <span class="math inline">\(p,q\in\mathbb{Q}\)</span>.</p>
+<ol>
+<li><p><span class="math inline">\(p&lt;q\)</span> if and only if <span class="math inline">\(p^*&lt;q^*\)</span>.</p></li>
+<li><p><span class="math inline">\((p+q)^*=p^*+q^*\)</span>.</p></li>
+<li><p><span class="math inline">\((-q)^*=-(q^*)\)</span>.</p></li>
+<li><p><span class="math inline">\((pq)^*=p^*q^*\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Let <span class="math inline">\(p&lt;q\)</span>. If <span class="math inline">\(r\in p^*\)</span>, then <span class="math inline">\(r&lt;p&lt;q\)</span>, so <span class="math inline">\(r\in q^*\)</span>. Also <span class="math inline">\(p\in q^*\)</span> and <span class="math inline">\(p\notin p^*\)</span>. So <span class="math inline">\(p^*&lt;q^*\)</span>. Conversely, let <span class="math inline">\(p^*&lt;q^*\)</span>. Then <span class="math inline">\(p\ne q\)</span>. If <span class="math inline">\(q&lt;p\)</span>, then <span class="math inline">\(q^*&lt;p^*\)</span> by the first half, which
+contradicts trichotomy. So <span class="math inline">\(p&lt;q\)</span>.</p>
+<p>(2) If <span class="math inline">\(r&lt;p\)</span> and <span class="math inline">\(s&lt;q\)</span>, then <span class="math inline">\(r+s&lt;p+q\)</span>. So <span class="math inline">\(p^*+q^*\subset(p+q)^*\)</span>. Conversely, let
+<span class="math inline">\(t&lt;p+q\)</span>, and let <span class="math inline">\(h=\frac12(p+q-t)&gt;0\)</span>. Then <span class="math inline">\(p-h\in p^*\)</span>, <span class="math inline">\(q-h\in q^*\)</span>, and <span class="math inline">\((p-h)+(q-h)=t\)</span>. So <span class="math inline">\(t\in p^*+q^*\)</span>.</p>
+<p>(3) By (2), <span class="math inline">\(q^*+(-q)^*=0^*\)</span>. By
+<a href="#cor-cut-additive">Corollary A.3.5</a>, <span class="math inline">\((-q)^*=-(q^*)\)</span>.</p>
+<p>(4) First let <span class="math inline">\(p,q&gt;0\)</span>. Then
+<span class="math inline">\(p^*,q^*&gt;0^*\)</span> by (1), and <span class="math inline">\((p^*)^+=\{r:0&lt;r&lt;p\}\)</span>. If <span class="math inline">\(r\in(p^*)^+\)</span> and <span class="math inline">\(s\in(q^*)^+\)</span>, then <span class="math inline">\(rs&lt;pq\)</span>. So every element of <span class="math inline">\(p^*q^*\)</span> is less than <span class="math inline">\(pq\)</span>, and <span class="math inline">\(p^*q^*\subset(pq)^*\)</span>. Conversely, let
+<span class="math inline">\(t&lt;pq\)</span>. If <span class="math inline">\(t\le0\)</span>, then <span class="math inline">\(t\le\frac p2\cdot\frac q2\)</span>, so <span class="math inline">\(t\in p^*q^*\)</span>. If <span class="math inline">\(t&gt;0\)</span>, let <span class="math inline">\(k=\frac t{pq}\)</span> and <span class="math inline">\(c=\frac12(1+k)\)</span>, so that <span class="math inline">\(0&lt;k&lt;c&lt;1\)</span>. Let <span class="math inline">\(r=cp\)</span> and <span class="math inline">\(s=\frac tr=\frac{kq}c\)</span>. Then <span class="math inline">\(0&lt;r&lt;p\)</span>, <span class="math inline">\(0&lt;s&lt;q\)</span> and <span class="math inline">\(rs=t\)</span>. So <span class="math inline">\(t\in
+p^*q^*\)</span>.</p>
+<p>If <span class="math inline">\(p=0\)</span> or <span class="math inline">\(q=0\)</span>, both sides of (4) are <span class="math inline">\(0^*\)</span>. Suppose <span class="math inline">\(p&lt;0&lt;q\)</span>. Then <span class="math inline">\(p^*&lt;0^*&lt;q^*\)</span> by (1), and <span class="math inline">\(-(p^*)=(-p)^*\)</span> by (3). By <a href="#def-cut-product">Definition A.4.6</a>, the positive case and (3),
+<span class="math display">\[p^*q^*=-\bigl((-p)^*q^*\bigr)=-\bigl(((-p)q)^*\bigr)=-\bigl((-(pq))^*\bigr)=(pq)^*.\]</span>
+The cases <span class="math inline">\(p&gt;0&gt;q\)</span> and <span class="math inline">\(p,q&lt;0\)</span> are <a href="#exer-rational-cuts-signs">Exercise A.5.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-cuts-contain-Q">
+
+<p><strong>Theorem A.5.2.</strong> Let <span class="math inline">\(\mathbb{Q}^*=\{q^*:q\in\mathbb{Q}\}\)</span>. The
+map <span class="math inline">\(q\mapsto q^*\)</span> is one-to-one from
+<span class="math inline">\(\mathbb{Q}\)</span> onto <span class="math inline">\(\mathbb{Q}^*\)</span>, and <span class="math inline">\(\mathbb{Q}^*\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(p\ne q\)</span>, then <span class="math inline">\(p&lt;q\)</span> or <span class="math inline">\(q&lt;p\)</span>, so <span class="math inline">\(p^*\ne q^*\)</span> by <a href="#thm-rational-cuts">Theorem A.5.1</a> (1). By <a href="#thm-rational-cuts">Theorem A.5.1</a>, <span class="math inline">\(\mathbb{Q}^*\)</span> contains <span class="math inline">\(0^*\)</span> and <span class="math inline">\(1^*\)</span>, and it contains the sum, the product
+and the negative of any of its elements. If <span class="math inline">\(q\ne0\)</span>, then <span class="math inline">\(q^*\bigl(\frac1q\bigr)^*=1^*\)</span> by <a href="#thm-rational-cuts">Theorem A.5.1</a> (4), so <span class="math inline">\((q^*)^{-1}=\bigl(\frac1q\bigr)^*\in\mathbb{Q}^*\)</span>
+by <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (7). The axioms of
+an ordered field hold in <span class="math inline">\(\mathbb{Q}^*\)</span>, since they hold in <span class="math inline">\(\mathbb{R}\)</span>. So <span class="math inline">\(\mathbb{Q}^*\)</span>, with the operations and
+order of <span class="math inline">\(\mathbb{R}\)</span>, is an ordered
+field contained in <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(\mathbb{Q}^*\)</span> is a perfect
+copy of <span class="math inline">\(\mathbb{Q}\)</span> inside <span class="math inline">\(\mathbb{R}\)</span>. Every sum, product and
+inequality of rational numbers matches the same statement about their
+cuts. From now on, identify each <span class="math inline">\(q\in\mathbb{Q}\)</span> with its cut <span class="math inline">\(q^*\)</span>. Then <span class="math inline">\(\mathbb{Q}\subset\mathbb{R}\)</span>, and <span class="math inline">\(\mathbb{Q}\)</span>, with its usual operations and
+order, is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>Strictly speaking, <span class="math inline">\(q\)</span> and <span class="math inline">\(q^*\)</span> are different objects. The number
+<span class="math inline">\(q\)</span> is a fraction, and <span class="math inline">\(q^*\)</span> is a set of fractions. But nothing in
+this book depends on what a real number is made of. It depends only on
+how real numbers add, multiply and compare, and in those ways <span class="math inline">\(q\)</span> and <span class="math inline">\(q^*\)</span> are the same.</p>
+<div class="proofbox">
+<p><em>Proof of <a href="ch-real-numbers.html#thm-existence-of-R">Theorem
+1.7.2</a>.</em></p>
+<p>By <a href="#thm-cuts-ordered-field">Theorem A.4.7</a>, <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. By <a href="#thm-cut-lub">Theorem A.2.3</a>, it has the least upper bound
+property. By <a href="#thm-cuts-contain-Q">Theorem A.5.2</a>, after each
+<span class="math inline">\(q\in\mathbb{Q}\)</span> is identified with
+<span class="math inline">\(q^*\)</span>, <span class="math inline">\(\mathbb{Q}\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-69">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-cut-membership">
+
+<p><strong>Exercise A.5.1.</strong> Let <span class="math inline">\(\alpha\)</span> be a cut and <span class="math inline">\(q\in\mathbb{Q}\)</span>. Prove that <span class="math inline">\(q\in\alpha\)</span> if and only if <span class="math inline">\(q^*&lt;\alpha\)</span>. So, after identifying each
+rational number with its cut, every real number <span class="math inline">\(\alpha\)</span> is the set of rational numbers
+less than <span class="math inline">\(\alpha\)</span>. <a aria-label="Solution for Exercise A.5.1" href="solutions-appa.html#sol-exer-cut-membership">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-rational-cuts-signs">
+
+<p><strong>Exercise A.5.2.</strong> Prove <a href="#thm-rational-cuts">Theorem A.5.1</a> (4) when <span class="math inline">\(p&gt;0&gt;q\)</span> and when <span class="math inline">\(p,q&lt;0\)</span>. <a aria-label="Hint for Exercise A.5.2" href="solutions-appa.html#sol-exer-rational-cuts-signs">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-17">
+<h2>Notes</h2>
+<p>Richard Dedekind found the idea of a cut in 1858, while teaching
+calculus in Zurich. He did not want to rely on geometric intuition for
+the completeness of the line. He published the construction in 1872 in
+<em>Stetigkeit und irrationale Zahlen</em> [<a href="bibliography.html#bib-dedekind1872">20</a>]. Dedekind’s cuts were pairs of sets, a
+left piece and a right piece. The version here keeps only the left piece
+and does not allow it a largest element, as in Rudin [<a href="bibliography.html#bib-rudin">61</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="part-appendices.html"><span class="dir">Previous</span> Appendices</a>
+<a rel="up" href="part-appendices.html"><span class="dir">Up</span> Appendices</a>
+<a rel="next" href="app-cauchy.html"><span class="dir">Next</span> Appendix B. Construction of the Real Numbers by Cauchy Sequences</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

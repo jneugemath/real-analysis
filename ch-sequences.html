@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 3. Sequences of Real Numbers | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-cardinality.html"><span class="dir">Previous</span> Chapter 2. Cardinality</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-topology.html"><span class="dir">Next</span> Chapter 4. Topological Properties of the Real Line</a>
+</nav>
+<main id="main">
+<article id="ch-sequences">
+<h1>Chapter 3. Sequences of Real Numbers</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-convergence">3.1 Convergence of a Sequence</a></li><li><a href="#sec-convergent-properties">3.2 Properties of Convergent Sequences</a></li><li><a href="#sec-recursive">3.3 Recursively Defined Sequences</a></li><li><a href="#sec-subsequences">3.4 Subsequences</a></li><li><a href="#sec-cauchy-sequences">3.5 Cauchy Sequences</a></li><li><a href="#sec-limsup">3.6 Limit Superior and Limit Inferior of a
+Sequence</a></li><li><a href="#notes-2">Notes</a></li></ul></nav>
+<p>Limits are the central idea of analysis. Derivatives, integrals and
+infinite series are all defined as limits. This chapter studies the
+simplest kind of limit, the limit of a sequence.</p>
+<p>The definition of convergence is the first one in the book with the
+pattern “for all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists an <span class="math inline">\(N\)</span>.” Learning to
+read and use that pattern is the main skill of this chapter. The rest of
+the chapter answers one question in several ways. How can a sequence be
+shown to converge? Bounded monotone sequences converge. Bounded
+sequences have convergent subsequences. Cauchy sequences converge. Each
+of these answers uses the least upper bound property of <span class="math inline">\(\mathbb{R}\)</span>. None of them is true in <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+<section class="level3 unnumbered" id="sec-convergence">
+<h2>3.1 Convergence of a Sequence</h2>
+<div class="remarkbox" id="rem-elementary-functions">
+
+<p><strong>Remark 3.1.1.</strong> Examples in this chapter use familiar
+functions such as <span class="math inline">\(\sqrt{x}\)</span>, <span class="math inline">\(\ln x\)</span>, <span class="math inline">\(\sin
+x\)</span> and <span class="math inline">\(\cos x\)</span>. Their basic
+properties are assumed for now. The functions <span class="math inline">\(\ln x\)</span> and <span class="math inline">\(e^x\)</span> are defined carefully in <a href="ch-integrals.html">Chapter 9</a>.</p>
+</div>
+<div class="definitionbox" id="def-convergence">
+
+<p><strong>Definition 3.1.2.</strong> A sequence <span class="math inline">\(\{x_n\}_{n=1}^\infty\)</span> in <span class="math inline">\(\mathbb{R}\)</span> is said to <em>converge</em>
+to the real number <span class="math inline">\(a\)</span>, denoted by
+<span class="math inline">\(\lim_{n\to\infty}x_n=a\)</span>, or <span class="math inline">\(x_n\to a\)</span>, if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span>.</p>
+</div>
+<p>In words, <span class="math inline">\(x_n\to a\)</span> means the
+terms <span class="math inline">\(x_n\)</span> are eventually as close
+to <span class="math inline">\(a\)</span> as anyone could ask. The
+number <span class="math inline">\(\varepsilon\)</span> says how close.
+Once <span class="math inline">\(\varepsilon\)</span> is given, there
+must be a place <span class="math inline">\(N\)</span> in the sequence
+after which every term is within <span class="math inline">\(\varepsilon\)</span> of <span class="math inline">\(a\)</span>. Smaller values of <span class="math inline">\(\varepsilon\)</span> usually need larger values of
+<span class="math inline">\(N\)</span>. So <span class="math inline">\(N\)</span> depends on <span class="math inline">\(\varepsilon\)</span>. <a href="#fig-eps-band">Figure 3.1</a> shows this for the sequence in <a href="#ex-seq-3n+4">Example 3.1.3</a> with <span class="math inline">\(\varepsilon=\frac14\)</span>. Every term from the
+<span class="math inline">\(N\)</span>th on lies in the band between
+<span class="math inline">\(a-\varepsilon\)</span> and <span class="math inline">\(a+\varepsilon\)</span>.</p>
+<figure class="figure" id="fig-eps-band"><div class="figure-images"><img alt="Points of the sequence (3n+4)/(2n) plotted against n, decreasing toward the horizontal line at height 3/2. A shaded horizontal band of width 1/4 on each side of 3/2 contains every point from n = 9 on." height="283" src="figs/fig02.svg" width="648"/></div><figcaption><strong>Figure 3.1.</strong> The sequence <span class="math inline">\(x_n=\frac{3n+4}{2n}\)</span> converges to <span class="math inline">\(a=\frac32\)</span>. With <span class="math inline">\(\varepsilon=\frac14\)</span>, every term from
+<span class="math inline">\(N=9\)</span> on lies inside the shaded
+band.</figcaption></figure>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving a Limit with the
+Definition).</strong> To prove <span class="math inline">\(x_n\to
+a\)</span> from the definition, start with an arbitrary <span class="math inline">\(\varepsilon&gt;0\)</span>. Then find an <span class="math inline">\(N\)</span> that works. Finding <span class="math inline">\(N\)</span> is scratch work done before writing the
+proof. Start with <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span> and simplify until
+it reads <span class="math inline">\(n&gt;\)</span> (something). Then
+choose <span class="math inline">\(N\)</span> larger than that
+something. The Archimedean Principle (<a href="ch-real-numbers.html#thm-archimedean">Theorem
+1.7.8</a>) says such an <span class="math inline">\(N\in\mathbb{N}\)</span> exists. The proof then
+runs forward. It states the choice of <span class="math inline">\(N\)</span> and checks that <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>. In <a href="#ex-seq-3n+4">Example
+3.1.3</a>, the scratch work is <span class="math inline">\(\left|x_n-\frac32\right|=\frac{2}{n}&lt;\varepsilon\)</span>,
+which holds when <span class="math inline">\(n&gt;\frac{2}{\varepsilon}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-seq-3n+4">
+
+<p><strong>Example 3.1.3.</strong> Consider the sequence <span class="math inline">\(\{x_n\}\)</span> defined by <span class="math inline">\(x_n=\frac{3n+4}{2n}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt; \frac{2}{\varepsilon}\)</span>. So for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+\left|x_n-\frac{3}{2}\right|&amp;=\left|\frac{3n+4}{2n}-\frac{3}{2}\right|\\
+&amp;=\left|\frac{3n+4-3n}{2n}\right|\\
+&amp;=\frac{2}{n}\\
+&amp;&lt;\frac{2}{2/\varepsilon}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x_n\to
+\frac{3}{2}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-seq-1-over-n">
+
+<p><strong>Example 3.1.4.</strong> Consider the sequence <span class="math inline">\(\{x_n\}\)</span> defined by <span class="math inline">\(x_n=\frac{1}{n}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\frac{1}{\varepsilon}\)</span>. Thus for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\left|\frac{1}{n}-0\right|=\frac{1}{n}&lt;\frac{1}{1/\varepsilon}=\varepsilon.\]</span>
+So <span class="math inline">\(x_n\to 0\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-seq-sqrt">
+
+<p><strong>Example 3.1.5.</strong> Consider the sequence <span class="math inline">\(\{x_n\}\)</span> defined by <span class="math inline">\(x_n=\frac{3n-7\sqrt{n}}{n}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt; \frac{49}{\varepsilon^2}\)</span>. Now for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+\left|x_n-3\right|&amp;=\left|\frac{3n-7\sqrt{n}}{n}-3\right|\\
+&amp;=\left|\frac{3n-7\sqrt{n}-3n}{n}\right|\\
+&amp;=\frac{7}{\sqrt{n}}\\
+&amp;&lt;\frac{7}{\sqrt{49/\varepsilon^2}}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x_n\to3\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Simplifying with Inequalities).</strong>
+Sometimes <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span> is
+hard to solve for <span class="math inline">\(n\)</span>. It is enough
+to find something larger and simpler that is still less than <span class="math inline">\(\varepsilon\)</span>. In <a href="#ex-seq-1+2n">Example 3.1.6</a>, <span class="math inline">\(\frac{1}{6+8n}&lt;\frac{1}{8n}\)</span>. Making
+the denominator smaller makes the fraction larger. Then <span class="math inline">\(\frac{1}{8n}&lt;\varepsilon\)</span> is easy to
+solve. The bound does not need to be the best one. <a href="#ex-seq-trig">Example 3.1.9</a> uses this idea twice.</p>
+</div>
+<div class="examplebox" id="ex-seq-1+2n">
+
+<p><strong>Example 3.1.6.</strong> Consider the sequence <span class="math inline">\(\{x_n\}\)</span> defined by <span class="math inline">\(x_n=\frac{1+2n}{3+4n}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\frac{8}{\varepsilon}\)</span>. Then for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+\left|x_n-\frac{1}{2}\right|&amp;=\left|\frac{1+2n}{3+4n}-\frac{1}{2}\right|\\
+&amp;=\left|\frac{2(1+2n)-(3+4n)}{2(3+4n)}\right|\\
+&amp;=\frac{1}{6+8n}\\
+&amp;&lt;\frac{1}{8n}\\
+&amp;&lt;\frac{1}{8(8/\varepsilon)}=\frac{\varepsilon}{64}&lt;\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x_n\to\frac{1}{2}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-seq-geometric">
+
+<p><strong>Example 3.1.7.</strong> Suppose <span class="math inline">\(0&lt;|c|&lt;1\)</span>. Consider the sequence
+<span class="math inline">\(\{c^n\}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N&gt;\frac{\ln\varepsilon}{\ln|c|}\)</span>. Then
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\ln|c|^n=n\ln|c|&lt;\ln\varepsilon.\]</span> So
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\left|c^n-0\right|=|c|^n&lt;\varepsilon.\]</span></p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Showing a Sequence Diverges).</strong> A
+sequence <span class="math inline">\(\{x_n\}\)</span> <em>diverges</em>
+if it does not converge to any <span class="math inline">\(a\in\mathbb{R}\)</span>. Negating the definition,
+<span class="math inline">\(\{x_n\}\)</span> does not converge to <span class="math inline">\(a\)</span> means there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that for all <span class="math inline">\(N\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(n\ge N\)</span> with <span class="math inline">\(|x_n-a|\ge\varepsilon\)</span>. To show <span class="math inline">\(\{x_n\}\)</span> diverges, this must hold for
+every <span class="math inline">\(a\in\mathbb{R}\)</span>. A proof by
+contradiction is often easier. Assume <span class="math inline">\(x_n\to
+a\)</span>, pick a small <span class="math inline">\(\varepsilon\)</span>, and find a contradiction. <a href="#ex-seq-alternating-diverges">Example 3.1.8</a> picks <span class="math inline">\(\varepsilon=1\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-seq-alternating-diverges">
+
+<p><strong>Example 3.1.8.</strong> Consider the sequence <span class="math inline">\(\{(-1)^n\}\)</span>. Assume by way of
+contradiction that <span class="math inline">\((-1)^n\to
+a\in\mathbb{R}\)</span>. Let <span class="math inline">\(\varepsilon=1\)</span>. So there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;1\)</span>. Thus, for any odd integer
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;1\)</span>, and for any even integer
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;1\)</span>. Choose <span class="math inline">\(n_0&gt;N\)</span>. Then <span class="math display">\[2=|x_{n_0}-x_{n_0+1}|\le
+|x_{n_0}-a|+|x_{n_0+1}-a|&lt;2,\]</span> a contradiction.</p>
+</div>
+<div class="examplebox" id="ex-seq-trig">
+
+<p><strong>Example 3.1.9.</strong> Consider the sequence <span class="math inline">\(\{x_n\}\)</span> defined by <span class="math inline">\(x_n=\frac{\cos n+3\sin n}{n^2+n-60}\)</span>. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\max\left\{\frac{2}{\sqrt{\varepsilon}},60\right\}\)</span>.
+Then for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+\left|\frac{\cos n +3\sin n}{n^2+n-60}-0\right|&amp;\le\frac{|\cos
+n|+3|\sin n|}{|n^2+n-60|}\\
+&amp;\le \frac{4}{|n^2+n-60|}\\
+&amp;=\frac{4}{n^2+n-60}\\
+&amp;\le \frac{4}{n^2}\\
+&amp;&lt;\frac{4}{(2/\sqrt{\varepsilon})^2}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x_n\to
+0\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-10">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-eps-N-limits">
+
+<p><strong>Exercise 3.1.1.</strong> Prove, using the <span class="math inline">\(\varepsilon\)</span>-<span class="math inline">\(N\)</span> definition, the following sequences
+<span class="math inline">\(\{x_n\}\)</span> converge to the given
+number <span class="math inline">\(a\)</span>.</p>
+<ol type="a">
+<li><p><span class="math inline">\(x_n=\dfrac{5n}{3n+2}\)</span>, <span class="math inline">\(a=\dfrac{5}{3}\)</span></p></li>
+<li><p><span class="math inline">\(x_n=\dfrac{12n^2+5\sqrt{n}}{2n^2}\)</span>, <span class="math inline">\(a=6\)</span></p></li>
+<li><p><span class="math inline">\(x_n=1-\dfrac{(-1)^n}{n}\)</span>,
+<span class="math inline">\(a=1\)</span></p></li>
+<li><p><span class="math inline">\(x_n=\dfrac{(1+4n)^2}{6n^2+n-75}\)</span>, <span class="math inline">\(a=\dfrac{8}{3}\)</span></p></li>
+</ol>
+<p><a aria-label="Solution for Exercise 3.1.1" href="solutions-ch03.html#sol-exer-eps-N-limits">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-sin-diverges">
+
+<p><strong>Exercise 3.1.2.</strong> Define the sequence <span class="math inline">\(\{x_n\}\)</span> by <span class="math inline">\(x_n=\frac{\sin(n\pi/2)}{8}\)</span>. Prove, using
+the <span class="math inline">\(\varepsilon\)</span>-<span class="math inline">\(N\)</span> definition, that this sequence
+diverges.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-convergent-properties">
+<h2>3.2 Properties of Convergent Sequences</h2>
+<p>Proving every limit from the definition would be slow. This section
+proves general rules instead. Limits add, multiply and divide as
+expected, and limits respect inequalities. With these rules, many limits
+can be found without going back to <span class="math inline">\(\varepsilon\)</span> and <span class="math inline">\(N\)</span>.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Using the Definition with a Specific <span class="math inline">\(\varepsilon\)</span>).</strong> The definition of
+<span class="math inline">\(x_n\to a\)</span> holds for every <span class="math inline">\(\varepsilon&gt;0\)</span>. So a proof can use any
+specific <span class="math inline">\(\varepsilon\)</span> it wants. The
+proof of <a href="#thm-limit-unique">Theorem 3.2.1</a> uses <span class="math inline">\(\varepsilon=\frac{|a_1-a_2|}{2}\)</span>. Also, if
+one statement holds for all <span class="math inline">\(n\ge
+N_1\)</span> and another holds for all <span class="math inline">\(n\ge
+N_2\)</span>, then both hold for all <span class="math inline">\(n\ge\max\{N_1,N_2\}\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-limit-unique">
+
+<p><strong>Theorem 3.2.1.</strong> The limit of a convergent sequence is
+unique.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume by way of contradiction that there exists a
+sequence <span class="math inline">\(\{x_n\}\)</span> and <span class="math inline">\(a_1,a_2\in\mathbb{R}\)</span> such that <span class="math inline">\(x_n\to a_1\)</span> and <span class="math inline">\(x_n\to a_2\)</span> with <span class="math inline">\(a_1\ne a_2\)</span>. Since <span class="math inline">\(a_1\ne a_2\)</span>, <span class="math inline">\(|a_1-a_2|&gt;0\)</span>. Since <span class="math inline">\(x_n\to a_1\)</span>, there exists an <span class="math inline">\(N_1\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_1\)</span>, <span class="math display">\[|x_n-a_1|&lt;\frac{|a_1-a_2|}{2}.\]</span> Since
+<span class="math inline">\(x_n\to a_2\)</span>, there exists an <span class="math inline">\(N_2\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_2\)</span>, <span class="math display">\[|x_n-a_2|&lt;\frac{|a_1-a_2|}{2}.\]</span></p>
+<p>Set <span class="math inline">\(N=\max\{N_1,N_2\}\)</span>. Then
+<span class="math display">\[\begin{aligned}
+|a_1-a_2|&amp;=|a_1-x_N+x_N-a_2|\\
+&amp;\le |a_1-x_N|+|a_2-x_N|\\
+&amp;&lt;\frac{|a_1-a_2|}{2}+\frac{|a_1-a_2|}{2}\\
+&amp;=|a_1-a_2|,
+\end{aligned}\]</span> a contradiction.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-bounded-sequence">
+
+<p><strong>Definition 3.2.2.</strong> A sequence <span class="math inline">\(\{x_n\}\)</span> is said to be <em>bounded</em> if
+there exists an <span class="math inline">\(M&gt;0\)</span> such that
+<span class="math inline">\(|x_n|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-convergent-bounded">
+
+<p><strong>Theorem 3.2.3.</strong> A convergent sequence is bounded.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\{x_n\}\)</span> be a
+sequence in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\to a\in\mathbb{R}\)</span>. Let <span class="math inline">\(\varepsilon=1\)</span>. So there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;1\)</span>. Then, by the reverse
+triangle inequality, for all <span class="math inline">\(n\ge N\)</span>
+<span class="math display">\[1&gt;|x_n-a|\ge\bigl||x_n|-|a|\bigr|\ge
+|x_n|-|a|.\]</span> So for all <span class="math inline">\(n\ge
+N\)</span>, <span class="math inline">\(|x_n|&lt;1+|a|\)</span>. Define
+<span class="math display">\[M=\max\{|x_1|,|x_2|,\dots,|x_{N-1}|,|a|+1\}.\]</span>
+Then <span class="math inline">\(|x_n|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(\{x_n\}\)</span> is bounded.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Splitting <span class="math inline">\(\varepsilon\)</span>).</strong> In the proof of <a href="#thm-limit-laws">Theorem 3.2.4</a> (1), the goal is <span class="math inline">\(|(x_n+y_n)-(a+b)|&lt;\varepsilon\)</span>. The
+Triangle Inequality splits this into <span class="math inline">\(|x_n-a|+|y_n-b|\)</span>. If each piece is less
+than <span class="math inline">\(\frac{\varepsilon}{2}\)</span>, the sum
+is less than <span class="math inline">\(\varepsilon\)</span>. This is
+allowed because the definition of <span class="math inline">\(x_n\to
+a\)</span> works for every positive number, including <span class="math inline">\(\frac{\varepsilon}{2}\)</span>. The proof of (2)
+uses the same idea with <span class="math inline">\(\frac{\varepsilon}{2M}\)</span> and <span class="math inline">\(\frac{\varepsilon}{2(|b|+1)}\)</span>. The <span class="math inline">\(+1\)</span> in <span class="math inline">\(|b|+1\)</span> avoids dividing by <span class="math inline">\(0\)</span> when <span class="math inline">\(b=0\)</span>. The proof of (2) also adds and
+subtracts <span class="math inline">\(x_nb\)</span>, as in <a href="ch-real-numbers.html#sec-absolute-value">Section 1.6</a>.</p>
+</div>
+<div class="theorembox" id="thm-limit-laws">
+
+<p><strong>Theorem 3.2.4.</strong> Suppose that <span class="math inline">\(x_n\to a\)</span> and <span class="math inline">\(y_n\to b\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\(x_n+y_n\to a+b\)</span>;</p></li>
+<li><p><span class="math inline">\(x_ny_n\to ab\)</span>; and</p></li>
+<li><p>if <span class="math inline">\(b\ne 0\)</span> and <span class="math inline">\(y_n\ne 0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(\frac{x_n}{y_n}\to\frac{a}{b}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(x_n\to a\)</span>, there exists an <span class="math inline">\(N_1\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_1\)</span>, <span class="math inline">\(|x_n-a|&lt;\frac{\varepsilon}{2}\)</span>. Since
+<span class="math inline">\(y_n\to b\)</span>, there exists an <span class="math inline">\(N_2\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_2\)</span>, <span class="math inline">\(|y_n-b|&lt;\frac{\varepsilon}{2}\)</span>.</p>
+<p>Let <span class="math inline">\(N=\max\{N_1,N_2\}\)</span>. So for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+|(x_n+y_n)-(a+b)|&amp;=|(x_n-a)+(y_n-b)|\\
+&amp;\le |x_n-a|+|y_n-b|\\
+&amp;&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x_n+y_n\to
+a+b\)</span>.</p></li>
+<li><p>Since <span class="math inline">\(\{x_n\}\)</span> converges, it
+is bounded, and so there exists an <span class="math inline">\(M&gt;0\)</span> such that <span class="math inline">\(|x_n|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(x_n\to a\)</span>, there exists an <span class="math inline">\(N_1\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_1\)</span>, <span class="math inline">\(|x_n-a|&lt;\frac{\varepsilon}{2(|b|+1)}\)</span>.
+Since <span class="math inline">\(y_n\to b\)</span>, there exists an
+<span class="math inline">\(N_2\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(n\ge N_2\)</span>, <span class="math inline">\(|y_n-b|&lt;\frac{\varepsilon}{2M}\)</span>.</p>
+<p>Let <span class="math inline">\(N=\max\{N_1,N_2\}\)</span>. So for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+|x_ny_n-ab|&amp;=|x_ny_n-x_nb+x_nb-ab|\\
+&amp;\le |x_ny_n-x_nb|+|x_nb-ab|\\
+&amp;=|x_n||y_n-b|+|b||x_n-a|\\
+&amp;&lt;M\left(\frac{\varepsilon}{2M}\right)+|b|\left(\frac{\varepsilon}{2(|b|+1)}\right)\\
+&amp;&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+\end{aligned}\]</span></p></li>
+<li><p>Since <span class="math inline">\(y_n\to b\)</span>, there exists
+an <span class="math inline">\(N_1\in\mathbb{N}\)</span> such that for
+all <span class="math inline">\(n\ge N_1\)</span>, <span class="math inline">\(|y_n-b|&lt;\frac{|b|}{2}\)</span>. Notice the
+reverse triangle inequality implies that for <span class="math inline">\(n\ge N_1\)</span>, <span class="math display">\[|b|-|y_n|\le |b-y_n| =
+|y_n-b|&lt;\frac{|b|}{2}.\]</span> Thus for all <span class="math inline">\(n\ge N_1\)</span>, <span class="math inline">\(\frac{|b|}{2}\le |y_n|\)</span> and <span class="math inline">\(\frac{1}{|y_n|}\le \frac{2}{|b|}\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then,
+again, since <span class="math inline">\(y_n\to b\)</span>, there exists
+an <span class="math inline">\(N_2\in\mathbb{N}\)</span> such that for
+all <span class="math inline">\(n\ge N_2\)</span>, <span class="math inline">\(|y_n-b|&lt;\frac{\varepsilon|b|^2}{2}\)</span>.</p>
+<p>Let <span class="math inline">\(N=\max\{N_1,N_2\}\)</span>. Then for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+\left|\frac{1}{y_n}-\frac{1}{b}\right|&amp;=\frac{|y_n-b|}{|y_n||b|}\\
+&amp;\le \frac{2}{|b|^2}|y_n-b|\\
+&amp;&lt;\frac{2}{|b|^2}\cdot\frac{\varepsilon|b|^2}{2}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\frac{1}{y_n}\to
+\frac{1}{b}\)</span>. By (2), <span class="math inline">\(\frac{x_n}{y_n}\to \frac{a}{b}\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-limit-constant">
+
+<p><strong>Corollary 3.2.5.</strong> If <span class="math inline">\(\{x_n\}\)</span> is a convergent sequence in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\to a\)</span>, then for all <span class="math inline">\(c\in\mathbb{R}\)</span>,</p>
+<ol>
+<li><p><span class="math inline">\(x_n+c\to a+c\)</span>; and</p></li>
+<li><p><span class="math inline">\(cx_n\to ca\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\{c_n\}\)</span> be
+defined by <span class="math inline">\(c_n=c\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. The result then follows
+directly from <a href="#thm-limit-laws">Theorem 3.2.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-bounded-times-null">
+
+<p><strong>Corollary 3.2.6.</strong> Let <span class="math inline">\(\{x_n\}\)</span> and <span class="math inline">\(\{y_n\}\)</span> be sequences of real numbers with
+<span class="math inline">\(\{y_n\}\)</span> bounded and <span class="math inline">\(x_n\to 0\)</span>. Then <span class="math inline">\(x_ny_n\to 0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-bounded-times-null">Exercise
+3.2.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-order-limits">
+
+<p><strong>Theorem 3.2.7.</strong> Suppose that <span class="math inline">\(\{x_n\}\)</span> and <span class="math inline">\(\{y_n\}\)</span> are convergent sequences in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\to a\)</span> and <span class="math inline">\(y_n\to b\)</span>. If <span class="math inline">\(x_n\le y_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(a\le b\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume by way of contradiction that <span class="math inline">\(a&gt;b\)</span>. Thus <span class="math inline">\(\frac{a-b}{2}&gt;0\)</span>. Since <span class="math inline">\(x_n\to a\)</span>, there exists an <span class="math inline">\(N_1\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_1\)</span>, <span class="math inline">\(|x_n-a|&lt;\frac{a-b}{2}\)</span>. So <span class="math inline">\(x_n-a&gt;\frac{-a+b}{2}\)</span> for all <span class="math inline">\(n\ge N_1\)</span>. Also, since <span class="math inline">\(y_n\to b\)</span>, there exists an <span class="math inline">\(N_2\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_2\)</span>, <span class="math inline">\(|y_n-b|&lt;\frac{a-b}{2}\)</span>. So for all
+<span class="math inline">\(n\ge N_2\)</span>, <span class="math inline">\(y_n-b&lt;\frac{a-b}{2}\)</span>.</p>
+<p>Set <span class="math inline">\(N=\max\{N_1,N_2\}\)</span>. Then
+<span class="math display">\[y_{N}&lt;\frac{a-b}{2}+b=\frac{a+b}{2}=a+\frac{-a+b}{2}&lt;x_{N},\]</span>
+a contradiction. So <span class="math inline">\(a\le b\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-order-limits-eventually">
+
+<p><strong>Corollary 3.2.8.</strong> Suppose that <span class="math inline">\(\{x_n\}\)</span> and <span class="math inline">\(\{y_n\}\)</span> are convergent sequences in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\to a\)</span> and <span class="math inline">\(y_n\to b\)</span>. If there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(x_n\le y_n\)</span> for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(a\le
+b\)</span>.</p>
+</div>
+<div class="corollarybox" id="cor-limit-in-interval">
+
+<p><strong>Corollary 3.2.9.</strong> If <span class="math inline">\(x_n\to c\)</span> and if there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(a\le
+x_n\le b\)</span>, <span class="math inline">\(a\le c\le b\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-squeeze">
+
+<p><strong>Theorem 3.2.10</strong> (Squeeze
+Theorem)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(\{x_n\}\)</span>, <span class="math inline">\(\{y_n\}\)</span>, and <span class="math inline">\(\{z_n\}\)</span> are sequences in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\to a\)</span>, <span class="math inline">\(y_n\to a\)</span>. Then if <span class="math inline">\(x_n\le z_n\le y_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(z_n\to a\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(x_n\to a\)</span>, there exists an <span class="math inline">\(N_1\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N_1\)</span>, <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span>. Thus for all
+<span class="math inline">\(n\ge N_1\)</span>, <span class="math display">\[-\varepsilon&lt;x_n-a&lt;\varepsilon,\]</span> or
+<span class="math display">\[a-\varepsilon&lt;x_n&lt;a+\varepsilon.\]</span>
+Likewise, since <span class="math inline">\(y_n\to a\)</span>, there
+exists an <span class="math inline">\(N_2\in\mathbb{N}\)</span> such
+that for all <span class="math inline">\(n\ge N_2\)</span>, <span class="math inline">\(|y_n-a|&lt;\varepsilon\)</span>. Thus for all
+<span class="math inline">\(n\ge N_2\)</span>, <span class="math display">\[a-\varepsilon&lt;y_n&lt;a+\varepsilon.\]</span></p>
+<p>Set <span class="math inline">\(N=\max\{N_1,N_2\}\)</span>. Then for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[a-\varepsilon&lt;x_n\le z_n\le
+y_n&lt;a+\varepsilon.\]</span> So for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|z_n-a|&lt;\varepsilon\)</span>, implying <span class="math inline">\(z_n\to a\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-squeeze-eventually">
+
+<p><strong>Corollary 3.2.11</strong> (Squeeze Theorem)<strong>.</strong>
+Suppose <span class="math inline">\(\{x_n\}\)</span>, <span class="math inline">\(\{y_n\}\)</span>, and <span class="math inline">\(\{z_n\}\)</span> are sequences in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\to a\)</span>, <span class="math inline">\(y_n\to a\)</span>. Then if there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(x_n\le z_n\le y_n\)</span> for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(z_n\to a\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-monotone-sequence">
+
+<p><strong>Definition 3.2.12.</strong> A sequence <span class="math inline">\(\{x_n\}\)</span> is</p>
+<ol>
+<li><p><em>increasing</em> if <span class="math inline">\(x_{n+1}\ge
+x_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>;</p></li>
+<li><p><em>strictly increasing</em> if <span class="math inline">\(x_{n+1}&gt;x_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>;</p></li>
+<li><p><em>decreasing</em> if <span class="math inline">\(x_{n+1}\le
+x_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>;</p></li>
+<li><p><em>strictly decreasing</em> if <span class="math inline">\(x_{n+1}&lt;x_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>; and</p></li>
+<li><p><em>monotonic</em> if <span class="math inline">\(\{x_n\}\)</span> is either increasing or
+decreasing.</p></li>
+</ol>
+</div>
+<div class="theorembox" id="thm-monotone-convergence">
+
+<p><strong>Theorem 3.2.13.</strong> Suppose <span class="math inline">\(\{x_n\}\)</span> is monotonic. Then <span class="math inline">\(\{x_n\}\)</span> converges if and only if <span class="math inline">\(\{x_n\}\)</span> is bounded.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+This result is an immediate consequence of <a href="#thm-convergent-bounded">Theorem 3.2.3</a>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Assume <span class="math inline">\(\{x_n\}\)</span> is bounded, and without loss of
+generality, assume <span class="math inline">\(\{x_n\}\)</span> is
+increasing. Let <span class="math inline">\(A=\{x_n:n\in\mathbb{N}\}\)</span>. Now since <span class="math inline">\(\{x_n\}\)</span> is bounded, <span class="math inline">\(A\)</span> has an upper bound. So <span class="math inline">\(A\)</span> has a least upper bound in <span class="math inline">\(\mathbb{R}\)</span>, say <span class="math inline">\(\alpha=\sup A\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(\alpha=\sup A\)</span>, by <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.7.7</a>, there exists an <span class="math inline">\(a\in A\)</span> such that <span class="math inline">\(a&gt;\alpha-\varepsilon\)</span>; i.e., there
+exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+<span class="math inline">\(x_N=a&gt;\alpha-\varepsilon\)</span>. But
+<span class="math inline">\(\{x_n\}\)</span> is increasing. So for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(\alpha\ge x_n&gt;\alpha-\varepsilon\)</span>. So
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-\alpha|&lt;\varepsilon\)</span>. So <span class="math inline">\(x_n\to\alpha\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This theorem depends on the least upper bound property. It is false
+in <span class="math inline">\(\mathbb{Q}\)</span>. For example, let
+<span class="math inline">\(x_n\)</span> be the decimal expansion of
+<span class="math inline">\(\sqrt2\)</span> cut off after <span class="math inline">\(n\)</span> digits, so <span class="math inline">\(x_1=1.4\)</span>, <span class="math inline">\(x_2=1.41\)</span>, <span class="math inline">\(x_3=1.414\)</span>, and so on. Each <span class="math inline">\(x_n\)</span> is rational, the sequence is
+increasing, and it is bounded above by <span class="math inline">\(2\)</span>. Its limit is <span class="math inline">\(\sqrt2\)</span>, which is not in <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+<div class="corollarybox" id="cor-eventually-monotone">
+
+<p><strong>Corollary 3.2.14.</strong> If <span class="math inline">\(\{x_n\}\)</span> is bounded and if there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_{n+1}\ge x_n\)</span>, or for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_{n+1}\le x_n\)</span> (<span class="math inline">\(x_n\)</span> is eventually monotonic), <span class="math inline">\(\{x_n\}\)</span> converges.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-11">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-power-limit">
+
+<p><strong>Exercise 3.2.1.</strong> Suppose that <span class="math inline">\(x_n\to a\)</span>. Prove by induction that, for
+<span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\((x_n)^k\to a^k\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-bounded-times-null">
+
+<p><strong>Exercise 3.2.2.</strong> Suppose <span class="math inline">\(\{x_n\}\)</span> and <span class="math inline">\(\{y_n\}\)</span> are sequences in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(\{y_n\}\)</span> bounded and <span class="math inline">\(x_n\to0\)</span>. Prove <span class="math inline">\(x_ny_n\to0\)</span>. (Note: <span class="math inline">\(\{y_n\}\)</span> does not necessarily converge.)
+Find an example to show the condition that <span class="math inline">\(\{y_n\}\)</span> is bounded is necessary. <a aria-label="Solution for Exercise 3.2.2" href="solutions-ch03.html#sol-exer-bounded-times-null">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-bounded-decreasing">
+
+<p><strong>Exercise 3.2.3.</strong> Prove that a bounded decreasing
+sequence <span class="math inline">\(\{x_n\}\)</span> converges by
+appealing to the sequence <span class="math inline">\(\{-x_n\}\)</span>.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-recursive">
+<h2>3.3 Recursively Defined Sequences</h2>
+<p>Many sequences are defined by a rule that gives each term from the
+one before it. Such sequences come up in numerical methods for solving
+equations. <a href="#ex-recursive-newton">Example 3.3.4</a> below is
+Newton’s method for finding <span class="math inline">\(\sqrt3\)</span>.
+Often there is no formula for <span class="math inline">\(x_n\)</span>
+at all. So the theorems of <a href="#sec-convergent-properties">Section
+3.2</a> are the main tools.</p>
+<div class="examplebox" id="ex-recursive-one-ninth">
+
+<p><strong>Example 3.3.1.</strong> The sequence <span class="math inline">\(\{x_n\}\)</span> where <span class="math inline">\(x_n\)</span> is the finite decimal expansion
+consisting of <span class="math inline">\(n\)</span> <span class="math inline">\(1\)</span>s after the decimal converges to <span class="math inline">\(\frac{1}{9}\)</span>. To see this, first, notice
+that <span class="math inline">\(x_1=0.1\)</span>, <span class="math inline">\(x_2=0.11\)</span>, <span class="math inline">\(x_3=0.111\)</span>, and so on. Since <span class="math inline">\(\{x_n\}\)</span> is bounded and increasing, there
+exists an <span class="math inline">\(a\in\mathbb{R}\)</span> such that
+<span class="math inline">\(x_n\to a\)</span>. So <span class="math inline">\(x_{n+1}\to a\)</span> as well. But <span class="math display">\[10x_{n+1}-x_n=1.\]</span> So <span class="math display">\[\lim_{n\to\infty}(10x_{n+1}-x_n)=1.\]</span>
+Therefore <span class="math inline">\(10a-a=1\)</span>. So <span class="math inline">\(a=\frac{1}{9}\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Recursive Sequences).</strong> Many
+recursive sequences are handled in three steps. First, use induction to
+show the sequence is bounded. Second, use induction to show the sequence
+is monotone. Then by <a href="#thm-monotone-convergence">Theorem
+3.2.13</a>, the sequence converges, say <span class="math inline">\(x_n\to a\)</span>. Third, take the limit of both
+sides of the recursive formula and solve for <span class="math inline">\(a\)</span>. The order matters. The third step only
+makes sense once the limit is known to exist. For example, let <span class="math inline">\(x_1=1\)</span> and <span class="math inline">\(x_{n+1}=2x_n\)</span>. Taking limits of both sides
+gives <span class="math inline">\(a=2a\)</span>, so <span class="math inline">\(a=0\)</span>. But <span class="math inline">\(x_n=2^{n-1}\)</span>, which diverges.</p>
+</div>
+<div class="examplebox" id="ex-recursive-linear">
+
+<p><strong>Example 3.3.2.</strong> The sequence defined recursively by
+<span class="math inline">\(x_1=1\)</span> and <span class="math inline">\(x_{n+1}=\frac{2x_n+3}{4}\)</span> converges to
+<span class="math inline">\(\frac{3}{2}\)</span>. First, notice <span class="math inline">\(x_1=1&lt;2\)</span>. Using induction, assume there
+is a <span class="math inline">\(k\in\mathbb{N}\)</span> with <span class="math inline">\(x_k&lt;2\)</span>. So <span class="math display">\[x_{k+1}=\frac{2x_k+3}{4}\le
+\frac{7}{4}&lt;2.\]</span> By induction, <span class="math inline">\(\{x_n\}\)</span> is bounded above by <span class="math inline">\(2\)</span>. Next, notice <span class="math inline">\(x_1=1\)</span> and <span class="math inline">\(x_2=\frac{5}{4}&gt;1=x_1\)</span>. Again, using
+induction, assume there is a <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(k&gt;1\)</span> with <span class="math inline">\(x_k&gt;x_{k-1}\)</span>. Then <span class="math display">\[x_{k+1}=\frac{2x_k+3}{4}&gt;\frac{2x_{k-1}+3}{4}=x_k.\]</span>
+So by induction, <span class="math inline">\(\{x_n\}\)</span> is
+increasing. Thus <span class="math inline">\(\{x_n\}\)</span> is bounded
+and monotonic, so it converges, say <span class="math inline">\(x_n\to
+a\)</span>.</p>
+<p>Now, since <span class="math inline">\(x_n\to a\)</span>, <span class="math inline">\(x_{n+1}\to a\)</span>. But <span class="math inline">\(x_{n+1}=\frac{2x_n+3}{4}\)</span>, implying <span class="math display">\[\lim_{n\to\infty}x_{n+1}=\lim_{n\to\infty}\frac{2x_n+3}{4},\]</span>
+or <span class="math inline">\(a=\frac{2a+3}{4}\)</span>. So <span class="math inline">\(a=\frac{3}{2}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-recursive-sqrt">
+
+<p><strong>Example 3.3.3.</strong> The sequence defined recursively by
+<span class="math inline">\(x_1=5\)</span> and <span class="math inline">\(x_{n+1}=\sqrt{4+x_n}\)</span>, <span class="math inline">\(n\ge 1\)</span> converges to <span class="math inline">\(\frac{1+\sqrt{17}}{2}\)</span>. Here, notice <span class="math inline">\(x_1=5&gt;0\)</span>. Now assume by way of
+induction that there is a <span class="math inline">\(k\in\mathbb{N}\)</span> with <span class="math inline">\(x_k&gt;0\)</span>. Then <span class="math display">\[x_{k+1}=\sqrt{4+x_k}&gt;\sqrt{4}&gt;0.\]</span>
+So by induction, <span class="math inline">\(\{x_n\}\)</span> is bounded
+below by zero. Also, <span class="math inline">\(x_1=5\)</span> and
+<span class="math inline">\(x_2=3&lt;x_1\)</span>. Again, by way of
+induction, assume there is a <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(k&gt;1\)</span>, with <span class="math inline">\(x_k&lt;x_{k-1}\)</span>. Then <span class="math display">\[x_{k+1}=\sqrt{4+x_k}&lt;\sqrt{4+x_{k-1}}=x_k.\]</span>
+So by induction, <span class="math inline">\(\{x_k\}\)</span> is
+decreasing. Thus <span class="math inline">\(\{x_k\}\)</span> is bounded
+and decreasing, so it converges, say <span class="math inline">\(x_n\to
+a\)</span>.</p>
+<p>Now, since <span class="math inline">\(x_n\to a\)</span>, <span class="math inline">\(x_{n+1}\to a\)</span>. But since <span class="math inline">\(x_{n+1}=\sqrt{4+x_n}\)</span>, <span class="math display">\[\lim_{n\to\infty}
+x_{n+1}=\lim_{n\to\infty}\sqrt{4+x_n}.\]</span> So <span class="math inline">\(a=\sqrt{4+a}\)</span>. Since <span class="math inline">\(x_n&gt;0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(a\ge0\)</span> by <a href="#thm-order-limits">Theorem 3.2.7</a>. Thus <span class="math inline">\(a=\frac{1+\sqrt{17}}{2}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-recursive-newton">
+
+<p><strong>Example 3.3.4.</strong> The sequence defined recursively by
+<span class="math inline">\(x_1=1\)</span> and <span class="math inline">\(x_{n+1}=\frac{x_n^2+3}{2x_n}\)</span> converges to
+<span class="math inline">\(\sqrt{3}\)</span>. Notice <span class="math inline">\(x_2=2\ge \sqrt{3}\)</span>. Assume by way of
+induction that for <span class="math inline">\(k\in\mathbb{N}\)</span>,
+<span class="math inline">\(k&gt;1\)</span>, <span class="math inline">\(x_k&gt;\sqrt{3}\)</span>. Notice that the
+quadratic <span class="math inline">\(x^2-2\sqrt{3}x+3&gt;0\)</span> for
+all <span class="math inline">\(x\in\mathbb{R}\)</span> with <span class="math inline">\(x\ne\sqrt{3}\)</span>. Then <span class="math display">\[x_{k+1}=\frac{x_k^2+3}{2x_k}&gt;\sqrt{3}.\]</span>
+So by induction, for <span class="math inline">\(n\ge 2\)</span>, <span class="math inline">\(\{x_n\}\)</span> is bounded below by <span class="math inline">\(\sqrt{3}\)</span>. Now, notice <span class="math inline">\(x_2=2\)</span> and <span class="math inline">\(x_3=\frac{7}{4}&lt;x_2\)</span>. Again, by way of
+induction, assume that for <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(k&gt;2\)</span>, <span class="math inline">\(x_k&lt;x_{k-1}\)</span>. Then <span class="math display">\[x_{k+1}=\frac{x_k^2+3}{2x_k}&lt;\frac{x_k^2+x_k^2}{2x_k}=x_k.\]</span>
+Thus <span class="math inline">\(\{x_k\}\)</span> is bounded and
+eventually decreasing. So <span class="math inline">\(x_n\)</span>
+converges, say <span class="math inline">\(x_n\to a\)</span>.</p>
+<p>Now, since <span class="math inline">\(x_n\to a\)</span>, <span class="math inline">\(x_{n+1}\to a\)</span>. But since <span class="math inline">\(x_{n+1}=\frac{x_n^2+3}{2x_n}\)</span>, <span class="math display">\[\lim_{n\to\infty}
+x_{n+1}=\lim_{n\to\infty}\frac{x_n^2+3}{2x_n}.\]</span> So <span class="math inline">\(a=\frac{a^2+3}{2a}\)</span>. Since <span class="math inline">\(x_n&gt;\sqrt{3}\)</span> for <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(a\ge\sqrt{3}&gt;0\)</span>. Thus <span class="math inline">\(a=\sqrt{3}\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-12">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-recursive-linear">
+
+<p><strong>Exercise 3.3.1.</strong> Prove the sequence defined
+recursively by <span class="math inline">\(x_1=2\)</span>, <span class="math inline">\(x_{n+1}=\frac{4x_n+7}{10}\)</span> converges, and
+determine the limit. <a aria-label="Solution for Exercise 3.3.1" href="solutions-ch03.html#sol-exer-recursive-linear">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-recursive-quadratic">
+
+<p><strong>Exercise 3.3.2.</strong> Prove the sequence defined
+recursively by <span class="math inline">\(x_1=5\)</span>, <span class="math inline">\(x_{n+1}=\frac{2x_n^2+5}{4x_n}\)</span> converges,
+and determine the limit.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-subsequences">
+<h2>3.4 Subsequences</h2>
+<p>A sequence that does not converge can still have parts that do. For
+example, <span class="math inline">\(\{(-1)^n\}\)</span> diverges, but
+every even-numbered term is <span class="math inline">\(1\)</span>.
+Subsequences make this idea precise. The main result of the section is
+the Bolzano–Weierstrass Theorem. Every bounded sequence has a convergent
+subsequence.</p>
+<div class="definitionbox" id="def-subsequence">
+
+<p><strong>Definition 3.4.1.</strong> If <span class="math inline">\(\{n_k\}_{k=1}^\infty\)</span> is a strictly
+increasing sequence of positive integers, then the sequence <span class="math inline">\(\{x_{n_k}\}_{k=1}^\infty\)</span> is called a
+<em>subsequence</em> of <span class="math inline">\(\{x_n\}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-subsequences-sine">
+
+<p><strong>Example 3.4.2.</strong> The sequence <span class="math inline">\(\left\{\sin\left(\frac{n\pi}{2}\right)\right\}\)</span>
+has subsequences <span class="math display">\[\{x_{2k}\}=\{0,0,0,0,\dots\},\]</span> <span class="math display">\[\{x_{2k-1}\}=\{1,-1,1,-1,\dots\},\]</span> and
+<span class="math display">\[\{x_{4k+1}\}=\{1,1,1,1,\dots\}.\]</span></p>
+</div>
+<div class="theorembox" id="thm-subsequence-limit">
+
+<p><strong>Theorem 3.4.3.</strong> Suppose <span class="math inline">\(\{x_n\}\)</span> is a sequence with <span class="math inline">\(x_n\to a\)</span>. Then every subsequence of <span class="math inline">\(\{x_n\}\)</span> converges to <span class="math inline">\(a\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\{x_{n_k}\}\)</span>
+be a subsequence of <span class="math inline">\(\{x_n\}\)</span>. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(x_n\to a\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span>. Now there exists
+a <span class="math inline">\(K\in\mathbb{N}\)</span> such that <span class="math inline">\(n_k\ge N\)</span> for all <span class="math inline">\(k\ge K\)</span>. Thus for all <span class="math inline">\(k\ge K\)</span>, <span class="math inline">\(|x_{n_k}-a|&lt;\varepsilon\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-nested-intervals">
+
+<p><strong>Theorem 3.4.4</strong> (Nested Interval
+Theorem)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(\{I_n\}\)</span>, <span class="math inline">\(I_n=[a_n,b_n]\)</span>, is a sequence of closed
+intervals such that for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(I_{n+1}\subset I_n\)</span>. The sequences <span class="math inline">\(\{a_n\}\)</span> and <span class="math inline">\(\{b_n\}\)</span> converge, and <span class="math inline">\(\bigcap_{n=1}^\infty I_n=[\alpha,\beta]\)</span>,
+where <span class="math inline">\(a_n\to\alpha\)</span> and <span class="math inline">\(b_n\to \beta\)</span>. Moreover, if <span class="math inline">\(b_n-a_n\to 0\)</span>, then <span class="math inline">\(\alpha=\beta\)</span> is the only common point to
+every interval <span class="math inline">\(I_n\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(I_{n+1}\subset
+I_n\)</span>, <span class="math inline">\(a_n\le a_{n+1}\)</span> and
+<span class="math inline">\(b_{n+1}\le b_n\)</span>. So <span class="math inline">\(\{a_n\}\)</span> is an increasing sequence and
+<span class="math inline">\(\{b_n\}\)</span> is a decreasing sequence.
+Furthermore, since for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(a_1\le a_n\le b_n\le b_1\)</span>, <span class="math inline">\(\{a_n\}\)</span> and <span class="math inline">\(\{b_n\}\)</span> are bounded sequences. Thus <span class="math inline">\(\{a_n\}\)</span> and <span class="math inline">\(\{b_n\}\)</span> converge, say <span class="math inline">\(a_n\to\alpha\)</span> and <span class="math inline">\(b_n\to\beta\)</span>.</p>
+<p>By <a href="#thm-order-limits">Theorem 3.2.7</a>, <span class="math inline">\(\alpha\le \beta\)</span>, and since <span class="math inline">\(\{a_n\}\)</span> is increasing and <span class="math inline">\(\{b_n\}\)</span> is decreasing, for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(a_n\le\alpha\le \beta\le b_n\)</span>. So <span class="math inline">\([\alpha,\beta]\subset I_n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Thus <span class="math inline">\([\alpha,\beta]\subset \bigcap_{n=1}^\infty
+I_n\)</span>. If <span class="math inline">\(x\in \bigcap_{n=1}^\infty
+I_n\)</span>, then for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(a_n\le x\)</span> and <span class="math inline">\(x\le b_n\)</span>. So by <a href="#cor-limit-in-interval">Corollary 3.2.9</a>, <span class="math inline">\(\alpha\le x\le \beta\)</span>. So <span class="math inline">\(x\in[\alpha,\beta]\)</span> and <span class="math inline">\(\bigcap_{n=1}^\infty
+I_n\subset[\alpha,\beta]\)</span>. Therefore <span class="math inline">\([\alpha,\beta]=\bigcap_{n=1}^\infty
+I_n\)</span>.</p>
+<p>If <span class="math display">\[\beta-\alpha=\lim_{n\to\infty}(b_n-a_n)=0,\]</span>
+then <span class="math inline">\(\alpha=\beta\)</span>. So <span class="math inline">\(\bigcap_{n=1}^\infty
+I_n=[\alpha,\beta]=\{\alpha\}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Both conditions on the intervals matter. If the intervals are not
+closed, the intersection can be empty. For example, <span class="math inline">\(\bigcap_{n=1}^\infty\left(0,\frac1n\right)=\emptyset\)</span>
+by the Archimedean Principle. If the intervals are not bounded, the
+intersection can also be empty. For example, <span class="math inline">\(\bigcap_{n=1}^\infty[n,\infty)=\emptyset\)</span>.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Bisection).</strong> The proof of the
+Bolzano–Weierstrass Theorem cuts an interval in half again and again. At
+each step it keeps a half that still contains infinitely many terms of
+the sequence. The lengths of the intervals go to <span class="math inline">\(0\)</span>. The Nested Interval Theorem then gives
+one point common to all the intervals. This technique is called
+<em>bisection</em>. It appears again in later chapters. <a href="#fig-bisection">Figure 3.2</a> shows the first few steps.</p>
+</div>
+<figure class="figure" id="fig-bisection"><div class="figure-images"><img alt="A stack of intervals, each one half of the interval above it, shrinking toward a single point." height="170" src="figs/fig03.svg" width="587"/></div><figcaption><strong>Figure 3.2.</strong> Bisection. Each interval is a half of
+the one above it that still contains infinitely many terms of the
+sequence.</figcaption></figure>
+<div class="theorembox" id="thm-bolzano-weierstrass">
+
+<p><strong>Theorem 3.4.5</strong> (Bolzano–Weierstrass
+Theorem)<strong>.</strong></p>
+<p>Every bounded sequence in <span class="math inline">\(\mathbb{R}\)</span> has a convergent
+subsequence.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\{x_n\}\)</span> be a
+bounded sequence in <span class="math inline">\(\mathbb{R}\)</span>. So
+there exists an <span class="math inline">\(M&gt;0\)</span> such that
+<span class="math inline">\(|x_n|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Let <span class="math inline">\(I_1=[-M,M]=[a_1,b_1]\)</span> and define <span class="math inline">\(c_1=\frac{a_1+b_1}{2}\)</span>.</p>
+<p>Since the sequence has infinitely many terms, it follows that there
+are infinitely many terms contained in either <span class="math inline">\([a_1,c_1]\)</span> or <span class="math inline">\([c_1,b_1]\)</span> (or both). Choose one that
+contains infinitely many terms and denote it by <span class="math inline">\(I_2=[a_2,b_2]\)</span>. In general, for <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(I_k=[a_k,b_k]\)</span>, define <span class="math inline">\(c_k=\frac{a_k+b_k}{2}\)</span> and define <span class="math inline">\(I_{k+1}\)</span> to be <span class="math inline">\([a_k,c_k]\)</span> if it contains infinitely many
+terms of <span class="math inline">\(\{x_n\}\)</span> or <span class="math inline">\([c_k,b_k]\)</span> if it contains infinitely many
+terms of <span class="math inline">\(\{x_n\}\)</span> and <span class="math inline">\([a_k,c_k]\)</span> does not. Notice <span class="math inline">\(I_{k+1}\subset I_k\)</span>.</p>
+<p>This construction gives a nested sequence of intervals <span class="math inline">\(\{I_n\}\)</span>. By the Nested Interval Theorem
+(<a href="#thm-nested-intervals">Theorem 3.4.4</a>), the sequences <span class="math inline">\(\{a_n\}\)</span> and <span class="math inline">\(\{b_n\}\)</span> converge, say <span class="math inline">\(a_n\to\alpha\)</span> and <span class="math inline">\(b_n\to\beta\)</span>.</p>
+<p>Also, <span class="math display">\[b_n-a_n=\frac{b_{n-1}-a_{n-1}}{2}=\frac{b_1-a_1}{2^{n-1}}=\frac{2M}{2^{n-1}}\to
+0.\]</span> So <span class="math inline">\(\bigcap_{n=1}^\infty
+I_n=\{\alpha\}\)</span>.</p>
+<p>Now, choose an <span class="math inline">\(x\in
+I_1\cap\{x_n:n\in\mathbb{N}\}\)</span> and label this <span class="math inline">\(x\)</span> as <span class="math inline">\(x_{n_1}\)</span>. Next, choose an <span class="math inline">\(x\in I_2\cap\{x_n:n\in\mathbb{N},\
+n&gt;n_1\}\)</span>. In general, for <span class="math inline">\(k\in\mathbb{N}\)</span>, choose an <span class="math inline">\(x\in I_k\cap\{x_n:n\in\mathbb{N},\
+n&gt;n_{k-1}\}\)</span> and label this <span class="math inline">\(x\)</span> as <span class="math inline">\(x_{n_k}\)</span>. So <span class="math inline">\(\{x_{n_k}\}\)</span> is a subsequence of <span class="math inline">\(\{x_n\}\)</span>. For each <span class="math inline">\(k\in\mathbb{N}\)</span>, <span class="math inline">\(a_k\le x_{n_k}\le b_k\)</span>. So by the Squeeze
+Theorem (<a href="#thm-squeeze">Theorem 3.2.10</a>), <span class="math inline">\(x_{n_k}\to\alpha\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Boundedness is needed. The sequence <span class="math inline">\(\{n\}\)</span> has no convergent subsequence. The
+theorem is also false in <span class="math inline">\(\mathbb{Q}\)</span>. A sequence of rational
+numbers converging to <span class="math inline">\(\sqrt2\)</span> is
+bounded. By <a href="#thm-subsequence-limit">Theorem 3.4.3</a>, each of
+its subsequences converges to <span class="math inline">\(\sqrt2\)</span>, so none converges to a rational
+number.</p>
+<div class="corollarybox" id="cor-bolzano-weierstrass-interval">
+
+<p><strong>Corollary 3.4.6.</strong> Suppose <span class="math inline">\(\{x_n\}\)</span> is a sequence contained in <span class="math inline">\([a,b]\)</span> where <span class="math inline">\(a,b\in\mathbb{R}\)</span>, <span class="math inline">\(a\le b\)</span>. Then <span class="math inline">\(\{x_n\}\)</span> has a subsequence converging to a
+point in <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-13">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-unbounded-subsequence">
+
+<p><strong>Exercise 3.4.1.</strong> Suppose that <span class="math inline">\(\{x_n\}\)</span> is a sequence that is not bounded
+above. Show that there is a subsequence <span class="math inline">\(\{x_{n_k}\}\)</span> such that <span class="math inline">\(x_{n_k}&gt;k\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>. <a aria-label="Hint for Exercise 3.4.1" href="solutions-ch03.html#sol-exer-unbounded-subsequence">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-no-subsequence-to-a">
+
+<p><strong>Exercise 3.4.2.</strong> Let <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(a\in \mathbb{R}\)</span>. Suppose that a sequence
+<span class="math inline">\(\{x_n\}\)</span> satisfies <span class="math inline">\(|x_n-a|\ge \varepsilon\)</span> for all <span class="math inline">\(n\ge 1\)</span>. Prove that no subsequence of
+<span class="math inline">\(\{x_n\}\)</span> can converge to <span class="math inline">\(a\)</span>.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-cauchy-sequences">
+<h2>3.5 Cauchy Sequences</h2>
+<p>To show a sequence converges from the definition, the limit has to be
+known first. Cauchy’s idea was to check instead that the terms get close
+to each other. In <span class="math inline">\(\mathbb{R}\)</span> this
+is enough. In <span class="math inline">\(\mathbb{Q}\)</span> it is not,
+which is one more sign of the hole at <span class="math inline">\(\sqrt2\)</span>.</p>
+<div class="definitionbox" id="def-cauchy-sequence">
+
+<p><strong>Definition 3.5.1.</strong> A sequence <span class="math inline">\(\{x_n\}\)</span> is a <em>Cauchy sequence</em> if
+for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there
+exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(m,n\ge N\)</span>, <span class="math inline">\(|x_n-x_m|&lt;\varepsilon\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-cauchy-criterion">
+
+<p><strong>Theorem 3.5.2</strong> (Cauchy
+Criterion)<strong>.</strong></p>
+<p>A sequence <span class="math inline">\(\{x_n\}\)</span> of real
+numbers is Cauchy if and only if it converges.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Leftarrow\)</span>) Let
+<span class="math inline">\(\{x_n\}\)</span> be a convergent sequence
+with <span class="math inline">\(x_n\to a\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. So there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;\frac{\varepsilon}{2}\)</span>. So for
+all <span class="math inline">\(m,n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+|x_n-x_m|&amp;=|x_n-a+a-x_m|\\
+&amp;\le |x_n-a|+|x_m-a|\\
+&amp;&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\{x_n\}\)</span>
+is Cauchy.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(\{x_n\}\)</span> is Cauchy. So there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(m,n\ge N\)</span>, <span class="math inline">\(|x_n-x_m|&lt;1\)</span>. Therefore, <span class="math inline">\(|x_n|&lt;1+|x_N|\)</span> for all <span class="math inline">\(n\ge N\)</span>. Thus, if <span class="math display">\[M=\max\{|x_1|,|x_2|,\dots,|x_{N-1}|,1+|x_N|\},\]</span>
+<span class="math inline">\(|x_n|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(\{x_n\}\)</span> is bounded. Therefore, by the
+Bolzano–Weierstrass Theorem (<a href="#thm-bolzano-weierstrass">Theorem
+3.4.5</a>), there exists a convergent subsequence <span class="math inline">\(\{x_{n_k}\}\)</span> with <span class="math inline">\(x_{n_k}\to a\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. So there
+exists an <span class="math inline">\(N_1\in\mathbb{N}\)</span> such
+that for all <span class="math inline">\(m,n\ge N_1\)</span>, <span class="math inline">\(|x_n-x_m|&lt;\frac{\varepsilon}{2}\)</span>. Since
+<span class="math inline">\(x_{n_k}\to a\)</span>, there exists a <span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(n_K&gt;N_1\)</span> such that for all <span class="math inline">\(k\ge K\)</span>, <span class="math inline">\(|x_{n_k}-a|&lt;\frac{\varepsilon}{2}\)</span>.
+Then for all <span class="math inline">\(n\ge N_1\)</span>, <span class="math display">\[\begin{aligned}
+|x_n-a|&amp;=|x_n-x_{n_K}+x_{n_K}-a|\\
+&amp;\le |x_n-x_{n_K}|+|x_{n_K}-a|\\
+&amp;&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x_n\to
+a\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p><a href="app-cauchy.html">Appendix B</a> uses Cauchy sequences of
+rational numbers to build <span class="math inline">\(\mathbb{R}\)</span> out of <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving Convergence Without Knowing the
+Limit).</strong> To use the definition of convergence, the limit <span class="math inline">\(a\)</span> must be known. The Cauchy Criterion
+avoids this. It only compares terms of the sequence with each other. So
+it can prove a sequence converges even when the limit is unknown. <a href="#exer-factorial-cauchy">Exercise 3.5.1</a> uses this idea.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-14">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-factorial-cauchy">
+
+<p><strong>Exercise 3.5.1.</strong> Show the sequence <span class="math inline">\(\{x_n\}\)</span> defined by <span class="math display">\[x_n=\sum_{k=1}^{n}\frac{1}{k!}=1+\frac{1}{1\cdot2}+\frac{1}{1\cdot2\cdot3}+\cdots+\frac{1}{n!}\]</span>
+converges by showing it is a Cauchy sequence. <a aria-label="Hint for Exercise 3.5.1" href="solutions-ch03.html#sol-exer-factorial-cauchy">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-harmonic-not-cauchy">
+
+<p><strong>Exercise 3.5.2.</strong> Let <span class="math inline">\(x_n=\sum_{k=1}^n\frac1k\)</span>. Prove that <span class="math inline">\(x_{2n}-x_n\ge\frac12\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Conclude that <span class="math inline">\(\{x_n\}\)</span> is not a Cauchy sequence, so it
+diverges. <a aria-label="Solution for Exercise 3.5.2" href="solutions-ch03.html#sol-exer-harmonic-not-cauchy">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-limsup">
+<h2>3.6 Limit Superior and Limit Inferior of a
+Sequence</h2>
+<p>A bounded sequence does not have to converge. It still has a largest
+and a smallest cluster point. These are the limit superior and the limit
+inferior. They exist for every sequence, if <span class="math inline">\(\pm\infty\)</span> are allowed, and they describe
+what the sequence does in the long run. The sequence converges exactly
+when the two are equal and finite.</p>
+<div class="definitionbox" id="def-cluster-point">
+
+<p><strong>Definition 3.6.1.</strong> For a real sequence <span class="math inline">\(\{x_n\}\)</span>, <span class="math inline">\(a\in\mathbb{R}\)</span> is a <em>cluster
+point</em> of <span class="math inline">\(\{x_n\}\)</span> if there is a
+subsequence of <span class="math inline">\(\{x_n\}\)</span> converging
+to <span class="math inline">\(a\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-cluster-alternating">
+
+<p><strong>Example 3.6.2.</strong> <span class="math inline">\(\{(-1)^n\}\)</span> has cluster points <span class="math inline">\(1\)</span> and <span class="math inline">\(-1\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-cluster-sine">
+
+<p><strong>Example 3.6.3.</strong> <span class="math inline">\(\left\{\sin\left(\frac{n\pi}{4}\right)\right\}\)</span>
+has cluster points <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(-1\)</span>, <span class="math inline">\(\frac{\sqrt{2}}{2}\)</span>, and <span class="math inline">\(-\frac{\sqrt{2}}{2}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-cluster-single">
+
+<p><strong>Example 3.6.4.</strong> <span class="math inline">\(\left\{\frac{1}{n}\sin\left(\frac{n\pi}{2}\right)\right\}\)</span>
+has limit <span class="math inline">\(0\)</span> and hence its only
+cluster point is <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-diverge-infinity">
+
+<p><strong>Definition 3.6.5.</strong> A sequence <span class="math inline">\(\{x_n\}\)</span> <em>diverges to <span class="math inline">\(\infty\)</span></em> if for all <span class="math inline">\(M&gt;0\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_n&gt;M\)</span>. <span class="math inline">\(\{x_n\}\)</span> <em>diverges to <span class="math inline">\(-\infty\)</span></em> if for all <span class="math inline">\(M&lt;0\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_n&lt;M\)</span>. In these cases, write <span class="math inline">\(\lim_{n\to\infty}x_n=\infty\)</span> or <span class="math inline">\(x_n\to\infty\)</span>, and <span class="math inline">\(\lim_{n\to\infty}x_n=-\infty\)</span> or <span class="math inline">\(x_n\to-\infty\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-infinite-cluster-point">
+
+<p><strong>Definition 3.6.6.</strong> <span class="math inline">\(\infty\)</span> is a <em>cluster point</em> of
+<span class="math inline">\(\{x_n\}\)</span> if for all <span class="math inline">\(M&gt;0\)</span> and for all <span class="math inline">\(N\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(n\ge N\)</span> such that <span class="math inline">\(x_n&gt;M\)</span>. <span class="math inline">\(-\infty\)</span> is a cluster point of <span class="math inline">\(\{x_n\}\)</span> if for all <span class="math inline">\(M&lt;0\)</span> and for all <span class="math inline">\(N\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(n\ge N\)</span> such that <span class="math inline">\(x_n&lt;M\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-sup-infinity">
+
+<p><strong>Remark 3.6.7.</strong> If a set <span class="math inline">\(E\subset\mathbb{R}\)</span> is not bounded above,
+write <span class="math inline">\(\sup E=\infty\)</span>. If <span class="math inline">\(E\)</span> is not bounded below, write <span class="math inline">\(\inf E=-\infty\)</span>. With this convention,
+<span class="math inline">\(\sup\{x_k:k\ge n\}\)</span> always makes
+sense. Let <span class="math inline">\(b_n=\sup\{x_k:k\ge n\}\)</span>.
+Then <span class="math inline">\(\{b_n\}\)</span> is decreasing, so
+<span class="math inline">\(\lim_{n\to\infty}b_n\)</span> exists. It is
+a real number if <span class="math inline">\(\{b_n\}\)</span> is bounded
+below, by <a href="#thm-monotone-convergence">Theorem 3.2.13</a>. It is
+<span class="math inline">\(-\infty\)</span> if <span class="math inline">\(\{b_n\}\)</span> is not bounded below. It is <span class="math inline">\(\infty\)</span> if every <span class="math inline">\(b_n\)</span> is <span class="math inline">\(\infty\)</span>. The same holds for <span class="math inline">\(\inf\{x_k:k\ge n\}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-limsup">
+
+<p><strong>Definition 3.6.8.</strong> If <span class="math inline">\(\{x_n\}\)</span> is a sequence of real numbers,
+then the <em>limit superior</em> of <span class="math inline">\(\{x_n\}\)</span> is <span class="math display">\[\limsup x_n =
+\lim_{n\to\infty}\left(\sup\{x_k:k\ge
+n\}\right)=\inf_{n\in\mathbb{N}}\left(\sup\{x_k:k\ge
+n\}\right).\]</span> The <em>limit inferior</em> of <span class="math inline">\(\{x_n\}\)</span> is <span class="math display">\[\liminf x_n =
+\lim_{n\to\infty}\left(\inf\{x_k:k\ge
+n\}\right)=\sup_{n\in\mathbb{N}}\left(\inf\{x_k:k\ge
+n\}\right).\]</span></p>
+</div>
+<div class="examplebox" id="ex-limsup-alternating">
+
+<p><strong>Example 3.6.9.</strong> Let <span class="math inline">\(x_n=(-1)^n\left(1+\frac1n\right)\)</span>. The
+terms with <span class="math inline">\(k\)</span> even are positive and
+decrease toward <span class="math inline">\(1\)</span>. The terms with
+<span class="math inline">\(k\)</span> odd are negative and increase
+toward <span class="math inline">\(-1\)</span>. So for each <span class="math inline">\(n\)</span>, <span class="math inline">\(\sup\{x_k:k\ge n\}=1+\frac1k\)</span>, where <span class="math inline">\(k\)</span> is the first even number with <span class="math inline">\(k\ge n\)</span>. These suprema decrease to <span class="math inline">\(1\)</span>. So <span class="math inline">\(\limsup
+x_n=1\)</span>. In the same way, <span class="math inline">\(\liminf
+x_n=-1\)</span>. The sequence diverges, and its cluster points are <span class="math inline">\(1\)</span> and <span class="math inline">\(-1\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-limsup-basic">
+
+<p><strong>Theorem 3.6.10.</strong> Let <span class="math inline">\(\{x_n\}\)</span> be a sequence of real numbers.
+Then</p>
+<ol>
+<li><p><span class="math inline">\(\limsup (-x_n)=-\liminf x_n\)</span>;
+and</p></li>
+<li><p><span class="math inline">\(\liminf x_n\le \limsup
+x_n\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Since for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(\sup\{-x_k:k\ge n\}=-\inf\{ x_k:k\ge n\}\)</span>,
+<span class="math inline">\(\limsup (-x_n)=-\liminf
+x_n\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(n\in\mathbb{N}\)</span>,
+<span class="math inline">\(\inf\{x_k:k\ge n\}\le\sup\{x_k:k\ge
+n\}\)</span>, implying <span class="math inline">\(\liminf x_n\le
+\limsup x_n\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-limsup-characterization">
+
+<p><strong>Theorem 3.6.11.</strong> Let <span class="math inline">\(\{x_n\}\)</span> be a sequence of real numbers.
+<span class="math inline">\(\limsup x_n=a\in\mathbb{R}\)</span> if and
+only if for all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such
+that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_n&lt;a+\varepsilon\)</span> and for all <span class="math inline">\(\varepsilon&gt;0\)</span> and for all <span class="math inline">\(N\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(n\ge N\)</span> such that <span class="math inline">\(x_n&gt;a-\varepsilon\)</span>. Similarly, <span class="math inline">\(\liminf x_n=a\in\mathbb{R}\)</span> if and only if
+for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there
+exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_n&gt;a-\varepsilon\)</span> and for all <span class="math inline">\(\varepsilon&gt;0\)</span> and for all <span class="math inline">\(N\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(n\ge N\)</span> such that <span class="math inline">\(x_n&lt;a+\varepsilon\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Suppose <span class="math inline">\(a\in\mathbb{R}\)</span> with <span class="math inline">\(a=\limsup x_n=\lim_{n\to\infty}b_n\)</span>, where
+<span class="math inline">\(b_n=\sup\{x_k:k\ge n\}\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\lim_{n\to\infty}b_n=a\)</span>, there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(b_n&lt;a+\varepsilon\)</span>. Since for each
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_n\le b_n\)</span>, <span class="math inline">\(x_n&lt;a+\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math inline">\(N\in\mathbb{N}\)</span>. Since <span class="math inline">\(\lim_{n\to\infty}b_n=a\)</span> and <span class="math inline">\(\{b_n\}\)</span> is decreasing, <span class="math inline">\(b_n\ge a\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. In particular, <span class="math inline">\(b_N\ge a\)</span>. But since <span class="math inline">\(b_N=\sup\{x_k:k\ge N\}\)</span>, there exists an
+<span class="math inline">\(n\ge N\)</span> such that <span class="math inline">\(x_n&gt;b_N-\varepsilon\ge
+a-\varepsilon\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Again, define <span class="math inline">\(b_n=\sup\{x_k:k\ge n\}\)</span>. Since there
+exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_n&lt;a+\varepsilon\)</span>, <span class="math inline">\(b_N\le a+\varepsilon\)</span>. Since <span class="math inline">\(\{b_n\}\)</span> is decreasing, <span class="math inline">\(b_n\le a+\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>. So <span class="math inline">\(\limsup x_n\le a+\varepsilon\)</span> for
+arbitrary <span class="math inline">\(\varepsilon\)</span>, implying
+<span class="math inline">\(\limsup x_n \le a\)</span>. Assume by way of
+contradiction that <span class="math inline">\(\limsup
+x_n=a'&lt;a\)</span>. Choose <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\(a'&lt;a-2\varepsilon\)</span>. By the proof of
+(<span class="math inline">\(\Rightarrow\)</span>), there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(x_n&lt;a'+\varepsilon&lt;a-\varepsilon\)</span>
+for all <span class="math inline">\(n\ge N\)</span>, contradicting the
+hypothesis that for all <span class="math inline">\(\varepsilon&gt;0\)</span> and for all <span class="math inline">\(N\in\mathbb{N}\)</span>, there exists an <span class="math inline">\(n\ge N\)</span> such that <span class="math inline">\(x_n&gt;a-\varepsilon\)</span>. If <span class="math inline">\(\limsup x_n=-\infty\)</span>, then <span class="math inline">\(b_n&lt;a-\varepsilon\)</span> for all large <span class="math inline">\(n\)</span>, and the same contradiction follows. So
+<span class="math inline">\(\limsup x_n =a\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-limsup-infinite">
+
+<p><strong>Theorem 3.6.12.</strong> Let <span class="math inline">\(\{x_n\}\)</span> be a sequence of real
+numbers.</p>
+<ol>
+<li><p><span class="math inline">\(\limsup x_n = \infty\)</span> if and
+only if <span class="math inline">\(\infty\)</span> is a cluster point
+of <span class="math inline">\(\{x_n\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\limsup x_n = -\infty\)</span> if and
+only if <span class="math inline">\(\lim_{n\to\infty}x_n=-\infty\)</span>.</p></li>
+<li><p><span class="math inline">\(\liminf x_n=-\infty\)</span> if and
+only if <span class="math inline">\(-\infty\)</span> is a cluster point
+of <span class="math inline">\(\{x_n\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\liminf x_n = \infty\)</span> if and
+only if <span class="math inline">\(\lim_{n\to\infty}x_n=\infty\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(\limsup x_n=\infty\)</span>. Then, by definition,
+<span class="math inline">\(\lim_{n\to\infty}b_n = \infty\)</span>,
+where <span class="math inline">\(b_n=\sup\{x_k:k\ge n\}\)</span>. Let
+<span class="math inline">\(M&gt;0\)</span>, <span class="math inline">\(N\in\mathbb{N}\)</span>. Then there exists a <span class="math inline">\(K\in\mathbb{N}\)</span>, <span class="math inline">\(K\ge N\)</span>, such that for all <span class="math inline">\(n\ge K\)</span>, <span class="math inline">\(b_n&gt;M+1\)</span>. In particular, <span class="math inline">\(b_K&gt;M+1\)</span>. Therefore <span class="math inline">\(\sup\{x_k:k\ge K\}&gt;M+1\)</span>. So there
+exists an <span class="math inline">\(n_0\ge K\ge N\)</span> with <span class="math inline">\(x_{n_0}&gt;M\)</span>. So <span class="math inline">\(\infty\)</span> is a cluster point of <span class="math inline">\(\{x_n\}\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(\infty\)</span> is a cluster point of <span class="math inline">\(\{x_n\}\)</span>. Let <span class="math inline">\(M&gt;0\)</span>, <span class="math inline">\(N\in\mathbb{N}\)</span>. Then there exists a <span class="math inline">\(n_0\geq N\)</span> such that <span class="math inline">\(x_{n_0}&gt;M\)</span>. Therefore <span class="math inline">\(\sup\{x_k:k\ge N\}&gt;M\)</span>. So <span class="math inline">\(b_N&gt;M\)</span>. Since <span class="math inline">\(N\in\mathbb{N}\)</span> was arbitrary, <span class="math inline">\(b_n&gt;M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(\lim_{n\to\infty}b_n=\infty\)</span>, or <span class="math inline">\(\limsup x_n=\infty\)</span>.</p></li>
+<li><p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(\limsup x_n=-\infty\)</span>. Then, by definition,
+<span class="math inline">\(\lim_{n\to\infty}b_n = -\infty\)</span>,
+where <span class="math inline">\(b_n=\sup\{x_k:k\ge n\}\)</span>. Let
+<span class="math inline">\(M&lt;0\)</span>. There exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(b_n&lt;M\)</span>. In particular, <span class="math inline">\(b_N&lt;M\)</span>. So <span class="math inline">\(\sup\{x_k:k\ge N\}&lt;M\)</span>. So <span class="math inline">\(M\)</span> is an upper bound of <span class="math inline">\(\{x_k:k\ge N\}\)</span>. Therefore, <span class="math inline">\(x_n&lt;M\)</span> for all <span class="math inline">\(n\ge N\)</span>, implying <span class="math inline">\(\lim_{n\to\infty}x_n=-\infty\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(\lim_{n\to\infty}x_n=-\infty\)</span>. Let <span class="math inline">\(M&lt;0\)</span>. So there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(x_n&lt; M\)</span>. Thus <span class="math inline">\(\sup\{x_k:k\ge N\}\le M\)</span>. Therefore for
+all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(\sup\{x_k:k\ge n\}\le M\)</span>, implying for all
+<span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(b_n\le M\)</span>. So <span class="math inline">\(\lim_{n\to\infty}b_n=-\infty\)</span>. Therefore
+<span class="math inline">\(\limsup x_n=-\infty\)</span>.</p></li>
+<li><p>This proof is similar to the proof of (1).</p></li>
+<li><p>This proof is similar to the proof of (2).</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-limsup-cluster-points">
+
+<p><strong>Corollary 3.6.13.</strong> Let <span class="math inline">\(\{x_n\}\)</span> be a sequence of real numbers.
+<span class="math inline">\(\limsup x_n\)</span> and <span class="math inline">\(\liminf x_n\)</span> are the largest and smallest
+cluster points, respectively, of <span class="math inline">\(\{x_n\}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-limsup-cluster-points">Exercise
+3.6.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-limsup-equals-liminf">
+
+<p><strong>Corollary 3.6.14.</strong> Let <span class="math inline">\(\{x_n\}\)</span> be a sequence of real numbers.
+<span class="math inline">\(\{x_n\}\)</span> converges to <span class="math inline">\(a\in\mathbb{R}\)</span> or diverges to <span class="math inline">\(\pm\infty\)</span> if and only if <span class="math inline">\(\limsup x_n=\liminf x_n=a\)</span> or <span class="math inline">\(\limsup x_n=\liminf x_n=\pm\infty\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> If <span class="math inline">\(a\in\mathbb{R}\)</span>, this follows directly
+from <a href="#thm-limsup-characterization">Theorem 3.6.11</a>. For the
+<span class="math inline">\(\pm\infty\)</span> case, this follows
+directly from <a href="#thm-limsup-infinite">Theorem 3.6.12</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-15">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-limsup-cluster-points">
+
+<p><strong>Exercise 3.6.1.</strong> Let <span class="math inline">\(\{x_n\}\)</span> be a sequence of real numbers.
+Prove <span class="math inline">\(\limsup x_n\)</span> and <span class="math inline">\(\liminf x_n\)</span> are the largest and smallest
+cluster points, respectively, of <span class="math inline">\(\{x_n\}\)</span>. Make sure to prove all the
+cases. <a aria-label="Solution for Exercise 3.6.1" href="solutions-ch03.html#sol-exer-limsup-cluster-points">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-limsup-zero">
+
+<p><strong>Exercise 3.6.2.</strong> True or false? If <span class="math inline">\(\{x_n\}\)</span> is a sequence in <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(x_n\geq 0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(\limsup x_n=0\)</span>, then <span class="math inline">\(x_n\to 0\)</span>. If true, prove it. If false,
+provide a counterexample.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-2">
+<h2>Notes</h2>
+<p>The Cauchy Criterion is named for Augustin-Louis Cauchy, whose
+<em>Cours d’analyse</em> of 1821 made limits the foundation of calculus
+[<a href="bibliography.html#bib-cauchy1821">15</a>]. Bernard Bolzano stated the same
+criterion in 1817 [<a href="bibliography.html#bib-bolzano1817">5</a>]. The
+Bolzano–Weierstrass Theorem is named for Bolzano and for Karl
+Weierstrass. Bolzano proved it in 1817, as a step toward the
+Intermediate Value Theorem. Weierstrass proved it again about fifty
+years later, in his lectures in Berlin, and made it a basic tool of
+analysis.</p>
+<p>The recursion <span class="math inline">\(x_{n+1}=\frac12\left(x_n+\frac3{x_n}\right)\)</span>
+in <a href="#ex-recursive-newton">Example 3.3.4</a> is very old. For
+square roots it is often called Heron’s method, after Heron of
+Alexandria, who used it in the first century. It is a special case of
+Newton’s method. Isaac Newton described his method in <em>De
+analysi</em>, written in 1669 and published in 1711 [<a href="bibliography.html#bib-newton1711">54</a>]. Joseph Raphson published a simpler
+version in 1690 [<a href="bibliography.html#bib-raphson1690">57</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-cardinality.html"><span class="dir">Previous</span> Chapter 2. Cardinality</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-topology.html"><span class="dir">Next</span> Chapter 4. Topological Properties of the Real Line</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

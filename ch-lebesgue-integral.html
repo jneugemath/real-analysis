@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 16. The Lebesgue Integral | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-measurable-functions.html"><span class="dir">Previous</span> Chapter 15. Measurable Functions</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-differentiation.html"><span class="dir">Next</span> Chapter 17. Differentiation and Integration</a>
+</nav>
+<main id="main">
+<article id="ch-lebesgue-integral">
+<h1>Chapter 16. The Lebesgue Integral</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-riemann-revisited">16.1 The Riemann Integral Revisited</a></li><li><a href="#sec-simple-integral">16.2 The Integral of a Simple Function</a></li><li><a href="#sec-bounded-integral">16.3 Bounded Functions on Sets of Finite
+Measure</a></li><li><a href="#sec-nonnegative-integral">16.4 The Integral of a Nonnegative Function</a></li><li><a href="#sec-general-integral">16.5 The General Lebesgue Integral</a></li><li><a href="#notes-15">Notes</a></li></ul></nav>
+<p>The Riemann integral squeezes a function between step functions,
+which are constant on intervals. The Lebesgue integral squeezes it
+between simple functions, which are constant on measurable sets. This
+one change gives an integral that applies to far more functions. It also
+behaves well under limits, which the Riemann integral does not.</p>
+<p>The integral is built in four stages. <a href="#sec-riemann-revisited">Section 16.1</a> rewrites the upper and
+lower Riemann integrals in terms of step functions. <a href="#sec-simple-integral">Section 16.2</a> integrates simple
+functions. <a href="#sec-bounded-integral">Section 16.3</a> integrates
+bounded measurable functions on sets of finite measure. It shows that
+every Riemann integrable function is included, proves the Bounded
+Convergence Theorem, and finally proves Lebesgue’s Theorem from <a href="ch-integrals.html">Chapter 9</a>. Sections <a href="#sec-nonnegative-integral">16.4</a> and <a href="#sec-general-integral">16.5</a> integrate nonnegative functions
+and then general functions, and prove the three big convergence
+theorems.</p>
+<p><em>What this chapter uses from earlier chapters.</em> Upper and
+lower sums and Riemann’s Criterion (<a href="ch-integrals.html">Chapter
+9</a>), Lebesgue measure (<a href="ch-lebesgue-measure.html">Chapter
+14</a>), and measurable functions, simple functions and step functions
+(<a href="ch-measurable-functions.html">Chapter 15</a>), including <a href="ch-measurable-functions.html#thm-nearly-uniform">Theorem 15.3.2</a>.</p>
+<section class="level3 unnumbered" id="sec-riemann-revisited">
+<h2>16.1 The Riemann Integral Revisited</h2>
+<p>Recall the upper and lower sums <span class="math inline">\(\mathcal{U}(\mathcal{P},f)\)</span> and <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\)</span> and the upper
+and lower integrals <span class="math inline">\(\overline{\int_{a}^{b}}f\)</span> and <span class="math inline">\(\underline{\int_{a}^{b}}f\)</span> from <a href="ch-integrals.html#sec-darboux">Section 9.1</a>. An upper sum is the area under a
+step function that lies above <span class="math inline">\(f\)</span>.
+This section makes that precise. The upper integral turns out to be the
+infimum of the integrals of all step functions above <span class="math inline">\(f\)</span>. The Lebesgue integral will be defined
+the same way, with step functions replaced by simple functions.</p>
+<p>Step functions were defined in <a href="ch-measurable-functions.html#def-step-function">Definition 15.2.2</a>. In this chapter, a
+<em>step function on <span class="math inline">\([a,b]\)</span></em> is
+a function <span class="math inline">\(\psi=\sum_{i=1}^nc_i\chi_{I_i}\)</span>,
+restricted to <span class="math inline">\([a,b]\)</span>, where <span class="math inline">\(I_1,\dots,I_n\)</span> are pairwise disjoint
+subintervals of <span class="math inline">\([a,b]\)</span>. A single
+point is an interval (<a href="ch-real-numbers.html#def-interval">Definition 1.7.5</a>). So
+a step function may take any values at finitely many points.</p>
+<div class="lemmabox" id="lem-step-riemann">
+
+<p><strong>Lemma 16.1.1.</strong> Let <span class="math inline">\(\psi=\sum_{i=1}^nc_i\chi_{I_i}\)</span> be a step
+function on <span class="math inline">\([a,b]\)</span>, where <span class="math inline">\(I_1,\dots,I_n\)</span> are pairwise disjoint
+subintervals of <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(\psi\in\mathcal{R}[a,b]\)</span> and <span class="math display">\[\int_a^b\psi=\sum_{i=1}^nc_i\,\ell(I_i).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, it is enough to
+show that <span class="math inline">\(\chi_I\in\mathcal{R}[a,b]\)</span>
+with <span class="math inline">\(\int_a^b\chi_I=\ell(I)\)</span> for
+each subinterval <span class="math inline">\(I\)</span> of <span class="math inline">\([a,b]\)</span>. Let <span class="math inline">\(I\)</span> have endpoints <span class="math inline">\(c\le d\)</span>. If <span class="math inline">\(c=d\)</span>, then <span class="math inline">\(\chi_I\)</span> is zero except at one point. So
+<span class="math inline">\(\int_a^b\chi_I=0=\ell(I)\)</span> by <a href="ch-integrals.html#exer-finitely-many-nonzero">Exercise 9.2.2</a>.</p>
+<p>Suppose <span class="math inline">\(c&lt;d\)</span>. On <span class="math inline">\([c,d]\)</span>, <span class="math inline">\(\chi_I\)</span> equals the constant <span class="math inline">\(1\)</span> except possibly at <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span>. So <span class="math inline">\(\chi_I\in\mathcal{R}[c,d]\)</span> and <span class="math inline">\(\int_c^d\chi_I=d-c\)</span>, by <a href="ch-integrals.html#exer-change-finitely-many">Exercise 9.2.4</a>. If <span class="math inline">\(a&lt;c\)</span>, then on <span class="math inline">\([a,c]\)</span>, <span class="math inline">\(\chi_I\)</span> equals <span class="math inline">\(0\)</span> except possibly at <span class="math inline">\(c\)</span>. So <span class="math inline">\(\chi_I\in\mathcal{R}[a,c]\)</span> and <span class="math inline">\(\int_a^c\chi_I=0\)</span>. Similarly, if <span class="math inline">\(d&lt;b\)</span>, then <span class="math inline">\(\chi_I\in\mathcal{R}[d,b]\)</span> and <span class="math inline">\(\int_d^b\chi_I=0\)</span>. By <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>, applied once or twice,
+<span class="math inline">\(\chi_I\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\int_a^b\chi_I=d-c=\ell(I)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="propositionbox" id="prop-step-upper-lower">
+
+<p><strong>Proposition 16.1.2.</strong> Let <span class="math inline">\(f\)</span> be a bounded real-valued function
+defined on the interval <span class="math inline">\([a,b]\)</span>. Then
+<span class="math display">\[\overline{\int_{a}^{b}}f=\inf\left\{\int_a^b\psi:\psi\text{
+is a step function on $[a,b]$ with }\psi\ge f\right\}\]</span> and <span class="math display">\[\underline{\int_{a}^{b}}f=\sup\left\{\int_a^b\varphi:\varphi\text{
+is a step function on $[a,b]$ with }\varphi\le f\right\}.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(J\)</span> denote the infimum on the
+right side of the first equation. First, let <span class="math inline">\(\psi\)</span> be a step function on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\psi\ge f\)</span>. By <a href="#lem-step-riemann">Lemma 16.1.1</a>, <span class="math inline">\(\psi\in\mathcal{R}[a,b]\)</span>. For each
+partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>, the supremum of <span class="math inline">\(\psi\)</span> on each subinterval of <span class="math inline">\(\mathcal{P}\)</span> is at least the supremum of
+<span class="math inline">\(f\)</span> there. So <span class="math inline">\(\mathcal{U}(\mathcal{P},\psi)\ge\mathcal{U}(\mathcal{P},f)\)</span>.
+Taking the infimum over all <span class="math inline">\(\mathcal{P}\)</span>, <span class="math display">\[\int_a^b\psi=\overline{\int_{a}^{b}}\psi\ge\overline{\int_{a}^{b}}f.\]</span>
+Since <span class="math inline">\(\psi\)</span> was arbitrary, <span class="math inline">\(J\ge\overline{\int_{a}^{b}}f\)</span>.</p>
+<p>Next, let <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(M_i=\sup\{f(x):x_{i-1}\le x\le x_i\}\)</span>.
+Define <span class="math inline">\(\psi_\mathcal{P}\)</span> by <span class="math display">\[\psi_\mathcal{P}(x)=\begin{cases}M_i, &amp;
+x\in(x_{i-1},x_i),\ i=1,\dots,n,\\ f(x_i), &amp; x=x_i,\
+i=0,\dots,n.\end{cases}\]</span> Then <span class="math inline">\(\psi_\mathcal{P}\)</span> is a step function on
+<span class="math inline">\([a,b]\)</span>, since the open intervals
+<span class="math inline">\((x_{i-1},x_i)\)</span> and the single points
+<span class="math inline">\(\{x_i\}\)</span> are pairwise disjoint
+intervals. Also <span class="math inline">\(\psi_\mathcal{P}\ge
+f\)</span>. By <a href="#lem-step-riemann">Lemma 16.1.1</a>, <span class="math display">\[\int_a^b\psi_\mathcal{P}=\sum_{i=1}^nM_i(x_i-x_{i-1})+\sum_{i=0}^nf(x_i)\cdot0=\mathcal{U}(\mathcal{P},f).\]</span>
+So <span class="math inline">\(J\le\mathcal{U}(\mathcal{P},f)\)</span>
+for every partition <span class="math inline">\(\mathcal{P}\)</span>,
+and <span class="math inline">\(J\le\overline{\int_{a}^{b}}f\)</span>.
+Therefore <span class="math inline">\(J=\overline{\int_{a}^{b}}f\)</span>.</p>
+<p>The proof for the lower integral is the same, with <span class="math inline">\(M_i\)</span> replaced by <span class="math inline">\(m_i=\inf\{f(x):x_{i-1}\le x\le x_i\}\)</span> and
+the inequalities reversed.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Look again at the Dirichlet function <span class="math inline">\(f=\chi_\mathbb{Q}\)</span> on <span class="math inline">\([0,1]\)</span> from <a href="ch-integrals.html#ex-dirichlet-not-integrable">Example 9.1.9</a>. Every
+nondegenerate interval contains rational and irrational numbers. So a
+step function <span class="math inline">\(\psi\ge f\)</span> is at least
+<span class="math inline">\(1\)</span> except at finitely many points,
+and <span class="math inline">\(\int_0^1\psi\ge1\)</span>. A step
+function <span class="math inline">\(\varphi\le f\)</span> is at most
+<span class="math inline">\(0\)</span> except at finitely many points,
+and <span class="math inline">\(\int_0^1\varphi\le0\)</span>. This
+agrees with <span class="math inline">\(\overline{\int_{0}^{1}}f=1\)</span> and <span class="math inline">\(\underline{\int_{0}^{1}}f=0\)</span>. Step
+functions are too coarse to see that <span class="math inline">\(\mathbb{Q}\)</span> is a very thin set. Simple
+functions are not. The function <span class="math inline">\(\chi_\mathbb{Q}\)</span> is itself a simple
+function. In <a href="#ex-dirichlet-lebesgue">Example 16.2.6</a> its
+Lebesgue integral will be <span class="math inline">\(0\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-54">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-riemann-step-criterion">
+
+<p><strong>Exercise 16.1.1.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. Prove
+that <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> if and
+only if for every <span class="math inline">\(\varepsilon&gt;0\)</span>
+there are step functions <span class="math inline">\(\varphi\)</span>
+and <span class="math inline">\(\psi\)</span> on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\varphi\le f\le\psi\)</span> and <span class="math inline">\(\int_a^b(\psi-\varphi)&lt;\varepsilon\)</span>. <a aria-label="Hint for Exercise 16.1.1" href="solutions-ch16.html#sol-exer-riemann-step-criterion">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-step-inf-not-attained">
+
+<p><strong>Exercise 16.1.2.</strong> Let <span class="math inline">\(f(x)=x\)</span> on <span class="math inline">\([0,1]\)</span>. Show that <span class="math inline">\(\int_0^1\psi&gt;\frac12\)</span> for every step
+function <span class="math inline">\(\psi\ge f\)</span> on <span class="math inline">\([0,1]\)</span>. So the infimum in <a href="#prop-step-upper-lower">Proposition 16.1.2</a> need not be
+attained. <a aria-label="Hint for Exercise 16.1.2" href="solutions-ch16.html#sol-exer-step-inf-not-attained">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-step-function-partition">
+
+<p><strong>Exercise 16.1.3.</strong> Let <span class="math inline">\(\psi\)</span> be a step function on <span class="math inline">\([a,b]\)</span>. Prove that there is a partition
+<span class="math inline">\(\{x_0,\dots,x_n\}\)</span> of <span class="math inline">\([a,b]\)</span> such that <span class="math inline">\(\psi\)</span> is constant on each open interval
+<span class="math inline">\((x_{i-1},x_i)\)</span>. Conversely, prove
+that every function with this property is a step function on <span class="math inline">\([a,b]\)</span>. <a aria-label="Hint for Exercise 16.1.3" href="solutions-ch16.html#sol-exer-step-function-partition">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-simple-integral">
+<h2>16.2 The Integral of a Simple Function</h2>
+<p>Recall from <a href="ch-measurable-functions.html#def-simple-function">Definition 15.2.1</a> that
+a simple function is a measurable function with finitely many values.
+Its canonical representation is <span class="math inline">\(\varphi=\sum_{i=1}^na_i\chi_{A_i}\)</span>, where
+<span class="math inline">\(a_1,\dots,a_n\)</span> are the distinct
+values of <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(A_i=\{\varphi=a_i\}\)</span>. The integral should
+be the sum of each value times the measure of the set where it is taken.
+Some of the sets <span class="math inline">\(A_i\)</span> may have
+infinite measure. So we use the convention <span class="math inline">\(0\cdot\infty=0\)</span>, and we only integrate
+simple functions that are zero outside a set of finite measure.</p>
+<div class="definitionbox" id="def-simple-integral">
+
+<p><strong>Definition 16.2.1.</strong> Let <span class="math inline">\(\varphi\)</span> be a simple function with
+canonical representation <span class="math inline">\(\varphi=\sum^n_{i=1}a_i\chi_{A_i}\)</span>. If
+<span class="math inline">\(\varphi\)</span> vanishes outside a set of
+finite measure, define the <em>integral</em> of <span class="math inline">\(\varphi\)</span> by <span class="math display">\[\int\varphi=\int\varphi\,dm = \sum^n_{i=1}a_i
+m(A_i).\]</span> If <span class="math inline">\(E\)</span> is a
+measurable set, define <span class="math display">\[\int_E\varphi=\int\varphi\cdot\chi_E.\]</span>
+Here “<span class="math inline">\(\varphi\)</span> vanishes outside a
+set of finite measure” means <span class="math inline">\(m(\{\varphi\ne0\})&lt;\infty\)</span>. Then <span class="math inline">\(m(A_i)&lt;\infty\)</span> whenever <span class="math inline">\(a_i\ne0\)</span>. If <span class="math inline">\(a_i=0\)</span>, the term <span class="math inline">\(a_im(A_i)\)</span> is <span class="math inline">\(0\)</span>, even if <span class="math inline">\(m(A_i)=\infty\)</span>. If <span class="math inline">\(\varphi\)</span> is defined on a measurable set
+<span class="math inline">\(D\)</span>, then <span class="math inline">\(E\subset D\)</span>, and <span class="math inline">\(\varphi\cdot\chi_E\)</span> is again a simple
+function that vanishes outside a set of finite measure.</p>
+</div>
+<div class="lemmabox" id="lem-simple-integral-disjoint">
+
+<p><strong>Lemma 16.2.2.</strong> Let <span class="math inline">\(\varphi=\sum^n_{i=1}a_i\chi_{E_i}\)</span> with
+<span class="math inline">\(E_i\cap E_j=\emptyset\)</span> for <span class="math inline">\(i\ne j\)</span>. Suppose each set <span class="math inline">\(E_i\)</span> is a measurable set of finite
+measure. Then <span class="math display">\[\int\varphi=\sum^n_{i=1}a_im(E_i).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume <span class="math inline">\(\varphi\)</span>
+has canonical representation <span class="math inline">\(\varphi=\sum^m_{k=1}\hat{a}_k\chi_{A_k}\)</span>.
+Suppose <span class="math inline">\(\hat a_k\ne0\)</span>. Since the
+<span class="math inline">\(E_i\)</span> are disjoint, <span class="math inline">\(x\in A_k\)</span> exactly when <span class="math inline">\(x\)</span> lies in some <span class="math inline">\(E_i\)</span> with <span class="math inline">\(a_i=\hat a_k\)</span>. So the set <span class="math display">\[A_k=\{x:\varphi(x)=
+\hat{a}_k\}=\bigcup_{a_i=\hat{a}_k}E_i.\]</span> Hence, by finite
+additivity, <span class="math display">\[\hat{a}_k
+m(A_k)=\sum_{a_i=\hat{a}_k}a_im(E_i).\]</span> If <span class="math inline">\(\hat a_k=0\)</span>, then <span class="math inline">\(\hat a_km(A_k)=0\)</span>. The terms <span class="math inline">\(a_im(E_i)\)</span> with <span class="math inline">\(a_i=0\)</span> are also <span class="math inline">\(0\)</span>. Each <span class="math inline">\(i\)</span> with <span class="math inline">\(a_i\ne0\)</span> has <span class="math inline">\(a_i=\hat a_k\)</span> for exactly one <span class="math inline">\(k\)</span>. So <span class="math display">\[\int\varphi=\sum^m_{k=1}\hat{a}_k
+m(A_k)=\sum^n_{i=1}a_im(E_i).\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-simple-integral-linear">
+
+<p><strong>Theorem 16.2.3.</strong> Let <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> be simple functions which vanish
+outside a set of finite measure. Then <span class="math display">\[\int(a\varphi+b\psi)=a\int\varphi + b\int
+\psi\]</span> for all <span class="math inline">\(a,b\in\mathbb{R}\)</span>, and if <span class="math inline">\(\varphi\ge \psi\)</span> a.e., then <span class="math display">\[\int\varphi\ge \int\psi.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\{A_j\}\)</span> and
+<span class="math inline">\(\{B_i\}\)</span> be the sets in the
+canonical representations of <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span>, respectively. The sets <span class="math inline">\(A_j\cap B_i\)</span> are measurable and pairwise
+disjoint. Let <span class="math inline">\(E_1,\dots,E_N\)</span> be
+those sets <span class="math inline">\(A_j\cap B_i\)</span> that are
+nonempty and on which <span class="math inline">\(\varphi\)</span> or
+<span class="math inline">\(\psi\)</span> is not zero. Each <span class="math inline">\(E_k\)</span> lies in <span class="math inline">\(\{\varphi\ne0\}\)</span> or in <span class="math inline">\(\{\psi\ne0\}\)</span>, so <span class="math inline">\(m(E_k)&lt;\infty\)</span>. On <span class="math inline">\(E_k\)</span>, <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are constant, say <span class="math inline">\(\varphi=c_k\)</span> and <span class="math inline">\(\psi=d_k\)</span>. Off <span class="math inline">\(\bigcup_kE_k\)</span>, <span class="math inline">\(\varphi=\psi=0\)</span>. So <span class="math display">\[\varphi=\sum^N_{k=1}c_k\chi_{E_k}\quad\text{and}\quad\psi=\sum^N_{k=1}d_k\chi_{E_k}.\]</span>
+So <span class="math display">\[a\varphi+b\psi=\sum_{k=1}^N(ac_k+bd_k)\chi_{E_k}.\]</span>
+Thus, by <a href="#lem-simple-integral-disjoint">Lemma 16.2.2</a>, <span class="math display">\[\int
+(a\varphi+b\psi)=\sum_{k=1}^N(ac_k+bd_k)m(E_k)=a\sum_{k=1}^Nc_km(E_k)+b\sum_{k=1}^Nd_km(E_k)=a\int\varphi+b\int\psi.\]</span></p>
+<p>Lastly, suppose <span class="math inline">\(\varphi\ge\psi\)</span>
+a.e. Then <span class="math inline">\(\varphi-\psi=\sum_{k=1}^N(c_k-d_k)\chi_{E_k}\)</span>.
+If <span class="math inline">\(c_k-d_k&lt;0\)</span>, then <span class="math inline">\(E_k\subset\{\varphi&lt;\psi\}\)</span>, so <span class="math inline">\(m(E_k)=0\)</span>. So every term of <span class="math inline">\(\sum_{k=1}^N(c_k-d_k)m(E_k)\)</span> is at least
+<span class="math inline">\(0\)</span>. Thus <span class="math display">\[\int\varphi-\int\psi=\int(\varphi-\psi)=\sum_{k=1}^N(c_k-d_k)m(E_k)\ge0.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-simple-integral-sum">
+
+<p><strong>Corollary 16.2.4.</strong> If <span class="math inline">\(\varphi=\sum^n_{i=1}a_i\chi_{E_i}\)</span>, where
+<span class="math inline">\(E_1,\dots,E_n\)</span> are measurable sets
+of finite measure that need not be disjoint, then <span class="math display">\[\int\varphi=\sum^{n}_{i=1}a_im(E_i).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Each <span class="math inline">\(\chi_{E_i}\)</span>
+is a simple function by <a href="ch-measurable-functions.html#lem-characteristic-measurable">Lemma
+15.1.11</a>, and <span class="math inline">\(\int\chi_{E_i}=m(E_i)\)</span> by <a href="#lem-simple-integral-disjoint">Lemma 16.2.2</a>. So this is a
+direct result of <a href="#thm-simple-integral-linear">Theorem
+16.2.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Putting Two Simple Functions on the Same
+Sets).</strong></p>
+<p>To combine or compare two simple functions <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span>, write them over the same disjoint
+sets, as in the proof of <a href="#thm-simple-integral-linear">Theorem
+16.2.3</a>. Intersect the sets of the two canonical representations.
+Then both functions are constant on each piece. Sums, products, maxima
+and inequalities can then be checked one piece at a time. This is the
+measurable version of a common refinement of two partitions (<a href="ch-bounded-variation.html#def-refinement">Definition 8.1.4</a>).</p>
+</div>
+<p>Step functions on <span class="math inline">\([a,b]\)</span> are
+simple functions, since intervals are measurable. Their two integrals
+agree.</p>
+<div class="corollarybox" id="cor-step-integrals-agree">
+
+<p><strong>Corollary 16.2.5.</strong> Let <span class="math inline">\(\psi\)</span> be a step function on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(\psi\)</span> is a simple function and <span class="math display">\[\int_{[a,b]}\psi=\int_a^b\psi.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Write <span class="math inline">\(\psi=\sum_{i=1}^nc_i\chi_{I_i}\)</span>, where
+<span class="math inline">\(I_1,\dots,I_n\)</span> are pairwise disjoint
+subintervals of <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(\psi\chi_{[a,b]}=\psi\)</span>. Intervals are
+measurable and <span class="math inline">\(m(I_i)=\ell(I_i)\)</span>, by
+Theorems <a href="ch-lebesgue-measure.html#thm-borel-measurable">14.2.10</a> and <a href="ch-lebesgue-measure.html#thm-outer-measure-interval">14.1.4</a>. By <a href="#lem-simple-integral-disjoint">Lemma 16.2.2</a> and <a href="#lem-step-riemann">Lemma 16.1.1</a>, <span class="math display">\[\int_{[a,b]}\psi=\sum_{i=1}^nc_i\,\ell(I_i)=\int_a^b\psi.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-dirichlet-lebesgue">
+
+<p><strong>Example 16.2.6.</strong> Let <span class="math inline">\(f=\chi_\mathbb{Q}\)</span> on <span class="math inline">\([0,1]\)</span>, the Dirichlet function. It is a
+simple function with canonical representation <span class="math inline">\(f=1\cdot\chi_{\mathbb{Q}\cap[0,1]}+0\cdot\chi_{[0,1]\setminus\mathbb{Q}}\)</span>.
+The set <span class="math inline">\(\mathbb{Q}\cap[0,1]\)</span> is
+countable, so it has measure zero by <a href="ch-lebesgue-measure.html#cor-countable-outer-measure-zero">Corollary 14.1.7</a>. So <span class="math display">\[\int_{[0,1]}f=1\cdot
+m(\mathbb{Q}\cap[0,1])+0\cdot m([0,1]\setminus\mathbb{Q})=0.\]</span>
+This function is not Riemann integrable (<a href="ch-integrals.html#ex-dirichlet-not-integrable">Example 9.1.9</a>).</p>
+</div>
+<section class="level5 unnumbered" id="exercises-55">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-simple-integral-compute">
+
+<p><strong>Exercise 16.2.1.</strong> Let <span class="math inline">\(\varphi(x)=\left\lfloor
+x\right\rfloor+\chi_\mathbb{Q}(x)\)</span> for <span class="math inline">\(x\in[0,3]\)</span>. Show that <span class="math inline">\(\varphi\)</span> is a simple function, write its
+canonical representation, and compute <span class="math inline">\(\int_{[0,3]}\varphi\)</span>. <a aria-label="Hint for Exercise 16.2.1" href="solutions-ch16.html#sol-exer-simple-integral-compute">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-simple-integral-abs">
+
+<p><strong>Exercise 16.2.2.</strong> Let <span class="math inline">\(\varphi\)</span> be a simple function that
+vanishes outside a set of finite measure. Prove that <span class="math inline">\(|\varphi|\)</span> is such a function, and that
+<span class="math inline">\(\left|\int\varphi\right|\le\int|\varphi|\)</span>.
+<a aria-label="Hint for Exercise 16.2.2" href="solutions-ch16.html#sol-exer-simple-integral-abs">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-simple-max-product">
+
+<p><strong>Exercise 16.2.3.</strong> Let <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> be simple functions. Prove that
+<span class="math inline">\(\max\{\varphi,\psi\}\)</span>, <span class="math inline">\(\min\{\varphi,\psi\}\)</span> and <span class="math inline">\(\varphi\psi\)</span> are simple functions. <a aria-label="Hint for Exercise 16.2.3" href="solutions-ch16.html#sol-exer-simple-max-product">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-simple-integral-additive-sets">
+
+<p><strong>Exercise 16.2.4.</strong> Let <span class="math inline">\(\varphi\)</span> be a simple function that
+vanishes outside a set of finite measure, and let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be disjoint measurable sets. Prove that
+<span class="math inline">\(\int_{A\cup
+B}\varphi=\int_A\varphi+\int_B\varphi\)</span>. <a aria-label="Hint for Exercise 16.2.4" href="solutions-ch16.html#sol-exer-simple-integral-additive-sets">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-simple-integral-measure">
+
+<p><strong>Exercise 16.2.5.</strong> Let <span class="math inline">\(\varphi\ge0\)</span> be a simple function that
+vanishes outside a set of finite measure. Prove that <span class="math inline">\(\nu(E)=\int_E\varphi\)</span> defines a measure
+<span class="math inline">\(\nu\)</span> on the Lebesgue measurable sets
+(<a href="ch-measures.html#def-measure">Definition 13.3.1</a>). <a aria-label="Hint for Exercise 16.2.5" href="solutions-ch16.html#sol-exer-simple-integral-measure">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-bounded-integral">
+<h2>16.3 Bounded Functions on Sets of Finite
+Measure</h2>
+<p>Let <span class="math inline">\(f\)</span> be a bounded function on a
+measurable set <span class="math inline">\(E\)</span> with <span class="math inline">\(m(E)&lt;\infty\)</span>. Every simple function on
+<span class="math inline">\(E\)</span> vanishes outside <span class="math inline">\(E\)</span>, a set of finite measure, so it has an
+integral. Following <a href="#prop-step-upper-lower">Proposition
+16.1.2</a>, compare the infimum of <span class="math inline">\(\int_E\psi\)</span> over simple functions <span class="math inline">\(\psi\ge f\)</span> with the supremum of <span class="math inline">\(\int_E\varphi\)</span> over simple functions <span class="math inline">\(\varphi\le f\)</span>. These are the <em>upper and
+lower Lebesgue integrals</em> of <span class="math inline">\(f\)</span>.
+For the Riemann integral, the upper and lower integrals can differ for
+many functions. For the Lebesgue integral, they agree exactly when <span class="math inline">\(f\)</span> is measurable. In this section all
+simple functions are defined on <span class="math inline">\(E\)</span>.</p>
+<figure class="figure" id="fig-riemann-lebesgue"><div class="figure-images"><img alt="Left panel. The area under a curve divided into vertical rectangles over equal pieces of the x-axis, each rectangle as tall as the highest point of the curve over its piece." height="222" src="figs/fig17.svg" width="321"/><img alt="Right panel. The same curve with the y-axis divided into horizontal slices. For one slice the set of x where the curve falls in that slice is marked in bold on the x-axis, and it consists of several separate pieces." height="220" src="figs/fig18.svg" width="347"/></div><figcaption><strong>Figure 16.1.</strong> Riemann and Lebesgue cut up the area
+under a graph in different ways. On the left, the domain is cut into
+intervals, and <span class="math inline">\(f\)</span> is replaced on
+each one by its supremum. On the right, the range is cut into slices.
+The set <span class="math inline">\(E_k=\bigl\{\frac{k-1}{n}&lt;f\le\frac
+kn\bigr\}\)</span>, shown in bold, is a union of two intervals here. For
+a general measurable function it is only a measurable set. This is the
+set used in the proof of <a href="#thm-measurable-iff-squeeze">Theorem
+16.3.1</a>.</figcaption></figure>
+<div class="theorembox" id="thm-measurable-iff-squeeze">
+
+<p><strong>Theorem 16.3.1.</strong> Let <span class="math inline">\(f\)</span> be defined and bounded on a measurable
+set <span class="math inline">\(E\)</span> with <span class="math inline">\(m(E)&lt;\infty\)</span>. Then <span class="math inline">\(f\)</span> is measurable if and only if <span class="math display">\[\inf_{f\le\psi}\int_E
+\psi=\sup_{f\ge\varphi}\int_E\varphi,\]</span> where <span class="math inline">\(\psi\)</span> and <span class="math inline">\(\varphi\)</span> range over the simple functions
+on <span class="math inline">\(E\)</span> with <span class="math inline">\(\psi\ge f\)</span> and <span class="math inline">\(\varphi\le f\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>If <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are simple functions with <span class="math inline">\(\varphi\le f\le\psi\)</span>, then <span class="math inline">\(\int_E\varphi\le\int_E\psi\)</span> by <a href="#thm-simple-integral-linear">Theorem 16.2.3</a>. So the supremum
+is always at most the infimum. See <a href="#fig-riemann-lebesgue">Figure 16.1</a>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(f\)</span> is measurable, and let <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in E\)</span>. Let <span class="math inline">\(n\in\mathbb{N}\)</span>. For each integer <span class="math inline">\(k\)</span>, let <span class="math display">\[E_k=\left\{x\in E:\frac{k-1}{n}&lt;f(x)\le\frac
+kn\right\}=\left\{f&gt;\frac{k-1}{n}\right\}\cap\left\{f\le\frac
+kn\right\}.\]</span> Each <span class="math inline">\(E_k\)</span> is
+measurable. The sets <span class="math inline">\(E_k\)</span> are
+pairwise disjoint and their union is <span class="math inline">\(E\)</span>. Since <span class="math inline">\(|f|\le M\)</span>, <span class="math inline">\(E_k\)</span> is empty unless <span class="math inline">\(-Mn\le k&lt;Mn+1\)</span>. So only finitely many
+<span class="math inline">\(E_k\)</span> are nonempty. Define <span class="math display">\[\psi_n=\sum_k\frac
+kn\chi_{E_k}\quad\text{and}\quad\varphi_n=\sum_k\frac{k-1}{n}\chi_{E_k},\]</span>
+where both sums are over the finitely many <span class="math inline">\(k\)</span> with <span class="math inline">\(E_k\ne\emptyset\)</span>. These are simple
+functions, and <span class="math inline">\(\varphi_n\le
+f\le\psi_n\)</span>. Also <span class="math inline">\(\psi_n-\varphi_n=\frac1n\)</span> on <span class="math inline">\(E\)</span>. So <span class="math display">\[0\le\inf_{f\le\psi}\int_E\psi-\sup_{f\ge\varphi}\int_E\varphi\le\int_E\psi_n-\int_E\varphi_n=\int_E(\psi_n-\varphi_n)=\frac{m(E)}{n}.\]</span>
+This holds for every <span class="math inline">\(n\in\mathbb{N}\)</span>
+and <span class="math inline">\(m(E)&lt;\infty\)</span>. So the infimum
+and the supremum are equal.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose the infimum
+and the supremum are equal. Then for each <span class="math inline">\(n\in\mathbb{N}\)</span> there are simple functions
+<span class="math inline">\(\varphi_n\)</span> and <span class="math inline">\(\psi_n\)</span> with <span class="math display">\[\varphi_n\le f\le
+\psi_n\quad\text{and}\quad\int_E\psi_n-\int_E\varphi_n&lt;\frac{1}{n}.\]</span>
+Let <span class="math inline">\(\varphi^*=\sup_{n\in\mathbb{N}}\varphi_n\)</span>
+and <span class="math inline">\(\psi^*=\inf_{n\in\mathbb{N}}\psi_n\)</span>. These
+are measurable by <a href="ch-measurable-functions.html#thm-measurable-sup">Theorem 15.1.5</a>, and
+<span class="math inline">\(\varphi^*\le f\le \psi^*\)</span>. In
+particular they are real-valued, since <span class="math inline">\(f\)</span> is bounded. We show <span class="math inline">\(\varphi^*=\psi^*\)</span> a.e.</p>
+<p>For <span class="math inline">\(j\in\mathbb{N}\)</span>, let <span class="math inline">\(\Delta_j=\left\{\psi^*-\varphi^*&gt;\frac1j\right\}\)</span>,
+a measurable set. Fix <span class="math inline">\(n\in\mathbb{N}\)</span>. Since <span class="math inline">\(\varphi_n\le\varphi^*\)</span> and <span class="math inline">\(\psi^*\le\psi_n\)</span>, the set <span class="math inline">\(\Delta_j\)</span> is contained in <span class="math inline">\(G=\left\{\psi_n-\varphi_n&gt;\frac1j\right\}\)</span>.
+Now <span class="math inline">\(\frac1j\chi_G\le\psi_n-\varphi_n\)</span> on <span class="math inline">\(E\)</span>, and both sides are simple. By <a href="#thm-simple-integral-linear">Theorem 16.2.3</a>, <span class="math display">\[\frac1j\,m(\Delta_j)\le\frac1j\,m(G)\le\int_E(\psi_n-\varphi_n)&lt;\frac1n.\]</span>
+So <span class="math inline">\(m(\Delta_j)&lt;\frac jn\)</span> for
+every <span class="math inline">\(n\in\mathbb{N}\)</span>, and <span class="math inline">\(m(\Delta_j)=0\)</span>. The set where <span class="math inline">\(\varphi^*&lt;\psi^*\)</span> is <span class="math inline">\(\bigcup_{j\in\mathbb{N}}\Delta_j\)</span>, which
+has measure zero. So <span class="math inline">\(\psi^*=\varphi^*\)</span> a.e. Since <span class="math inline">\(\varphi^*\le f\le\psi^*\)</span>, <span class="math inline">\(f=\psi^*\)</span> a.e. By <a href="ch-measurable-functions.html#thm-ae-equal-measurable">Theorem 15.1.8</a>, <span class="math inline">\(f\)</span> is measurable.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-lebesgue-integral-bounded">
+
+<p><strong>Definition 16.3.2.</strong> If <span class="math inline">\(f\)</span> is a bounded measurable function on a
+measurable set <span class="math inline">\(E\)</span> with <span class="math inline">\(m(E)&lt;\infty\)</span>, the <em>Lebesgue
+integral</em> of <span class="math inline">\(f\)</span> over <span class="math inline">\(E\)</span> is <span class="math display">\[\int_E
+f=\inf_{\psi\ge f}\int_E\psi,\]</span> where <span class="math inline">\(\psi\)</span> ranges over all simple functions
+<span class="math inline">\(\psi\ge f\)</span> on <span class="math inline">\(E\)</span>. By <a href="#thm-measurable-iff-squeeze">Theorem 16.3.1</a>, this also equals
+<span class="math inline">\(\sup_{\varphi\le f}\int_E\varphi\)</span>.
+We also write <span class="math inline">\(\int_Ef\,dm\)</span> or <span class="math inline">\(\int_Ef(x)\,dm(x)\)</span>.</p>
+</div>
+<p>If <span class="math inline">\(f\)</span> is itself simple, this
+agrees with <a href="#def-simple-integral">Definition 16.2.1</a>.
+Indeed, <span class="math inline">\(\psi=f\)</span> is one of the
+functions in the infimum, and every simple <span class="math inline">\(\psi\ge f\)</span> has <span class="math inline">\(\int_E\psi\ge\int_Ef\)</span> by <a href="#thm-simple-integral-linear">Theorem 16.2.3</a>. On an interval,
+<span class="math inline">\(\int_{[a,b]}f\)</span> denotes the Lebesgue
+integral and <span class="math inline">\(\int_a^bf\)</span> the Riemann
+integral. The next theorem shows they agree whenever the Riemann
+integral exists.</p>
+<div class="theorembox" id="thm-riemann-lebesgue">
+
+<p><strong>Theorem 16.3.3.</strong> Let <span class="math inline">\(f\)</span> be a bounded function defined on <span class="math inline">\([a,b]\)</span>. If <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, then <span class="math inline">\(f\)</span> is measurable and <span class="math display">\[\int^b_a f=\int_{[a,b]}f.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#cor-step-integrals-agree">Corollary 16.2.5</a>, every
+step function on <span class="math inline">\([a,b]\)</span> is a simple
+function, with the same Riemann and Lebesgue integrals. So by <a href="#prop-step-upper-lower">Proposition 16.1.2</a>, <span class="math display">\[\begin{aligned}
+\underline{\int_{a}^{b}}f=\sup_{\substack{\varphi\le f\\ \varphi\text{
+step}}}\int_{[a,b]}\varphi&amp;\le\sup_{\substack{\varphi\le f\\
+\varphi\text{ simple}}}\int_{[a,b]}\varphi\\
+&amp;\le\inf_{\substack{\psi\ge f\\ \psi\text{
+simple}}}\int_{[a,b]}\psi\le\inf_{\substack{\psi\ge f\\ \psi\text{
+step}}}\int_{[a,b]}\psi=\overline{\int_{a}^{b}}f.
+\end{aligned}\]</span> The first and last inequalities hold because
+there are more simple functions than step functions. The middle one
+holds by the first paragraph of the proof of <a href="#thm-measurable-iff-squeeze">Theorem 16.3.1</a>. Since <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, the two ends are
+equal to <span class="math inline">\(\int_a^bf\)</span>. So all of these
+quantities are equal. By <a href="#thm-measurable-iff-squeeze">Theorem
+16.3.1</a>, <span class="math inline">\(f\)</span> is measurable, and
+then the middle quantities equal <span class="math inline">\(\int_{[a,b]}f\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The converse is false. The Dirichlet function is measurable but not
+Riemann integrable (<a href="#ex-dirichlet-lebesgue">Example
+16.2.6</a>). So the Lebesgue integral extends the Riemann integral. From
+now on we can compute <span class="math inline">\(\int_{[a,b]}f\)</span>
+for a Riemann integrable <span class="math inline">\(f\)</span> by any
+method from <a href="ch-integrals.html">Chapter 9</a>, including the
+Fundamental Theorem of Calculus.</p>
+<p>To integrate over a measurable subset <span class="math inline">\(A\subset E\)</span>, restrict <span class="math inline">\(f\)</span> to <span class="math inline">\(A\)</span>. The next lemma says this is the same
+as integrating <span class="math inline">\(f\chi_A\)</span> over <span class="math inline">\(E\)</span>.</p>
+<div class="lemmabox" id="lem-integral-subset">
+
+<p><strong>Lemma 16.3.4.</strong> Let <span class="math inline">\(f\)</span> be a bounded measurable function on a
+measurable set <span class="math inline">\(E\)</span> with <span class="math inline">\(m(E)&lt;\infty\)</span>, and let <span class="math inline">\(A\subset E\)</span> be measurable. Then <span class="math inline">\(\int_Af=\int_Ef\chi_A\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The function <span class="math inline">\(f\chi_A\)</span> is bounded
+and measurable by <a href="ch-measurable-functions.html#lem-characteristic-measurable">Lemma
+15.1.11</a> and <a href="ch-measurable-functions.html#thm-measurable-algebra">Theorem 15.1.4</a>.
+Let <span class="math inline">\(\psi\)</span> be a simple function on
+<span class="math inline">\(A\)</span> with <span class="math inline">\(\psi\ge f\)</span> on <span class="math inline">\(A\)</span>. Extend <span class="math inline">\(\psi\)</span> to <span class="math inline">\(E\)</span> by setting it equal to <span class="math inline">\(0\)</span> on <span class="math inline">\(E\setminus A\)</span>. The extension is simple, it
+is at least <span class="math inline">\(f\chi_A\)</span>, and its
+integral over <span class="math inline">\(E\)</span> is <span class="math inline">\(\int_A\psi\)</span>. So <span class="math inline">\(\int_Ef\chi_A\le\int_A\psi\)</span>. Taking the
+infimum over <span class="math inline">\(\psi\)</span>, <span class="math inline">\(\int_Ef\chi_A\le\int_Af\)</span>.</p>
+<p>Conversely, let <span class="math inline">\(\psi\)</span> be a simple
+function on <span class="math inline">\(E\)</span> with <span class="math inline">\(\psi\ge f\chi_A\)</span>. Then <span class="math inline">\(\psi\ge f\)</span> on <span class="math inline">\(A\)</span>, and <span class="math inline">\(\psi\ge0\)</span> on <span class="math inline">\(E\setminus A\)</span>. So <span class="math inline">\(\int_A\psi\le\int_A\psi+\int_{E\setminus
+A}\psi=\int_E\psi\)</span>, using <span class="math inline">\(\chi_E=\chi_A+\chi_{E\setminus A}\)</span> and <a href="#thm-simple-integral-linear">Theorem 16.2.3</a>. Thus <span class="math inline">\(\int_Af\le\int_A\psi\le\int_E\psi\)</span>. Taking
+the infimum over <span class="math inline">\(\psi\)</span>, <span class="math inline">\(\int_Af\le\int_Ef\chi_A\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-bounded-integral-properties">
+
+<p><strong>Theorem 16.3.5.</strong> If <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are bounded measurable functions
+defined on a set <span class="math inline">\(E\)</span> of finite
+measure, then each of the following hold.</p>
+<ol>
+<li><p><span class="math inline">\(\int_E(af+bg)=a\int_E f + b\int_E
+g\)</span> for all <span class="math inline">\(a,b\in\mathbb{R}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f=g\)</span> a.e., then <span class="math inline">\(\int_E f=\int_E g\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\le g\)</span> a.e., then <span class="math inline">\(\int_E f\le \int_E g\)</span>.</p></li>
+<li><p><span class="math inline">\(\left|\int_E f\right|\le \int_E
+|f|\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\alpha\le f(x)\le \beta\)</span>
+for all <span class="math inline">\(x\in E\)</span>, then <span class="math inline">\(\alpha m(E)\le \int_E f\le \beta
+m(E)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint measurable subsets of
+<span class="math inline">\(E\)</span>, then <span class="math inline">\(\int_{A\cup B}f=\int_A f + \int_B
+f\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (1) If <span class="math inline">\(\psi\)</span> is a
+simple function, so is <span class="math inline">\(a\psi\)</span>, and
+conversely for <span class="math inline">\(a\ne 0\)</span>. Hence, for
+<span class="math inline">\(a&gt;0\)</span>, by <a href="#thm-simple-integral-linear">Theorem 16.2.3</a>, <span class="math display">\[\int_E af=\inf_{a\psi\ge af}\int_E a\psi =
+a\inf_{\psi\ge f}\int_E \psi =a\int_E f.\]</span> If <span class="math inline">\(a&lt;0\)</span>, then <span class="math inline">\(a\varphi\ge af\)</span> exactly when <span class="math inline">\(\varphi\le f\)</span>. So, by <a href="#thm-measurable-iff-squeeze">Theorem 16.3.1</a>, <span class="math display">\[\int_E af=\inf_{a\varphi\ge af}\int_E a\varphi =
+\inf_{\varphi\le f}a\int_E\varphi=a\sup_{\varphi\le f}\int_E \varphi
+=a\int_E f.\]</span> If <span class="math inline">\(a=0\)</span>, both
+sides are <span class="math inline">\(0\)</span>.</p>
+<p>If <span class="math inline">\(\psi_1\)</span> is a simple function
+with <span class="math inline">\(f\le \psi_1\)</span> and <span class="math inline">\(\psi_2\)</span> is a simple function with <span class="math inline">\(g\le \psi_2\)</span>, then <span class="math inline">\(\psi_1+\psi_2\)</span> is a simple function with
+<span class="math inline">\(f+g\le \psi_1+\psi_2\)</span>. Hence <span class="math display">\[\int_E(f+g)\le \int_E(\psi_1+\psi_2)=\int_E\psi_1
++ \int_E \psi_2.\]</span> Since the infimum of the right side is <span class="math inline">\(\int_E f + \int_E g\)</span>, <span class="math display">\[\int_E(f+g)\le \int_E f + \int_E g.\]</span>
+Similarly, if <span class="math inline">\(\varphi_1\)</span> and <span class="math inline">\(\varphi_2\)</span> are simple functions with <span class="math inline">\(\varphi_1\le f\)</span> and <span class="math inline">\(\varphi_2\le g\)</span>, <span class="math inline">\(\varphi_1+\varphi_2\)</span> is a simple function
+with <span class="math inline">\(\varphi_1+\varphi_2\le f+g\)</span>. So
+<span class="math display">\[\int_E(f+g)\ge
+\int_E(\varphi_1+\varphi_2)=\int_E\varphi_1 +\int_E\varphi_2.\]</span>
+Since the supremum of the right side is <span class="math inline">\(\int_E f+\int_E g\)</span>, <span class="math display">\[\int_E (f+g)\ge \int_E f + \int_E g.\]</span> So
+<span class="math display">\[\int_E(f+g)=\int_E f+ \int_E g.\]</span>
+Here <span class="math inline">\(f+g\)</span> is bounded and measurable
+by <a href="ch-measurable-functions.html#thm-measurable-algebra">Theorem 15.1.4</a>, and the second
+inequality uses <a href="#thm-measurable-iff-squeeze">Theorem 16.3.1</a>
+for <span class="math inline">\(f+g\)</span>. Combining the two parts,
+<span class="math inline">\(\int_E(af+bg)=\int_Eaf+\int_Ebg=a\int_Ef+b\int_Eg\)</span>.</p>
+<p>(2) Since <span class="math inline">\(f-g=0\)</span> a.e., if <span class="math inline">\(\psi\ge f-g\)</span>, then <span class="math inline">\(\psi\ge 0\)</span> a.e. So <span class="math inline">\(\int_E\psi\ge 0\)</span> by <a href="#thm-simple-integral-linear">Theorem 16.2.3</a>. Thus <span class="math inline">\(\int_E (f-g)\ge 0\)</span>. Also, if <span class="math inline">\(\varphi\le f-g\)</span>, then <span class="math inline">\(\varphi\le0\)</span> a.e., so <span class="math inline">\(\int_E \varphi\le 0\)</span>. Thus <span class="math inline">\(\int_E(f-g)\le 0\)</span> by <a href="#thm-measurable-iff-squeeze">Theorem 16.3.1</a>. So <span class="math inline">\(\int_E(f-g)=0\)</span>, and <span class="math inline">\(\int_Ef=\int_Eg\)</span> by (1).</p>
+<p>(3) Since <span class="math inline">\(f-g\le 0\)</span> a.e., if
+<span class="math inline">\(\varphi\le f-g\)</span> is a simple
+function, then <span class="math inline">\(\varphi\le0\)</span> a.e.,
+and <span class="math inline">\(\int_E\varphi\le 0\)</span>. So <span class="math inline">\(\int_E(f-g)\le 0\)</span> by <a href="#thm-measurable-iff-squeeze">Theorem 16.3.1</a>. By (1), <span class="math inline">\(\int_Ef\le\int_Eg\)</span>.</p>
+<p>(4) Since <span class="math inline">\(-|f|\le f\le |f|\)</span>, (1)
+and (3) give <span class="math inline">\(-\int_E|f|\le \int_E f\le
+\int_E |f|\)</span>. So <span class="math inline">\(\left|\int_E
+f\right|\le \int_E |f|\)</span>. Here <span class="math inline">\(|f|=\max\{f,-f\}\)</span> is measurable by <a href="ch-measurable-functions.html#thm-measurable-sup">Theorem 15.1.5</a>.</p>
+<p>(5) Since <span class="math inline">\(\alpha\le f(x)\le
+\beta\)</span> for all <span class="math inline">\(x\in E\)</span>, (3)
+gives <span class="math display">\[\int_E \alpha \le \int_E f\le \int_E
+\beta.\]</span> But the constants <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are simple functions, so <span class="math inline">\(\int_E \alpha=\alpha m(E)\)</span> and <span class="math inline">\(\int_E \beta= \beta m(E)\)</span>. So <span class="math display">\[\alpha m(E)\le \int_E f\le \beta
+m(E).\]</span></p>
+<p>(6) By <a href="ch-measurable-functions.html#lem-characteristic-algebra">Lemma 15.1.10</a>, <a href="#lem-integral-subset">Lemma 16.3.4</a> and (1), <span class="math display">\[\int_{A\cup B}f=\int_{E}
+f\cdot(\chi_A+\chi_B)=\int_{E} f\cdot \chi_A + \int_{E} f\cdot\chi_B =
+\int_A f + \int_B f.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-bct">
+
+<p><strong>Theorem 16.3.6</strong> (Bounded Convergence
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of
+measurable functions defined on a set <span class="math inline">\(E\)</span> of finite measure, and suppose that
+there is a real number <span class="math inline">\(M\)</span> such that
+<span class="math inline">\(|f_n(x)|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> and for all <span class="math inline">\(x\in E\)</span>. If <span class="math inline">\(\lim_{n\to\infty}f_n(x)=f(x)\)</span> for each
+<span class="math inline">\(x\in E\)</span>, then <span class="math display">\[\int_E f = \lim_{n\to\infty}\int_E
+f_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="ch-measurable-functions.html#cor-measurable-limit">Corollary 15.1.6</a>, <span class="math inline">\(f\)</span> is measurable. Also <span class="math inline">\(|f|\le M\)</span>, so <span class="math inline">\(\int_Ef\)</span> is defined. We may assume <span class="math inline">\(M&gt;0\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(\eta&gt;0\)</span> so small that <span class="math inline">\(\eta\, m(E)&lt;\frac\varepsilon 2\)</span>, and
+let <span class="math inline">\(\delta=\frac{\varepsilon}{4M}\)</span>.
+By <a href="ch-measurable-functions.html#thm-nearly-uniform">Theorem 15.3.2</a>, there are a
+measurable set <span class="math inline">\(A\subset E\)</span> with
+<span class="math inline">\(m(A)&lt;\delta\)</span> and an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|f_n(x)-f(x)|&lt;\eta\)</span> for all <span class="math inline">\(x\in E\setminus A\)</span> and all <span class="math inline">\(n\ge N\)</span>.</p>
+<p>Let <span class="math inline">\(n\ge N\)</span>. Split <span class="math inline">\(E\)</span> into the good set <span class="math inline">\(E\setminus A\)</span>, where <span class="math inline">\(|f_n-f|\)</span> is small, and the bad set <span class="math inline">\(A\)</span>, which is small. On <span class="math inline">\(E\setminus A\)</span>, <span class="math inline">\(0\le|f_n-f|\le\eta\)</span>. On <span class="math inline">\(A\)</span>, <span class="math inline">\(0\le|f_n-f|\le2M\)</span>. By <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (1), (4), (6)
+and (5), <span class="math display">\[\begin{aligned}
+\left|\int_E f_n-\int_E f\right|&amp;=\left|\int_E (f_n-f)\right|\le
+\int_E|f_n-f|\\
+&amp;=\int_{E\setminus A}|f_n-f| + \int_A|f_n-f|\\
+&amp;\le\eta\, m(E\setminus A)+2M\,m(A)&lt;\frac\varepsilon
+2+2M\cdot\frac{\varepsilon}{4M}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\int_E f_n \to
+\int_E f\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-bct-ae">
+
+<p><strong>Corollary 16.3.7.</strong> Let <span class="math inline">\(\{f_n\}\)</span> and <span class="math inline">\(M\)</span> be as in <a href="#thm-bct">Theorem
+16.3.6</a>, and let <span class="math inline">\(f\)</span> be a bounded
+measurable function on <span class="math inline">\(E\)</span>. If <span class="math inline">\(f_n\to f\)</span> a.e. on <span class="math inline">\(E\)</span>, then <span class="math inline">\(\int_Ef=\lim_{n\to\infty}\int_Ef_n\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="ch-measurable-functions.html#def-ae-convergence">Definition 15.3.3</a>, there is a
+set <span class="math inline">\(B\subset E\)</span> with <span class="math inline">\(m(B)=0\)</span> such that <span class="math inline">\(f_n\to f\)</span> at every point of <span class="math inline">\(E\setminus B\)</span>. If <span class="math inline">\(g\)</span> is bounded and measurable on <span class="math inline">\(E\)</span>, say <span class="math inline">\(|g|\le
+K\)</span>, then <span class="math inline">\(\left|\int_Bg\right|\le
+K\,m(B)=0\)</span> by <a href="#thm-bounded-integral-properties">Theorem
+16.3.5</a> (4) and (5). So <span class="math inline">\(\int_Eg=\int_{E\setminus B}g\)</span> by <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (6). Apply
+this to each <span class="math inline">\(f_n\)</span> and to <span class="math inline">\(f\)</span>, and apply <a href="#thm-bct">Theorem
+16.3.6</a> on <span class="math inline">\(E\setminus B\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Ignoring Sets of Measure Zero).</strong></p>
+<p>Integrals do not see sets of measure zero. If <span class="math inline">\(f=g\)</span> a.e., then <span class="math inline">\(\int_Ef=\int_Eg\)</span>. So a hypothesis that
+holds a.e. is usually as good as one that holds everywhere. The standard
+move has three steps. Find a set <span class="math inline">\(B\)</span>
+of measure zero off which the hypothesis holds. Prove the result on
+<span class="math inline">\(E\setminus B\)</span>. Then note that <span class="math inline">\(\int_Eh=\int_{E\setminus B}h\)</span> for every
+function <span class="math inline">\(h\)</span> in sight. The proof of
+<a href="#cor-bct-ae">Corollary 16.3.7</a> works this way. One caution.
+The functions must still be measurable on all of <span class="math inline">\(E\)</span>, and bounded if the integral being used
+needs that, or the integrals over <span class="math inline">\(E\)</span>
+are not defined.</p>
+</div>
+<p>Arzelà’s Bounded Convergence Theorem for Riemann integrals, <a href="ch-function-sequences.html#thm-bounded-convergence">Theorem 11.2.21</a>, was stated in <a href="ch-function-sequences.html">Chapter 11</a> without proof. It now
+follows quickly.</p>
+<div class="corollarybox" id="cor-arzela">
+
+<p><strong>Corollary 16.3.8</strong> (Arzelà)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f_n,f\in\mathcal{R}[a,b]\)</span>
+with <span class="math inline">\(f_n(x)\to f(x)\)</span> for each <span class="math inline">\(x\in[a,b]\)</span>. Suppose there is an <span class="math inline">\(M\)</span> with <span class="math inline">\(|f_n(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math inline">\(\int_a^bf_n\to\int_a^bf\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="#thm-riemann-lebesgue">Theorem 16.3.3</a>, each <span class="math inline">\(f_n\)</span> and <span class="math inline">\(f\)</span> is measurable, with the same Riemann
+and Lebesgue integrals. Apply <a href="#thm-bct">Theorem 16.3.6</a> with
+<span class="math inline">\(E=[a,b]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The Lebesgue version is stronger. It does not need the hypothesis
+<span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, since the
+limit of measurable functions is always measurable. In <a href="ch-function-sequences.html#ex-rationals-enumeration">Example 11.1.6</a>, the limit <span class="math inline">\(f\)</span> is not Riemann integrable. But <span class="math inline">\(f=1\)</span> a.e., so <span class="math inline">\(\int_{[0,1]}f=1=\lim\int_0^1f_n\)</span>.</p>
+<p>Finally, we can prove Lebesgue’s Theorem, <a href="ch-integrals.html#thm-lebesgue-criterion">Theorem 9.2.9</a>. The proof measures how
+badly <span class="math inline">\(f\)</span> fails to be continuous at
+each point.</p>
+<div class="definitionbox" id="def-oscillation">
+
+<p><strong>Definition 16.3.9.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. For
+<span class="math inline">\(x\in[a,b]\)</span> and <span class="math inline">\(\delta&gt;0\)</span>, let <span class="math display">\[\omega_f(x,\delta)=\sup\{|f(s)-f(t)|:s,t\in[a,b],\
+|s-x|&lt;\delta,\ |t-x|&lt;\delta\}.\]</span> This decreases as <span class="math inline">\(\delta\)</span> decreases. The
+<em>oscillation</em> of <span class="math inline">\(f\)</span> at <span class="math inline">\(x\)</span> is <span class="math inline">\(\omega_f(x)=\inf_{\delta&gt;0}\omega_f(x,\delta)\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-oscillation-continuity">
+
+<p><strong>Lemma 16.3.10.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and let
+<span class="math inline">\(x\in[a,b]\)</span>. Then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span> if and only if <span class="math inline">\(\omega_f(x)=0\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Suppose <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(s)-f(x)|&lt;\frac\varepsilon 2\)</span> for all
+<span class="math inline">\(s\in[a,b]\)</span> with <span class="math inline">\(|s-x|&lt;\delta\)</span>. If <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are such points, then <span class="math inline">\(|f(s)-f(t)|\le|f(s)-f(x)|+|f(x)-f(t)|&lt;\varepsilon\)</span>.
+So <span class="math inline">\(\omega_f(x)\le\omega_f(x,\delta)\le\varepsilon\)</span>.
+Since <span class="math inline">\(\varepsilon\)</span> was arbitrary,
+<span class="math inline">\(\omega_f(x)=0\)</span>.</p>
+<p>Conversely, suppose <span class="math inline">\(\omega_f(x)=0\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(\omega_f(x,\delta)&lt;\varepsilon\)</span>. If
+<span class="math inline">\(s\in[a,b]\)</span> and <span class="math inline">\(|s-x|&lt;\delta\)</span>, take <span class="math inline">\(t=x\)</span> in the definition to get <span class="math inline">\(|f(s)-f(x)|\le\omega_f(x,\delta)&lt;\varepsilon\)</span>.
+So <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-lebesgue-criterion-proof">
+
+<p><strong>Theorem 16.3.11</strong> (Lebesgue’s
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+bounded. Then <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>
+if and only if the set of points at which <span class="math inline">\(f\)</span> has discontinuities has measure
+zero.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(D\)</span> be the set of points of
+<span class="math inline">\([a,b]\)</span> at which <span class="math inline">\(f\)</span> is discontinuous. For <span class="math inline">\(k\in\mathbb{N}\)</span>, let <span class="math inline">\(D_k=\left\{x\in[a,b]:\omega_f(x)\ge\frac1k\right\}\)</span>.
+By <a href="#lem-oscillation-continuity">Lemma 16.3.10</a>, <span class="math inline">\(D=\bigcup_{k\in\mathbb{N}}D_k\)</span>. Recall
+from <a href="ch-lebesgue-measure.html#sec-outer-measure">Section 14.1</a> that <span class="math inline">\(D\)</span> has measure zero exactly when <span class="math inline">\(m^*(D)=0\)</span>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Fix <span class="math inline">\(k\in\mathbb{N}\)</span> and let <span class="math inline">\(\varepsilon&gt;0\)</span>. By Riemann’s Criterion
+(<a href="ch-integrals.html#thm-riemann-criterion">Theorem 9.2.1</a>), there is a
+partition <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)=\sum_{i=1}^n(M_i-m_i)\Delta
+x_i&lt;\frac{\varepsilon}{k}.\]</span> Let <span class="math inline">\(x\in D_k\)</span> with <span class="math inline">\(x\notin\mathcal{P}\)</span>. Then <span class="math inline">\(x\in(x_{i-1},x_i)\)</span> for some <span class="math inline">\(i\)</span>. For small <span class="math inline">\(\delta&gt;0\)</span>, the interval <span class="math inline">\((x-\delta,x+\delta)\)</span> lies inside <span class="math inline">\((x_{i-1},x_i)\)</span>, and so <span class="math inline">\(\omega_f(x,\delta)\le M_i-m_i\)</span>. Thus <span class="math inline">\(M_i-m_i\ge\omega_f(x)\ge\frac1k\)</span>. Let
+<span class="math inline">\(S\)</span> be the set of indices <span class="math inline">\(i\)</span> with <span class="math inline">\(M_i-m_i\ge\frac1k\)</span>. Then <span class="math display">\[\frac1k\sum_{i\in S}\Delta x_i\le\sum_{i\in
+S}(M_i-m_i)\Delta x_i&lt;\frac\varepsilon k,\]</span> so <span class="math inline">\(\sum_{i\in S}\Delta x_i&lt;\varepsilon\)</span>.
+We have shown <span class="math inline">\(D_k\subset\mathcal{P}\cup\bigcup_{i\in
+S}(x_{i-1},x_i)\)</span>. The finite set <span class="math inline">\(\mathcal{P}\)</span> has outer measure zero. By
+Theorems <a href="ch-lebesgue-measure.html#thm-outer-measure-subadditive">14.1.6</a> and <a href="ch-lebesgue-measure.html#thm-outer-measure-interval">14.1.4</a>, <span class="math inline">\(m^*(D_k)\le\sum_{i\in S}\Delta
+x_i&lt;\varepsilon\)</span>. Since <span class="math inline">\(\varepsilon\)</span> was arbitrary, <span class="math inline">\(m^*(D_k)=0\)</span>. By subadditivity again, <span class="math inline">\(m^*(D)\le\sum_km^*(D_k)=0\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(m^*(D)=0\)</span>, and let <span class="math inline">\(|f|\le K\)</span> on <span class="math inline">\([a,b]\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(\mathcal{P}_n\)</span> be the partition of <span class="math inline">\([a,b]\)</span> into <span class="math inline">\(2^n\)</span> subintervals of equal length. Let
+<span class="math inline">\(m_i\)</span> and <span class="math inline">\(M_i\)</span> be the infimum and supremum of <span class="math inline">\(f\)</span> on the <span class="math inline">\(i\)</span>th subinterval <span class="math inline">\([x_{i-1},x_i]\)</span> of <span class="math inline">\(\mathcal{P}_n\)</span>. Define step functions
+<span class="math inline">\(\varphi_n\)</span> and <span class="math inline">\(\psi_n\)</span> on <span class="math inline">\([a,b]\)</span> by <span class="math inline">\(\varphi_n=m_i\)</span> and <span class="math inline">\(\psi_n=M_i\)</span> on <span class="math inline">\((x_{i-1},x_i)\)</span>, and <span class="math inline">\(\varphi_n=\psi_n=f\)</span> at the points of <span class="math inline">\(\mathcal{P}_n\)</span>. Then <span class="math inline">\(\varphi_n\le f\le\psi_n\)</span>. As in the proof
+of <a href="#prop-step-upper-lower">Proposition 16.1.2</a>, <span class="math inline">\(\int_a^b\psi_n=\mathcal{U}(\mathcal{P}_n,f)\)</span>
+and <span class="math inline">\(\int_a^b\varphi_n=\mathcal{L}(\mathcal{P}_n,f)\)</span>.
+By <a href="#cor-step-integrals-agree">Corollary 16.2.5</a> and <a href="#thm-simple-integral-linear">Theorem 16.2.3</a>, <span class="math display">\[\mathcal{U}(\mathcal{P}_n,f)-\mathcal{L}(\mathcal{P}_n,f)=\int_{[a,b]}(\psi_n-\varphi_n).\]</span></p>
+<p>Let <span class="math inline">\(Q=\bigcup_n\mathcal{P}_n\)</span>, a
+countable set. Let <span class="math inline">\(x\in[a,b]\)</span> with
+<span class="math inline">\(x\notin D\cup Q\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span>, there is a <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(s)-f(x)|&lt;\varepsilon\)</span> for all <span class="math inline">\(s\in[a,b]\)</span> with <span class="math inline">\(|s-x|&lt;\delta\)</span>. Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(\frac{b-a}{2^N}&lt;\delta\)</span>. For <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x\)</span> lies in an open subinterval <span class="math inline">\((x_{i-1},x_i)\)</span> of <span class="math inline">\(\mathcal{P}_n\)</span> of length less than <span class="math inline">\(\delta\)</span>. So <span class="math inline">\([x_{i-1},x_i]\subset(x-\delta,x+\delta)\)</span>,
+and <span class="math inline">\(f(x)-\varepsilon\le m_i\le M_i\le
+f(x)+\varepsilon\)</span>. So <span class="math inline">\(0\le\psi_n(x)-\varphi_n(x)\le2\varepsilon\)</span>
+for all <span class="math inline">\(n\ge N\)</span>. Thus <span class="math inline">\(\psi_n-\varphi_n\to0\)</span> at every point
+outside <span class="math inline">\(D\cup Q\)</span>. The set <span class="math inline">\(D\cup Q\)</span> has measure zero. Also <span class="math inline">\(|\psi_n-\varphi_n|\le2K\)</span>. By <a href="#cor-bct-ae">Corollary 16.3.7</a>, <span class="math display">\[\mathcal{U}(\mathcal{P}_n,f)-\mathcal{L}(\mathcal{P}_n,f)=\int_{[a,b]}(\psi_n-\varphi_n)\to0.\]</span>
+So for every <span class="math inline">\(\varepsilon&gt;0\)</span> there
+is a partition <span class="math inline">\(\mathcal{P}_n\)</span> with
+<span class="math inline">\(\mathcal{U}(\mathcal{P}_n,f)-\mathcal{L}(\mathcal{P}_n,f)&lt;\varepsilon\)</span>.
+By Riemann’s Criterion, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>In words, a bounded function on <span class="math inline">\([a,b]\)</span> is Riemann integrable exactly when
+it is continuous almost everywhere. Compare this with the Lebesgue
+integral. A bounded function on <span class="math inline">\([a,b]\)</span> has a Lebesgue integral exactly
+when it is measurable (<a href="#thm-measurable-iff-squeeze">Theorem
+16.3.1</a>). Measurability is a much weaker condition than continuity
+almost everywhere.</p>
+<section class="level5 unnumbered" id="exercises-56">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-bct-infinite-measure">
+
+<p><strong>Exercise 16.3.1.</strong> Show that the hypothesis <span class="math inline">\(m(E)&lt;\infty\)</span> cannot be dropped from <a href="#thm-bct">Theorem 16.3.6</a>. Let <span class="math inline">\(f_n=\frac1n\chi_{[0,n]}\)</span> on <span class="math inline">\(\mathbb{R}\)</span>. Show that each <span class="math inline">\(f_n\)</span> is a simple function that vanishes
+outside a set of finite measure, that <span class="math inline">\(|f_n|\le1\)</span>, and that <span class="math inline">\(f_n\to0\)</span> uniformly on <span class="math inline">\(\mathbb{R}\)</span>. But <span class="math inline">\(\int f_n=1\)</span> for every <span class="math inline">\(n\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-bct-unbounded">
+
+<p><strong>Exercise 16.3.2.</strong> Show that the bound <span class="math inline">\(M\)</span> cannot be dropped from <a href="#thm-bct">Theorem 16.3.6</a>. Let <span class="math inline">\(f_n=n\chi_{(0,1/n)}\)</span> on <span class="math inline">\([0,1]\)</span>. Show that <span class="math inline">\(f_n\to0\)</span> at every point of <span class="math inline">\([0,1]\)</span>, but <span class="math inline">\(\int_{[0,1]}f_n=1\)</span> for every <span class="math inline">\(n\)</span>. <a aria-label="Solution for Exercise 16.3.2" href="solutions-ch16.html#sol-exer-bct-unbounded">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-bct-evaluate">
+
+<p><strong>Exercise 16.3.3.</strong> Use <a href="#cor-bct-ae">Corollary
+16.3.7</a> to find <span class="math inline">\(\lim_{n\to\infty}\int_{[0,1]}\frac{1}{1+x^n}\,dm\)</span>
+and <span class="math inline">\(\lim_{n\to\infty}\int_{[0,1]}\frac{nx}{1+n^2x^2}\,dm\)</span>.
+Check the second answer by computing the integral with the Fundamental
+Theorem of Calculus. <a aria-label="Hint for Exercise 16.3.3" href="solutions-ch16.html#sol-exer-bct-evaluate">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-integral-zero-subsets">
+
+<p><strong>Exercise 16.3.4.</strong> Let <span class="math inline">\(f\)</span> be a bounded measurable function on a
+set <span class="math inline">\(E\)</span> of finite measure. Suppose
+<span class="math inline">\(\int_Af=0\)</span> for every measurable set
+<span class="math inline">\(A\subset E\)</span>. Prove that <span class="math inline">\(f=0\)</span> a.e. on <span class="math inline">\(E\)</span>. <a aria-label="Hint for Exercise 16.3.4" href="solutions-ch16.html#sol-exer-integral-zero-subsets">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-thomae-integrable">
+
+<p><strong>Exercise 16.3.5.</strong> Use Lebesgue’s Theorem to show that
+Thomae’s function (<a href="ch-continuity.html#ex-thomae">Example 6.3.2</a>), restricted
+to <span class="math inline">\([0,1]\)</span>, is Riemann integrable.
+Then use <a href="#thm-riemann-lebesgue">Theorem 16.3.3</a> and <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (2) to show
+that its integral is <span class="math inline">\(0\)</span>. <a aria-label="Hint for Exercise 16.3.5" href="solutions-ch16.html#sol-exer-thomae-integrable">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cantor-riemann">
+
+<p><strong>Exercise 16.3.6.</strong> Let <span class="math inline">\(C\)</span> be the Cantor set (<a href="ch-cantor.html">Chapter 5</a>). Show that <span class="math inline">\(\chi_C\)</span> is discontinuous exactly at the
+points of <span class="math inline">\(C\)</span>. Conclude that <span class="math inline">\(\chi_C\in\mathcal{R}[0,1]\)</span>, and find <span class="math inline">\(\int_0^1\chi_C\)</span>. <a aria-label="Hint for Exercise 16.3.6" href="solutions-ch16.html#sol-exer-cantor-riemann">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-lebesgue-criterion-applications">
+
+<p><strong>Exercise 16.3.7.</strong> Use Lebesgue’s Theorem to give new
+proofs of two earlier results. First, if <span class="math inline">\(f,g\in\mathcal{R}[a,b]\)</span>, then <span class="math inline">\(fg\in\mathcal{R}[a,b]\)</span> (<a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>). Second, if <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(h\)</span> is continuous on <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(h\circ f\in\mathcal{R}[a,b]\)</span> (<a href="ch-integrals.html#thm-composition-integrable">Theorem 9.2.3</a>). <a aria-label="Hint for Exercise 16.3.7" href="solutions-ch16.html#sol-exer-lebesgue-criterion-applications">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-riemann-ae-continuous">
+
+<p><strong>Exercise 16.3.8.</strong> Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and let <span class="math inline">\(g:[a,b]\to\mathbb{R}\)</span> be bounded with
+<span class="math inline">\(g=f\)</span> a.e. Show by example that <span class="math inline">\(g\)</span> need not be Riemann integrable. Show
+that <span class="math inline">\(g\)</span> is measurable and <span class="math inline">\(\int_{[a,b]}g=\int_a^bf\)</span>. <a aria-label="Hint for Exercise 16.3.8" href="solutions-ch16.html#sol-exer-riemann-ae-continuous">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-nonnegative-integral">
+<h2>16.4 The Integral of a Nonnegative Function</h2>
+<p>Now drop both restrictions, for nonnegative functions. A nonnegative
+measurable function may be unbounded, it may take the value <span class="math inline">\(\infty\)</span>, and it may be nonzero on a set of
+infinite measure. Its integral is defined as the supremum of the
+integrals of the bounded functions below it that vanish outside a set of
+finite measure. This supremum may be <span class="math inline">\(\infty\)</span>. We use the conventions <span class="math inline">\(c\cdot\infty=\infty\)</span> for <span class="math inline">\(c&gt;0\)</span> and <span class="math inline">\(0\cdot\infty=0\)</span>.</p>
+<div class="definitionbox" id="def-nonnegative-integral">
+
+<p><strong>Definition 16.4.1.</strong> If <span class="math inline">\(f\)</span> is a nonnegative measurable function
+defined on a measurable set <span class="math inline">\(E\)</span>,
+define <span class="math display">\[\int_E f=\sup_{h\le f}\int_E
+h,\]</span> where <span class="math inline">\(h\)</span> ranges over the
+bounded measurable functions on <span class="math inline">\(E\)</span>
+with <span class="math inline">\(m(\{x:h(x)\ne 0\})&lt;\infty\)</span>.
+For such an <span class="math inline">\(h\)</span>, let <span class="math inline">\(E_h=\{x\in E:h(x)\ne0\}\)</span>, and define <span class="math inline">\(\int_Eh=\int_{E_h}h\)</span>. If <span class="math inline">\(E'\)</span> is any measurable set with <span class="math inline">\(E_h\subset E'\subset E\)</span> and <span class="math inline">\(m(E')&lt;\infty\)</span>, then <span class="math inline">\(\int_{E'}h=\int_{E_h}h+\int_{E'\setminus
+E_h}h=\int_{E_h}h\)</span> by <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (6) and (5),
+since <span class="math inline">\(h=0\)</span> on <span class="math inline">\(E'\setminus E_h\)</span>. So <span class="math inline">\(\int_Eh\)</span> can be computed on any such <span class="math inline">\(E'\)</span>. The value <span class="math inline">\(\int_Ef\)</span> lies in <span class="math inline">\([0,\infty]\)</span>.</p>
+</div>
+<p>If <span class="math inline">\(f\)</span> is bounded and <span class="math inline">\(m(E)&lt;\infty\)</span>, this agrees with <a href="#def-lebesgue-integral-bounded">Definition 16.3.2</a>. Indeed,
+<span class="math inline">\(h=f\)</span> is allowed, and every allowed
+<span class="math inline">\(h\le f\)</span> has <span class="math inline">\(\int_Eh\le\int_Ef\)</span> by <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (3).</p>
+<div class="theorembox" id="thm-nonnegative-integral-properties">
+
+<p><strong>Theorem 16.4.2.</strong> If <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are nonnegative measurable functions
+and <span class="math inline">\(E\)</span> is a measurable set, then the
+following are true.</p>
+<ol>
+<li><p><span class="math inline">\(\int_E cf=c\int_E f\)</span> for all
+<span class="math inline">\(c&gt;0\)</span>.</p></li>
+<li><p><span class="math inline">\(\int_E(f+g)=\int_E f+\int_E
+g\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\le g\)</span> a.e., then <span class="math inline">\(\int_Ef\le \int_Eg\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> In this proof, <span class="math inline">\(h\)</span>, <span class="math inline">\(k\)</span>
+and <span class="math inline">\(\ell\)</span> always denote bounded
+measurable functions on <span class="math inline">\(E\)</span> that
+vanish outside a set of finite measure.</p>
+<p>(1) Well, an application of <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (1) gives
+<span class="math display">\[\int_E cf=\sup_{ch\le cf}\int_E
+ch=c\sup_{h\le f}\int_E h=c\int_E f.\]</span> Here <span class="math inline">\(ch\)</span> ranges over all allowed functions as
+<span class="math inline">\(h\)</span> does, since <span class="math inline">\(c\ne0\)</span>. So (1) holds.</p>
+<p>(2) The function <span class="math inline">\(f+g\)</span> is
+measurable. The proof of <a href="ch-measurable-functions.html#thm-measurable-algebra">Theorem
+15.1.4</a> works for functions with values in <span class="math inline">\([0,\infty]\)</span>. First, let <span class="math inline">\(h\le f\)</span> and <span class="math inline">\(k\le g\)</span>. Then <span class="math inline">\(h+k\)</span> is bounded and measurable, it
+vanishes outside <span class="math inline">\(E_h\cup E_k\)</span>, which
+has finite measure, and <span class="math inline">\(h+k\le f+g\)</span>.
+Computing all three integrals on <span class="math inline">\(E_h\cup
+E_k\)</span>, <a href="#thm-bounded-integral-properties">Theorem
+16.3.5</a> (1) gives <span class="math display">\[\int_E h+\int_E
+k=\int_E(h+k)\le\int_E(f+g).\]</span> Take the supremum over <span class="math inline">\(h\)</span>, and then over <span class="math inline">\(k\)</span>. This gives <span class="math inline">\(\int_E f + \int_E g\le \int_E(f+g)\)</span>.</p>
+<p>For the reverse inequality, let <span class="math inline">\(\ell\le
+f+g\)</span>. Split <span class="math inline">\(\ell\)</span> into a
+part below <span class="math inline">\(f\)</span> and a part below <span class="math inline">\(g\)</span>. Let <span class="math inline">\(h=\min\{f,\ell\}\)</span> and <span class="math inline">\(k=\ell-h\)</span>. Since <span class="math inline">\(\min\{0,\ell\}\le h\le\ell\)</span>, the function
+<span class="math inline">\(h\)</span> is real-valued, and <span class="math inline">\(|h|\le|\ell|\)</span>. So <span class="math inline">\(h\)</span> and <span class="math inline">\(k\)</span> are measurable by Theorems <a href="ch-measurable-functions.html#thm-measurable-sup">15.1.5</a> and <a href="ch-measurable-functions.html#thm-measurable-algebra">15.1.4</a>. At a point where <span class="math inline">\(\ell\le f\)</span>, <span class="math inline">\(h=\ell\)</span> and <span class="math inline">\(k=0\le g\)</span>. At a point where <span class="math inline">\(\ell&gt;f\)</span>, <span class="math inline">\(f\)</span> is finite, <span class="math inline">\(h=f\)</span> and <span class="math inline">\(k=\ell-f\le g\)</span>. So <span class="math inline">\(h\le f\)</span> and <span class="math inline">\(k\le g\)</span> everywhere. Also <span class="math inline">\(0\le k\le|\ell|\)</span>. Both <span class="math inline">\(h\)</span> and <span class="math inline">\(k\)</span> vanish where <span class="math inline">\(\ell\)</span> vanishes. Hence <span class="math display">\[\int_E\ell=\int_E h+\int_E k\le\int_E f+\int_E
+g.\]</span> Taking the supremum over <span class="math inline">\(\ell\)</span> gives <span class="math inline">\(\int_E(f+g)\le\int_E f+\int_E g\)</span>.</p>
+<p>(3) Let <span class="math inline">\(h\le f\)</span>. The set <span class="math inline">\(B=\{h&gt;g\}\)</span> is contained in <span class="math inline">\(\{f&gt;g\}\)</span>, so <span class="math inline">\(m(B)=0\)</span>. Let <span class="math inline">\(\tilde h=h\)</span> on <span class="math inline">\(E\setminus B\)</span> and <span class="math inline">\(\tilde h=0\)</span> on <span class="math inline">\(B\)</span>. Then <span class="math inline">\(\tilde h\)</span> is bounded and measurable, it
+vanishes outside <span class="math inline">\(E_h\)</span>, and <span class="math inline">\(\tilde h\le g\)</span> everywhere, since <span class="math inline">\(g\ge0\)</span>. Also <span class="math inline">\(\tilde h=h\)</span> a.e. So, computing on <span class="math inline">\(E_h\)</span>, <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (2) gives the
+equality below, and <a href="#def-nonnegative-integral">Definition
+16.4.1</a> gives the inequality. <span class="math display">\[\int_Eh=\int_E\tilde h\le\int_Eg.\]</span> Taking
+the supremum over <span class="math inline">\(h\)</span> gives <span class="math inline">\(\int_Ef\le\int_Eg\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-integral-zero-ae">
+
+<p><strong>Theorem 16.4.3.</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function
+defined on a measurable set <span class="math inline">\(E\)</span>. Then
+<span class="math inline">\(\int_E f=0\)</span> if and only if <span class="math inline">\(f=0\)</span> a.e. on <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-integral-zero-ae">Exercise
+16.4.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>As in <a href="#lem-integral-subset">Lemma 16.3.4</a>, the integral
+over a subset <span class="math inline">\(A\subset E\)</span> is the
+integral of <span class="math inline">\(f\chi_A\)</span> over <span class="math inline">\(E\)</span>. It follows that sets of measure zero
+can be ignored.</p>
+<div class="lemmabox" id="lem-integral-subset-nonneg">
+
+<p><strong>Lemma 16.4.4.</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function on
+a measurable set <span class="math inline">\(E\)</span>, and let <span class="math inline">\(A\subset E\)</span> be measurable.</p>
+<ol>
+<li><p><span class="math inline">\(\int_Af=\int_Ef\chi_A\)</span>.</p></li>
+<li><p>If <span class="math inline">\(A\subset B\subset E\)</span> with
+<span class="math inline">\(B\)</span> measurable, then <span class="math inline">\(\int_Af\le\int_Bf\)</span>.</p></li>
+<li><p>If <span class="math inline">\(m(A)=0\)</span>, then <span class="math inline">\(\int_Af=0\)</span> and <span class="math inline">\(\int_Ef=\int_{E\setminus A}f\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) The proof is the same as for <a href="#lem-integral-subset">Lemma
+16.3.4</a>, with suprema in place of infima. An allowed <span class="math inline">\(h\le f\)</span> on <span class="math inline">\(A\)</span>, extended by <span class="math inline">\(0\)</span> to <span class="math inline">\(E\)</span>, is an allowed function below <span class="math inline">\(f\chi_A\)</span> with the same integral.
+Conversely, if <span class="math inline">\(h\le f\chi_A\)</span> on
+<span class="math inline">\(E\)</span>, then <span class="math inline">\(h\le0\)</span> on <span class="math inline">\(E\setminus A\)</span>. So <span class="math inline">\(\int_Eh\le\int_Ah\)</span>, and the restriction of
+<span class="math inline">\(h\)</span> to <span class="math inline">\(A\)</span> is allowed and below <span class="math inline">\(f\)</span>.</p>
+<p>(2) Since <span class="math inline">\(f\chi_A\le f\chi_B\)</span>,
+this follows from (1) and <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (3).</p>
+<p>(3) Since <span class="math inline">\(f\chi_A=0\)</span> a.e. and
+<span class="math inline">\(f\chi_{E\setminus A}=f\)</span> a.e., this
+follows from (1) and <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (3).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="lemmabox" id="thm-fatou">
+
+<p><strong>Lemma 16.4.5</strong> (Fatou’s Lemma)<strong>.</strong></p>
+<p>If <span class="math inline">\(\{f_n\}\)</span> is a sequence of
+nonnegative measurable functions and <span class="math inline">\(f_n\to
+f\)</span> a.e. on a set <span class="math inline">\(E\)</span>, where
+<span class="math inline">\(f\ge0\)</span> on <span class="math inline">\(E\)</span>, then <span class="math display">\[\int_E f \le \liminf\int_E f_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>The function <span class="math inline">\(f\)</span> equals the
+measurable function <span class="math inline">\(\liminf f_n\)</span>
+a.e., so it is measurable by Theorems <a href="ch-measurable-functions.html#thm-measurable-sup">15.1.5</a> and <a href="ch-measurable-functions.html#thm-ae-equal-measurable">15.1.8</a>. Let <span class="math inline">\(B\subset E\)</span> be a set of measure zero off
+which <span class="math inline">\(f_n\to f\)</span>. By <a href="#lem-integral-subset-nonneg">Lemma 16.4.4</a> (3), removing <span class="math inline">\(B\)</span> from <span class="math inline">\(E\)</span> does not change <span class="math inline">\(\int_Ef\)</span> or any <span class="math inline">\(\int_Ef_n\)</span>. So we may assume <span class="math inline">\(f_n(x)\to f(x)\)</span> for every <span class="math inline">\(x\in E\)</span>.</p>
+<p>Let <span class="math inline">\(h\)</span> be a bounded measurable
+function with <span class="math inline">\(h\le f\)</span> that vanishes
+outside a set <span class="math inline">\(E'\subset E\)</span> of
+finite measure. Say <span class="math inline">\(|h|\le K\)</span>. It is
+enough to show <span class="math inline">\(\int_Eh\le\liminf\int_Ef_n\)</span>. Then the
+supremum over <span class="math inline">\(h\)</span> gives the
+result.</p>
+<p>For each <span class="math inline">\(n\)</span>, let <span class="math inline">\(h_n=\min\{h,f_n\}\)</span>. This is measurable,
+<span class="math inline">\(-K\le h_n\le h\le K\)</span>, and <span class="math inline">\(h_n=0\)</span> off <span class="math inline">\(E'\)</span>. Let <span class="math inline">\(x\in E'\)</span>. If <span class="math inline">\(f(x)&gt;h(x)\)</span>, then <span class="math inline">\(f_n(x)&gt;h(x)\)</span> for large <span class="math inline">\(n\)</span>, so <span class="math inline">\(h_n(x)=h(x)\)</span> for large <span class="math inline">\(n\)</span>. If <span class="math inline">\(f(x)=h(x)\)</span>, then <span class="math inline">\(h_n(x)=\min\{h(x),f_n(x)\}\to h(x)\)</span>.
+Either way <span class="math inline">\(h_n\to h\)</span> on <span class="math inline">\(E'\)</span>. By the Bounded Convergence
+Theorem on <span class="math inline">\(E'\)</span>, <span class="math display">\[\int_Eh=\int_{E'}h=\lim_{n\to\infty}\int_{E'}h_n.\]</span>
+Each <span class="math inline">\(h_n\)</span> is an allowed function
+with <span class="math inline">\(h_n\le f_n\)</span>. So <span class="math inline">\(\int_{E'}h_n=\int_Eh_n\le\int_Ef_n\)</span> by
+<a href="#def-nonnegative-integral">Definition 16.4.1</a>. Thus <span class="math inline">\(\int_Eh\le\liminf\int_Ef_n\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-fatou-strict">
+
+<p><strong>Example 16.4.6.</strong> The <span class="math inline">\(\le\)</span> in <span class="math inline">\(\int_E
+f \le \liminf\int_E f_n\)</span> in the statement of Fatou’s Lemma is
+important. Consider the sequence <span class="math inline">\(\{f_n\}\)</span> defined by <span class="math inline">\(f_n(x)=1\)</span> if <span class="math inline">\(n\leq x&lt; n+1\)</span> with <span class="math inline">\(f_n(x)=0\)</span> otherwise. It satisfies the
+hypotheses of Fatou’s Lemma and <span class="math inline">\(\int_{[0,\infty)} f &lt; \liminf\int_{[0,\infty)}
+f_n\)</span>. Here <span class="math inline">\(f=0\)</span> and every
+<span class="math inline">\(\int_{[0,\infty)}f_n=1\)</span>. See <a href="#fig-mass-escapes">Figure 16.2</a> and <a href="#exer-fatou-strict">Exercise 16.4.2</a>.</p>
+</div>
+<figure class="figure" id="fig-mass-escapes"><div class="figure-images"><img alt="Left panel. Unit-height rectangles over [1,2), [2,3) and [3,4), sliding to the right along the x-axis." height="124" src="figs/fig19.svg" width="291"/><img alt="Right panel. Rectangles over (0,1/n) of height n for several n, each taller and thinner than the last, all with area 1." height="164" src="figs/fig20.svg" width="216"/></div><figcaption><strong>Figure 16.2.</strong> Two ways the limit of the integrals can
+miss the integral of the limit. On the left, <span class="math inline">\(f_n=\chi_{[n,n+1)}\)</span> slides off to
+infinity. On the right, <span class="math inline">\(f_n=n\chi_{(0,1/n)}\)</span> gets taller and
+thinner. In both, every <span class="math inline">\(f_n\)</span> has
+integral <span class="math inline">\(1\)</span>, but <span class="math inline">\(f_n\to0\)</span> at every point.</figcaption></figure>
+<div class="theorembox" id="thm-mct">
+
+<p><strong>Theorem 16.4.7</strong> (Monotone Convergence
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{f_n\}\)</span> be an increasing
+sequence of nonnegative measurable functions, and let <span class="math inline">\(f_n\to f\)</span> a.e. on a set <span class="math inline">\(E\)</span>, where <span class="math inline">\(f\ge0\)</span> on <span class="math inline">\(E\)</span>. Then <span class="math display">\[\int_E f=\lim_{n\to\infty}\int_E
+f_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By Fatou’s Lemma (<a href="#thm-fatou">Lemma
+16.4.5</a>), <span class="math display">\[\int_E f\le \liminf \int_E
+f_n.\]</span> But for each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(f_n\le f\)</span> a.e., since <span class="math inline">\(\{f_n\}\)</span> increases to <span class="math inline">\(f\)</span> a.e., and so <span class="math inline">\(\int_E f_n\le \int_E f\)</span> by <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (3). Thus
+<span class="math display">\[\limsup\int_E f_n\le \int_E f.\]</span>
+Hence <span class="math display">\[\int_E f=\lim_{n\to\infty}\int_E
+f_n.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-mct-decreasing">
+
+<p><strong>Example 16.4.8.</strong> The Monotone Convergence Theorem
+does not always hold for decreasing sequences. For example, the sequence
+of functions <span class="math inline">\(\{f_n\}\)</span> defined by
+<span class="math inline">\(f_n(x)=0\)</span> for <span class="math inline">\(x&lt;n\)</span> and <span class="math inline">\(f_n(x)=1\)</span> for <span class="math inline">\(x\geq n\)</span> is decreasing but the conclusion
+of the Monotone Convergence Theorem does not hold. Here <span class="math inline">\(f_n\to0\)</span> everywhere, but <span class="math inline">\(\int_\mathbb{R}f_n=\infty\)</span> for every <span class="math inline">\(n\)</span>. See <a href="#exer-mct-decreasing">Exercise 16.4.3</a>.</p>
+</div>
+<div class="corollarybox" id="cor-integral-of-series">
+
+<p><strong>Corollary 16.4.9.</strong> Let <span class="math inline">\(\{u_n\}\)</span> be a sequence of nonnegative
+measurable functions, and let <span class="math inline">\(f=\sum^\infty_{n=1}u_n\)</span> on a set <span class="math inline">\(E\)</span>. Then <span class="math display">\[\int_E f=\sum^\infty_{n=1}\int_E
+u_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Define <span class="math inline">\(s_k=\sum^k_{n=1}
+u_n\)</span>. Now <span class="math inline">\(\{s_k\}\)</span> is an
+increasing sequence and converges to <span class="math inline">\(f\)</span>. So by the Monotone Convergence Theorem
+and <a href="#thm-nonnegative-integral-properties">Theorem
+16.4.2</a> (2), <span class="math display">\[\int_E
+f=\lim_{k\to\infty}\int_E s_k=\lim_{k\to\infty}\int_E\sum^k_{n=1} u_n =
+\lim_{k\to\infty}\sum^k_{n=1}\int_E u_n=\sum^\infty_{n=1}\int_E
+u_n.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Compare <a href="#cor-integral-of-series">Corollary 16.4.9</a> with
+<a href="ch-function-sequences.html#cor-series-integral">Corollary 11.2.19</a>, its Riemann
+version. There the series had to converge uniformly. Here the terms only
+need to be nonnegative.</p>
+<div class="theorembox" id="thm-integral-countably-additive">
+
+<p><strong>Theorem 16.4.10.</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function
+and <span class="math inline">\(\{E_i\}\)</span> a disjoint sequence of
+measurable sets. Let <span class="math inline">\(E=\bigcup_{i\in\mathbb{N}}E_i\)</span>. Then <span class="math display">\[\int_E f= \sum_{i=1}^\infty\int_{E_i}
+f.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(u_i=f\cdot\chi_{E_i}\)</span>. Then <span class="math inline">\(f\cdot\chi_{E}=\sum^\infty_{i=1}u_i\)</span>,
+since the sets <span class="math inline">\(E_i\)</span> are disjoint.
+Thus by <a href="#cor-integral-of-series">Corollary 16.4.9</a> and <a href="#lem-integral-subset-nonneg">Lemma 16.4.4</a> (1), <span class="math display">\[\int_E f= \sum^\infty_{i=1}\int_E
+u_i=\sum_{i=1}^\infty\int_{E_i} f.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So if <span class="math inline">\(f\ge0\)</span> is measurable, then
+<span class="math inline">\(\nu(A)=\int_Af\)</span> defines a measure
+<span class="math inline">\(\nu\)</span> on the measurable sets (<a href="ch-measures.html#def-measure">Definition 13.3.1</a>). Compare <a href="#exer-simple-integral-measure">Exercise 16.2.5</a>.</p>
+<div class="definitionbox" id="def-integrable-nonneg">
+
+<p><strong>Definition 16.4.11.</strong> A nonnegative measurable
+function <span class="math inline">\(f\)</span> is called
+<em>integrable</em> over the measurable set <span class="math inline">\(E\)</span> if <span class="math display">\[\int_E
+f&lt;\infty.\]</span></p>
+</div>
+<div class="lemmabox" id="lem-integrable-finite-ae">
+
+<p><strong>Lemma 16.4.12.</strong> If a nonnegative measurable function
+<span class="math inline">\(f\)</span> is integrable over <span class="math inline">\(E\)</span>, then <span class="math inline">\(f&lt;\infty\)</span> a.e. on <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(A=\{f=\infty\}\)</span>, which is
+measurable by <a href="ch-measurable-functions.html#thm-measurable-equivalent">Theorem 15.1.1</a>,
+and for <span class="math inline">\(k\in\mathbb{N}\)</span> let <span class="math inline">\(A_k=A\cap[-k,k]\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, the function <span class="math inline">\(n\chi_{A_k}\)</span> is bounded and measurable,
+vanishes outside <span class="math inline">\(A_k\)</span>, and is at
+most <span class="math inline">\(f\)</span>. So <span class="math inline">\(n\,m(A_k)\le\int_Ef\)</span> for every <span class="math inline">\(n\)</span>. Since <span class="math inline">\(\int_Ef&lt;\infty\)</span>, <span class="math inline">\(m(A_k)=0\)</span>. So <span class="math inline">\(m(A)=0\)</span>, since <span class="math inline">\(A=\bigcup_kA_k\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-integral-difference">
+
+<p><strong>Theorem 16.4.13.</strong> Let <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be two nonnegative measurable
+functions. If <span class="math inline">\(f\)</span> is integrable over
+<span class="math inline">\(E\)</span> and <span class="math inline">\(g\le f\)</span> on <span class="math inline">\(E\)</span>, then <span class="math inline">\(g\)</span> is also integrable over <span class="math inline">\(E\)</span> and <span class="math display">\[\int_E(f-g)=\int_E f-\int_E g.\]</span> (Where
+<span class="math inline">\(f=g=\infty\)</span>, set <span class="math inline">\(f-g=0\)</span>. By <a href="#lem-integrable-finite-ae">Lemma 16.4.12</a>, this happens only on
+a set of measure zero.)</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> With this convention, <span class="math inline">\(f=(f-g)+g\)</span> at every point of <span class="math inline">\(E\)</span>. The function <span class="math inline">\(f-g\)</span> is nonnegative. It is measurable,
+since it is measurable on the set where <span class="math inline">\(f&lt;\infty\)</span> and the rest of <span class="math inline">\(E\)</span> has measure zero. By <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (2),
+<span class="math inline">\(\int_E f=\int_E(f-g)+\int_E g\)</span>.
+Since <span class="math inline">\(\int_E f&lt;\infty\)</span>, <span class="math inline">\(\int_E (f-g)+\int_E g&lt;\infty\)</span>, and thus
+<span class="math inline">\(\int_E g&lt;\infty\)</span>. So <span class="math inline">\(\int_E(f-g)&lt;\infty\)</span> too, and
+subtracting <span class="math inline">\(\int_Eg\)</span> from both sides
+gives the result.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-absolute-continuity-integral">
+
+<p><strong>Theorem 16.4.14.</strong> Let <span class="math inline">\(f\)</span> be a nonnegative function which is
+integrable over a set <span class="math inline">\(E\)</span>. Then for
+all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists
+a <span class="math inline">\(\delta&gt;0\)</span> such that for all
+measurable sets <span class="math inline">\(A\subset E\)</span> with
+<span class="math inline">\(m(A)&lt;\delta\)</span>, <span class="math display">\[\int_A f&lt;\varepsilon.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. For <span class="math inline">\(N\in\mathbb{N}\)</span>, let <span class="math inline">\(f_N=\min\{f,N\}\)</span>. Each <span class="math inline">\(f_N\)</span> is measurable and bounded by <span class="math inline">\(N\)</span>, the sequence <span class="math inline">\(\{f_N\}\)</span> increases, and <span class="math inline">\(f_N\to f\)</span> at every point of <span class="math inline">\(E\)</span>, including points where <span class="math inline">\(f=\infty\)</span>. By the Monotone Convergence
+Theorem, <span class="math inline">\(\int_Ef_N\to\int_Ef\)</span>. Since
+<span class="math inline">\(\int_Ef&lt;\infty\)</span>, there is an
+<span class="math inline">\(N\)</span> with <span class="math inline">\(\int_Ef-\int_Ef_N&lt;\frac\varepsilon 2\)</span>.
+The function <span class="math inline">\(f-f_N\)</span> is defined
+everywhere, since <span class="math inline">\(f_N\)</span> is finite. By
+<a href="#thm-integral-difference">Theorem 16.4.13</a>, <span class="math inline">\(\int_E(f-f_N)=\int_Ef-\int_Ef_N&lt;\frac\varepsilon
+2\)</span>.</p>
+<p>Let <span class="math inline">\(\delta=\frac{\varepsilon}{2N}\)</span>, and let
+<span class="math inline">\(A\subset E\)</span> be measurable with <span class="math inline">\(m(A)&lt;\delta\)</span>. On <span class="math inline">\(A\)</span>, <span class="math inline">\(f=(f-f_N)+f_N\)</span>, and <span class="math inline">\(f_N\le N\)</span>. By <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (2), <a href="#lem-integral-subset-nonneg">Lemma 16.4.4</a> (2) and <a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (5), <span class="math display">\[\int_A f =\int_A (f-f_N)+\int_A
+f_N\le\int_E(f-f_N)+N\,m(A)&lt;\frac\varepsilon 2 + \frac\varepsilon 2 =
+\varepsilon.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>This property is called the <em>absolute continuity</em> of the
+integral. It returns in <a href="ch-differentiation.html">Chapter 17</a>,
+where it shows that an integral <span class="math inline">\(F(x)=\int_{[a,x]}f\)</span> is absolutely
+continuous (<a href="ch-differentiation.html#thm-ac-indefinite-integral">Theorem
+17.5.8</a>).</p>
+<p>For nonnegative functions, the Lebesgue integral also includes the
+improper Riemann integral of <a href="ch-integrals.html#sec-improper">Section
+9.5</a>.</p>
+<div class="propositionbox" id="prop-improper-lebesgue">
+
+<p><strong>Proposition 16.4.15.</strong> Let <span class="math inline">\(a\in\mathbb{R}\)</span> and <span class="math inline">\(b\in\mathbb{R}\cup\{\infty\}\)</span> with <span class="math inline">\(a&lt;b\)</span>. Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,b)\)</span> with
+<span class="math inline">\(f\ge0\)</span>. Then <span class="math inline">\(f\)</span> is measurable on <span class="math inline">\([a,b)\)</span>, and <span class="math display">\[\int_{[a,b)}f=\lim_{s\to b^-}\int_a^sf,\]</span>
+where both sides may be <span class="math inline">\(\infty\)</span>. So
+<span class="math inline">\(f\)</span> is integrable over <span class="math inline">\([a,b)\)</span> if and only if the improper
+integral <span class="math inline">\(\int_a^bf\)</span> converges, and
+then the two integrals are equal.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(f\ge0\)</span>, <span class="math inline">\(\int_a^sf\)</span> increases with <span class="math inline">\(s\)</span>. So the limit exists in <span class="math inline">\([0,\infty]\)</span> and equals <span class="math inline">\(\lim_{n\to\infty}\int_a^{s_n}f\)</span> for any
+increasing sequence <span class="math inline">\(s_n\to b\)</span> with
+<span class="math inline">\(a&lt;s_n&lt;b\)</span>. Fix such a sequence.
+By <a href="#thm-riemann-lebesgue">Theorem 16.3.3</a>, <span class="math inline">\(f\)</span> is measurable on each <span class="math inline">\([a,s_n]\)</span>, with <span class="math inline">\(\int_{[a,s_n]}f=\int_a^{s_n}f\)</span>. So <span class="math inline">\(\{f&gt;\alpha\}=\bigcup_n\{x\in[a,s_n]:f(x)&gt;\alpha\}\)</span>
+is measurable, and <span class="math inline">\(f\)</span> is measurable.
+The functions <span class="math inline">\(f\chi_{[a,s_n]}\)</span> are
+nonnegative and measurable, they increase with <span class="math inline">\(n\)</span>, and they converge to <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b)\)</span>. By the Monotone Convergence
+Theorem and <a href="#lem-integral-subset-nonneg">Lemma 16.4.4</a> (1),
+<span class="math display">\[\int_{[a,b)}f=\lim_{n\to\infty}\int_{[a,s_n]}f=\lim_{n\to\infty}\int_a^{s_n}f.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The same holds on <span class="math inline">\((a,b]\)</span>, with
+the same proof. For example, <span class="math inline">\(\int_{[0,\infty)}e^{-x}\,dm(x)=\lim_{s\to\infty}(1-e^{-s})=1\)</span>,
+and by the <span class="math inline">\(p\)</span>-Test (<a href="ch-integrals.html#thm-p-test">Theorem 9.5.7</a>), <span class="math inline">\(\frac{1}{x^p}\)</span> is integrable over <span class="math inline">\([1,\infty)\)</span> exactly when <span class="math inline">\(p&gt;1\)</span>.</p>
+<section class="level5 unnumbered" id="exercises-57">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-integral-zero-ae">
+
+<p><strong>Exercise 16.4.1.</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function
+defined on <span class="math inline">\(E\)</span>. Prove that <span class="math inline">\(\int_E f=0\)</span> if and only if <span class="math inline">\(f=0\)</span> a.e. on <span class="math inline">\(E\)</span>. This is <a href="#thm-integral-zero-ae">Theorem 16.4.3</a>. <a aria-label="Hint for Exercise 16.4.1" href="solutions-ch16.html#sol-exer-integral-zero-ae">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-fatou-strict">
+
+<p><strong>Exercise 16.4.2.</strong> Show that the sequence <span class="math inline">\(\{f_n\}\)</span> defined by <span class="math inline">\(f_n(x)=1\)</span> if <span class="math inline">\(n\leq x&lt; n+1\)</span> with <span class="math inline">\(f_n(x)=0\)</span> otherwise satisfies the
+hypotheses of Fatou’s Lemma and that <span class="math inline">\(\int_{[0,\infty)} f &lt; \liminf\int_{[0,\infty)}
+f_n\)</span>. <a aria-label="Solution for Exercise 16.4.2" href="solutions-ch16.html#sol-exer-fatou-strict">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-mct-decreasing">
+
+<p><strong>Exercise 16.4.3.</strong> Show that the Monotone Convergence
+Theorem does not always hold for a decreasing sequence of functions by
+considering the sequence of functions <span class="math inline">\(\{f_n\}\)</span> defined by <span class="math inline">\(f_n(x)=0\)</span> for <span class="math inline">\(x&lt;n\)</span> and <span class="math inline">\(f_n(x)=1\)</span> for <span class="math inline">\(x\geq n\)</span>. <a aria-label="Solution for Exercise 16.4.3" href="solutions-ch16.html#sol-exer-mct-decreasing">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-F-continuous">
+
+<p><strong>Exercise 16.4.4.</strong> Let <span class="math inline">\(f\)</span> be a nonnegative integrable function
+over <span class="math inline">\(\mathbb{R}\)</span>. Use the Monotone
+Convergence Theorem to prove the function <span class="math inline">\(F(x)=\int_{(-\infty,x]} f\)</span> is continuous.
+<a aria-label="Hint for Exercise 16.4.4" href="solutions-ch16.html#sol-exer-F-continuous">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-chebyshev">
+
+<p><strong>Exercise 16.4.5.</strong> (Chebyshev’s inequality.) Let <span class="math inline">\(f\)</span> be a nonnegative measurable function on
+<span class="math inline">\(E\)</span>, and let <span class="math inline">\(\alpha&gt;0\)</span>. Prove that <span class="math inline">\(m(\{f\ge\alpha\})\le\frac1\alpha\int_Ef\)</span>.
+<a aria-label="Hint for Exercise 16.4.5" href="solutions-ch16.html#sol-exer-chebyshev">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-simple-increasing">
+
+<p><strong>Exercise 16.4.6.</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function on
+<span class="math inline">\(E\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(\varphi_n=\frac{1}{2^n}\left\lfloor
+2^nf\right\rfloor\)</span> on <span class="math inline">\(\{f&lt;n\}\cap[-n,n]\)</span>, let <span class="math inline">\(\varphi_n=n\)</span> on <span class="math inline">\(\{f\ge n\}\cap[-n,n]\)</span>, and let <span class="math inline">\(\varphi_n=0\)</span> elsewhere. Prove that each
+<span class="math inline">\(\varphi_n\)</span> is a simple function that
+vanishes outside a set of finite measure, that <span class="math inline">\(\{\varphi_n\}\)</span> increases, and that <span class="math inline">\(\varphi_n\to f\)</span> on <span class="math inline">\(E\)</span>. Conclude that <span class="math inline">\(\int_Ef=\lim_{n\to\infty}\int_E\varphi_n\)</span>.
+<a aria-label="Hint for Exercise 16.4.6" href="solutions-ch16.html#sol-exer-simple-increasing">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-telescoping-integral">
+
+<p><strong>Exercise 16.4.7.</strong> Apply <a href="#cor-integral-of-series">Corollary 16.4.9</a> to <span class="math inline">\(u_n(x)=x^n(1-x)\)</span> on <span class="math inline">\([0,1]\)</span> to show that <span class="math inline">\(\sum_{n=0}^\infty\frac{1}{(n+1)(n+2)}=1\)</span>.
+<a aria-label="Hint for Exercise 16.4.7" href="solutions-ch16.html#sol-exer-telescoping-integral">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-integral-positive">
+
+<p><strong>Exercise 16.4.8.</strong> Let <span class="math inline">\(f\)</span> be a measurable function on <span class="math inline">\(E\)</span> with <span class="math inline">\(f(x)&gt;0\)</span> for all <span class="math inline">\(x\in E\)</span>, and suppose <span class="math inline">\(m(E)&gt;0\)</span>. Prove that <span class="math inline">\(\int_Ef&gt;0\)</span>. <a aria-label="Hint for Exercise 16.4.8" href="solutions-ch16.html#sol-exer-integral-positive">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-power-integrable">
+
+<p><strong>Exercise 16.4.9.</strong> For which <span class="math inline">\(p&gt;0\)</span> is <span class="math inline">\(\frac{1}{x^p}\)</span> integrable over <span class="math inline">\((0,1]\)</span>? Over <span class="math inline">\((0,\infty)\)</span>? <a aria-label="Hint for Exercise 16.4.9" href="solutions-ch16.html#sol-exer-x-power-integrable">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-general-integral">
+<h2>16.5 The General Lebesgue Integral</h2>
+<p>A general measurable function is split into its positive and negative
+parts, and each part is integrated separately. This is the same idea as
+absolute convergence of series (<a href="ch-series.html#exer-positive-negative-parts">Exercise 10.3.4</a>). The integral
+exists when both parts have finite integrals.</p>
+<div class="definitionbox" id="def-positive-negative-parts">
+
+<p><strong>Definition 16.5.1.</strong> Let <span class="math inline">\(f\)</span> be an extended real-valued function.
+Define <span class="math inline">\(f^+(x)=\max\{f(x),0\}\)</span> and
+define <span class="math inline">\(f^-(x)=\max\{-f(x),0\}\)</span>.
+These are the <em>positive part</em> and the <em>negative part</em> of
+<span class="math inline">\(f\)</span>. Both are nonnegative.</p>
+</div>
+<div class="lemmabox" id="lem-positive-negative-parts">
+
+<p><strong>Lemma 16.5.2.</strong> If <span class="math inline">\(f\)</span> is measurable, <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span> are measurable. Also, <span class="math inline">\(f=f^+-f^-\)</span> and <span class="math inline">\(|f|=f^++f^-\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-function-parts">Exercise
+16.5.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-lebesgue-integrable">
+
+<p><strong>Definition 16.5.3.</strong> A measurable function <span class="math inline">\(f\)</span> is said to be <em>integrable</em> over
+<span class="math inline">\(E\)</span> if <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span> are both integrable over <span class="math inline">\(E\)</span>. In this case, define <span class="math display">\[\int_E f=\int_E f^+ - \int_E f^-.\]</span> The
+set of functions that are integrable over <span class="math inline">\(E\)</span> is denoted <span class="math inline">\(L^1(E)\)</span>. For an interval, write <span class="math inline">\(L^1[a,b]\)</span> for <span class="math inline">\(L^1([a,b])\)</span>. A function in <span class="math inline">\(L^1(E)\)</span> is also called <em>Lebesgue
+integrable</em> over <span class="math inline">\(E\)</span>.</p>
+</div>
+<p>By <a href="#lem-positive-negative-parts">Lemma 16.5.2</a> and <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (2),
+<span class="math inline">\(\int_E|f|=\int_Ef^++\int_Ef^-\)</span>. So
+<span class="math inline">\(f\)</span> is integrable if and only if
+<span class="math inline">\(f\)</span> is measurable and <span class="math inline">\(\int_E|f|&lt;\infty\)</span>. If <span class="math inline">\(f\)</span> is bounded and <span class="math inline">\(m(E)&lt;\infty\)</span>, this definition agrees
+with <a href="#def-lebesgue-integral-bounded">Definition 16.3.2</a>, by
+<a href="#thm-bounded-integral-properties">Theorem 16.3.5</a> (1). If
+<span class="math inline">\(f\ge0\)</span>, then <span class="math inline">\(f^-=0\)</span> and it agrees with <a href="#def-nonnegative-integral">Definition 16.4.1</a>.</p>
+<div class="theorembox" id="thm-lebesgue-integral-properties">
+
+<p><strong>Theorem 16.5.4.</strong> Let <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be integrable over <span class="math inline">\(E\)</span>. Then each of the following hold.</p>
+<ol>
+<li><p><span class="math inline">\(cf\)</span> is integrable over <span class="math inline">\(E\)</span> and <span class="math inline">\(\int_E
+cf=c\int_E f\)</span> for all <span class="math inline">\(c\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(f+g\)</span> is integrable over <span class="math inline">\(E\)</span> and <span class="math inline">\(\int_E(f+g)=\int_E f+\int_E g\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\le g\)</span> a.e., then <span class="math inline">\(\int_E f\le \int_E g\)</span>.</p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint measurable sets contained
+in <span class="math inline">\(E\)</span>, then <span class="math inline">\(\int_{A\cup B} f=\int_A f+\int_B
+f\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (1) Exercise. See <a href="#exer-lebesgue-scalar">Exercise 16.5.2</a>.</p>
+<p>(2) By <a href="#lem-integrable-finite-ae">Lemma 16.4.12</a>, applied
+to <span class="math inline">\(|f|\)</span> and <span class="math inline">\(|g|\)</span>, the functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are finite a.e. Changing <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> on a set of measure zero does not
+change any of the integrals involved, by <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (3). So
+we may assume <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are real-valued. Notice that if <span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span> are nonnegative integrable functions
+on <span class="math inline">\(E\)</span> with <span class="math inline">\(f=f_1-f_2\)</span>, then <span class="math inline">\(f^++f_2=f^-+f_1\)</span>. Thus, by <a href="#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (2),
+<span class="math inline">\(\int_E f^++\int_E f_2=\int_E f^- + \int_E
+f_1\)</span>. Therefore, since all four integrals are finite, <span class="math inline">\(\int_E f=\int_E f^+ - \int_E f^-=\int_E f_1-\int_E
+f_2\)</span>.</p>
+<p>Now, if <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are integrable, so are <span class="math inline">\(f^++g^+\)</span> and <span class="math inline">\(f^-+g^-\)</span>, and since <span class="math inline">\(f+g=f^++g^+-(f^-+g^-)\)</span>, <span class="math display">\[\begin{aligned}
+\int_E(f+g)&amp;=\int_E(f^++g^+)-\int_E(f^-+g^-)\\
+&amp;=\int_Ef^++\int_Eg^+-\int_Ef^--\int_Eg^-\\
+&amp;=\int_E f + \int_E g.
+\end{aligned}\]</span> Here <span class="math inline">\(f+g\)</span> is
+integrable, since it is measurable and <span class="math inline">\(|f+g|\le|f|+|g|\)</span>, so <span class="math inline">\(\int_E|f+g|\le\int_E|f|+\int_E|g|&lt;\infty\)</span>.</p>
+<p>(3) This follows from (1) and (2). The function <span class="math inline">\(g-f\)</span> is integrable by (1) and (2), and
+<span class="math inline">\((g-f)^-=0\)</span> a.e. So <span class="math inline">\(\int_E(g-f)^-=0\)</span>, and <span class="math inline">\(\int_Eg-\int_Ef=\int_E(g-f)=\int_E(g-f)^+\ge0\)</span>.</p>
+<p>(4) Now, applying <a href="#lem-integral-subset-nonneg">Lemma
+16.4.4</a> (1) to <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span>, and using <a href="ch-measurable-functions.html#lem-characteristic-algebra">Lemma 15.1.10</a> and (2), <span class="math display">\[\begin{aligned}
+\int_{A\cup B}f&amp;=\int_{E} f\cdot\chi_{A\cup B}\\
+&amp;=\int_{E} f\cdot(\chi_A + \chi_B)\\
+&amp;=\int_{E} f\cdot\chi_A + \int_{E} f\cdot\chi_B\\
+&amp;=\int_A f + \int_B f.
+\end{aligned}\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="remarkbox" id="rem-sum-undefined">
+
+<p><strong>Remark 16.5.5.</strong> Note that <span class="math inline">\(f+g\)</span> is not defined at points where <span class="math inline">\(f=\infty\)</span> and <span class="math inline">\(g=-\infty\)</span>. However, since <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are integrable, the set of such points
+must have measure zero, by <a href="#lem-integrable-finite-ae">Lemma
+16.4.12</a>. So <span class="math inline">\(\int_{E}(f+g)\)</span> still
+exists.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Building an Integral in
+Stages).</strong></p>
+<p>The integral in this chapter was defined in four stages, for simple
+functions, bounded functions on sets of finite measure, nonnegative
+functions, and integrable functions. Each basic property was proved once
+at each stage, in Theorems <a href="#thm-simple-integral-linear">16.2.3</a>, <a href="#thm-bounded-integral-properties">16.3.5</a>, <a href="#thm-nonnegative-integral-properties">16.4.2</a> and <a href="#thm-lebesgue-integral-properties">16.5.4</a>. A supremum or
+infimum carries a property from simple functions to bounded ones, and
+from bounded functions to nonnegative ones. The decomposition <span class="math inline">\(f=f^+-f^-\)</span> carries it to integrable
+functions. To prove a new fact about the Lebesgue integral, follow the
+same path. Prove it for simple functions, where it is usually a finite
+computation. Then pass it up the stages. Another route skips the middle
+stage. Choose simple functions <span class="math inline">\(\varphi_n\)</span> that increase to <span class="math inline">\(f\ge0\)</span> (<a href="#exer-simple-increasing">Exercise 16.4.6</a>) and apply the
+Monotone Convergence Theorem.</p>
+</div>
+<div class="theorembox" id="thm-dct">
+
+<p><strong>Theorem 16.5.6</strong> (Lebesgue Dominated Convergence
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(g\)</span> be integrable over <span class="math inline">\(E\)</span> and let <span class="math inline">\(\{f_n\}\)</span> be a sequence of measurable
+functions such that <span class="math inline">\(|f_n|\le g\)</span> on
+<span class="math inline">\(E\)</span>. If <span class="math inline">\(f_n\to f\)</span> a.e. on <span class="math inline">\(E\)</span>, then <span class="math display">\[\int_E f=\lim_{n\to\infty}\int_E
+f_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Each <span class="math inline">\(f_n\)</span> is integrable, since
+<span class="math inline">\(|f_n|\le g\)</span> and <a href="#thm-integral-difference">Theorem 16.4.13</a> applies to <span class="math inline">\(f_n^+\)</span> and <span class="math inline">\(f_n^-\)</span>. The function <span class="math inline">\(f\)</span> is measurable, since it equals <span class="math inline">\(\limsup f_n\)</span> a.e. Also <span class="math inline">\(|f|\le g\)</span> a.e., so <span class="math inline">\(f\)</span> is integrable. By <a href="#lem-integrable-finite-ae">Lemma 16.4.12</a>, <span class="math inline">\(g&lt;\infty\)</span> a.e. Removing a set of
+measure zero from <span class="math inline">\(E\)</span> changes none of
+the integrals. So we may assume that <span class="math inline">\(g\)</span> is finite and that <span class="math inline">\(f_n\to f\)</span> at every point of <span class="math inline">\(E\)</span>.</p>
+<p>Then <span class="math inline">\(g+f_n\)</span> and <span class="math inline">\(g-f_n\)</span> are nonnegative measurable
+functions, and they converge to <span class="math inline">\(g+f\)</span>
+and <span class="math inline">\(g-f\)</span>. Apply Fatou’s Lemma to
+<span class="math inline">\(g+f_n\)</span>. Using <a href="#thm-lebesgue-integral-properties">Theorem 16.5.4</a> (2), <span class="math display">\[\int_Eg+\int_Ef=\int_E(g+f)\le\liminf\int_E(g+f_n)=\int_Eg+\liminf\int_Ef_n.\]</span>
+Since <span class="math inline">\(\int_Eg\)</span> is finite, <span class="math inline">\(\int_Ef\le\liminf\int_Ef_n\)</span>. Now apply
+Fatou’s Lemma to <span class="math inline">\(g-f_n\)</span>. <span class="math display">\[\int_Eg-\int_Ef=\int_E(g-f)\le\liminf\int_E(g-f_n)=\int_Eg-\limsup\int_Ef_n.\]</span>
+So <span class="math inline">\(\limsup\int_Ef_n\le\int_Ef\)</span>.
+Together, <span class="math display">\[\limsup\int_Ef_n\le\int_Ef\le\liminf\int_Ef_n,\]</span>
+so <span class="math inline">\(\lim_{n\to\infty}\int_Ef_n\)</span>
+exists and equals <span class="math inline">\(\int_Ef\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The Bounded Convergence Theorem is the special case where <span class="math inline">\(m(E)&lt;\infty\)</span> and <span class="math inline">\(g\)</span> is the constant <span class="math inline">\(M\)</span>. In both examples of <a href="#fig-mass-escapes">Figure 16.2</a>, no integrable <span class="math inline">\(g\)</span> lies above every <span class="math inline">\(f_n\)</span>. Any such <span class="math inline">\(g\)</span> would be at least <span class="math inline">\(1\)</span> on <span class="math inline">\([1,\infty)\)</span> in the first example, and at
+least <span class="math inline">\(\frac{1}{2x}\)</span> on <span class="math inline">\((0,1)\)</span> in the second.</p>
+<div class="theorembox" id="thm-generalized-dct">
+
+<p><strong>Theorem 16.5.7.</strong> Let <span class="math inline">\(\{g_n\}\)</span> be a sequence of integrable
+functions with <span class="math inline">\(g_n\to g\)</span> a.e. on
+<span class="math inline">\(E\)</span>, where <span class="math inline">\(g\)</span> is an integrable function. Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of measurable
+functions such that <span class="math inline">\(|f_n|\le g_n\)</span>
+and <span class="math inline">\(f_n\to f\)</span> a.e. on <span class="math inline">\(E\)</span>. If <span class="math display">\[\int_E
+g=\lim_{n\to\infty}\int_E g_n,\]</span> then <span class="math display">\[\int_E f=\lim_{n\to\infty}\int_E
+f_n.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-generalized-dct">Exercise
+16.5.4</a> (a).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Choosing a Convergence
+Theorem).</strong></p>
+<p>To compute <span class="math inline">\(\lim\int_Ef_n\)</span>, first
+find the pointwise limit <span class="math inline">\(f\)</span>, a.e.
+Then look for a theorem that moves the limit inside the integral.</p>
+<ul>
+<li><p>If <span class="math inline">\(f_n\ge0\)</span> and <span class="math inline">\(\{f_n\}\)</span> increases, use the Monotone
+Convergence Theorem. No integrability is needed, and the answer may be
+<span class="math inline">\(\infty\)</span>.</p></li>
+<li><p>If <span class="math inline">\(|f_n|\le g\)</span> for one
+integrable <span class="math inline">\(g\)</span>, use the Dominated
+Convergence Theorem. On a set of finite measure, a constant <span class="math inline">\(g\)</span> works when the <span class="math inline">\(f_n\)</span> are uniformly bounded. This is the
+Bounded Convergence Theorem.</p></li>
+<li><p>If only an inequality is needed, Fatou’s Lemma may be
+enough.</p></li>
+</ul>
+<p>If none of these applies, check whether the conclusion is even true.
+The examples in <a href="#fig-mass-escapes">Figure 16.2</a> fail all
+three tests, and the conclusion fails for them. Sometimes a change of
+variables or an integration by parts produces a sequence that one of the
+theorems does handle.</p>
+</div>
+<div class="examplebox" id="ex-dct-limits">
+
+<p><strong>Example 16.5.8.</strong> The Bounded Convergence Theorem,
+Monotone Convergence Theorem and the Lebesgue Dominated Convergence
+Theorem can be used to exactly evaluate limits of integrals of sequences
+of functions without evaluating the integral of the function itself. For
+example, <span class="math display">\[\lim_{n\to\infty}\int_{[1,\infty)}e^{-x}\sin^n
+x\,dm(x)\]</span> can be evaluated without evaluating the actual
+integrals. (<a href="#exer-dct-limits">Exercise 16.5.6</a> gives two
+more.)</p>
+<p>Set <span class="math inline">\(f_n(x)= e^{-x}\sin^n x.\)</span>
+Define <span class="math inline">\(g(x)=e^{-x}\)</span>, which is
+integrable on <span class="math inline">\([1,\infty)\)</span> by <a href="#prop-improper-lebesgue">Proposition 16.4.15</a>. Since <span class="math inline">\(|\sin^n x| \le 1\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> and for all <span class="math inline">\(x\in[1,\infty)\)</span>, <span class="math inline">\(|f_n(x)|\le g(x)\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> and for all <span class="math inline">\(x\in[1,\infty)\)</span>. So the Lebesgue Dominated
+Convergence Theorem can be applied. If <span class="math inline">\(|\sin
+x|&lt;1\)</span>, then <span class="math inline">\(\sin^nx\to0\)</span>.
+If <span class="math inline">\(\sin x=1\)</span>, then <span class="math inline">\(\sin^nx=1\)</span> for every <span class="math inline">\(n\)</span>. If <span class="math inline">\(\sin
+x=-1\)</span>, then <span class="math inline">\(\sin^nx\)</span>
+alternates between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> and has no limit. The last two cases
+happen only at the countably many points <span class="math inline">\(x=\frac{(2k-1)\pi}{2}\)</span>, <span class="math inline">\(k\in\mathbb{N}\)</span>. So <span class="math inline">\(f_n\to0\)</span> a.e. on <span class="math inline">\([1,\infty)\)</span>, and <span class="math display">\[\lim_{n\to\infty}\int_{[1,\infty)}e^{-x}\sin^n
+x\,dm(x)=\int_{[1,\infty)}0\,dm(x)=0.\]</span></p>
+</div>
+<p>The improper Riemann integral and the Lebesgue integral differ for
+functions that change sign. In <a href="ch-integrals.html#ex-sin-x-over-x-improper">Example 9.5.11</a>, the improper
+integral <span class="math inline">\(\int_\pi^\infty\frac{\sin
+x}{x}\,dx\)</span> converges, but <span class="math inline">\(\int_\pi^\infty\frac{|\sin x|}{x}\,dx\)</span>
+diverges. By <a href="#prop-improper-lebesgue">Proposition 16.4.15</a>,
+<span class="math inline">\(\int_{[\pi,\infty)}\frac{|\sin
+x|}{x}\,dm(x)=\infty\)</span>. So <span class="math inline">\(\frac{\sin
+x}{x}\)</span> is not Lebesgue integrable over <span class="math inline">\([\pi,\infty)\)</span>. The improper integral
+converges only because positive and negative parts cancel, the same way
+a conditionally convergent series does. The Lebesgue integral requires
+absolute convergence. When <span class="math inline">\(\int_a^b|f|\)</span> converges as an improper
+integral, the two integrals agree (<a href="#exer-absolutely-convergent-improper">Exercise 16.5.8</a>).</p>
+<section class="level5 unnumbered" id="exercises-58">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-function-parts">
+
+<p><strong>Exercise 16.5.1.</strong> Prove that if <span class="math inline">\(f\)</span> is measurable, so are <span class="math inline">\(f^+\)</span> and <span class="math inline">\(f^-\)</span> and that <span class="math inline">\(f=f^+-f^-\)</span> and <span class="math inline">\(|f|=f^++f^-\)</span>. <a aria-label="Hint for Exercise 16.5.1" href="solutions-ch16.html#sol-exer-function-parts">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-lebesgue-scalar">
+
+<p><strong>Exercise 16.5.2.</strong> Let <span class="math inline">\(c\in\mathbb{R}\)</span>. Prove that if <span class="math inline">\(f\)</span> is integrable over <span class="math inline">\(E\)</span>, then so is <span class="math inline">\(cf\)</span> and <span class="math inline">\(\int_E
+cf=c\int_E f\)</span>. <a aria-label="Solution for Exercise 16.5.2" href="solutions-ch16.html#sol-exer-lebesgue-scalar">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-abs-integral">
+
+<p><strong>Exercise 16.5.3.</strong> Let <span class="math inline">\(f\)</span> be integrable over <span class="math inline">\(E\)</span>. Prove that <span class="math inline">\(\left|\int_Ef\right|\le\int_E|f|\)</span>. <a aria-label="Hint for Exercise 16.5.3" href="solutions-ch16.html#sol-exer-abs-integral">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-generalized-dct">
+
+<p><strong>Exercise 16.5.4.</strong></p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(\{g_n\}\)</span> be a sequence of
+integrable functions with <span class="math inline">\(g_n\to g\)</span>
+a.e. on <span class="math inline">\(E\)</span>, where <span class="math inline">\(g\)</span> is integrable. Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of measurable
+functions such that <span class="math inline">\(|f_n|\le g_n\)</span>
+and <span class="math inline">\(f_n\to f\)</span> a.e. on <span class="math inline">\(E\)</span>. Prove that if <span class="math inline">\(\int_E g=\lim_{n\to\infty}\int_E g_n\)</span>,
+then <span class="math inline">\(\int_E f=\lim_{n\to\infty}\int_E
+f_n\)</span>. This is <a href="#thm-generalized-dct">Theorem
+16.5.7</a>.</p></li>
+<li><p>Under the same hypotheses, prove that <span class="math inline">\(\int_E|f_n-f|\to0\)</span>.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 16.5.4" href="solutions-ch16.html#sol-exer-generalized-dct">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-l1-convergence">
+
+<p><strong>Exercise 16.5.5.</strong> Let <span class="math inline">\(\{f_n\}\)</span> be a sequence of measurable
+functions on a set <span class="math inline">\(E\)</span> such that
+<span class="math inline">\(\{f_n\}\)</span> converges to an integrable
+function <span class="math inline">\(f\)</span> a.e. on <span class="math inline">\(E\)</span>. Prove <span class="math inline">\(\int_E|f-f_n|\to 0\)</span> if and only if <span class="math inline">\(\int_E|f_n|\to\int_E |f|\)</span>. <a aria-label="Hint for Exercise 16.5.5" href="solutions-ch16.html#sol-exer-l1-convergence">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dct-limits">
+
+<p><strong>Exercise 16.5.6.</strong> Evaluate each of the following.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\lim_{n\to\infty}\int_{[0,1]}
+\frac{nx^{n-1}}{x+1}\, dm\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{n\to\infty}\int_{[1,\infty)}
+\frac{\sin^3(x/n)}{x^3}\,dm\)</span></p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 16.5.6" href="solutions-ch16.html#sol-exer-dct-limits">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-dct-cos">
+
+<p><strong>Exercise 16.5.7.</strong> Evaluate <span class="math inline">\(\lim_{n\to\infty}\int_{[0,\infty)}e^{-x}\cos(x/n)\,dm(x)\)</span>
+explicitly and state the names of any theorems used to do so. <a aria-label="Hint for Exercise 16.5.7" href="solutions-ch16.html#sol-exer-dct-cos">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-absolutely-convergent-improper">
+
+<p><strong>Exercise 16.5.8.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,b)\)</span>, and
+suppose the improper integral <span class="math inline">\(\int_a^b|f|\)</span> converges. Prove that <span class="math inline">\(f\in L^1[a,b)\)</span> and <span class="math inline">\(\int_{[a,b)}f=\int_a^bf\)</span>. <a aria-label="Hint for Exercise 16.5.8" href="solutions-ch16.html#sol-exer-absolutely-convergent-improper">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-integral-continuous-dct">
+
+<p><strong>Exercise 16.5.9.</strong> Let <span class="math inline">\(f\in L^1[a,b]\)</span>, and let <span class="math inline">\(F(x)=\int_{[a,x]}f\)</span> for <span class="math inline">\(x\in[a,b]\)</span>. Use the Dominated Convergence
+Theorem to prove that <span class="math inline">\(F\)</span> is
+continuous. Then use <a href="#thm-absolute-continuity-integral">Theorem
+16.4.14</a> to prove that <span class="math inline">\(F\)</span> is
+uniformly continuous.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-15">
+<h2>Notes</h2>
+<p>Bernhard Riemann defined his integral in 1854, in the paper on
+trigonometric series that qualified him to lecture at Göttingen. It was
+published in 1868 [<a href="bibliography.html#bib-riemann1868">58</a>]. Gaston Darboux
+introduced upper and lower sums in 1875 [<a href="bibliography.html#bib-darboux1875">19</a>]. Henri Lebesgue defined his integral in
+his 1902 thesis [<a href="bibliography.html#bib-lebesgue1902">41</a>], where he also
+proved the Bounded Convergence Theorem. Lebesgue’s Theorem on Riemann
+integrability appears in his 1904 lectures [<a href="bibliography.html#bib-lebesgue1904">42</a>]. Cesare Arzelà had proved the bounded
+convergence theorem for Riemann integrals in 1885 [<a href="bibliography.html#bib-arzela1885">3</a>], with a much harder proof. Pierre Fatou
+proved his lemma in his 1906 thesis on trigonometric series and power
+series [<a href="bibliography.html#bib-fatou1906">29</a>]. The Monotone Convergence
+Theorem is due to Lebesgue, and in the general form given here to Beppo
+Levi in 1906 [<a href="bibliography.html#bib-levi1906">45</a>]. Lebesgue proved the
+Dominated Convergence Theorem in 1908 [<a href="bibliography.html#bib-lebesgue1908">43</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-measurable-functions.html"><span class="dir">Previous</span> Chapter 15. Measurable Functions</a>
+<a rel="up" href="part-lebesgue.html"><span class="dir">Up</span> Part III. Measure and Lebesgue Integrals</a>
+<a rel="next" href="ch-differentiation.html"><span class="dir">Next</span> Chapter 17. Differentiation and Integration</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

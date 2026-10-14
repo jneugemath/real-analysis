@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 1. The Real Number System | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="part-limits.html"><span class="dir">Previous</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-cardinality.html"><span class="dir">Next</span> Chapter 2. Cardinality</a>
+</nav>
+<main id="main">
+<article id="ch-real-numbers">
+<h1>Chapter 1. The Real Number System</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-sets">1.1 Sets</a></li><li><a href="#sec-integers">1.2 The Integers</a></li><li><a href="#sec-rationals">1.3 The Rational Numbers</a></li><li><a href="#sec-ordered-sets">1.4 Ordered Sets</a></li><li><a href="#sec-fields">1.5 Fields and Ordered Fields</a></li><li><a href="#sec-absolute-value">1.6 The Absolute Value Function</a></li><li><a href="#sec-completeness">1.7 The Completeness of the Real Numbers</a></li><li><a href="#notes">Notes</a></li></ul></nav>
+<p>Calculus uses the real numbers without ever defining them. Limits
+exist. Continuous functions on closed intervals have maximum values.
+Equations like <span class="math inline">\(x^2=2\)</span> have
+solutions. Behind each of these facts is a property of the real numbers
+that the rational numbers do not have. This chapter finds that
+property.</p>
+<p>The chapter starts from the beginning. <a href="#sec-sets">Section
+1.1</a> introduces sets and their properties. <a href="#sec-integers">Section 1.2</a> covers the integers and the two
+main tools for proving facts about integers, the Well-Ordering Principle
+and the Principle of Mathematical Induction. <a href="#sec-rationals">Section 1.3</a> shows the rational numbers have a
+hole where <span class="math inline">\(\sqrt2\)</span> should be.
+Sections <a href="#sec-ordered-sets">1.4</a>, <a href="#sec-fields">1.5</a> and <a href="#sec-absolute-value">1.6</a>
+build the language needed to describe that hole precisely. <a href="#sec-completeness">Section 1.7</a> introduces the real numbers,
+which have no holes.</p>
+<p>This chapter is also about how to read and write proofs. Each new
+proof technique is explained the first time it is used.</p>
+<section class="level3 unnumbered" id="sec-sets">
+<h2>1.1 Sets</h2>
+<p>Almost every statement in this book is about sets. Sequences converge
+to points. Functions are continuous on intervals. Sets have suprema.
+This section fixes the notation for sets and the basic ways to combine
+them. It also contains the first proofs in the book. They are short,
+which makes them a good place to see how a proof is built.</p>
+<div class="definitionbox" id="def-set">
+
+<p><strong>Definition 1.1.1.</strong> A <em>set</em> is a collection of
+objects. The objects in a set are called its <em>elements</em>. If <span class="math inline">\(x\)</span> is an element of the set <span class="math inline">\(A\)</span>, write <span class="math inline">\(x\in
+A\)</span>. If <span class="math inline">\(x\)</span> is not an element
+of <span class="math inline">\(A\)</span>, write <span class="math inline">\(x\notin A\)</span>. The set with no elements is
+called the <em>empty set</em> and is denoted <span class="math inline">\(\emptyset\)</span>.</p>
+<p>A set can be described by listing its elements, such as <span class="math inline">\(A=\{1,2,3\}\)</span>. A set can also be described
+by a property its elements satisfy. If <span class="math inline">\(P(x)\)</span> is a statement about <span class="math inline">\(x\)</span>, then <span class="math display">\[\{x\in A:P(x)\}\]</span> is the set of all
+elements <span class="math inline">\(x\)</span> of <span class="math inline">\(A\)</span> for which <span class="math inline">\(P(x)\)</span> is true. It is read “the set of all
+<span class="math inline">\(x\)</span> in <span class="math inline">\(A\)</span> such that <span class="math inline">\(P(x)\)</span>.”</p>
+</div>
+<div class="examplebox" id="ex-sets">
+
+<p><strong>Example 1.1.2.</strong> Let <span class="math inline">\(A=\{1,2,3,4,5,6\}\)</span>. Then <span class="math inline">\(\{x\in A:x&gt;3\}=\{4,5,6\}\)</span>. Also, <span class="math inline">\(\{1,2,3\}=\{3,1,2\}\)</span>. The order the
+elements are listed in does not matter.</p>
+</div>
+<div class="definitionbox" id="def-subset">
+
+<p><strong>Definition 1.1.3.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets. <span class="math inline">\(A\)</span> is a <em>subset</em> of <span class="math inline">\(B\)</span>, written <span class="math inline">\(A\subset B\)</span>, if every element of <span class="math inline">\(A\)</span> is an element of <span class="math inline">\(B\)</span>. <span class="math inline">\(A\)</span>
+and <span class="math inline">\(B\)</span> are <em>equal</em>, written
+<span class="math inline">\(A=B\)</span>, if <span class="math inline">\(A\subset B\)</span> and <span class="math inline">\(B\subset A\)</span>. If <span class="math inline">\(A\subset B\)</span> and <span class="math inline">\(A\ne B\)</span>, <span class="math inline">\(A\)</span> is a <em>proper subset</em> of <span class="math inline">\(B\)</span>, written <span class="math inline">\(A\subsetneqq B\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-subset-notation">
+
+<p><strong>Remark 1.1.4.</strong> Some books write <span class="math inline">\(A\subseteq B\)</span> for a subset and <span class="math inline">\(A\subset B\)</span> for a proper subset. In this
+book, <span class="math inline">\(A\subset B\)</span> allows <span class="math inline">\(A=B\)</span>. Notice every set is a subset of
+itself. Also, <span class="math inline">\(\emptyset\subset A\)</span>
+for every set <span class="math inline">\(A\)</span>. Since <span class="math inline">\(\emptyset\)</span> has no elements, there is
+nothing to check.</p>
+</div>
+<div class="examplebox" id="ex-subsets">
+
+<p><strong>Example 1.1.5.</strong> <span class="math inline">\(\{1,2\}\subsetneqq\{1,2,3\}\)</span>. However,
+<span class="math inline">\(\{1,4\}\not\subset\{1,2,3\}\)</span>, since
+<span class="math inline">\(4\in\{1,4\}\)</span> but <span class="math inline">\(4\notin\{1,2,3\}\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving One Set Is a Subset of
+Another).</strong> To prove <span class="math inline">\(A\subset
+B\)</span>, let <span class="math inline">\(x\)</span> be an arbitrary
+element of <span class="math inline">\(A\)</span>. Then show <span class="math inline">\(x\in B\)</span>. The word arbitrary is important.
+Nothing can be assumed about <span class="math inline">\(x\)</span>
+except that <span class="math inline">\(x\in A\)</span>. Since <span class="math inline">\(x\)</span> was any element of <span class="math inline">\(A\)</span>, every element of <span class="math inline">\(A\)</span> is in <span class="math inline">\(B\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving Two Sets Are Equal).</strong> To
+prove <span class="math inline">\(A=B\)</span>, prove two things. First
+show <span class="math inline">\(A\subset B\)</span>. Then show <span class="math inline">\(B\subset A\)</span>. This is called a double
+inclusion argument. The proof of <a href="#thm-set-properties">Theorem
+1.1.9</a> (3) below is an example.</p>
+</div>
+<div class="definitionbox" id="def-set-operations">
+
+<p><strong>Definition 1.1.6.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets.</p>
+<ol>
+<li><p>The <em>union</em> of <span class="math inline">\(A\)</span> and
+<span class="math inline">\(B\)</span> is <span class="math inline">\(A\cup B=\{x:x\in A\text{ or }x\in
+B\}\)</span>.</p></li>
+<li><p>The <em>intersection</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is <span class="math inline">\(A\cap
+B=\{x:x\in A\text{ and }x\in B\}\)</span>.</p></li>
+<li><p>The <em>difference</em> of <span class="math inline">\(A\)</span>
+and <span class="math inline">\(B\)</span> is <span class="math inline">\(A\setminus B=\{x:x\in A\text{ and }x\notin
+B\}\)</span>.</p></li>
+</ol>
+<p>If <span class="math inline">\(A\cap B=\emptyset\)</span>, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>disjoint</em>. If every set
+under discussion is a subset of a fixed set <span class="math inline">\(X\)</span>, then <span class="math inline">\(X\)</span> is called the <em>universal set</em>.
+In this case, the <em>complement</em> of <span class="math inline">\(A\)</span> is <span class="math inline">\(A^c=X\setminus A\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-inclusive-or">
+
+<p><strong>Remark 1.1.7.</strong> In mathematics, “or” always allows
+both. The statement “<span class="math inline">\(x\in A\)</span> or
+<span class="math inline">\(x\in B\)</span>” is true when <span class="math inline">\(x\)</span> is in both sets.</p>
+</div>
+<div class="examplebox" id="ex-set-operations">
+
+<p><strong>Example 1.1.8.</strong> Let <span class="math inline">\(X=\{1,2,3,4,5,6\}\)</span>, <span class="math inline">\(A=\{1,2,3,4\}\)</span>, and <span class="math inline">\(B=\{3,4,5\}\)</span>. Then <span class="math display">\[A\cup B=\{1,2,3,4,5\},\quad A\cap B=\{3,4\},\quad
+A\setminus B=\{1,2\},\quad B\setminus A=\{5\}.\]</span> Also, <span class="math inline">\(A^c=\{5,6\}\)</span> and <span class="math inline">\(B^c=\{1,2,6\}\)</span>. Notice <span class="math inline">\(A^c\cap B^c=\{6\}=(A\cup B)^c\)</span>. This is a
+special case of De Morgan’s Laws (<a href="#thm-de-morgan">Theorem
+1.1.10</a>).</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Direct Proof).</strong> Most theorems have
+the form “If <span class="math inline">\(P\)</span>, then <span class="math inline">\(Q\)</span>.” The statement <span class="math inline">\(P\)</span> is the <em>hypothesis</em>. The
+statement <span class="math inline">\(Q\)</span> is the
+<em>conclusion</em>. In a direct proof, assume <span class="math inline">\(P\)</span> is true. Then use definitions and
+results that are already proved to show <span class="math inline">\(Q\)</span> is true. Each step must follow from the
+steps before it. A good first step is to write out what the hypothesis
+means using definitions. Then write out what the conclusion means. The
+proof connects the two. The proofs of <a href="#thm-set-properties">Theorem 1.1.9</a> are direct proofs.</p>
+</div>
+<div class="theorembox" id="thm-set-properties">
+
+<p><strong>Theorem 1.1.9.</strong> Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>
+and <span class="math inline">\(C\)</span> be subsets of a universal set
+<span class="math inline">\(X\)</span>.</p>
+<ol>
+<li><p><span class="math inline">\(A\cap B\subset A\)</span> and <span class="math inline">\(A\subset A\cup B\)</span>.</p></li>
+<li><p><span class="math inline">\(A\cap B=B\cap A\)</span> and <span class="math inline">\(A\cup B=B\cup A\)</span>.</p></li>
+<li><p><span class="math inline">\(A\cap(B\cup C)=(A\cap B)\cup(A\cap
+C)\)</span>.</p></li>
+<li><p><span class="math inline">\(A\cup(B\cap C)=(A\cup B)\cap(A\cup
+C)\)</span>.</p></li>
+<li><p><span class="math inline">\(A\setminus B=A\cap
+B^c\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x\in A\cap B\)</span>. Then <span class="math inline">\(x\in A\)</span> and <span class="math inline">\(x\in B\)</span>. So <span class="math inline">\(x\in A\)</span>. Thus <span class="math inline">\(A\cap B\subset A\)</span>.</p>
+<p>Next, let <span class="math inline">\(x\in A\)</span>. Then <span class="math inline">\(x\in A\)</span> or <span class="math inline">\(x\in B\)</span>. So <span class="math inline">\(x\in A\cup B\)</span>. Thus <span class="math inline">\(A\subset A\cup B\)</span>.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>Let <span class="math inline">\(x\in A\cap(B\cup C)\)</span>.
+Then <span class="math inline">\(x\in A\)</span> and <span class="math inline">\(x\in B\cup C\)</span>. So <span class="math inline">\(x\in B\)</span> or <span class="math inline">\(x\in C\)</span>. If <span class="math inline">\(x\in B\)</span>, then <span class="math inline">\(x\in A\cap B\)</span>. If <span class="math inline">\(x\in C\)</span>, then <span class="math inline">\(x\in A\cap C\)</span>. In either case, <span class="math inline">\(x\in(A\cap B)\cup(A\cap C)\)</span>. So <span class="math inline">\(A\cap(B\cup C)\subset(A\cap B)\cup(A\cap
+C)\)</span>.</p>
+<p>Now let <span class="math inline">\(x\in(A\cap B)\cup(A\cap
+C)\)</span>. Then <span class="math inline">\(x\in A\cap B\)</span> or
+<span class="math inline">\(x\in A\cap C\)</span>. If <span class="math inline">\(x\in A\cap B\)</span>, then <span class="math inline">\(x\in A\)</span> and <span class="math inline">\(x\in B\)</span>. If <span class="math inline">\(x\in A\cap C\)</span>, then <span class="math inline">\(x\in A\)</span> and <span class="math inline">\(x\in C\)</span>. In either case, <span class="math inline">\(x\in A\)</span> and <span class="math inline">\(x\in B\cup C\)</span>. So <span class="math inline">\(x\in A\cap(B\cup C)\)</span>. Thus <span class="math inline">\((A\cap B)\cup(A\cap C)\subset A\cap(B\cup
+C)\)</span>.</p>
+<p>Therefore <span class="math inline">\(A\cap(B\cup C)=(A\cap
+B)\cup(A\cap C)\)</span>.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>Exercise.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proof by Cases).</strong> Sometimes a proof
+splits into cases. Each case must be handled, and together the cases
+must cover every possibility. In the proof of <a href="#thm-set-properties">Theorem 1.1.9</a> (3), <span class="math inline">\(x\in B\cup C\)</span> means <span class="math inline">\(x\in B\)</span> or <span class="math inline">\(x\in C\)</span>. So there are two cases. The proof
+handles each one. Then it notices both cases give the same
+conclusion.</p>
+</div>
+<div class="theorembox" id="thm-de-morgan">
+
+<p><strong>Theorem 1.1.10</strong> (De Morgan’s
+Laws)<strong>.</strong></p>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be subsets of a universal set <span class="math inline">\(X\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\((A\cup B)^c=A^c\cap B^c\)</span>;
+and</p></li>
+<li><p><span class="math inline">\((A\cap B)^c=A^c\cup
+B^c\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x\in(A\cup B)^c\)</span>. Then
+<span class="math inline">\(x\in X\)</span> and <span class="math inline">\(x\notin A\cup B\)</span>. If <span class="math inline">\(x\in A\)</span>, then <span class="math inline">\(x\in A\cup B\)</span>. So <span class="math inline">\(x\notin A\)</span>. Similarly, <span class="math inline">\(x\notin B\)</span>. Thus <span class="math inline">\(x\in A^c\)</span> and <span class="math inline">\(x\in B^c\)</span>. So <span class="math inline">\(x\in A^c\cap B^c\)</span>. Therefore <span class="math inline">\((A\cup B)^c\subset A^c\cap B^c\)</span>.</p>
+<p>Now let <span class="math inline">\(x\in A^c\cap B^c\)</span>. Then
+<span class="math inline">\(x\notin A\)</span> and <span class="math inline">\(x\notin B\)</span>. So <span class="math inline">\(x\)</span> is not in <span class="math inline">\(A\cup B\)</span>. Thus <span class="math inline">\(x\in(A\cup B)^c\)</span>. Therefore <span class="math inline">\(A^c\cap B^c\subset(A\cup B)^c\)</span>. So <span class="math inline">\((A\cup B)^c=A^c\cap B^c\)</span>.</p></li>
+<li><p>Exercise.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-family">
+
+<p><strong>Definition 1.1.11.</strong> Let <span class="math inline">\(\Lambda\)</span> be a nonempty set. Suppose for
+each <span class="math inline">\(\alpha\in\Lambda\)</span>, <span class="math inline">\(A_\alpha\)</span> is a set. Then <span class="math inline">\(\{A_\alpha\}_{\alpha\in\Lambda}\)</span> is called
+a <em>family of sets</em> and <span class="math inline">\(\Lambda\)</span> is called an <em>index set</em>.
+Define the union and intersection of the family by <span class="math display">\[\bigcup_{\alpha\in\Lambda}A_\alpha=\{x:x\in
+A_\alpha\text{ for some }\alpha\in\Lambda\}\]</span> and <span class="math display">\[\bigcap_{\alpha\in\Lambda}A_\alpha=\{x:x\in
+A_\alpha\text{ for all }\alpha\in\Lambda\}.\]</span> If <span class="math inline">\(\Lambda=\{1,2,\dots,n\}\)</span>, write <span class="math inline">\(\bigcup_{i=1}^nA_i\)</span> and <span class="math inline">\(\bigcap_{i=1}^nA_i\)</span>. If <span class="math inline">\(\Lambda=\{1,2,3,\dots\}\)</span>, write <span class="math inline">\(\bigcup_{n=1}^\infty A_n\)</span> and <span class="math inline">\(\bigcap_{n=1}^\infty A_n\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-family">
+
+<p><strong>Example 1.1.12.</strong> For each <span class="math inline">\(n\in\{1,2,3,\dots\}\)</span>, let <span class="math inline">\(A_n=\{1,2,\dots,n\}\)</span>. Then <span class="math inline">\(\bigcup_{n=1}^\infty A_n=\{1,2,3,\dots\}\)</span>
+and <span class="math inline">\(\bigcap_{n=1}^\infty
+A_n=\{1\}\)</span>.</p>
+<p>For each <span class="math inline">\(n\in\{1,2,3,\dots\}\)</span>,
+let <span class="math inline">\(B_n=\{n,n+1,n+2,\dots\}\)</span>. Then
+<span class="math inline">\(\bigcap_{n=1}^\infty B_n=\emptyset\)</span>.
+To see this, let <span class="math inline">\(k\)</span> be any positive
+integer. Then <span class="math inline">\(k\notin B_{k+1}\)</span>. So
+<span class="math inline">\(k\)</span> is not in every <span class="math inline">\(B_n\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Negating Statements).</strong> The
+<em>negation</em> of a statement <span class="math inline">\(P\)</span>
+is the statement “<span class="math inline">\(P\)</span> is false,” or
+“not <span class="math inline">\(P\)</span>.” Many proofs need the
+negation of a complicated statement. These rules give it.</p>
+<ul>
+<li><p>The negation of “<span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>” is “not <span class="math inline">\(P\)</span> or not <span class="math inline">\(Q\)</span>.”</p></li>
+<li><p>The negation of “<span class="math inline">\(P\)</span> or <span class="math inline">\(Q\)</span>” is “not <span class="math inline">\(P\)</span> and not <span class="math inline">\(Q\)</span>.”</p></li>
+<li><p>The negation of “for all <span class="math inline">\(x\)</span>,
+<span class="math inline">\(P(x)\)</span>” is “there exists an <span class="math inline">\(x\)</span> such that not <span class="math inline">\(P(x)\)</span>.”</p></li>
+<li><p>The negation of “there exists an <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(x)\)</span>” is “for all <span class="math inline">\(x\)</span>, not <span class="math inline">\(P(x)\)</span>.”</p></li>
+<li><p>The negation of “if <span class="math inline">\(P\)</span>, then
+<span class="math inline">\(Q\)</span>” is “<span class="math inline">\(P\)</span> and not <span class="math inline">\(Q\)</span>.”</p></li>
+</ul>
+<p>For example, <span class="math inline">\(A\subset B\)</span> means
+every element of <span class="math inline">\(A\)</span> is in <span class="math inline">\(B\)</span>. So <span class="math inline">\(A\not\subset B\)</span> means there exists an
+element of <span class="math inline">\(A\)</span> that is not in <span class="math inline">\(B\)</span>. Notice De Morgan’s Laws match the
+first two rules.</p>
+<p>Statements in analysis often have several “for all” and “there
+exists” phrases in a row. To negate one, work from left to right. Change
+each “for all” to “there exists.” Change each “there exists” to “for
+all.” Then negate the last statement. <a href="#exer-negations">Exercise
+1.1.10</a> gives practice.</p>
+</div>
+<div class="theorembox" id="thm-de-morgan-families">
+
+<p><strong>Theorem 1.1.13</strong> (De Morgan’s
+Laws)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{A_\alpha\}_{\alpha\in\Lambda}\)</span> be a
+family of subsets of a universal set <span class="math inline">\(X\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\(\left(\bigcup_{\alpha\in\Lambda}A_\alpha\right)^c=\bigcap_{\alpha\in\Lambda}A_\alpha^c\)</span>;
+and</p></li>
+<li><p><span class="math inline">\(\left(\bigcap_{\alpha\in\Lambda}A_\alpha\right)^c=\bigcup_{\alpha\in\Lambda}A_\alpha^c\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x\in\left(\bigcup_{\alpha\in\Lambda}A_\alpha\right)^c\)</span>.
+Then <span class="math inline">\(x\notin\bigcup_{\alpha\in\Lambda}A_\alpha\)</span>.
+So it is false that <span class="math inline">\(x\in A_\alpha\)</span>
+for some <span class="math inline">\(\alpha\in\Lambda\)</span>. Negating
+this statement, <span class="math inline">\(x\notin A_\alpha\)</span>
+for all <span class="math inline">\(\alpha\in\Lambda\)</span>. So <span class="math inline">\(x\in A_\alpha^c\)</span> for all <span class="math inline">\(\alpha\in\Lambda\)</span>. Thus <span class="math inline">\(x\in\bigcap_{\alpha\in\Lambda}A_\alpha^c\)</span>.</p>
+<p>Now let <span class="math inline">\(x\in\bigcap_{\alpha\in\Lambda}A_\alpha^c\)</span>.
+Then <span class="math inline">\(x\notin A_\alpha\)</span> for all <span class="math inline">\(\alpha\in\Lambda\)</span>. So there is no <span class="math inline">\(\alpha\in\Lambda\)</span> with <span class="math inline">\(x\in A_\alpha\)</span>. Thus <span class="math inline">\(x\notin\bigcup_{\alpha\in\Lambda}A_\alpha\)</span>.
+So <span class="math inline">\(x\in\left(\bigcup_{\alpha\in\Lambda}A_\alpha\right)^c\)</span>.</p></li>
+<li><p>Exercise.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-cartesian-product">
+
+<p><strong>Definition 1.1.14.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets. An <em>ordered pair</em> <span class="math inline">\((a,b)\)</span> is a pair of objects where the
+order matters. Two ordered pairs <span class="math inline">\((a,b)\)</span> and <span class="math inline">\((c,d)\)</span> are equal if <span class="math inline">\(a=c\)</span> and <span class="math inline">\(b=d\)</span>. The <em>Cartesian product</em> of
+<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is <span class="math display">\[A\times
+B=\{(a,b):a\in A,\ b\in B\}.\]</span></p>
+</div>
+<div class="examplebox" id="ex-cartesian-product">
+
+<p><strong>Example 1.1.15.</strong> <span class="math inline">\(\{1,2\}\times\{3,4,5\}=\{(1,3),(1,4),(1,5),(2,3),(2,4),(2,5)\}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-relation">
+
+<p><strong>Definition 1.1.16.</strong> A <em>relation</em> on a set
+<span class="math inline">\(A\)</span> is a subset <span class="math inline">\(R\)</span> of <span class="math inline">\(A\times
+A\)</span>. If <span class="math inline">\((x,y)\in R\)</span>, write
+<span class="math inline">\(x\,R\,y\)</span>. A relation <span class="math inline">\(\sim\)</span> on <span class="math inline">\(A\)</span> is an <em>equivalence relation</em>
+if</p>
+<ol>
+<li><p><span class="math inline">\(x\sim x\)</span> for all <span class="math inline">\(x\in A\)</span> (reflexive);</p></li>
+<li><p>if <span class="math inline">\(x\sim y\)</span>, then <span class="math inline">\(y\sim x\)</span> (symmetric); and</p></li>
+<li><p>if <span class="math inline">\(x\sim y\)</span> and <span class="math inline">\(y\sim z\)</span>, then <span class="math inline">\(x\sim z\)</span> (transitive).</p></li>
+</ol>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Counterexample).</strong> A statement of the
+form “for all <span class="math inline">\(x\)</span>, <span class="math inline">\(P(x)\)</span>” is false if <span class="math inline">\(P(x)\)</span> fails for just one <span class="math inline">\(x\)</span>. An <span class="math inline">\(x\)</span> for which <span class="math inline">\(P(x)\)</span> fails is called a
+<em>counterexample</em>. One counterexample is enough to show a “for
+all” statement is false. However, examples where <span class="math inline">\(P(x)\)</span> is true never prove a “for all”
+statement. <a href="#ex-relations">Example 1.1.17</a> uses a
+counterexample.</p>
+</div>
+<div class="examplebox" id="ex-relations">
+
+<p><strong>Example 1.1.17.</strong> Equality is an equivalence relation
+on any set. Now consider the relation <span class="math inline">\(\le\)</span> on <span class="math inline">\(\{1,2,3\}\)</span>. It is reflexive and
+transitive. However, it is not symmetric. To see this, notice <span class="math inline">\(1\le 2\)</span> but <span class="math inline">\(2\not\le 1\)</span>. So <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=2\)</span> is a counterexample. Thus <span class="math inline">\(\le\)</span> is not an equivalence relation.</p>
+</div>
+<div class="definitionbox" id="def-power-set">
+
+<p><strong>Definition 1.1.18.</strong> The <em>power set</em> of a set
+<span class="math inline">\(A\)</span>, denoted <span class="math inline">\(\mathcal{P}(A)\)</span>, is the set of all subsets
+of <span class="math inline">\(A\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-power-set">
+
+<p><strong>Example 1.1.19.</strong> <span class="math inline">\(\mathcal{P}(\{1,2\})=\bigl\{\emptyset,\{1\},\{2\},\{1,2\}\bigr\}\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-set-computations">
+
+<p><strong>Exercise 1.1.1.</strong> Let <span class="math inline">\(X=\{1,2,3,4,5,6,7,8\}\)</span>, <span class="math inline">\(A=\{1,2,3\}\)</span>, <span class="math inline">\(B=\{2,4,6,8\}\)</span>, and <span class="math inline">\(C=\{3,6\}\)</span>. Find <span class="math inline">\(A\cup B\)</span>, <span class="math inline">\(A\cap C\)</span>, <span class="math inline">\(B\setminus C\)</span>, <span class="math inline">\((A\cup B)^c\)</span>, and <span class="math inline">\(A^c\cap C\)</span>. <a aria-label="Solution for Exercise 1.1.1" href="solutions-ch01.html#sol-exer-set-computations">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-set-properties">
+
+<p><strong>Exercise 1.1.2.</strong> Prove <a href="#thm-set-properties">Theorem 1.1.9</a> (2), (4) and (5).</p>
+</div>
+<div class="exercisebox" id="exer-de-morgan">
+
+<p><strong>Exercise 1.1.3.</strong> Prove <a href="#thm-de-morgan">Theorem 1.1.10</a> (2). <a aria-label="Solution for Exercise 1.1.3" href="solutions-ch01.html#sol-exer-de-morgan">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-de-morgan-families">
+
+<p><strong>Exercise 1.1.4.</strong> Prove <a href="#thm-de-morgan-families">Theorem 1.1.13</a> (2).</p>
+</div>
+<div class="exercisebox" id="exer-subset-transitive">
+
+<p><strong>Exercise 1.1.5.</strong> Prove that if <span class="math inline">\(A\subset B\)</span> and <span class="math inline">\(B\subset C\)</span>, then <span class="math inline">\(A\subset C\)</span>. <a aria-label="Solution for Exercise 1.1.5" href="solutions-ch01.html#sol-exer-subset-transitive">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-subset-union">
+
+<p><strong>Exercise 1.1.6.</strong> Prove that if <span class="math inline">\(A\subset B\)</span>, then <span class="math inline">\(A\cap B=A\)</span> and <span class="math inline">\(A\cup B=B\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-union-cancel">
+
+<p><strong>Exercise 1.1.7.</strong> Find a counterexample to the
+statement “If <span class="math inline">\(A\cup B=A\cup C\)</span>, then
+<span class="math inline">\(B=C\)</span>.” <a aria-label="Solution for Exercise 1.1.7" href="solutions-ch01.html#sol-exer-union-cancel">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-power-set">
+
+<p><strong>Exercise 1.1.8.</strong> Find <span class="math inline">\(\mathcal{P}(\{1,2,3\})\)</span>. How many elements
+does it have?</p>
+</div>
+<div class="exercisebox" id="exer-family-integers">
+
+<p><strong>Exercise 1.1.9.</strong> For each <span class="math inline">\(n\in\{1,2,3,\dots\}\)</span>, let <span class="math inline">\(A_n=\{-n,\dots,-1,0,1,\dots,n\}\)</span>. Find
+<span class="math inline">\(\bigcup_{n=1}^\infty A_n\)</span> and <span class="math inline">\(\bigcap_{n=1}^\infty A_n\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-negations">
+
+<p><strong>Exercise 1.1.10.</strong> Negate each statement.</p>
+<ol type="a">
+<li><p>Every element of <span class="math inline">\(A\)</span> is less
+than <span class="math inline">\(5\)</span>.</p></li>
+<li><p>There exists an <span class="math inline">\(x\in A\)</span> such
+that <span class="math inline">\(x&gt;3\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(x\in A\)</span>, there exists
+a <span class="math inline">\(y\in B\)</span> such that <span class="math inline">\(x&lt;y\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such
+that for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-integers">
+<h2>1.2 The Integers</h2>
+<p>The integers are the starting point for every number system in this
+chapter. This section does not prove the rules of integer arithmetic. It
+takes them as known. Instead it proves facts about even numbers, odd
+numbers and division. These facts are needed later, for example to show
+<span class="math inline">\(\sqrt2\)</span> is irrational. Along the
+way, the section introduces the Well-Ordering Principle and induction.
+They are the main tools for proving a statement about every natural
+number at once.</p>
+<div class="definitionbox" id="def-naturals-integers">
+
+<p><strong>Definition 1.2.1.</strong> Define the <em>natural
+numbers</em> <span class="math inline">\(\mathbb{N}=\{1,2,3,\dots\}\)</span>, the <em>whole
+numbers</em> <span class="math inline">\(\mathbb{N}_0=\{0,1,2,\dots\}\)</span> and the
+<em>integers</em> <span class="math inline">\(\mathbb{Z}=\{\dots,-3,-2,-1,0,1,2,3,\dots\}\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-integer-arithmetic">
+
+<p><strong>Remark 1.2.2.</strong> This book assumes the usual arithmetic
+and order of the integers. Sums, differences and products of integers
+are integers. The rules of algebra, such as <span class="math inline">\(m(n+k)=mn+mk\)</span>, hold. Also, if <span class="math inline">\(n\in\mathbb{Z}\)</span> and <span class="math inline">\(n&gt;0\)</span>, then <span class="math inline">\(n\ge1\)</span>. These facts can be proved from a
+short list of axioms, but that is not done here.</p>
+</div>
+<div class="definitionbox" id="def-even-odd">
+
+<p><strong>Definition 1.2.3.</strong> An integer <span class="math inline">\(n\)</span> is <em>even</em> if <span class="math inline">\(n=2k\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>. An integer <span class="math inline">\(n\)</span> is <em>odd</em> if <span class="math inline">\(n=2k+1\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-even-odd">
+
+<p><strong>Example 1.2.4.</strong> <span class="math inline">\(0=2\cdot0\)</span> is even. <span class="math inline">\(-7=2(-4)+1\)</span> is odd.</p>
+</div>
+<div class="theorembox" id="thm-even-odd-arithmetic">
+
+<p><strong>Theorem 1.2.5.</strong> Let <span class="math inline">\(m,n\in\mathbb{Z}\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are even, then <span class="math inline">\(m+n\)</span> is even.</p></li>
+<li><p>If <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are odd, then <span class="math inline">\(m+n\)</span> is even.</p></li>
+<li><p>If <span class="math inline">\(m\)</span> is even, then <span class="math inline">\(mn\)</span> is even.</p></li>
+<li><p>If <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are odd, then <span class="math inline">\(mn\)</span> is odd.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Since <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are even, <span class="math inline">\(m=2j\)</span> and <span class="math inline">\(n=2k\)</span> for some <span class="math inline">\(j,k\in\mathbb{Z}\)</span>. Then <span class="math display">\[m+n=2j+2k=2(j+k).\]</span> Since <span class="math inline">\(j+k\in\mathbb{Z}\)</span>, <span class="math inline">\(m+n\)</span> is even.</p></li>
+<li><p>Since <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are odd, <span class="math inline">\(m=2j+1\)</span> and <span class="math inline">\(n=2k+1\)</span> for some <span class="math inline">\(j,k\in\mathbb{Z}\)</span>. Then <span class="math display">\[m+n=2j+2k+2=2(j+k+1).\]</span> Since <span class="math inline">\(j+k+1\in\mathbb{Z}\)</span>, <span class="math inline">\(m+n\)</span> is even.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>Since <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are odd, <span class="math inline">\(m=2j+1\)</span> and <span class="math inline">\(n=2k+1\)</span> for some <span class="math inline">\(j,k\in\mathbb{Z}\)</span>. Then <span class="math display">\[mn=4jk+2j+2k+1=2(2jk+j+k)+1.\]</span> Since <span class="math inline">\(2jk+j+k\in\mathbb{Z}\)</span>, <span class="math inline">\(mn\)</span> is odd.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="remarkbox" id="rem-different-letters">
+
+<p><strong>Remark 1.2.6.</strong> The proof of (1) writes <span class="math inline">\(m=2j\)</span> and <span class="math inline">\(n=2k\)</span>. Writing <span class="math inline">\(m=2k\)</span> and <span class="math inline">\(n=2k\)</span> would assume <span class="math inline">\(m=n\)</span>. Each new object in a proof gets its
+own letter.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Converse).</strong> The <em>converse</em> of
+“If <span class="math inline">\(P\)</span>, then <span class="math inline">\(Q\)</span>” is “If <span class="math inline">\(Q\)</span>, then <span class="math inline">\(P\)</span>.” A statement and its converse are
+different statements. One can be true while the other is false. For
+example, the converse of <a href="#thm-even-odd-arithmetic">Theorem
+1.2.5</a> (1) is “If <span class="math inline">\(m+n\)</span> is even,
+then <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are even.” This is false. A
+counterexample is <span class="math inline">\(m=n=1\)</span>. Then <span class="math inline">\(m+n=2\)</span> is even, but <span class="math inline">\(1\)</span> is not even, since <span class="math inline">\(1=2k\)</span> has no solution <span class="math inline">\(k\in\mathbb{Z}\)</span>.</p>
+</div>
+<p>The next axiom looks obvious. It is still the key property of <span class="math inline">\(\mathbb{N}\)</span>. It fails for <span class="math inline">\(\mathbb{Z}\)</span>, which has no smallest
+element. It also fails for the positive rational numbers, since <span class="math inline">\(\frac{q}{2}\)</span> is a smaller positive
+rational than <span class="math inline">\(q\)</span>.</p>
+<div class="axiombox" id="ax-well-ordering">
+
+<p><strong>Axiom 1.2.7</strong> (The Well-Ordering
+Principle)<strong>.</strong></p>
+<p>Every nonempty subset of <span class="math inline">\(\mathbb{N}\)</span> has a smallest element.</p>
+</div>
+<div class="corollarybox" id="cor-well-ordering-N0">
+
+<p><strong>Corollary 1.2.8.</strong> Every nonempty subset of <span class="math inline">\(\mathbb{N}_0\)</span> has a smallest element.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(S\subset\mathbb{N}_0\)</span> with <span class="math inline">\(S\ne\emptyset\)</span>. If <span class="math inline">\(0\in S\)</span>, then <span class="math inline">\(0\)</span> is the smallest element of <span class="math inline">\(S\)</span>, since every element of <span class="math inline">\(\mathbb{N}_0\)</span> is at least <span class="math inline">\(0\)</span>. If <span class="math inline">\(0\notin
+S\)</span>, then <span class="math inline">\(S\subset\mathbb{N}\)</span>. So by the
+Well-Ordering Principle, <span class="math inline">\(S\)</span> has a
+smallest element.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proof by Contradiction).</strong> To prove a
+statement <span class="math inline">\(P\)</span> by
+<em>contradiction</em>, assume <span class="math inline">\(P\)</span> is
+false. Then use this assumption to reach a statement that is impossible.
+Examples are <span class="math inline">\(1&lt;0\)</span>, or <span class="math inline">\(x\in A\)</span> and <span class="math inline">\(x\notin A\)</span>. This impossible statement is
+called a contradiction. A false statement leads to a contradiction, but
+a true statement never does. So the assumption that <span class="math inline">\(P\)</span> is false must be wrong, and <span class="math inline">\(P\)</span> is true. Proofs by contradiction in
+this book start with “Assume by way of contradiction.” The proof of <a href="#thm-induction">Theorem 1.2.9</a> is by contradiction.</p>
+</div>
+<div class="theorembox" id="thm-induction">
+
+<p><strong>Theorem 1.2.9</strong> (Principle of Mathematical
+Induction)<strong>.</strong></p>
+<p>For each <span class="math inline">\(n\in\mathbb{N}\)</span>, let
+<span class="math inline">\(P(n)\)</span> be a statement about the
+positive integer <span class="math inline">\(n\)</span>. If</p>
+<ol>
+<li><p><span class="math inline">\(P(1)\)</span> is true, and</p></li>
+<li><p><span class="math inline">\(P(k+1)\)</span> is true whenever
+<span class="math inline">\(P(k)\)</span> is true,</p></li>
+</ol>
+<p>then <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume by way of contradiction that there exists a
+positive integer <span class="math inline">\(n\)</span> such that the
+statement <span class="math inline">\(P(n)\)</span> is false. Let <span class="math display">\[A=\{k\in\mathbb{N}:P(k)\text{ is
+false}\}.\]</span> Now <span class="math inline">\(n\in A\)</span>, so
+<span class="math inline">\(A\ne\emptyset\)</span>, and <span class="math inline">\(A\)</span> has a smallest element <span class="math inline">\(m\)</span>. Since <span class="math inline">\(P(1)\)</span> is true, <span class="math inline">\(1\notin A\)</span>, and <span class="math inline">\(m&gt;1\)</span>. So <span class="math inline">\(m-1\in\mathbb{N}\)</span>. Also, since <span class="math inline">\(m\)</span> is the smallest element of <span class="math inline">\(A\)</span>, <span class="math inline">\(m-1\notin
+A\)</span>. So <span class="math inline">\(P(m-1)\)</span> is true. But
+then, by (2), <span class="math inline">\(P(m)\)</span> is also true. So
+<span class="math inline">\(m\notin A\)</span>, a contradiction.
+Consequently, <span class="math inline">\(P(n)\)</span> must be true for
+all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Induction works like a row of dominoes. Condition (1) knocks over the
+first domino. Condition (2) says each domino knocks over the next one.
+Then every domino falls.</p>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proof by Induction).</strong> To prove <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\in\mathbb{N}\)</span> by induction, do two
+steps. First, prove <span class="math inline">\(P(1)\)</span> is true.
+This is the <em>base case</em>. Second, let <span class="math inline">\(k\in\mathbb{N}\)</span> and assume <span class="math inline">\(P(k)\)</span> is true. Then prove <span class="math inline">\(P(k+1)\)</span> is true. This is the <em>inductive
+step</em>. The assumption that <span class="math inline">\(P(k)\)</span>
+is true is called the <em>inductive hypothesis</em>. The inductive step
+does not assume what is being proved. It only shows that each statement
+implies the next one.</p>
+<p>Induction can start at any integer <span class="math inline">\(n_0\)</span>. To prove <span class="math inline">\(P(n)\)</span> for all integers <span class="math inline">\(n\ge n_0\)</span>, prove <span class="math inline">\(P(n_0)\)</span>. Then prove <span class="math inline">\(P(k)\)</span> implies <span class="math inline">\(P(k+1)\)</span> for all <span class="math inline">\(k\ge n_0\)</span>. This follows from <a href="#thm-induction">Theorem 1.2.9</a> applied to the statement <span class="math inline">\(Q(n)=P(n+n_0-1)\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-recursive-notation">
+
+<p><strong>Definition 1.2.10.</strong> Many objects are defined one step
+at a time. This is called a <em>recursive definition</em>. Let <span class="math inline">\(a,a_1,a_2,\dots\)</span> be numbers.</p>
+<ol>
+<li><p>The <em>powers</em> of <span class="math inline">\(a\)</span> are
+<span class="math inline">\(a^1=a\)</span> and <span class="math inline">\(a^{n+1}=a^n\cdot a\)</span> for <span class="math inline">\(n\in\mathbb{N}\)</span>. If <span class="math inline">\(a\ne0\)</span>, <span class="math inline">\(a^0=1\)</span>.</p></li>
+<li><p>The <em>sum</em> of <span class="math inline">\(a_1,\dots,a_n\)</span> is <span class="math inline">\(\sum_{i=1}^1a_i=a_1\)</span> and <span class="math inline">\(\sum_{i=1}^{n+1}a_i=\sum_{i=1}^na_i+a_{n+1}\)</span>
+for <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(\sum_{i=1}^na_i=a_1+a_2+\cdots+a_n\)</span>. Sums
+starting at an index other than <span class="math inline">\(1\)</span>
+are defined the same way.</p></li>
+<li><p>The <em>factorial</em> of <span class="math inline">\(n\in\mathbb{N}_0\)</span> is <span class="math inline">\(0!=1\)</span> and <span class="math inline">\((n+1)!=(n+1)\cdot n!\)</span>. So <span class="math inline">\(n!=1\cdot2\cdots n\)</span> for <span class="math inline">\(n\in\mathbb{N}\)</span>.</p></li>
+</ol>
+</div>
+<div class="examplebox" id="ex-induction-sum">
+
+<p><strong>Example 1.2.11.</strong> For all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[\sum_{i=1}^ni=\frac{n(n+1)}{2}.\]</span> To prove
+this by induction, first notice that when <span class="math inline">\(n=1\)</span>, the left side is <span class="math inline">\(1\)</span> and the right side is <span class="math inline">\(\frac{1\cdot2}{2}=1\)</span>. So the statement is
+true for <span class="math inline">\(n=1\)</span>. Now let <span class="math inline">\(k\in\mathbb{N}\)</span> and assume <span class="math inline">\(\sum_{i=1}^ki=\frac{k(k+1)}{2}\)</span>. Then
+<span class="math display">\[\sum_{i=1}^{k+1}i=\sum_{i=1}^ki+(k+1)=\frac{k(k+1)}{2}+(k+1)=\frac{(k+1)(k+2)}{2}.\]</span>
+So the statement is true for <span class="math inline">\(k+1\)</span>.
+By induction, it is true for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving Uniqueness).</strong> To prove there
+is exactly one object with some property, prove two things.
+<em>Existence</em> shows there is at least one such object.
+<em>Uniqueness</em> shows there is at most one. To prove uniqueness,
+assume two objects have the property. Then show they are equal. The
+proof of <a href="#thm-division-algorithm">Theorem 1.2.12</a> does
+both.</p>
+</div>
+<div class="theorembox" id="thm-division-algorithm">
+
+<p><strong>Theorem 1.2.12</strong> (Division
+Algorithm)<strong>.</strong></p>
+<p>Let <span class="math inline">\(n\in\mathbb{Z}\)</span> and <span class="math inline">\(d\in\mathbb{N}\)</span>. Then there exist unique
+<span class="math inline">\(q,r\in\mathbb{Z}\)</span> such that <span class="math inline">\(n=qd+r\)</span> and <span class="math inline">\(0\le r&lt;d\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> First, the existence of <span class="math inline">\(q\)</span> and <span class="math inline">\(r\)</span>. Let <span class="math display">\[S=\{n-kd:k\in\mathbb{Z},\ n-kd\ge0\}.\]</span>
+Let <span class="math inline">\(k=-|n|\)</span>, where <span class="math inline">\(|n|=n\)</span> if <span class="math inline">\(n\ge0\)</span> and <span class="math inline">\(|n|=-n\)</span> if <span class="math inline">\(n&lt;0\)</span>. Then <span class="math inline">\(n-kd=n+|n|d\ge n+|n|\ge0\)</span>. So <span class="math inline">\(S\)</span> is a nonempty subset of <span class="math inline">\(\mathbb{N}_0\)</span>. By <a href="#cor-well-ordering-N0">Corollary 1.2.8</a>, <span class="math inline">\(S\)</span> has a smallest element <span class="math inline">\(r\)</span>. So <span class="math inline">\(r=n-qd\)</span> for some <span class="math inline">\(q\in\mathbb{Z}\)</span>, and <span class="math inline">\(r\ge0\)</span>. Assume by way of contradiction
+that <span class="math inline">\(r\ge d\)</span>. Then <span class="math display">\[r-d=n-(q+1)d\ge0.\]</span> So <span class="math inline">\(r-d\in S\)</span>. But <span class="math inline">\(r-d&lt;r\)</span>, a contradiction to the fact
+that <span class="math inline">\(r\)</span> is the smallest element of
+<span class="math inline">\(S\)</span>. So <span class="math inline">\(0\le r&lt;d\)</span> and <span class="math inline">\(n=qd+r\)</span>.</p>
+<p>Next, uniqueness. Suppose <span class="math inline">\(n=qd+r=q'd+r'\)</span> with <span class="math inline">\(0\le r&lt;d\)</span> and <span class="math inline">\(0\le r'&lt;d\)</span>. Without loss of
+generality, assume <span class="math inline">\(r\le r'\)</span>.
+Then <span class="math display">\[r'-r=(q-q')d.\]</span> Also,
+<span class="math inline">\(0\le r'-r&lt;d\)</span>. So <span class="math inline">\(0\le(q-q')d&lt;d\)</span>. Dividing by <span class="math inline">\(d\)</span>, <span class="math inline">\(0\le
+q-q'&lt;1\)</span>. Since <span class="math inline">\(q-q'\)</span> is an integer, <span class="math inline">\(q-q'=0\)</span>. So <span class="math inline">\(q=q'\)</span>, and then <span class="math inline">\(r=r'\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Without Loss of Generality).</strong>
+Sometimes two cases are the same after renaming. In the proof of <a href="#thm-division-algorithm">Theorem 1.2.12</a>, the cases <span class="math inline">\(r\le r'\)</span> and <span class="math inline">\(r'\le r\)</span> are the same with the roles
+of <span class="math inline">\((q,r)\)</span> and <span class="math inline">\((q',r')\)</span> switched. So only one
+case needs a proof. Writing “without loss of generality” tells the
+reader this. Only use it when the other cases really are the same.</p>
+</div>
+<div class="corollarybox" id="cor-even-or-odd">
+
+<p><strong>Corollary 1.2.13.</strong> Every integer is either even or
+odd, but not both.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(n\in\mathbb{Z}\)</span>. By the Division Algorithm
+with <span class="math inline">\(d=2\)</span>, <span class="math inline">\(n=2q+r\)</span> where <span class="math inline">\(q\in\mathbb{Z}\)</span> and <span class="math inline">\(r\in\{0,1\}\)</span>. If <span class="math inline">\(r=0\)</span>, <span class="math inline">\(n\)</span> is even. If <span class="math inline">\(r=1\)</span>, <span class="math inline">\(n\)</span> is odd. If <span class="math inline">\(n\)</span> were both even and odd, then <span class="math inline">\(n=2q+0=2q'+1\)</span> for some <span class="math inline">\(q,q'\in\mathbb{Z}\)</span>. This contradicts
+the uniqueness part of the Division Algorithm.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-n-squared-plus-n">
+
+<p><strong>Example 1.2.14.</strong> For every <span class="math inline">\(n\in\mathbb{Z}\)</span>, <span class="math inline">\(n^2+n\)</span> is even. By <a href="#cor-even-or-odd">Corollary 1.2.13</a>, there are two cases. If
+<span class="math inline">\(n\)</span> is even, then <span class="math inline">\(n=2k\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>. So <span class="math inline">\(n^2+n=4k^2+2k=2(2k^2+k)\)</span> is even. If <span class="math inline">\(n\)</span> is odd, then <span class="math inline">\(n=2k+1\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>. So <span class="math display">\[n^2+n=4k^2+4k+1+2k+1=2(2k^2+3k+1)\]</span> is
+even.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (If and Only If).</strong> The statement
+“<span class="math inline">\(P\)</span> if and only if <span class="math inline">\(Q\)</span>” means both “If <span class="math inline">\(P\)</span>, then <span class="math inline">\(Q\)</span>” and “If <span class="math inline">\(Q\)</span>, then <span class="math inline">\(P\)</span>” are true. So a proof of an <em>if and
+only if</em> statement has two parts. The (<span class="math inline">\(\Rightarrow\)</span>) part assumes <span class="math inline">\(P\)</span> and proves <span class="math inline">\(Q\)</span>. The (<span class="math inline">\(\Leftarrow\)</span>) part assumes <span class="math inline">\(Q\)</span> and proves <span class="math inline">\(P\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Contrapositive).</strong> The
+<em>contrapositive</em> of “If <span class="math inline">\(P\)</span>,
+then <span class="math inline">\(Q\)</span>” is “If not <span class="math inline">\(Q\)</span>, then not <span class="math inline">\(P\)</span>.” A statement and its contrapositive
+are either both true or both false. So to prove a statement, it is
+enough to prove its contrapositive. In the (<span class="math inline">\(\Leftarrow\)</span>) part of the proof of <a href="#thm-even-square">Theorem 1.2.15</a>, it is hard to start from
+“<span class="math inline">\(n^2\)</span> is even.” It is easier to
+start from “<span class="math inline">\(n\)</span> is not even.”</p>
+</div>
+<div class="theorembox" id="thm-even-square">
+
+<p><strong>Theorem 1.2.15.</strong> Let <span class="math inline">\(n\in\mathbb{Z}\)</span>. Then <span class="math inline">\(n\)</span> is even if and only if <span class="math inline">\(n^2\)</span> is even.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Suppose <span class="math inline">\(n\)</span> is even. Then by <a href="#thm-even-odd-arithmetic">Theorem 1.2.5</a> (3), <span class="math inline">\(n^2=n\cdot n\)</span> is even.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) This part is proved
+by contrapositive. Suppose <span class="math inline">\(n\)</span> is not
+even. By <a href="#cor-even-or-odd">Corollary 1.2.13</a>, <span class="math inline">\(n\)</span> is odd. So by <a href="#thm-even-odd-arithmetic">Theorem 1.2.5</a> (4), <span class="math inline">\(n^2=n\cdot n\)</span> is odd. By <a href="#cor-even-or-odd">Corollary 1.2.13</a>, <span class="math inline">\(n^2\)</span> is not even. So if <span class="math inline">\(n^2\)</span> is even, then <span class="math inline">\(n\)</span> is even.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Smallest Counterexample).</strong> Here is
+another way to use the Well-Ordering Principle. To prove a statement for
+all <span class="math inline">\(n\in\mathbb{N}\)</span>, assume by way
+of contradiction that it is false for some <span class="math inline">\(n\)</span>. Then the set of such <span class="math inline">\(n\)</span> is a nonempty subset of <span class="math inline">\(\mathbb{N}\)</span>. So it has a smallest element.
+Then use the fact that the statement is true for every smaller number to
+reach a contradiction. The existence part of the proof of <a href="#thm-power-of-two">Theorem 1.2.16</a> works this way.</p>
+</div>
+<div class="theorembox" id="thm-power-of-two">
+
+<p><strong>Theorem 1.2.16.</strong> For each <span class="math inline">\(k\in\mathbb{N}\)</span>, there exist unique <span class="math inline">\(m,n\in\mathbb{N}\)</span> such that <span class="math inline">\(k=2^{m-1}(2n-1)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> First, existence. Assume by way of contradiction that
+some <span class="math inline">\(k\in\mathbb{N}\)</span> cannot be
+written this way. Let <span class="math inline">\(S\)</span> be the set
+of all such <span class="math inline">\(k\)</span>. Then <span class="math inline">\(S\)</span> is a nonempty subset of <span class="math inline">\(\mathbb{N}\)</span>. So by the Well-Ordering
+Principle, <span class="math inline">\(S\)</span> has a smallest element
+<span class="math inline">\(k\)</span>.</p>
+<p>If <span class="math inline">\(k\)</span> is odd, then <span class="math inline">\(k=2j+1\)</span> for some <span class="math inline">\(j\in\mathbb{N}_0\)</span>. So <span class="math inline">\(k=2^{1-1}\bigl(2(j+1)-1\bigr)\)</span> with <span class="math inline">\(1,j+1\in\mathbb{N}\)</span>. So <span class="math inline">\(k\notin S\)</span>, a contradiction.</p>
+<p>If <span class="math inline">\(k\)</span> is even, then <span class="math inline">\(k=2j\)</span> for some <span class="math inline">\(j\in\mathbb{N}\)</span>, and <span class="math inline">\(j&lt;k\)</span>. Since <span class="math inline">\(k\)</span> is the smallest element of <span class="math inline">\(S\)</span>, <span class="math inline">\(j\notin
+S\)</span>. So <span class="math inline">\(j=2^{m-1}(2n-1)\)</span> for
+some <span class="math inline">\(m,n\in\mathbb{N}\)</span>. Then <span class="math inline">\(k=2j=2^{(m+1)-1}(2n-1)\)</span> with <span class="math inline">\(m+1,n\in\mathbb{N}\)</span>. So <span class="math inline">\(k\notin S\)</span>, a contradiction.</p>
+<p>By <a href="#cor-even-or-odd">Corollary 1.2.13</a>, these are the
+only two cases. So <span class="math inline">\(S=\emptyset\)</span>.</p>
+<p>Next, uniqueness. Suppose <span class="math inline">\(2^{m-1}(2n-1)=2^{p-1}(2q-1)\)</span> with <span class="math inline">\(m,n,p,q\in\mathbb{N}\)</span>. Without loss of
+generality, assume <span class="math inline">\(m\le p\)</span>. Dividing
+by <span class="math inline">\(2^{m-1}\)</span>, <span class="math display">\[2n-1=2^{p-m}(2q-1).\]</span> If <span class="math inline">\(p&gt;m\)</span>, then the right side is even by <a href="#thm-even-odd-arithmetic">Theorem 1.2.5</a> (3), and the left side
+is odd. This contradicts <a href="#cor-even-or-odd">Corollary
+1.2.13</a>. So <span class="math inline">\(p=m\)</span>. Then <span class="math inline">\(2n-1=2q-1\)</span>, and <span class="math inline">\(n=q\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-1">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-even-times">
+
+<p><strong>Exercise 1.2.1.</strong> Prove <a href="#thm-even-odd-arithmetic">Theorem 1.2.5</a> (3).</p>
+</div>
+<div class="exercisebox" id="exer-even-plus-odd">
+
+<p><strong>Exercise 1.2.2.</strong> Prove that the sum of an even
+integer and an odd integer is odd. <a aria-label="Solution for Exercise 1.2.2" href="solutions-ch01.html#sol-exer-even-plus-odd">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-odd-square">
+
+<p><strong>Exercise 1.2.3.</strong> Prove that <span class="math inline">\(n\in\mathbb{Z}\)</span> is odd if and only if
+<span class="math inline">\(n^2\)</span> is odd. <a aria-label="Solution for Exercise 1.2.3" href="solutions-ch01.html#sol-exer-odd-square">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-three-divides-square">
+
+<p><strong>Exercise 1.2.4.</strong> Let <span class="math inline">\(n\in\mathbb{Z}\)</span>. Use the Division
+Algorithm with <span class="math inline">\(d=3\)</span> to prove that if
+<span class="math inline">\(n^2=3k\)</span> for some <span class="math inline">\(k\in\mathbb{Z}\)</span>, then <span class="math inline">\(n=3j\)</span> for some <span class="math inline">\(j\in\mathbb{Z}\)</span>. <a aria-label="Hint for Exercise 1.2.4" href="solutions-ch01.html#sol-exer-three-divides-square">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-telescoping-induction">
+
+<p><strong>Exercise 1.2.5.</strong> Let <span class="math inline">\(a_0,a_1,\dots\)</span> be real numbers. Use
+induction to prove that for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[\sum_{i=1}^n\left(a_i-a_{i-1}\right)=a_n-a_0.\]</span></p>
+</div>
+<div class="exercisebox" id="exer-sum-of-squares">
+
+<p><strong>Exercise 1.2.6.</strong> Use induction to prove that for all
+<span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6}.\]</span>
+<a aria-label="Solution for Exercise 1.2.6" href="solutions-ch01.html#sol-exer-sum-of-squares">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-geometric-sum">
+
+<p><strong>Exercise 1.2.7.</strong> Let <span class="math inline">\(r\ne1\)</span>. Use induction to prove that for
+all <span class="math inline">\(n\in\mathbb{N}_0\)</span>, <span class="math display">\[\sum_{i=0}^nr^i=\frac{1-r^{n+1}}{1-r}.\]</span></p>
+</div>
+<div class="exercisebox" id="exer-difference-of-powers">
+
+<p><strong>Exercise 1.2.8.</strong> Let <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> be real numbers. Use induction to prove
+that for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[b^n-a^n=(b-a)\left(b^{n-1}+b^{n-2}a+\cdots+ba^{n-2}+a^{n-1}\right)=(b-a)\sum_{i=0}^{n-1}b^{n-1-i}a^i.\]</span></p>
+</div>
+<div class="exercisebox" id="exer-two-to-n">
+
+<p><strong>Exercise 1.2.9.</strong> Use induction to prove that <span class="math inline">\(2^n&gt;n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. <a aria-label="Solution for Exercise 1.2.9" href="solutions-ch01.html#sol-exer-two-to-n">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-factorial-bound">
+
+<p><strong>Exercise 1.2.10.</strong> Use induction to prove that <span class="math inline">\(n!\ge2^{n-1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. <a aria-label="Hint for Exercise 1.2.10" href="solutions-ch01.html#sol-exer-factorial-bound">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-rationals">
+<h2>1.3 The Rational Numbers</h2>
+<p>The rational numbers are the fractions. They can be added,
+subtracted, multiplied and divided, and the answers are still rational.
+So for arithmetic, <span class="math inline">\(\mathbb{Q}\)</span> is
+enough. The trouble is that <span class="math inline">\(\mathbb{Q}\)</span> has holes. The side of a
+square with area <span class="math inline">\(2\)</span> should have a
+length <span class="math inline">\(p\)</span> with <span class="math inline">\(p^2=2\)</span>. <a href="#thm-sqrt2-irrational">Theorem 1.3.4</a> shows no rational number
+does this. <a href="#thm-no-largest-element">Theorem 1.3.5</a> shows
+something stronger. The rational numbers with <span class="math inline">\(p^2&lt;2\)</span> and the ones with <span class="math inline">\(p^2&gt;2\)</span> crowd right up against each
+other, and no rational number sits between them.</p>
+<div class="definitionbox" id="def-rationals">
+
+<p><strong>Definition 1.3.1.</strong> Define the <em>rational
+numbers</em> <span class="math inline">\(\mathbb{Q}=\left\{\frac{m}{n}:m,n\in\mathbb{Z},\
+n\ne0\right\}\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-rational-arithmetic">
+
+<p><strong>Remark 1.3.2.</strong> Two fractions <span class="math inline">\(\frac{m}{n}\)</span> and <span class="math inline">\(\frac{p}{q}\)</span> are equal if <span class="math inline">\(mq=np\)</span>. So <span class="math inline">\(\frac{1}{2}=\frac{2}{4}\)</span>. Every integer
+<span class="math inline">\(m\)</span> is rational, since <span class="math inline">\(m=\frac{m}{1}\)</span>. So <span class="math inline">\(\mathbb{N}\subset\mathbb{N}_0\subset\mathbb{Z}\subset\mathbb{Q}\)</span>.
+The usual arithmetic and order of <span class="math inline">\(\mathbb{Q}\)</span> are assumed for now. <a href="#sec-fields">Section 1.5</a> lists the rules they satisfy.</p>
+</div>
+<div class="lemmabox" id="lem-lowest-terms">
+
+<p><strong>Lemma 1.3.3.</strong> Let <span class="math inline">\(p\in\mathbb{Q}\)</span> with <span class="math inline">\(p&gt;0\)</span>. Then there exist <span class="math inline">\(m,n\in\mathbb{N}\)</span> such that <span class="math inline">\(p=\frac{m}{n}\)</span> and <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are not both even.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(p\in\mathbb{Q}\)</span>, <span class="math inline">\(p=\frac{a}{b}\)</span> for some <span class="math inline">\(a,b\in\mathbb{Z}\)</span> with <span class="math inline">\(b\ne0\)</span>. Since <span class="math inline">\(p&gt;0\)</span>, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are both positive or both negative. If
+both are negative, then <span class="math inline">\(p=\frac{-a}{-b}\)</span>. So <span class="math inline">\(p=\frac{a}{b}\)</span> with <span class="math inline">\(a,b\in\mathbb{N}\)</span>. Let <span class="math display">\[S=\left\{n\in\mathbb{N}:p=\frac{m}{n}\text{ for
+some }m\in\mathbb{N}\right\}.\]</span> Then <span class="math inline">\(b\in S\)</span>, so <span class="math inline">\(S\ne\emptyset\)</span>. By the Well-Ordering
+Principle, <span class="math inline">\(S\)</span> has a smallest element
+<span class="math inline">\(n\)</span>. So <span class="math inline">\(p=\frac{m}{n}\)</span> for some <span class="math inline">\(m\in\mathbb{N}\)</span>. Assume by way of
+contradiction that <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are both even. Then <span class="math inline">\(m=2j\)</span> and <span class="math inline">\(n=2k\)</span> for some <span class="math inline">\(j,k\in\mathbb{N}\)</span>. So <span class="math inline">\(p=\frac{2j}{2k}=\frac{j}{k}\)</span>, and <span class="math inline">\(k\in S\)</span>. But <span class="math inline">\(k&lt;n\)</span>, a contradiction to the fact that
+<span class="math inline">\(n\)</span> is the smallest element of <span class="math inline">\(S\)</span>. So <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are not both even.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-sqrt2-irrational">
+
+<p><strong>Theorem 1.3.4.</strong> There exists no <span class="math inline">\(p\in\mathbb{Q}\)</span> with <span class="math inline">\(p^2=2\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Assume by way of contradiction that there exists a
+<span class="math inline">\(p\in\mathbb{Q}\)</span> such that <span class="math inline">\(p^2=2\)</span>. Since <span class="math inline">\((-p)^2=p^2\)</span> and <span class="math inline">\(0^2\ne2\)</span>, assume <span class="math inline">\(p&gt;0\)</span>. By <a href="#lem-lowest-terms">Lemma 1.3.3</a>, <span class="math inline">\(p=\frac{m}{n}\)</span> with <span class="math inline">\(m,n\in\mathbb{N}\)</span>, where <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are not both even. So <span class="math inline">\(p^2=\frac{m^2}{n^2}\)</span>. Since <span class="math inline">\(p^2=2\)</span>, <span class="math inline">\(2n^2=m^2\)</span>. Therefore, since <span class="math inline">\(n^2\in\mathbb{N}\)</span>, <span class="math inline">\(m^2\)</span> is even. So by <a href="#thm-even-square">Theorem 1.2.15</a>, <span class="math inline">\(m\)</span> must be even. Thus, there exists a
+<span class="math inline">\(k\in\mathbb{N}\)</span> such that <span class="math inline">\(m=2k\)</span>, implying <span class="math inline">\(4k^2=m^2\)</span>, or <span class="math inline">\(2n^2=4k^2\)</span>. Thus <span class="math inline">\(n^2=2k^2\)</span> and <span class="math inline">\(n^2\)</span> is even. So by <a href="#thm-even-square">Theorem 1.2.15</a>, <span class="math inline">\(n\)</span> is also even, a contradiction to the
+fact that <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are not both even. So there exists no
+such <span class="math inline">\(p\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Proving Existence by Construction).</strong>
+The statement “<span class="math inline">\(A\)</span> has no largest
+element” means for every <span class="math inline">\(p\in A\)</span>,
+there exists a <span class="math inline">\(q\in A\)</span> with <span class="math inline">\(q&gt;p\)</span>. To prove a “there exists”
+statement, it is often best to build the object. The proof of <a href="#thm-no-largest-element">Theorem 1.3.5</a> builds <span class="math inline">\(q_p\)</span> from <span class="math inline">\(p\)</span> with a formula. Finding the formula is
+scratch work. It is not part of the proof. The proof only has to check
+that <span class="math inline">\(q_p\)</span> works.</p>
+</div>
+<div class="theorembox" id="thm-no-largest-element">
+
+<p><strong>Theorem 1.3.5.</strong> The set <span class="math inline">\(A=\{p\in\mathbb{Q}:p&gt;0,\ p^2&lt;2\}\)</span>
+has no largest element and the set <span class="math inline">\(B=\{p\in\mathbb{Q}:p&gt;0,\ p^2&gt;2\}\)</span>
+has no smallest element.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> For each <span class="math inline">\(p\in\mathbb{Q}\)</span>, <span class="math inline">\(p&gt;0\)</span>, define <span class="math display">\[q_p=p-\frac{p^2-2}{p+2}=\frac{2p+2}{p+2}.\]</span>
+Notice <span class="math inline">\(q_p\in\mathbb{Q}\)</span> and <span class="math inline">\(q_p&gt;0\)</span>. Then <span class="math display">\[q_p^2-2=\frac{2(p^2-2)}{(p+2)^2}.\]</span></p>
+<p>Let <span class="math inline">\(p\in A\)</span>. Then <span class="math inline">\(p^2-2&lt;0\)</span>. So <span class="math inline">\(q_p&gt;p\)</span> and <span class="math inline">\(q_p^2&lt;2\)</span>. So <span class="math inline">\(q_p\in A\)</span>.</p>
+<p>Next, let <span class="math inline">\(p\in B\)</span>. Then <span class="math inline">\(p^2-2&gt;0\)</span>. So <span class="math inline">\(q_p&lt;p\)</span> and <span class="math inline">\(q_p^2&gt;2\)</span>. Thus <span class="math inline">\(q_p\in B\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Where does the formula for <span class="math inline">\(q_p\)</span>
+come from? If <span class="math inline">\(p\in A\)</span>, the goal is a
+number a little bigger than <span class="math inline">\(p\)</span> whose
+square is still less than <span class="math inline">\(2\)</span>. The
+step up should shrink as <span class="math inline">\(p^2\)</span> gets
+close to <span class="math inline">\(2\)</span>. So it makes sense to
+step by a multiple of <span class="math inline">\(2-p^2\)</span>.
+Dividing by <span class="math inline">\(p+2\)</span> keeps the step
+small enough that <span class="math inline">\(q_p^2\)</span> stays below
+<span class="math inline">\(2\)</span>. The identity for <span class="math inline">\(q_p^2-2\)</span> in the proof checks this. The
+same formula moves each element of <span class="math inline">\(B\)</span> down.</p>
+<p>So <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> split the positive rational numbers
+into two pieces, as in <a href="#fig-sqrt2-gap">Figure 1.1</a>. There is
+no largest number on the left and no smallest number on the right. <a href="#sec-ordered-sets">Section 1.4</a> gives the language to say
+exactly what is missing.</p>
+<figure class="figure" id="fig-sqrt2-gap"><div class="figure-images"><img alt="A number line. The rationals below the square root of 2 are shaded on the left and the rationals above it on the right, with an open gap where the two pieces meet." height="89" src="figs/fig01.svg" width="548"/></div><figcaption><strong>Figure 1.1.</strong> The sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of <a href="#thm-no-largest-element">Theorem 1.3.5</a>. They meet at a point
+that is not a rational number.</figcaption></figure>
+<section class="level5 unnumbered" id="exercises-2">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-sqrt3">
+
+<p><strong>Exercise 1.3.1.</strong> Prove there is no <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(q^2=3\)</span>. <a aria-label="Hint for Exercise 1.3.1" href="solutions-ch01.html#sol-exer-sqrt3">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sqrt6">
+
+<p><strong>Exercise 1.3.2.</strong> Prove there is no <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(q^2=6\)</span>. <a aria-label="Hint for Exercise 1.3.2" href="solutions-ch01.html#sol-exer-sqrt6">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rational-midpoint">
+
+<p><strong>Exercise 1.3.3.</strong> Let <span class="math inline">\(p,q\in\mathbb{Q}\)</span> with <span class="math inline">\(p&lt;q\)</span>. Prove that <span class="math inline">\(\frac{p+q}{2}\in\mathbb{Q}\)</span> and <span class="math inline">\(p&lt;\frac{p+q}{2}&lt;q\)</span>. <a aria-label="Solution for Exercise 1.3.3" href="solutions-ch01.html#sol-exer-rational-midpoint">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-ordered-sets">
+<h2>1.4 Ordered Sets</h2>
+<p>To describe the hole in <span class="math inline">\(\mathbb{Q}\)</span> precisely, the language of
+order is needed. This section works with any set that has an order, not
+just <span class="math inline">\(\mathbb{Q}\)</span>. Its main
+definition is the supremum, or least upper bound. It is the most
+important definition in this chapter.</p>
+<div class="definitionbox" id="def-order">
+
+<p><strong>Definition 1.4.1.</strong> Let <span class="math inline">\(S\)</span> be a set. A relation <span class="math inline">\(&lt;\)</span> on <span class="math inline">\(S\)</span> is an <em>order</em> on <span class="math inline">\(S\)</span> if it has the following two
+properties.</p>
+<ol>
+<li><p><span class="upright">(Trichotomy)</span> For all <span class="math inline">\(x,y\in S\)</span>, exactly one of <span class="math inline">\(x&lt;y\)</span>, <span class="math inline">\(x=y\)</span>, <span class="math inline">\(y&lt;x\)</span> is true.</p></li>
+<li><p><span class="upright">(Transitivity)</span> For all <span class="math inline">\(x,y,z\in S\)</span>, if <span class="math inline">\(x&lt;y\)</span> and <span class="math inline">\(y&lt;z\)</span>, then <span class="math inline">\(x&lt;z\)</span>.</p></li>
+</ol>
+<p>Write <span class="math inline">\(y&gt;x\)</span> to mean <span class="math inline">\(x&lt;y\)</span>. Write <span class="math inline">\(x\le y\)</span> to mean <span class="math inline">\(x&lt;y\)</span> or <span class="math inline">\(x=y\)</span>, and <span class="math inline">\(y\ge
+x\)</span> to mean <span class="math inline">\(x\le y\)</span>. A set
+together with an order is called an <em>ordered set</em>.</p>
+</div>
+<div class="examplebox" id="ex-Q-ordered-set">
+
+<p><strong>Example 1.4.2.</strong> <span class="math inline">\(\mathbb{Q}\)</span> is an ordered set if for <span class="math inline">\(r,s\in \mathbb{Q}\)</span>, <span class="math inline">\(r&lt;s\)</span> is defined as <span class="math inline">\(s-r\)</span> is a positive rational number.</p>
+</div>
+<div class="definitionbox" id="def-bounded-set">
+
+<p><strong>Definition 1.4.3.</strong> Suppose <span class="math inline">\(S\)</span> is an ordered set and <span class="math inline">\(E\subset S\)</span>. If there exists a <span class="math inline">\(\beta\in S\)</span> such that <span class="math inline">\(x\le\beta\)</span> for all <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(E\)</span> is said to be <em>bounded above</em>,
+and <span class="math inline">\(\beta\)</span> is called an <em>upper
+bound</em> of <span class="math inline">\(E\)</span>.</p>
+<p>If there exists an <span class="math inline">\(\alpha\in S\)</span>
+such that <span class="math inline">\(x\ge \alpha\)</span> for all <span class="math inline">\(x\in E\)</span>, <span class="math inline">\(E\)</span> is said to be <em>bounded below</em>
+and <span class="math inline">\(\alpha\)</span> is called a <em>lower
+bound</em> of <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-sup-inf">
+
+<p><strong>Definition 1.4.4.</strong> Let <span class="math inline">\(S\)</span> be an ordered set and <span class="math inline">\(E\subset S\)</span>. An element <span class="math inline">\(\beta\in S\)</span> is the <em>supremum</em>, or
+<em>least upper bound</em>, of <span class="math inline">\(E\)</span>
+if</p>
+<ol>
+<li><p><span class="math inline">\(\beta\)</span> is an upper bound of
+<span class="math inline">\(E\)</span>, and</p></li>
+<li><p>no element of <span class="math inline">\(S\)</span> smaller than
+<span class="math inline">\(\beta\)</span> is an upper bound of <span class="math inline">\(E\)</span>. That is, if <span class="math inline">\(\gamma&lt;\beta\)</span>, then there exists an
+<span class="math inline">\(x\in E\)</span> with <span class="math inline">\(x&gt;\gamma\)</span>.</p></li>
+</ol>
+<p>In this case, write <span class="math display">\[\beta=\sup
+E=\operatorname{lub}E.\]</span> Similarly, an element <span class="math inline">\(\alpha\in S\)</span> is the <em>infimum</em>, or
+<em>greatest lower bound</em>, of <span class="math inline">\(E\)</span>
+if</p>
+<ol>
+<li><p><span class="math inline">\(\alpha\)</span> is a lower bound of
+<span class="math inline">\(E\)</span>, and</p></li>
+<li><p>no element of <span class="math inline">\(S\)</span> larger than
+<span class="math inline">\(\alpha\)</span> is a lower bound of <span class="math inline">\(E\)</span>. That is, if <span class="math inline">\(\alpha&lt;\gamma\)</span>, then there exists an
+<span class="math inline">\(x\in E\)</span> with <span class="math inline">\(x&lt;\gamma\)</span>.</p></li>
+</ol>
+<p>In this case, write <span class="math display">\[\alpha=\inf
+E=\operatorname{glb}E.\]</span></p>
+</div>
+<p>The supremum is the smallest upper bound. It does not have to be an
+element of <span class="math inline">\(E\)</span>. If <span class="math inline">\(E\)</span> has a largest element, then that
+element is <span class="math inline">\(\sup E\)</span>. So the supremum
+takes the place of a largest element when there is none. <a href="#ex-sup-of-reciprocals">Example 1.4.6</a> gives a set whose
+infimum is not in the set.</p>
+<div class="theorembox" id="thm-sup-unique">
+
+<p><strong>Theorem 1.4.5.</strong> Suppose <span class="math inline">\(S\)</span> is an ordered set. If <span class="math inline">\(E\subset S\)</span>, <span class="math inline">\(E\ne\emptyset\)</span>, has a supremum, it is
+unique. Similarly, if <span class="math inline">\(E\)</span> has an
+infimum, it is unique.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let both <span class="math inline">\(\beta_1,\beta_2\in S\)</span> be a supremum of the
+set <span class="math inline">\(E\)</span>. Since <span class="math inline">\(S\)</span> is an ordered set, <span class="math inline">\(\beta_1&lt;\beta_2\)</span>, <span class="math inline">\(\beta_1&gt;\beta_2\)</span>, or <span class="math inline">\(\beta_1=\beta_2\)</span>. If <span class="math inline">\(\beta_1&lt;\beta_2\)</span>, then by the
+definition of <span class="math inline">\(\beta_2\)</span>, <span class="math inline">\(\beta_1\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, contradicting the fact that <span class="math inline">\(\beta_1\)</span> is a supremum of <span class="math inline">\(E\)</span>. So <span class="math inline">\(\beta_1\geq \beta_2\)</span>. If <span class="math inline">\(\beta_2&lt;\beta_1\)</span>, then by the
+definition of <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, contradicting the fact that <span class="math inline">\(\beta_2\)</span> is a supremum of <span class="math inline">\(E\)</span>. So <span class="math inline">\(\beta_1=\beta_2\)</span>.</p>
+<p>Let both <span class="math inline">\(\alpha_1,\alpha_2\in S\)</span>
+be an infimum of the set <span class="math inline">\(E\)</span>. Since
+<span class="math inline">\(S\)</span> is an ordered set, <span class="math inline">\(\alpha_1&lt;\alpha_2\)</span>, <span class="math inline">\(\alpha_1&gt;\alpha_2\)</span>, or <span class="math inline">\(\alpha_1=\alpha_2\)</span>. If <span class="math inline">\(\alpha_1&lt;\alpha_2\)</span>, then by the
+definition of <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\alpha_2\)</span> is not a lower bound of <span class="math inline">\(E\)</span>, contradicting the fact that <span class="math inline">\(\alpha_2\)</span> is an infimum of <span class="math inline">\(E\)</span>. So <span class="math inline">\(\alpha_1\geq \alpha_2\)</span>. If <span class="math inline">\(\alpha_2&lt;\alpha_1\)</span>, then by the
+definition of <span class="math inline">\(\alpha_2\)</span>, <span class="math inline">\(\alpha_1\)</span> is not a lower bound of <span class="math inline">\(E\)</span>, contradicting the fact that <span class="math inline">\(\alpha_1\)</span> is an infimum of <span class="math inline">\(E\)</span>. So <span class="math inline">\(\alpha_1=\alpha_2\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-sup-of-reciprocals">
+
+<p><strong>Example 1.4.6.</strong> Let <span class="math inline">\(E=\{1/n:n\in\mathbb{N}\}\subset\mathbb{Q}\)</span>.
+Then <span class="math inline">\(\sup E=1\in E\)</span> and <span class="math inline">\(\inf E=0\notin E\)</span>. To see this, first
+notice <span class="math inline">\(\frac{1}{n}\le1\)</span> for all
+<span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(1\)</span> is an upper bound of <span class="math inline">\(E\)</span>. If <span class="math inline">\(\gamma&lt;1\)</span>, then <span class="math inline">\(\gamma\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, since <span class="math inline">\(1\in
+E\)</span>. So <span class="math inline">\(\sup E=1\)</span>.</p>
+<p>Next, <span class="math inline">\(\frac{1}{n}&gt;0\)</span> for all
+<span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(0\)</span> is a lower bound of <span class="math inline">\(E\)</span>. Let <span class="math inline">\(\gamma\in\mathbb{Q}\)</span> with <span class="math inline">\(\gamma&gt;0\)</span>. Then <span class="math inline">\(\gamma=\frac{a}{b}\)</span> for some <span class="math inline">\(a,b\in\mathbb{N}\)</span>. So <span class="math inline">\(\frac{1}{b+1}&lt;\frac{1}{b}\le\frac{a}{b}=\gamma\)</span>,
+and <span class="math inline">\(\gamma\)</span> is not a lower bound of
+<span class="math inline">\(E\)</span>. So <span class="math inline">\(\inf E=0\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-sup-not-in-Q">
+
+<p><strong>Example 1.4.7.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be the sets in <a href="#thm-no-largest-element">Theorem 1.3.5</a>. Every element of <span class="math inline">\(B\)</span> is an upper bound of <span class="math inline">\(A\)</span>. To see this, let <span class="math inline">\(q\in B\)</span> and <span class="math inline">\(p\in A\)</span>. If <span class="math inline">\(q\le p\)</span>, then <span class="math inline">\(q^2\le p^2&lt;2&lt;q^2\)</span>, which is
+impossible. So <span class="math inline">\(p&lt;q\)</span>. In
+particular, <span class="math inline">\(2\)</span>, <span class="math inline">\(5\)</span>, and <span class="math inline">\(3/2\)</span> are upper bounds of <span class="math inline">\(A\)</span>.</p>
+<p>However, <span class="math inline">\(\sup A\)</span> does not exist
+in <span class="math inline">\(\mathbb{Q}\)</span>. Assume by way of
+contradiction that <span class="math inline">\(s=\sup
+A\in\mathbb{Q}\)</span>. Since <span class="math inline">\(1\in
+A\)</span>, <span class="math inline">\(s\ge1&gt;0\)</span>. By <a href="#thm-sqrt2-irrational">Theorem 1.3.4</a>, <span class="math inline">\(s^2\ne2\)</span>. If <span class="math inline">\(s^2&lt;2\)</span>, then <span class="math inline">\(s\in A\)</span>. By <a href="#thm-no-largest-element">Theorem 1.3.5</a>, there exists a <span class="math inline">\(q\in A\)</span> with <span class="math inline">\(q&gt;s\)</span>. This contradicts the fact that
+<span class="math inline">\(s\)</span> is an upper bound of <span class="math inline">\(A\)</span>. If <span class="math inline">\(s^2&gt;2\)</span>, then <span class="math inline">\(s\in B\)</span>. By <a href="#thm-no-largest-element">Theorem 1.3.5</a>, there exists a <span class="math inline">\(q\in B\)</span> with <span class="math inline">\(q&lt;s\)</span>. But <span class="math inline">\(q\)</span> is an upper bound of <span class="math inline">\(A\)</span>. This contradicts the fact that <span class="math inline">\(s\)</span> is the least upper bound of <span class="math inline">\(A\)</span>. So <span class="math inline">\(\sup
+A\)</span> does not exist in <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-lub-property">
+
+<p><strong>Definition 1.4.8.</strong> An ordered set <span class="math inline">\(S\)</span> is said to have the <em>least upper
+bound property</em> if for all <span class="math inline">\(E\subset
+S\)</span> with <span class="math inline">\(E\ne\emptyset\)</span>,
+<span class="math inline">\(E\)</span> bounded above, <span class="math inline">\(\sup E\in S\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-Q-no-lub-property">
+
+<p><strong>Example 1.4.9.</strong> By <a href="#ex-sup-not-in-Q">Example
+1.4.7</a>, <span class="math inline">\(\mathbb{Q}\)</span> does not have
+the least upper bound property.</p>
+</div>
+<p>This is the precise form of the hole in <span class="math inline">\(\mathbb{Q}\)</span>. The set <span class="math inline">\(A\)</span> is nonempty and bounded above in <span class="math inline">\(\mathbb{Q}\)</span>, but nothing in <span class="math inline">\(\mathbb{Q}\)</span> is its least upper bound. The
+real numbers are built to fix exactly this problem.</p>
+<div class="theorembox" id="thm-lub-implies-glb">
+
+<p><strong>Theorem 1.4.10.</strong> Suppose <span class="math inline">\(S\)</span> is an ordered set with the least upper
+bound property, <span class="math inline">\(E\subset S\)</span>, <span class="math inline">\(E\ne\emptyset\)</span> and <span class="math inline">\(E\)</span> is bounded below. Then <span class="math inline">\(\inf E\)</span> exists in <span class="math inline">\(S\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(L\)</span> be the set
+of all lower bounds of <span class="math inline">\(E\)</span>. That is,
+<span class="math display">\[L=\{y\in S:y\le x\text{ for all }x\in
+E\}.\]</span> Since <span class="math inline">\(E\)</span> is bounded
+below, <span class="math inline">\(L\ne\emptyset\)</span>. By the
+definition of <span class="math inline">\(L\)</span>, every element of
+<span class="math inline">\(E\)</span> is an upper bound of <span class="math inline">\(L\)</span>. Since <span class="math inline">\(E\ne\emptyset\)</span>, <span class="math inline">\(L\)</span> is bounded above. By the least upper
+bound property, <span class="math inline">\(\alpha=\sup L\)</span>
+exists in <span class="math inline">\(S\)</span>. The claim is that
+<span class="math inline">\(\alpha=\inf E\)</span>.</p>
+<p>First, <span class="math inline">\(\alpha\)</span> is a lower bound
+of <span class="math inline">\(E\)</span>. Let <span class="math inline">\(x\in E\)</span>. Then <span class="math inline">\(x\)</span> is an upper bound of <span class="math inline">\(L\)</span>. If <span class="math inline">\(x&lt;\alpha\)</span>, then <span class="math inline">\(x\)</span> would not be an upper bound of <span class="math inline">\(L\)</span>, by the definition of <span class="math inline">\(\alpha\)</span>. So <span class="math inline">\(\alpha\le x\)</span>.</p>
+<p>Second, let <span class="math inline">\(\gamma\in S\)</span> with
+<span class="math inline">\(\alpha&lt;\gamma\)</span>. Since <span class="math inline">\(\alpha\)</span> is an upper bound of <span class="math inline">\(L\)</span>, <span class="math inline">\(\gamma\notin L\)</span>. So <span class="math inline">\(\gamma\)</span> is not a lower bound of <span class="math inline">\(E\)</span>. Therefore <span class="math inline">\(\alpha=\inf E\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-3">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-sup-characterization">
+
+<p><strong>Exercise 1.4.1.</strong> Suppose <span class="math inline">\(S\)</span> is an ordered set, <span class="math inline">\(E\subset S\)</span> and <span class="math inline">\(E\ne\emptyset\)</span>. Prove if <span class="math inline">\(\beta\)</span> is an upper bound of <span class="math inline">\(E\)</span> and if, for all upper bounds <span class="math inline">\(\kappa\)</span> of <span class="math inline">\(E\)</span>, <span class="math inline">\(\beta\le
+\kappa\)</span>, then <span class="math inline">\(\sup E=\beta\)</span>.
+A similar proof shows if <span class="math inline">\(\alpha\)</span> is
+a lower bound of <span class="math inline">\(E\)</span> and if, for all
+lower bounds <span class="math inline">\(\eta\)</span> of <span class="math inline">\(E\)</span>, <span class="math inline">\(\alpha\ge
+\eta\)</span>, then <span class="math inline">\(\inf
+E=\alpha\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-inf-le-sup">
+
+<p><strong>Exercise 1.4.2.</strong> Suppose <span class="math inline">\(S\)</span> is an ordered set and <span class="math inline">\(E\subset S\)</span> is nonempty. Prove that if
+<span class="math inline">\(\inf E\)</span> and <span class="math inline">\(\sup E\)</span> both exist, then <span class="math inline">\(\inf E\le\sup E\)</span>. <a aria-label="Solution for Exercise 1.4.2" href="solutions-ch01.html#sol-exer-inf-le-sup">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-sup-one-minus">
+
+<p><strong>Exercise 1.4.3.</strong> Let <span class="math inline">\(E=\{1-\frac{1}{n}:n\in\mathbb{N}\}\subset\mathbb{Q}\)</span>.
+Find <span class="math inline">\(\sup E\)</span> and <span class="math inline">\(\inf E\)</span>. Prove your answers. <a aria-label="Hint for Exercise 1.4.3" href="solutions-ch01.html#sol-exer-sup-one-minus">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-fields">
+<h2>1.5 Fields and Ordered Fields</h2>
+<p>The rational numbers and the real numbers follow the same rules of
+arithmetic. This section lists those rules as axioms. A set with an
+addition and a multiplication that satisfy them is called a field.
+Anything proved from the axioms is then true in <span class="math inline">\(\mathbb{Q}\)</span>, in <span class="math inline">\(\mathbb{R}\)</span>, and in every other field.
+That is the advantage of working from axioms. One proof covers many
+number systems.</p>
+<div class="definitionbox" id="def-field">
+
+<p><strong>Definition 1.5.1.</strong> A <em>field</em> is a set <span class="math inline">\(\mathbb{F}\)</span> with two operations <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> which satisfy the following
+axioms.</p>
+<ol>
+<li><p>If <span class="math inline">\(x\in \mathbb{F}\)</span> and <span class="math inline">\(y\in \mathbb{F}\)</span>, then <span class="math inline">\(x+y\in \mathbb{F}\)</span>.</p></li>
+<li><p><span class="math inline">\(x+y=y+x\)</span> for all <span class="math inline">\(x,y\in \mathbb{F}\)</span>.</p></li>
+<li><p><span class="math inline">\((x+y)+z=x+(y+z)\)</span> for all
+<span class="math inline">\(x,y,z\in \mathbb{F}\)</span>.</p></li>
+<li><p>There exists a <span class="math inline">\(0\in\mathbb{F}\)</span> such that <span class="math inline">\(0+x=x\)</span> for all <span class="math inline">\(x\in\mathbb{F}\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(x\in\mathbb{F}\)</span>,
+there exists a <span class="math inline">\(-x\in\mathbb{F}\)</span> such
+that <span class="math inline">\(x+(-x)=0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\in \mathbb{F}\)</span> and <span class="math inline">\(y\in \mathbb{F}\)</span>, then <span class="math inline">\(x\cdot y\in \mathbb{F}\)</span>.</p></li>
+<li><p><span class="math inline">\(x\cdot y=y\cdot x\)</span> for all
+<span class="math inline">\(x,y\in \mathbb{F}\)</span>.</p></li>
+<li><p><span class="math inline">\((x\cdot y)\cdot z=x\cdot(y\cdot
+z)\)</span> for all <span class="math inline">\(x,y,z\in
+\mathbb{F}\)</span>.</p></li>
+<li><p>There exists a <span class="math inline">\(1\in\mathbb{F}\)</span> with <span class="math inline">\(1\ne 0\)</span> such that <span class="math inline">\(1\cdot x=x\)</span> for all <span class="math inline">\(x\in\mathbb{F}\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(x\in\mathbb{F}\setminus\{0\}\)</span>, there
+exists an <span class="math inline">\(x^{-1}\in\mathbb{F}\)</span> such
+that <span class="math inline">\(x\cdot x^{-1}=1\)</span>.</p></li>
+<li><p><span class="math inline">\(x\cdot(y+z)=x\cdot y+x\cdot
+z\)</span> for all <span class="math inline">\(x,y,z\in\mathbb{F}\)</span>.</p></li>
+</ol>
+</div>
+<div class="remarkbox" id="rem-field-notation">
+
+<p><strong>Remark 1.5.2.</strong> In a field, <span class="math inline">\(x-y\)</span> means <span class="math inline">\(x+(-y)\)</span>. If <span class="math inline">\(y\ne0\)</span>, <span class="math inline">\(\frac{x}{y}\)</span> means <span class="math inline">\(x\cdot y^{-1}\)</span>. Also <span class="math inline">\(xy\)</span> means <span class="math inline">\(x\cdot y\)</span>, and powers <span class="math inline">\(x^n\)</span> are defined as in <a href="#def-recursive-notation">Definition 1.2.10</a>. The elements <span class="math inline">\(1+1\)</span>, <span class="math inline">\(1+1+1\)</span>, and so on are written <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span>, and so on.</p>
+</div>
+<div class="examplebox" id="ex-Q-field">
+
+<p><strong>Example 1.5.3.</strong> <span class="math inline">\(\mathbb{Q}\)</span> with <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> defined as addition and
+multiplication is a field.</p>
+</div>
+<div class="examplebox" id="ex-Z-not-field">
+
+<p><strong>Example 1.5.4.</strong> <span class="math inline">\(\mathbb{Z}\)</span> is not a field. The integer
+<span class="math inline">\(2\)</span> has no multiplicative inverse in
+<span class="math inline">\(\mathbb{Z}\)</span>. If <span class="math inline">\(2n=1\)</span> for some <span class="math inline">\(n\in\mathbb{Z}\)</span>, then <span class="math inline">\(1\)</span> is even, which contradicts <a href="#cor-even-or-odd">Corollary 1.2.13</a>.</p>
+</div>
+<div class="theorembox" id="thm-field-properties">
+
+<p><strong>Theorem 1.5.5.</strong> If <span class="math inline">\(\mathbb{F}\)</span> is a field and <span class="math inline">\(x,y,z\in\mathbb{F}\)</span>, each of the following
+hold.</p>
+<ol>
+<li><p>If <span class="math inline">\(x+y=x+z\)</span>, then <span class="math inline">\(y=z\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x+y=x\)</span>, then <span class="math inline">\(y=0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x+y=0\)</span>, then <span class="math inline">\(y=-x\)</span>.</p></li>
+<li><p><span class="math inline">\(-(-x)=x\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(x\cdot y=x\cdot z\)</span>, then <span class="math inline">\(y=z\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(x\cdot y=x\)</span>, then <span class="math inline">\(y=1\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(x\cdot y=1\)</span>, then <span class="math inline">\(y=x^{-1}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\((x^{-1})^{-1}=x\)</span>.</p></li>
+<li><p><span class="math inline">\(0\cdot x=0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\ne0\)</span> and <span class="math inline">\(y\ne0\)</span>, then <span class="math inline">\(x\cdot y\ne0\)</span>.</p></li>
+<li><p><span class="math inline">\((-x)\cdot y=-(x\cdot y)=x\cdot
+(-y)\)</span>.</p></li>
+<li><p><span class="math inline">\((-x)\cdot(-y)=x\cdot
+y\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x+y=x+z\)</span>. Add <span class="math inline">\(-x\)</span> to both sides and use the axioms of <a href="#def-field">Definition 1.5.1</a>. Then <span class="math display">\[\begin{aligned}
+y&amp;=0+y &amp;&amp;\text{by (4)}\\
+&amp;=(-x+x)+y &amp;&amp;\text{by (2) and (5)}\\
+&amp;=-x+(x+y) &amp;&amp;\text{by (3)}\\
+&amp;=-x+(x+z) &amp;&amp;\text{since $x+y=x+z$}\\
+&amp;=(-x+x)+z &amp;&amp;\text{by (3)}\\
+&amp;=0+z=z &amp;&amp;\text{by (2), (5) and (4).}
+\end{aligned}\]</span></p></li>
+<li><p>Exercise.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>This proof is similar to the proof of (1).</p></li>
+<li><p>This proof is similar to the proof of (2).</p></li>
+<li><p>This proof is similar to the proof of (3).</p></li>
+<li><p>This proof is similar to the proof of (4).</p></li>
+<li><p>Now <span class="math display">\[0\cdot x+0\cdot x=(0+0)\cdot
+x=0\cdot x.\]</span> Hence by (2), <span class="math inline">\(0\cdot
+x=0\)</span>.</p></li>
+<li><p>Assume by way of contradiction that <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\(y\ne0\)</span>, but <span class="math inline">\(x\cdot y=0\)</span>. Then by (9), <span class="math display">\[1=(x\cdot x^{-1})\cdot(y\cdot y^{-1})=x^{-1}\cdot
+y^{-1}\cdot x\cdot y = x^{-1}\cdot y^{-1}\cdot 0=0,\]</span> a
+contradiction to the fact that <span class="math inline">\(1\ne0\)</span>. So <span class="math inline">\(x\cdot y\ne 0\)</span>.</p></li>
+<li><p>Now <span class="math display">\[(-x)\cdot y+(x\cdot
+y)=(-x+x)\cdot y=0\cdot y=0.\]</span> So by (3), <span class="math inline">\((-x)\cdot y=-(x\cdot y)\)</span>. The argument
+that <span class="math inline">\(x\cdot(-y)=-(x\cdot y)\)</span> is
+similar.</p></li>
+<li><p>By (11), <span class="math display">\[(-x)\cdot(-y)=-(x\cdot(-y))=-(-(x\cdot
+y)).\]</span> By (4), <span class="math inline">\(-(-(x\cdot y))=x\cdot
+y\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-ordered-field">
+
+<p><strong>Definition 1.5.6.</strong> An <em>ordered field</em> is a
+field <span class="math inline">\(\mathbb{F}\)</span> which is also an
+ordered set with the following properties.</p>
+<ol>
+<li><p>If <span class="math inline">\(x,y\in\mathbb{F}\)</span> with
+<span class="math inline">\(x\le y\)</span>, then <span class="math inline">\(x+z\le y+z\)</span> for all <span class="math inline">\(z\in\mathbb{F}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x,y\in\mathbb{F}\)</span> with
+<span class="math inline">\(0\le x\)</span> and <span class="math inline">\(0\le y\)</span>, then <span class="math inline">\(0\le x\cdot y\)</span>.</p></li>
+</ol>
+<p>If <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(x\)</span> is <em>positive</em>. If <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(x\)</span> is <em>negative</em>.</p>
+</div>
+<div class="examplebox" id="ex-Q-ordered-field">
+
+<p><strong>Example 1.5.7.</strong> <span class="math inline">\(\mathbb{Q}\)</span>, with the usual operations and
+order, is an ordered field.</p>
+</div>
+<div class="theorembox" id="thm-ordered-field-properties">
+
+<p><strong>Theorem 1.5.8.</strong> If <span class="math inline">\(\mathbb{F}\)</span> is an ordered field and <span class="math inline">\(x,y,z\in\mathbb{F}\)</span>, the following
+hold.</p>
+<ol>
+<li><p>If <span class="math inline">\(x&gt;0\)</span>, then <span class="math inline">\(-x&lt;0\)</span> and vice versa.</p></li>
+<li><p><span class="math inline">\(x&lt;y\)</span> if and only if <span class="math inline">\(-y&lt;-x\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x&gt;0\)</span> and <span class="math inline">\(y&lt;z\)</span>, then <span class="math inline">\(x\cdot y&lt;x\cdot z\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x&lt;0\)</span> and <span class="math inline">\(y&lt;z\)</span>, <span class="math inline">\(x\cdot y&gt;x\cdot z\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\ne0\)</span>, then <span class="math inline">\(x\cdot x=x^2&gt;0\)</span>. In particular, <span class="math inline">\(1&gt;0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(0&lt;x&lt;y\)</span>, <span class="math inline">\(0&lt;y^{-1}&lt;x^{-1}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x&gt;0\)</span>. By <a href="#def-ordered-field">Definition 1.5.6</a> (1) with <span class="math inline">\(z=-x\)</span>, <span class="math inline">\(0+(-x)\le x+(-x)\)</span>. So <span class="math inline">\(-x\le0\)</span>. If <span class="math inline">\(-x=0\)</span>, then <span class="math inline">\(x=-(-x)=0\)</span> by <a href="#thm-field-properties">Theorem 1.5.5</a> (4), which is false. So
+<span class="math inline">\(-x&lt;0\)</span>. The proof that <span class="math inline">\(x&lt;0\)</span> implies <span class="math inline">\(-x&gt;0\)</span> is similar.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>Suppose <span class="math inline">\(x&gt;0\)</span>. By (3) with
+<span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=x\)</span>, <span class="math inline">\(x\cdot0&lt;x\cdot x\)</span>. Since <span class="math inline">\(x\cdot 0=0\)</span>, <span class="math inline">\(x^2&gt;0\)</span>. Now suppose <span class="math inline">\(x&lt;0\)</span>. By (1), <span class="math inline">\(-x&gt;0\)</span>, so <span class="math inline">\((-x)\cdot(-x)&gt;0\)</span> in the same way. By <a href="#thm-field-properties">Theorem 1.5.5</a> (12), <span class="math inline">\((-x)\cdot(-x)=x^2\)</span>. So <span class="math inline">\(x^2&gt;0\)</span> in both cases.</p>
+<p>Since <span class="math inline">\(1\ne0\)</span> and <span class="math inline">\(1=1^2\)</span>, <span class="math inline">\(1&gt;0\)</span>.</p></li>
+<li><p>Now <span class="math inline">\(y^{-1}\ne0\)</span>. If <span class="math inline">\(y^{-1}&lt;0\)</span>, then by (3), <span class="math inline">\(1=y\cdot y^{-1}&lt;y\cdot 0=0\)</span>,
+contradicting (5). So <span class="math inline">\(y^{-1}&gt;0\)</span>.
+In the same way, <span class="math inline">\(x^{-1}&gt;0\)</span>. So
+<span class="math inline">\(x^{-1}y^{-1}\ge0\)</span> by <a href="#def-ordered-field">Definition 1.5.6</a> (2), and <span class="math inline">\(x^{-1}y^{-1}\ne0\)</span> by <a href="#thm-field-properties">Theorem 1.5.5</a> (10). Thus <span class="math inline">\(x^{-1}y^{-1}&gt;0\)</span>. Multiplying <span class="math inline">\(x&lt;y\)</span> by <span class="math inline">\(x^{-1}y^{-1}\)</span>, (3) gives <span class="math inline">\(x^{-1}y^{-1}x&lt;x^{-1}y^{-1}y\)</span>. That is,
+<span class="math inline">\(y^{-1}&lt;x^{-1}\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-4">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-field-properties">
+
+<p><strong>Exercise 1.5.1.</strong> Prove <a href="#thm-field-properties">Theorem 1.5.5</a> (2)–(4). <a aria-label="Solution for Exercise 1.5.1" href="solutions-ch01.html#sol-exer-field-properties">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-ordered-field-properties">
+
+<p><strong>Exercise 1.5.2.</strong> Prove <a href="#thm-ordered-field-properties">Theorem 1.5.8</a> (2)–(4). <a aria-label="Solution for Exercise 1.5.2" href="solutions-ch01.html#sol-exer-ordered-field-properties">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-inequality-rules">
+
+<p><strong>Exercise 1.5.3.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field and <span class="math inline">\(x,y,z,w\in\mathbb{F}\)</span>. Prove each of the
+following.</p>
+<ol type="a">
+<li><p>If <span class="math inline">\(x&lt;y\)</span> and <span class="math inline">\(z&lt;w\)</span>, then <span class="math inline">\(x+z&lt;y+w\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x\le y\)</span> and <span class="math inline">\(z\le w\)</span>, then <span class="math inline">\(x+z\le y+w\)</span>.</p></li>
+<li><p>If <span class="math inline">\(0&lt;x&lt;y\)</span>, then <span class="math inline">\(x^2&lt;y^2\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x&lt;y\)</span>, then <span class="math inline">\(x&lt;\frac{x+y}{2}&lt;y\)</span>.</p></li>
+</ol>
+</div>
+<div class="exercisebox" id="exer-powers-increasing">
+
+<p><strong>Exercise 1.5.4.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field and <span class="math inline">\(a,b\in\mathbb{F}\)</span> with <span class="math inline">\(0&lt;a&lt;b\)</span>. Use induction to prove that
+<span class="math inline">\(a^n&lt;b^n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-induction-power">
+
+<p><strong>Exercise 1.5.5.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field and <span class="math inline">\(a\in\mathbb{F}\)</span>. Use induction to prove
+that if <span class="math inline">\(a\ge 1\)</span>, then for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(a\le a^n\)</span>. Also prove that if <span class="math inline">\(0&lt;a&lt;1\)</span>, then for all <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(0&lt;a^n\le a\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-bernoulli">
+
+<p><strong>Exercise 1.5.6.</strong> (Bernoulli’s Inequality) Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field and <span class="math inline">\(x\in\mathbb{F}\)</span> with <span class="math inline">\(x\ge-1\)</span>. Use induction to prove that <span class="math inline">\((1+x)^n\ge1+nx\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. <a aria-label="Hint for Exercise 1.5.6" href="solutions-ch01.html#sol-exer-bernoulli">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-inf-neg-sup">
+
+<p><strong>Exercise 1.5.7.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field with
+operations <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> and order <span class="math inline">\(&lt;\)</span> which has the least upper bound
+property.</p>
+<ol type="a">
+<li><p>Prove that if <span class="math inline">\(E\subset\mathbb{F}\)</span>, <span class="math inline">\(E\neq\emptyset\)</span>, and <span class="math inline">\(E\)</span> is bounded below, then the set <span class="math inline">\(-E:=\{-x\in\mathbb{F}:x\in E\}\)</span> is bounded
+above.</p></li>
+<li><p>Prove <span class="math inline">\(\inf E=-\sup
+(-E)\)</span>.</p></li>
+</ol>
+<p><a aria-label="Solution for Exercise 1.5.7" href="solutions-ch01.html#sol-exer-inf-neg-sup">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-absolute-value">
+<h2>1.6 The Absolute Value Function</h2>
+<p>Distance on the number line is measured with absolute values. The
+distance between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is <span class="math inline">\(|x-y|\)</span>. Most estimates in analysis are
+statements about distances, so the facts in this section are used on
+almost every page of the rest of the book.</p>
+<div class="definitionbox" id="def-absolute-value">
+
+<p><strong>Definition 1.6.1.</strong> If <span class="math inline">\(\mathbb{F}\)</span> is an ordered field and <span class="math inline">\(x\in\mathbb{F}\)</span>, the <em>absolute
+value</em> of <span class="math inline">\(x\)</span>, denoted <span class="math inline">\(|x|\)</span>, is defined by <span class="math display">\[|x|=\begin{cases} -x, &amp; x&lt;0, \\ x, &amp;
+x\ge 0.\end{cases}\]</span></p>
+</div>
+<div class="theorembox" id="thm-absolute-value-basic">
+
+<p><strong>Theorem 1.6.2.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field and <span class="math inline">\(x,b\in\mathbb{F}\)</span>.</p>
+<ol>
+<li><p><span class="math inline">\(|x|\ge0\)</span>, and <span class="math inline">\(|x|=0\)</span> if and only if <span class="math inline">\(x=0\)</span>.</p></li>
+<li><p><span class="math inline">\(|-x|=|x|\)</span>.</p></li>
+<li><p><span class="math inline">\(-|x|\le x\le|x|\)</span>.</p></li>
+<li><p>If <span class="math inline">\(b\ge0\)</span>, then <span class="math inline">\(|x|\le b\)</span> if and only if <span class="math inline">\(-b\le x\le b\)</span>.</p></li>
+<li><p>If <span class="math inline">\(b&gt;0\)</span>, then <span class="math inline">\(|x|&lt;b\)</span> if and only if <span class="math inline">\(-b&lt;x&lt;b\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>If <span class="math inline">\(x&gt;0\)</span>, then <span class="math inline">\(|x|=x&gt;0\)</span>. If <span class="math inline">\(x&lt;0\)</span>, then <span class="math inline">\(|x|=-x&gt;0\)</span> by <a href="#thm-ordered-field-properties">Theorem 1.5.8</a> (1). If <span class="math inline">\(x=0\)</span>, then <span class="math inline">\(|x|=0\)</span>. So <span class="math inline">\(|x|\ge0\)</span>, and <span class="math inline">\(|x|=0\)</span> if and only if <span class="math inline">\(x=0\)</span>.</p></li>
+<li><p>Exercise.</p></li>
+<li><p>If <span class="math inline">\(x\ge0\)</span>, then <span class="math inline">\(-|x|=-x\le0\le x=|x|\)</span>. If <span class="math inline">\(x&lt;0\)</span>, then <span class="math inline">\(-|x|=x&lt;0&lt;-x=|x|\)</span>.</p></li>
+<li><p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(|x|\le b\)</span>. By (3), <span class="math inline">\(x\le|x|\le b\)</span>. Also, by (2) and (3), <span class="math inline">\(-x\le|-x|=|x|\le b\)</span>. So by <a href="#thm-ordered-field-properties">Theorem 1.5.8</a> (2), <span class="math inline">\(-b\le x\)</span>. Thus <span class="math inline">\(-b\le x\le b\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(-b\le x\le b\)</span>. If <span class="math inline">\(x\ge0\)</span>, then <span class="math inline">\(|x|=x\le b\)</span>. If <span class="math inline">\(x&lt;0\)</span>, then <span class="math inline">\(|x|=-x\le b\)</span>, since <span class="math inline">\(-b\le x\)</span>.</p></li>
+<li><p>Exercise.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Adding Zero).</strong> A useful trick is to
+add and subtract the same quantity. This does not change the value of an
+expression, but it can make a known result apply. In the proof of <a href="#thm-absolute-value">Theorem 1.6.3</a> (3) below, <span class="math inline">\(x=(x-y)+y\)</span>. Then the Triangle Inequality
+applies to <span class="math inline">\((x-y)+y\)</span>. This trick
+appears often in later chapters.</p>
+</div>
+<div class="theorembox" id="thm-absolute-value">
+
+<p><strong>Theorem 1.6.3.</strong> If <span class="math inline">\(\mathbb{F}\)</span> is an ordered field with <span class="math inline">\(x,y\in\mathbb{F}\)</span>, the following hold.</p>
+<ol>
+<li><p><span class="math inline">\(|xy|=|x||y|\)</span>.</p></li>
+<li><p><span class="upright">(Triangle Inequality)</span> <span class="math inline">\(|x+y|\le |x|+|y|\)</span>.</p></li>
+<li><p><span class="upright">(Reverse Triangle Inequality)</span> <span class="math inline">\(\bigl||x|-|y|\bigr|\le |x-y|\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Exercise.</p></li>
+<li><p>By <a href="#thm-absolute-value-basic">Theorem 1.6.2</a> (3),
+<span class="math inline">\(-|x|\le x\le|x|\)</span> and <span class="math inline">\(-|y|\le y\le|y|\)</span>. Adding these
+inequalities (<a href="#exer-inequality-rules">Exercise 1.5.3</a>),
+<span class="math display">\[-(|x|+|y|)\le x+y\le|x|+|y|.\]</span> Since
+<span class="math inline">\(|x|+|y|\ge0\)</span>, <a href="#thm-absolute-value-basic">Theorem 1.6.2</a> (4) gives <span class="math inline">\(|x+y|\le|x|+|y|\)</span>.</p></li>
+<li><p>By (2), <span class="math display">\[|x|=|(x-y)+y|\le|x-y|+|y|.\]</span> So <span class="math inline">\(|x|-|y|\le|x-y|\)</span>. Similarly, <span class="math inline">\(|y|-|x|\le|y-x|=|x-y|\)</span>. So <span class="math inline">\(-|x-y|\le|x|-|y|\le|x-y|\)</span>. By <a href="#thm-absolute-value-basic">Theorem 1.6.2</a> (4), <span class="math inline">\(\bigl||x|-|y|\bigr|\le|x-y|\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The name comes from distances. By <a href="#exer-triangle-three">Exercise 1.6.2</a>, <span class="math inline">\(|x-y|\le|x-z|+|z-y|\)</span>. Going straight from
+<span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span> is never longer than stopping at <span class="math inline">\(z\)</span> on the way. This is the form of the
+Triangle Inequality used most often in later chapters.</p>
+<section class="level5 unnumbered" id="exercises-5">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-absolute-value">
+
+<p><strong>Exercise 1.6.1.</strong> Prove <a href="#thm-absolute-value-basic">Theorem 1.6.2</a> (2) and (5), and <a href="#thm-absolute-value">Theorem 1.6.3</a> (1).</p>
+</div>
+<div class="exercisebox" id="exer-triangle-three">
+
+<p><strong>Exercise 1.6.2.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field and <span class="math inline">\(x,y,z\in\mathbb{F}\)</span>. Prove <span class="math inline">\(|x-y|\le|x-z|+|z-y|\)</span>. <a aria-label="Solution for Exercise 1.6.2" href="solutions-ch01.html#sol-exer-triangle-three">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-triangle-n">
+
+<p><strong>Exercise 1.6.3.</strong> Let <span class="math inline">\(\mathbb{F}\)</span> be an ordered field and <span class="math inline">\(x_1,\dots,x_n\in\mathbb{F}\)</span>. Use induction
+to prove <span class="math inline">\(\left|\sum_{i=1}^nx_i\right|\le\sum_{i=1}^n|x_i|\)</span>.</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-completeness">
+<h2>1.7 The Completeness of the Real Numbers</h2>
+<p>The rational numbers are an ordered field without the least upper
+bound property. The real numbers are an ordered field with it. That one
+property is what makes analysis work. This section introduces <span class="math inline">\(\mathbb{R}\)</span> and proves the first
+consequences of the least upper bound property. There are no infinitely
+large real numbers, there is a rational number between any two real
+numbers, and positive real numbers have <span class="math inline">\(n\)</span>th roots.</p>
+<div class="definitionbox" id="def-subfield">
+
+<p><strong>Definition 1.7.1.</strong> If <span class="math inline">\(\mathbb{F}\)</span> is an ordered field with
+operations <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> and order <span class="math inline">\(&lt;\)</span>, <span class="math inline">\(\mathbb{H}\)</span> is a <em>subfield</em> of
+<span class="math inline">\(\mathbb{F}\)</span> if <span class="math inline">\(\mathbb{H}\subset\mathbb{F}\)</span> and <span class="math inline">\(\mathbb{H}\)</span> is an ordered field with
+operations <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> and order <span class="math inline">\(&lt;\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-existence-of-R">
+
+<p><strong>Theorem 1.7.2.</strong> There is an ordered field <span class="math inline">\(\mathbb{R}\)</span> with the least upper bound
+property such that <span class="math inline">\(\mathbb{Q}\)</span>, with
+its usual operations and order, is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="app-cuts.html">Appendix A</a>. A second
+proof is in <a href="app-cauchy.html">Appendix B</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="remarkbox" id="rem-existence-of-R">
+
+<p><strong>Remark 1.7.3.</strong> The proof of <a href="#thm-existence-of-R">Theorem 1.7.2</a> builds <span class="math inline">\(\mathbb{R}\)</span> out of <span class="math inline">\(\mathbb{Q}\)</span>. <a href="app-cuts.html">Appendix
+A</a> gives a construction using cuts, and <a href="app-cauchy.html">Appendix B</a> gives a second one using Cauchy
+sequences. Everything in Sections <a href="#sec-ordered-sets">1.4</a>,
+<a href="#sec-fields">1.5</a> and <a href="#sec-absolute-value">1.6</a>
+applies to <span class="math inline">\(\mathbb{R}\)</span>, since <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. The least
+upper bound property of <span class="math inline">\(\mathbb{R}\)</span>
+is also called <em>completeness</em>. It is the one property that
+separates <span class="math inline">\(\mathbb{R}\)</span> from <span class="math inline">\(\mathbb{Q}\)</span>. Every theorem in this book
+that says something exists, such as a limit, a maximum value or a root,
+depends on it.</p>
+</div>
+<div class="definitionbox" id="def-real-numbers">
+
+<p><strong>Definition 1.7.4.</strong> The elements of the field <span class="math inline">\(\mathbb{R}\)</span> are called <em>real
+numbers</em>. The elements of <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span> are called
+<em>irrational numbers</em>.</p>
+</div>
+<div class="definitionbox" id="def-interval">
+
+<p><strong>Definition 1.7.5.</strong> Let <span class="math inline">\(J\subset \mathbb{R}\)</span>, <span class="math inline">\(J\ne\emptyset\)</span>. If for all <span class="math inline">\(x,y\in J\)</span> with <span class="math inline">\(x\le y\)</span> and for all <span class="math inline">\(z\in\mathbb{R}\)</span> such that <span class="math inline">\(x\le z\le y\)</span>, <span class="math inline">\(z\in J\)</span>, <span class="math inline">\(J\)</span> is called an <em>interval</em>.</p>
+</div>
+<div class="definitionbox" id="def-interval-notation">
+
+<p><strong>Definition 1.7.6.</strong> Let <span class="math inline">\(a,b\in\mathbb{R}\)</span> with <span class="math inline">\(a\le b\)</span>. Define <span class="math display">\[\begin{aligned}
+&amp;=\{x\in\mathbb{R}:a\le x\le b\}, &amp;
+(a,b)&amp;=\{x\in\mathbb{R}:a&lt;x&lt;b\},\\
+[a,b)&amp;=\{x\in\mathbb{R}:a\le x&lt;b\}, &amp;
+(a,b]&amp;=\{x\in\mathbb{R}:a&lt;x\le b\},\\
+[a,\infty)&amp;=\{x\in\mathbb{R}:x\ge a\}, &amp;
+(a,\infty)&amp;=\{x\in\mathbb{R}:x&gt;a\},\\
+(-\infty,b]&amp;=\{x\in\mathbb{R}:x\le b\}, &amp;
+(-\infty,b)&amp;=\{x\in\mathbb{R}:x&lt;b\},
+\end{aligned}\]</span> and <span class="math inline">\((-\infty,\infty)=\mathbb{R}\)</span>. The interval
+<span class="math inline">\([a,b]\)</span> is called a <em>closed
+interval</em>. If <span class="math inline">\(a&lt;b\)</span>, <span class="math inline">\((a,b)\)</span> is called an <em>open
+interval</em>. The symbols <span class="math inline">\(\infty\)</span>
+and <span class="math inline">\(-\infty\)</span> are not real
+numbers.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Working with Suprema).</strong> Two facts
+about <span class="math inline">\(\beta=\sup E\)</span> are used again
+and again. First, <span class="math inline">\(\beta\)</span> is an upper
+bound of <span class="math inline">\(E\)</span>. So <span class="math inline">\(x\le\beta\)</span> for all <span class="math inline">\(x\in E\)</span>. Second, nothing smaller than
+<span class="math inline">\(\beta\)</span> is an upper bound of <span class="math inline">\(E\)</span>. So for every <span class="math inline">\(\varepsilon&gt;0\)</span>, some element of <span class="math inline">\(E\)</span> is bigger than <span class="math inline">\(\beta-\varepsilon\)</span>. This second fact is <a href="#thm-sup-approximation">Theorem 1.7.7</a>. To prove a number is
+<span class="math inline">\(\sup E\)</span>, prove both facts.</p>
+</div>
+<div class="theorembox" id="thm-sup-approximation">
+
+<p><strong>Theorem 1.7.7.</strong></p>
+<p>Let <span class="math inline">\(E\subset\mathbb{R}\)</span> be
+nonempty and bounded above, and let <span class="math inline">\(\beta=\sup E\)</span>. Then for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an <span class="math inline">\(x\in E\)</span> such that <span class="math inline">\(\beta-\varepsilon&lt;x\le\beta\)</span>.
+Similarly, if <span class="math inline">\(E\)</span> is nonempty and
+bounded below and <span class="math inline">\(\alpha=\inf E\)</span>,
+then for all <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists an <span class="math inline">\(x\in E\)</span> such that
+<span class="math inline">\(\alpha\le
+x&lt;\alpha+\varepsilon\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then <span class="math inline">\(\beta-\varepsilon&lt;\beta\)</span>. So <span class="math inline">\(\beta-\varepsilon\)</span> is not an upper bound
+of <span class="math inline">\(E\)</span>. Thus there exists an <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(x&gt;\beta-\varepsilon\)</span>. Since <span class="math inline">\(\beta\)</span> is an upper bound of <span class="math inline">\(E\)</span>, <span class="math inline">\(x\le\beta\)</span>. The proof for <span class="math inline">\(\inf E\)</span> is an exercise.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The next theorem says <span class="math inline">\(\mathbb{R}\)</span>
+has no infinitely large numbers. However small <span class="math inline">\(x&gt;0\)</span> is and however large <span class="math inline">\(y\)</span> is, adding <span class="math inline">\(x\)</span> to itself enough times gets past <span class="math inline">\(y\)</span>. Taking <span class="math inline">\(x=1\)</span>, the natural numbers are not bounded
+above in <span class="math inline">\(\mathbb{R}\)</span>. Taking <span class="math inline">\(y=1\)</span>, for every <span class="math inline">\(\varepsilon&gt;0\)</span> there is an <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(\frac{1}{N}&lt;\varepsilon\)</span>. That last
+form is used constantly in later chapters.</p>
+<div class="theorembox" id="thm-archimedean">
+
+<p><strong>Theorem 1.7.8</strong> (Archimedean
+Principle)<strong>.</strong></p>
+<p>If <span class="math inline">\(x,y\in\mathbb{R}\)</span> and <span class="math inline">\(x&gt;0\)</span>, then there exists an <span class="math inline">\(n\in\mathbb{N}\)</span> such that <span class="math inline">\(nx&gt;y\)</span>. Hence, for all <span class="math inline">\(x\in\mathbb{R}\)</span>, there exists an <span class="math inline">\(n\in\mathbb{N}\)</span> such that <span class="math inline">\(x&lt;n\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(x,y\in\mathbb{R}\)</span> with <span class="math inline">\(x&gt;0\)</span>. Assume by way of contradiction
+that <span class="math inline">\(nx\le y\)</span> for every <span class="math inline">\(n\in\mathbb{N}\)</span>. Then the set <span class="math inline">\(A=\{nx:n\in\mathbb{N}\}\)</span> is nonempty and
+bounded above by <span class="math inline">\(y\)</span>. By the least
+upper bound property, <span class="math inline">\(\alpha=\sup A\)</span>
+exists. Since <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(\alpha-x&lt;\alpha\)</span>. By <a href="#thm-sup-approximation">Theorem 1.7.7</a> with <span class="math inline">\(\varepsilon=x\)</span>, there is an element of
+<span class="math inline">\(A\)</span> larger than <span class="math inline">\(\alpha-x\)</span>. That is, <span class="math inline">\(mx&gt;\alpha-x\)</span> for some <span class="math inline">\(m\in\mathbb{N}\)</span>. Then <span class="math inline">\((m+1)x&gt;\alpha\)</span>. But <span class="math inline">\((m+1)x\in A\)</span>, so this contradicts the fact
+that <span class="math inline">\(\alpha\)</span> is an upper bound of
+<span class="math inline">\(A\)</span>. So <span class="math inline">\(nx&gt;y\)</span> for some <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p>Taking <span class="math inline">\(x=1\)</span> and <span class="math inline">\(y\)</span> any real number gives the second
+statement.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-floor">
+
+<p><strong>Theorem 1.7.9.</strong> For all <span class="math inline">\(x\in\mathbb{R}\)</span>, there exists a unique
+<span class="math inline">\(n\in\mathbb{Z}\)</span> such that <span class="math inline">\(n-1\le x&lt;n\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> First, existence. By the Archimedean Principle, there
+exist <span class="math inline">\(m_1,m_2\in\mathbb{N}\)</span> such
+that <span class="math inline">\(m_1&gt;x\)</span> and <span class="math inline">\(m_2&gt;-x\)</span>. Let <span class="math display">\[S=\{k\in\mathbb{N}:k-m_2&gt;x\}.\]</span> Since
+<span class="math inline">\(m_1+m_2-m_2=m_1&gt;x\)</span>, <span class="math inline">\(m_1+m_2\in S\)</span>. So <span class="math inline">\(S\ne\emptyset\)</span>. By the Well-Ordering
+Principle, <span class="math inline">\(S\)</span> has a smallest element
+<span class="math inline">\(j\)</span>. Let <span class="math inline">\(n=j-m_2\)</span>. Then <span class="math inline">\(n\in\mathbb{Z}\)</span> and <span class="math inline">\(n&gt;x\)</span>. If <span class="math inline">\(j=1\)</span>, then <span class="math inline">\(n-1=-m_2&lt;x\)</span>. If <span class="math inline">\(j&gt;1\)</span>, then <span class="math inline">\(j-1\in\mathbb{N}\)</span> and <span class="math inline">\(j-1\notin S\)</span>, since <span class="math inline">\(j\)</span> is the smallest element of <span class="math inline">\(S\)</span>. So <span class="math inline">\(n-1=(j-1)-m_2\le x\)</span>. In either case, <span class="math inline">\(n-1\le x&lt;n\)</span>.</p>
+<p>Next, uniqueness. Suppose <span class="math inline">\(n,n'\in\mathbb{Z}\)</span> with <span class="math inline">\(n-1\le x&lt;n\)</span> and <span class="math inline">\(n'-1\le x&lt;n'\)</span>. Then <span class="math inline">\(n'&gt;x\ge n-1\)</span>. So <span class="math inline">\(n'&gt;n-1\)</span>, and since <span class="math inline">\(n'\)</span> and <span class="math inline">\(n\)</span> are integers, <span class="math inline">\(n'\ge n\)</span>. Similarly, <span class="math inline">\(n\ge n'\)</span>. So <span class="math inline">\(n=n'\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-floor">
+
+<p><strong>Definition 1.7.10.</strong> For <span class="math inline">\(x\in\mathbb{R}\)</span>, the <em>greatest
+integer</em> less than or equal to <span class="math inline">\(x\)</span> is denoted <span class="math inline">\(\left\lfloor x\right\rfloor\)</span>. By <a href="#thm-floor">Theorem 1.7.9</a>, <span class="math inline">\(\left\lfloor x\right\rfloor\)</span> is the unique
+integer with <span class="math inline">\(\left\lfloor x\right\rfloor\le
+x&lt;\left\lfloor x\right\rfloor+1\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-density-of-Q">
+
+<p><strong>Theorem 1.7.11</strong> (Density of the Rational
+Numbers)<strong>.</strong></p>
+<p>For all <span class="math inline">\(x,y\in\mathbb{R}\)</span> with
+<span class="math inline">\(x&lt;y\)</span>, there exists a <span class="math inline">\(q\in\mathbb{Q}\)</span> such that <span class="math inline">\(x&lt;q&lt;y\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(x&lt;y\)</span>,
+<span class="math inline">\(y-x&gt;0\)</span>, and so by the Archimedean
+Principle (<a href="#thm-archimedean">Theorem 1.7.8</a>), there exists
+an <span class="math inline">\(n\in\mathbb{N}\)</span> such that <span class="math inline">\(n(y-x)&gt;1\)</span>. By <a href="#thm-floor">Theorem 1.7.9</a>, there exists an <span class="math inline">\(m\in\mathbb{Z}\)</span> such that <span class="math display">\[m-1\le nx&lt; m.\]</span> Combining inequalities
+gives <span class="math display">\[nx&lt;m\le 1+nx&lt;ny.\]</span> Since
+<span class="math inline">\(n&gt;0\)</span>, <span class="math display">\[x&lt;\frac{m}{n}&lt;y.\]</span> Since <span class="math inline">\(m\in\mathbb{Z}\)</span>, <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(\frac{m}{n}\in\mathbb{Q}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So every open interval, however short, contains a rational number.
+The rational numbers are spread throughout <span class="math inline">\(\mathbb{R}\)</span>. Even so, they have holes and
+<span class="math inline">\(\mathbb{R}\)</span> does not. By <a href="#exer-density-irrationals">Exercise 1.7.5</a>, the irrational
+numbers are spread throughout <span class="math inline">\(\mathbb{R}\)</span> as well.</p>
+<div class="lemmabox" id="lem-power-inequality">
+
+<p><strong>Lemma 1.7.12.</strong> Let <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(0&lt;a&lt;b\)</span>. Then <span class="math inline">\(b^n-a^n\le nb^{n-1}(b-a)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By <a href="#exer-difference-of-powers">Exercise
+1.2.8</a>, <span class="math display">\[b^n-a^n=(b-a)\sum_{i=0}^{n-1}b^{n-1-i}a^i.\]</span>
+By <a href="#exer-powers-increasing">Exercise 1.5.4</a>, <span class="math inline">\(a^i\le b^i\)</span> for each <span class="math inline">\(i\)</span>. So each term of the sum satisfies
+<span class="math inline">\(b^{n-1-i}a^i\le
+b^{n-1-i}b^i=b^{n-1}\)</span>. There are <span class="math inline">\(n\)</span> terms. So the sum is at most <span class="math inline">\(nb^{n-1}\)</span>. Since <span class="math inline">\(b-a&gt;0\)</span>, <span class="math inline">\(b^n-a^n\le nb^{n-1}(b-a)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The next theorem shows <span class="math inline">\(\mathbb{R}\)</span> has no hole at <span class="math inline">\(\sqrt2\)</span>, or at any other <span class="math inline">\(n\)</span>th root. The idea is the one <a href="#sec-rationals">Section 1.3</a> suggests. Let <span class="math inline">\(E\)</span> be the set of positive <span class="math inline">\(t\)</span> with <span class="math inline">\(t^n&lt;x\)</span>, and let <span class="math inline">\(y=\sup E\)</span>. If <span class="math inline">\(y^n&lt;x\)</span>, a number slightly bigger than
+<span class="math inline">\(y\)</span> is still in <span class="math inline">\(E\)</span>. If <span class="math inline">\(y^n&gt;x\)</span>, a number slightly smaller than
+<span class="math inline">\(y\)</span> is still an upper bound of <span class="math inline">\(E\)</span>. Both are impossible. <a href="#lem-power-inequality">Lemma 1.7.12</a> controls how much <span class="math inline">\(t^n\)</span> changes when <span class="math inline">\(t\)</span> changes a little.</p>
+<div class="theorembox" id="thm-nth-root">
+
+<p><strong>Theorem 1.7.13.</strong></p>
+<p>For every real <span class="math inline">\(x&gt;0\)</span> and every
+integer <span class="math inline">\(n&gt;0\)</span>, there is a unique
+positive real number <span class="math inline">\(y\)</span> with <span class="math inline">\(y^n=x\)</span>. This number is denoted <span class="math inline">\(\sqrt[n]{x}\)</span>. If <span class="math inline">\(n=2\)</span>, it is denoted <span class="math inline">\(\sqrt{x}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> First, existence. Let <span class="math inline">\(E=\{t\in\mathbb{R}:t&gt;0,\ t^n&lt;x\}\)</span>.
+Let <span class="math inline">\(t_0=\frac12\min\{1,x\}\)</span>. Then
+<span class="math inline">\(0&lt;t_0&lt;1\)</span>, so <span class="math inline">\(t_0^n\le t_0&lt;x\)</span> by <a href="#exer-induction-power">Exercise 1.5.5</a>. So <span class="math inline">\(t_0\in E\)</span> and <span class="math inline">\(E\ne\emptyset\)</span>. Let <span class="math inline">\(M=\max\{1,x\}\)</span>. If <span class="math inline">\(t&gt;M\)</span>, then <span class="math inline">\(t&gt;1\)</span> and <span class="math inline">\(t&gt;x\)</span>. So <span class="math inline">\(t^n\ge t&gt;x\)</span> by <a href="#exer-induction-power">Exercise 1.5.5</a>, and <span class="math inline">\(t\notin E\)</span>. So <span class="math inline">\(M\)</span> is an upper bound of <span class="math inline">\(E\)</span>. By the least upper bound property,
+<span class="math inline">\(y=\sup E\)</span> exists. Since <span class="math inline">\(t_0\in E\)</span>, <span class="math inline">\(y\ge t_0&gt;0\)</span>.</p>
+<p>Assume by way of contradiction that <span class="math inline">\(y^n&lt;x\)</span>. Choose <span class="math inline">\(h\)</span> with <span class="math inline">\(0&lt;h&lt;1\)</span> and <span class="math inline">\(hn(y+1)^{n-1}&lt;x-y^n\)</span>. For example,
+<span class="math inline">\(h=\min\left\{\frac12,\frac{x-y^n}{2n(y+1)^{n-1}}\right\}\)</span>
+works. By <a href="#lem-power-inequality">Lemma 1.7.12</a> with <span class="math inline">\(a=y\)</span> and <span class="math inline">\(b=y+h\)</span>, <span class="math display">\[(y+h)^n-y^n\le n(y+h)^{n-1}h\le
+n(y+1)^{n-1}h&lt;x-y^n.\]</span> So <span class="math inline">\((y+h)^n&lt;x\)</span>, and <span class="math inline">\(y+h\in E\)</span>. Since <span class="math inline">\(y+h&gt;y\)</span>, this contradicts the fact that
+<span class="math inline">\(y\)</span> is an upper bound of <span class="math inline">\(E\)</span>. So <span class="math inline">\(y^n\ge
+x\)</span>.</p>
+<p>Assume by way of contradiction that <span class="math inline">\(y^n&gt;x\)</span>. Let <span class="math display">\[k=\frac{y^n-x}{ny^{n-1}}.\]</span> Then <span class="math inline">\(k&gt;0\)</span>. Also <span class="math inline">\(k&lt;y\)</span>, since <span class="math inline">\(y^n-x&lt;y^n\le ny^n\)</span>. By <a href="#lem-power-inequality">Lemma 1.7.12</a> with <span class="math inline">\(a=y-k\)</span> and <span class="math inline">\(b=y\)</span>, <span class="math display">\[y^n-(y-k)^n\le ny^{n-1}k=y^n-x.\]</span> So <span class="math inline">\((y-k)^n\ge x\)</span>. Now let <span class="math inline">\(t\in E\)</span>. If <span class="math inline">\(t\ge y-k\)</span>, then <span class="math inline">\(t^n\ge(y-k)^n\ge x\)</span> by <a href="#exer-powers-increasing">Exercise 1.5.4</a>, which is false since
+<span class="math inline">\(t\in E\)</span>. So <span class="math inline">\(t&lt;y-k\)</span>. Thus <span class="math inline">\(y-k\)</span> is an upper bound of <span class="math inline">\(E\)</span>. But <span class="math inline">\(y-k&lt;y\)</span>, which contradicts <span class="math inline">\(y=\sup E\)</span>. So <span class="math inline">\(y^n\le x\)</span>. Therefore <span class="math inline">\(y^n=x\)</span>.</p>
+<p>Next, uniqueness. If <span class="math inline">\(0&lt;y_1&lt;y_2\)</span>, then <span class="math inline">\(y_1^n&lt;y_2^n\)</span> by <a href="#exer-powers-increasing">Exercise 1.5.4</a>. So two different
+positive numbers cannot both have <span class="math inline">\(n\)</span>th power equal to <span class="math inline">\(x\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-6">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-abs-less-than-eps">
+
+<p><strong>Exercise 1.7.1.</strong> Prove that if <span class="math inline">\(|x|\le \varepsilon\)</span> for all <span class="math inline">\(\varepsilon&gt;0\)</span>, then <span class="math inline">\(x=0\)</span>. <a aria-label="Hint for Exercise 1.7.1" href="solutions-ch01.html#sol-exer-abs-less-than-eps">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-inf-approximation">
+
+<p><strong>Exercise 1.7.2.</strong> Prove the statement about <span class="math inline">\(\inf E\)</span> in <a href="#thm-sup-approximation">Theorem 1.7.7</a>.</p>
+</div>
+<div class="exercisebox" id="exer-inf-alternating">
+
+<p><strong>Exercise 1.7.3.</strong> Define <span class="math inline">\(E=\left\{(-1)^n\frac{n}{n+1}:n\in\mathbb{N}_0\right\}\subset\mathbb{R}\)</span>.
+Prove <span class="math inline">\(\inf E=-1\)</span>. <a aria-label="Hint for Exercise 1.7.3" href="solutions-ch01.html#sol-exer-inf-alternating">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rational-plus-irrational">
+
+<p><strong>Exercise 1.7.4.</strong> Prove that if <span class="math inline">\(r\in\mathbb{Q}\setminus\{0\}\)</span> and <span class="math inline">\(x\in\mathbb{R}\setminus\mathbb{Q}\)</span>, then
+<span class="math inline">\(r+x\in\mathbb{R}\setminus\mathbb{Q}\)</span>
+and <span class="math inline">\(rx\in\mathbb{R}\setminus\mathbb{Q}\)</span>. <a aria-label="Hint for Exercise 1.7.4" href="solutions-ch01.html#sol-exer-rational-plus-irrational">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-density-irrationals">
+
+<p><strong>Exercise 1.7.5.</strong></p>
+<ol type="a">
+<li><p>Prove that between any two rational numbers there exists an
+irrational number.</p></li>
+<li><p>Prove that between any two real numbers there exists an
+irrational number.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 1.7.5" href="solutions-ch01.html#sol-exer-density-irrationals">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sup-is-sqrt2">
+
+<p><strong>Exercise 1.7.6.</strong> Let <span class="math inline">\(A=\{p\in\mathbb{Q}:p&gt;0,\ p^2&lt;2\}\)</span>.
+Prove that <span class="math inline">\(\sup A=\sqrt{2}\)</span> in <span class="math inline">\(\mathbb{R}\)</span>. <a aria-label="Hint for Exercise 1.7.6" href="solutions-ch01.html#sol-exer-sup-is-sqrt2">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-cut-sup-inf">
+
+<p><strong>Exercise 1.7.7.</strong> Let <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> be nonempty subsets of <span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(\mathbb{R}=L\cup U\)</span> such that for each
+<span class="math inline">\(l\in L\)</span> and <span class="math inline">\(u\in U\)</span>, <span class="math inline">\(l&lt;u\)</span>. Prove either <span class="math inline">\(\sup L\in L\)</span> or <span class="math inline">\(\inf U\in U\)</span>. <a aria-label="Solution for Exercise 1.7.7" href="solutions-ch01.html#sol-exer-cut-sup-inf">[Solution]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes">
+<h2>Notes</h2>
+<p>Augustus De Morgan stated his laws in his 1847 book on logic [<a href="bibliography.html#bib-demorgan1847">22</a>]. Induction became one of the axioms for
+the natural numbers in the work of Richard Dedekind in 1888 [<a href="bibliography.html#bib-dedekind1888">21</a>] and Giuseppe Peano in 1889 [<a href="bibliography.html#bib-peano1889">56</a>]. The Division Algorithm is the first step
+of the Euclidean algorithm, in Book VII of Euclid’s <em>Elements</em>
+[<a href="bibliography.html#bib-euclid">28</a>]. The Pythagoreans knew that <span class="math inline">\(\sqrt2\)</span> is irrational. Aristotle mentions
+a proof by odd and even numbers, like the one in <a href="#thm-sqrt2-irrational">Theorem 1.3.4</a>. The Archimedean
+Principle appears in Book V of the <em>Elements</em>, and as an
+assumption in Archimedes’ <em>On the Sphere and Cylinder</em> [<a href="bibliography.html#bib-archimedes">2</a>]. Bernoulli’s Inequality (<a href="#exer-bernoulli">Exercise 1.5.6</a>) is named for Jacob Bernoulli,
+who published it in 1689 [<a href="bibliography.html#bib-bernoulli1689">4</a>]. Bernard
+Bolzano proved a form of the least upper bound property in 1817 [<a href="bibliography.html#bib-bolzano1817">5</a>]. In 1872, Dedekind [<a href="bibliography.html#bib-dedekind1872">20</a>] and Georg Cantor [<a href="bibliography.html#bib-cantor1872">8</a>] each published a construction of <span class="math inline">\(\mathbb{R}\)</span> from <span class="math inline">\(\mathbb{Q}\)</span>. Dedekind used cuts, and
+Cantor used Cauchy sequences. These are the constructions in Appendices
+<a href="app-cuts.html">A</a> and <a href="app-cauchy.html">B</a>.</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="part-limits.html"><span class="dir">Previous</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="up" href="part-limits.html"><span class="dir">Up</span> Part I. Numbers, Limits and Derivatives</a>
+<a rel="next" href="ch-cardinality.html"><span class="dir">Next</span> Chapter 2. Cardinality</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

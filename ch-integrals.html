@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 9. Integrals | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-bounded-variation.html"><span class="dir">Previous</span> Chapter 8. Functions of Bounded Variation*</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-series.html"><span class="dir">Next</span> Chapter 10. Series of Real Numbers</a>
+</nav>
+<main id="main">
+<article id="ch-integrals">
+<h1>Chapter 9. Integrals</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-darboux">9.1 Darboux’s Definition of the Integral</a></li><li><a href="#sec-integral-properties">9.2 Properties of the Integral</a></li><li><a href="#sec-ftc">9.3 The Fundamental Theorem of Calculus</a></li><li><a href="#sec-more-integral-properties">9.4 More Properties of the Integral</a></li><li><a href="#sec-improper">9.5 Improper Integrals</a></li><li><a href="#sec-riemann-stieltjes">9.6 Riemann–Stieltjes Integrals<sup>*</sup></a></li><li><a href="#notes-8">Notes</a></li></ul></nav>
+<p>This chapter defines the Riemann integral. The approach, due to
+Darboux, traps the area under a graph between upper sums and lower sums.
+A function is integrable when the two can be made as close as anyone
+likes. Continuous functions and monotone functions are integrable. The
+integral is linear, and the Fundamental Theorem of Calculus connects it
+to the derivative. The chapter then treats improper integrals. <a href="#sec-riemann-stieltjes">Section 9.6</a>, which is marked with a
+star, generalizes the integral by measuring length with an increasing
+function <span class="math inline">\(\alpha\)</span> in place of <span class="math inline">\(x\)</span>.</p>
+<p>The Riemann integral has limits. Lebesgue’s Theorem (<a href="#thm-lebesgue-criterion">Theorem 9.2.9</a>) says exactly which
+bounded functions it can integrate. Part III builds the Lebesgue
+integral, which integrates many more.</p>
+<section class="level3 unnumbered" id="sec-darboux">
+<h2>9.1 Darboux’s Definition of the Integral</h2>
+<p>Partitions were defined in <a href="ch-bounded-variation.html#sec-bv">Section 8.1</a>. For
+readers who skipped <a href="ch-bounded-variation.html">Chapter 8</a>, here
+are the definitions this chapter needs.</p>
+<div class="definitionbox" id="def-partition-repeat">
+
+<p><strong>Definition 9.1.1.</strong> A <em>partition</em> <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> is a finite set <span class="math inline">\(\{x_0,x_1,\dots,x_n\}\)</span> with <span class="math inline">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span>. Write
+<span class="math inline">\(\Delta x_i=x_i-x_{i-1}\)</span>. The
+<em>mesh</em> of <span class="math inline">\(\mathcal{P}\)</span> is
+<span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert=\max_i\Delta x_i\)</span>. A partition <span class="math inline">\(\mathcal{P}^*\)</span> of <span class="math inline">\([a,b]\)</span> is a <em>refinement</em> of <span class="math inline">\(\mathcal{P}\)</span> if <span class="math inline">\(\mathcal{P}\subset\mathcal{P}^*\)</span>. (This
+repeats Definitions <a href="ch-bounded-variation.html#def-partition">8.1.1</a>, <a href="ch-bounded-variation.html#def-mesh">8.1.2</a> and <a href="ch-bounded-variation.html#def-refinement">8.1.4</a>.)</p>
+</div>
+<div class="definitionbox" id="def-darboux-sums">
+
+<p><strong>Definition 9.1.2.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. Given a
+partition <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> of
+<span class="math inline">\([a,b]\)</span>, for each <span class="math inline">\(i=1,2,\dots,n\)</span>, define <span class="math display">\[m_i=\inf\{f(x):x_{i-1}\le x\le x_i\}\]</span> and
+<span class="math display">\[M_i=\sup\{f(x):x_{i-1}\le x\le
+x_i\},\]</span> which are well-defined since <span class="math inline">\(f\)</span> is bounded. Then the <em>upper sum</em>
+<span class="math inline">\(\mathcal{U}(\mathcal{P},f)\)</span> for the
+partition <span class="math inline">\(\mathcal{P}\)</span> and the
+function <span class="math inline">\(f\)</span> is <span class="math display">\[\mathcal{U}(\mathcal{P},f)=\sum^n_{i=1}M_i\Delta
+x_i\]</span> and the <em>lower sum</em> <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\)</span> is <span class="math display">\[\mathcal{L}(\mathcal{P},f)=\sum_{i=1}^nm_i\Delta
+x_i.\]</span></p>
+</div>
+<div class="theorembox" id="thm-darboux-sum-bounds">
+
+<p><strong>Theorem 9.1.3.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>. If <span class="math inline">\(m\le f(x)\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>, then <span class="math display">\[m(b-a)\le \mathcal{L}(\mathcal{P},f)\le
+\mathcal{U}(\mathcal{P},f)\le M(b-a)\]</span> for any partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-darboux-sum-bounds">Exercise
+9.1.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-darboux-integrals">
+
+<p><strong>Definition 9.1.4</strong> (Darboux)<strong>.</strong> Let
+<span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded.
+The <em>upper and lower integrals</em> of <span class="math inline">\(f\)</span>, denoted <span class="math inline">\(\overline{\int_{a}^{b}} f\)</span> and <span class="math inline">\(\underline{\int_{a}^{b}}f\)</span>, respectively,
+are defined by <span class="math display">\[\overline{\int_{a}^{b}}
+f=\inf\{\mathcal{U}(\mathcal{P},f):\mathcal{P}\text{ is a partition of
+}[a,b]\}\]</span> and <span class="math display">\[\underline{\int_{a}^{b}}
+f=\sup\{\mathcal{L}(\mathcal{P},f):\mathcal{P}\text{ is a partition of
+}[a,b]\}.\]</span></p>
+</div>
+<div class="lemmabox" id="lem-refinement-sums">
+
+<p><strong>Lemma 9.1.5.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. If <span class="math inline">\(\mathcal{P}^*\)</span> is a refinement of <span class="math inline">\(\mathcal{P}\)</span>, then <span class="math display">\[\mathcal{L}(\mathcal{P},f)\le
+\mathcal{L}(\mathcal{P}^*,f)\le \mathcal{U}(\mathcal{P}^*,f)\le
+\mathcal{U}(\mathcal{P},f).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Suppose <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> and
+that <span class="math inline">\(\mathcal{P}^*\)</span> has one more
+point than <span class="math inline">\(\mathcal{P}\)</span>, <span class="math inline">\(\mathcal{P}^*=\mathcal{P}\cup\{x^*\}\)</span>
+where <span class="math inline">\(x^*\ne x_j\)</span> for all <span class="math inline">\(j=0,1,\dots,n\)</span>. Then there exists a <span class="math inline">\(k\in\{1,\dots,n\}\)</span> with <span class="math inline">\(x_{k-1}&lt;x^*&lt;x_k\)</span>. Define <span class="math display">\[M^1_k=\sup\{f(x):x_{k-1}\le x\le x^*\}\]</span>
+and <span class="math display">\[M^2_k=\sup\{f(x):x^*\le x\le
+x_k\}.\]</span> Then <span class="math inline">\(M_k^1\le M_k\)</span>
+and <span class="math inline">\(M_k^2\le M_k\)</span>. So <span class="math display">\[\begin{aligned}
+\mathcal{U}(\mathcal{P}^*,f)&amp;=\sum^{k-1}_{i=1}M_i\Delta x_i +
+M_k^1(x^*-x_{k-1}) +M^2_k(x_k-x^*)+\sum^n_{i=k+1}M_i\Delta x_i\\
+&amp;\le \sum^{k-1}_{i=1}M_i\Delta x_i + M_k(x^*-x_{k-1})
++M_k(x_k-x^*)+\sum^n_{i=k+1}M_i\Delta x_i\\
+&amp;=\sum^{k-1}_{i=1}M_i\Delta x_i +
+M_k(x_{k}-x_{k-1})+\sum^n_{i=k+1}M_i\Delta x_i\\
+&amp;=\mathcal{U}(\mathcal{P},f).
+\end{aligned}\]</span> The proof for <span class="math inline">\(\mathcal{L}(\mathcal{P}^*,f)\)</span> is similar.
+The middle inequality <span class="math inline">\(\mathcal{L}(\mathcal{P}^*,f)\le\mathcal{U}(\mathcal{P}^*,f)\)</span>
+holds since <span class="math inline">\(m_i\le M_i\)</span> for every
+subinterval.</p>
+<p>Repeat the argument for any additional points in <span class="math inline">\(\mathcal{P}^*\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Common Refinements).</strong></p>
+<p>Two partitions <span class="math inline">\(\mathcal{P}\)</span> and
+<span class="math inline">\(\mathcal{Q}\)</span> of <span class="math inline">\([a,b]\)</span> can be compared through their
+<em>common refinement</em> <span class="math inline">\(\mathcal{P}\cup\mathcal{Q}\)</span>. It refines
+both. By <a href="#lem-refinement-sums">Lemma 9.1.5</a>, its lower sum
+is at least each of the two lower sums, and its upper sum is at most
+each of the two upper sums. So if <span class="math inline">\(\mathcal{P}\)</span> has one useful property and
+<span class="math inline">\(\mathcal{Q}\)</span> has another, <span class="math inline">\(\mathcal{P}\cup\mathcal{Q}\)</span> has both. The
+proofs of Theorems <a href="#thm-lower-le-upper">9.1.6</a>, <a href="#thm-riemann-criterion">9.2.1</a> and <a href="#thm-integral-linear">9.2.11</a> all use this idea.</p>
+</div>
+<div class="theorembox" id="thm-lower-le-upper">
+
+<p><strong>Theorem 9.1.6.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. Then
+<span class="math inline">\(\underline{\int_{a}^{b}}f\le
+\overline{\int_{a}^{b}}f\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Given any two partitions <span class="math inline">\(\mathcal{P}\)</span>, <span class="math inline">\(\mathcal{Q}\)</span> of <span class="math inline">\([a,b]\)</span>, <span class="math display">\[\mathcal{L}(\mathcal{P},f)\le
+\mathcal{L}(\mathcal{P}\cup\mathcal{Q},f)\le
+\mathcal{U}(\mathcal{P}\cup\mathcal{Q},f)\le
+\mathcal{U}(\mathcal{Q},f).\]</span> Thus <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\le
+\mathcal{U}(\mathcal{Q},f)\)</span> for any partitions <span class="math inline">\(\mathcal{P},\mathcal{Q}\)</span>. Hence <span class="math display">\[\underline{\int_{a}^{b}}f=\sup_{\mathcal{P}}\mathcal{L}(\mathcal{P},f)\le\mathcal{U}(\mathcal{Q},f)\]</span>
+for any partition <span class="math inline">\(\mathcal{Q}\)</span>.
+Since <span class="math inline">\(\underline{\int_{a}^{b}}f\)</span> is
+independent of the partition <span class="math inline">\(\mathcal{Q}\)</span>, <span class="math display">\[\underline{\int_{a}^{b}}f\le
+\inf_\mathcal{Q}\mathcal{U}(\mathcal{Q},f)=\overline{\int_{a}^{b}}f.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-riemann-integral">
+
+<p><strong>Definition 9.1.7.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. If <span class="math inline">\(\underline{\int_{a}^{b}}f=\overline{\int_{a}^{b}}f\)</span>,
+then <span class="math inline">\(f\)</span> is <em>(Riemann)
+integrable</em> on <span class="math inline">\([a,b]\)</span>. The
+common value is denoted <span class="math inline">\(\int^b_af\)</span>
+or <span class="math inline">\(\int^b_a f(x)\,dx\)</span> and is called
+the <em>(Riemann) integral</em> of <span class="math inline">\(f\)</span> over <span class="math inline">\([a,b]\)</span>. Denote the set of Riemann
+integrable functions on <span class="math inline">\([a,b]\)</span> by
+<span class="math inline">\(\mathcal{R}[a,b]\)</span>. In addition, if
+<span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, define <span class="math inline">\(\int^a_b f=-\int^b_a f\)</span>. Also define <span class="math inline">\(\int_a^af=0\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-riemann-vs-lebesgue">
+
+<p><strong>Remark 9.1.8.</strong> Part III defines the Lebesgue integral
+and the set <span class="math inline">\(L^1[a,b]\)</span> of Lebesgue
+integrable functions. These are different from <span class="math inline">\(\int_a^b f\)</span> and <span class="math inline">\(\mathcal{R}[a,b]\)</span>. Every <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> is Lebesgue
+integrable, with the same integral. But <span class="math inline">\(L^1[a,b]\)</span> is much larger. For example, the
+Dirichlet function in <a href="#ex-dirichlet-not-integrable">Example
+9.1.9</a> is in <span class="math inline">\(L^1[0,1]\)</span> but not in
+<span class="math inline">\(\mathcal{R}[0,1]\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-dirichlet-not-integrable">
+
+<p><strong>Example 9.1.9.</strong> Consider the Dirichlet function (<a href="ch-continuity.html#ex-dirichlet-function">Example 6.1.9</a>) <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> defined by <span class="math display">\[f(x)=\begin{cases} 1, &amp; x\in\mathbb{Q}, \\ 0,
+&amp; x\notin\mathbb{Q}.\end{cases}\]</span> Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be any
+partition of <span class="math inline">\([0,1]\)</span>. Then <span class="math inline">\(m_i=0\)</span> and <span class="math inline">\(M_i=1\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Then <span class="math inline">\(\mathcal{L}(\mathcal{P},f)=0\)</span> and <span class="math inline">\(\mathcal{U}(\mathcal{P},f)=1\)</span>. Therefore,
+<span class="math display">\[\underline{\int_{0}^{1}} f=0\text{ and
+}\overline{\int_{0}^{1}}f=1.\]</span> So <span class="math inline">\(f\notin\mathcal{R}[0,1]\)</span>.</p>
+</div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Computing an Integral from the
+Definition).</strong></p>
+<p>To show <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>
+with <span class="math inline">\(\int_a^bf=I\)</span>, it is enough to
+do two things. First, show <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\le
+I\le\mathcal{U}(\mathcal{P},f)\)</span> for every partition <span class="math inline">\(\mathcal{P}\)</span>. Then <span class="math inline">\(\underline{\int_{a}^{b}}f\le
+I\le\overline{\int_{a}^{b}}f\)</span>. Second, show <span class="math inline">\(\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\)</span>
+can be made smaller than any <span class="math inline">\(\varepsilon&gt;0\)</span> by choosing <span class="math inline">\(\mathcal{P}\)</span>. Then the upper and lower
+integrals are within every <span class="math inline">\(\varepsilon\)</span> of each other, so they are
+equal, and both equal <span class="math inline">\(I\)</span>. Examples
+<a href="#ex-step-integral">9.1.10</a> and <a href="#ex-integral-of-x">9.1.11</a> work this way. Often <span class="math inline">\(\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\)</span>
+is bounded by a multiple of the mesh <span class="math inline">\(\left\lVert \mathcal{P}\right\rVert\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-step-integral">
+
+<p><strong>Example 9.1.10.</strong> Let <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> be defined by <span class="math display">\[f(x)=\begin{cases}0, &amp; x\in[0,1/2),\\ 1,
+&amp; x\in[1/2,1].\end{cases}\]</span> Let <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([0,1]\)</span>. Then there is a
+<span class="math inline">\(k\in\{1,\dots,n\}\)</span> such that <span class="math inline">\(x_{k-1}&lt;1/2\le x_k\)</span>. So <span class="math display">\[m_i=\begin{cases} 0, &amp; i=1,\dots,k,\\ 1,
+&amp; i=k+1,\dots,n,\end{cases}\quad\text{and}\quad M_i=\begin{cases} 0,
+&amp; i=1,\dots,k-1,\\ 1, &amp; i=k,\dots,n.\end{cases}\]</span> Thus
+<span class="math display">\[\mathcal{L}(\mathcal{P},f)=\sum^n_{i=k+1}\Delta
+x_i=1-x_k\]</span> and <span class="math display">\[\mathcal{U}(\mathcal{P},f)=\sum^n_{i=k}\Delta
+x_i=1-x_{k-1}.\]</span> Since <span class="math display">\[1-x_k\le
+\frac{1}{2}&lt;1-x_{k-1},\]</span> <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\le \frac{1}{2}\le
+\mathcal{U}(\mathcal{P},f)\)</span> for all partitions <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([0,1]\)</span>. Thus <span class="math display">\[\underline{\int_{0}^{1}}f\le \frac{1}{2}\le
+\overline{\int_{0}^{1}}f.\]</span> Since <span class="math display">\[1-x_{k-1}=(1-x_k)+(x_k-x_{k-1}),\]</span> <span class="math inline">\(\mathcal{U}(\mathcal{P},f)=\mathcal{L}(\mathcal{P},f)+(x_k-x_{k-1})\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Let <span class="math inline">\(\mathcal{P}\)</span> be a partition with <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\varepsilon\)</span>. Then <span class="math inline">\(\mathcal{U}(\mathcal{P},f)\le
+\mathcal{L}(\mathcal{P},f)+\varepsilon\)</span>. Thus <span class="math display">\[\begin{aligned}
+0&amp;\le\overline{\int_{0}^{1}}f-\underline{\int_{0}^{1}}f\\
+&amp;\le \mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\\
+&amp;\le \varepsilon.
+\end{aligned}\]</span> Thus, <span class="math inline">\(\underline{\int_{0}^{1}}f=\overline{\int_{0}^{1}}f\)</span>.
+Since <span class="math display">\[\underline{\int_{0}^{1}}f\le
+\frac{1}{2}\le \overline{\int_{0}^{1}}f,\]</span> <span class="math inline">\(\int^1_0 f=\frac{1}{2}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-integral-of-x">
+
+<p><strong>Example 9.1.11.</strong> Consider <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> defined by <span class="math inline">\(f(x)=x\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(m_i=f(x_{i-1})=x_{i-1}\)</span> and <span class="math inline">\(M_i=f(x_i)=x_i\)</span>. Thus <span class="math display">\[\mathcal{L}(\mathcal{P},f)=\sum^n_{i=1}x_{i-1}\Delta
+x_i\text{ and }\mathcal{U}(\mathcal{P},f)=\sum^n_{i=1}x_i\Delta
+x_i.\]</span> For each <span class="math inline">\(i=1,\dots,n\)</span>,
+<span class="math display">\[x_{i-1}\le \frac{1}{2}(x_{i-1}+x_i)\le
+x_i.\]</span> Multiplying by <span class="math inline">\(\Delta
+x_i=x_i-x_{i-1}\)</span> gives <span class="math display">\[\mathcal{L}(\mathcal{P},f)\le
+\sum^n_{i=1}\frac{1}{2}(x_i^2-x_{i-1}^2)\le
+\mathcal{U}(\mathcal{P},f).\]</span> But <span class="math inline">\(\sum^n_{i=1}\frac{1}{2}(x_i^2-x_{i-1}^2)\)</span>
+is a telescoping sum, so <span class="math display">\[\sum^n_{i=1}\frac{1}{2}(x_i^2-x_{i-1}^2)=\frac{1}{2}(x_n^2-x_0^2)=\frac{1}{2}(b^2-a^2).\]</span>
+Thus, by taking the supremum and infimum over all partitions <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>, <span class="math display">\[\underline{\int_{a}^{b}}f\le
+\frac{1}{2}(b^2-a^2)\le \overline{\int_{a}^{b}}f.\]</span></p>
+<p>Now, for any partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>, <span class="math display">\[\begin{aligned}
+0&amp;\le \overline{\int_{a}^{b}}f-\underline{\int_{a}^{b}}f\\
+&amp;\le \mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\\
+&amp;=\sum^n_{i=1}(x_i-x_{i-1})\Delta x_i\\
+&amp;\le \left\lVert \mathcal{P}\right\rVert(b-a).
+\end{aligned}\]</span></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose a
+partition <span class="math inline">\(\mathcal{P}\)</span> such that
+<span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\frac{\varepsilon}{b-a+1}\)</span>. Then
+<span class="math display">\[\overline{\int_{a}^{b}}f-\underline{\int_{a}^{b}}f&lt;\varepsilon.\]</span>
+So <span class="math inline">\(\overline{\int_{a}^{b}}f=\underline{\int_{a}^{b}}f\)</span>.
+Since <span class="math display">\[\underline{\int_{a}^{b}}f\le\frac{1}{2}(b^2-a^2)\le\overline{\int_{a}^{b}}f,\]</span>
+<span class="math display">\[\int^b_a
+f=\frac{1}{2}(b^2-a^2).\]</span></p>
+</div>
+<div class="examplebox" id="ex-integral-of-x-squared">
+
+<p><strong>Example 9.1.12.</strong> Consider <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> defined by <span class="math inline">\(f(x)=x^2\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(\mathcal{P}_n\)</span> be the partition <span class="math inline">\(\left\{0,\frac{1}{n},\frac{2}{n},\dots,1\right\}\)</span>.
+Then <span class="math display">\[m_i=\frac{(i-1)^2}{n^2}\text{ and
+}M_i=\frac{i^2}{n^2}.\]</span> Since <span class="math inline">\(\Delta
+x_i=\frac{1}{n}\)</span> for all <span class="math inline">\(i\)</span>,
+<span class="math display">\[\mathcal{L}(\mathcal{P}_n,f)=\frac{1}{n^3}[1^2+2^2+\dots+(n-1)^2]\]</span>
+and <span class="math display">\[\mathcal{U}(\mathcal{P}_n,f)=\frac{1}{n^3}[1^2+2^2+\dots+n^2].\]</span>
+Since <span class="math display">\[1^2+2^2+\dots+m^2=\frac{1}{6}m(m+1)(2m+1)\]</span>
+by <a href="ch-real-numbers.html#exer-sum-of-squares">Exercise 1.2.6</a>, <span class="math display">\[\mathcal{L}(\mathcal{P}_n,f)=\frac{1}{6}\left(1-\frac{1}{n}\right)\left(2-\frac{1}{n}\right)\]</span>
+and <span class="math display">\[\mathcal{U}(\mathcal{P}_n,f)=\frac{1}{6}\left(1+\frac{1}{n}\right)\left(2+\frac{1}{n}\right).\]</span>
+Then <span class="math inline">\(\sup_n\mathcal{L}(\mathcal{P}_n,f)=\frac{1}{3}\)</span>
+and <span class="math inline">\(\inf_n\mathcal{U}(\mathcal{P}_n,f)=\frac{1}{3}\)</span>.
+But <span class="math display">\[\{\mathcal{P}_n:n\in\mathbb{N}\}\subset\{\mathcal{P}:\mathcal{P}\text{
+is a partition of }[0,1]\}.\]</span> So <span class="math display">\[\frac{1}{3}=\sup_n\mathcal{L}(\mathcal{P}_n,f)\le\sup_\mathcal{P}\mathcal{L}(\mathcal{P},f)=\underline{\int_{0}^{1}}f,\]</span>
+and <span class="math display">\[\frac{1}{3}=\inf_n\mathcal{U}(\mathcal{P}_n,f)\ge\inf_\mathcal{P}\mathcal{U}(\mathcal{P},f)=\overline{\int_{0}^{1}}f.\]</span>
+So <span class="math inline">\(\int^1_0 f=\frac{1}{3}\)</span> by <a href="#thm-lower-le-upper">Theorem 9.1.6</a>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-31">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-darboux-sums-computation">
+
+<p><strong>Exercise 9.1.1.</strong> Let <span class="math inline">\(f:[-1,2]\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=1-x^2\)</span>. For <span class="math inline">\(\mathcal{P}=\{-1,0,1,2\}\)</span>, calculate <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\)</span> and <span class="math inline">\(\mathcal{U}(\mathcal{P},f)\)</span>.</p>
+</div>
+<div class="exercisebox" id="exer-darboux-sum-bounds">
+
+<p><strong>Exercise 9.1.2.</strong> Prove <a href="#thm-darboux-sum-bounds">Theorem 9.1.3</a>. <a aria-label="Hint for Exercise 9.1.2" href="solutions-ch09.html#sol-exer-darboux-sum-bounds">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-on-irrationals-integral">
+
+<p><strong>Exercise 9.1.3.</strong> Let <span class="math inline">\(f:[0,1]\to\mathbb{R}\)</span> be defined by <span class="math display">\[f(x)=\begin{cases}
+0, &amp;x\in\mathbb{Q},\\
+x, &amp;x\notin\mathbb{Q}.
+\end{cases}\]</span> Compute <span class="math inline">\(\underline{\int_{0}^{1}}f\)</span> and <span class="math inline">\(\overline{\int_{0}^{1}}f\)</span>. Is <span class="math inline">\(f\in\mathcal{R}[0,1]\)</span>? <a aria-label="Hint for Exercise 9.1.3" href="solutions-ch09.html#sol-exer-x-on-irrationals-integral">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-floor-integral">
+
+<p><strong>Exercise 9.1.4.</strong> Use the definition of the integral
+to calculate <span class="math inline">\(\int^1_0 \left\lfloor
+3x\right\rfloor\,dx\)</span>. <a aria-label="Hint for Exercise 9.1.4" href="solutions-ch09.html#sol-exer-floor-integral">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-linear-integral">
+
+<p><strong>Exercise 9.1.5.</strong> Use the definition of the integral
+to calculate <span class="math inline">\(\int^1_0(2x+1)\,dx\)</span>. <a aria-label="Hint for Exercise 9.1.5" href="solutions-ch09.html#sol-exer-linear-integral">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-squared-integral">
+
+<p><strong>Exercise 9.1.6.</strong> Use the definition of the integral
+to calculate, for <span class="math inline">\(0\le a&lt;b\)</span>,
+<span class="math inline">\(\int_a^b x^2\,dx\)</span>. <a aria-label="Hint for Exercise 9.1.6" href="solutions-ch09.html#sol-exer-x-squared-integral">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-integral-properties">
+<h2>9.2 Properties of the Integral</h2>
+<p>Computing upper and lower integrals directly is hard. This section
+gives a test for integrability that needs only one good partition, and
+uses it to show that continuous functions and monotone functions are
+integrable. It then proves the algebraic properties of the integral.</p>
+<div class="theorembox" id="thm-riemann-criterion">
+
+<p><strong>Theorem 9.2.1</strong> (Riemann’s Criterion for
+Integrability)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+bounded. The function <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> if and only if for
+all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists
+a partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> such that <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\varepsilon.\]</span>
+Furthermore, if <span class="math inline">\(\mathcal{P}\)</span> is a
+partition of <span class="math inline">\([a,b]\)</span> for which <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\varepsilon,\]</span>
+then the inequality holds for all refinements of <span class="math inline">\(\mathcal{P}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Leftarrow\)</span>) Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Suppose there
+exists a partition <span class="math inline">\(\mathcal{P}\)</span> of
+<span class="math inline">\([a,b]\)</span> with <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\varepsilon.\]</span>
+Since <span class="math display">\[\underline{\int_{a}^{b}}f\ge
+\mathcal{L}(\mathcal{P},f)\]</span> and <span class="math display">\[\mathcal{U}(\mathcal{P},f)\ge
+\overline{\int_{a}^{b}}f,\]</span> <span class="math display">\[0\le
+\overline{\int_{a}^{b}}f-\underline{\int_{a}^{b}}f\le
+\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\varepsilon.\]</span>
+Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
+arbitrary, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>.</p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Write <span class="math inline">\(I=\int_a^bf\)</span>. Since <span class="math inline">\(I\)</span> is the infimum of the upper sums, <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.7.7</a> gives a partition <span class="math inline">\(\mathcal{P}_1\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P}_1,f)&lt;I+\frac\varepsilon
+2\)</span>. Since <span class="math inline">\(I\)</span> is also the
+supremum of the lower sums, it gives a partition <span class="math inline">\(\mathcal{P}_2\)</span> with <span class="math inline">\(\mathcal{L}(\mathcal{P}_2,f)&gt;I-\frac\varepsilon
+2\)</span>. The common refinement <span class="math inline">\(\mathcal{P}=\mathcal{P}_1\cup\mathcal{P}_2\)</span>
+keeps both properties, by <a href="#lem-refinement-sums">Lemma
+9.1.5</a>. So <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\le\mathcal{U}(\mathcal{P}_1,f)-\mathcal{L}(\mathcal{P}_2,f)&lt;\left(I+\frac\varepsilon
+2\right)-\left(I-\frac\varepsilon 2\right)=\varepsilon.\]</span>
+Finally, if <span class="math inline">\(\mathcal{P}^*\)</span> refines
+<span class="math inline">\(\mathcal{P}\)</span>, then <span class="math inline">\(\mathcal{U}(\mathcal{P}^*,f)-\mathcal{L}(\mathcal{P}^*,f)\le\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\)</span>
+by <a href="#lem-refinement-sums">Lemma 9.1.5</a>. So the inequality
+holds for all refinements of <span class="math inline">\(\mathcal{P}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-continuous-monotone-integrable">
+
+<p><strong>Theorem 9.2.2.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\)</span> is monotone on <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-continuity.html#cor-interval-uniform">Corollary 6.4.8</a>, <span class="math inline">\(f\)</span> is uniformly continuous on <span class="math inline">\([a,b]\)</span>. So there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|f(x)-f(y)|&lt;\frac{\varepsilon}{b-a}\)</span>
+for all <span class="math inline">\(x,y\in[a,b]\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>. Choose a partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\delta\)</span>. Each subinterval <span class="math inline">\([x_{i-1},x_i]\)</span> has length less than <span class="math inline">\(\delta\)</span>, so any two values of <span class="math inline">\(f\)</span> on it differ by less than <span class="math inline">\(\frac{\varepsilon}{b-a}\)</span>. So <span class="math inline">\(M_i-m_i\le\frac{\varepsilon}{b-a}\)</span> for
+each <span class="math inline">\(i\)</span>, and <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)=\sum_{i=1}^n(M_i-m_i)\Delta
+x_i\le\frac{\varepsilon}{b-a}\sum_{i=1}^n\Delta
+x_i=\varepsilon.\]</span> This holds for every <span class="math inline">\(\varepsilon&gt;0\)</span>, so <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> by Riemann’s
+Criterion.</p></li>
+<li><p>Suppose <span class="math inline">\(f\)</span> is increasing. (If
+<span class="math inline">\(f\)</span> is decreasing, apply this to
+<span class="math inline">\(-f\)</span> and use <a href="#thm-integral-linear">Theorem 9.2.11</a> (2).) Let <span class="math inline">\(\varepsilon&gt;0\)</span>, and choose <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(\frac{b-a}{n}\bigl(f(b)-f(a)\bigr)&lt;\varepsilon\)</span>.
+Let <span class="math inline">\(\mathcal{P}\)</span> be the partition of
+<span class="math inline">\([a,b]\)</span> into <span class="math inline">\(n\)</span> subintervals of length <span class="math inline">\(\frac{b-a}{n}\)</span>. Since <span class="math inline">\(f\)</span> is increasing, the smallest and largest
+values of <span class="math inline">\(f\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span> are at the endpoints. So
+<span class="math inline">\(m_i=f(x_{i-1})\)</span> and <span class="math inline">\(M_i=f(x_i)\)</span>, and the sum telescopes. <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)=\frac{b-a}{n}\sum_{i=1}^n\bigl(f(x_i)-f(x_{i-1})\bigr)=\frac{b-a}{n}\bigl(f(b)-f(a)\bigr)&lt;\varepsilon.\]</span>
+So <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> by
+Riemann’s Criterion.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Splitting into Good and Bad
+Pieces).</strong></p>
+<p>Some estimates work on most of a partition but not all of it. Then
+split the subintervals into two groups. On the good subintervals, <span class="math inline">\(M_i-m_i\)</span> is small. On the bad ones, <span class="math inline">\(M_i-m_i\)</span> is only bounded, but the bad
+subintervals have small total length. Each group then contributes a
+small amount to <span class="math inline">\(\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\)</span>.
+The proof of <a href="#thm-composition-integrable">Theorem 9.2.3</a>
+works this way.</p>
+</div>
+<div class="theorembox" id="thm-composition-integrable">
+
+<p><strong>Theorem 9.2.3.</strong> Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, with <span class="math inline">\(f[[a,b]]\subset[c,d]\)</span>. If <span class="math inline">\(\varphi:[c,d]\to\mathbb{R}\)</span> is continuous
+on <span class="math inline">\([c,d]\)</span>, then <span class="math inline">\(\varphi\circ f\in\mathcal{R}[a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="ch-continuity.html#thm-continuous-bounded">Theorem 6.3.14</a>, there exists
+a <span class="math inline">\(K&gt;0\)</span> with <span class="math inline">\(|\varphi(y)|\le K\)</span> for all <span class="math inline">\(y\in[c,d]\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>, and let <span class="math inline">\(\eta=\frac{\varepsilon}{b-a+2K}\)</span>. By <a href="ch-continuity.html#cor-interval-uniform">Corollary 6.4.8</a>, <span class="math inline">\(\varphi\)</span> is uniformly continuous on <span class="math inline">\([c,d]\)</span>. So there exists a <span class="math inline">\(\delta\)</span> with <span class="math inline">\(0&lt;\delta&lt;\eta\)</span> such that <span class="math inline">\(|\varphi(y)-\varphi(z)|&lt;\eta\)</span> for all
+<span class="math inline">\(y,z\in[c,d]\)</span> with <span class="math inline">\(|y-z|&lt;\delta\)</span>. By Riemann’s Criterion,
+there exists a partition <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\delta^2\)</span>.</p>
+<p>Write <span class="math inline">\(m_i\)</span>, <span class="math inline">\(M_i\)</span> for the infimum and supremum of <span class="math inline">\(f\)</span> on <span class="math inline">\([x_{i-1},x_i]\)</span>, and <span class="math inline">\(m_i^*\)</span>, <span class="math inline">\(M_i^*\)</span> for those of <span class="math inline">\(\varphi\circ f\)</span>. Call <span class="math inline">\(i\)</span> good if <span class="math inline">\(M_i-m_i&lt;\delta\)</span> and bad otherwise. If
+<span class="math inline">\(i\)</span> is good, then any two values
+<span class="math inline">\(f(x)\)</span> and <span class="math inline">\(f(y)\)</span> with <span class="math inline">\(x,y\in[x_{i-1},x_i]\)</span> differ by less than
+<span class="math inline">\(\delta\)</span>. So <span class="math inline">\(|\varphi(f(x))-\varphi(f(y))|&lt;\eta\)</span>,
+and <span class="math inline">\(M_i^*-m_i^*\le\eta\)</span>. If <span class="math inline">\(i\)</span> is bad, then <span class="math inline">\(M_i^*-m_i^*\le2K\)</span>. The bad subintervals
+have small total length, since <span class="math display">\[\delta\sum_{i\text{ bad}}\Delta
+x_i\le\sum_{i\text{ bad}}(M_i-m_i)\Delta
+x_i\le\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\delta^2,\]</span>
+so <span class="math inline">\(\sum_{i\text{ bad}}\Delta
+x_i&lt;\delta\)</span>. Therefore <span class="math display">\[\begin{aligned}
+\mathcal{U}(\mathcal{P},\varphi\circ
+f)-\mathcal{L}(\mathcal{P},\varphi\circ f)&amp;=\sum_{i\text{
+good}}(M_i^*-m_i^*)\Delta x_i+\sum_{i\text{ bad}}(M_i^*-m_i^*)\Delta
+x_i\\
+&amp;\le\eta(b-a)+2K\delta\\
+&amp;&lt;\eta(b-a+2K)=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(\varphi\circ
+f\in\mathcal{R}[a,b]\)</span> by Riemann’s Criterion.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-abs-square-integrable">
+
+<p><strong>Corollary 9.2.4.</strong> If <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, then <span class="math inline">\(|f|\)</span> and <span class="math inline">\(f^2\in\mathcal{R}[a,b]\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(f\)</span> is bounded, <span class="math inline">\(f[[a,b]]\subset[-M,M]\)</span> for some <span class="math inline">\(M&gt;0\)</span>. Apply <a href="#thm-composition-integrable">Theorem 9.2.3</a> with <span class="math inline">\(\varphi(y)=|y|\)</span> and with <span class="math inline">\(\varphi(y)=y^2\)</span> on <span class="math inline">\([-M,M]\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-measure-zero">
+
+<p><strong>Definition 9.2.5.</strong> The set <span class="math inline">\(E\subset \mathbb{R}\)</span> has <em>measure
+zero</em>, written <span class="math inline">\(m(E)=0\)</span>, if for
+all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists
+a finite or countable collection <span class="math inline">\(\{I_n\}_n\)</span> of open intervals such that
+<span class="math display">\[E\subset \bigcup_n I_n\text{ and }\sum_n
+\ell(I_n)&lt;\varepsilon,\]</span> where <span class="math inline">\(\ell(I_n)\)</span> denotes the length of <span class="math inline">\(I_n\)</span>. For a countable collection, the
+condition <span class="math inline">\(\sum_n\ell(I_n)&lt;\varepsilon\)</span> means
+<span class="math inline">\(\sum_{n=1}^N\ell(I_n)&lt;\varepsilon\)</span> for
+every <span class="math inline">\(N\in\mathbb{N}\)</span>. Infinite
+series are studied in <a href="ch-series.html">Chapter 10</a>.</p>
+</div>
+<div class="examplebox" id="ex-finite-measure-zero">
+
+<p><strong>Example 9.2.6.</strong> Every finite set <span class="math inline">\(E=\{x_1,\dots,x_n\}\)</span> has measure zero. To
+see this, let <span class="math inline">\(\varepsilon&gt;0\)</span> and
+set <span class="math inline">\(I_k=\left(x_k-\frac{\varepsilon}{4n},x_k+\frac{\varepsilon}{4n}\right)\)</span>.
+Then <span class="math inline">\(E\subset\bigcup_{k=1}^n I_k\)</span>
+and <span class="math inline">\(\sum_{k=1}^n\ell
+(I_k)=\varepsilon/2&lt;\varepsilon.\)</span></p>
+</div>
+<div class="examplebox" id="ex-countable-measure-zero">
+
+<p><strong>Example 9.2.7.</strong> Every countable set <span class="math inline">\(E=\{x_n\}_{n=1}^\infty\)</span> has measure zero.
+To see this, let <span class="math inline">\(\varepsilon&gt;0\)</span>
+and set <span class="math inline">\(I_n=\left(x_n-\frac{\varepsilon}{2^{n+2}},x_n+\frac{\varepsilon}{2^{n+2}}\right)\)</span>.
+Then <span class="math inline">\(E\subset\bigcup_{n} I_n\)</span> and
+<span class="math inline">\(\ell(I_n)=\frac{\varepsilon}{2^{n+1}}\)</span>. By
+<a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>, for every <span class="math inline">\(N\in\mathbb{N}\)</span>, <span class="math display">\[\sum_{n=1}^N\ell(I_n)=\frac{\varepsilon}{2}\left(1-\frac{1}{2^N}\right)&lt;\varepsilon.\]</span></p>
+</div>
+<div class="examplebox" id="ex-cantor-measure-zero">
+
+<p><strong>Example 9.2.8.</strong> The Cantor set has measure zero. This
+example uses <a href="ch-cantor.html">Chapter 5</a>, which is optional. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. For each <span class="math inline">\(n\)</span>, <span class="math inline">\(C\subset
+C_n\)</span>, and <span class="math inline">\(C_n\)</span> is the union
+of <span class="math inline">\(2^n\)</span> closed intervals of length
+<span class="math inline">\(\frac{1}{3^n}\)</span> by <a href="ch-cantor.html#lem-cantor-intervals">Lemma 5.1.2</a>. Enlarge each to an open
+interval of length <span class="math inline">\(\frac{2}{3^n}\)</span>
+with the same midpoint. These <span class="math inline">\(2^n\)</span>
+open intervals cover <span class="math inline">\(C\)</span>, and their
+total length is <span class="math inline">\(2\left(\frac23\right)^n\)</span>. By <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>, this is less than <span class="math inline">\(\varepsilon\)</span> for large <span class="math inline">\(n\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-lebesgue-criterion">
+
+<p><strong>Theorem 9.2.9</strong> (Lebesgue’s
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+bounded. Then <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>
+if and only if the set of points of <span class="math inline">\([a,b]\)</span> at which <span class="math inline">\(f\)</span> is discontinuous has measure zero.</p>
+</div>
+<p>The proof of this theorem needs Lebesgue measure. It is given in Part
+III, as <a href="ch-lebesgue-integral.html#thm-lebesgue-criterion-proof">Theorem 16.3.11</a>.</p>
+<div class="remarkbox" id="rem-lebesgue-consequence">
+
+<p><strong>Remark 9.2.10.</strong> Notice that <a href="#thm-continuous-monotone-integrable">Theorem 9.2.2</a> is an
+immediate consequence of Lebesgue’s Theorem. If <span class="math inline">\(f\)</span> is continuous, it has no
+discontinuities. If <span class="math inline">\(f\)</span> is monotone,
+by <a href="ch-continuity.html#cor-monotone-discontinuities">Corollary 6.5.3</a>, <span class="math inline">\(f\)</span> has at most countably many
+discontinuities in <span class="math inline">\((a,b)\)</span>, and so at
+most countably many in <span class="math inline">\([a,b]\)</span>. These
+form a set of measure zero by Examples <a href="#ex-finite-measure-zero">9.2.6</a> and <a href="#ex-countable-measure-zero">9.2.7</a>.</p>
+</div>
+<div class="theorembox" id="thm-integral-linear">
+
+<p><strong>Theorem 9.2.11.</strong> Let <span class="math inline">\(f,g\in\mathcal{R}[a,b]\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\(f+g\in\mathcal{R}[a,b]\)</span> with
+<span class="math inline">\(\int^b_a(f+g)=\int^b_a f+\int^b_a
+g\)</span>;</p></li>
+<li><p><span class="math inline">\(cf\in\mathcal{R}[a,b]\)</span> for
+all <span class="math inline">\(c\in\mathbb{R}\)</span> with <span class="math inline">\(\int^b_a cf=c\int^b_a f\)</span>; and</p></li>
+<li><p><span class="math inline">\(fg\in\mathcal{R}[a,b]\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. For each <span class="math inline">\(i=1,\dots,n\)</span>, let <span class="math display">\[M_i(f)=\sup\{f(x):x\in[x_{i-1},x_i]\},\]</span>
+and <span class="math display">\[M_i(g)=\sup\{g(x):x\in[x_{i-1},x_i]\}.\]</span>
+Then <span class="math display">\[f(x)+g(x)\le M_i(f)+M_i(g)\]</span>
+for all <span class="math inline">\(x\in[x_{i-1},x_i]\)</span>.
+Therefore, <span class="math display">\[\sup\{f(x)+g(x):x\in[x_{i-1},x_i]\}\le
+M_i(f)+M_i(g),\]</span> which implies <span class="math display">\[\mathcal{U}(\mathcal{P},f+g)\le
+\mathcal{U}(\mathcal{P},f)+\mathcal{U}(\mathcal{P},g).\]</span></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(f,g\in\mathcal{R}[a,b]\)</span>, there exist
+partitions <span class="math inline">\(\mathcal{P}_f\)</span> and <span class="math inline">\(\mathcal{P}_g\)</span> of <span class="math inline">\([a,b]\)</span> such that <span class="math display">\[\mathcal{U}(\mathcal{P}_f,f)&lt;\int^b_a
+f+\frac{\varepsilon}{2}\text{ and }
+\mathcal{U}(\mathcal{P}_g,g)&lt;\int^b_a
+g+\frac{\varepsilon}{2}.\]</span> Let <span class="math inline">\(\mathcal{Q}=\mathcal{P}_f\cup\mathcal{P}_g\)</span>.
+Since <span class="math inline">\(\mathcal{Q}\)</span> is a refinement
+of both <span class="math inline">\(\mathcal{P}_f\)</span> and <span class="math inline">\(\mathcal{P}_g\)</span>, <span class="math display">\[\mathcal{U}(\mathcal{Q},f+g)\le
+\mathcal{U}(\mathcal{P}_f,f)+\mathcal{U}(\mathcal{P}_g,g)&lt;\int^b_a
+f+\int^b_a g+\varepsilon.\]</span> Therefore, <span class="math display">\[\overline{\int_{a}^{b}}(f+g)&lt;\int^b_a
+f+\int^b_a g+\varepsilon,\]</span> implying <span class="math display">\[\overline{\int_{a}^{b}}(f+g)\le\int^b_a
+f+\int^b_a g.\]</span></p>
+<p>Similarly, <span class="math display">\[\underline{\int_{a}^{b}}(f+g)\ge \int^b_a
+f+\int^b_a g,\]</span> which implies <span class="math inline">\(f+g\in\mathcal{R}[a,b]\)</span> with <span class="math display">\[\int^b_a (f+g)=\int^b_a f+\int^b_a g.\]</span>
+(The last step uses <a href="#thm-lower-le-upper">Theorem
+9.1.6</a>.)</p></li>
+<li><p>Exercise. See <a href="#exer-integral-scalar">Exercise
+9.2.1</a>.</p></li>
+<li><p>Notice <span class="math display">\[fg=\frac{1}{4}\left[(f+g)^2-(f-g)^2\right].\]</span>
+By (2), <span class="math inline">\(-g\in\mathcal{R}[a,b]\)</span>. So
+by (1), <span class="math inline">\(f+g,f-g\in\mathcal{R}[a,b]\)</span>.
+By <a href="#cor-abs-square-integrable">Corollary 9.2.4</a>, <span class="math inline">\((f+g)^2,(f-g)^2\in\mathcal{R}[a,b]\)</span>. By
+(2), <span class="math inline">\(-(f-g)^2\in\mathcal{R}[a,b]\)</span>.
+By (1), <span class="math inline">\((f+g)^2-(f-g)^2\in\mathcal{R}[a,b]\)</span>.
+Finally, by (2), <span class="math inline">\(\frac{1}{4}[(f+g)^2-(f-g)^2]\in\mathcal{R}[a,b]\)</span>.
+Thus, <span class="math inline">\(fg\in\mathcal{R}[a,b]\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-integral-abs">
+
+<p><strong>Theorem 9.2.12.</strong> If <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, then <span class="math inline">\(|f|\in\mathcal{R}[a,b]\)</span> with <span class="math inline">\(\left|\int^b_a f\right|\le
+\int^b_a|f|\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, by <a href="#cor-abs-square-integrable">Corollary 9.2.4</a>, <span class="math inline">\(|f|\in\mathcal{R}[a,b]\)</span>. Let <span class="math inline">\(c\in\{\pm 1\}\)</span> be such that <span class="math display">\[\left|\int^b_a f\right|= c\int^b_a f.\]</span>
+Since <span class="math inline">\(cf(x)\le |f(x)|\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>, <span class="math inline">\(\mathcal{U}(\mathcal{P},cf)\le
+\mathcal{U}(\mathcal{P},|f|)\)</span> for any partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>. Therefore, since both <span class="math inline">\(cf,|f|\in\mathcal{R}[a,b]\)</span>, <span class="math display">\[\int^b_a cf\le \int^b_a |f|\]</span> (see also <a href="#exer-integral-monotone">Exercise 9.2.3</a>). Combining the above
+gives <span class="math display">\[\left|\int^b_af\right|=c\int^b_a
+f=\int^b_a cf\le \int^b_a |f|.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-integral-additive">
+
+<p><strong>Theorem 9.2.13.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and
+suppose <span class="math inline">\(c\in(a,b)\)</span>. Then <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> if and only if <span class="math inline">\(f\in\mathcal{R}[a,c]\)</span> and <span class="math inline">\(f\in\mathcal{R}[c,b]\)</span>. If this is the
+case, <span class="math display">\[\int^b_a f=\int^c_a f+\int^b_c
+f.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(c\in(a,b)\)</span>.
+Suppose <span class="math inline">\(\mathcal{P}_1\)</span> and <span class="math inline">\(\mathcal{P}_2\)</span> are partitions of <span class="math inline">\([a,c]\)</span> and <span class="math inline">\([c,b]\)</span>, respectively. Then <span class="math inline">\(\mathcal{P}=\mathcal{P}_1\cup\mathcal{P}_2\)</span>
+is a partition of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(c\in\mathcal{P}\)</span>. Conversely, if <span class="math inline">\(\mathcal{P}\)</span> is a partition of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(c\in\mathcal{P}\)</span>, then <span class="math inline">\(\mathcal{P}=\mathcal{P}_1\cup\mathcal{P}_2\)</span>,
+where <span class="math inline">\(\mathcal{P}_1\)</span> and <span class="math inline">\(\mathcal{P}_2\)</span> are partitions of <span class="math inline">\([a,c]\)</span> and <span class="math inline">\([c,b]\)</span>, respectively.</p>
+<p>For any such partition <span class="math inline">\(\mathcal{P}\)</span>, <span class="math display">\[\mathcal{U}(\mathcal{P},f)=\mathcal{U}(\mathcal{P}_1,f)+\mathcal{U}(\mathcal{P}_2,f)\ge
+\overline{\int_{a}^{c}}f+\overline{\int_{c}^{b}}f.\]</span> If <span class="math inline">\(\mathcal{Q}\)</span> is any partition of <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(\mathcal{P}=\mathcal{Q}\cup\{c\}\)</span> is a
+refinement of <span class="math inline">\(\mathcal{Q}\)</span>
+containing <span class="math inline">\(c\)</span>. Therefore, <span class="math display">\[\mathcal{U}(\mathcal{Q},f)\ge
+\mathcal{U}(\mathcal{P},f)\ge
+\overline{\int_{a}^{c}}f+\overline{\int_{c}^{b}}f.\]</span> Taking the
+infimum over all partitions <span class="math inline">\(\mathcal{Q}\)</span> of <span class="math inline">\([a,b]\)</span> gives <span class="math display">\[\overline{\int_{a}^{b}}f\ge
+\overline{\int_{a}^{c}}f+\overline{\int_{c}^{b}}f.\]</span></p>
+<p>Next, let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then
+there exist partitions <span class="math inline">\(\mathcal{P}_1\)</span> and <span class="math inline">\(\mathcal{P}_2\)</span> of <span class="math inline">\([a,c]\)</span> and <span class="math inline">\([c,b]\)</span>, respectively, such that <span class="math display">\[\mathcal{U}(\mathcal{P}_1,f)&lt;\overline{\int_{a}^{c}}f+\frac{\varepsilon}{2}\text{
+and
+}\mathcal{U}(\mathcal{P}_2,f)&lt;\overline{\int_{c}^{b}}f+\frac{\varepsilon}{2}.\]</span>
+Let <span class="math inline">\(\mathcal{P}=\mathcal{P}_1\cup\mathcal{P}_2\)</span>.
+Then <span class="math display">\[\begin{aligned}
+\overline{\int_{a}^{b}}f&amp;\le \mathcal{U}(\mathcal{P},f)\\
+&amp;=\mathcal{U}(\mathcal{P}_1,f)+\mathcal{U}(\mathcal{P}_2,f)\\
+&amp;&lt;\overline{\int_{a}^{c}}f+\overline{\int_{c}^{b}}f+\varepsilon.
+\end{aligned}\]</span> So <span class="math display">\[\overline{\int_{a}^{b}}f\le
+\overline{\int_{a}^{c}}f+\overline{\int_{c}^{b}}f.\]</span> Therefore,
+<span class="math display">\[\overline{\int_{a}^{b}}f=
+\overline{\int_{a}^{c}}f+\overline{\int_{c}^{b}}f.\]</span> A similar
+argument gives <span class="math display">\[\underline{\int_{a}^{b}}f=
+\underline{\int_{a}^{c}}f+\underline{\int_{c}^{b}}f.\]</span></p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) If <span class="math inline">\(f\in\mathcal{R}[a,c]\)</span> and <span class="math inline">\(f\in\mathcal{R}[c,b]\)</span>, then <span class="math display">\[\int^c_a f+\int^b_c
+f=\underline{\int_{a}^{b}}f\le \overline{\int_{a}^{b}}f=\int^c_a
+f+\int^b_c f.\]</span> So <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> with <span class="math display">\[\int^c_a f+\int^b_c f=\int^b_af.\]</span></p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>) If <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, then <span class="math display">\[\underline{\int_{a}^{c}}f+\underline{\int_{c}^{b}}f=\overline{\int_{a}^{c}}f+\overline{\int_{c}^{b}}f.\]</span>
+But <span class="math display">\[\underline{\int_{a}^{c}}f\le
+\overline{\int_{a}^{c}}f\text{ and }\underline{\int_{c}^{b}}f\le
+\overline{\int_{c}^{b}}f.\]</span> So <span class="math display">\[\underline{\int_{a}^{c}}f=
+\overline{\int_{a}^{c}}f\text{ and }\underline{\int_{c}^{b}}f=
+\overline{\int_{c}^{b}}f.\]</span> Thus <span class="math inline">\(f\in\mathcal{R}[a,c]\)</span> and <span class="math inline">\(f\in\mathcal{R}[c,b]\)</span> with <span class="math display">\[\int^c_a f+\int^b_c f=\int^b_af.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-32">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-integral-scalar">
+
+<p><strong>Exercise 9.2.1.</strong> Prove <a href="#thm-integral-linear">Theorem 9.2.11</a> (2). <a aria-label="Hint for Exercise 9.2.1" href="solutions-ch09.html#sol-exer-integral-scalar">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-finitely-many-nonzero">
+
+<p><strong>Exercise 9.2.2.</strong> Assume <span class="math inline">\(f(x)=0\)</span> for all <span class="math inline">\(x\ne c_1,\dots,c_n\in[a,b]\)</span>. Prove <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\int^b_a f=0\)</span>. <a aria-label="Hint for Exercise 9.2.2" href="solutions-ch09.html#sol-exer-finitely-many-nonzero">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-integral-monotone">
+
+<p><strong>Exercise 9.2.3.</strong> Let <span class="math inline">\(f,g\in\mathcal{R}[a,b]\)</span> with <span class="math inline">\(f(x)\le g(x)\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Prove that <span class="math inline">\(\int_a^bf\le\int_a^bg\)</span>. <a aria-label="Hint for Exercise 9.2.3" href="solutions-ch09.html#sol-exer-integral-monotone">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-change-finitely-many">
+
+<p><strong>Exercise 9.2.4.</strong> Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, and let <span class="math inline">\(g:[a,b]\to\mathbb{R}\)</span> be equal to <span class="math inline">\(f\)</span> except at finitely many points. Prove
+that <span class="math inline">\(g\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\int_a^bg=\int_a^bf\)</span>. <a aria-label="Hint for Exercise 9.2.4" href="solutions-ch09.html#sol-exer-change-finitely-many">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-continuous-zero-integral">
+
+<p><strong>Exercise 9.2.5.</strong> Let <span class="math inline">\(f\in
+C[a,b]\)</span> with <span class="math inline">\(f(x)\ge0\)</span> for
+all <span class="math inline">\(x\in[a,b]\)</span> and <span class="math inline">\(\int_a^bf=0\)</span>. Prove that <span class="math inline">\(f(x)=0\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. <a aria-label="Hint for Exercise 9.2.5" href="solutions-ch09.html#sol-exer-continuous-zero-integral">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-ftc">
+<h2>9.3 The Fundamental Theorem of Calculus</h2>
+<p>Calculus courses define the integral as a limit of Riemann sums. <a href="#thm-riemann-sums">Theorem 9.3.3</a> shows that this gives the
+same integral as Darboux’s definition. The section then proves the two
+parts of the Fundamental Theorem of Calculus, and uses the second to
+define the natural logarithm.</p>
+<div class="definitionbox" id="def-riemann-sum">
+
+<p><strong>Definition 9.3.1.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and let
+<span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. For each <span class="math inline">\(i=1,2,\dots,n\)</span>, choose <span class="math inline">\(t_i\in[x_{i-1},x_i]\)</span>. The sum <span class="math display">\[\mathcal{I}(\mathcal{P},f)=\sum^n_{i=1}f(t_i)\Delta
+x_i\]</span> is called the <em>Riemann sum</em> of <span class="math inline">\(f\)</span> with respect to the partition <span class="math inline">\(\mathcal{P}\)</span> and the points <span class="math inline">\(\{t_i\}\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-riemann-sum-limit">
+
+<p><strong>Definition 9.3.2.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. Then
+<span class="math display">\[\lim_{\left\lVert
+\mathcal{P}\right\rVert\to 0}\mathcal{I}(\mathcal{P},f)=I\]</span> if
+for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there
+exists a <span class="math inline">\(\delta&gt;0\)</span> such that
+<span class="math display">\[\left|\sum^n_{i=1}f(t_i)\Delta
+x_i-I\right|&lt;\varepsilon\]</span> for all partitions <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\delta\)</span> and for all choices of <span class="math inline">\(t_i\in[x_{i-1},x_i]\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-riemann-sums">
+
+<p><strong>Theorem 9.3.3.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded. If <span class="math inline">\(\lim_{\left\lVert
+\mathcal{P}\right\rVert\to0}\mathcal{I}(\mathcal{P},f)=I\)</span>, then
+<span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> with <span class="math inline">\(\int^b_a f=I\)</span>. Conversely, if <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, then <span class="math inline">\(\lim_{\left\lVert
+\mathcal{P}\right\rVert\to0}\mathcal{I}(\mathcal{P},f)\)</span> exists
+with <span class="math display">\[\lim_{\left\lVert
+\mathcal{P}\right\rVert\to0}\mathcal{I}(\mathcal{P},f)=\int^b_a
+f.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Suppose <span class="math inline">\(\lim_{\left\lVert
+\mathcal{P}\right\rVert\to0}\mathcal{I}(\mathcal{P},f)=I\)</span>. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Then there exists
+a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|\mathcal{I}(\mathcal{P},f)-I|&lt;\varepsilon/4\)</span>
+for all partitions <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\delta\)</span>, and all <span class="math inline">\(t_i\in[x_{i-1},x_i]\)</span>. Choose a partition
+<span class="math inline">\(\mathcal{P}\)</span> with <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\delta\)</span>. By the definition of <span class="math inline">\(M_i\)</span>, for each <span class="math inline">\(i=1,\dots,n\)</span>, there exists <span class="math inline">\(\xi_i\in[x_{i-1},x_i]\)</span> such that <span class="math inline">\(f(\xi_i)&gt;M_i-\frac{\varepsilon}{4(b-a+1)}\)</span>.
+So <span class="math display">\[\begin{aligned}
+\mathcal{U}(\mathcal{P},f)&amp;=\sum^n_{i=1}M_i\Delta x_i\\
+&amp;&lt;\sum^n_{i=1}f(\xi_i)\Delta
+x_i+\sum^n_{i=1}\frac{\varepsilon}{4(b-a+1)}\Delta x_i\\
+&amp;&lt;I+\frac{\varepsilon}{4}+\frac{\varepsilon}{4}\\
+&amp;=I+\frac{\varepsilon}{2}.
+\end{aligned}\]</span> Similarly, <span class="math inline">\(\mathcal{L}(\mathcal{P},f)&gt;I-\frac{\varepsilon}{2}\)</span>.
+So <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\varepsilon,\]</span>
+and so, by Riemann’s Criterion for Integrability, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> with <span class="math inline">\(\int^b_a f=I\)</span>. The value is <span class="math inline">\(I\)</span> since <span class="math inline">\(\mathcal{L}(\mathcal{P},f)\le\int_a^bf\le\mathcal{U}(\mathcal{P},f)\)</span>,
+so <span class="math inline">\(\left|\int_a^bf-I\right|&lt;\frac\varepsilon
+2\)</span> for every <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Now suppose <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Let <span class="math inline">\(M&gt;0\)</span> be such that <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, there exists a
+partition <span class="math inline">\(\mathcal{Q}\)</span> of <span class="math inline">\([a,b]\)</span> such that <span class="math display">\[\int^b_a
+f-\frac{\varepsilon}{2}&lt;\mathcal{L}(\mathcal{Q},f)\le
+\mathcal{U}(\mathcal{Q},f)&lt;\int^b_a f+\frac{\varepsilon}{2}.\]</span>
+Suppose <span class="math inline">\(\mathcal{Q}=\{x_0,\dots,x_N\}\)</span>. Let <span class="math inline">\(\delta=\frac{\varepsilon}{4MN}\)</span> and let
+<span class="math inline">\(\mathcal{P}=\{y_0,\dots,y_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\delta\)</span>. Let <span class="math display">\[M_i=\sup\{f(x):x\in[x_{i-1},x_i]\},\quad
+i=1,\dots,N.\]</span> Consider an interval <span class="math inline">\([y_{k-1},y_k]\)</span>, <span class="math inline">\(k\in\{1,\dots,n\}\)</span>. This interval may or
+may not contain any points <span class="math inline">\(x_i\in\mathcal{Q}\)</span>. Since <span class="math inline">\(\mathcal{Q}\)</span> contains <span class="math inline">\(N+1\)</span> points, at most <span class="math inline">\(N-1\)</span> intervals <span class="math inline">\([y_{k-1},y_k]\)</span> contain an <span class="math inline">\(x_i\in\mathcal{Q}\)</span>, <span class="math inline">\(i\ne 0,N\)</span>. Suppose <span class="math inline">\(x_j,x_{j+1},\dots,x_{j+m}\in[y_{k-1},y_k]\)</span>.
+If <span class="math inline">\(x_j\ne y_{k-1}\)</span>, set <span class="math display">\[M_k^1=\sup\{f(x):x\in[y_{k-1},x_j]\}.\]</span> If
+<span class="math inline">\(x_{j+m}\ne y_k\)</span>, set <span class="math display">\[M_k^2=\sup\{f(x):x\in[x_{j+m},y_k]\}.\]</span></p>
+<p>Let <span class="math inline">\(t_k\in[y_{k-1},y_k]\)</span> be
+arbitrary. Since <span class="math inline">\(|f(t)-f(s)|\le 2M\)</span>
+for all <span class="math inline">\(t,s\in[y_{k-1},y_k]\)</span>, <span class="math display">\[f(t_k)\le 2M+M_{j+p},\quad p=1,\dots,m,\]</span>
+and <span class="math display">\[f(t_k)\le 2M+M_{k}^i,\quad
+i=1,2.\]</span> Therefore, <span class="math display">\[\begin{aligned}
+f(t_k)\Delta y_k&amp;=f(t_k)(x_j-y_{k-1})+\sum_{p=1}^m f(t_k)\Delta
+x_{j+p} + f(t_k)(y_k-x_{j+m})\\
+&amp;\le 2M\Delta y_k +M_k^1(x_j-y_{k-1})+\sum_{p=1}^m M_{j+p}\Delta
+x_{j+p} +M_k^2(y_k-x_{j+m})\\
+&amp;&lt;2M\delta+\mathcal{U}(\mathcal{P}_k,f),
+\end{aligned}\]</span> where <span class="math inline">\(\mathcal{P}_k=\{y_{k-1},x_j,\dots,x_{j+m},y_k\}\)</span>
+is a partition of <span class="math inline">\([y_{k-1},y_k]\)</span>. If
+<span class="math inline">\([y_{k-1},y_k]\cap\mathcal{Q}=\emptyset\)</span>,
+then set <span class="math inline">\(\mathcal{P}_k=\{y_{k-1},y_k\}\)</span>. In that
+case <span class="math inline">\(f(t_k)\Delta
+y_k\le\mathcal{U}(\mathcal{P}_k,f)\)</span>, with no extra term. Let
+<span class="math inline">\(\mathcal{P}'=\bigcup_k
+\mathcal{P}_k\)</span>. Then <span class="math inline">\(\mathcal{P}'\)</span> is a refinement of <span class="math inline">\(\mathcal{Q}\)</span>. Since at most <span class="math inline">\(N-1\)</span> intervals <span class="math inline">\([y_{k-1},y_k]\)</span> contain a point in <span class="math inline">\(\mathcal{Q}\)</span> other than <span class="math inline">\(x_0\)</span> and <span class="math inline">\(x_N\)</span>, <span class="math display">\[\begin{aligned}
+\mathcal{I}(\mathcal{P},f)&amp;=\sum^n_{k=1}f(t_k)\Delta y_k\\
+&amp;&lt;2M(N-1)\delta+\sum_{k=1}^n \mathcal{U}(\mathcal{P}_k,f)\\
+&amp;&lt;\frac{\varepsilon}{2}+\mathcal{U}(\mathcal{P}',f)\\
+&amp;\le\frac{\varepsilon}{2}+\mathcal{U}(\mathcal{Q},f)\\
+&amp;&lt;\varepsilon+\int^b_a f.
+\end{aligned}\]</span></p>
+<p>A similar argument shows <span class="math display">\[\mathcal{I}(\mathcal{P},f)&gt;\int^b_a
+f-\varepsilon.\]</span> Thus <span class="math display">\[\left|\mathcal{I}(\mathcal{P},f)-\int^b_a
+f\right|&lt;\varepsilon\]</span> for any partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\delta\)</span> and any choice <span class="math inline">\(t_k\in[y_{k-1},y_k]\)</span>, <span class="math inline">\(k=1,\dots,n\)</span>. Thus <span class="math inline">\(\lim_{\left\lVert
+\mathcal{P}\right\rVert\to0}\mathcal{I}(\mathcal{P},f)=\int^b_a
+f\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-midpoint-sum">
+
+<p><strong>Example 9.3.4.</strong> Consider <span class="math inline">\(\int^b_a x \,dx\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Choose <span class="math inline">\(t_i=\frac{x_{i-1}+x_i}{2}\)</span>. Then <span class="math display">\[\mathcal{I}(\mathcal{P},f)=\frac{1}{2}\sum_{i=1}^n(x_{i-1}+x_i)(x_i-x_{i-1})=\frac{1}{2}(b^2-a^2).\]</span>
+Since <span class="math inline">\(f(x)=x\)</span> is continuous, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, and by <a href="#thm-riemann-sums">Theorem 9.3.3</a> the Riemann sums converge to
+<span class="math inline">\(\int_a^bf\)</span> as <span class="math inline">\(\left\lVert \mathcal{P}\right\rVert\to0\)</span>.
+Every one of these midpoint sums equals <span class="math inline">\(\frac12(b^2-a^2)\)</span>. So <span class="math display">\[\int^b_a x
+\,dx=\frac{1}{2}(b^2-a^2).\]</span></p>
+</div>
+<div class="definitionbox" id="def-antiderivative">
+
+<p><strong>Definition 9.3.5.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>. A function <span class="math inline">\(F:I\to\mathbb{R}\)</span> is an
+<em>antiderivative</em> of <span class="math inline">\(f\)</span> on
+<span class="math inline">\(I\)</span> if <span class="math inline">\(F'(x)= f(x)\)</span> for all <span class="math inline">\(x\in I\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-ftc-evaluation">
+
+<p><strong>Theorem 9.3.6</strong> (Fundamental Theorem of
+Calculus)<strong>.</strong></p>
+<p>If <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and if
+<span class="math inline">\(F\)</span> is an antiderivative of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span>, then <span class="math display">\[\int^b_a f=F(b)-F(a).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. If <span class="math inline">\(F\)</span> is an antiderivative of <span class="math inline">\(f\)</span>, then by the Mean Value Theorem, for
+each <span class="math inline">\(i=1,\dots,n\)</span>, there exists a
+<span class="math inline">\(t_i\in(x_{i-1},x_i)\)</span> such that <span class="math display">\[F(x_i)-F(x_{i-1})=f(t_i)\Delta x_i.\]</span>
+Therefore, <span class="math display">\[\sum^n_{i=1}f(t_i)\Delta x_i
+=\sum^n_{i=1}(F(x_i)-F(x_{i-1}))=F(b)-F(a).\]</span> Since <span class="math display">\[\mathcal{L}(\mathcal{P},f)\le
+\sum^n_{i=1}f(t_i)\Delta x_i\le \mathcal{U}(\mathcal{P},f),\]</span>
+<span class="math inline">\(\mathcal{L}(\mathcal{P},f)\le
+F(b)-F(a)\le\mathcal{U}(\mathcal{P},f)\)</span> for every partition
+<span class="math inline">\(\mathcal{P}\)</span>. So <span class="math display">\[\underline{\int_{a}^{b}}f\le F(b)-F(a)\le
+\overline{\int_{a}^{b}}f.\]</span> Since <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>, <span class="math display">\[\int^b_a f=F(b)-F(a).\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-ftc-derivative">
+
+<p><strong>Theorem 9.3.7</strong> (Fundamental Theorem of
+Calculus)<strong>.</strong> Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Define <span class="math inline">\(F:[a,b]\to\mathbb{R}\)</span> by <span class="math inline">\(F(x)=\int^x_a f(t)\,dt\)</span>. Then <span class="math inline">\(F\)</span> is continuous on <span class="math inline">\([a,b]\)</span>. Furthermore, if <span class="math inline">\(f\)</span> is continuous at a point <span class="math inline">\(c\in[a,b]\)</span>, then <span class="math inline">\(F\)</span> is differentiable at <span class="math inline">\(c\)</span> and <span class="math inline">\(F'(c)=f(c)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> The proof that <span class="math inline">\(F\)</span>
+is continuous is an exercise. See <a href="#exer-ftc-continuous">Exercise 9.3.2</a>. Now suppose <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\in[a,b)\)</span>. Let <span class="math inline">\(h&gt;0\)</span> with <span class="math inline">\(c+h&lt;b\)</span>. Then by <a href="#thm-integral-additive">Theorem 9.2.13</a>, <span class="math display">\[\begin{aligned}
+F(c+h)-F(c)&amp;=\int_a^{c+h}f(t)\,dt-\int^c_a f(t)\,dt\\
+&amp;=\int^{c+h}_c f(t)\,dt.
+\end{aligned}\]</span> Therefore, <span class="math display">\[\begin{aligned}
+\frac{F(c+h)-F(c)}{h}-f(c)&amp;=\frac{1}{h}\int^{c+h}_c f(t)\,dt-f(c)\\
+&amp;=\frac{1}{h}\int^{c+h}_c[f(t)-f(c)]\,dt.
+\end{aligned}\]</span> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for all <span class="math inline">\(t\in[a,b]\)</span> with <span class="math inline">\(|t-c|&lt;\delta\)</span>, <span class="math inline">\(|f(t)-f(c)|&lt;\varepsilon\)</span>. Therefore,
+for <span class="math inline">\(0&lt;h&lt;\delta\)</span>, <span class="math display">\[\begin{aligned}
+\left|\frac{F(c+h)-F(c)}{h}-f(c)\right|&amp;\le\frac{1}{h}\int^{c+h}_c|f(t)-f(c)|\,dt\\
+&amp;&lt;\frac{1}{h}\int^{c+h}_c \varepsilon\,dt=\varepsilon.
+\end{aligned}\]</span> (The first step uses <a href="#thm-integral-abs">Theorem 9.2.12</a>, and the second uses <a href="#exer-integral-monotone">Exercise 9.2.3</a>.) So <span class="math inline">\(\lim_{h\to0^+}\frac{F(c+h)-F(c)}{h}=f(c)\)</span>.
+Similarly, for <span class="math inline">\(c\in(a,b]\)</span>, <span class="math inline">\(\lim_{h\to0^-}\frac{F(c+h)-F(c)}{h}=f(c)\)</span>.
+So <span class="math inline">\(F'(c)=f(c)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-exp-ln">
+
+<p><strong>Example 9.3.8</strong> (Exponential and Natural Log
+Functions)<strong>.</strong> Define a sequence <span class="math inline">\(t_n=\left(1+\frac{1}{n}\right)^n\)</span>. By the
+Binomial Theorem (<a href="#exer-binomial">Exercise 9.3.4</a>), <span class="math display">\[t_n=1+n\cdot\frac{1}{n}+\frac{n(n-1)}{1\cdot
+2}\cdot\frac{1}{n^2}+\cdots +\frac{n(n-1)\cdots 1}{1\cdot 2\cdots
+n}\cdot\frac{1}{n^n}.\]</span> Notice there are <span class="math inline">\(n+1\)</span> terms. For <span class="math inline">\(k=1,\dots,n\)</span>, the <span class="math inline">\((k+1)\)</span>st term is <span class="math display">\[\frac{n(n-1)\cdots(n-k+1)}{1\cdot 2\cdots
+k}\cdot\frac{1}{n^k}=\frac{1}{1\cdot 2\cdots
+k}\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdots\left(1-\frac{k-1}{n}\right).\]</span>
+Notice if <span class="math inline">\(t_{n+1}\)</span> is expanded in
+the same way, there are <span class="math inline">\(n+2\)</span> terms,
+and for <span class="math inline">\(k=1,2,\dots,n\)</span>, the <span class="math inline">\((k+1)\)</span>st term is <span class="math display">\[\frac{1}{1\cdot 2\cdots
+k}\left(1-\frac{1}{n+1}\right)\left(1-\frac{2}{n+1}\right)\cdots\left(1-\frac{k-1}{n+1}\right),\]</span>
+which is greater than or equal to the <span class="math inline">\((k+1)\)</span>st term in <span class="math inline">\(t_n\)</span>. Thus <span class="math inline">\(t_n&lt;t_{n+1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(\{t_n\}\)</span> is an increasing sequence. Also,
+<span class="math display">\[\begin{aligned}
+t_n&amp;\le 1+1+\frac{1}{1\cdot 2}+\frac{1}{1\cdot 2\cdot
+3}+\cdots+\frac{1}{1\cdot 2\cdots n}\\
+&amp;\le 1+1+\frac{1}{2}+\frac{1}{2^2}+\dots+\frac{1}{2^{n-1}}\\
+&amp;=1+2\left(1-\frac{1}{2^n}\right)\\
+&amp;&lt;3.
+\end{aligned}\]</span> The second line uses <span class="math inline">\(k!\ge2^{k-1}\)</span> (<a href="ch-real-numbers.html#exer-factorial-bound">Exercise 1.2.10</a>), and the third uses <a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>. So <span class="math inline">\(\{t_n\}\)</span> is bounded. Therefore, <span class="math inline">\(\{t_n\}\)</span> converges by the Monotone
+Convergence Theorem. Define <span class="math display">\[e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n.\]</span></p>
+<p>Next, define, for <span class="math inline">\(x&gt;0\)</span>, <span class="math display">\[\ln x=\int^x_1\frac{1}{t}\,dt.\]</span> Since
+<span class="math inline">\(f(t)=\frac{1}{t}\)</span> is continuous on
+<span class="math inline">\((0,\infty)\)</span>, <span class="math inline">\(\frac{d}{dx}\ln x=\frac{1}{x}\)</span> for all
+<span class="math inline">\(x&gt;0\)</span> by <a href="#thm-ftc-derivative">Theorem 9.3.7</a>, applied on any closed
+interval in <span class="math inline">\((0,\infty)\)</span> that
+contains <span class="math inline">\(1\)</span> and <span class="math inline">\(x\)</span>. So <span class="math inline">\(\ln
+x\)</span> is a strictly increasing function by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>.</p>
+<p>Notice <span class="math display">\[\frac{d}{dx}\ln
+ax=\frac{1}{ax}a=\frac{1}{x}=\frac{d}{dx}\ln x.\]</span> So by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5), <span class="math inline">\(\ln ax=\ln x + C\)</span>. Now <span class="math inline">\(\ln 1=0\)</span>, so <span class="math inline">\(C=\ln a\)</span> and therefore, <span class="math display">\[\ln ab=\ln a+\ln b\]</span> for <span class="math inline">\(a,b&gt;0\)</span>.</p>
+<p>Next, notice <span class="math display">\[\frac{d}{dx}\ln
+\frac{1}{x}=\frac{1}{1/x}\cdot\frac{-1}{x^2}=\frac{-1}{x}=-\frac{d}{dx}\ln
+x.\]</span> So <span class="math inline">\(\ln\frac{1}{x}=-\ln x
++C\)</span>, and since <span class="math inline">\(\ln 1=0\)</span>,
+<span class="math inline">\(C=0\)</span>. Thus <span class="math display">\[\ln\frac{1}{x}=-\ln x.\]</span></p>
+<p>Now, note if <span class="math inline">\(n\in\mathbb{N}\)</span>,
+<span class="math inline">\(\ln(b^n)=n\ln b\)</span> by induction. Also,
+<span class="math display">\[\ln(b^{-n})=\ln\left(\left(\frac{1}{b}\right)^n\right)=n\ln\frac{1}{b}=-n\ln
+b.\]</span> So <span class="math inline">\(\ln (b^n)=n\ln b\)</span> for
+all <span class="math inline">\(n\in\mathbb{Z}\)</span>. Also, since
+<span class="math display">\[n\ln(\sqrt[n]{b})=\ln b,\]</span> <span class="math display">\[\ln(\sqrt[n]{b})=\frac{1}{n}\ln b.\]</span> Thus
+<span class="math inline">\(\ln(b^r)=r\ln b\)</span> for all <span class="math inline">\(r\in\mathbb{Q}\)</span>. The power <span class="math inline">\(b^r\)</span> has only been defined for rational
+<span class="math inline">\(r\)</span>. For real <span class="math inline">\(r\)</span>, define <span class="math inline">\(b^r=E(r\ln b)\)</span>, where <span class="math inline">\(E\)</span> is the inverse of <span class="math inline">\(\ln\)</span> from <a href="#exer-exp-function">Exercise 9.3.3</a>. Then <span class="math inline">\(\ln(b^r)=r\ln b\)</span> for all <span class="math inline">\(r\in\mathbb{R}\)</span>.</p>
+<p>Last, <span class="math display">\[\begin{aligned}
+1=\left.\frac{d}{dx}\ln x\right|_{x=1} &amp;=
+\lim_{n\to\infty}\frac{\ln\left(1+\frac{1}{n}\right)-\ln 1}{1/n}\\
+&amp;=\lim_{n\to\infty}n\ln\left(1+\frac{1}{n}\right)\\
+&amp;=\lim_{n\to\infty}\ln\left(\left(1+\frac{1}{n}\right)^n\right)\\
+&amp;=\ln e.
+\end{aligned}\]</span> The first line uses <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> with <span class="math inline">\(x_n=1+\frac1n\)</span>. The last line uses the
+continuity of <span class="math inline">\(\ln\)</span> and <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-33">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-ftc-piecewise">
+
+<p><strong>Exercise 9.3.1.</strong> Define <span class="math inline">\(f:[0,2]\to\mathbb{R}\)</span> by <span class="math inline">\(f(t)=\begin{cases}t, &amp; 0\le t&lt;1,\\ b-t^2,
+&amp; 1\le t\le 2.\end{cases}\)</span> Define <span class="math inline">\(F(x)=\int^x_0 f(t)\,dt\)</span>. For what values
+of <span class="math inline">\(b\)</span> is <span class="math inline">\(F\)</span> differentiable for all <span class="math inline">\(x\in[0,2]\)</span>? <a aria-label="Hint for Exercise 9.3.1" href="solutions-ch09.html#sol-exer-ftc-piecewise">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-ftc-continuous">
+
+<p><strong>Exercise 9.3.2.</strong> Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Define <span class="math inline">\(F:[a,b]\to\mathbb{R}\)</span> by <span class="math inline">\(F(x)=\int^x_af(t)\,dt\)</span>. Prove <span class="math inline">\(F\)</span> is continuous on <span class="math inline">\([a,b]\)</span>. <a aria-label="Hint for Exercise 9.3.2" href="solutions-ch09.html#sol-exer-ftc-continuous">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-exp-function">
+
+<p><strong>Exercise 9.3.3.</strong> Let <span class="math inline">\(E\)</span> denote the inverse function of <span class="math inline">\(\ln x\)</span>.</p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\(\ln\)</span> maps <span class="math inline">\((0,\infty)\)</span> onto <span class="math inline">\(\mathbb{R}\)</span>, so that <span class="math inline">\(E:\mathbb{R}\to(0,\infty)\)</span>.</p></li>
+<li><p>Use the Inverse Function Theorem to prove that <span class="math inline">\(E'(x)=E(x)\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+<li><p>Prove that <span class="math inline">\(E(x+y)=E(x)E(y)\)</span>
+for all <span class="math inline">\(x,y\in\mathbb{R}\)</span>.</p></li>
+<li><p>Prove that <span class="math inline">\(E(r)=e^r\)</span> for all
+<span class="math inline">\(r\in\mathbb{Q}\)</span>, where <span class="math inline">\(e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\)</span>.
+This suggests defining <span class="math inline">\(e^x=E(x)\)</span> for
+every <span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 9.3.3" href="solutions-ch09.html#sol-exer-exp-function">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-binomial">
+
+<p><strong>Exercise 9.3.4.</strong> For <span class="math inline">\(n\in\mathbb{N}_0\)</span> and <span class="math inline">\(k=0,1,\dots,n\)</span>, let <span class="math inline">\(\binom{n}{k}=\frac{n!}{k!(n-k)!}\)</span>. Prove
+that <span class="math inline">\(\binom{n}{k-1}+\binom{n}{k}=\binom{n+1}{k}\)</span>
+for <span class="math inline">\(1\le k\le n\)</span>. Then use induction
+to prove the <em>Binomial Theorem</em>, that <span class="math inline">\((a+b)^n=\sum_{k=0}^n\binom{n}{k}a^{n-k}b^k\)</span>
+for all <span class="math inline">\(a,b\in\mathbb{R}\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. <a aria-label="Hint for Exercise 9.3.4" href="solutions-ch09.html#sol-exer-binomial">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-more-integral-properties">
+<h2>9.4 More Properties of the Integral</h2>
+<div class="theorembox" id="thm-mvt-integrals">
+
+<p><strong>Theorem 9.4.1</strong> (Mean Value Theorem for
+Integrals)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f\in C[a,b]\)</span>. Then there
+exists a <span class="math inline">\(c\in[a,b]\)</span> such that <span class="math display">\[\int^b_a f=f(c)(b-a).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Define <span class="math inline">\(F(x)=\int^x_a
+f\)</span>. Since <span class="math inline">\(f\)</span> is continuous
+on <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(F'(x)=f(x)\)</span> for all <span class="math inline">\(x\in[a,b]\)</span> by <a href="#thm-ftc-derivative">Theorem 9.3.7</a>. Thus by the Mean Value
+Theorem, there exists a <span class="math inline">\(c\in(a,b)\)</span>
+such that <span class="math display">\[\int^b_a
+f=F(b)-F(a)=F'(c)(b-a)=f(c)(b-a).\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-integration-by-parts">
+
+<p><strong>Theorem 9.4.2</strong> (Integration by
+Parts)<strong>.</strong></p>
+<p>Let <span class="math inline">\(f,g:[a,b]\to\mathbb{R}\)</span> be
+differentiable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(f',g'\in\mathcal{R}[a,b]\)</span>. Then
+<span class="math display">\[\int^b_a fg'=f(b)g(b)-f(a)g(a)-\int^b_a
+gf'.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(f,g\)</span> are
+continuous, <span class="math inline">\(f,g\in\mathcal{R}[a,b]\)</span>.
+So <span class="math inline">\(fg',gf'\in\mathcal{R}[a,b]\)</span> by <a href="#thm-integral-linear">Theorem 9.2.11</a> (3). Since <span class="math display">\[(fg)'=f'g+fg',\]</span> <span class="math inline">\((fg)'\in\mathcal{R}[a,b]\)</span>. Thus by
+Theorems <a href="#thm-ftc-evaluation">9.3.6</a> and <a href="#thm-integral-linear">9.2.11</a>, <span class="math display">\[f(b)g(b)-f(a)g(a)=\int^b_a
+(fg)'=\int^b_agf'+\int^b_a fg'.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-substitution">
+
+<p><strong>Theorem 9.4.3</strong> (<span class="math inline">\(u\)</span>-Substitution)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\varphi:[a,b]\to\mathbb{R}\)</span>
+be differentiable on <span class="math inline">\([a,b]\)</span> with
+<span class="math inline">\(\varphi'\in\mathcal{R}[a,b]\)</span>.
+Let <span class="math inline">\(I=\varphi[[a,b]]\)</span>. If <span class="math inline">\(f:I\to\mathbb{R}\)</span> is continuous on <span class="math inline">\(I\)</span>, then <span class="math display">\[\int^b_a
+f(\varphi(t))\varphi'(t)\,dt=\int^{\varphi(b)}_{\varphi(a)}
+f(x)\,dx.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(\varphi\)</span> is
+continuous, by <a href="ch-continuity.html#cor-continuous-image-interval">Corollary
+6.3.11</a>, <span class="math inline">\(I\)</span> is an interval. It
+contains its endpoints, since <span class="math inline">\(\varphi\)</span> attains a maximum and a minimum
+on <span class="math inline">\([a,b]\)</span> by the Extreme Value
+Theorem. So <span class="math inline">\(I\)</span> is a closed and
+bounded interval. Also, since <span class="math inline">\(f\circ
+\varphi\)</span> is continuous and <span class="math inline">\(\varphi'\in\mathcal{R}[a,b]\)</span>, <span class="math inline">\((f\circ
+\varphi)\varphi'\in\mathcal{R}[a,b]\)</span>. If <span class="math inline">\(I\)</span> is a single point, then <span class="math inline">\(\varphi\)</span> is constant on <span class="math inline">\([a,b]\)</span>. Thus <span class="math inline">\(\varphi'(t)=0\)</span> for all <span class="math inline">\(t\in[a,b]\)</span> and the equation holds since
+both integrals are zero. Otherwise, for <span class="math inline">\(x\in
+I\)</span>, define <span class="math display">\[F(x)=\int^x_{\varphi(a)}f(s)\,ds.\]</span> Since
+<span class="math inline">\(f\)</span> is continuous, <span class="math inline">\(F'(x)=f(x)\)</span> for all <span class="math inline">\(x\in I\)</span> by <a href="#thm-ftc-derivative">Theorem 9.3.7</a> and <a href="#thm-integral-additive">Theorem 9.2.13</a>. By the Chain Rule,
+<span class="math display">\[\frac{d}{dt}
+F(\varphi(t))=F'(\varphi(t))\varphi'(t)=f(\varphi(t))\varphi'(t),\]</span>
+for all <span class="math inline">\(t\in[a,b]\)</span>. Thus by the
+Fundamental Theorem of Calculus, <span class="math display">\[\int^b_a
+f(\varphi(t))\varphi'(t)\,dt=F(\varphi(b))-F(\varphi(a))=\int^{\varphi(b)}_{\varphi(a)}
+f(s) \,ds.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-34">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-weighted-mvt">
+
+<p><strong>Exercise 9.4.1.</strong> Let <span class="math inline">\(f\in
+C[a,b]\)</span> and <span class="math inline">\(g\in\mathcal{R}[a,b]\)</span> with <span class="math inline">\(g(x)\ge 0\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Prove there exists a <span class="math inline">\(c\in[a,b]\)</span> such that <span class="math display">\[\int^b_a f(x)g(x)\,dx=f(c)\int^b_a
+g(x)\,dx.\]</span> <a aria-label="Hint for Exercise 9.4.1" href="solutions-ch09.html#sol-exer-weighted-mvt">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-even-odd-integral">
+
+<p><strong>Exercise 9.4.2.</strong> Let <span class="math inline">\(f\in\mathcal{R}[-a,a]\)</span>, <span class="math inline">\(a&gt;0\)</span>. Prove each of the following. Here
+<span class="math inline">\(f\)</span> is even if <span class="math inline">\(f(-x)=f(x)\)</span> for all <span class="math inline">\(x\)</span>, and odd if <span class="math inline">\(f(-x)=-f(x)\)</span> for all <span class="math inline">\(x\)</span>.</p>
+<ol type="a">
+<li><p>If <span class="math inline">\(f\)</span> is even, then <span class="math inline">\(\int^a_{-a}f=2\int^a_0 f\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\)</span> is odd, then <span class="math inline">\(\int^a_{-a}f=0\)</span>.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 9.4.2" href="solutions-ch09.html#sol-exer-even-odd-integral">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-improper">
+<h2>9.5 Improper Integrals</h2>
+<p>The Riemann integral needs a bounded function on a closed and bounded
+interval. An improper integral removes one of these restrictions by
+taking a limit. Throughout this section, <span class="math inline">\(x^p\)</span> for real <span class="math inline">\(p\)</span> and <span class="math inline">\(x&gt;0\)</span> means <span class="math inline">\(E(p\ln x)\)</span>, as in <a href="#ex-exp-ln">Example 9.3.8</a>. Its derivative is <span class="math inline">\(px^{p-1}\)</span>.</p>
+<div class="definitionbox" id="def-locally-integrable">
+
+<p><strong>Definition 9.5.1.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<span class="math inline">\(f:I\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is integrable on every closed and
+bounded subinterval of <span class="math inline">\(I\)</span>, <span class="math inline">\(f\)</span> is <em>locally integrable</em> on <span class="math inline">\(I\)</span>, denoted <span class="math inline">\(f\in \mathcal{R}_{\mathrm{loc}}(I)\)</span>.</p>
+</div>
+<div class="definitionbox" id="def-improper-integral">
+
+<p><strong>Definition 9.5.2.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,b)\)</span>,
+where <span class="math inline">\(a\in\mathbb{R}\)</span> and <span class="math inline">\(b\in\mathbb{R}\cup\{\infty\}\)</span>. Then the
+<em>improper Riemann integral</em> of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b)\)</span> is defined as <span class="math display">\[\int^b_a f=\lim_{s\to b^-}\int^s_a f,\]</span>
+provided the limit exists. If <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(a,b]\)</span>,
+where <span class="math inline">\(a\in\mathbb{R}\cup\{-\infty\}\)</span>
+and <span class="math inline">\(b\in\mathbb{R}\)</span>, the improper
+integral of <span class="math inline">\(f\)</span> on <span class="math inline">\((a,b]\)</span> is defined as <span class="math display">\[\int^b_a f=\lim_{t\to a^+}\int^b_t f,\]</span>
+provided the limit exists. If the integral exists, <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\([a,b)\)</span> or <span class="math inline">\((a,b]\)</span> and the integral
+<em>converges</em>. Otherwise, the integral <em>diverges</em>. When
+<span class="math inline">\(b=\infty\)</span>, <span class="math inline">\(s\to b^-\)</span> means <span class="math inline">\(s\to\infty\)</span>, and when <span class="math inline">\(a=-\infty\)</span>, <span class="math inline">\(t\to a^+\)</span> means <span class="math inline">\(t\to-\infty\)</span>. These limits are defined in
+<a href="ch-continuity.html#sec-infinite-limits">Section 6.2</a>.</p>
+</div>
+<div class="examplebox" id="ex-one-over-sqrt">
+
+<p><strong>Example 9.5.3.</strong> Let <span class="math inline">\(f:(0,1]\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=\frac{1}{\sqrt{x}}\)</span>. Then <span class="math display">\[\int^1_0 f=\lim_{t\to0^+}\int_t^1\frac{1}{\sqrt
+x}\,dx=\lim_{t\to0^+}\bigl(2-2\sqrt t\bigr)=2.\]</span> However, notice
+<span class="math display">\[\int^1_0 f^2=\lim_{t\to 0^+}\left.\ln
+x\right|_{x=t}^{x=1}=\lim_{t\to 0^+}(-\ln t),\]</span> which does not
+exist. So the improper integral of <span class="math inline">\(f\)</span> converging does not guarantee the
+improper integral of <span class="math inline">\(f^2\)</span>
+converging.</p>
+</div>
+<div class="definitionbox" id="def-improper-integral-open">
+
+<p><strong>Definition 9.5.4.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(a,b)\)</span> with
+<span class="math inline">\(a\in\mathbb{R}\cup\{-\infty\}\)</span> and
+<span class="math inline">\(b\in\mathbb{R}\cup\{\infty\}\)</span>, and
+let <span class="math inline">\(c\in(a,b)\)</span>. Then the improper
+integral of <span class="math inline">\(f\)</span> on <span class="math inline">\((a,b)\)</span> is defined as <span class="math display">\[\int^b_a f=\lim_{t\to a^+}\int^c_t f+\lim_{s\to
+b^-}\int^s_c f,\]</span> provided both limits exist. If the integral
+exists, <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\((a,b)\)</span> and the integral converges.
+Otherwise, the integral diverges. The value does not depend on <span class="math inline">\(c\)</span>. See <a href="#exer-improper-independent-c">Exercise 9.5.5</a>.</p>
+</div>
+<div class="examplebox" id="ex-x-cubed-improper">
+
+<p><strong>Example 9.5.5.</strong> Even though <span class="math inline">\(\lim_{t\to\infty}\int^t_{-t} x^3 \,dx =0\)</span>,
+<span class="math inline">\(\int^\infty_{-\infty} x^3 \,dx\)</span> does
+not exist, since <span class="math display">\[\int^\infty_0
+x^3\,dx=\lim_{s\to\infty}\int^s_0 x^3 \,dx\]</span> does not exist.</p>
+</div>
+<div class="definitionbox" id="def-improper-interior">
+
+<p><strong>Definition 9.5.6.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
+<span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(c,b]\)</span>,
+where <span class="math inline">\(a,b,c\in\mathbb{R}\)</span> with <span class="math inline">\(a&lt;c&lt;b\)</span>. Then the improper integral
+of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> is defined as <span class="math display">\[\int^b_a f=\lim_{s\to c^-}\int^s_a f+\lim_{t\to
+c^+}\int^b_t f,\]</span> provided both limits exist. If the integral
+exists, <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\([a,b]\)</span> and the integral converges.
+Otherwise, the integral diverges.</p>
+</div>
+<div class="theorembox" id="thm-p-test">
+
+<p><strong>Theorem 9.5.7</strong> (<span class="math inline">\(p\)</span>-Test)<strong>.</strong></p>
+<p>Let <span class="math inline">\(a&gt;0\)</span>. Then <span class="math inline">\(\int^\infty_a \frac{1}{x^p}\,dx\)</span> converges
+if and only if <span class="math inline">\(p&gt;1\)</span>. Also, <span class="math inline">\(\int^a_0 \frac{1}{x^p}\,dx\)</span> converges if
+and only if <span class="math inline">\(p&lt;1\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-p-test">Exercise 9.5.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-comparison-test-integrals">
+
+<p><strong>Theorem 9.5.8</strong> (Comparison
+Test)<strong>.</strong></p>
+<p>Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an
+interval and let <span class="math inline">\(f,g\in\mathcal{R}_{\mathrm{loc}}(I)\)</span> with
+<span class="math inline">\(0\le f(x)\le g(x)\)</span> for all <span class="math inline">\(x\in I\)</span>. If <span class="math inline">\(g\)</span> is integrable on <span class="math inline">\(I\)</span>, then <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\(I\)</span>. If <span class="math inline">\(f\)</span> is not integrable on <span class="math inline">\(I\)</span>, then <span class="math inline">\(g\)</span> is not integrable on <span class="math inline">\(I\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(I=[a,b)\)</span>. If
+<span class="math inline">\(0\le f\le g\)</span> on <span class="math inline">\(I\)</span> and <span class="math inline">\(g\)</span> is integrable on <span class="math inline">\(I\)</span>, then <span class="math inline">\(\int^s_a f\)</span> is an increasing function of
+<span class="math inline">\(s\)</span> and is bounded above by <span class="math inline">\(\int^b_a g\)</span>. Indeed, for <span class="math inline">\(a\le s&lt;b\)</span>, <span class="math inline">\(\int_a^sf\le\int_a^sg\le\int_a^bg\)</span>, since
+<span class="math inline">\(\int_a^sg\)</span> increases with <span class="math inline">\(s\)</span> to its limit <span class="math inline">\(\int_a^bg\)</span>. So by the argument of <a href="ch-continuity.html#thm-monotone-one-sided">Theorem 6.5.2</a>, <span class="math display">\[\int^b_a f=\lim_{s\to b^-}\int^s_a f\]</span>
+exists. That argument shows an increasing function that is bounded above
+on <span class="math inline">\([a,b)\)</span> has a left-hand limit at
+<span class="math inline">\(b\)</span> equal to its supremum, and it
+works for <span class="math inline">\(b=\infty\)</span> too. The cases
+where <span class="math inline">\(I=(a,b]\)</span> and <span class="math inline">\(I=(a,b)\)</span> are similar. The second statement
+is the contrapositive of the first.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-limit-comparison-integrals">
+
+<p><strong>Theorem 9.5.9</strong> (Limit Comparison
+Test)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(f,g\in\mathcal{R}_{\mathrm{loc}}(a,b]\)</span>
+with <span class="math inline">\(f(x),g(x)&gt;0\)</span> for all <span class="math inline">\(x\in(a,b]\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(\lim_{x\to
+a^+}\frac{g(x)}{f(x)}=L&gt;0\)</span>, then either both <span class="math inline">\(\int^b_a f\)</span> and <span class="math inline">\(\int^b_a g\)</span> converge or both
+diverge.</p></li>
+<li><p>If <span class="math inline">\(\lim_{x\to
+a^+}\frac{g(x)}{f(x)}=0\)</span>, then if <span class="math inline">\(\int^b_a f\)</span> converges, <span class="math inline">\(\int^b_a g\)</span> converges.</p></li>
+<li><p>If <span class="math inline">\(\lim_{x\to
+a^+}\frac{g(x)}{f(x)}=\infty\)</span> then if <span class="math inline">\(\int^b_a f\)</span> diverges, <span class="math inline">\(\int^b_a g\)</span> diverges.</p></li>
+</ol>
+<p>If <span class="math inline">\(I=[a,b)\)</span>, consider <span class="math inline">\(\lim_{x\to b^-}\frac{g(x)}{f(x)}\)</span> and the
+results are similar.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Suppose <span class="math inline">\(\lim_{x\to
+a^+}\frac{g(x)}{f(x)}=L&gt;0\)</span>. Set <span class="math inline">\(\varepsilon=\frac{L}{2}\)</span>. Then there
+exists a <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(a+\delta&lt;b\)</span> such that for every <span class="math inline">\(x\in(a,a+\delta)\)</span>, <span class="math display">\[\frac{L}{2}=L-\varepsilon&lt;\frac{g(x)}{f(x)}&lt;L+\varepsilon=\frac{3L}{2}.\]</span>
+Thus <span class="math inline">\(\frac L2f(x)\le
+g(x)\le\frac{3L}{2}f(x)\)</span> for all <span class="math inline">\(x\in(a,a+\delta)\)</span>. By the Comparison Test
+on <span class="math inline">\((a,a+\delta]\)</span>, <span class="math inline">\(\int_a^{a+\delta}f\)</span> and <span class="math inline">\(\int_a^{a+\delta}g\)</span> both converge or both
+diverge. Since <span class="math inline">\(f,g\in\mathcal{R}[a+\delta,b]\)</span>, the same
+is true of <span class="math inline">\(\int^b_a f\)</span> and <span class="math inline">\(\int^b_a g\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(\lim_{x\to
+a^+}\frac{g(x)}{f(x)}=0\)</span>. Then there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for every <span class="math inline">\(x\in(a,a+\delta)\)</span>, <span class="math inline">\(0&lt;\frac{g(x)}{f(x)}&lt;1\)</span>, which
+implies <span class="math inline">\(0&lt;g(x)&lt;f(x)\)</span> for all
+<span class="math inline">\(x\in(a,a+\delta)\)</span>. The result then
+follows from the Comparison Test.</p></li>
+<li><p>Suppose <span class="math inline">\(\lim_{x\to
+a^+}\frac{g(x)}{f(x)}=\infty\)</span>. Then there exists a <span class="math inline">\(\delta&gt;0\)</span> such that for every <span class="math inline">\(x\in(a,a+\delta)\)</span>, <span class="math inline">\(\frac{g(x)}{f(x)}&gt;1\)</span>, which implies
+<span class="math inline">\(g(x)&gt;f(x)\)</span> for all <span class="math inline">\(x\in(a,a+\delta)\)</span>. The result then follows
+from the Comparison Test.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-absolute-convergence-integrals">
+
+<p><strong>Theorem 9.5.10</strong> (Absolute Convergence
+Test)<strong>.</strong></p>
+<p>If <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(I)\)</span> and if
+<span class="math inline">\(|f|\)</span> is integrable on <span class="math inline">\(I\)</span>, then <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\(I\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(-|f(x)|\le f(x)\le
+|f(x)|\)</span> for all <span class="math inline">\(x\in I\)</span>,
+<span class="math inline">\(0\le f(x)+|f(x)|\le 2|f(x)|\)</span> for all
+<span class="math inline">\(x\in I\)</span>. By the Comparison Test,
+<span class="math inline">\(f+|f|\)</span> is integrable on <span class="math inline">\(I\)</span>. Therefore, <span class="math inline">\(f=(f+|f|)-|f|\)</span> is integrable on <span class="math inline">\(I\)</span>. The last step uses the limit laws for
+one-sided limits (<a href="ch-continuity.html#rem-limit-laws-extended">Remark
+6.2.7</a>).</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-sin-x-over-x-improper">
+
+<p><strong>Example 9.5.11.</strong> Using Integration by Parts, notice
+<span class="math display">\[\int^c_\pi \frac{\sin x}{x}\,dx=-\frac{\cos
+c}{c}-\frac{1}{\pi}-\int_\pi^c\frac{\cos x}{x^2} \,dx.\]</span> So <span class="math display">\[\lim_{c\to\infty}\int^c_\pi \frac{\sin
+x}{x}\,dx=-\frac{1}{\pi}-\int_\pi^\infty\frac{\cos x}{x^2}\,dx.\]</span>
+But <span class="math inline">\(\left|\frac{\cos
+x}{x^2}\right|\le\frac{1}{x^2}\)</span>, so by the Comparison Test and
+the Absolute Convergence Test, <span class="math inline">\(\int^\infty_\pi \frac{\cos x}{x^2}\,dx\)</span>
+converges. Thus <span class="math inline">\(\int^\infty_\pi\frac{\sin
+x}{x}\,dx\)</span> converges.</p>
+<p>However, since <span class="math display">\[\begin{aligned}
+\int^{(k+3/4)\pi}_{(k+1/4)\pi}\frac{|\sin x|}{x}\,dx&amp;\ge
+\frac{\sqrt{2}}{2}\cdot\frac{1}{(k+1)\pi}\left[\left(k+\frac{3}{4}\right)\pi-\left(k+\frac{1}{4}\right)\pi\right]\\
+&amp;=\frac{\sqrt{2}}{4}\cdot\frac{1}{k+1},
+\end{aligned}\]</span> <span class="math display">\[\int^{(n+1)\pi}_{\pi}\frac{|\sin x|}{x}\,dx\ge
+\frac{\sqrt{2}}{4}\sum^n_{k=1}\frac{1}{k+1},\]</span> which implies
+<span class="math inline">\(\int^\infty_\pi \frac{|\sin
+x|}{x}\,dx\)</span> does not exist. The last step uses that the sums
+<span class="math inline">\(\sum_{k=1}^n\frac1{k+1}\)</span> are not
+bounded. See the hint in <a href="ch-bounded-variation.html#exer-x-sin-not-bv">Exercise
+8.1.4</a>, or <a href="ch-series.html#ex-p-series">Example 10.2.11</a> and <a href="ch-series.html#exer-harmonic-grouping">Exercise 10.2.8</a>.</p>
+</div>
+<div class="definitionbox" id="def-principal-value">
+
+<p><strong>Definition 9.5.12.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(-\infty,\infty)\)</span>.
+The <em>principal value</em> of <span class="math inline">\(\int^\infty_{-\infty}f\)</span> is <span class="math display">\[\operatorname{P.V.}\int^{\infty}_{-\infty}
+f=\lim_{t\to\infty}\int^t_{-t}f.\]</span></p>
+</div>
+<div class="examplebox" id="ex-pv-odd-power">
+
+<p><strong>Example 9.5.13.</strong> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math display">\[\operatorname{P.V.}\int^{\infty}_{-\infty}
+x^{2n-1}\,dx=0.\]</span> However, <span class="math inline">\(\int^{\infty}_{-\infty} x^{2n-1}\,dx\)</span> does
+not exist.</p>
+</div>
+<div class="examplebox" id="ex-pv-arctan">
+
+<p><strong>Example 9.5.14.</strong> Notice <span class="math display">\[\operatorname{P.V.}\int^\infty_{-\infty}\frac{1}{1+x^2}\,dx=\lim_{t\to\infty}(2\arctan
+t)=\pi.\]</span> Also, <span class="math display">\[\begin{aligned}
+\int^{\infty}_{-\infty}\frac{1}{1+x^2}\,dx&amp;=\lim_{t\to-\infty}\int^0_t\frac{1}{1+x^2}\,dx
++ \lim_{s\to\infty}\int^s_0 \frac{1}{1+x^2}\,dx\\
+&amp;=\lim_{t\to-\infty}(-\arctan t) +\lim_{s\to\infty}\arctan s\\
+&amp;=\pi.
+\end{aligned}\]</span> So <span class="math display">\[\operatorname{P.V.}\int^\infty_{-\infty}\frac{1}{1+x^2}\,dx=\int^{\infty}_{-\infty}\frac{1}{1+x^2}\,dx.\]</span></p>
+</div>
+<div class="theorembox" id="thm-pv-agrees">
+
+<p><strong>Theorem 9.5.15.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(-\infty,\infty)\)</span>.
+If <span class="math inline">\(\int^{\infty}_{-\infty} f\)</span>
+converges, then <span class="math inline">\(\operatorname{P.V.}\int^\infty_{-\infty}
+f\)</span> converges and <span class="math display">\[\int^{\infty}_{-\infty}
+f=\operatorname{P.V.}\int^\infty_{-\infty} f.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(\int^{\infty}_{-\infty} f\)</span> exists, both
+<span class="math inline">\(\lim_{t\to-\infty}\int^0_t f\)</span> and
+<span class="math inline">\(\lim_{s\to\infty}\int^s_0 f\)</span> exist.
+So <span class="math display">\[\begin{aligned}
+\operatorname{P.V.}\int^\infty_{-\infty} f &amp;=
+\lim_{t\to\infty}\int^t_{-t}f\\
+&amp;=\lim_{t\to\infty}\left(\int^0_{-t}f+\int^t_0 f \right)\\
+&amp;=\lim_{t\to-\infty}\int^0_t f +\lim_{s\to\infty}\int^s_0 f\\
+&amp;=\int^{\infty}_{-\infty} f.
+\end{aligned}\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-principal-value-interior">
+
+<p><strong>Definition 9.5.16.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
+<span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(c,b]\)</span>
+where <span class="math inline">\(a,b,c\in\mathbb{R}\)</span> with <span class="math inline">\(a&lt;c&lt;b\)</span>. Then the principal value of
+<span class="math inline">\(\int^b_a f\)</span> is defined as <span class="math display">\[\operatorname{P.V.}\int^b_a
+f=\lim_{\varepsilon\to 0^+}\left(\int_a^{c-\varepsilon} f
++\int^b_{c+\varepsilon} f\right).\]</span></p>
+</div>
+<div class="examplebox" id="ex-pv-one-over-x">
+
+<p><strong>Example 9.5.17.</strong> Define <span class="math inline">\(f:[-1,0)\cup(0,1]\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=\frac{1}{x}\)</span>. Notice that since <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([-1,0)\cup(0,1]\)</span>, <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[-1,0)\)</span> and
+<span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(0,1]\)</span>. By
+the <span class="math inline">\(p\)</span>-Test, <span class="math inline">\(\int^1_0 f\)</span> diverges, and so <span class="math inline">\(\int^1_{-1} f\)</span> diverges. However, <span class="math display">\[\operatorname{P.V.}\int^1_{-1}
+\frac{1}{x}\,dx=\lim_{\varepsilon\to 0^+}\left(\int^{-\varepsilon}_{-1}
+\frac{1}{x}\,dx+\int^1_\varepsilon\frac{1}{x}\,dx\right)=\lim_{\varepsilon\to
+0^+}(\ln|-\varepsilon|-\ln|\varepsilon|)=0.\]</span></p>
+</div>
+<div class="theorembox" id="thm-pv-agrees-interior">
+
+<p><strong>Theorem 9.5.18.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
+<span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(c,b]\)</span>. If
+<span class="math inline">\(\int^{b}_{a} f\)</span> converges, then
+<span class="math inline">\(\operatorname{P.V.}\int^b_{a} f\)</span>
+converges with <span class="math display">\[\int^{b}_{a}
+f=\operatorname{P.V.}\int^b_{a} f.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-pv-agrees-interior">Exercise
+9.5.2</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-35">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-p-test">
+
+<p><strong>Exercise 9.5.1.</strong> Prove <a href="#thm-p-test">Theorem
+9.5.7</a>. <a aria-label="Hint for Exercise 9.5.1" href="solutions-ch09.html#sol-exer-p-test">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-pv-agrees-interior">
+
+<p><strong>Exercise 9.5.2.</strong> Prove <a href="#thm-pv-agrees-interior">Theorem 9.5.18</a>. <a aria-label="Hint for Exercise 9.5.2" href="solutions-ch09.html#sol-exer-pv-agrees-interior">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-x-log-p">
+
+<p><strong>Exercise 9.5.3.</strong> For what values of <span class="math inline">\(p\)</span> does <span class="math inline">\(\int^\infty_2\frac{1}{x\left(\ln
+x\right)^p}\,dx\)</span> converge? <a aria-label="Hint for Exercise 9.5.3" href="solutions-ch09.html#sol-exer-x-log-p">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-gamma">
+
+<p><strong>Exercise 9.5.4.</strong> For <span class="math inline">\(x&gt;0\)</span>, define <span class="math inline">\(\Gamma(x)=\int^\infty_0
+e^{-t}t^{x-1}\,dt\)</span>.</p>
+<ol type="a">
+<li><p>Show the improper integral converges for all <span class="math inline">\(x&gt;0\)</span>.</p></li>
+<li><p>Use integration by parts to show that <span class="math inline">\(\Gamma(x+1)=x\Gamma(x)\)</span>, <span class="math inline">\(x&gt;0\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(\Gamma(1)=1\)</span>.</p></li>
+<li><p>For <span class="math inline">\(n\in\mathbb{N}\)</span>, prove
+that <span class="math inline">\(\Gamma(n+1)=n!\)</span>.</p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 9.5.4" href="solutions-ch09.html#sol-exer-gamma">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-improper-independent-c">
+
+<p><strong>Exercise 9.5.5.</strong> Show that the value of the improper
+integral in <a href="#def-improper-integral-open">Definition 9.5.4</a>
+does not depend on the choice of <span class="math inline">\(c\in(a,b)\)</span>. <a aria-label="Hint for Exercise 9.5.5" href="solutions-ch09.html#sol-exer-improper-independent-c">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-riemann-stieltjes">
+<h2>9.6 Riemann–Stieltjes Integrals<sup>*</sup></h2>
+<p>This section can be skipped. Nothing later in the book depends on it.
+The end of the section uses functions of bounded variation from <a href="ch-bounded-variation.html">Chapter 8</a>.</p>
+<p>In a Riemann sum, each subinterval <span class="math inline">\([x_{i-1},x_i]\)</span> is weighted by its length
+<span class="math inline">\(\Delta x_i\)</span>. In a Riemann–Stieltjes
+sum, it is weighted by <span class="math inline">\(\Delta\alpha_i=\alpha(x_i)-\alpha(x_{i-1})\)</span>,
+where <span class="math inline">\(\alpha\)</span> is an increasing
+function. When <span class="math inline">\(\alpha(x)=x\)</span>, this is
+the Riemann integral. When <span class="math inline">\(\alpha\)</span>
+jumps, the integral picks out values of <span class="math inline">\(f\)</span> at the jumps, so sums and integrals
+become special cases of one idea.</p>
+<div class="definitionbox" id="def-rs-sums">
+
+<p><strong>Definition 9.6.1.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
+and let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+bounded. For each partition <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> of
+<span class="math inline">\([a,b]\)</span>, set <span class="math inline">\(\Delta
+\alpha_i=\alpha(x_i)-\alpha(x_{i-1})\)</span>, <span class="math inline">\(i=1,\dots, n\)</span>. Set <span class="math display">\[m_i=\inf\{f(x):x\in[x_{i-1},x_i]\}\]</span> and
+<span class="math display">\[M_i=\sup\{f(x):x\in[x_{i-1},x_i]\}.\]</span>
+Define the <em>upper Riemann–Stieltjes sum</em> of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\alpha\)</span> by <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)=\sum_{i=1}^n
+M_i\Delta \alpha_i,\]</span> and define the <em>lower Riemann–Stieltjes
+sum</em> of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\alpha\)</span> by <span class="math display">\[\mathcal{L}(\mathcal{P},f,\alpha)=\sum_{i=1}^n
+m_i\Delta\alpha_i.\]</span></p>
+</div>
+<div class="lemmabox" id="lem-rs-sum-bounds">
+
+<p><strong>Lemma 9.6.2.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing,
+let <span class="math inline">\(\mathcal{P}\)</span> be a partition of
+<span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> with <span class="math inline">\(m\le f(x)\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Then <span class="math display">\[m[\alpha(b)-\alpha(a)]\le
+\mathcal{L}(\mathcal{P},f,\alpha)\le
+\mathcal{U}(\mathcal{P},f,\alpha)\le
+M[\alpha(b)-\alpha(a)].\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> The result follows directly from the fact that <span class="math inline">\(m\le m_i\le M_i\le M\)</span> and <span class="math inline">\(\Delta \alpha_i\ge 0\)</span>. The sum <span class="math inline">\(\sum_{i=1}^n\Delta\alpha_i\)</span> telescopes to
+<span class="math inline">\(\alpha(b)-\alpha(a)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-rs-upper-lower">
+
+<p><strong>Definition 9.6.3.</strong> Define the upper and lower
+Riemann–Stieltjes integrals of <span class="math inline">\(f\)</span>
+with respect to <span class="math inline">\(\alpha\)</span> over <span class="math inline">\([a,b]\)</span>, denoted <span class="math inline">\(\overline{\int_{a}^{b}}f \,d\alpha\)</span> and
+<span class="math inline">\(\underline{\int_{a}^{b}}f \,d\alpha\)</span>
+respectively, by <span class="math display">\[\overline{\int_{a}^{b}}f
+\,d\alpha=\inf\{\mathcal{U}(\mathcal{P},f,\alpha):\mathcal{P}\text{ is a
+partition of }[a,b]\}\]</span> and <span class="math display">\[\underline{\int_{a}^{b}}f
+\,d\alpha=\sup\{\mathcal{L}(\mathcal{P},f,\alpha):\mathcal{P}\text{ is a
+partition of }[a,b]\}.\]</span></p>
+</div>
+<div class="theorembox" id="thm-rs-lower-le-upper">
+
+<p><strong>Theorem 9.6.4.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> increasing.
+Then <span class="math display">\[\underline{\int_{a}^{b}} f
+\,d\alpha\le \overline{\int_{a}^{b}}f \,d\alpha.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> If <span class="math inline">\(\mathcal{P}^*\)</span>
+is a refinement of <span class="math inline">\(\mathcal{P}\)</span>,
+then <span class="math display">\[\mathcal{L}(\mathcal{P},f,\alpha)\le  \mathcal{L}(\mathcal{P}^*,f,\alpha)\le
+\mathcal{U}(\mathcal{P}^*,f,\alpha)\le
+\mathcal{U}(\mathcal{P},f,\alpha)\]</span> by the proof of <a href="#lem-refinement-sums">Lemma 9.1.5</a>, with <span class="math inline">\(\Delta x_i\)</span> replaced by <span class="math inline">\(\Delta\alpha_i\)</span>. Thus, if <span class="math inline">\(\mathcal{P}\)</span> and <span class="math inline">\(\mathcal{Q}\)</span> are any two partitions of
+<span class="math inline">\([a,b]\)</span>, <span class="math display">\[\mathcal{L}(\mathcal{P},f,\alpha)\le
+\mathcal{L}(\mathcal{P}\cup \mathcal{Q},f,\alpha)\le
+\mathcal{U}(\mathcal{P}\cup \mathcal{Q},f,\alpha)\le
+\mathcal{U}(\mathcal{Q},f,\alpha).\]</span> Thus <span class="math display">\[\mathcal{L}(\mathcal{P},f,\alpha)\le
+\mathcal{U}(\mathcal{Q},f,\alpha)\]</span> for any partitions <span class="math inline">\(\mathcal{P},\mathcal{Q}\)</span> of <span class="math inline">\([a,b]\)</span>. Hence <span class="math display">\[\underline{\int_{a}^{b}}f \,d\alpha
+=\sup_\mathcal{P}\mathcal{L}(\mathcal{P},f,\alpha)\le
+\mathcal{U}(\mathcal{Q},f,\alpha)\]</span> for any partition <span class="math inline">\(\mathcal{Q}\)</span> of <span class="math inline">\([a,b]\)</span>. Thus <span class="math display">\[\underline{\int_{a}^{b}}f \,d\alpha
+\le\inf_\mathcal{Q}\mathcal{U}(\mathcal{Q},f,\alpha)=\overline{\int_{a}^{b}}f\,d\alpha.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-rs-integral">
+
+<p><strong>Definition 9.6.5.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded, and
+<span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span>
+increasing. If <span class="math inline">\(\underline{\int_{a}^{b}}
+f\,d\alpha=\overline{\int_{a}^{b}} f\,d\alpha\)</span>, then <span class="math inline">\(f\)</span> is said to be <em>Riemann integrable
+with respect to <span class="math inline">\(\alpha\)</span></em> on
+<span class="math inline">\([a,b]\)</span>, written <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>. The common value
+is written as <span class="math inline">\(\int^b_a f \,d \alpha\)</span>
+and is called the <em>Riemann–Stieltjes integral</em> of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-unit-jump">
+
+<p><strong>Example 9.6.6.</strong> Fix <span class="math inline">\(a&lt;c\le b\)</span>. Let <span class="math inline">\(I_c(x)=I(x-c)\)</span> be the <em>unit jump
+function</em> defined by <span class="math display">\[I_c(x)=\begin{cases} 0, &amp; x&lt;c, \\ 1, &amp;
+x\ge c.\end{cases}\]</span></p>
+<p>Let <span class="math inline">\(f\in C[a,b]\)</span>. Set <span class="math inline">\(\alpha(x)=I_c(x)\)</span>, which is clearly
+increasing on <span class="math inline">\([a,b]\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Since <span class="math inline">\(a&lt;c\le b\)</span>, there exists a <span class="math inline">\(k\in\{1,\dots,n\}\)</span> such that <span class="math inline">\(x_{k-1}&lt;c\le x_k\)</span>. Then, <span class="math display">\[\Delta\alpha_k=\alpha(x_k)-\alpha(x_{k-1})=1-0=1\text{
+and }\Delta\alpha_i=0,\ i=1,\dots,n,\ i\ne k.\]</span> Therefore, <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)=M_k\Delta\alpha_k=M_k=\sup\{f(x):x_{k-1}\le
+x\le x_k\}\]</span> and <span class="math display">\[\mathcal{L}(\mathcal{P},f,\alpha)=m_k\Delta\alpha_k=m_k=\inf\{f(x):x_{k-1}\le
+x\le x_k\}.\]</span></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>, there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math display">\[f(c)-\varepsilon&lt;f(x)&lt;f(c)+\varepsilon\]</span>
+for all <span class="math inline">\(x\in[a,b]\)</span> with <span class="math inline">\(|x-c|&lt;\delta\)</span>. Thus, for <span class="math inline">\(\left\lVert
+\mathcal{P}\right\rVert&lt;\delta\)</span>, <span class="math display">\[f(c)-\varepsilon\le m_k\le M_k\le
+f(c)+\varepsilon.\]</span> Therefore <span class="math display">\[f(c)-\varepsilon\le
+\mathcal{L}(\mathcal{P},f,\alpha)\le\mathcal{U}(\mathcal{P},f,\alpha)\le
+f(c)+\varepsilon.\]</span> So <span class="math display">\[f(c)-\varepsilon\le \underline{\int_{a}^{b}}f \,d
+\alpha\le \overline{\int_{a}^{b}}f\,d \alpha\le
+f(c)+\varepsilon.\]</span> This implies <span class="math inline">\(f\in\mathcal{R}(I_c)\)</span> and <span class="math display">\[\int^b_a f \,d \alpha=f(c).\]</span></p>
+</div>
+<div class="examplebox" id="ex-dirichlet-rs">
+
+<p><strong>Example 9.6.7.</strong> Define <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> by <span class="math display">\[f(x)=\begin{cases} 1, &amp; x\in\mathbb{Q}, \\ 0,
+&amp; x\notin\mathbb{Q}.\end{cases}\]</span> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be a
+nonconstant increasing function, <span class="math inline">\(a&lt;b\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
+partition of <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(m_i=0\)</span> and <span class="math inline">\(M_i=1\)</span> for all <span class="math inline">\(i=1,\dots,n\)</span>. Thus <span class="math inline">\(\mathcal{L}(\mathcal{P},f,\alpha)=0\)</span> and
+<span class="math inline">\(\mathcal{U}(\mathcal{P},f,\alpha)=\alpha(b)-\alpha(a)\ne
+0\)</span>. Thus <span class="math inline">\(f\notin\mathcal{R}(\alpha)\)</span> for any
+nonconstant <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-rs-riemann-criterion">
+
+<p><strong>Theorem 9.6.8</strong> (Riemann’s Criterion for
+Integrability)<strong>.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
+and <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
+bounded. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> if and only if
+for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there
+exists a partition <span class="math inline">\(\mathcal{P}\)</span> of
+<span class="math inline">\([a,b]\)</span> such that <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha)&lt;\varepsilon.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> The proof is similar to the proof of <a href="#thm-riemann-criterion">Theorem 9.2.1</a> and is therefore
+omitted.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-continuous-monotone">
+
+<p><strong>Theorem 9.6.9.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be
+increasing.</p>
+<ol>
+<li><p>If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\)</span> is monotone on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(\alpha\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. As in
+the proof of <a href="#thm-continuous-monotone-integrable">Theorem
+9.2.2</a> (1), uniform continuity gives a partition <span class="math inline">\(\mathcal{P}\)</span> with <span class="math inline">\(M_i-m_i\le\varepsilon\)</span> for every <span class="math inline">\(i\)</span>. Then <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha)=\sum^n_{i=1}(M_i-m_i)\Delta\alpha_i\le\varepsilon\sum^n_{i=1}\Delta\alpha_i=\varepsilon[\alpha(b)-\alpha(a)].\]</span>
+Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
+arbitrary, Riemann’s Criterion gives <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(f\)</span> is increasing. (If
+<span class="math inline">\(f\)</span> is decreasing, apply this to
+<span class="math inline">\(-f\)</span>.) Let <span class="math inline">\(\varepsilon&gt;0\)</span>, and choose <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(\frac{\alpha(b)-\alpha(a)}{n}[f(b)-f(a)]&lt;\varepsilon\)</span>.
+Since <span class="math inline">\(\alpha\)</span> is continuous, <a href="#exer-rs-equal-increments">Exercise 9.6.2</a> gives a partition
+<span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> of
+<span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\Delta\alpha_i=\frac{\alpha(b)-\alpha(a)}{n}\)</span>
+for every <span class="math inline">\(i\)</span>. Since <span class="math inline">\(f\)</span> is increasing, <span class="math inline">\(M_i=f(x_i)\)</span> and <span class="math inline">\(m_i=f(x_{i-1})\)</span>. The sum telescopes. <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha)=\frac{\alpha(b)-\alpha(a)}{n}\sum_{i=1}^n[f(x_i)-f(x_{i-1})]=\frac{\alpha(b)-\alpha(a)}{n}[f(b)-f(a)]&lt;\varepsilon.\]</span>
+So <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> by
+Riemann’s Criterion.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-properties">
+
+<p><strong>Theorem 9.6.10.</strong> Let <span class="math inline">\(\alpha,\alpha_1,\alpha_2:[a,b]\to\mathbb{R}\)</span>
+be increasing.</p>
+<ol>
+<li><p>If <span class="math inline">\(f,g\in\mathcal{R}(\alpha)\)</span>, then <span class="math inline">\(f+g\in\mathcal{R}(\alpha)\)</span> with <span class="math display">\[\int^b_a(f+g)\,d\alpha=\int^b_a f\,d\alpha
++\int^b_ag\,d\alpha.\]</span></p></li>
+<li><p>If <span class="math inline">\(c\in\mathbb{R}\)</span> and <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, then <span class="math inline">\(cf\in\mathcal{R}(\alpha)\)</span> with <span class="math display">\[\int^b_a cf\,d\alpha=c\int^b_a
+f\,d\alpha.\]</span></p></li>
+<li><p>If <span class="math inline">\(f\in\mathcal{R}(\alpha_i)\)</span>, <span class="math inline">\(i=1,2\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha_1+\alpha_2)\)</span> with
+<span class="math display">\[\int^b_a f\,d(\alpha_1+\alpha_2)=\int^b_a
+f\,d\alpha_1 +\int^b_a f\,d\alpha_2.\]</span></p></li>
+<li><p>If <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>
+on <span class="math inline">\([a,b]\)</span> and <span class="math inline">\(a&lt;c&lt;b\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> on <span class="math inline">\([a,c]\)</span> and on <span class="math inline">\([c,b]\)</span> with <span class="math display">\[\int^b_a f\,d\alpha=\int^c_a
+f\,d\alpha+\int^b_cf\,d\alpha.\]</span></p></li>
+<li><p>If <span class="math inline">\(f,g\in\mathcal{R}(\alpha)\)</span>
+with <span class="math inline">\(f(x)\le g(x)\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>, then <span class="math display">\[\int^b_a f\,d\alpha\le \int^b_a
+g\,d\alpha.\]</span></p></li>
+<li><p>If <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span> and <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, then <span class="math inline">\(|f|\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\left|\int^b_a f\,d\alpha\right|\le
+\int^b_a|f|\,d\alpha\le M[\alpha(b)-\alpha(a)].\]</span></p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Parts (1), (2), (4) and (5) are proved as for the
+Riemann integral (Theorems <a href="#thm-integral-linear">9.2.11</a> and
+<a href="#thm-integral-additive">9.2.13</a> and <a href="#exer-integral-monotone">Exercise 9.2.3</a>). See <a href="#exer-rs-properties">Exercise 9.6.8</a>.</p>
+<ol>
+<li><p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(f\in\mathcal{R}(\alpha_i)\)</span>, <span class="math inline">\(i=1,2\)</span>, there exist partitions <span class="math inline">\(\mathcal{P}_i\)</span>, <span class="math inline">\(i=1,2\)</span> such that <span class="math display">\[\mathcal{U}(\mathcal{P}_i,f,\alpha_i)-\mathcal{L}(\mathcal{P}_i,f,\alpha_i)&lt;\frac{\varepsilon}{2}.\]</span>
+Let <span class="math inline">\(\mathcal{P}=\mathcal{P}_1\cup\mathcal{P}_2\)</span>.
+Since <span class="math inline">\(\mathcal{P}\)</span> is a refinement
+of <span class="math inline">\(\mathcal{P}_1\)</span> and <span class="math inline">\(\mathcal{P}_2\)</span>, <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha_i)-\mathcal{L}(\mathcal{P},f,\alpha_i)&lt;\frac{\varepsilon}{2}.\]</span>
+Since <span class="math display">\[\Delta(\alpha_1+\alpha_2)_i=\Delta(\alpha_1)_i+\Delta(\alpha_2)_i\]</span>
+for all <span class="math inline">\(i=1,\dots,n\)</span>, <span class="math display">\[\begin{aligned}
+\mathcal{U}(\mathcal{P},f,\alpha_1+\alpha_2)-\mathcal{L}(\mathcal{P},f,\alpha_1+\alpha_2)&amp;=\mathcal{U}(\mathcal{P},f,\alpha_1)-\mathcal{L}(\mathcal{P},f,\alpha_1)\\
+&amp;\phantom{=}
++\mathcal{U}(\mathcal{P},f,\alpha_2)-\mathcal{L}(\mathcal{P},f,\alpha_2)\\
+&amp;&lt;\varepsilon/2+\varepsilon/2=\varepsilon.
+\end{aligned}\]</span> Therefore, by Riemann’s Criterion for
+Integrability, <span class="math inline">\(f\in\mathcal{R}(\alpha_1+\alpha_2)\)</span>.</p>
+<p>Furthermore, for any partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span>, <span class="math display">\[\begin{aligned}
+\mathcal{L}(\mathcal{P},f,\alpha_1+\alpha_2)&amp;=\mathcal{L}(\mathcal{P},f,\alpha_1)+\mathcal{L}(\mathcal{P},f,\alpha_2)\\
+&amp;\le \int^b_a f\,d\alpha_1+\int^b_af\,d\alpha_2\\
+&amp;\le
+\mathcal{U}(\mathcal{P},f,\alpha_1)+\mathcal{U}(\mathcal{P},f,\alpha_2)\\
+&amp;=\mathcal{U}(\mathcal{P},f,\alpha_1+\alpha_2).
+\end{aligned}\]</span> So <span class="math display">\[\int^b_a
+f\,d(\alpha_1+\alpha_2)=\int^b_a f\,d\alpha_1+\int^b_a
+f\,d\alpha_2.\]</span></p></li>
+<li><p>Suppose <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> is a
+partition of <span class="math inline">\([a,b]\)</span>. For each <span class="math inline">\(i=1,\dots,n\)</span>, let <span class="math display">\[M_i=\sup\{f(x):x\in[x_{i-1},x_i]\},\qquad
+M_i^*=\sup\{|f(x)|:x\in[x_{i-1},x_i]\},\]</span> <span class="math display">\[m_i=\inf\{f(x):x\in[x_{i-1},x_i]\},\qquad
+m_i^*=\inf\{|f(x)|:x\in[x_{i-1},x_i]\}.\]</span> If <span class="math inline">\(x,y\in[x_{i-1},x_i]\)</span>, <span class="math display">\[\bigl||f(x)|-|f(y)|\bigr|\le |f(x)-f(y)|\le
+M_i-m_i.\]</span> Thus <span class="math display">\[M_i^*-m_i^*\le
+M_i-m_i\]</span> for all <span class="math inline">\(i=1,\dots,n\)</span>. So <span class="math display">\[\mathcal{U}(\mathcal{P},|f|,\alpha)-\mathcal{L}(\mathcal{P},|f|,\alpha)\le
+\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha).\]</span>
+Thus, by Riemann’s Criterion for Integrability, <span class="math inline">\(|f|\in\mathcal{R}(\alpha)\)</span>.</p>
+<p>Choose <span class="math inline">\(c\in\{\pm 1\}\)</span> such that
+<span class="math inline">\(c\int^b_a f\,d\alpha\ge 0\)</span>. Then
+<span class="math display">\[\begin{aligned}
+\left|\int^b_a f\,d\alpha\right|&amp;=c\int^b_a f\,d\alpha\\
+&amp;=\int^b_a cf\,d\alpha\\
+&amp;\le \int^b_a |f|\,d\alpha \\
+&amp;\le M\int^b_a \,d\alpha\\
+&amp;=M[\alpha(b)-\alpha(a)].
+\end{aligned}\]</span> The last two steps use (5) and <a href="#lem-rs-sum-bounds">Lemma 9.6.2</a>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-bv-rs-integrable">
+
+<p><strong>Corollary 9.6.11.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be continuous
+and increasing. If <span class="math inline">\(f\in BV[a,b]\)</span>,
+then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> By the Jordan Decomposition Theorem, <span class="math inline">\(f=g-h\)</span> where <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are increasing functions. By <a href="#thm-rs-continuous-monotone">Theorem 9.6.9</a> (2), <span class="math inline">\(g,h\in\mathcal{R}(\alpha)\)</span>. So by <a href="#thm-rs-properties">Theorem 9.6.10</a> (1) and (2), <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-mvt">
+
+<p><strong>Theorem 9.6.12</strong> (Mean Value Theorem for
+Riemann–Stieltjes Integrals)<strong>.</strong> Let <span class="math inline">\(f\in C[a,b]\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing.
+Then there exists a <span class="math inline">\(c\in[a,b]\)</span> such
+that <span class="math display">\[\int^b_a
+f\,d\alpha=f(c)[\alpha(b)-\alpha(a)].\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(m\)</span> and <span class="math inline">\(M\)</span> denote the minimum and maximum values,
+respectively, of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span>. Then by <a href="#lem-rs-sum-bounds">Lemma 9.6.2</a>, <span class="math display">\[m[\alpha(b)-\alpha(a)]\le \int^b_a f\,d\alpha\le
+M[\alpha(b)-\alpha(a)].\]</span> (The integral lies between the lower
+and upper sums.) If <span class="math inline">\(\alpha(b)-\alpha(a)=0\)</span>, then any <span class="math inline">\(c\in[a,b]\)</span> satisfies the equation. If
+<span class="math inline">\(\alpha(b)-\alpha(a)&gt;0\)</span>, then
+<span class="math display">\[m\le \frac{1}{\alpha(b)-\alpha(a)}\int^b_a
+f\,d\alpha\le M.\]</span> So by the Intermediate Value Theorem, there
+exists a <span class="math inline">\(c\in[a,b]\)</span> such that <span class="math display">\[f(c)=\frac{1}{\alpha(b)-\alpha(a)}\int^b_a
+f\,d\alpha.\]</span> (Apply it on the closed interval between a point
+where <span class="math inline">\(f=m\)</span> and a point where <span class="math inline">\(f=M\)</span>. If <span class="math inline">\(m=M\)</span>, <span class="math inline">\(f\)</span> is constant.)</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-integration-by-parts">
+
+<p><strong>Theorem 9.6.13</strong> (Integration by
+Parts)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(\alpha,\beta:[a,b]\to\mathbb{R}\)</span> are
+increasing. Then <span class="math inline">\(\alpha\in\mathcal{R}(\beta)\)</span> if and only
+if <span class="math inline">\(\beta\in\mathcal{R}(\alpha)\)</span>. If
+this is the case, <span class="math display">\[\int^b_a\alpha \,d\beta
+=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\int^b_a\beta
+\,d\alpha.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> An exercise (<a href="#exer-rs-parts-identity">Exercise 9.6.3</a>) will show that <span class="math display">\[\mathcal{U}(\mathcal{P},\alpha,\beta)=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\mathcal{L}(\mathcal{P},\beta,\alpha)\]</span>
+and <span class="math display">\[\mathcal{L}(\mathcal{P},\alpha,\beta)=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\mathcal{U}(\mathcal{P},\beta,\alpha).\]</span>
+Therefore, <span class="math display">\[\mathcal{U}(\mathcal{P},\alpha,\beta)-\mathcal{L}(\mathcal{P},\alpha,\beta)=\mathcal{U}(\mathcal{P},\beta,\alpha)-\mathcal{L}(\mathcal{P},\beta,\alpha).\]</span>
+It follows from Riemann’s Criterion for Integrability that <span class="math inline">\(\alpha\in\mathcal{R}(\beta)\)</span> if and only
+if <span class="math inline">\(\beta\in\mathcal{R}(\alpha)\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. If <span class="math inline">\(\beta\in\mathcal{R}(\alpha)\)</span>, there exists
+a partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> such that <span class="math display">\[\mathcal{L}(\mathcal{P},\beta,\alpha)&gt;\int^b_a
+\beta\,d\alpha-\varepsilon.\]</span> Hence <span class="math display">\[\int^b_a\alpha\,d\beta\le
+\mathcal{U}(\mathcal{P},\alpha,\beta)&lt;\alpha(b)\beta(b)-\alpha(a)\beta(a)-\int^b_a\beta\,d\alpha+\varepsilon.\]</span>
+Thus <span class="math display">\[\int^b_a\alpha\,d\beta\le
+\alpha(b)\beta(b)-\alpha(a)\beta(a)-\int^b_a\beta\,d\alpha.\]</span>
+Similarly, there exists a partition <span class="math inline">\(\mathcal{Q}\)</span> such that <span class="math display">\[\mathcal{U}(\mathcal{Q},\beta,\alpha)&lt;\int^b_a\beta\,d\alpha+\varepsilon.\]</span>
+So <span class="math display">\[\int^b_a\alpha\,d\beta\ge
+\mathcal{L}(\mathcal{Q},\alpha,\beta)&gt;\alpha(b)\beta(b)-\alpha(a)\beta(a)-\int^b_a\beta\,d\alpha-\varepsilon.\]</span>
+This implies <span class="math display">\[\int^b_a\alpha\,d\beta\ge
+\alpha(b)\beta(b)-\alpha(a)\beta(a)-\int^b_a\beta\,d\alpha.\]</span>
+Thus <span class="math display">\[\int^b_a\alpha\,d\beta=
+\alpha(b)\beta(b)-\alpha(a)\beta(a)-\int^b_a\beta\,d\alpha.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-finitely-many-discontinuities">
+
+<p><strong>Theorem 9.6.14.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded with only
+finitely many points of discontinuity on <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
+and continuous at every point at which <span class="math inline">\(f\)</span> is discontinuous. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span> and let
+<span class="math inline">\(M&gt;0\)</span> with <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(E\)</span> be the finite set of points where <span class="math inline">\(f\)</span> is discontinuous. If <span class="math inline">\(E=\emptyset\)</span>, then <span class="math inline">\(f\)</span> is continuous and <a href="#thm-rs-continuous-monotone">Theorem 9.6.9</a> (1) applies. So
+assume <span class="math inline">\(E\ne\emptyset\)</span>. Since <span class="math inline">\(\alpha\)</span> is continuous at each point of
+<span class="math inline">\(E\)</span>, each <span class="math inline">\(p\in E\)</span> is the center of a small closed
+interval on which <span class="math inline">\(\alpha\)</span> increases
+by less than <span class="math inline">\(\frac{\varepsilon}{|E|}\)</span>, where <span class="math inline">\(|E|\)</span> is the number of points in <span class="math inline">\(E\)</span>. Shrinking them if needed, these
+intervals are disjoint and lie in <span class="math inline">\([a,b]\)</span>, except that an interval around
+<span class="math inline">\(a\)</span> or <span class="math inline">\(b\)</span> is cut off at that endpoint. Call them
+<span class="math inline">\([u_1,v_1],\dots,[u_k,v_k]\)</span>. Then
+<span class="math inline">\(\sum_{j=1}^k[\alpha(v_j)-\alpha(u_j)]&lt;\varepsilon\)</span>,
+and every point of <span class="math inline">\(E\)</span> in <span class="math inline">\((a,b)\)</span> lies in some open interval <span class="math inline">\((u_j,v_j)\)</span>.</p>
+<p>Let <span class="math inline">\(K\)</span> be what is left of <span class="math inline">\([a,b]\)</span> after removing the open intervals
+<span class="math inline">\((u_j,v_j)\)</span>. Then <span class="math inline">\(K\)</span> is closed and bounded, so it is
+compact. The function <span class="math inline">\(f\)</span> is
+continuous at every point of <span class="math inline">\(K\)</span>,
+relative to <span class="math inline">\(K\)</span>. By <a href="ch-continuity.html#thm-compact-uniform">Theorem 6.4.7</a>, <span class="math inline">\(f\)</span> is uniformly continuous on <span class="math inline">\(K\)</span>. So there exists a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|f(x)-f(y)|&lt;\varepsilon\)</span> for all <span class="math inline">\(x,y\in K\)</span> with <span class="math inline">\(|x-y|&lt;\delta\)</span>.</p>
+<p>Now build a partition <span class="math inline">\(\mathcal{P}\)</span> of <span class="math inline">\([a,b]\)</span> that contains every <span class="math inline">\(u_j\)</span> and every <span class="math inline">\(v_j\)</span>, has no points inside any <span class="math inline">\((u_j,v_j)\)</span>, and cuts the rest of <span class="math inline">\(K\)</span> into subintervals of length less than
+<span class="math inline">\(\delta\)</span>. There are two kinds of
+subintervals. The subintervals <span class="math inline">\([u_j,v_j]\)</span> have <span class="math inline">\(M_i-m_i\le2M\)</span> and total <span class="math inline">\(\Delta\alpha_i\)</span> less than <span class="math inline">\(\varepsilon\)</span>. Every other subinterval lies
+in <span class="math inline">\(K\)</span> and has length less than <span class="math inline">\(\delta\)</span>, so <span class="math inline">\(M_i-m_i\le\varepsilon\)</span> on it. Therefore
+<span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha)\le2M\varepsilon+\varepsilon[\alpha(b)-\alpha(a)].\]</span>
+Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
+arbitrary, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>
+by Riemann’s Criterion.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-finite-jumps">
+
+<p><strong>Theorem 9.6.15.</strong> Let <span class="math inline">\(\{s_1,\dots,s_n\}\)</span> be a finite subset of
+<span class="math inline">\((a,b]\)</span> with <span class="math inline">\(s_1&lt;\cdots&lt;s_n\)</span>, <span class="math inline">\(\{c_1,\dots,c_n\}\)</span> a finite collection of
+nonnegative real numbers, and <span class="math inline">\(I(x-c)\)</span> the unit jump function at <span class="math inline">\(c\in\mathbb{R}\)</span>. Let <span class="math inline">\(f\in C[a,b]\)</span> and let <span class="math inline">\(\alpha\)</span> be the increasing function defined
+by <span class="math inline">\(\alpha(x)=\sum_{i=1}^n
+c_iI(x-s_i)\)</span>. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\int^b_a f\,d\alpha=\sum_{i=1}^n
+c_if(s_i).\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-rs-finite-jumps">Exercise
+9.6.4</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-countable-jumps">
+
+<p><strong>Theorem 9.6.16.</strong> Let <span class="math inline">\(\{s_n\}\)</span> be a countable subset of <span class="math inline">\((a,b]\)</span>, <span class="math inline">\(\{c_n\}\)</span> a sequence of nonnegative real
+numbers for which <span class="math inline">\(\sum^\infty_{n=1}
+c_n\)</span> converges, and <span class="math inline">\(I(x-c)\)</span>
+the unit jump function at <span class="math inline">\(c\in\mathbb{R}\)</span>. Let <span class="math inline">\(f\in C[a,b]\)</span> and let <span class="math inline">\(\alpha\)</span> be the increasing function defined
+by <span class="math inline">\(\alpha(x)=\sum^{\infty}_{n=1}
+c_nI(x-s_n)\)</span>. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\int^b_a f\,d\alpha=\sum^\infty_{n=1}
+c_nf(s_n).\]</span> (This theorem uses convergent series from <a href="ch-series.html">Chapter 10</a>.)</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(f\)</span> is
+continuous, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(\sum_{n=N+1}^\infty c_n&lt;\varepsilon\)</span>.
+Define <span class="math display">\[\beta_1(x)=\sum^N_{n=1}c_n
+I(x-s_n)\]</span> and <span class="math display">\[\beta_2(x)=\sum_{n=N+1}^\infty
+c_nI(x-s_n).\]</span> Then <span class="math display">\[\int^b_a
+f\,d\beta_1=\sum_{n=1}^N c_n f(s_n).\]</span> Also, <span class="math inline">\(\alpha=\beta_1+\beta_2\)</span>.</p>
+<p>Let <span class="math inline">\(M=\max_{x\in[a,b]}|f(x)|\)</span>.
+Then by <a href="#thm-rs-properties">Theorem 9.6.10</a> (3) and (6),
+<span class="math display">\[\begin{aligned}
+\left|\int^b_a f\,d\alpha-\sum_{n=1}^N
+c_nf(s_n)\right|&amp;=\left|\int^b_a f\,d\beta_2\right|\\
+&amp;\le M[\beta_2(b)-\beta_2(a)]\\
+&amp;\le M\sum^\infty_{n=N+1} c_n\\
+&amp;&lt;M\varepsilon.
+\end{aligned}\]</span> Thus <span class="math display">\[\lim_{N\to\infty}\sum^N_{n=1}c_nf(s_n)=\int^b_a
+f\,d\alpha.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-derivative-integrator">
+
+<p><strong>Theorem 9.6.17.</strong> Suppose <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> is an
+increasing differentiable function with <span class="math inline">\(\alpha'\in\mathcal{R}[a,b]\)</span>. Then
+<span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\int^b_a f\,d\alpha=\int^b_a
+f\alpha'.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(f,\alpha'\in\mathcal{R}[a,b]\)</span>, <span class="math inline">\(f\alpha'\in\mathcal{R}[a,b]\)</span>. Let
+<span class="math inline">\(M&gt;0\)</span> with <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>. By Riemann’s Criterion,
+there is a partition <span class="math inline">\(\mathcal{P}\)</span>
+with <span class="math inline">\(\mathcal{U}(\mathcal{P},\alpha')-\mathcal{L}(\mathcal{P},\alpha')&lt;\varepsilon\)</span>,
+and this stays true for every refinement of <span class="math inline">\(\mathcal{P}\)</span>.</p>
+<p>Let <span class="math inline">\(\mathcal{Q}=\{x_0,\dots,x_n\}\)</span> be any
+refinement of <span class="math inline">\(\mathcal{P}\)</span>. By the
+Mean Value Theorem, <span class="math inline">\(\Delta\alpha_i=\alpha'(t_i)\Delta x_i\)</span>
+for some <span class="math inline">\(t_i\in(x_{i-1},x_i)\)</span>. Let
+<span class="math inline">\(s_i\in[x_{i-1},x_i]\)</span> be arbitrary.
+Both <span class="math inline">\(\alpha'(s_i)\)</span> and <span class="math inline">\(\alpha'(t_i)\)</span> lie between the infimum
+and the supremum of <span class="math inline">\(\alpha'\)</span> on
+<span class="math inline">\([x_{i-1},x_i]\)</span>. So <span class="math display">\[\left|\sum_{i=1}^nf(s_i)\Delta\alpha_i-\sum_{i=1}^nf(s_i)\alpha'(s_i)\Delta
+x_i\right|\le M\sum_{i=1}^n|\alpha'(t_i)-\alpha'(s_i)|\Delta
+x_i\le
+M\bigl(\mathcal{U}(\mathcal{Q},\alpha')-\mathcal{L}(\mathcal{Q},\alpha')\bigr)&lt;M\varepsilon.\]</span>
+Since <span class="math inline">\(\sum_{i=1}^nf(s_i)\alpha'(s_i)\Delta
+x_i\le\mathcal{U}(\mathcal{Q},f\alpha')\)</span>, this gives <span class="math inline">\(\sum_{i=1}^nf(s_i)\Delta\alpha_i&lt;\mathcal{U}(\mathcal{Q},f\alpha')+M\varepsilon\)</span>
+for every choice of the <span class="math inline">\(s_i\)</span>. The
+supremum of the left side over all choices of the <span class="math inline">\(s_i\)</span> is <span class="math inline">\(\mathcal{U}(\mathcal{Q},f,\alpha)\)</span>, since
+each <span class="math inline">\(\Delta\alpha_i\ge0\)</span>. So <span class="math inline">\(\mathcal{U}(\mathcal{Q},f,\alpha)\le\mathcal{U}(\mathcal{Q},f\alpha')+M\varepsilon\)</span>.
+In the same way, <span class="math inline">\(\mathcal{U}(\mathcal{Q},f\alpha')\le\mathcal{U}(\mathcal{Q},f,\alpha)+M\varepsilon\)</span>.</p>
+<p>Now choose the refinement <span class="math inline">\(\mathcal{Q}\)</span> so that also <span class="math inline">\(\mathcal{U}(\mathcal{Q},f\alpha')&lt;\int_a^bf\alpha'+\varepsilon\)</span>.
+Then <span class="math display">\[\overline{\int_{a}^{b}}f\,d\alpha\le\mathcal{U}(\mathcal{Q},f,\alpha)&lt;\int_a^bf\alpha'+(M+1)\varepsilon.\]</span>
+Choosing <span class="math inline">\(\mathcal{Q}\)</span> instead so
+that <span class="math inline">\(\mathcal{U}(\mathcal{Q},f,\alpha)&lt;\overline{\int_{a}^{b}}f\,d\alpha+\varepsilon\)</span>
+gives <span class="math display">\[\int_a^bf\alpha'\le\mathcal{U}(\mathcal{Q},f\alpha')&lt;\overline{\int_{a}^{b}}f\,d\alpha+(M+1)\varepsilon.\]</span>
+Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
+arbitrary, <span class="math inline">\(\overline{\int_{a}^{b}}f\,d\alpha=\int_a^bf\alpha'\)</span>.
+The same argument with lower sums gives <span class="math inline">\(\underline{\int_{a}^{b}}f\,d\alpha=\int_a^bf\alpha'\)</span>.
+So <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and
+<span class="math inline">\(\int_a^bf\,d\alpha=\int_a^bf\alpha'\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-rs-floor">
+
+<p><strong>Example 9.6.18.</strong> Consider <span class="math inline">\(\int^2_0 e^x\,d\left\lfloor
+x\right\rfloor\)</span>. For <span class="math inline">\(x\in[0,2]\)</span>, <span class="math inline">\(\left\lfloor x\right\rfloor
+=I(x-1)+I(x-2)\)</span>. Thus, since <span class="math inline">\(e^x\)</span> is continuous, <span class="math inline">\(\int^2_0 e^x\,d\left\lfloor
+x\right\rfloor=e^1+e^2\)</span> by <a href="#thm-rs-finite-jumps">Theorem 9.6.15</a>.</p>
+</div>
+<div class="examplebox" id="ex-rs-x-squared">
+
+<p><strong>Example 9.6.19.</strong> Consider <span class="math inline">\(\int^1_0\sin\pi x\,d(x^2)\)</span>. Since <span class="math inline">\(x^2\)</span> is increasing on <span class="math inline">\([0,1]\)</span> and its derivative is continuous,
+<a href="#thm-rs-derivative-integrator">Theorem 9.6.17</a> gives <span class="math display">\[\begin{aligned}
+\int^1_0\sin\pi x\,d(x^2)&amp;=2\int^1_0 x\sin\pi x \,dx\\
+&amp;=\left.\left[\frac{-1}{\pi}x\cos\pi x+\frac{1}{\pi^2}\sin\pi
+x\right]\right|^1_0\\
+&amp;=\frac{1}{\pi}.
+\end{aligned}\]</span></p>
+</div>
+<div class="definitionbox" id="def-rs-bv">
+
+<p><strong>Definition 9.6.20.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and let
+<span class="math inline">\(\alpha\in BV[a,b]\)</span>. Then <span class="math inline">\(f\)</span> is Riemann–Stieltjes integrable with
+respect to <span class="math inline">\(\alpha\)</span> on <span class="math inline">\([a,b]\)</span> if <span class="math inline">\(f\in
+\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. If this
+is the case, write <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and define <span class="math display">\[\int^b_a f\,d\alpha=\int^b_a f\,d
+V_\alpha-\int^b_a f\,d(V_\alpha-\alpha).\]</span></p>
+</div>
+<p>This works because <span class="math inline">\(\alpha=V_\alpha-(V_\alpha-\alpha)\)</span>, and
+both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(V_\alpha-\alpha\)</span> are increasing by
+Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. If <span class="math inline">\(\alpha\)</span> is already increasing, then <span class="math inline">\(V_\alpha=\alpha-\alpha(a)\)</span> by Theorems <a href="ch-bounded-variation.html#thm-monotone-bv">8.1.8</a> and <a href="ch-bounded-variation.html#thm-variation-additive">8.2.1</a>, so <span class="math inline">\(V_\alpha-\alpha\)</span> is constant, and the
+definition agrees with <a href="#def-rs-integral">Definition
+9.6.5</a>.</p>
+<div class="theorembox" id="thm-rs-c1-integrator">
+
+<p><strong>Theorem 9.6.21.</strong> Let <span class="math inline">\(\alpha\in C^{(1)}[a,b]\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(f\in C[a,b]\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\in BV[a,b]\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(\alpha\in
+C^{(1)}[a,b]\)</span>, by <a href="ch-bounded-variation.html#cor-continuous-derivative-bv">Corollary 8.1.10</a>, <span class="math inline">\(\alpha\in BV[a,b]\)</span>. Furthermore, since
+<span class="math inline">\(\alpha\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, by <a href="ch-bounded-variation.html#thm-variation-continuity">Theorem 8.2.3</a>, <span class="math inline">\(V_\alpha\)</span> is continuous on <span class="math inline">\([a,b]\)</span>. So <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(V_\alpha-\alpha\)</span> are continuous,
+increasing functions on <span class="math inline">\([a,b]\)</span>.</p>
+<ol>
+<li><p>Since <span class="math inline">\(f\in C[a,b]\)</span>, then by
+<a href="#thm-rs-continuous-monotone">Theorem 9.6.9</a> (1), <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. So
+<span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
+<li><p>Since <span class="math inline">\(f\in BV[a,b]\)</span>, then by
+<a href="#cor-bv-rs-integrable">Corollary 9.6.11</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. So
+<span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-rs-c1-formula">
+
+<p><strong>Theorem 9.6.22.</strong> Let <span class="math inline">\(\alpha\in C^{(1)}[a,b]\)</span> and <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\int^b_a f \,d\alpha=\int^b_a
+f\alpha'.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-rs-c1-formula">Exercise
+9.6.7</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<section class="level5 unnumbered" id="exercises-36">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-rs-step">
+
+<p><strong>Exercise 9.6.1.</strong> Let <span class="math inline">\(f\in
+C[a,b]\)</span>. Fix <span class="math inline">\(c\in (a,b]\)</span>.
+Show that if <span class="math display">\[\alpha(x)=\begin{cases} c_1,
+&amp; a\le x&lt;c, \\ c_2, &amp; c\le x\le b,\end{cases}\]</span> where
+<span class="math inline">\(c_1&lt;c_2\)</span>, then <span class="math inline">\(\int^b_a f \,d\alpha = f(c)(c_2-c_1)\)</span>. <a aria-label="Hint for Exercise 9.6.1" href="solutions-ch09.html#sol-exer-rs-step">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rs-equal-increments">
+
+<p><strong>Exercise 9.6.2.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
+and continuous. Prove that for any <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists a partition
+<span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span>
+such that <span class="math display">\[\Delta
+\alpha_i=\alpha(x_i)-\alpha(x_{i-1})=\frac{1}{n}[\alpha(b)-\alpha(a)].\]</span>
+<a aria-label="Hint for Exercise 9.6.2" href="solutions-ch09.html#sol-exer-rs-equal-increments">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rs-parts-identity">
+
+<p><strong>Exercise 9.6.3.</strong> Suppose <span class="math inline">\(\alpha,\beta:[a,b]\to\mathbb{R}\)</span> are
+increasing and <span class="math inline">\(\mathcal{P}\)</span> is a
+partition of <span class="math inline">\([a,b]\)</span>. Prove that
+<span class="math inline">\(\mathcal{U}(\mathcal{P},\alpha,\beta)=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\mathcal{L}(\mathcal{P},\beta,\alpha)\)</span>.
+<a aria-label="Hint for Exercise 9.6.3" href="solutions-ch09.html#sol-exer-rs-parts-identity">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rs-finite-jumps">
+
+<p><strong>Exercise 9.6.4.</strong> Prove <a href="#thm-rs-finite-jumps">Theorem 9.6.15</a>. <a aria-label="Hint for Exercise 9.6.4" href="solutions-ch09.html#sol-exer-rs-finite-jumps">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rs-floor-x-squared">
+
+<p><strong>Exercise 9.6.5.</strong> Compute <span class="math inline">\(\int^5_1 x^2\,d\left\lfloor
+x^2\right\rfloor\)</span>, where <span class="math inline">\(\left\lfloor \cdot\right\rfloor\)</span> is the
+greatest integer function. <a aria-label="Hint for Exercise 9.6.5" href="solutions-ch09.html#sol-exer-rs-floor-x-squared">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rs-sin">
+
+<p><strong>Exercise 9.6.6.</strong> Compute <span class="math inline">\(\int^{\pi/2}_0\sin x\,d(\sin x)\)</span>. <a aria-label="Hint for Exercise 9.6.6" href="solutions-ch09.html#sol-exer-rs-sin">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rs-c1-formula">
+
+<p><strong>Exercise 9.6.7.</strong> Prove <a href="#thm-rs-c1-formula">Theorem 9.6.22</a>. <a aria-label="Hint for Exercise 9.6.7" href="solutions-ch09.html#sol-exer-rs-c1-formula">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rs-properties">
+
+<p><strong>Exercise 9.6.8.</strong> Prove <a href="#thm-rs-properties">Theorem 9.6.10</a> (1), (2), (4) and (5).</p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-8">
+<h2>Notes</h2>
+<p>Bernhard Riemann defined his integral in 1854, in a paper published
+in 1868 [<a href="bibliography.html#bib-riemann1868">58</a>]. Gaston Darboux gave the
+definition by upper and lower sums in 1875 [<a href="bibliography.html#bib-darboux1875">19</a>]. Cauchy gave the first careful proof of
+the Fundamental Theorem of Calculus, for continuous functions, in 1823
+[<a href="bibliography.html#bib-cauchy1823">16</a>]. Thomas Stieltjes introduced his
+integral in 1894, in a long paper on continued fractions [<a href="bibliography.html#bib-stieltjes1894">68</a>]. Henri Lebesgue gave <a href="#thm-lebesgue-criterion">Theorem 9.2.9</a> in his 1904 lectures
+[<a href="bibliography.html#bib-lebesgue1904">42</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-bounded-variation.html"><span class="dir">Previous</span> Chapter 8. Functions of Bounded Variation*</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-series.html"><span class="dir">Next</span> Chapter 10. Series of Real Numbers</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>

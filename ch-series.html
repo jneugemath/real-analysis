@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Chapter 10. Series of Real Numbers | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } }
+};
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<nav class="pager" aria-label="Previous and next page (top)">
+<a rel="prev" href="ch-integrals.html"><span class="dir">Previous</span> Chapter 9. Integrals</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-function-sequences.html"><span class="dir">Next</span> Chapter 11. Sequences and Series of Functions</a>
+</nav>
+<main id="main">
+<article id="ch-series">
+<h1>Chapter 10. Series of Real Numbers</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-series">10.1 Types of Series</a></li><li><a href="#sec-convergence-tests">10.2 Convergence Tests</a></li><li><a href="#sec-absolute-convergence">10.3 Conditional and Absolute Convergence</a></li><li><a href="#notes-9">Notes</a></li></ul></nav>
+<p>An infinite series is a sum with infinitely many terms. Such a sum
+has no meaning until one is given, and the meaning is a limit. Add the
+first <span class="math inline">\(n\)</span> terms, then let <span class="math inline">\(n\to\infty\)</span>. So this chapter is really
+about a special kind of sequence, and the tools of <a href="ch-sequences.html">Chapter 3</a> do most of the work.</p>
+<p><a href="#sec-series">Section 10.1</a> gives the definition and the
+two kinds of series whose sums are easy to find. <a href="#sec-convergence-tests">Section 10.2</a> proves the standard
+convergence tests. They decide whether a series converges without
+finding its sum. <a href="#sec-absolute-convergence">Section 10.3</a>
+separates series that converge because their terms are small from series
+that converge because their terms cancel. The difference matters.
+Reordering the terms of a series of the second kind can change its sum
+to any real number at all.</p>
+<section class="level3 unnumbered" id="sec-series">
+<h2>10.1 Types of Series</h2>
+<div class="definitionbox" id="def-series">
+
+<p><strong>Definition 10.1.1.</strong> Let <span class="math inline">\(\{a_n\}_{n=1}^\infty\)</span> be a sequence of
+real numbers. Let <span class="math inline">\(\{s_n\}_{n=1}^\infty\)</span> be the sequence
+obtained from <span class="math inline">\(\{a_n\}\)</span>, where for
+each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(s_n=\sum^n_{k=1}a_k\)</span>. The sequence <span class="math inline">\(\{s_n\}\)</span> is called an <em>infinite
+series</em> and is denoted <span class="math inline">\(\sum^\infty_{k=1}
+a_k\)</span>, <span class="math inline">\(\sum a_k\)</span>, or <span class="math inline">\(a_1+a_2+\cdots\)</span>. For each <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(s_n\)</span> is called the <em><span class="math inline">\(n\)</span>th partial sum</em> of the series and
+<span class="math inline">\(a_n\)</span> is called the <em><span class="math inline">\(n\)</span>th term</em> of the series.</p>
+<p>The series <span class="math inline">\(\sum a_k\)</span>
+<em>converges</em> if the sequence <span class="math inline">\(\{s_n\}\)</span> converges. If <span class="math inline">\(s_n\to s\)</span>, then <span class="math inline">\(s\)</span> is called the <em>sum</em> of the
+series, written <span class="math inline">\(\sum a_k=s\)</span>. If the
+sequence <span class="math inline">\(\{s_n\}\)</span> diverges, the
+series <span class="math inline">\(\sum a_k\)</span> is said to
+<em>diverge</em>.</p>
+</div>
+<div class="remarkbox" id="rem-series-notation">
+
+<p><strong>Remark 10.1.2.</strong> The symbol <span class="math inline">\(\sum a_k\)</span> stands for two things, the
+sequence of partial sums and, when it converges, its sum. The context
+always makes clear which one is meant. A series can also start at an
+index other than <span class="math inline">\(1\)</span>. For example,
+<span class="math inline">\(\sum_{k=0}^\infty a_k\)</span> has partial
+sums <span class="math inline">\(s_n=\sum_{k=0}^na_k\)</span> for <span class="math inline">\(n\ge0\)</span>. Everything in this chapter holds
+for such series, with the obvious changes.</p>
+</div>
+<div class="examplebox" id="ex-geometric-series">
+
+<p><strong>Example 10.1.3</strong> (Geometric
+Series)<strong>.</strong></p>
+<p>Consider, for <span class="math inline">\(|r|&lt;1\)</span>, <span class="math inline">\(\sum_{k=1}^\infty r^k\)</span>. Then for <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math display">\[s_n=r+r^2+r^3+\cdots +r^n.\]</span> Thus <span class="math display">\[(1-r)s_n=s_n-rs_n=r-r^{n+1}.\]</span> Therefore,
+<span class="math display">\[s_n=\frac{r-r^{n+1}}{1-r}.\]</span> But
+since <span class="math inline">\(|r|&lt;1\)</span>, <span class="math inline">\(r^n\to 0\)</span> by <a href="ch-sequences.html#ex-seq-geometric">Example 3.1.7</a>. Thus <span class="math display">\[\lim_{n\to\infty}s_n=\frac{r}{1-r}.\]</span>
+Hence <span class="math display">\[\sum^\infty_{k=1}r^k=\frac{r}{1-r}.\]</span>
+Adding the term <span class="math inline">\(r^0=1\)</span> gives <span class="math inline">\(\sum_{k=0}^\infty
+r^k=1+\frac{r}{1-r}=\frac{1}{1-r}\)</span>. If <span class="math inline">\(|r|\ge1\)</span>, the geometric series diverges,
+by <a href="#ex-geometric-diverges">Example 10.2.3</a>.</p>
+</div>
+<div class="examplebox" id="ex-telescoping-series">
+
+<p><strong>Example 10.1.4</strong> (Telescoping
+Series)<strong>.</strong></p>
+<p>Consider <span class="math inline">\(\sum_{k=1}^\infty\left(\frac{1}{k}-\frac{1}{k+1}\right)\)</span>.
+Then <span class="math display">\[s_n=\left(1-\frac{1}{2}\right)+\left(\frac{1}{2}-\frac{1}{3}\right)+\cdots+\left(\frac{1}{n}-\frac{1}{n+1}\right)=1-\frac{1}{n+1}.\]</span>
+Thus <span class="math inline">\(s_n\to 1\)</span> and <span class="math display">\[\sum_{k=1}^\infty\left(\frac{1}{k}-\frac{1}{k+1}\right)=1.\]</span>
+The partial sums have a simple formula because each term has the form
+<span class="math inline">\(b_k-b_{k+1}\)</span>, here with <span class="math inline">\(b_k=\frac1k\)</span>. A series of this form is
+called <em>telescoping</em>. Its partial sums are <span class="math inline">\(s_n=b_1-b_{n+1}\)</span>. So it converges exactly
+when <span class="math inline">\(\{b_n\}\)</span> converges, and then
+its sum is <span class="math inline">\(b_1-\lim_{n\to\infty}b_n\)</span>.</p>
+</div>
+</section>
+<section class="level3 unnumbered" id="sec-convergence-tests">
+<h2>10.2 Convergence Tests</h2>
+<p>The geometric and telescoping series are rare. For most series there
+is no formula for <span class="math inline">\(s_n\)</span>. A
+<em>convergence test</em> decides whether a series converges without
+finding its sum. This section proves the standard tests. All of them
+rest on the Cauchy Criterion or on the Monotone Convergence Theorem,
+applied to the partial sums.</p>
+<div class="theorembox" id="thm-cauchy-criterion-series">
+
+<p><strong>Theorem 10.2.1</strong> (Cauchy
+Criterion)<strong>.</strong></p>
+<p>The series <span class="math inline">\(\sum a_k\)</span> converges if
+and only if for all <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all <span class="math inline">\(m&gt;n\ge N\)</span>, <span class="math display">\[\left|\sum_{k=n+1}^m
+a_k\right|&lt;\varepsilon.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> (<span class="math inline">\(\Rightarrow\)</span>)
+Since the series converges, the sequence of partial sums <span class="math inline">\(\{s_n\}\)</span> converges. Thus, by <a href="ch-sequences.html#thm-cauchy-criterion">Theorem 3.5.2</a>, the sequence of partial
+sums is Cauchy. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. So there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(m&gt;n\ge N\)</span>, <span class="math inline">\(|s_m-s_n|&lt;\varepsilon\)</span>. But <span class="math display">\[\left|\sum_{k=n+1}^m
+a_k\right|=|s_m-s_n|.\]</span> So for all <span class="math inline">\(m&gt;n\ge N\)</span>, <span class="math display">\[\left|\sum_{k=n+1}^m
+a_k\right|&lt;\varepsilon.\]</span></p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Then there exists an
+<span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
+<span class="math inline">\(m&gt;n\ge N\)</span>, <span class="math display">\[\left|\sum_{k=n+1}^m
+a_k\right|=|s_m-s_n|&lt;\varepsilon.\]</span> The same bound holds for
+<span class="math inline">\(n&gt;m\ge N\)</span> by symmetry, and it is
+trivial for <span class="math inline">\(m=n\)</span>. So <span class="math inline">\(\{s_n\}\)</span> is Cauchy and therefore, by <a href="ch-sequences.html#thm-cauchy-criterion">Theorem 3.5.2</a>, <span class="math inline">\(\{s_n\}\)</span> converges.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Working with Partial Sums).</strong></p>
+<p>A series is a sequence in disguise. It is the sequence <span class="math inline">\(\{s_n\}\)</span> of its partial sums. So every
+question about a series is a question about a sequence, and every
+theorem of <a href="ch-sequences.html">Chapter 3</a> applies. The Cauchy
+Criterion for series is the Cauchy Criterion for <span class="math inline">\(\{s_n\}\)</span>, rewritten using <span class="math inline">\(s_m-s_n=\sum_{k=n+1}^ma_k\)</span>. When the terms
+are nonnegative, <span class="math inline">\(\{s_n\}\)</span> is
+increasing, and the Monotone Convergence Theorem applies instead (<a href="#thm-nonnegative-series">Theorem 10.2.6</a>). Before trying
+anything clever with a series, write down <span class="math inline">\(s_n\)</span> and ask what is known about it.</p>
+</div>
+<div class="corollarybox" id="cor-nth-term-test">
+
+<p><strong>Corollary 10.2.2</strong> (<span class="math inline">\(n\)</span>th Term Test)<strong>.</strong></p>
+<p>If <span class="math inline">\(\sum a_k\)</span> converges, then
+<span class="math inline">\(a_k\to 0\)</span>. If <span class="math inline">\(a_k\not\to 0\)</span>, <span class="math inline">\(\sum a_k\)</span> diverges.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-nth-term-test">Exercise
+10.2.1</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The converse is false. The terms of the <em>harmonic series</em>
+<span class="math inline">\(\sum\frac1k\)</span> tend to <span class="math inline">\(0\)</span>, but the series diverges. See <a href="#ex-p-series">Example 10.2.11</a> and <a href="#exer-harmonic-grouping">Exercise 10.2.8</a>.</p>
+<div class="examplebox" id="ex-geometric-diverges">
+
+<p><strong>Example 10.2.3.</strong> If <span class="math inline">\(|r|\ge1\)</span>, then <span class="math inline">\(|r^k|=|r|^k\ge1\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>. So <span class="math inline">\(r^k\not\to0\)</span>, and <span class="math inline">\(\sum r^k\)</span> diverges by the <span class="math inline">\(n\)</span>th Term Test.</p>
+</div>
+<div class="theorembox" id="thm-series-linear">
+
+<p><strong>Theorem 10.2.4.</strong> If <span class="math inline">\(\sum
+a_k=\alpha\)</span> and <span class="math inline">\(\sum
+b_k=\beta\)</span>, then</p>
+<ol>
+<li><p><span class="math inline">\(\sum ca_k=c\alpha\)</span> for all
+<span class="math inline">\(c\in\mathbb{R}\)</span>; and</p></li>
+<li><p><span class="math inline">\(\sum(a_k+b_k)=\alpha+\beta\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Exercise. See <a href="#exer-series-scalar">Exercise
+10.2.2</a>.</p></li>
+<li><p>For each <span class="math inline">\(n\in\mathbb{N}\)</span>, let
+<span class="math inline">\(s_n=\sum_{k=1}^n a_k\)</span> and <span class="math inline">\(t_n=\sum^n_{k=1} b_k\)</span>. So <span class="math inline">\(s_n\to \alpha\)</span> and <span class="math inline">\(t_n\to\beta\)</span>. So <span class="math inline">\(s_n+t_n\to\alpha+\beta\)</span> by <a href="ch-sequences.html#thm-limit-laws">Theorem 3.2.4</a>, implying <span class="math inline">\(\sum(a_k+b_k)=\alpha+\beta\)</span>. Here <span class="math inline">\(s_n+t_n=\sum_{k=1}^n(a_k+b_k)\)</span> is the
+<span class="math inline">\(n\)</span>th partial sum of <span class="math inline">\(\sum(a_k+b_k)\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="remarkbox" id="rem-finitely-many-terms">
+
+<p><strong>Remark 10.2.5.</strong> Changing finitely many terms of a
+series does not change whether it converges. Suppose <span class="math inline">\(a_k=b_k\)</span> for all <span class="math inline">\(k&gt;K\)</span>. Then for <span class="math inline">\(m&gt;n\ge K\)</span>, <span class="math inline">\(\sum_{k=n+1}^ma_k=\sum_{k=n+1}^mb_k\)</span>. So
+the condition in the Cauchy Criterion holds for <span class="math inline">\(\sum a_k\)</span> exactly when it holds for <span class="math inline">\(\sum b_k\)</span>. The sums can differ, of course.
+In the same way, deleting the first <span class="math inline">\(K\)</span> terms of a series does not change
+whether it converges. So a hypothesis such as “<span class="math inline">\(a_k\ge0\)</span>” in the tests below only needs to
+hold for all <span class="math inline">\(k\ge K\)</span>, for some <span class="math inline">\(K\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-nonnegative-series">
+
+<p><strong>Theorem 10.2.6.</strong> Suppose <span class="math inline">\(a_k\ge0\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>. Then <span class="math inline">\(\sum a_k\)</span> converges if and only if its
+partial sums are bounded. If the series converges, then <span class="math inline">\(s_n\le\sum_{k=1}^\infty a_k\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. If it diverges, then
+<span class="math inline">\(s_n\to\infty\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(s_{n+1}-s_n=a_{n+1}\ge0\)</span>,
+the sequence <span class="math inline">\(\{s_n\}\)</span> is increasing.
+By the Monotone Convergence Theorem (<a href="ch-sequences.html#thm-monotone-convergence">Theorem 3.2.13</a>), it converges if
+and only if it is bounded. If it converges to <span class="math inline">\(s\)</span>, then <span class="math inline">\(s=\sup\{s_n:n\in\mathbb{N}\}\)</span>, by the
+proof of <a href="ch-sequences.html#thm-monotone-convergence">Theorem 3.2.13</a>. So
+<span class="math inline">\(s_n\le s\)</span> for all <span class="math inline">\(n\)</span>. If it diverges, it is not bounded
+above. So for each <span class="math inline">\(M&gt;0\)</span> there is
+an <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(s_N&gt;M\)</span>. Since <span class="math inline">\(\{s_n\}\)</span> is increasing, <span class="math inline">\(s_n&gt;M\)</span> for all <span class="math inline">\(n\ge N\)</span>. So <span class="math inline">\(s_n\to\infty\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-comparison-test-series">
+
+<p><strong>Theorem 10.2.7</strong> (Comparison
+Test)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(\sum a_k\)</span> and <span class="math inline">\(\sum b_k\)</span> are two given series of
+nonnegative real numbers satisfying <span class="math inline">\(0\le
+a_k\le M b_k\)</span> for some positive constant <span class="math inline">\(M\)</span> and all integers <span class="math inline">\(k\ge K\)</span> for some fixed <span class="math inline">\(K\in\mathbb{N}\)</span>.</p>
+<ol>
+<li><p>If <span class="math inline">\(\sum b_k\)</span> converges, then
+<span class="math inline">\(\sum a_k\)</span> converges.</p></li>
+<li><p>If <span class="math inline">\(\sum a_k\)</span> diverges, then
+<span class="math inline">\(\sum b_k\)</span> diverges.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>For all <span class="math inline">\(m&gt;n\ge K\)</span>, <span class="math display">\[0\le \sum_{k=n+1}^m a_k\le M\sum_{k=n+1}^m
+b_k.\]</span> Then by the Cauchy Criterion, if <span class="math inline">\(\sum b_k\)</span> converges, <span class="math inline">\(\sum a_k\)</span> converges. In detail, let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\sum b_k\)</span> converges, there is an <span class="math inline">\(N\ge K\)</span> such that <span class="math inline">\(\sum_{k=n+1}^mb_k&lt;\frac{\varepsilon}{M}\)</span>
+for all <span class="math inline">\(m&gt;n\ge N\)</span>. Then <span class="math inline">\(\sum_{k=n+1}^ma_k&lt;\varepsilon\)</span> for all
+<span class="math inline">\(m&gt;n\ge N\)</span>.</p></li>
+<li><p>This statement is the contrapositive of (1).</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="corollarybox" id="cor-limit-comparison-series">
+
+<p><strong>Corollary 10.2.8</strong> (Limit Comparison
+Test)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(\sum a_k\)</span> and <span class="math inline">\(\sum b_k\)</span> are two given series of positive
+real numbers.</p>
+<ol>
+<li><p>If <span class="math inline">\(\lim_{k\to\infty}\frac{a_k}{b_k}=L\)</span> with
+<span class="math inline">\(0&lt;L&lt;\infty\)</span>, then <span class="math inline">\(\sum a_k\)</span> converges if and only if <span class="math inline">\(\sum b_k\)</span> converges.</p></li>
+<li><p>If <span class="math inline">\(\lim_{k\to\infty}\frac{a_k}{b_k}=0\)</span> and
+<span class="math inline">\(\sum b_k\)</span> converges, then <span class="math inline">\(\sum a_k\)</span> converges.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> See <a href="#exer-limit-comparison-series">Exercise
+10.2.3</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-k-over-3k">
+
+<p><strong>Example 10.2.9.</strong> Consider <span class="math inline">\(\sum^\infty_{k=1}\frac{k}{3^k}\)</span>. Notice
+<span class="math inline">\(\lim_{k\to\infty}k\left(\frac{2}{3}\right)^k=0\)</span>.
+To see this, use the Binomial Theorem (<a href="ch-integrals.html#exer-binomial">Exercise
+9.3.4</a>). For <span class="math inline">\(k\ge2\)</span>, <span class="math display">\[\left(\frac32\right)^k=\left(1+\frac12\right)^k\ge\binom{k}{2}\frac14=\frac{k(k-1)}{8}.\]</span>
+So <span class="math inline">\(0&lt;k\left(\frac23\right)^k\le\frac{8}{k-1}\)</span>,
+and the Squeeze Theorem applies. So there exists a <span class="math inline">\(K\in\mathbb{N}\)</span> such that <span class="math inline">\(k\left(\frac{2}{3}\right)^k&lt;1\)</span> for all
+<span class="math inline">\(k\ge K\)</span>. Thus <span class="math display">\[\frac{k}{3^k}=k\left(\frac23\right)^k\frac{1}{2^k}\le
+\frac{1}{2^k}\]</span> for all <span class="math inline">\(k\ge
+K\)</span>. Thus, by the Comparison Test, since <span class="math inline">\(\sum^\infty_{k=1}\frac{1}{2^k}\)</span> converges,
+<span class="math inline">\(\sum^\infty_{k=1}\frac{k}{3^k}\)</span>
+converges.</p>
+</div>
+<div class="theorembox" id="thm-integral-test">
+
+<p><strong>Theorem 10.2.10</strong> (Integral
+Test)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{a_k\}\)</span> be a decreasing
+sequence of nonnegative real numbers, and let <span class="math inline">\(f:[1,\infty)\to\mathbb{R}\)</span> be nonnegative
+and decreasing with <span class="math inline">\(f(k)=a_k\)</span> for
+all <span class="math inline">\(k\in\mathbb{N}\)</span>. Then <span class="math inline">\(\sum a_k\)</span> converges if and only if <span class="math inline">\(\int^\infty_1 f\)</span> converges.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(f\)</span> is
+monotone on <span class="math inline">\([1,\infty)\)</span>, then by <a href="ch-integrals.html#thm-continuous-monotone-integrable">Theorem 9.2.2</a>, <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[1,\infty)\)</span>.
+Let <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inline">\(n\ge 2\)</span>, and consider the partition <span class="math inline">\(\mathcal{P}=\{1,2,\dots,n\}\)</span> of <span class="math inline">\([1,n]\)</span>. Since <span class="math inline">\(f\)</span> is decreasing, for each <span class="math inline">\(k=2,3,\dots,n\)</span>, <span class="math inline">\(M_k=a_{k-1}\)</span> and <span class="math inline">\(m_k=a_k\)</span>. Here <span class="math inline">\(M_k\)</span> and <span class="math inline">\(m_k\)</span> are the supremum and infimum of <span class="math inline">\(f\)</span> on <span class="math inline">\([k-1,k]\)</span>, and <span class="math inline">\(\Delta x_k=1\)</span>. Thus <span class="math display">\[\begin{aligned}
+\sum^n_{k=2}a_k&amp;=\mathcal{L}(\mathcal{P},f)\\
+&amp;\le \int^n_1 f\\
+&amp;\le \mathcal{U}(\mathcal{P},f)\\
+&amp;=\sum^{n-1}_{k=1}a_k.
+\end{aligned}\]</span> See <a href="#fig-integral-test">Figure
+10.1</a>.</p>
+<p>Let <span class="math inline">\(F(t)=\int_1^tf\)</span> for <span class="math inline">\(t\ge1\)</span>. Since <span class="math inline">\(f\ge0\)</span>, <span class="math inline">\(F\)</span> is increasing, by <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a> and <a href="ch-integrals.html#exer-integral-monotone">Exercise 9.2.3</a>.</p>
+<p>Suppose <span class="math inline">\(\sum a_k\)</span> converges, and
+let <span class="math inline">\(s\)</span> be its sum. Let <span class="math inline">\(t\ge1\)</span>, and choose an integer <span class="math inline">\(n\ge2\)</span> with <span class="math inline">\(n\ge t\)</span>. Then <span class="math inline">\(F(t)\le F(n)\le\sum_{k=1}^{n-1}a_k\le s\)</span>,
+by <a href="#thm-nonnegative-series">Theorem 10.2.6</a>. So <span class="math inline">\(F\)</span> is increasing and bounded above on
+<span class="math inline">\([1,\infty)\)</span>. As in the proof of <a href="ch-integrals.html#thm-comparison-test-integrals">Theorem 9.5.8</a>, <span class="math inline">\(\lim_{t\to\infty}F(t)\)</span> exists. So <span class="math inline">\(\int_1^\infty f\)</span> converges.</p>
+<p>Suppose <span class="math inline">\(\int_1^\infty f\)</span>
+converges, and let <span class="math inline">\(I\)</span> be its value.
+Since <span class="math inline">\(F\)</span> is increasing, <span class="math inline">\(F(n)\le F(t)\)</span> for all <span class="math inline">\(t\ge n\)</span>, and letting <span class="math inline">\(t\to\infty\)</span> gives <span class="math inline">\(F(n)\le I\)</span>. So for all <span class="math inline">\(n\ge2\)</span>, <span class="math display">\[s_n=a_1+\sum_{k=2}^na_k\le a_1+F(n)\le
+a_1+I.\]</span> The partial sums are bounded, so <span class="math inline">\(\sum a_k\)</span> converges by <a href="#thm-nonnegative-series">Theorem 10.2.6</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<figure class="figure" id="fig-integral-test"><div class="figure-images"><img alt="A decreasing curve over the interval from 1 to 6 with two sets of rectangles on unit intervals. The light rectangles reach above the curve and the dark rectangles stay below it." height="249" src="figs/fig08.svg" width="550"/></div><figcaption><strong>Figure 10.1.</strong> The Integral Test with <span class="math inline">\(n=6\)</span>. On each interval <span class="math inline">\([k-1,k]\)</span>, the light rectangle has height
+<span class="math inline">\(a_{k-1}\)</span> and the dark rectangle has
+height <span class="math inline">\(a_k\)</span>. So <span class="math inline">\(\sum_{k=2}^na_k\le\int_1^nf\le\sum_{k=1}^{n-1}a_k\)</span>.</figcaption></figure>
+<div class="examplebox" id="ex-p-series">
+
+<p><strong>Example 10.2.11</strong> (<span class="math inline">\(p\)</span>-series)<strong>.</strong></p>
+<p>Consider the <span class="math inline">\(p\)</span>-series <span class="math inline">\(\sum^\infty_{k=1}\frac{1}{k^p}\)</span>. If <span class="math inline">\(p\le0\)</span>, then <span class="math inline">\(\frac{1}{k^p}\ge1\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>, so the series diverges by
+the <span class="math inline">\(n\)</span>th Term Test. If <span class="math inline">\(p&gt;0\)</span>, then <span class="math inline">\(f(x)=\frac{1}{x^p}\)</span> is nonnegative and
+decreasing on <span class="math inline">\([1,\infty)\)</span>. By the
+<span class="math inline">\(p\)</span>-Test (<a href="ch-integrals.html#thm-p-test">Theorem 9.5.7</a>), <span class="math inline">\(\int^\infty_1 \frac{1}{x^p}\,dx\)</span> converges
+if and only if <span class="math inline">\(p&gt;1\)</span>. So by the
+Integral Test, <span class="math inline">\(\sum^\infty_{k=1}\frac{1}{k^p}\)</span> converges
+if and only if <span class="math inline">\(p&gt;1\)</span>. The case
+<span class="math inline">\(p=1\)</span> shows that the harmonic series
+<span class="math inline">\(\sum\frac1k\)</span> diverges.</p>
+</div>
+<div class="theorembox" id="thm-ratio-test">
+
+<p><strong>Theorem 10.2.12</strong> (Ratio Test)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\sum a_k\)</span> be a series of
+positive terms and let <span class="math display">\[R=\limsup\frac{a_{k+1}}{a_k}\quad\text{and}\quad
+r=\liminf\frac{a_{k+1}}{a_k}.\]</span></p>
+<ol>
+<li><p>If <span class="math inline">\(R&lt;1\)</span>, then <span class="math inline">\(\sum a_k\)</span> converges.</p></li>
+<li><p>If <span class="math inline">\(r&gt;1\)</span>, then <span class="math inline">\(\sum a_k\)</span> diverges.</p></li>
+<li><p>If <span class="math inline">\(r\le 1\le R\)</span>, the test is
+inconclusive.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Choose <span class="math inline">\(c\in(R,1)\)</span>. Then there
+exists a <span class="math inline">\(K\in\mathbb{N}\)</span> such that
+for all <span class="math inline">\(k\ge K\)</span>, <span class="math inline">\(\frac{a_{k+1}}{a_k}\le c\)</span> by <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a> with <span class="math inline">\(\varepsilon=c-R\)</span>. In particular, <span class="math inline">\(a_{K+1}\le ca_K\)</span>. Also, <span class="math inline">\(a_{K+2}\le ca_{K+1}\le c^2a_K\)</span>. By
+induction, <span class="math inline">\(a_{K+m}\le c^m a_K\)</span> for
+all <span class="math inline">\(m\ge0\)</span>. Therefore, <span class="math inline">\(a_k\le Mc^k\)</span> for all <span class="math inline">\(k\ge K\)</span>, where <span class="math inline">\(k=K+m\)</span> and <span class="math inline">\(M=\frac{a_K}{c^K}\)</span>. Thus, since <span class="math inline">\(0&lt;c&lt;1\)</span>, <span class="math inline">\(\sum c^k\)</span> converges, and hence, by the
+Comparison Test, <span class="math inline">\(\sum a_k\)</span>
+converges.</p></li>
+<li><p>Now choose <span class="math inline">\(c\in(1,r)\)</span>. Then,
+using a similar argument to above, there exists a <span class="math inline">\(K\in\mathbb{N}\)</span> such that <span class="math inline">\(a_k\ge Mc^k\)</span> for some constant <span class="math inline">\(M\)</span> and for all <span class="math inline">\(k\ge K\)</span>. If <span class="math inline">\(r&lt;\infty\)</span>, the <span class="math inline">\(K\)</span> comes from <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a> with <span class="math inline">\(\varepsilon=r-c\)</span>. If <span class="math inline">\(r=\infty\)</span>, it comes from <a href="ch-sequences.html#thm-limsup-infinite">Theorem 3.6.12</a>. The constant is <span class="math inline">\(M=\frac{a_K}{c^K}&gt;0\)</span>. Since <span class="math inline">\(c&gt;1\)</span>, <span class="math inline">\(\sum
+c^k\)</span> diverges, and thus by the Comparison Test, <span class="math inline">\(\sum a_k\)</span> diverges.</p></li>
+<li><p>Notice for <span class="math inline">\(a_k=\frac{1}{k}\)</span>,
+<span class="math inline">\(r=R=1\)</span>, but <span class="math inline">\(\sum\frac{1}{k}\)</span> diverges. Also, for <span class="math inline">\(a_k=\frac{1}{k^2}\)</span>, <span class="math inline">\(r=R=1\)</span>, but <span class="math inline">\(\sum\frac{1}{k^2}\)</span> converges. Thus the
+test is inconclusive if <span class="math inline">\(r\le 1\le
+R\)</span>. Both facts about these series come from <a href="#ex-p-series">Example 10.2.11</a>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Often the ratios <span class="math inline">\(\frac{a_{k+1}}{a_k}\)</span> have a limit <span class="math inline">\(L\)</span>. Then <span class="math inline">\(R=r=L\)</span> by <a href="ch-sequences.html#cor-limsup-equals-liminf">Corollary 3.6.14</a>. So the series
+converges if <span class="math inline">\(L&lt;1\)</span> and diverges if
+<span class="math inline">\(L&gt;1\)</span>. The test says nothing if
+<span class="math inline">\(L=1\)</span>.</p>
+<div class="theorembox" id="thm-root-test">
+
+<p><strong>Theorem 10.2.13</strong> (Root Test)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\sum a_k\)</span> be a series of
+nonnegative terms, and let <span class="math display">\[\alpha=\limsup
+\sqrt[k]{a_k}.\]</span> (Here <span class="math inline">\(\sqrt[k]{0}=0\)</span>.)</p>
+<ol>
+<li><p>If <span class="math inline">\(\alpha&lt;1\)</span>, <span class="math inline">\(\sum a_k\)</span> converges.</p></li>
+<li><p>If <span class="math inline">\(\alpha&gt;1\)</span>, <span class="math inline">\(\sum a_k\)</span> diverges.</p></li>
+<li><p>If <span class="math inline">\(\alpha=1\)</span>, the test is
+inconclusive.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Choose <span class="math inline">\(c\in(\alpha,1)\)</span>. Then
+there exists a <span class="math inline">\(K\in\mathbb{N}\)</span> such
+that <span class="math inline">\(\sqrt[k]{a_k}&lt;c\)</span> for all
+<span class="math inline">\(k\ge K\)</span> by <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a> with <span class="math inline">\(\varepsilon=c-\alpha\)</span>. But then <span class="math inline">\(a_k\le c^k\)</span> for all <span class="math inline">\(k\ge K\)</span>. Thus <span class="math inline">\(\sum a_k\)</span> converges by the Comparison Test
+and <a href="#ex-geometric-series">Example 10.1.3</a>.</p></li>
+<li><p>Notice <span class="math inline">\(\sqrt[k]{a_k}&gt;1\)</span>
+for infinitely many <span class="math inline">\(k\)</span>. If <span class="math inline">\(\alpha&lt;\infty\)</span>, this follows from <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a> with <span class="math inline">\(\varepsilon=\alpha-1\)</span>. If <span class="math inline">\(\alpha=\infty\)</span>, it holds because <span class="math inline">\(\infty\)</span> is a cluster point of <span class="math inline">\(\{\sqrt[k]{a_k}\}\)</span>, by <a href="ch-sequences.html#thm-limsup-infinite">Theorem 3.6.12</a>. So <span class="math inline">\(a_k&gt;1\)</span> for infinitely many <span class="math inline">\(k\)</span>. Thus <span class="math inline">\(a_k\not\to0\)</span>. So <span class="math inline">\(\sum a_k\)</span> diverges by the <span class="math inline">\(n\)</span>th Term Test.</p></li>
+<li><p>Exercise. See <a href="#exer-root-test-inconclusive">Exercise
+10.2.4</a>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Choosing a Number in Between).</strong></p>
+<p>The Ratio and Root Tests compare a series with a geometric series.
+The hypothesis <span class="math inline">\(R&lt;1\)</span> does not say
+<span class="math inline">\(\frac{a_{k+1}}{a_k}\le R\)</span> for large
+<span class="math inline">\(k\)</span>. It says the ratios are
+eventually below every number bigger than <span class="math inline">\(R\)</span>. So the proof chooses a number <span class="math inline">\(c\)</span> strictly between <span class="math inline">\(R\)</span> and <span class="math inline">\(1\)</span>. Then <span class="math inline">\(\frac{a_{k+1}}{a_k}\le c\)</span> for all large
+<span class="math inline">\(k\)</span>, and <span class="math inline">\(c&lt;1\)</span> makes <span class="math inline">\(\sum c^k\)</span> converge. Choosing <span class="math inline">\(c=R\)</span> fails, because the ratios may stay
+above <span class="math inline">\(R\)</span> forever. Choosing <span class="math inline">\(c=1\)</span> fails too, because <span class="math inline">\(\sum 1\)</span> diverges. Whenever a strict
+inequality like <span class="math inline">\(R&lt;1\)</span> has to be
+used, try putting a number strictly between the two sides. <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a> then turns <span class="math inline">\(R&lt;c\)</span> into a statement about the
+terms.</p>
+</div>
+<div class="theorembox" id="thm-abel-summation">
+
+<p><strong>Theorem 10.2.14</strong> (Abel Partial Summation
+Formula)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\{a_k\}\)</span> and <span class="math inline">\(\{b_k\}\)</span> be sequences of real numbers. Set
+<span class="math inline">\(A_0=0\)</span> and <span class="math inline">\(A_n=\sum^n_{k=1}a_k\)</span> for <span class="math inline">\(n\ge 1\)</span>. Then if <span class="math inline">\(1\le p\le q\)</span>, <span class="math display">\[\sum^q_{k=p}a_kb_k=\sum_{k=p}^{q-1}A_k(b_k-b_{k+1})+A_qb_q-A_{p-1}b_p.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Since <span class="math inline">\(a_k=A_k-A_{k-1}\)</span> for every
+<span class="math inline">\(k\ge1\)</span>, <span class="math display">\[\sum_{k=p}^qa_kb_k=\sum_{k=p}^qA_kb_k-\sum_{k=p}^qA_{k-1}b_k.\]</span>
+In the second sum on the right, shift the index down by one. It becomes
+<span class="math inline">\(\sum_{k=p-1}^{q-1}A_kb_{k+1}\)</span>. Now
+take the term with <span class="math inline">\(k=q\)</span> out of the
+first sum, and the term with <span class="math inline">\(k=p-1\)</span>
+out of the second. This gives <span class="math display">\[\sum_{k=p}^qa_kb_k=\left(\sum_{k=p}^{q-1}A_kb_k+A_qb_q\right)-\left(\sum_{k=p}^{q-1}A_kb_{k+1}+A_{p-1}b_p\right).\]</span>
+Combining the two sums from <span class="math inline">\(p\)</span> to
+<span class="math inline">\(q-1\)</span> gives the formula.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Summation by Parts).</strong></p>
+<p>Abel’s formula is a discrete version of integration by parts (<a href="ch-integrals.html#thm-integration-by-parts">Theorem 9.4.2</a>). Think of <span class="math inline">\(A_k\)</span> as an antiderivative of <span class="math inline">\(a_k\)</span>, since <span class="math inline">\(A_k-A_{k-1}=a_k\)</span>. Then <span class="math inline">\(\sum a_kb_k\)</span> plays the role of <span class="math inline">\(\int A'g\)</span>. The sum <span class="math inline">\(\sum A_k(b_k-b_{k+1})\)</span> plays the role of
+<span class="math inline">\(-\int Ag'\)</span>, and <span class="math inline">\(A_qb_q-A_{p-1}b_p\)</span> is the boundary term.
+Use the formula when the terms <span class="math inline">\(a_k\)</span>
+are hard to control but their partial sums <span class="math inline">\(A_k\)</span> are easy, and the <span class="math inline">\(b_k\)</span> change slowly. The Dirichlet Test is
+the main example. The terms <span class="math inline">\(\sin k\)</span>
+do not tend to <span class="math inline">\(0\)</span>, but their partial
+sums are bounded, as the proof of <a href="#thm-trig-series-test">Theorem 10.2.20</a> shows.</p>
+</div>
+<div class="theorembox" id="thm-dirichlet-test">
+
+<p><strong>Theorem 10.2.15</strong> (Dirichlet
+Test)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(\{a_k\}\)</span> and <span class="math inline">\(\{b_k\}\)</span> are sequences of real numbers
+such that the partial sums <span class="math inline">\(A_n=\sum^n_{k=1}a_k\)</span> form a bounded
+sequence, and <span class="math inline">\(\{b_k\}\)</span> is a
+decreasing sequence of nonnegative numbers with <span class="math inline">\(b_k\to 0\)</span>. Then <span class="math inline">\(\sum a_k b_k\)</span> converges.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Choose <span class="math inline">\(M&gt;0\)</span> with <span class="math inline">\(|A_n|\le M\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. This also holds for <span class="math inline">\(A_0=0\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(b_k\to0\)</span>, there is an <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(b_N&lt;\frac{\varepsilon}{2M}\)</span>. Let <span class="math inline">\(m&gt;n\ge N\)</span>. Apply Abel’s formula with
+<span class="math inline">\(p=n+1\)</span> and <span class="math inline">\(q=m\)</span>. Since <span class="math inline">\(\{b_k\}\)</span> is decreasing, each <span class="math inline">\(b_k-b_{k+1}\)</span> is nonnegative, and each
+<span class="math inline">\(b_k\)</span> is nonnegative. So <span class="math display">\[\begin{aligned}
+\left|\sum_{k=n+1}^ma_kb_k\right|
+&amp;\le\sum_{k=n+1}^{m-1}|A_k|(b_k-b_{k+1})+|A_m|b_m+|A_n|b_{n+1}\\
+&amp;\le M\left(\sum_{k=n+1}^{m-1}(b_k-b_{k+1})+b_m+b_{n+1}\right)\\
+&amp;=M\bigl((b_{n+1}-b_m)+b_m+b_{n+1}\bigr)\\
+&amp;=2Mb_{n+1}\\
+&amp;\le2Mb_N&lt;\varepsilon.
+\end{aligned}\]</span> The sum in the second line telescopes. By the
+Cauchy Criterion (<a href="#thm-cauchy-criterion-series">Theorem
+10.2.1</a>), <span class="math inline">\(\sum a_kb_k\)</span>
+converges.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-alternating-series-test">
+
+<p><strong>Theorem 10.2.16</strong> (Alternating Series
+Test)<strong>.</strong></p>
+<p>If <span class="math inline">\(\{b_k\}\)</span> is a decreasing
+sequence of nonnegative real numbers with <span class="math inline">\(b_k\to 0\)</span>, then <span class="math inline">\(\sum (-1)^{k+1}b_k\)</span> converges.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Let <span class="math inline">\(a_k=(-1)^{k+1}\)</span>. Then <span class="math inline">\(|A_n|\le 1\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, and the Dirichlet Test
+applies. In fact <span class="math inline">\(A_n=1\)</span> when <span class="math inline">\(n\)</span> is odd and <span class="math inline">\(A_n=0\)</span> when <span class="math inline">\(n\)</span> is even.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-alternating-odd">
+
+<p><strong>Example 10.2.17.</strong> The series <span class="math inline">\(\sum^\infty_{k=1}\frac{(-1)^{k+1}}{2k-1}\)</span>
+converges. Here <span class="math inline">\(b_k=\frac{1}{2k-1}\)</span>
+decreases to <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="remarkbox" id="rem-alternating-decreasing">
+
+<p><strong>Remark 10.2.18.</strong> If <span class="math inline">\(\{b_k\}\)</span> is not decreasing, this test does
+not work. The conclusion can fail. See <a href="#exer-ast-decreasing">Exercise 10.2.6</a>.</p>
+</div>
+<p>The proof of the next theorem shows more than the bound. The partial
+sums jump back and forth across the sum <span class="math inline">\(s\)</span>, as in <a href="#fig-alternating">Figure 10.2</a>. So stopping after <span class="math inline">\(n\)</span> terms gives an error no bigger than the
+first term left out.</p>
+<div class="theorembox" id="thm-alternating-error">
+
+<p><strong>Theorem 10.2.19.</strong> Consider the series <span class="math inline">\(\sum (-1)^{k+1}b_k\)</span>, where <span class="math inline">\(\{b_k\}\)</span> is a decreasing sequence of
+nonnegative real numbers with <span class="math inline">\(b_k\to
+0\)</span>. Let <span class="math display">\[s_n=\sum^n_{k=1}(-1)^{k+1}b_k\quad\text{and}\quad
+s=\sum^\infty_{k=1}(-1)^{k+1}b_k.\]</span> Then <span class="math inline">\(|s-s_n|\le b_{n+1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Consider the sequence <span class="math inline">\(\{s_{2n}\}\)</span>. Since <span class="math display">\[s_{2n}=\sum^{2n}_{k=1}(-1)^{k+1}b_k=(b_1-b_2) +
+\cdots +(b_{2n-1}-b_{2n}),\]</span> and <span class="math inline">\(b_{k-1}-b_k\ge 0\)</span> for all <span class="math inline">\(k\ge2\)</span>, the sequence <span class="math inline">\(\{s_{2n}\}\)</span> is increasing. Similarly,
+<span class="math inline">\(\{s_{2n+1}\}\)</span> is decreasing. Indeed,
+<span class="math inline">\(s_{2n+1}-s_{2n+3}=b_{2n+2}-b_{2n+3}\ge0\)</span>.
+Since <span class="math inline">\(\{s_n\}\)</span> converges to <span class="math inline">\(s\)</span>, so do the subsequences <span class="math inline">\(\{s_{2n}\}\)</span> and <span class="math inline">\(\{s_{2n+1}\}\)</span>. Therefore, <span class="math inline">\(s_{2n}\le s\le s_{2n+1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. (An increasing sequence
+is at most its limit, and a decreasing sequence is at least its limit,
+by the proof of <a href="ch-sequences.html#thm-monotone-convergence">Theorem 3.2.13</a>.)
+So <span class="math inline">\(s\)</span> lies between <span class="math inline">\(s_k\)</span> and <span class="math inline">\(s_{k+1}\)</span> for every <span class="math inline">\(k\in\mathbb{N}\)</span>. For <span class="math inline">\(k=2n\)</span> this says <span class="math inline">\(s_{2n}\le s\le s_{2n+1}\)</span>, and for <span class="math inline">\(k=2n+1\)</span> it says <span class="math inline">\(s_{2n+2}\le s\le s_{2n+1}\)</span>. As a
+consequence, <span class="math display">\[|s-s_k|\le
+|s_{k+1}-s_k|=b_{k+1}\]</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<figure class="figure" id="fig-alternating"><div class="figure-images"><img alt="Partial sums of the alternating harmonic series plotted as points that jump up and down, with each jump shorter than the last, closing in on a horizontal line at the sum s." height="122" src="figs/fig09.svg" width="438"/></div><figcaption><strong>Figure 10.2.</strong> The partial sums of <span class="math inline">\(\sum(-1)^{k+1}\frac1k\)</span>. The jumps
+alternate in direction, and each is shorter than the one before. So the
+sum <span class="math inline">\(s\)</span> lies between any two
+consecutive partial sums.</figcaption></figure>
+<div class="theorembox" id="thm-trig-series-test">
+
+<p><strong>Theorem 10.2.20</strong> (Trigonometric Series
+Test)<strong>.</strong></p>
+<p>Suppose <span class="math inline">\(\{b_k\}\)</span> is a decreasing
+sequence of real numbers with <span class="math inline">\(b_k\to
+0\)</span>. Then</p>
+<ol>
+<li><p><span class="math inline">\(\sum b_k\sin kt\)</span> converges
+for all <span class="math inline">\(t\in\mathbb{R}\)</span>,
+and</p></li>
+<li><p><span class="math inline">\(\sum b_k\cos kt\)</span> converges
+for all <span class="math inline">\(t\in\mathbb{R}\)</span>, except
+perhaps <span class="math inline">\(t=2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Since <span class="math inline">\(\{b_k\}\)</span>
+decreases to <span class="math inline">\(0\)</span>, <span class="math inline">\(b_k\ge0\)</span> for all <span class="math inline">\(k\)</span>.</p>
+<ol>
+<li><p>Set <span class="math inline">\(A_n=\sum^n_{k=1}\sin kt\)</span>.
+Then, since <span class="math display">\[\sin A\sin
+B=\frac{1}{2}[\cos(A-B)-\cos(A+B)],\]</span> <span class="math display">\[\begin{aligned}
+\sin(t/2)A_n&amp;=\sum^n_{k=1}\sin(t/2)\sin kt\\
+&amp;=\frac{1}{2}\sum^n_{k=1}[\cos((k-1/2)t)-\cos((k+1/2)t)]\\
+&amp;=\frac{1}{2}[\cos(t/2)-\cos((n+1/2)t)].
+\end{aligned}\]</span> So for <span class="math inline">\(t\ne
+2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>,
+<span class="math display">\[A_n=\frac{\cos(t/2)-\cos((n+1/2)t)}{2\sin(t/2)}.\]</span>
+Therefore, <span class="math display">\[\begin{aligned}
+|A_n|&amp;\le \frac{|\cos(t/2)|+|\cos((n+1/2)t)|}{2|\sin(t/2)|}\\
+&amp;\le\frac{1}{|\sin(t/2)|},
+\end{aligned}\]</span> which is finite, provided <span class="math inline">\(t\ne 2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>. Therefore, by the
+Dirichlet Test, the series <span class="math inline">\(\sum b_k\sin
+kt\)</span> converges for all <span class="math inline">\(t\ne
+2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>. If
+<span class="math inline">\(t=2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>, then <span class="math inline">\(\sin kt=0\)</span> for all <span class="math inline">\(k\)</span>. Thus the series converges.</p></li>
+<li><p>The proof is similar to the proof of (1) and is therefore
+omitted. See <a href="#exer-trig-cos">Exercise 10.2.9</a>. Notice <span class="math inline">\(\sum b_k\cos kt\)</span> may or may not converge
+if <span class="math inline">\(t=2p \pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>, since <span class="math inline">\(\cos kt=1\)</span> for <span class="math inline">\(t=2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-cos-kt">
+
+<p><strong>Example 10.2.21.</strong> The series <span class="math inline">\(\sum^\infty_{k=1}\frac{1}{k}\cos kt\)</span>
+converges for all <span class="math inline">\(t\ne 2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>. However, when <span class="math inline">\(t=2p\pi\)</span>, <span class="math inline">\(p\in\mathbb{Z}\)</span>, <span class="math inline">\(\cos kt=1\)</span> and <span class="math inline">\(\sum^\infty_{k=1}\frac{1}{k}\)</span> diverges.
+However, the series <span class="math inline">\(\sum_{k=1}^\infty\frac{1}{k^2}\cos kt\)</span>
+converges for all <span class="math inline">\(t\in\mathbb{R}\)</span>.
+For <span class="math inline">\(t\ne2p\pi\)</span> this follows from the
+test. For <span class="math inline">\(t=2p\pi\)</span> it is the <span class="math inline">\(p\)</span>-series with <span class="math inline">\(p=2\)</span>.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-37">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-nth-term-test">
+
+<p><strong>Exercise 10.2.1.</strong> Prove <a href="#cor-nth-term-test">Corollary 10.2.2</a>. <a aria-label="Hint for Exercise 10.2.1" href="solutions-ch10.html#sol-exer-nth-term-test">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-series-scalar">
+
+<p><strong>Exercise 10.2.2.</strong> Prove <a href="#thm-series-linear">Theorem 10.2.4</a> (1).</p>
+</div>
+<div class="exercisebox" id="exer-limit-comparison-series">
+
+<p><strong>Exercise 10.2.3.</strong> Prove <a href="#cor-limit-comparison-series">Corollary 10.2.8</a>. <a aria-label="Hint for Exercise 10.2.3" href="solutions-ch10.html#sol-exer-limit-comparison-series">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-root-test-inconclusive">
+
+<p><strong>Exercise 10.2.4.</strong> Prove <a href="#thm-root-test">Theorem 10.2.13</a> (3). <a aria-label="Hint for Exercise 10.2.4" href="solutions-ch10.html#sol-exer-root-test-inconclusive">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-pk-over-kfactorial">
+
+<p><strong>Exercise 10.2.5.</strong> Prove the sequence <span class="math inline">\(\left\{\frac{p^k}{k!}\right\}\)</span>, <span class="math inline">\(0&lt;p&lt;\infty\)</span>, converges to <span class="math inline">\(0\)</span>. Appeal to the series <span class="math inline">\(\sum \frac{p^k}{k!}\)</span> and the ratio
+test.</p>
+</div>
+<div class="exercisebox" id="exer-ast-decreasing">
+
+<p><strong>Exercise 10.2.6.</strong> Show by example that the hypothesis
+of the Alternating Series Test cannot be replaced by <span class="math inline">\(b_k\geq 0\)</span> and <span class="math inline">\(\lim_{k\to\infty}b_k=0\)</span>; i.e., <span class="math inline">\(\{b_k\}\)</span> must be decreasing. <a aria-label="Hint for Exercise 10.2.6" href="solutions-ch10.html#sol-exer-ast-decreasing">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-abel-test">
+
+<p><strong>Exercise 10.2.7.</strong> Prove that if <span class="math inline">\(\sum a_k\)</span> converges and <span class="math inline">\(\{b_k\}\)</span> is monotone and bounded, then
+<span class="math inline">\(\sum a_kb_k\)</span> converges. This is
+called <em>Abel’s Test</em>. <a aria-label="Hint for Exercise 10.2.7" href="solutions-ch10.html#sol-exer-abel-test">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-harmonic-grouping">
+
+<p><strong>Exercise 10.2.8.</strong> Let <span class="math inline">\(s_n\)</span> be the <span class="math inline">\(n\)</span>th partial sum of the harmonic series
+<span class="math inline">\(\sum\frac1k\)</span>. Prove that <span class="math inline">\(s_{2^n}\ge1+\frac n2\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Conclude, without the
+Integral Test, that the harmonic series diverges. <a aria-label="Hint for Exercise 10.2.8" href="solutions-ch10.html#sol-exer-harmonic-grouping">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-trig-cos">
+
+<p><strong>Exercise 10.2.9.</strong> Prove <a href="#thm-trig-series-test">Theorem 10.2.20</a> (2). <a aria-label="Hint for Exercise 10.2.9" href="solutions-ch10.html#sol-exer-trig-cos">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-series-practice">
+
+<p><strong>Exercise 10.2.10.</strong> Decide whether each series
+converges or diverges. Justify each answer.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{k^2}{2^k}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{k!}{k^k}\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=2}^\infty\frac{1}{k\ln
+k}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\left(\frac{k}{k+1}\right)^{k^2}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{1}{\sqrt{k(k+1)}}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{k+1}{k^3+1}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=2}^\infty\frac{(-1)^k}{\ln
+k}\)</span></p></li>
+</ol>
+<p><a aria-label="Hint for Exercise 10.2.10" href="solutions-ch10.html#sol-exer-series-practice">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-absolute-convergence">
+<h2>10.3 Conditional and Absolute Convergence</h2>
+<p>A series can converge for two different reasons. Its terms can shrink
+so fast that even their absolute values have a finite sum. Or its
+positive and negative terms can cancel. This section shows that the
+first kind of convergence is much better behaved. A series that
+converges for the first reason can be added up in any order. A series
+that converges only for the second reason can be reordered to have any
+sum at all.</p>
+<div class="definitionbox" id="def-absolute-convergence">
+
+<p><strong>Definition 10.3.1.</strong> A series <span class="math inline">\(\sum a_k\)</span> is said to be <em>absolutely
+convergent</em> if <span class="math inline">\(\sum |a_k|\)</span>
+converges. The series is said to be <em>conditionally convergent</em> if
+it is convergent but not absolutely convergent.</p>
+</div>
+<div class="examplebox" id="ex-alternating-harmonic">
+
+<p><strong>Example 10.3.2.</strong> <span class="math inline">\(\sum^\infty_{k=1}\frac{(-1)^k}{k}\)</span> is
+conditionally convergent, while <span class="math inline">\(\sum^\infty_{k=1}\frac{(-1)^k}{k^2}\)</span> is
+absolutely convergent. The first series is <span class="math inline">\(-1\)</span> times the series <span class="math inline">\(\sum\frac{(-1)^{k+1}}{k}\)</span>, which converges
+by the Alternating Series Test. But <span class="math inline">\(\sum\frac1k\)</span> diverges. The second
+converges absolutely because <span class="math inline">\(\sum\frac{1}{k^2}\)</span> converges (<a href="#ex-p-series">Example 10.2.11</a>).</p>
+</div>
+<div class="theorembox" id="thm-absolute-convergence">
+
+<p><strong>Theorem 10.3.3.</strong> If <span class="math inline">\(\sum
+a_k\)</span> converges absolutely, <span class="math inline">\(\sum
+a_k\)</span> converges and <span class="math display">\[\left|\sum
+a_k\right|\le \sum |a_k|.\]</span></p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em> Suppose <span class="math inline">\(\sum|a_k|\)</span> converges. By the Triangle
+Inequality, for <span class="math inline">\(1\le p\le q\)</span>, <span class="math display">\[\left|\sum^q_{k=p} a_k\right|\le
+\sum^q_{k=p}|a_k|.\]</span> Thus an application of the Cauchy Criterion
+shows that <span class="math inline">\(\sum a_k\)</span> converges.
+Finally, <span class="math display">\[\begin{aligned}
+\left|\sum^\infty_{k=1}
+a_k\right|&amp;=\lim_{q\to\infty}\left|\sum^q_{k=1} a_k\right|\\
+&amp;\le \lim_{q\to\infty}\sum_{k=1}^q |a_k|\\
+&amp;= \sum^\infty_{k=1}|a_k|.
+\end{aligned}\]</span> The first equality holds because <span class="math inline">\(\bigl||s_q|-|s|\bigr|\le|s_q-s|\)</span>, where
+<span class="math inline">\(s_q\)</span> is the <span class="math inline">\(q\)</span>th partial sum and <span class="math inline">\(s\)</span> is the sum. The inequality holds by <a href="ch-sequences.html#thm-order-limits">Theorem 3.2.7</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-ratio-root-test">
+
+<p><strong>Theorem 10.3.4</strong> (Ratio and Root
+Test)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\sum a_k\)</span> be a series of real
+numbers, and let <span class="math display">\[\alpha=\limsup\sqrt[k]{|a_k|}.\]</span> Also, if
+<span class="math inline">\(a_k\ne 0\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>, let <span class="math display">\[R=\limsup\left|\frac{a_{k+1}}{a_k}\right|\quad\text{and}\quad
+r=\liminf\left|\frac{a_{k+1}}{a_k}\right|.\]</span></p>
+<ol>
+<li><p>If <span class="math inline">\(\alpha&lt;1\)</span> or <span class="math inline">\(R&lt;1\)</span>, then <span class="math inline">\(\sum a_k\)</span> is absolutely
+convergent.</p></li>
+<li><p>If <span class="math inline">\(\alpha&gt;1\)</span> or <span class="math inline">\(r&gt;1\)</span>, then <span class="math inline">\(\sum a_k\)</span> is divergent.</p></li>
+<li><p>If <span class="math inline">\(\alpha=1\)</span> or <span class="math inline">\(r\le 1\le R\)</span>, then the test is
+inconclusive.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Apply the Root Test or the Ratio Test to the series <span class="math inline">\(\sum|a_k|\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\alpha&gt;1\)</span>, the proof of
+<a href="#thm-root-test">Theorem 10.2.13</a> (2) shows that <span class="math inline">\(|a_k|&gt;1\)</span> for infinitely many <span class="math inline">\(k\)</span>. If <span class="math inline">\(r&gt;1\)</span>, choose <span class="math inline">\(c\in(1,r)\)</span>. As in the proof of <a href="#thm-ratio-test">Theorem 10.2.12</a> (2), there is a <span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(|a_{k+1}|\ge c|a_k|&gt;|a_k|\)</span> for all
+<span class="math inline">\(k\ge K\)</span>. So <span class="math inline">\(|a_k|\ge|a_K|&gt;0\)</span> for all <span class="math inline">\(k\ge K\)</span>. In both cases <span class="math inline">\(a_k\not\to0\)</span>, so <span class="math inline">\(\sum a_k\)</span> diverges by the <span class="math inline">\(n\)</span>th Term Test.</p></li>
+<li><p>The examples in the proof of <a href="#thm-ratio-test">Theorem
+10.2.12</a> (3) and in <a href="#exer-root-test-inconclusive">Exercise
+10.2.4</a> have positive terms, so they work here too.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="examplebox" id="ex-polynomial-geometric">
+
+<p><strong>Example 10.3.5.</strong> Let <span class="math inline">\(p\)</span> be a polynomial and <span class="math inline">\(b\in\mathbb{R}\)</span> with <span class="math inline">\(|b|&lt;1\)</span>. Let <span class="math inline">\(a_k=p(k)b^k\)</span>. If <span class="math inline">\(b=0\)</span> or <span class="math inline">\(p\)</span> is the zero polynomial, there is
+nothing to prove. Otherwise <span class="math inline">\(p\)</span> has
+finitely many roots, so there is a <span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(p(k)\ne0\)</span> for all <span class="math inline">\(k\ge K\)</span>. By <a href="#rem-finitely-many-terms">Remark 10.2.5</a>, it is enough to study
+<span class="math inline">\(\sum_{k=K}^\infty a_k\)</span>. If <span class="math inline">\(p\)</span> has degree <span class="math inline">\(d\)</span>, dividing the numerator and denominator
+of <span class="math inline">\(\frac{p(k+1)}{p(k)}\)</span> by <span class="math inline">\(k^d\)</span> shows that this ratio tends to <span class="math inline">\(1\)</span>. Then, since <span class="math display">\[\left|\frac{a_{k+1}}{a_k}\right|=|b|\left|\frac{p(k+1)}{p(k)}\right|\to
+|b|&lt;1,\]</span> the series <span class="math inline">\(\sum
+p(k)b^k\)</span> is absolutely convergent.</p>
+</div>
+<div class="definitionbox" id="def-rearrangement">
+
+<p><strong>Definition 10.3.6.</strong> A series <span class="math inline">\(\sum a_k'\)</span> is a <em>rearrangement</em>
+of the series <span class="math inline">\(\sum a_k\)</span> if there
+exists a bijection <span class="math inline">\(j:\mathbb{N}\to
+\mathbb{N}\)</span> such that <span class="math inline">\(a_k'=a_{j(k)}\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>.</p>
+</div>
+<div class="examplebox" id="ex-rearrangement-harmonic">
+
+<p><strong>Example 10.3.7.</strong></p>
+<p>The alternating harmonic series <span class="math display">\[\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k}=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\frac{1}{5}-\cdots\]</span>
+converges, but not absolutely. Let <span class="math inline">\(s\)</span> be its sum. Now rearrange it so that
+two positive terms come before each negative term, <span class="math display">\[1+\frac{1}{3}-\frac{1}{2}+\frac{1}{5}+\frac{1}{7}-\frac{1}{4}+\frac{1}{9}+\frac{1}{11}-\frac{1}{6}+\cdots.\]</span>
+Every term of the original series appears exactly once. This rearranged
+series also converges, but its sum is different.</p>
+<p>First, <span class="math inline">\(s&lt;\frac56\)</span>. Let <span class="math inline">\(s_n\)</span> be the <span class="math inline">\(n\)</span>th partial sum of the original series.
+The proof of <a href="#thm-alternating-error">Theorem 10.2.19</a> shows
+that <span class="math inline">\(s\le s_{2n+1}\)</span> for all <span class="math inline">\(n\)</span>. Also <span class="math inline">\(s_{2n+1}-s_{2n+3}=\frac{1}{2n+2}-\frac{1}{2n+3}&gt;0\)</span>.
+So <span class="math display">\[s\le
+s_5&lt;s_3=1-\frac12+\frac13=\frac56.\]</span></p>
+<p>Next, let <span class="math inline">\(s_n'\)</span> be the <span class="math inline">\(n\)</span>th partial sum of the rearranged series.
+Its terms come in groups of three, and the <span class="math inline">\(k\)</span>th group is <span class="math display">\[\frac{1}{4k-3}+\frac{1}{4k-1}-\frac{1}{2k}=\frac{8k-3}{2k(4k-1)(4k-3)}.\]</span>
+So <span class="math inline">\(s_{3n}'\)</span> is the sum of the
+first <span class="math inline">\(n\)</span> groups. Each group is
+positive, so <span class="math inline">\(s_3'&lt;s_6'&lt;s_9'&lt;\cdots\)</span>.
+Since <span class="math inline">\(4k-1\ge3k\)</span> and <span class="math inline">\(4k-3\ge k\)</span> for <span class="math inline">\(k\ge1\)</span>, each group is at most <span class="math inline">\(\frac{8k}{2k\cdot3k\cdot
+k}=\frac{4}{3k^2}\)</span>. So the series of groups converges, by the
+Comparison Test and <a href="#ex-p-series">Example 10.2.11</a>. Let
+<span class="math inline">\(s'\)</span> be its sum, so <span class="math inline">\(s_{3n}'\to s'\)</span>. Since <span class="math inline">\(\{s_{3n}'\}\)</span> is strictly increasing,
+<span class="math inline">\(s'\ge
+s_6'&gt;s_3'=1+\frac13-\frac12=\frac56\)</span>.</p>
+<p>The other partial sums also tend to <span class="math inline">\(s'\)</span>, since <span class="math display">\[s_{3n+1}'=s_{3n}'+\frac{1}{4n+1}\quad\text{and}\quad
+s_{3n+2}'=s_{3n}'+\frac{1}{4n+1}+\frac{1}{4n+3}.\]</span> In
+detail, let <span class="math inline">\(\varepsilon&gt;0\)</span>.
+Choose <span class="math inline">\(N\in\mathbb{N}\)</span> such that
+<span class="math inline">\(|s_{3n}'-s'|&lt;\frac\varepsilon
+2\)</span> and <span class="math inline">\(\frac{2}{4n+1}&lt;\frac\varepsilon 2\)</span> for
+all <span class="math inline">\(n\ge N\)</span>. Every <span class="math inline">\(m\ge3N\)</span> has the form <span class="math inline">\(3n\)</span>, <span class="math inline">\(3n+1\)</span> or <span class="math inline">\(3n+2\)</span> with <span class="math inline">\(n\ge N\)</span>. So <span class="math inline">\(|s_m'-s'|\le|s_{3n}'-s'|+\frac{2}{4n+1}&lt;\varepsilon\)</span>.
+Thus the rearranged series converges to <span class="math inline">\(s'\)</span>.</p>
+<p>Since <span class="math inline">\(s&lt;\frac56&lt;s'\)</span>,
+rearranging the terms changed the sum.</p>
+</div>
+<div class="theorembox" id="thm-rearrangement-absolute">
+
+<p><strong>Theorem 10.3.8.</strong> If the series <span class="math inline">\(\sum a_k\)</span> converges absolutely, then every
+rearrangement of <span class="math inline">\(\sum a_k\)</span> converges
+to the same sum.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\sum a_k'\)</span> be a
+rearrangement of <span class="math inline">\(\sum a_k\)</span>, with
+<span class="math inline">\(a_k'=a_{j(k)}\)</span> for a bijection
+<span class="math inline">\(j:\mathbb{N}\to\mathbb{N}\)</span>. Let
+<span class="math inline">\(s_n\)</span> and <span class="math inline">\(s_n'\)</span> be the <span class="math inline">\(n\)</span>th partial sums of the two series, and
+let <span class="math inline">\(s=\sum_{k=1}^\infty a_k\)</span>. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(s_n\to s\)</span>, and by the Cauchy Criterion for
+<span class="math inline">\(\sum|a_k|\)</span>, there is an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|s_N-s|&lt;\frac\varepsilon 2\)</span> and <span class="math display">\[\sum_{i=N+1}^m|a_i|&lt;\frac\varepsilon
+2\quad\text{for all }m&gt;N.\]</span> Since <span class="math inline">\(j\)</span> is onto, each of <span class="math inline">\(1,2,\dots,N\)</span> is <span class="math inline">\(j(k)\)</span> for some <span class="math inline">\(k\)</span>. Let <span class="math inline">\(P\)</span> be the largest of these <span class="math inline">\(N\)</span> values of <span class="math inline">\(k\)</span>. Let <span class="math inline">\(n\ge
+P\)</span>, and let <span class="math inline">\(J_n=\{j(1),j(2),\dots,j(n)\}\)</span>. Then <span class="math inline">\(\{1,2,\dots,N\}\subset J_n\)</span>. Since <span class="math inline">\(j\)</span> is one-to-one, the indices in <span class="math inline">\(J_n\)</span> are distinct. So the terms <span class="math inline">\(a_1,a_2,\dots,a_N\)</span> cancel in the
+difference, and <span class="math display">\[s_n'-s_N=\sum_{k=1}^na_{j(k)}-\sum_{i=1}^Na_i=\sum_{i\in
+J_n,\ i&gt;N}a_i.\]</span> If no index in <span class="math inline">\(J_n\)</span> is larger than <span class="math inline">\(N\)</span>, this sum is <span class="math inline">\(0\)</span>. Otherwise let <span class="math inline">\(m\)</span> be the largest index in <span class="math inline">\(J_n\)</span>. Then every index in the sum lies
+between <span class="math inline">\(N+1\)</span> and <span class="math inline">\(m\)</span>, so <span class="math display">\[|s_n'-s_N|\le\sum_{i=N+1}^m|a_i|&lt;\frac\varepsilon
+2.\]</span> In both cases, <span class="math inline">\(|s_n'-s|\le|s_n'-s_N|+|s_N-s|&lt;\varepsilon\)</span>
+for all <span class="math inline">\(n\ge P\)</span>. So <span class="math inline">\(s_n'\to s\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The next theorem is due to Riemann. It says that <a href="#thm-rearrangement-absolute">Theorem 10.3.8</a> fails as badly as
+possible for conditionally convergent series. The idea of the proof is
+simple. Add positive terms until the total passes <span class="math inline">\(\alpha\)</span>. Then add negative terms until it
+drops below <span class="math inline">\(\alpha\)</span>. Repeat forever.
+The overshoots shrink because the terms tend to <span class="math inline">\(0\)</span>.</p>
+<div class="theorembox" id="thm-riemann-rearrangement">
+
+<p><strong>Theorem 10.3.9</strong> (Riemann Rearrangement
+Theorem)<strong>.</strong></p>
+<p>Let <span class="math inline">\(\sum a_k\)</span> be a conditionally
+convergent series of real numbers. Suppose <span class="math inline">\(\alpha\in\mathbb{R}\)</span>. Then there exists a
+rearrangement <span class="math inline">\(\sum a_k'\)</span> of
+<span class="math inline">\(\sum a_k\)</span> which converges to <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>Step 1. The positive and negative parts both diverge.</em> For
+each <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(P_n\)</span> be the sum of the nonnegative terms
+among <span class="math inline">\(a_1,\dots,a_n\)</span>, and let <span class="math inline">\(Q_n\)</span> be the sum of the absolute values of
+the negative terms among <span class="math inline">\(a_1,\dots,a_n\)</span>. Then <span class="math display">\[s_n=P_n-Q_n\quad\text{and}\quad\sum_{k=1}^n|a_k|=P_n+Q_n.\]</span>
+Suppose <span class="math inline">\(\{P_n\}\)</span> were bounded. Since
+<span class="math inline">\(\{s_n\}\)</span> converges, it is bounded,
+so <span class="math inline">\(\{Q_n\}=\{P_n-s_n\}\)</span> would be
+bounded too. Then the partial sums of <span class="math inline">\(\sum|a_k|\)</span> would be bounded, and <span class="math inline">\(\sum|a_k|\)</span> would converge by <a href="#thm-nonnegative-series">Theorem 10.2.6</a>. That is false. So
+<span class="math inline">\(\{P_n\}\)</span> is not bounded. In the same
+way, <span class="math inline">\(\{Q_n\}\)</span> is not bounded. In
+particular, <span class="math inline">\(\sum a_k\)</span> has infinitely
+many nonnegative terms and infinitely many negative terms.</p>
+<p>Let <span class="math inline">\(p_1,p_2,p_3,\dots\)</span> be the
+nonnegative terms of <span class="math inline">\(\sum a_k\)</span>, in
+the order they appear. Let <span class="math inline">\(q_1,q_2,q_3,\dots\)</span> be the absolute values
+of the negative terms, in the order they appear. Each <span class="math inline">\(P_n\)</span> is either <span class="math inline">\(0\)</span> or a partial sum of <span class="math inline">\(\sum p_i\)</span>. Since <span class="math inline">\(\{P_n\}\)</span> is not bounded, the partial sums
+of <span class="math inline">\(\sum p_i\)</span> are not bounded. So
+<span class="math inline">\(\sum_{i=1}^np_i\to\infty\)</span> by <a href="#thm-nonnegative-series">Theorem 10.2.6</a>. In the same way,
+<span class="math inline">\(\sum_{i=1}^nq_i\to\infty\)</span>. Also
+<span class="math inline">\(a_k\to0\)</span> by the <span class="math inline">\(n\)</span>th Term Test. Since <span class="math inline">\(\{p_i\}\)</span> is a subsequence of <span class="math inline">\(\{a_k\}\)</span>, and <span class="math inline">\(\{q_i\}\)</span> is a subsequence of <span class="math inline">\(\{|a_k|\}\)</span>, both tend to <span class="math inline">\(0\)</span>.</p>
+<p><em>Step 2. The construction.</em> Let <span class="math inline">\(m_1\)</span> be the smallest positive integer with
+<span class="math display">\[X_1=p_1+\cdots+p_{m_1}&gt;\alpha.\]</span>
+It exists because <span class="math inline">\(\sum_{i=1}^np_i\to\infty\)</span>. Let <span class="math inline">\(n_1\)</span> be the smallest positive integer with
+<span class="math display">\[Y_1=X_1-q_1-\cdots-q_{n_1}&lt;\alpha.\]</span> It
+exists because <span class="math inline">\(\sum_{i=1}^nq_i\to\infty\)</span>. Continue in the
+same way. Once <span class="math inline">\(m_k\)</span>, <span class="math inline">\(n_k\)</span>, <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> are chosen, let <span class="math inline">\(m_{k+1}\)</span> be the smallest integer greater
+than <span class="math inline">\(m_k\)</span> with <span class="math display">\[X_{k+1}=Y_k+p_{m_k+1}+\cdots+p_{m_{k+1}}&gt;\alpha,\]</span>
+and let <span class="math inline">\(n_{k+1}\)</span> be the smallest
+integer greater than <span class="math inline">\(n_k\)</span> with <span class="math display">\[Y_{k+1}=X_{k+1}-q_{n_k+1}-\cdots-q_{n_{k+1}}&lt;\alpha.\]</span>
+The rearranged series is <span class="math display">\[p_1+\cdots+p_{m_1}-q_1-\cdots-q_{n_1}+p_{m_1+1}+\cdots+p_{m_2}-q_{n_1+1}-\cdots-q_{n_2}+\cdots.\]</span>
+Since <span class="math inline">\(m_1&lt;m_2&lt;\cdots\)</span> and
+<span class="math inline">\(n_1&lt;n_2&lt;\cdots\)</span>, every <span class="math inline">\(p_i\)</span> and every <span class="math inline">\(q_i\)</span> is used, exactly once. So this is a
+rearrangement of <span class="math inline">\(\sum a_k\)</span>.</p>
+<p><em>Step 3. The rearranged series converges to <span class="math inline">\(\alpha\)</span>.</em> Let <span class="math inline">\(k\ge2\)</span>. Since <span class="math inline">\(m_k\)</span> is the smallest choice, the total
+just before <span class="math inline">\(p_{m_k}\)</span> was added was
+at most <span class="math inline">\(\alpha\)</span>. So <span class="math inline">\(\alpha&lt;X_k\le\alpha+p_{m_k}\)</span>. In the
+same way, the total just before <span class="math inline">\(q_{n_k}\)</span> was added was at least <span class="math inline">\(\alpha\)</span>, so <span class="math inline">\(\alpha-q_{n_k}\le Y_k&lt;\alpha\)</span>. Since
+<span class="math inline">\(m_k\ge k\)</span> and <span class="math inline">\(n_k\ge k\)</span>, the sequences <span class="math inline">\(\{p_{m_k}\}\)</span> and <span class="math inline">\(\{q_{n_k}\}\)</span> are subsequences of sequences
+that tend to <span class="math inline">\(0\)</span>. So <span class="math inline">\(X_k\to\alpha\)</span> and <span class="math inline">\(Y_k\to\alpha\)</span>, by the Squeeze Theorem.</p>
+<p>Let <span class="math inline">\(s_n'\)</span> be the <span class="math inline">\(n\)</span>th partial sum of the rearranged series.
+While positive terms are being added, the partial sums increase. While
+negative terms are being added, they decrease. So every partial sum in
+the block <span class="math inline">\(-q_{n_{k-1}+1}-\cdots-q_{n_k}\)</span> lies in
+<span class="math inline">\([Y_k,X_k]\)</span>, where <span class="math inline">\(n_0=0\)</span>. Every partial sum in the block
+<span class="math inline">\(p_{m_k+1}+\cdots+p_{m_{k+1}}\)</span> lies
+in <span class="math inline">\([Y_k,X_{k+1}]\)</span>.</p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose an
+integer <span class="math inline">\(K\ge2\)</span> such that <span class="math inline">\(|X_k-\alpha|&lt;\varepsilon\)</span> and <span class="math inline">\(|Y_k-\alpha|&lt;\varepsilon\)</span> for all <span class="math inline">\(k\ge K\)</span>. Let <span class="math inline">\(n_*=m_K+n_{K-1}\)</span>, which is the position of
+the last term of the <span class="math inline">\(K\)</span>th block of
+positive terms, where again <span class="math inline">\(n_0=0\)</span>.
+Every partial sum <span class="math inline">\(s_n'\)</span> with
+<span class="math inline">\(n&gt;n_*\)</span> lies in <span class="math inline">\([Y_k,X_k]\)</span> or in <span class="math inline">\([Y_k,X_{k+1}]\)</span> for some <span class="math inline">\(k\ge K\)</span>. So <span class="math inline">\(|s_n'-\alpha|&lt;\varepsilon\)</span> for all
+<span class="math inline">\(n&gt;n_*\)</span>. Thus <span class="math inline">\(s_n'\to\alpha\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Greedy Constructions).</strong></p>
+<p>The proof of <a href="#thm-riemann-rearrangement">Theorem 10.3.9</a>
+builds the rearrangement in stages, and at each stage it uses the fewest
+terms that do the job. A choice like this is called <em>greedy</em>.
+Taking the fewest terms is what gives control. The total passed <span class="math inline">\(\alpha\)</span> only at the last term added, so it
+overshot <span class="math inline">\(\alpha\)</span> by at most that
+term. A proof that took just some number of terms with total above <span class="math inline">\(\alpha\)</span> would have no such bound. The
+smallest such number exists by the Well-Ordering Principle (<a href="ch-real-numbers.html#ax-well-ordering">Axiom 1.2.7</a>).</p>
+</div>
+<section class="level5 unnumbered" id="exercises-38">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-telescoping-bound-absolute">
+
+<p><strong>Exercise 10.3.1.</strong> Suppose that the sequence <span class="math inline">\(\{b_n\}\)</span> is decreasing with <span class="math inline">\(\lim_{n\to\infty}b_n=0\)</span>. If <span class="math inline">\(\{a_n\}\)</span> is a sequence in <span class="math inline">\(\mathbb{R}\)</span> satisfying <span class="math inline">\(|a_n|\le b_n-b_{n+1}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>, prove <span class="math inline">\(\sum a_k\)</span> converges absolutely. <a aria-label="Hint for Exercise 10.3.1" href="solutions-ch10.html#sol-exer-telescoping-bound-absolute">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-kp-ak">
+
+<p><strong>Exercise 10.3.2.</strong> Prove that if <span class="math inline">\(\lim_{k\to\infty} k^pa_k=A\)</span> for some <span class="math inline">\(p&gt;1\)</span>, then <span class="math inline">\(\sum a_k\)</span> converges absolutely. <a aria-label="Hint for Exercise 10.3.2" href="solutions-ch10.html#sol-exer-kp-ak">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-squares-absolute">
+
+<p><strong>Exercise 10.3.3.</strong> Prove that if <span class="math inline">\(\sum a_k\)</span> converges absolutely, then <span class="math inline">\(\sum a_k^2\)</span> converges. Give an example of
+a convergent series <span class="math inline">\(\sum a_k\)</span> for
+which <span class="math inline">\(\sum a_k^2\)</span> diverges. <a aria-label="Hint for Exercise 10.3.3" href="solutions-ch10.html#sol-exer-squares-absolute">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-positive-negative-parts">
+
+<p><strong>Exercise 10.3.4.</strong> For each <span class="math inline">\(k\)</span>, let <span class="math inline">\(a_k^+=\max\{a_k,0\}\)</span> and <span class="math inline">\(a_k^-=\max\{-a_k,0\}\)</span>. Prove that <span class="math inline">\(\sum a_k\)</span> converges absolutely if and only
+if both <span class="math inline">\(\sum a_k^+\)</span> and <span class="math inline">\(\sum a_k^-\)</span> converge. Prove that in this
+case <span class="math inline">\(\sum a_k=\sum a_k^+-\sum
+a_k^-\)</span>. <a aria-label="Hint for Exercise 10.3.4" href="solutions-ch10.html#sol-exer-positive-negative-parts">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-rearrangement-infinity">
+
+<p><strong>Exercise 10.3.5.</strong> Find a rearrangement of <span class="math inline">\(\sum\frac{(-1)^{k+1}}{k}\)</span> whose partial
+sums tend to <span class="math inline">\(\infty\)</span>. <a aria-label="Hint for Exercise 10.3.5" href="solutions-ch10.html#sol-exer-rearrangement-infinity">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="notes-9">
+<h2>Notes</h2>
+<p>Nicole Oresme proved that the harmonic series diverges, by the
+grouping in <a href="#exer-harmonic-grouping">Exercise 10.2.8</a>,
+around 1350 [<a href="bibliography.html#bib-oresme">55</a>]. Colin Maclaurin gave the
+Integral Test in 1742 [<a href="bibliography.html#bib-maclaurin1742">52</a>], and Cauchy
+gave it again later. The Ratio Test is due to Jean le Rond d’Alembert
+(1768) [<a href="bibliography.html#bib-dalembert1768">18</a>], and the Root Test and the
+Cauchy Criterion for series to Cauchy (1821) [<a href="bibliography.html#bib-cauchy1821">15</a>]. Niels Henrik Abel published his
+summation formula in 1826 [<a href="bibliography.html#bib-abel1826">1</a>]. Dirichlet
+observed in 1837, in his paper on primes in arithmetic progressions,
+that rearranging a conditionally convergent series can change its sum
+[<a href="bibliography.html#bib-dirichlet1837">25</a>]. Riemann proved <a href="#thm-riemann-rearrangement">Theorem 10.3.9</a> in his 1854 work on
+trigonometric series, published in 1868 [<a href="bibliography.html#bib-riemann1868">58</a>].</p>
+</section>
+</article>
+</main>
+<nav class="pager" aria-label="Previous and next page (bottom)">
+<a rel="prev" href="ch-integrals.html"><span class="dir">Previous</span> Chapter 9. Integrals</a>
+<a rel="up" href="part-riemann.html"><span class="dir">Up</span> Part II. Riemann Integrals and Series</a>
+<a rel="next" href="ch-function-sequences.html"><span class="dir">Next</span> Chapter 11. Sequences and Series of Functions</a>
+</nav>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+</footer>
+</body>
+</html>
