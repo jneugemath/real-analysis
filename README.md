@@ -1,8 +1,8 @@
-# Real Analysis from Scratch
+# Real Analysis Made a Littl(ε > 0) Easier
 
 Jeffrey T. Neugebauer
 
-*From the Real Numbers to the Lebesgue Integral*
+*A Rigorous Treatment from First Principles to Lebesgue Integral*
 
 The web edition of the book is at https://jneugemath.github.io/real-analysis/
 
