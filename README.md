@@ -2,7 +2,7 @@
 
 Jeffrey T. Neugebauer
 
-*A Rigorous Treatment from First Principles to Lebesgue Integral*
+*A Rigorous Treatment from First Principles to the Lebesgue Integral*
 
 The web edition of the book is at https://jneugemath.github.io/real-analysis/
 
