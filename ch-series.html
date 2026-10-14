@@ -279,7 +279,7 @@ Let <span class="math inline">\(n\in\mathbb{N}\)</span>, <span class="math inlin
 <p>Suppose <span class="math inline">\(\sum a_k\)</span> converges, and
 let <span class="math inline">\(s\)</span> be its sum. Let <span class="math inline">\(t\ge1\)</span>, and choose an integer <span class="math inline">\(n\ge2\)</span> with <span class="math inline">\(n\ge t\)</span>. Then <span class="math inline">\(F(t)\le F(n)\le\sum_{k=1}^{n-1}a_k\le s\)</span>,
 by <a href="#thm-nonnegative-series">Theorem 10.2.6</a>. So <span class="math inline">\(F\)</span> is increasing and bounded above on
-<span class="math inline">\([1,\infty)\)</span>. As in the proof of <a href="ch-integrals.html#thm-comparison-test-integrals">Theorem 9.6.8</a>, <span class="math inline">\(\lim_{t\to\infty}F(t)\)</span> exists. So <span class="math inline">\(\int_1^\infty f\)</span> converges.</p>
+<span class="math inline">\([1,\infty)\)</span>. As in the proof of <a href="ch-integrals.html#thm-comparison-test-integrals">Theorem 9.7.8</a>, <span class="math inline">\(\lim_{t\to\infty}F(t)\)</span> exists. So <span class="math inline">\(\int_1^\infty f\)</span> converges.</p>
 <p>Suppose <span class="math inline">\(\int_1^\infty f\)</span>
 converges, and let <span class="math inline">\(I\)</span> be its value.
 Since <span class="math inline">\(F\)</span> is increasing, <span class="math inline">\(F(n)\le F(t)\)</span> for all <span class="math inline">\(t\ge n\)</span>, and letting <span class="math inline">\(t\to\infty\)</span> gives <span class="math inline">\(F(n)\le I\)</span>. So for all <span class="math inline">\(n\ge2\)</span>, <span class="math display">\[s_n=a_1+\sum_{k=2}^na_k\le a_1+F(n)\le
@@ -294,7 +294,7 @@ height <span class="math inline">\(a_k\)</span>. So <span class="math inline">\(
 <p>Consider the <span class="math inline">\(p\)</span>-series <span class="math inline">\(\sum^\infty_{k=1}\frac{1}{k^p}\)</span>. If <span class="math inline">\(p\le0\)</span>, then <span class="math inline">\(\frac{1}{k^p}\ge1\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>, so the series diverges by
 the <span class="math inline">\(n\)</span>th Term Test. If <span class="math inline">\(p&gt;0\)</span>, then <span class="math inline">\(f(x)=\frac{1}{x^p}\)</span> is nonnegative and
 decreasing on <span class="math inline">\([1,\infty)\)</span>. By the
-<span class="math inline">\(p\)</span>-Test (<a href="ch-integrals.html#thm-p-test">Theorem 9.6.7</a>), <span class="math inline">\(\int^\infty_1 \frac{1}{x^p}\,dx\)</span> converges
+<span class="math inline">\(p\)</span>-Test (<a href="ch-integrals.html#thm-p-test">Theorem 9.7.7</a>), <span class="math inline">\(\int^\infty_1 \frac{1}{x^p}\,dx\)</span> converges
 if and only if <span class="math inline">\(p&gt;1\)</span>. So by the
 Integral Test, <span class="math inline">\(\sum^\infty_{k=1}\frac{1}{k^p}\)</span> converges
 if and only if <span class="math inline">\(p&gt;1\)</span>. The case
@@ -398,7 +398,7 @@ Combining the two sums from <span class="math inline">\(p\)</span> to
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="techniquebox">
 <p><strong>Proof Technique (Summation by Parts).</strong></p>
-<p>Abel’s formula is a discrete version of integration by parts (<a href="ch-integrals.html#thm-integration-by-parts">Theorem 9.5.2</a>). Think of <span class="math inline">\(A_k\)</span> as an antiderivative of <span class="math inline">\(a_k\)</span>, since <span class="math inline">\(A_k-A_{k-1}=a_k\)</span>. Then <span class="math inline">\(\sum a_kb_k\)</span> plays the role of <span class="math inline">\(\int A'g\)</span>. The sum <span class="math inline">\(\sum A_k(b_k-b_{k+1})\)</span> plays the role of
+<p>Abel’s formula is a discrete version of integration by parts (<a href="ch-integrals.html#thm-integration-by-parts">Theorem 9.6.2</a>). Think of <span class="math inline">\(A_k\)</span> as an antiderivative of <span class="math inline">\(a_k\)</span>, since <span class="math inline">\(A_k-A_{k-1}=a_k\)</span>. Then <span class="math inline">\(\sum a_kb_k\)</span> plays the role of <span class="math inline">\(\int A'g\)</span>. The sum <span class="math inline">\(\sum A_k(b_k-b_{k+1})\)</span> plays the role of
 <span class="math inline">\(-\int Ag'\)</span>, and <span class="math inline">\(A_qb_q-A_{p-1}b_p\)</span> is the boundary term.
 Use the formula when the terms <span class="math inline">\(a_k\)</span>
 are hard to control but their partial sums <span class="math inline">\(A_k\)</span> are easy, and the <span class="math inline">\(b_k\)</span> change slowly. The Dirichlet Test is
@@ -530,7 +530,7 @@ converges for all <span class="math inline">\(t\in\mathbb{R}\)</span>.
 For <span class="math inline">\(t\ne2p\pi\)</span> this follows from the
 test. For <span class="math inline">\(t=2p\pi\)</span> it is the <span class="math inline">\(p\)</span>-series with <span class="math inline">\(p=2\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-38">
+<section class="level5 unnumbered" id="exercises-39">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-nth-term-test">
 
@@ -821,7 +821,7 @@ overshot <span class="math inline">\(\alpha\)</span> by at most that
 term. A proof that took just some number of terms with total above <span class="math inline">\(\alpha\)</span> would have no such bound. The
 smallest such number exists by the Well-Ordering Principle (<a href="ch-real-numbers.html#ax-well-ordering">Axiom 1.2.7</a>).</p>
 </div>
-<section class="level5 unnumbered" id="exercises-39">
+<section class="level5 unnumbered" id="exercises-40">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-telescoping-bound-absolute">
 

@@ -30,13 +30,18 @@ window.MathJax = {
 </nav>
 <main id="main">
 <article id="ch-integrals">
-<h1>Chapter 9. Integrals</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-darboux">9.1 Darboux’s Definition of the Integral</a></li><li><a href="#sec-integral-properties">9.2 Properties of the Integral</a></li><li><a href="#sec-ftc">9.3 The Fundamental Theorem of Calculus</a></li><li><a href="#sec-exp-log">9.4 Logarithms and Exponential Functions</a></li><li><a href="#sec-more-integral-properties">9.5 More Properties of the Integral</a></li><li><a href="#sec-improper">9.6 Improper Integrals</a></li><li><a href="#sec-riemann-stieltjes">9.7 Riemann–Stieltjes Integrals<sup>*</sup></a></li><li><a href="#notes-8">Notes</a></li></ul></nav>
+<h1>Chapter 9. Integrals</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-darboux">9.1 Darboux’s Definition of the Integral</a></li><li><a href="#sec-integral-properties">9.2 Properties of the Integral</a></li><li><a href="#sec-ftc">9.3 The Fundamental Theorem of Calculus</a></li><li><a href="#sec-exp-log">9.4 Logarithms and Exponential
+Functions<sup>*</sup></a></li><li><a href="#sec-trig-integrals">9.5 Trigonometric Functions from
+Integrals<sup>*</sup></a></li><li><a href="#sec-more-integral-properties">9.6 More Properties of the Integral</a></li><li><a href="#sec-improper">9.7 Improper Integrals</a></li><li><a href="#sec-riemann-stieltjes">9.8 Riemann–Stieltjes Integrals<sup>*</sup></a></li><li><a href="#notes-8">Notes</a></li></ul></nav>
 <p>This chapter defines the Riemann integral. The approach, due to
 Darboux, traps the area under a graph between upper sums and lower sums.
 A function is integrable when the two can be made as close as anyone
 likes. Continuous functions and monotone functions are integrable. The
 integral is linear, and the Fundamental Theorem of Calculus connects it
-to the derivative. The chapter then treats improper integrals. <a href="#sec-riemann-stieltjes">Section 9.7</a>, which is marked with a
+to the derivative. The starred Sections <a href="#sec-exp-log">9.4</a>
+and <a href="#sec-trig-integrals">9.5</a> use the integral to define the
+logarithm, the exponential function and the trigonometric functions. The
+chapter then treats improper integrals. <a href="#sec-riemann-stieltjes">Section 9.8</a>, which is marked with a
 star, generalizes the integral by measuring length with an increasing
 function <span class="math inline">\(\alpha\)</span> in place of <span class="math inline">\(x\)</span>.</p>
 <p>The Riemann integral has limits. Lebesgue’s Theorem (<a href="#thm-lebesgue-criterion">Theorem 9.2.9</a>) says exactly which
@@ -792,7 +797,8 @@ for all <span class="math inline">\(a,b\in\mathbb{R}\)</span> and <span class="m
 </section>
 </section>
 <section class="level3 unnumbered" id="sec-exp-log">
-<h2>9.4 Logarithms and Exponential Functions</h2>
+<h2>9.4 Logarithms and Exponential
+Functions<sup>*</sup></h2>
 <p>Until now, <span class="math inline">\(\ln x\)</span> and <span class="math inline">\(e^x\)</span> have been used in examples with their
 properties assumed. See <a href="ch-sequences.html#rem-elementary-functions">Remark
 3.1.1</a>. This section defines them and proves those properties. The
@@ -800,7 +806,12 @@ natural logarithm comes first, as an integral. The exponential function
 is its inverse. Then <span class="math inline">\(a^x\)</span> is defined
 for every <span class="math inline">\(a&gt;0\)</span> and every real
 <span class="math inline">\(x\)</span>, and so is <span class="math inline">\(x^\alpha\)</span> for every real <span class="math inline">\(\alpha\)</span>. Before this section, powers with
-irrational exponents had no meaning.</p>
+irrational exponents had no meaning. <a href="ch-power-series.html#sec-exp-series">Section
+12.5</a> builds the same functions a second way, starting from the power
+series of <span class="math inline">\(e^x\)</span>. A reader willing to
+assume the familiar properties of <span class="math inline">\(\ln
+x\)</span> and <span class="math inline">\(e^x\)</span> can skip both
+sections.</p>
 <div class="examplebox" id="ex-exp-ln">
 
 <p><strong>Example 9.4.1</strong> (Exponential and Natural Log
@@ -1117,11 +1128,286 @@ one-to-one and maps <span class="math inline">\(\mathbb{R}\)</span> onto
 </div>
 </section>
 </section>
+<section class="level3 unnumbered" id="sec-trig-integrals">
+<h2>9.5 Trigonometric Functions from
+Integrals<sup>*</sup></h2>
+<p>This section builds <span class="math inline">\(\sin\)</span> and
+<span class="math inline">\(\cos\)</span> from an integral, the way <a href="#sec-exp-log">Section 9.4</a> built <span class="math inline">\(\ln\)</span> from <span class="math inline">\(\int_1^x\frac1t\,dt\)</span>. <a href="ch-power-series.html#sec-trig">Section 12.4</a> builds the same functions a second
+way, from power series. Either section can be read without the other. A
+reader willing to assume the familiar properties of <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> can skip both.</p>
+<p>Calculus says <span class="math inline">\(\arctan
+x=\int_0^x\frac{dt}{1+t^2}\)</span>. Here that formula becomes the
+definition. The integrand is continuous on all of <span class="math inline">\(\mathbb{R}\)</span>, so no improper integrals are
+needed. Then <span class="math inline">\(\tan\)</span> is the inverse of
+<span class="math inline">\(\arctan\)</span>, and <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are built from <span class="math inline">\(\tan\)</span>. In this section, when <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(\int_0^xf\)</span> means <span class="math inline">\(-\int_x^0f\)</span>.</p>
+<div class="definitionbox" id="def-arctan-integral">
+
+<p><strong>Definition 9.5.1.</strong> For <span class="math inline">\(x\in\mathbb{R}\)</span>, define <span class="math display">\[\arctan x=\int_0^x\frac{dt}{1+t^2}.\]</span></p>
+</div>
+<div class="theorembox" id="thm-arctan-integral">
+
+<p><strong>Theorem 9.5.2.</strong></p>
+<ol>
+<li><p><span class="math inline">\(\arctan\)</span> is differentiable on
+<span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\frac{d}{dx}\arctan x=\frac1{1+x^2}\)</span>, and
+<span class="math inline">\(\arctan\)</span> is strictly
+increasing.</p></li>
+<li><p><span class="math inline">\(\arctan(-x)=-\arctan x\)</span> for
+all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(|\arctan x|&lt;2\)</span> for all
+<span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Let <span class="math inline">\(x\in\mathbb{R}\)</span>, and
+choose <span class="math inline">\(a&lt;b\)</span> with <span class="math inline">\(a&lt;\min\{0,x\}\)</span> and <span class="math inline">\(b&gt;\max\{0,x\}\)</span>. On <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(\arctan
+x=\int_a^x\frac{dt}{1+t^2}-\int_a^0\frac{dt}{1+t^2}\)</span> by <a href="#thm-integral-additive">Theorem 9.2.13</a>. The integrand is
+continuous, so <a href="#thm-ftc-derivative">Theorem 9.3.7</a> gives
+<span class="math inline">\(\frac{d}{dx}\arctan
+x=\frac1{1+x^2}\)</span>. This is positive, so <span class="math inline">\(\arctan\)</span> is strictly increasing by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>.</p>
+<p>(2) Let <span class="math inline">\(g(x)=\arctan
+x+\arctan(-x)\)</span>. By the Chain Rule, <span class="math inline">\(g'(x)=\frac1{1+x^2}-\frac1{1+x^2}=0\)</span>.
+So <span class="math inline">\(g\)</span> is constant, and <span class="math inline">\(g(x)=g(0)=0\)</span>.</p>
+<p>(3) By (2), it is enough to take <span class="math inline">\(x\ge0\)</span>. If <span class="math inline">\(0\le x\le1\)</span>, then <span class="math inline">\(\frac1{1+t^2}\le1\)</span>, so <span class="math inline">\(\arctan x\le x\le1\)</span> by <a href="#exer-integral-monotone">Exercise 9.2.3</a>. If <span class="math inline">\(x&gt;1\)</span>, then <span class="math inline">\(\frac1{1+t^2}&lt;\frac1{t^2}\)</span> for <span class="math inline">\(t\ge1\)</span>, and <span class="math inline">\(-\frac1t\)</span> is an antiderivative of <span class="math inline">\(\frac1{t^2}\)</span>. So by <a href="#thm-ftc-evaluation">Theorem 9.3.6</a>, <span class="math display">\[\arctan
+x=\arctan1+\int_1^x\frac{dt}{1+t^2}\le1+\int_1^x\frac{dt}{t^2}=1+1-\frac1x&lt;2.\]</span></p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-pi-integral">
+
+<p><strong>Definition 9.5.3.</strong> Define <span class="math inline">\(\pi\)</span> by <span class="math display">\[\frac\pi2=\sup\{\arctan
+x:x\in\mathbb{R}\}.\]</span></p>
+</div>
+<p>The supremum exists by <a href="#thm-arctan-integral">Theorem
+9.5.2</a> (3). Since <span class="math inline">\(\arctan1&gt;\arctan0=0\)</span>, <span class="math inline">\(0&lt;\pi\le4\)</span>.</p>
+<div class="theorembox" id="thm-arctan-onto">
+
+<p><strong>Theorem 9.5.4.</strong> <span class="math inline">\(\lim_{x\to\infty}\arctan x=\frac\pi2\)</span> and
+<span class="math inline">\(\lim_{x\to-\infty}\arctan
+x=-\frac\pi2\)</span>. Also <span class="math inline">\(\arctan\)</span>
+maps <span class="math inline">\(\mathbb{R}\)</span> onto <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
+<span class="math inline">\(\frac\pi2-\varepsilon\)</span> is not an
+upper bound, <span class="math inline">\(\arctan
+x_0&gt;\frac\pi2-\varepsilon\)</span> for some <span class="math inline">\(x_0\)</span>. If <span class="math inline">\(x&gt;x_0\)</span>, then <span class="math inline">\(\frac\pi2-\varepsilon&lt;\arctan x_0&lt;\arctan
+x\le\frac\pi2\)</span>. So <span class="math inline">\(\arctan
+x\to\frac\pi2\)</span> as <span class="math inline">\(x\to\infty\)</span>. By <a href="#thm-arctan-integral">Theorem 9.5.2</a> (2), <span class="math inline">\(\arctan x\to-\frac\pi2\)</span> as <span class="math inline">\(x\to-\infty\)</span>. Also <span class="math inline">\(\arctan x&lt;\arctan(x+1)\le\frac\pi2\)</span>, so
+every value is less than <span class="math inline">\(\frac\pi2\)</span>,
+and similarly greater than <span class="math inline">\(-\frac\pi2\)</span>. Let <span class="math inline">\(y\in\left(-\frac\pi2,\frac\pi2\right)\)</span>. By
+the two limits, there are <span class="math inline">\(a&lt;b\)</span>
+with <span class="math inline">\(\arctan a&lt;y&lt;\arctan b\)</span>.
+By <a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a>, <span class="math inline">\(\arctan c=y\)</span> for some <span class="math inline">\(c\in(a,b)\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-tan-integral">
+
+<p><strong>Definition 9.5.5.</strong> The <em>tangent function</em>
+<span class="math inline">\(\tan:\left(-\frac\pi2,\frac\pi2\right)\to\mathbb{R}\)</span>
+is the inverse of <span class="math inline">\(\arctan\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-tan-integral">
+
+<p><strong>Theorem 9.5.6.</strong> The function <span class="math inline">\(\tan\)</span> is differentiable and strictly
+increasing on <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>, with
+<span class="math inline">\(\frac{d}{dx}\tan x=1+\tan^2x\)</span>. Also
+<span class="math inline">\(\tan0=0\)</span>, <span class="math inline">\(\tan(-x)=-\tan x\)</span>, <span class="math inline">\(\tan x\to\infty\)</span> as <span class="math inline">\(x\to\frac\pi2^-\)</span>, and <span class="math inline">\(\tan x\to-\infty\)</span> as <span class="math inline">\(x\to-\frac\pi2^+\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>By <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a> and <a href="#thm-arctan-onto">Theorem 9.5.4</a>, <span class="math inline">\(\tan\)</span> is differentiable on <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>. If
+<span class="math inline">\(x=\arctan y\)</span>, then <span class="math inline">\(\tan'(x)=\frac1{\arctan'(y)}=1+y^2=1+\tan^2x\)</span>.
+Since <span class="math inline">\(\tan'&gt;0\)</span>, <span class="math inline">\(\tan\)</span> is strictly increasing. Since <span class="math inline">\(\arctan0=0\)</span>, <span class="math inline">\(\tan0=0\)</span>, and <span class="math inline">\(\tan(-x)=-\tan x\)</span> follows from <a href="#thm-arctan-integral">Theorem 9.5.2</a> (2). Let <span class="math inline">\(M\in\mathbb{R}\)</span>. If <span class="math inline">\(\arctan M&lt;x&lt;\frac\pi2\)</span>, then <span class="math inline">\(\tan x&gt;M\)</span>. So <span class="math inline">\(\tan x\to\infty\)</span> as <span class="math inline">\(x\to\frac\pi2^-\)</span>. The other limit follows
+since <span class="math inline">\(\tan\)</span> is odd.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>In calculus, <span class="math inline">\(\cos
+x=\frac1{\sqrt{1+\tan^2x}}\)</span> and <span class="math inline">\(\sin
+x=\tan x\cos x\)</span> when <span class="math inline">\(|x|&lt;\frac\pi2\)</span>. These formulas define
+<span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> on that interval. Then <span class="math inline">\(\sin(x+\pi)=-\sin x\)</span> and <span class="math inline">\(\cos(x+\pi)=-\cos x\)</span> extend them to all of
+<span class="math inline">\(\mathbb{R}\)</span>.</p>
+<div class="definitionbox" id="def-sin-cos-integral">
+
+<p><strong>Definition 9.5.7.</strong> For <span class="math inline">\(|x|&lt;\frac\pi2\)</span>, define <span class="math display">\[\cos
+x=\frac1{\sqrt{1+\tan^2x}}\quad\text{and}\quad\sin x=\tan x\cos
+x.\]</span> Define <span class="math inline">\(\cos\left(\pm\frac\pi2\right)=0\)</span> and <span class="math inline">\(\sin\left(\pm\frac\pi2\right)=\pm1\)</span>. For
+any other <span class="math inline">\(x\in\mathbb{R}\)</span>, write
+<span class="math inline">\(x=y+k\pi\)</span>, where <span class="math inline">\(k\in\mathbb{Z}\)</span> and <span class="math inline">\(-\frac\pi2&lt;y\le\frac\pi2\)</span>, and define
+<span class="math display">\[\sin x=(-1)^k\sin y\quad\text{and}\quad\cos
+x=(-1)^k\cos y.\]</span></p>
+</div>
+<p>There is exactly one such <span class="math inline">\(k\)</span>,
+because the intervals <span class="math inline">\(\left(-\frac\pi2+k\pi,\frac\pi2+k\pi\right]\)</span>,
+<span class="math inline">\(k\in\mathbb{Z}\)</span>, cover <span class="math inline">\(\mathbb{R}\)</span> and do not overlap. Notice
+<span class="math inline">\(y+(k+1)\pi\)</span> uses <span class="math inline">\(k+1\)</span>. So <span class="math display">\[\sin(x+\pi)=-\sin
+x\quad\text{and}\quad\cos(x+\pi)=-\cos x\]</span> for every <span class="math inline">\(x\in\mathbb{R}\)</span>. The definition at <span class="math inline">\(-\frac\pi2\)</span> agrees with this rule, since
+<span class="math inline">\(-\frac\pi2=\frac\pi2-\pi\)</span>.</p>
+<p>The derivatives at the points <span class="math inline">\(\frac\pi2+k\pi\)</span> need a lemma. It says a
+derivative has no removable discontinuities.</p>
+<div class="lemmabox" id="lem-derivative-limit">
+
+<p><strong>Lemma 9.5.8.</strong> Let <span class="math inline">\(f:(a,b)\to\mathbb{R}\)</span> be continuous, let
+<span class="math inline">\(c\in(a,b)\)</span>, and suppose <span class="math inline">\(f\)</span> is differentiable at every point of
+<span class="math inline">\((a,b)\)</span> except perhaps <span class="math inline">\(c\)</span>. If <span class="math inline">\(\lim_{x\to c}f'(x)=L\)</span>, then <span class="math inline">\(f\)</span> is differentiable at <span class="math inline">\(c\)</span> and <span class="math inline">\(f'(c)=L\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
+<span class="math inline">\(\delta&gt;0\)</span> so that <span class="math inline">\(|f'(t)-L|&lt;\varepsilon\)</span> whenever
+<span class="math inline">\(0&lt;|t-c|&lt;\delta\)</span> and <span class="math inline">\(t\in(a,b)\)</span>. Let <span class="math inline">\(x\in(a,b)\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>. By <a href="ch-derivative.html#thm-mvt">Theorem 7.2.4</a> on the interval between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span>, <span class="math inline">\(\frac{f(x)-f(c)}{x-c}=f'(\xi)\)</span> for
+some <span class="math inline">\(\xi\)</span> strictly between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span>. Then <span class="math inline">\(0&lt;|\xi-c|&lt;\delta\)</span>, so <span class="math inline">\(\left|\frac{f(x)-f(c)}{x-c}-L\right|&lt;\varepsilon\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-sin-cos-integral">
+
+<p><strong>Theorem 9.5.9.</strong> The functions <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are differentiable on <span class="math inline">\(\mathbb{R}\)</span>, and <span class="math display">\[\frac{d}{dx}\sin x=\cos
+x\quad\text{and}\quad\frac{d}{dx}\cos x=-\sin x.\]</span> Also <span class="math inline">\(\sin0=0\)</span>, <span class="math inline">\(\cos0=1\)</span>, <span class="math inline">\(\sin\frac\pi2=1\)</span>, <span class="math inline">\(\cos\frac\pi2=0\)</span> and <span class="math inline">\(\sin^2x+\cos^2x=1\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p><em>Values.</em> Since <span class="math inline">\(\tan0=0\)</span>,
+<span class="math inline">\(\cos0=1\)</span> and <span class="math inline">\(\sin0=0\)</span>. The values at <span class="math inline">\(\frac\pi2\)</span> are part of the definition. For
+<span class="math inline">\(|x|&lt;\frac\pi2\)</span>, <span class="math display">\[\sin^2x+\cos^2x=\frac{\tan^2x+1}{1+\tan^2x}=1.\]</span>
+This also holds at <span class="math inline">\(\pm\frac\pi2\)</span>,
+and multiplying by <span class="math inline">\((-1)^{2k}=1\)</span> does
+not change it. So it holds on <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p><em>Derivatives on <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>.</em>
+By <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a> applied to <span class="math inline">\(x^2\)</span> on <span class="math inline">\((0,\infty)\)</span>, <span class="math inline">\(\sqrt u\)</span> is differentiable for <span class="math inline">\(u&gt;0\)</span> with derivative <span class="math inline">\(\frac1{2\sqrt u}\)</span>. Let <span class="math inline">\(u=1+\tan^2x\)</span>, so <span class="math inline">\(u'=2\tan x(1+\tan^2x)\)</span>. By the Chain
+Rule and the Quotient Rule, <span class="math display">\[\frac{d}{dx}\cos
+x=-\frac1u\cdot\frac{u'}{2\sqrt u}=-\frac{\tan
+x}{\sqrt{1+\tan^2x}}=-\sin x.\]</span> By the Product Rule, <span class="math display">\[\frac{d}{dx}\sin x=(1+\tan^2x)\cos x-\tan x\sin
+x=(1+\tan^2x)\cos x-\tan^2x\cos x=\cos x.\]</span></p>
+<p><em>Other open intervals.</em> On <span class="math inline">\(\left(-\frac\pi2+k\pi,\frac\pi2+k\pi\right)\)</span>,
+<span class="math inline">\(\sin x=(-1)^k\sin(x-k\pi)\)</span> with
+<span class="math inline">\(x-k\pi\)</span> in <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>. So
+<span class="math inline">\(\sin'(x)=(-1)^k\cos(x-k\pi)=\cos
+x\)</span>. Similarly <span class="math inline">\(\cos'=-\sin\)</span>.</p>
+<p><em>The points <span class="math inline">\(\frac\pi2+k\pi\)</span>.</em> First take <span class="math inline">\(c=\frac\pi2\)</span>. As <span class="math inline">\(x\to\frac\pi2^-\)</span>, <span class="math inline">\(\tan x\to\infty\)</span>, so <span class="math display">\[\cos
+x=\frac1{\sqrt{1+\tan^2x}}\to0\quad\text{and}\quad\sin
+x=\frac1{\sqrt{1+1/\tan^2x}}\to1.\]</span> As <span class="math inline">\(x\to\frac\pi2^+\)</span>, <span class="math inline">\(x-\pi\to-\frac\pi2^+\)</span>. The same
+computation, with <span class="math inline">\(\tan(x-\pi)\to-\infty\)</span>, gives <span class="math inline">\(\cos(x-\pi)\to0\)</span> and <span class="math inline">\(\sin(x-\pi)\to-1\)</span>. So <span class="math inline">\(\cos x=-\cos(x-\pi)\to0\)</span> and <span class="math inline">\(\sin x=-\sin(x-\pi)\to1\)</span>. Thus <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are continuous at <span class="math inline">\(\frac\pi2\)</span>, and so on <span class="math inline">\((0,\pi)\)</span>. Also <span class="math inline">\(\sin'(x)=\cos x\to0=\cos\frac\pi2\)</span> and
+<span class="math inline">\(\cos'(x)=-\sin
+x\to-1=-\sin\frac\pi2\)</span> as <span class="math inline">\(x\to\frac\pi2\)</span>. By <a href="#lem-derivative-limit">Lemma 9.5.8</a>, <span class="math inline">\(\sin'\left(\frac\pi2\right)=\cos\frac\pi2\)</span>
+and <span class="math inline">\(\cos'\left(\frac\pi2\right)=-\sin\frac\pi2\)</span>.
+For <span class="math inline">\(c=\frac\pi2+k\pi\)</span>, use <span class="math inline">\(\sin x=(-1)^k\sin(x-k\pi)\)</span> and <span class="math inline">\(\cos x=(-1)^k\cos(x-k\pi)\)</span> near <span class="math inline">\(c\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>So <span class="math inline">\(\sin''=-\sin\)</span> and
+<span class="math inline">\(\cos''=-\cos\)</span>. The
+identities now follow from one fact about the equation <span class="math inline">\(y''+y=0\)</span>. The same argument
+appears in <a href="ch-power-series.html#sec-trig">Section 12.4</a>, so that each section
+can be read alone.</p>
+<div class="theorembox" id="thm-trig-integral-identities">
+
+<p><strong>Theorem 9.5.10.</strong></p>
+<ol>
+<li><p>If <span class="math inline">\(y:\mathbb{R}\to\mathbb{R}\)</span>
+is twice differentiable with <span class="math inline">\(y''+y=0\)</span> on <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(y(x)=y(0)\cos x+y'(0)\sin x\)</span> for all
+<span class="math inline">\(x\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin(x+y)=\sin x\cos y+\cos x\sin
+y\)</span> and <span class="math inline">\(\cos(x+y)=\cos x\cos y-\sin
+x\sin y\)</span> for all <span class="math inline">\(x,y\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin(-x)=-\sin x\)</span>, <span class="math inline">\(\cos(-x)=\cos x\)</span>, <span class="math inline">\(\sin\left(x+\frac\pi2\right)=\cos x\)</span> and
+<span class="math inline">\(\sin(x+2\pi)=\sin x\)</span>, <span class="math inline">\(\cos(x+2\pi)=\cos x\)</span> for all <span class="math inline">\(x\)</span>.</p></li>
+<li><p><span class="math inline">\(\sin x&gt;0\)</span> for <span class="math inline">\(0&lt;x&lt;\pi\)</span>. Also <span class="math inline">\(\sin x=0\)</span> exactly when <span class="math inline">\(x=k\pi\)</span>, and <span class="math inline">\(\cos x=0\)</span> exactly when <span class="math inline">\(x=\frac\pi2+k\pi\)</span>, for some <span class="math inline">\(k\in\mathbb{Z}\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) Let <span class="math inline">\(z(x)=y(x)-y(0)\cos
+x-y'(0)\sin x\)</span>. Then <span class="math inline">\(z''+z=0\)</span>, <span class="math inline">\(z(0)=0\)</span> and <span class="math inline">\(z'(0)=0\)</span>. Let <span class="math inline">\(E=z^2+(z')^2\)</span>. Then <span class="math inline">\(E'=2z'(z+z'')=0\)</span>, so <span class="math inline">\(E\)</span> is constant by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>, and <span class="math inline">\(E=E(0)=0\)</span>. So <span class="math inline">\(z=0\)</span>.</p>
+<p>(2) Fix <span class="math inline">\(y\)</span>. The function <span class="math inline">\(f(x)=\sin(x+y)\)</span> has <span class="math inline">\(f''=-f\)</span>, <span class="math inline">\(f(0)=\sin y\)</span> and <span class="math inline">\(f'(0)=\cos y\)</span>. By (1), <span class="math inline">\(f(x)=\sin y\cos x+\cos y\sin x\)</span>. For <span class="math inline">\(\cos(x+y)\)</span>, use <span class="math inline">\(g(x)=\cos(x+y)\)</span>, with <span class="math inline">\(g(0)=\cos y\)</span> and <span class="math inline">\(g'(0)=-\sin y\)</span>.</p>
+<p>(3) The functions <span class="math inline">\(-\sin(-x)\)</span> and
+<span class="math inline">\(\cos(-x)\)</span> solve <span class="math inline">\(y''+y=0\)</span> with the same values and
+derivatives at <span class="math inline">\(0\)</span> as <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span>. So they equal <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> by (1). Similarly, <span class="math inline">\(\sin\left(x+\frac\pi2\right)\)</span> solves the
+equation with value <span class="math inline">\(1\)</span> and
+derivative <span class="math inline">\(\cos\frac\pi2=0\)</span> at <span class="math inline">\(0\)</span>, so it equals <span class="math inline">\(\cos x\)</span>. Applying <span class="math inline">\(\sin(x+\pi)=-\sin x\)</span> and <span class="math inline">\(\cos(x+\pi)=-\cos x\)</span> twice gives period
+<span class="math inline">\(2\pi\)</span>.</p>
+<p>(4) If <span class="math inline">\(0&lt;x&lt;\frac\pi2\)</span>, then
+<span class="math inline">\(\tan x&gt;0\)</span> and <span class="math inline">\(\cos x&gt;0\)</span>, so <span class="math inline">\(\sin x&gt;0\)</span>. Also <span class="math inline">\(\sin\frac\pi2=1\)</span>. If <span class="math inline">\(\frac\pi2&lt;x&lt;\pi\)</span>, then <span class="math inline">\(y=x-\pi\in\left(-\frac\pi2,0\right)\)</span> and
+<span class="math inline">\(\sin x=-\sin y=-\tan y\cos y&gt;0\)</span>.
+On <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right]\)</span>, <span class="math inline">\(\sin y=0\)</span> only when <span class="math inline">\(\tan y=0\)</span>, that is, <span class="math inline">\(y=0\)</span>, and <span class="math inline">\(\cos
+y=0\)</span> only when <span class="math inline">\(y=\frac\pi2\)</span>,
+since <span class="math inline">\(\cos y&gt;0\)</span> for <span class="math inline">\(|y|&lt;\frac\pi2\)</span>. The rest follows from
+the definition, since <span class="math inline">\(\sin(y+k\pi)=(-1)^k\sin y\)</span> and <span class="math inline">\(\cos(y+k\pi)=(-1)^k\cos y\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Last come the inverse sine and inverse cosine. They have integral
+formulas too. The integral for <span class="math inline">\(\arcsin\)</span> is improper at <span class="math inline">\(\pm1\)</span>, which is one reason this section
+started from <span class="math inline">\(\arctan\)</span>.</p>
+<div class="theorembox" id="thm-arcsin-integral">
+
+<p><strong>Theorem 9.5.11.</strong></p>
+<ol>
+<li><p><span class="math inline">\(\sin\)</span> is strictly increasing
+on <span class="math inline">\(\left[-\frac\pi2,\frac\pi2\right]\)</span> and
+maps it onto <span class="math inline">\([-1,1]\)</span>. Its inverse
+<span class="math inline">\(\arcsin:[-1,1]\to\left[-\frac\pi2,\frac\pi2\right]\)</span>
+satisfies <span class="math display">\[\arcsin
+x=\int_0^x\frac{dt}{\sqrt{1-t^2}}\quad\text{for
+}-1&lt;x&lt;1.\]</span></p></li>
+<li><p><span class="math inline">\(\cos\)</span> is strictly decreasing
+on <span class="math inline">\([0,\pi]\)</span> and maps it onto <span class="math inline">\([-1,1]\)</span>. Its inverse <span class="math inline">\(\arccos:[-1,1]\to[0,\pi]\)</span> satisfies <span class="math inline">\(\arccos x=\frac\pi2-\arcsin x\)</span> for <span class="math inline">\(-1\le x\le1\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) On <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>, <span class="math inline">\(\sin'=\cos&gt;0\)</span>. If <span class="math inline">\(-\frac\pi2\le a&lt;b\le\frac\pi2\)</span>, then by
+<a href="ch-derivative.html#thm-mvt">Theorem 7.2.4</a>, <span class="math inline">\(\sin
+b-\sin a=\cos\xi\,(b-a)&gt;0\)</span> for some <span class="math inline">\(\xi\in(a,b)\)</span>. So <span class="math inline">\(\sin\)</span> is strictly increasing on <span class="math inline">\(\left[-\frac\pi2,\frac\pi2\right]\)</span>. Since
+<span class="math inline">\(\sin\left(\pm\frac\pi2\right)=\pm1\)</span>,
+it maps onto <span class="math inline">\([-1,1]\)</span> by <a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a>. By <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a>, <span class="math inline">\(\arcsin\)</span> is differentiable on <span class="math inline">\((-1,1)\)</span>. If <span class="math inline">\(y=\sin x\)</span> with <span class="math inline">\(|x|&lt;\frac\pi2\)</span>, then <span class="math inline">\(\cos x&gt;0\)</span>, so <span class="math inline">\(\cos x=\sqrt{1-y^2}\)</span> and <span class="math inline">\(\arcsin'(y)=\frac1{\cos
+x}=\frac1{\sqrt{1-y^2}}\)</span>. The integral <span class="math inline">\(G(x)=\int_0^x\frac{dt}{\sqrt{1-t^2}}\)</span> has
+the same derivative on <span class="math inline">\((-1,1)\)</span>, by
+<a href="#thm-ftc-derivative">Theorem 9.3.7</a>. Both are <span class="math inline">\(0\)</span> at <span class="math inline">\(0\)</span>. So <span class="math inline">\(G=\arcsin\)</span> on <span class="math inline">\((-1,1)\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5).</p>
+<p>(2) On <span class="math inline">\((0,\pi)\)</span>, <span class="math inline">\(\cos'=-\sin&lt;0\)</span> by <a href="#thm-trig-integral-identities">Theorem 9.5.10</a> (4). As in (1),
+<span class="math inline">\(\cos\)</span> is strictly decreasing on
+<span class="math inline">\([0,\pi]\)</span> and maps it onto <span class="math inline">\([\cos\pi,\cos0]=[-1,1]\)</span>. Let <span class="math inline">\(y\in[-1,1]\)</span> and <span class="math inline">\(x=\arcsin y\)</span>. Then <span class="math inline">\(\frac\pi2-x\in[0,\pi]\)</span>. By <a href="#thm-trig-integral-identities">Theorem 9.5.10</a> (2) and (3),
+<span class="math inline">\(\cos\left(\frac\pi2-x\right)=\cos\frac\pi2\cos
+x+\sin\frac\pi2\sin x=\sin x=y\)</span>. So <span class="math inline">\(\arccos y=\frac\pi2-x\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>The inverse cosine here is the one in <a href="ch-derivative.html#ex-arccos">Example
+7.2.10</a>. For a reader who knows arc length, <span class="math inline">\(\int_0^x\frac{dt}{\sqrt{1-t^2}}\)</span> is the
+length of the arc of the unit circle above <span class="math inline">\([0,x]\)</span>. So <span class="math inline">\(\pi=2\arcsin1\)</span> is half the length of the
+unit circle, which is how <span class="math inline">\(\pi\)</span> is
+usually introduced.</p>
+<section class="level5 unnumbered" id="exercises-35">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-arctan-reciprocal">
+
+<p><strong>Exercise 9.5.1.</strong> Prove that <span class="math inline">\(\arctan x+\arctan\frac1x=\frac\pi2\)</span> for
+all <span class="math inline">\(x&gt;0\)</span>. Conclude that <span class="math inline">\(\arctan1=\frac\pi4\)</span>. <a aria-label="Solution for Exercise 9.5.1" href="solutions-ch09.html#sol-exer-arctan-reciprocal">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-arctan-addition">
+
+<p><strong>Exercise 9.5.2.</strong> Let <span class="math inline">\(x,y\in\mathbb{R}\)</span> with <span class="math inline">\(xy&lt;1\)</span>. Prove that <span class="math inline">\(\arctan x+\arctan
+y=\arctan\frac{x+y}{1-xy}\)</span>. <a aria-label="Hint for Exercise 9.5.2" href="solutions-ch09.html#sol-exer-arctan-addition">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-pi-integral-bounds">
+
+<p><strong>Exercise 9.5.3.</strong> Prove that <span class="math inline">\(1-t^2\le\frac1{1+t^2}\le1-t^2+t^4\)</span> for all
+<span class="math inline">\(t\in\mathbb{R}\)</span>. Use <a href="#exer-arctan-reciprocal">Exercise 9.5.1</a> to conclude that <span class="math inline">\(\frac83\le\pi\le\frac{52}{15}\)</span>. <a aria-label="Hint for Exercise 9.5.3" href="solutions-ch09.html#sol-exer-pi-integral-bounds">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sin-x-less-x">
+
+<p><strong>Exercise 9.5.4.</strong> Prove that <span class="math inline">\(\sin x&lt;x\)</span> for all <span class="math inline">\(x&gt;0\)</span>. Then prove that <span class="math inline">\(\lim_{x\to0}\frac{\sin x}x=1\)</span>. <a aria-label="Hint for Exercise 9.5.4" href="solutions-ch09.html#sol-exer-sin-x-less-x">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-sec-tan">
+
+<p><strong>Exercise 9.5.5.</strong> Define <span class="math inline">\(\sec x=\frac1{\cos x}\)</span> where <span class="math inline">\(\cos x\ne0\)</span>. Prove that <span class="math inline">\(\frac{d}{dx}\sec x=\sec x\tan x\)</span> and <span class="math inline">\(\sec^2x=1+\tan^2x\)</span> for <span class="math inline">\(|x|&lt;\frac\pi2\)</span>. <a aria-label="Hint for Exercise 9.5.5" href="solutions-ch09.html#sol-exer-sec-tan">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-quarter-circle">
+
+<p><strong>Exercise 9.5.6.</strong> Let <span class="math inline">\(F(x)=\frac12\bigl(x\sqrt{1-x^2}+\arcsin
+x\bigr)\)</span> for <span class="math inline">\(-1\le x\le1\)</span>.
+Prove that <span class="math inline">\(F'(x)=\sqrt{1-x^2}\)</span>
+for <span class="math inline">\(-1&lt;x&lt;1\)</span>. Then prove that
+<span class="math inline">\(\int_0^1\sqrt{1-t^2}\,dt=\frac\pi4\)</span>.
+So the area of the unit disk is <span class="math inline">\(\pi\)</span>. <a aria-label="Solution for Exercise 9.5.6" href="solutions-ch09.html#sol-exer-quarter-circle">[Solution]</a></p>
+</div>
+</section>
+</section>
 <section class="level3 unnumbered" id="sec-more-integral-properties">
-<h2>9.5 More Properties of the Integral</h2>
+<h2>9.6 More Properties of the Integral</h2>
 <div class="theorembox" id="thm-mvt-integrals">
 
-<p><strong>Theorem 9.5.1</strong> (Mean Value Theorem for
+<p><strong>Theorem 9.6.1</strong> (Mean Value Theorem for
 Integrals)<strong>.</strong></p>
 <p>Let <span class="math inline">\(f\in C[a,b]\)</span>. Then there
 exists a <span class="math inline">\(c\in[a,b]\)</span> such that <span class="math display">\[\int^b_a f=f(c)(b-a).\]</span></p>
@@ -1136,7 +1422,7 @@ f=F(b)-F(a)=F'(c)(b-a)=f(c)(b-a).\]</span></p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-integration-by-parts">
 
-<p><strong>Theorem 9.5.2</strong> (Integration by
+<p><strong>Theorem 9.6.2</strong> (Integration by
 Parts)<strong>.</strong></p>
 <p>Let <span class="math inline">\(f,g:[a,b]\to\mathbb{R}\)</span> be
 differentiable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(f',g'\in\mathcal{R}[a,b]\)</span>. Then
@@ -1152,7 +1438,7 @@ Theorems <a href="#thm-ftc-evaluation">9.3.6</a> and <a href="#thm-integral-line
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-substitution">
 
-<p><strong>Theorem 9.5.3</strong> (<span class="math inline">\(u\)</span>-Substitution)<strong>.</strong></p>
+<p><strong>Theorem 9.6.3</strong> (<span class="math inline">\(u\)</span>-Substitution)<strong>.</strong></p>
 <p>Let <span class="math inline">\(\varphi:[a,b]\to\mathbb{R}\)</span>
 be differentiable on <span class="math inline">\([a,b]\)</span> with
 <span class="math inline">\(\varphi'\in\mathcal{R}[a,b]\)</span>.
@@ -1180,40 +1466,40 @@ Fundamental Theorem of Calculus, <span class="math display">\[\int^b_a
 f(\varphi(t))\varphi'(t)\,dt=F(\varphi(b))-F(\varphi(a))=\int^{\varphi(b)}_{\varphi(a)}
 f(s) \,ds.\]</span></p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-35">
+<section class="level5 unnumbered" id="exercises-36">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-weighted-mvt">
 
-<p><strong>Exercise 9.5.1.</strong> Let <span class="math inline">\(f\in
+<p><strong>Exercise 9.6.1.</strong> Let <span class="math inline">\(f\in
 C[a,b]\)</span> and <span class="math inline">\(g\in\mathcal{R}[a,b]\)</span> with <span class="math inline">\(g(x)\ge 0\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Prove there exists a <span class="math inline">\(c\in[a,b]\)</span> such that <span class="math display">\[\int^b_a f(x)g(x)\,dx=f(c)\int^b_a
-g(x)\,dx.\]</span> <a aria-label="Hint for Exercise 9.5.1" href="solutions-ch09.html#sol-exer-weighted-mvt">[Hint]</a></p>
+g(x)\,dx.\]</span> <a aria-label="Hint for Exercise 9.6.1" href="solutions-ch09.html#sol-exer-weighted-mvt">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-even-odd-integral">
 
-<p><strong>Exercise 9.5.2.</strong> Let <span class="math inline">\(f\in\mathcal{R}[-a,a]\)</span>, <span class="math inline">\(a&gt;0\)</span>. Prove each of the following. Here
+<p><strong>Exercise 9.6.2.</strong> Let <span class="math inline">\(f\in\mathcal{R}[-a,a]\)</span>, <span class="math inline">\(a&gt;0\)</span>. Prove each of the following. Here
 <span class="math inline">\(f\)</span> is even if <span class="math inline">\(f(-x)=f(x)\)</span> for all <span class="math inline">\(x\)</span>, and odd if <span class="math inline">\(f(-x)=-f(x)\)</span> for all <span class="math inline">\(x\)</span>.</p>
 <ol type="a">
 <li><p>If <span class="math inline">\(f\)</span> is even, then <span class="math inline">\(\int^a_{-a}f=2\int^a_0 f\)</span>.</p></li>
 <li><p>If <span class="math inline">\(f\)</span> is odd, then <span class="math inline">\(\int^a_{-a}f=0\)</span>.</p></li>
 </ol>
-<p><a aria-label="Hint for Exercise 9.5.2" href="solutions-ch09.html#sol-exer-even-odd-integral">[Hint]</a></p>
+<p><a aria-label="Hint for Exercise 9.6.2" href="solutions-ch09.html#sol-exer-even-odd-integral">[Hint]</a></p>
 </div>
 </section>
 </section>
 <section class="level3 unnumbered" id="sec-improper">
-<h2>9.6 Improper Integrals</h2>
+<h2>9.7 Improper Integrals</h2>
 <p>The Riemann integral needs a bounded function on a closed and bounded
 interval. An improper integral removes one of these restrictions by
 taking a limit. Throughout this section, <span class="math inline">\(x^p\)</span> for real <span class="math inline">\(p\)</span> and <span class="math inline">\(x&gt;0\)</span> means <span class="math inline">\(E(p\ln x)\)</span>, as in <a href="#ex-exp-ln">Example 9.4.1</a>. Its derivative is <span class="math inline">\(px^{p-1}\)</span>.</p>
 <div class="definitionbox" id="def-locally-integrable">
 
-<p><strong>Definition 9.6.1.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
+<p><strong>Definition 9.7.1.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
 <span class="math inline">\(f:I\to\mathbb{R}\)</span>. If <span class="math inline">\(f\)</span> is integrable on every closed and
 bounded subinterval of <span class="math inline">\(I\)</span>, <span class="math inline">\(f\)</span> is <em>locally integrable</em> on <span class="math inline">\(I\)</span>, denoted <span class="math inline">\(f\in \mathcal{R}_{\mathrm{loc}}(I)\)</span>.</p>
 </div>
 <div class="definitionbox" id="def-improper-integral">
 
-<p><strong>Definition 9.6.2.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,b)\)</span>,
+<p><strong>Definition 9.7.2.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,b)\)</span>,
 where <span class="math inline">\(a\in\mathbb{R}\)</span> and <span class="math inline">\(b\in\mathbb{R}\cup\{\infty\}\)</span>. Then the
 <em>improper Riemann integral</em> of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b)\)</span> is defined as <span class="math display">\[\int^b_a f=\lim_{s\to b^-}\int^s_a f,\]</span>
 provided the limit exists. If <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(a,b]\)</span>,
@@ -1227,7 +1513,7 @@ provided the limit exists. If the integral exists, <span class="math inline">\(f
 </div>
 <div class="examplebox" id="ex-one-over-sqrt">
 
-<p><strong>Example 9.6.3.</strong> Let <span class="math inline">\(f:(0,1]\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=\frac{1}{\sqrt{x}}\)</span>. Then <span class="math display">\[\int^1_0 f=\lim_{t\to0^+}\int_t^1\frac{1}{\sqrt
+<p><strong>Example 9.7.3.</strong> Let <span class="math inline">\(f:(0,1]\to\mathbb{R}\)</span>, <span class="math inline">\(f(x)=\frac{1}{\sqrt{x}}\)</span>. Then <span class="math display">\[\int^1_0 f=\lim_{t\to0^+}\int_t^1\frac{1}{\sqrt
 x}\,dx=\lim_{t\to0^+}\bigl(2-2\sqrt t\bigr)=2.\]</span> However, notice
 <span class="math display">\[\int^1_0 f^2=\lim_{t\to 0^+}\left.\ln
 x\right|_{x=t}^{x=1}=\lim_{t\to 0^+}(-\ln t),\]</span> which does not
@@ -1237,25 +1523,25 @@ converging.</p>
 </div>
 <div class="definitionbox" id="def-improper-integral-open">
 
-<p><strong>Definition 9.6.4.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(a,b)\)</span> with
+<p><strong>Definition 9.7.4.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(a,b)\)</span> with
 <span class="math inline">\(a\in\mathbb{R}\cup\{-\infty\}\)</span> and
 <span class="math inline">\(b\in\mathbb{R}\cup\{\infty\}\)</span>, and
 let <span class="math inline">\(c\in(a,b)\)</span>. Then the improper
 integral of <span class="math inline">\(f\)</span> on <span class="math inline">\((a,b)\)</span> is defined as <span class="math display">\[\int^b_a f=\lim_{t\to a^+}\int^c_t f+\lim_{s\to
 b^-}\int^s_c f,\]</span> provided both limits exist. If the integral
 exists, <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\((a,b)\)</span> and the integral converges.
-Otherwise, the integral diverges. The value does not depend on <span class="math inline">\(c\)</span>. See <a href="#exer-improper-independent-c">Exercise 9.6.5</a>.</p>
+Otherwise, the integral diverges. The value does not depend on <span class="math inline">\(c\)</span>. See <a href="#exer-improper-independent-c">Exercise 9.7.5</a>.</p>
 </div>
 <div class="examplebox" id="ex-x-cubed-improper">
 
-<p><strong>Example 9.6.5.</strong> Even though <span class="math inline">\(\lim_{t\to\infty}\int^t_{-t} x^3 \,dx =0\)</span>,
+<p><strong>Example 9.7.5.</strong> Even though <span class="math inline">\(\lim_{t\to\infty}\int^t_{-t} x^3 \,dx =0\)</span>,
 <span class="math inline">\(\int^\infty_{-\infty} x^3 \,dx\)</span> does
 not exist, since <span class="math display">\[\int^\infty_0
 x^3\,dx=\lim_{s\to\infty}\int^s_0 x^3 \,dx\]</span> does not exist.</p>
 </div>
 <div class="definitionbox" id="def-improper-interior">
 
-<p><strong>Definition 9.6.6.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
+<p><strong>Definition 9.7.6.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
 <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(c,b]\)</span>,
 where <span class="math inline">\(a,b,c\in\mathbb{R}\)</span> with <span class="math inline">\(a&lt;c&lt;b\)</span>. Then the improper integral
 of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span> is defined as <span class="math display">\[\int^b_a f=\lim_{s\to c^-}\int^s_a f+\lim_{t\to
@@ -1265,17 +1551,17 @@ Otherwise, the integral diverges.</p>
 </div>
 <div class="theorembox" id="thm-p-test">
 
-<p><strong>Theorem 9.6.7</strong> (<span class="math inline">\(p\)</span>-Test)<strong>.</strong></p>
+<p><strong>Theorem 9.7.7</strong> (<span class="math inline">\(p\)</span>-Test)<strong>.</strong></p>
 <p>Let <span class="math inline">\(a&gt;0\)</span>. Then <span class="math inline">\(\int^\infty_a \frac{1}{x^p}\,dx\)</span> converges
 if and only if <span class="math inline">\(p&gt;1\)</span>. Also, <span class="math inline">\(\int^a_0 \frac{1}{x^p}\,dx\)</span> converges if
 and only if <span class="math inline">\(p&lt;1\)</span>.</p>
 </div>
 <div class="proofbox">
-<p><em>Proof.</em> See <a href="#exer-p-test">Exercise 9.6.1</a>.</p>
+<p><em>Proof.</em> See <a href="#exer-p-test">Exercise 9.7.1</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-comparison-test-integrals">
 
-<p><strong>Theorem 9.6.8</strong> (Comparison
+<p><strong>Theorem 9.7.8</strong> (Comparison
 Test)<strong>.</strong></p>
 <p>Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an
 interval and let <span class="math inline">\(f,g\in\mathcal{R}_{\mathrm{loc}}(I)\)</span> with
@@ -1295,7 +1581,7 @@ is the contrapositive of the first.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-limit-comparison-integrals">
 
-<p><strong>Theorem 9.6.9</strong> (Limit Comparison
+<p><strong>Theorem 9.7.9</strong> (Limit Comparison
 Test)<strong>.</strong></p>
 <p>Suppose <span class="math inline">\(f,g\in\mathcal{R}_{\mathrm{loc}}(a,b]\)</span>
 with <span class="math inline">\(f(x),g(x)&gt;0\)</span> for all <span class="math inline">\(x\in(a,b]\)</span>.</p>
@@ -1335,7 +1621,7 @@ from the Comparison Test.</p></li>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-absolute-convergence-integrals">
 
-<p><strong>Theorem 9.6.10</strong> (Absolute Convergence
+<p><strong>Theorem 9.7.10</strong> (Absolute Convergence
 Test)<strong>.</strong></p>
 <p>If <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(I)\)</span> and if
 <span class="math inline">\(|f|\)</span> is integrable on <span class="math inline">\(I\)</span>, then <span class="math inline">\(f\)</span> is integrable on <span class="math inline">\(I\)</span>.</p>
@@ -1351,7 +1637,7 @@ one-sided limits (<a href="ch-continuity.html#rem-limit-laws-extended">Remark
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="examplebox" id="ex-sin-x-over-x-improper">
 
-<p><strong>Example 9.6.11.</strong> Using Integration by Parts, notice
+<p><strong>Example 9.7.11.</strong> Using Integration by Parts, notice
 <span class="math display">\[\int^c_\pi \frac{\sin x}{x}\,dx=-\frac{\cos
 c}{c}-\frac{1}{\pi}-\int_\pi^c\frac{\cos x}{x^2} \,dx.\]</span> So <span class="math display">\[\lim_{c\to\infty}\int^c_\pi \frac{\sin
 x}{x}\,dx=-\frac{1}{\pi}-\int_\pi^\infty\frac{\cos x}{x^2}\,dx.\]</span>
@@ -1374,19 +1660,19 @@ bounded. See the hint in <a href="ch-bounded-variation.html#exer-x-sin-not-bv">E
 </div>
 <div class="definitionbox" id="def-principal-value">
 
-<p><strong>Definition 9.6.12.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(-\infty,\infty)\)</span>.
+<p><strong>Definition 9.7.12.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(-\infty,\infty)\)</span>.
 The <em>principal value</em> of <span class="math inline">\(\int^\infty_{-\infty}f\)</span> is <span class="math display">\[\operatorname{P.V.}\int^{\infty}_{-\infty}
 f=\lim_{t\to\infty}\int^t_{-t}f.\]</span></p>
 </div>
 <div class="examplebox" id="ex-pv-odd-power">
 
-<p><strong>Example 9.6.13.</strong> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math display">\[\operatorname{P.V.}\int^{\infty}_{-\infty}
+<p><strong>Example 9.7.13.</strong> Let <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math display">\[\operatorname{P.V.}\int^{\infty}_{-\infty}
 x^{2n-1}\,dx=0.\]</span> However, <span class="math inline">\(\int^{\infty}_{-\infty} x^{2n-1}\,dx\)</span> does
 not exist.</p>
 </div>
 <div class="examplebox" id="ex-pv-arctan">
 
-<p><strong>Example 9.6.14.</strong> Notice <span class="math display">\[\operatorname{P.V.}\int^\infty_{-\infty}\frac{1}{1+x^2}\,dx=\lim_{t\to\infty}(2\arctan
+<p><strong>Example 9.7.14.</strong> Notice <span class="math display">\[\operatorname{P.V.}\int^\infty_{-\infty}\frac{1}{1+x^2}\,dx=\lim_{t\to\infty}(2\arctan
 t)=\pi.\]</span> Also, <span class="math display">\[\begin{aligned}
 \int^{\infty}_{-\infty}\frac{1}{1+x^2}\,dx&amp;=\lim_{t\to-\infty}\int^0_t\frac{1}{1+x^2}\,dx
 + \lim_{s\to\infty}\int^s_0 \frac{1}{1+x^2}\,dx\\
@@ -1396,7 +1682,7 @@ t)=\pi.\]</span> Also, <span class="math display">\[\begin{aligned}
 </div>
 <div class="theorembox" id="thm-pv-agrees">
 
-<p><strong>Theorem 9.6.15.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(-\infty,\infty)\)</span>.
+<p><strong>Theorem 9.7.15.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(-\infty,\infty)\)</span>.
 If <span class="math inline">\(\int^{\infty}_{-\infty} f\)</span>
 converges, then <span class="math inline">\(\operatorname{P.V.}\int^\infty_{-\infty}
 f\)</span> converges and <span class="math display">\[\int^{\infty}_{-\infty}
@@ -1416,7 +1702,7 @@ So <span class="math display">\[\begin{aligned}
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="definitionbox" id="def-principal-value-interior">
 
-<p><strong>Definition 9.6.16.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
+<p><strong>Definition 9.7.16.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
 <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(c,b]\)</span>
 where <span class="math inline">\(a,b,c\in\mathbb{R}\)</span> with <span class="math inline">\(a&lt;c&lt;b\)</span>. Then the principal value of
 <span class="math inline">\(\int^b_a f\)</span> is defined as <span class="math display">\[\operatorname{P.V.}\int^b_a
@@ -1425,7 +1711,7 @@ f=\lim_{\varepsilon\to 0^+}\left(\int_a^{c-\varepsilon} f
 </div>
 <div class="examplebox" id="ex-pv-one-over-x">
 
-<p><strong>Example 9.6.17.</strong> Define <span class="math inline">\(f:[-1,0)\cup(0,1]\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=\frac{1}{x}\)</span>. Notice that since <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([-1,0)\cup(0,1]\)</span>, <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[-1,0)\)</span> and
+<p><strong>Example 9.7.17.</strong> Define <span class="math inline">\(f:[-1,0)\cup(0,1]\to\mathbb{R}\)</span> by <span class="math inline">\(f(x)=\frac{1}{x}\)</span>. Notice that since <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([-1,0)\cup(0,1]\)</span>, <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[-1,0)\)</span> and
 <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(0,1]\)</span>. By
 the <span class="math inline">\(p\)</span>-Test, <span class="math inline">\(\int^1_0 f\)</span> diverges, and so <span class="math inline">\(\int^1_{-1} f\)</span> diverges. However, <span class="math display">\[\operatorname{P.V.}\int^1_{-1}
 \frac{1}{x}\,dx=\lim_{\varepsilon\to 0^+}\left(\int^{-\varepsilon}_{-1}
@@ -1434,7 +1720,7 @@ the <span class="math inline">\(p\)</span>-Test, <span class="math inline">\(\in
 </div>
 <div class="theorembox" id="thm-pv-agrees-interior">
 
-<p><strong>Theorem 9.6.18.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
+<p><strong>Theorem 9.7.18.</strong> Let <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}[a,c)\)</span> and
 <span class="math inline">\(f\in\mathcal{R}_{\mathrm{loc}}(c,b]\)</span>. If
 <span class="math inline">\(\int^{b}_{a} f\)</span> converges, then
 <span class="math inline">\(\operatorname{P.V.}\int^b_{a} f\)</span>
@@ -1443,27 +1729,27 @@ f=\operatorname{P.V.}\int^b_{a} f.\]</span></p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em> See <a href="#exer-pv-agrees-interior">Exercise
-9.6.2</a>.</p>
+9.7.2</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-36">
+<section class="level5 unnumbered" id="exercises-37">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-p-test">
 
-<p><strong>Exercise 9.6.1.</strong> Prove <a href="#thm-p-test">Theorem
-9.6.7</a>. <a aria-label="Hint for Exercise 9.6.1" href="solutions-ch09.html#sol-exer-p-test">[Hint]</a></p>
+<p><strong>Exercise 9.7.1.</strong> Prove <a href="#thm-p-test">Theorem
+9.7.7</a>. <a aria-label="Hint for Exercise 9.7.1" href="solutions-ch09.html#sol-exer-p-test">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-pv-agrees-interior">
 
-<p><strong>Exercise 9.6.2.</strong> Prove <a href="#thm-pv-agrees-interior">Theorem 9.6.18</a>. <a aria-label="Hint for Exercise 9.6.2" href="solutions-ch09.html#sol-exer-pv-agrees-interior">[Hint]</a></p>
+<p><strong>Exercise 9.7.2.</strong> Prove <a href="#thm-pv-agrees-interior">Theorem 9.7.18</a>. <a aria-label="Hint for Exercise 9.7.2" href="solutions-ch09.html#sol-exer-pv-agrees-interior">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-x-log-p">
 
-<p><strong>Exercise 9.6.3.</strong> For what values of <span class="math inline">\(p\)</span> does <span class="math inline">\(\int^\infty_2\frac{1}{x\left(\ln
-x\right)^p}\,dx\)</span> converge? <a aria-label="Hint for Exercise 9.6.3" href="solutions-ch09.html#sol-exer-x-log-p">[Hint]</a></p>
+<p><strong>Exercise 9.7.3.</strong> For what values of <span class="math inline">\(p\)</span> does <span class="math inline">\(\int^\infty_2\frac{1}{x\left(\ln
+x\right)^p}\,dx\)</span> converge? <a aria-label="Hint for Exercise 9.7.3" href="solutions-ch09.html#sol-exer-x-log-p">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-gamma">
 
-<p><strong>Exercise 9.6.4.</strong> For <span class="math inline">\(x&gt;0\)</span>, define <span class="math inline">\(\Gamma(x)=\int^\infty_0
+<p><strong>Exercise 9.7.4.</strong> For <span class="math inline">\(x&gt;0\)</span>, define <span class="math inline">\(\Gamma(x)=\int^\infty_0
 e^{-t}t^{x-1}\,dt\)</span>.</p>
 <ol type="a">
 <li><p>Show the improper integral converges for all <span class="math inline">\(x&gt;0\)</span>.</p></li>
@@ -1472,18 +1758,18 @@ e^{-t}t^{x-1}\,dt\)</span>.</p>
 <li><p>For <span class="math inline">\(n\in\mathbb{N}\)</span>, prove
 that <span class="math inline">\(\Gamma(n+1)=n!\)</span>.</p></li>
 </ol>
-<p><a aria-label="Hint for Exercise 9.6.4" href="solutions-ch09.html#sol-exer-gamma">[Hint]</a></p>
+<p><a aria-label="Hint for Exercise 9.7.4" href="solutions-ch09.html#sol-exer-gamma">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-improper-independent-c">
 
-<p><strong>Exercise 9.6.5.</strong> Show that the value of the improper
-integral in <a href="#def-improper-integral-open">Definition 9.6.4</a>
-does not depend on the choice of <span class="math inline">\(c\in(a,b)\)</span>. <a aria-label="Hint for Exercise 9.6.5" href="solutions-ch09.html#sol-exer-improper-independent-c">[Hint]</a></p>
+<p><strong>Exercise 9.7.5.</strong> Show that the value of the improper
+integral in <a href="#def-improper-integral-open">Definition 9.7.4</a>
+does not depend on the choice of <span class="math inline">\(c\in(a,b)\)</span>. <a aria-label="Hint for Exercise 9.7.5" href="solutions-ch09.html#sol-exer-improper-independent-c">[Hint]</a></p>
 </div>
 </section>
 </section>
 <section class="level3 unnumbered" id="sec-riemann-stieltjes">
-<h2>9.7 Riemann–Stieltjes Integrals<sup>*</sup></h2>
+<h2>9.8 Riemann–Stieltjes Integrals<sup>*</sup></h2>
 <p>This section can be skipped. Nothing later in the book depends on it.
 The end of the section uses functions of bounded variation from <a href="ch-bounded-variation.html">Chapter 8</a>.</p>
 <p>In a Riemann sum, each subinterval <span class="math inline">\([x_{i-1},x_i]\)</span> is weighted by its length
@@ -1496,7 +1782,7 @@ jumps, the integral picks out values of <span class="math inline">\(f\)</span> a
 become special cases of one idea.</p>
 <div class="definitionbox" id="def-rs-sums">
 
-<p><strong>Definition 9.7.1.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
+<p><strong>Definition 9.8.1.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
 and let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
 bounded. For each partition <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span> of
 <span class="math inline">\([a,b]\)</span>, set <span class="math inline">\(\Delta
@@ -1509,7 +1795,7 @@ m_i\Delta\alpha_i.\]</span></p>
 </div>
 <div class="lemmabox" id="lem-rs-sum-bounds">
 
-<p><strong>Lemma 9.7.2.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing,
+<p><strong>Lemma 9.8.2.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing,
 let <span class="math inline">\(\mathcal{P}\)</span> be a partition of
 <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> with <span class="math inline">\(m\le f(x)\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Then <span class="math display">\[m[\alpha(b)-\alpha(a)]\le
 \mathcal{L}(\mathcal{P},f,\alpha)\le
@@ -1522,7 +1808,7 @@ M[\alpha(b)-\alpha(a)].\]</span></p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="definitionbox" id="def-rs-upper-lower">
 
-<p><strong>Definition 9.7.3.</strong> Define the upper and lower
+<p><strong>Definition 9.8.3.</strong> Define the upper and lower
 Riemann–Stieltjes integrals of <span class="math inline">\(f\)</span>
 with respect to <span class="math inline">\(\alpha\)</span> over <span class="math inline">\([a,b]\)</span>, denoted <span class="math inline">\(\overline{\int_{a}^{b}}f \,d\alpha\)</span> and
 <span class="math inline">\(\underline{\int_{a}^{b}}f \,d\alpha\)</span>
@@ -1534,7 +1820,7 @@ partition of }[a,b]\}.\]</span></p>
 </div>
 <div class="theorembox" id="thm-rs-lower-le-upper">
 
-<p><strong>Theorem 9.7.4.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> increasing.
+<p><strong>Theorem 9.8.4.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> increasing.
 Then <span class="math display">\[\underline{\int_{a}^{b}} f
 \,d\alpha\le \overline{\int_{a}^{b}}f \,d\alpha.\]</span></p>
 </div>
@@ -1555,7 +1841,7 @@ then <span class="math display">\[\mathcal{L}(\mathcal{P},f,\alpha)\le  \mathcal
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="definitionbox" id="def-rs-integral">
 
-<p><strong>Definition 9.7.5.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded, and
+<p><strong>Definition 9.8.5.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded, and
 <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span>
 increasing. If <span class="math inline">\(\underline{\int_{a}^{b}}
 f\,d\alpha=\overline{\int_{a}^{b}} f\,d\alpha\)</span>, then <span class="math inline">\(f\)</span> is said to be <em>Riemann integrable
@@ -1566,7 +1852,7 @@ and is called the <em>Riemann–Stieltjes integral</em> of <span class="math inl
 </div>
 <div class="examplebox" id="ex-unit-jump">
 
-<p><strong>Example 9.7.6.</strong> Fix <span class="math inline">\(a&lt;c\le b\)</span>. Let <span class="math inline">\(I_c(x)=I(x-c)\)</span> be the <em>unit jump
+<p><strong>Example 9.8.6.</strong> Fix <span class="math inline">\(a&lt;c\le b\)</span>. Let <span class="math inline">\(I_c(x)=I(x-c)\)</span> be the <em>unit jump
 function</em> defined by <span class="math display">\[I_c(x)=\begin{cases} 0, &amp; x&lt;c, \\ 1, &amp;
 x\ge c.\end{cases}\]</span></p>
 <p>Let <span class="math inline">\(f\in C[a,b]\)</span>. Set <span class="math inline">\(\alpha(x)=I_c(x)\)</span>, which is clearly
@@ -1587,7 +1873,7 @@ f(c)+\varepsilon.\]</span> This implies <span class="math inline">\(f\in\mathcal
 </div>
 <div class="examplebox" id="ex-dirichlet-rs">
 
-<p><strong>Example 9.7.7.</strong> Define <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> by <span class="math display">\[f(x)=\begin{cases} 1, &amp; x\in\mathbb{Q}, \\ 0,
+<p><strong>Example 9.8.7.</strong> Define <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> by <span class="math display">\[f(x)=\begin{cases} 1, &amp; x\in\mathbb{Q}, \\ 0,
 &amp; x\notin\mathbb{Q}.\end{cases}\]</span> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be a
 nonconstant increasing function, <span class="math inline">\(a&lt;b\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
 partition of <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(m_i=0\)</span> and <span class="math inline">\(M_i=1\)</span> for all <span class="math inline">\(i=1,\dots,n\)</span>. Thus <span class="math inline">\(\mathcal{L}(\mathcal{P},f,\alpha)=0\)</span> and
@@ -1597,7 +1883,7 @@ nonconstant <span class="math inline">\(\alpha\)</span>.</p>
 </div>
 <div class="theorembox" id="thm-rs-riemann-criterion">
 
-<p><strong>Theorem 9.7.8</strong> (Riemann’s Criterion for
+<p><strong>Theorem 9.8.8</strong> (Riemann’s Criterion for
 Integrability)<strong>.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
 and <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be
 bounded. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> if and only if
@@ -1611,7 +1897,7 @@ omitted.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-continuous-monotone">
 
-<p><strong>Theorem 9.7.9.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be
+<p><strong>Theorem 9.8.9.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be
 increasing.</p>
 <ol>
 <li><p>If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
@@ -1629,7 +1915,7 @@ arbitrary, Riemann’s Criterion gives <span class="math inline">\(f\in\mathcal{
 <li><p>Suppose <span class="math inline">\(f\)</span> is increasing. (If
 <span class="math inline">\(f\)</span> is decreasing, apply this to
 <span class="math inline">\(-f\)</span>.) Let <span class="math inline">\(\varepsilon&gt;0\)</span>, and choose <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(\frac{\alpha(b)-\alpha(a)}{n}[f(b)-f(a)]&lt;\varepsilon\)</span>.
-Since <span class="math inline">\(\alpha\)</span> is continuous, <a href="#exer-rs-equal-increments">Exercise 9.7.2</a> gives a partition
+Since <span class="math inline">\(\alpha\)</span> is continuous, <a href="#exer-rs-equal-increments">Exercise 9.8.2</a> gives a partition
 <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> of
 <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\Delta\alpha_i=\frac{\alpha(b)-\alpha(a)}{n}\)</span>
 for every <span class="math inline">\(i\)</span>. Since <span class="math inline">\(f\)</span> is increasing, <span class="math inline">\(M_i=f(x_i)\)</span> and <span class="math inline">\(m_i=f(x_{i-1})\)</span>. The sum telescopes. <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha)=\frac{\alpha(b)-\alpha(a)}{n}\sum_{i=1}^n[f(x_i)-f(x_{i-1})]=\frac{\alpha(b)-\alpha(a)}{n}[f(b)-f(a)]&lt;\varepsilon.\]</span>
@@ -1639,7 +1925,7 @@ Riemann’s Criterion.</p></li>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-properties">
 
-<p><strong>Theorem 9.7.10.</strong> Let <span class="math inline">\(\alpha,\alpha_1,\alpha_2:[a,b]\to\mathbb{R}\)</span>
+<p><strong>Theorem 9.8.10.</strong> Let <span class="math inline">\(\alpha,\alpha_1,\alpha_2:[a,b]\to\mathbb{R}\)</span>
 be increasing.</p>
 <ol>
 <li><p>If <span class="math inline">\(f,g\in\mathcal{R}(\alpha)\)</span>, then <span class="math inline">\(f+g\in\mathcal{R}(\alpha)\)</span> with <span class="math display">\[\int^b_a(f+g)\,d\alpha=\int^b_a f\,d\alpha
@@ -1662,7 +1948,7 @@ g\,d\alpha.\]</span></p></li>
 <div class="proofbox">
 <p><em>Proof.</em> Parts (1), (2), (4) and (5) are proved as for the
 Riemann integral (Theorems <a href="#thm-integral-linear">9.2.11</a> and
-<a href="#thm-integral-additive">9.2.13</a> and <a href="#exer-integral-monotone">Exercise 9.2.3</a>). See <a href="#exer-rs-properties">Exercise 9.7.8</a>.</p>
+<a href="#thm-integral-additive">9.2.13</a> and <a href="#exer-integral-monotone">Exercise 9.2.3</a>). See <a href="#exer-rs-properties">Exercise 9.8.8</a>.</p>
 <ol>
 <li><p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
 <span class="math inline">\(f\in\mathcal{R}(\alpha_i)\)</span>, <span class="math inline">\(i=1,2\)</span>, there exist partitions <span class="math inline">\(\mathcal{P}_i\)</span>, <span class="math inline">\(i=1,2\)</span> such that <span class="math display">\[\mathcal{U}(\mathcal{P}_i,f,\alpha_i)-\mathcal{L}(\mathcal{P}_i,f,\alpha_i)&lt;\frac{\varepsilon}{2}.\]</span>
@@ -1702,21 +1988,21 @@ Thus, by Riemann’s Criterion for Integrability, <span class="math inline">\(|f
 &amp;\le \int^b_a |f|\,d\alpha \\
 &amp;\le M\int^b_a \,d\alpha\\
 &amp;=M[\alpha(b)-\alpha(a)].
-\end{aligned}\]</span> The last two steps use (5) and <a href="#lem-rs-sum-bounds">Lemma 9.7.2</a>.</p></li>
+\end{aligned}\]</span> The last two steps use (5) and <a href="#lem-rs-sum-bounds">Lemma 9.8.2</a>.</p></li>
 </ol>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="corollarybox" id="cor-bv-rs-integrable">
 
-<p><strong>Corollary 9.7.11.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be continuous
+<p><strong>Corollary 9.8.11.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be continuous
 and increasing. If <span class="math inline">\(f\in BV[a,b]\)</span>,
 then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p>
 </div>
 <div class="proofbox">
-<p><em>Proof.</em> By the Jordan Decomposition Theorem, <span class="math inline">\(f=g-h\)</span> where <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are increasing functions. By <a href="#thm-rs-continuous-monotone">Theorem 9.7.9</a> (2), <span class="math inline">\(g,h\in\mathcal{R}(\alpha)\)</span>. So by <a href="#thm-rs-properties">Theorem 9.7.10</a> (1) and (2), <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p>
+<p><em>Proof.</em> By the Jordan Decomposition Theorem, <span class="math inline">\(f=g-h\)</span> where <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are increasing functions. By <a href="#thm-rs-continuous-monotone">Theorem 9.8.9</a> (2), <span class="math inline">\(g,h\in\mathcal{R}(\alpha)\)</span>. So by <a href="#thm-rs-properties">Theorem 9.8.10</a> (1) and (2), <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-mvt">
 
-<p><strong>Theorem 9.7.12</strong> (Mean Value Theorem for
+<p><strong>Theorem 9.8.12</strong> (Mean Value Theorem for
 Riemann–Stieltjes Integrals)<strong>.</strong> Let <span class="math inline">\(f\in C[a,b]\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing.
 Then there exists a <span class="math inline">\(c\in[a,b]\)</span> such
 that <span class="math display">\[\int^b_a
@@ -1724,7 +2010,7 @@ f\,d\alpha=f(c)[\alpha(b)-\alpha(a)].\]</span></p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em> Let <span class="math inline">\(m\)</span> and <span class="math inline">\(M\)</span> denote the minimum and maximum values,
-respectively, of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span>. Then by <a href="#lem-rs-sum-bounds">Lemma 9.7.2</a>, <span class="math display">\[m[\alpha(b)-\alpha(a)]\le \int^b_a f\,d\alpha\le
+respectively, of <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span>. Then by <a href="#lem-rs-sum-bounds">Lemma 9.8.2</a>, <span class="math display">\[m[\alpha(b)-\alpha(a)]\le \int^b_a f\,d\alpha\le
 M[\alpha(b)-\alpha(a)].\]</span> (The integral lies between the lower
 and upper sums.) If <span class="math inline">\(\alpha(b)-\alpha(a)=0\)</span>, then any <span class="math inline">\(c\in[a,b]\)</span> satisfies the equation. If
 <span class="math inline">\(\alpha(b)-\alpha(a)&gt;0\)</span>, then
@@ -1736,7 +2022,7 @@ where <span class="math inline">\(f=m\)</span> and a point where <span class="ma
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-integration-by-parts">
 
-<p><strong>Theorem 9.7.13</strong> (Integration by
+<p><strong>Theorem 9.8.13</strong> (Integration by
 Parts)<strong>.</strong></p>
 <p>Suppose <span class="math inline">\(\alpha,\beta:[a,b]\to\mathbb{R}\)</span> are
 increasing. Then <span class="math inline">\(\alpha\in\mathcal{R}(\beta)\)</span> if and only
@@ -1746,7 +2032,7 @@ this is the case, <span class="math display">\[\int^b_a\alpha \,d\beta
 \,d\alpha.\]</span></p>
 </div>
 <div class="proofbox">
-<p><em>Proof.</em> An exercise (<a href="#exer-rs-parts-identity">Exercise 9.7.3</a>) will show that <span class="math display">\[\mathcal{U}(\mathcal{P},\alpha,\beta)=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\mathcal{L}(\mathcal{P},\beta,\alpha)\]</span>
+<p><em>Proof.</em> An exercise (<a href="#exer-rs-parts-identity">Exercise 9.8.3</a>) will show that <span class="math display">\[\mathcal{U}(\mathcal{P},\alpha,\beta)=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\mathcal{L}(\mathcal{P},\beta,\alpha)\]</span>
 and <span class="math display">\[\mathcal{L}(\mathcal{P},\alpha,\beta)=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\mathcal{U}(\mathcal{P},\beta,\alpha).\]</span>
 Therefore, <span class="math display">\[\mathcal{U}(\mathcal{P},\alpha,\beta)-\mathcal{L}(\mathcal{P},\alpha,\beta)=\mathcal{U}(\mathcal{P},\beta,\alpha)-\mathcal{L}(\mathcal{P},\beta,\alpha).\]</span>
 It follows from Riemann’s Criterion for Integrability that <span class="math inline">\(\alpha\in\mathcal{R}(\beta)\)</span> if and only
@@ -1767,14 +2053,14 @@ Thus <span class="math display">\[\int^b_a\alpha\,d\beta=
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-finitely-many-discontinuities">
 
-<p><strong>Theorem 9.7.14.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded with only
+<p><strong>Theorem 9.8.14.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded with only
 finitely many points of discontinuity on <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
 and continuous at every point at which <span class="math inline">\(f\)</span> is discontinuous. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <p>Let <span class="math inline">\(\varepsilon&gt;0\)</span> and let
-<span class="math inline">\(M&gt;0\)</span> with <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(E\)</span> be the finite set of points where <span class="math inline">\(f\)</span> is discontinuous. If <span class="math inline">\(E=\emptyset\)</span>, then <span class="math inline">\(f\)</span> is continuous and <a href="#thm-rs-continuous-monotone">Theorem 9.7.9</a> (1) applies. So
+<span class="math inline">\(M&gt;0\)</span> with <span class="math inline">\(|f(x)|\le M\)</span> for all <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(E\)</span> be the finite set of points where <span class="math inline">\(f\)</span> is discontinuous. If <span class="math inline">\(E=\emptyset\)</span>, then <span class="math inline">\(f\)</span> is continuous and <a href="#thm-rs-continuous-monotone">Theorem 9.8.9</a> (1) applies. So
 assume <span class="math inline">\(E\ne\emptyset\)</span>. Since <span class="math inline">\(\alpha\)</span> is continuous at each point of
 <span class="math inline">\(E\)</span>, each <span class="math inline">\(p\in E\)</span> is the center of a small closed
 interval on which <span class="math inline">\(\alpha\)</span> increases
@@ -1800,7 +2086,7 @@ by Riemann’s Criterion.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-finite-jumps">
 
-<p><strong>Theorem 9.7.15.</strong> Let <span class="math inline">\(\{s_1,\dots,s_n\}\)</span> be a finite subset of
+<p><strong>Theorem 9.8.15.</strong> Let <span class="math inline">\(\{s_1,\dots,s_n\}\)</span> be a finite subset of
 <span class="math inline">\((a,b]\)</span> with <span class="math inline">\(s_1&lt;\cdots&lt;s_n\)</span>, <span class="math inline">\(\{c_1,\dots,c_n\}\)</span> a finite collection of
 nonnegative real numbers, and <span class="math inline">\(I(x-c)\)</span> the unit jump function at <span class="math inline">\(c\in\mathbb{R}\)</span>. Let <span class="math inline">\(f\in C[a,b]\)</span> and let <span class="math inline">\(\alpha\)</span> be the increasing function defined
 by <span class="math inline">\(\alpha(x)=\sum_{i=1}^n
@@ -1809,11 +2095,11 @@ c_if(s_i).\]</span></p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em> See <a href="#exer-rs-finite-jumps">Exercise
-9.7.4</a>.</p>
+9.8.4</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-countable-jumps">
 
-<p><strong>Theorem 9.7.16.</strong> Let <span class="math inline">\(\{s_n\}\)</span> be a countable subset of <span class="math inline">\((a,b]\)</span>, <span class="math inline">\(\{c_n\}\)</span> a sequence of nonnegative real
+<p><strong>Theorem 9.8.16.</strong> Let <span class="math inline">\(\{s_n\}\)</span> be a countable subset of <span class="math inline">\((a,b]\)</span>, <span class="math inline">\(\{c_n\}\)</span> a sequence of nonnegative real
 numbers for which <span class="math inline">\(\sum^\infty_{n=1}
 c_n\)</span> converges, and <span class="math inline">\(I(x-c)\)</span>
 the unit jump function at <span class="math inline">\(c\in\mathbb{R}\)</span>. Let <span class="math inline">\(f\in C[a,b]\)</span> and let <span class="math inline">\(\alpha\)</span> be the increasing function defined
@@ -1829,7 +2115,7 @@ I(x-s_n)\]</span> and <span class="math display">\[\beta_2(x)=\sum_{n=N+1}^\inft
 c_nI(x-s_n).\]</span> Then <span class="math display">\[\int^b_a
 f\,d\beta_1=\sum_{n=1}^N c_n f(s_n).\]</span> Also, <span class="math inline">\(\alpha=\beta_1+\beta_2\)</span>.</p>
 <p>Let <span class="math inline">\(M=\max_{x\in[a,b]}|f(x)|\)</span>.
-Then by <a href="#thm-rs-properties">Theorem 9.7.10</a> (3) and (6),
+Then by <a href="#thm-rs-properties">Theorem 9.8.10</a> (3) and (6),
 <span class="math display">\[\begin{aligned}
 \left|\int^b_a f\,d\alpha-\sum_{n=1}^N
 c_nf(s_n)\right|&amp;=\left|\int^b_a f\,d\beta_2\right|\\
@@ -1841,7 +2127,7 @@ f\,d\alpha.\]</span></p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-derivative-integrator">
 
-<p><strong>Theorem 9.7.17.</strong> Suppose <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> is an
+<p><strong>Theorem 9.8.17.</strong> Suppose <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> is an
 increasing differentiable function with <span class="math inline">\(\alpha'\in\mathcal{R}[a,b]\)</span>. Then
 <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\int^b_a f\,d\alpha=\int^b_a
 f\alpha'.\]</span></p>
@@ -1883,15 +2169,15 @@ So <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="examplebox" id="ex-rs-floor">
 
-<p><strong>Example 9.7.18.</strong> Consider <span class="math inline">\(\int^2_0 e^x\,d\left\lfloor
+<p><strong>Example 9.8.18.</strong> Consider <span class="math inline">\(\int^2_0 e^x\,d\left\lfloor
 x\right\rfloor\)</span>. For <span class="math inline">\(x\in[0,2]\)</span>, <span class="math inline">\(\left\lfloor x\right\rfloor
 =I(x-1)+I(x-2)\)</span>. Thus, since <span class="math inline">\(e^x\)</span> is continuous, <span class="math inline">\(\int^2_0 e^x\,d\left\lfloor
-x\right\rfloor=e^1+e^2\)</span> by <a href="#thm-rs-finite-jumps">Theorem 9.7.15</a>.</p>
+x\right\rfloor=e^1+e^2\)</span> by <a href="#thm-rs-finite-jumps">Theorem 9.8.15</a>.</p>
 </div>
 <div class="examplebox" id="ex-rs-x-squared">
 
-<p><strong>Example 9.7.19.</strong> Consider <span class="math inline">\(\int^1_0\sin\pi x\,d(x^2)\)</span>. Since <span class="math inline">\(x^2\)</span> is increasing on <span class="math inline">\([0,1]\)</span> and its derivative is continuous,
-<a href="#thm-rs-derivative-integrator">Theorem 9.7.17</a> gives <span class="math display">\[\begin{aligned}
+<p><strong>Example 9.8.19.</strong> Consider <span class="math inline">\(\int^1_0\sin\pi x\,d(x^2)\)</span>. Since <span class="math inline">\(x^2\)</span> is increasing on <span class="math inline">\([0,1]\)</span> and its derivative is continuous,
+<a href="#thm-rs-derivative-integrator">Theorem 9.8.17</a> gives <span class="math display">\[\begin{aligned}
 \int^1_0\sin\pi x\,d(x^2)&amp;=2\int^1_0 x\sin\pi x \,dx\\
 &amp;=\left.\left[\frac{-1}{\pi}x\cos\pi x+\frac{1}{\pi^2}\sin\pi
 x\right]\right|^1_0\\
@@ -1900,7 +2186,7 @@ x\right]\right|^1_0\\
 </div>
 <div class="definitionbox" id="def-rs-bv">
 
-<p><strong>Definition 9.7.20.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and let
+<p><strong>Definition 9.8.20.</strong> Let <span class="math inline">\(f:[a,b]\to\mathbb{R}\)</span> be bounded and let
 <span class="math inline">\(\alpha\in BV[a,b]\)</span>. Then <span class="math inline">\(f\)</span> is Riemann–Stieltjes integrable with
 respect to <span class="math inline">\(\alpha\)</span> on <span class="math inline">\([a,b]\)</span> if <span class="math inline">\(f\in
 \mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. If this
@@ -1911,10 +2197,10 @@ V_\alpha-\int^b_a f\,d(V_\alpha-\alpha).\]</span></p>
 both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(V_\alpha-\alpha\)</span> are increasing by
 Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. If <span class="math inline">\(\alpha\)</span> is already increasing, then <span class="math inline">\(V_\alpha=\alpha-\alpha(a)\)</span> by Theorems <a href="ch-bounded-variation.html#thm-monotone-bv">8.1.8</a> and <a href="ch-bounded-variation.html#thm-variation-additive">8.2.1</a>, so <span class="math inline">\(V_\alpha-\alpha\)</span> is constant, and the
 definition agrees with <a href="#def-rs-integral">Definition
-9.7.5</a>.</p>
+9.8.5</a>.</p>
 <div class="theorembox" id="thm-rs-c1-integrator">
 
-<p><strong>Theorem 9.7.21.</strong> Let <span class="math inline">\(\alpha\in C^{(1)}[a,b]\)</span>.</p>
+<p><strong>Theorem 9.8.21.</strong> Let <span class="math inline">\(\alpha\in C^{(1)}[a,b]\)</span>.</p>
 <ol>
 <li><p>If <span class="math inline">\(f\in C[a,b]\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
 <li><p>If <span class="math inline">\(f\in BV[a,b]\)</span>, then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
@@ -1927,70 +2213,70 @@ C^{(1)}[a,b]\)</span>, by <a href="ch-bounded-variation.html#cor-continuous-deri
 increasing functions on <span class="math inline">\([a,b]\)</span>.</p>
 <ol>
 <li><p>Since <span class="math inline">\(f\in C[a,b]\)</span>, then by
-<a href="#thm-rs-continuous-monotone">Theorem 9.7.9</a> (1), <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. So
+<a href="#thm-rs-continuous-monotone">Theorem 9.8.9</a> (1), <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. So
 <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
 <li><p>Since <span class="math inline">\(f\in BV[a,b]\)</span>, then by
-<a href="#cor-bv-rs-integrable">Corollary 9.7.11</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. So
+<a href="#cor-bv-rs-integrable">Corollary 9.8.11</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(V_\alpha-\alpha)\)</span>. So
 <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>.</p></li>
 </ol>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-c1-formula">
 
-<p><strong>Theorem 9.7.22.</strong> Let <span class="math inline">\(\alpha\in C^{(1)}[a,b]\)</span> and <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\int^b_a f \,d\alpha=\int^b_a
+<p><strong>Theorem 9.8.22.</strong> Let <span class="math inline">\(\alpha\in C^{(1)}[a,b]\)</span> and <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>. Then <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> and <span class="math display">\[\int^b_a f \,d\alpha=\int^b_a
 f\alpha'.\]</span></p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em> See <a href="#exer-rs-c1-formula">Exercise
-9.7.7</a>.</p>
+9.8.7</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-37">
+<section class="level5 unnumbered" id="exercises-38">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-rs-step">
 
-<p><strong>Exercise 9.7.1.</strong> Let <span class="math inline">\(f\in
+<p><strong>Exercise 9.8.1.</strong> Let <span class="math inline">\(f\in
 C[a,b]\)</span>. Fix <span class="math inline">\(c\in (a,b]\)</span>.
 Show that if <span class="math display">\[\alpha(x)=\begin{cases} c_1,
 &amp; a\le x&lt;c, \\ c_2, &amp; c\le x\le b,\end{cases}\]</span> where
-<span class="math inline">\(c_1&lt;c_2\)</span>, then <span class="math inline">\(\int^b_a f \,d\alpha = f(c)(c_2-c_1)\)</span>. <a aria-label="Hint for Exercise 9.7.1" href="solutions-ch09.html#sol-exer-rs-step">[Hint]</a></p>
+<span class="math inline">\(c_1&lt;c_2\)</span>, then <span class="math inline">\(\int^b_a f \,d\alpha = f(c)(c_2-c_1)\)</span>. <a aria-label="Hint for Exercise 9.8.1" href="solutions-ch09.html#sol-exer-rs-step">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-rs-equal-increments">
 
-<p><strong>Exercise 9.7.2.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
+<p><strong>Exercise 9.8.2.</strong> Let <span class="math inline">\(\alpha:[a,b]\to\mathbb{R}\)</span> be increasing
 and continuous. Prove that for any <span class="math inline">\(n\in\mathbb{N}\)</span>, there exists a partition
 <span class="math inline">\(\mathcal{P}=\{x_0,x_1,\dots,x_n\}\)</span>
 such that <span class="math display">\[\Delta
 \alpha_i=\alpha(x_i)-\alpha(x_{i-1})=\frac{1}{n}[\alpha(b)-\alpha(a)].\]</span>
-<a aria-label="Hint for Exercise 9.7.2" href="solutions-ch09.html#sol-exer-rs-equal-increments">[Hint]</a></p>
+<a aria-label="Hint for Exercise 9.8.2" href="solutions-ch09.html#sol-exer-rs-equal-increments">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-rs-parts-identity">
 
-<p><strong>Exercise 9.7.3.</strong> Suppose <span class="math inline">\(\alpha,\beta:[a,b]\to\mathbb{R}\)</span> are
+<p><strong>Exercise 9.8.3.</strong> Suppose <span class="math inline">\(\alpha,\beta:[a,b]\to\mathbb{R}\)</span> are
 increasing and <span class="math inline">\(\mathcal{P}\)</span> is a
 partition of <span class="math inline">\([a,b]\)</span>. Prove that
 <span class="math inline">\(\mathcal{U}(\mathcal{P},\alpha,\beta)=\alpha(b)\beta(b)-\alpha(a)\beta(a)-\mathcal{L}(\mathcal{P},\beta,\alpha)\)</span>.
-<a aria-label="Hint for Exercise 9.7.3" href="solutions-ch09.html#sol-exer-rs-parts-identity">[Hint]</a></p>
+<a aria-label="Hint for Exercise 9.8.3" href="solutions-ch09.html#sol-exer-rs-parts-identity">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-rs-finite-jumps">
 
-<p><strong>Exercise 9.7.4.</strong> Prove <a href="#thm-rs-finite-jumps">Theorem 9.7.15</a>. <a aria-label="Hint for Exercise 9.7.4" href="solutions-ch09.html#sol-exer-rs-finite-jumps">[Hint]</a></p>
+<p><strong>Exercise 9.8.4.</strong> Prove <a href="#thm-rs-finite-jumps">Theorem 9.8.15</a>. <a aria-label="Hint for Exercise 9.8.4" href="solutions-ch09.html#sol-exer-rs-finite-jumps">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-rs-floor-x-squared">
 
-<p><strong>Exercise 9.7.5.</strong> Compute <span class="math inline">\(\int^5_1 x^2\,d\left\lfloor
+<p><strong>Exercise 9.8.5.</strong> Compute <span class="math inline">\(\int^5_1 x^2\,d\left\lfloor
 x^2\right\rfloor\)</span>, where <span class="math inline">\(\left\lfloor \cdot\right\rfloor\)</span> is the
-greatest integer function. <a aria-label="Hint for Exercise 9.7.5" href="solutions-ch09.html#sol-exer-rs-floor-x-squared">[Hint]</a></p>
+greatest integer function. <a aria-label="Hint for Exercise 9.8.5" href="solutions-ch09.html#sol-exer-rs-floor-x-squared">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-rs-sin">
 
-<p><strong>Exercise 9.7.6.</strong> Compute <span class="math inline">\(\int^{\pi/2}_0\sin x\,d(\sin x)\)</span>. <a aria-label="Hint for Exercise 9.7.6" href="solutions-ch09.html#sol-exer-rs-sin">[Hint]</a></p>
+<p><strong>Exercise 9.8.6.</strong> Compute <span class="math inline">\(\int^{\pi/2}_0\sin x\,d(\sin x)\)</span>. <a aria-label="Hint for Exercise 9.8.6" href="solutions-ch09.html#sol-exer-rs-sin">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-rs-c1-formula">
 
-<p><strong>Exercise 9.7.7.</strong> Prove <a href="#thm-rs-c1-formula">Theorem 9.7.22</a>. <a aria-label="Hint for Exercise 9.7.7" href="solutions-ch09.html#sol-exer-rs-c1-formula">[Hint]</a></p>
+<p><strong>Exercise 9.8.7.</strong> Prove <a href="#thm-rs-c1-formula">Theorem 9.8.22</a>. <a aria-label="Hint for Exercise 9.8.7" href="solutions-ch09.html#sol-exer-rs-c1-formula">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-rs-properties">
 
-<p><strong>Exercise 9.7.8.</strong> Prove <a href="#thm-rs-properties">Theorem 9.7.10</a> (1), (2), (4) and (5).</p>
+<p><strong>Exercise 9.8.8.</strong> Prove <a href="#thm-rs-properties">Theorem 9.8.10</a> (1), (2), (4) and (5).</p>
 </div>
 </section>
 </section>

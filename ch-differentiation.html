@@ -146,7 +146,7 @@ The payoff comes at the end. Any interval that was passed over is not
 much longer than one that was chosen, so a fixed enlargement of the
 chosen intervals covers everything that was missed.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-61">
+<section class="level5 unnumbered" id="exercises-63">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-vitali-needed">
 
@@ -300,7 +300,7 @@ quantities into two comparisons with fixed numbers, which are much
 easier to use. Step 1 of the proof of <a href="#thm-monotone-differentiable">Theorem 17.2.3</a> works this way.
 The same trick, with one rational number, appeared in the proof of <a href="ch-measurable-functions.html#thm-measurable-algebra">Theorem 15.1.4</a>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-62">
+<section class="level5 unnumbered" id="exercises-64">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-dini-monotone">
 
@@ -416,7 +416,7 @@ g(b)-g(a)+h(b)-h(a)&lt;\infty\)</span>.</p>
 <div class="proofbox">
 <p><em>Proof.</em> See <a href="#exer-variation-lower-semicontinuous">Exercise 17.3.2</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-63">
+<section class="level5 unnumbered" id="exercises-65">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-pn-increasing">
 
@@ -529,8 +529,8 @@ Convergence Theorem, and <a href="ch-lebesgue-measure.html#thm-measurable-approx
 So by <a href="#cor-bv-differentiable">Corollary 17.3.4</a>, <span class="math inline">\(F'(x)\)</span> exists for almost every <span class="math inline">\(x\in[a,b]\)</span>. Let <span class="math inline">\(|f|\le K\)</span>. Extend <span class="math inline">\(f\)</span> by <span class="math inline">\(0\)</span> to <span class="math inline">\((b,b+1]\)</span>, so that the formula for <span class="math inline">\(F\)</span> makes sense on <span class="math inline">\([a,b+1]\)</span> and <span class="math inline">\(F=F(b)\)</span> on <span class="math inline">\([b,b+1]\)</span>. For <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(x\in[a,b]\)</span>, let <span class="math inline">\(h=\frac1n\)</span> and <span class="math display">\[f_n(x)=\frac{F(x+h)-F(x)}{h}=\frac1h\int_{(x,x+h]}f.\]</span>
 Then <span class="math inline">\(|f_n|\le K\)</span>, and <span class="math inline">\(f_n\to F'\)</span> a.e. on <span class="math inline">\([a,b]\)</span>. The function <span class="math inline">\(g=\limsup f_n\)</span> is measurable, <span class="math inline">\(|g|\le K\)</span>, and <span class="math inline">\(g=F'\)</span> a.e. Let <span class="math inline">\(c\in[a,b]\)</span>. By the Bounded Convergence
 Theorem (<a href="ch-lebesgue-integral.html#cor-bct-ae">Corollary 16.3.7</a>), <span class="math display">\[\int_{[a,c]}F'=\int_{[a,c]}g=\lim_{n\to\infty}\int_{[a,c]}f_n=\lim_{h\to0^+}\frac1h\int_a^c\bigl(F(x+h)-F(x)\bigr)\,dx.\]</span>
-The last integral is a Riemann integral, since <span class="math inline">\(F\)</span> is continuous. By <span class="math inline">\(u\)</span>-Substitution with <span class="math inline">\(\varphi(t)=t+h\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.5.3</a>) and <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>, <span class="math display">\[\int_a^c\bigl(F(x+h)-F(x)\bigr)\,dx=\int_{a+h}^{c+h}F-\int_a^cF=\int_c^{c+h}F-\int_a^{a+h}F.\]</span>
-By the Mean Value Theorem for Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.5.1</a>), <span class="math inline">\(\frac1h\int_c^{c+h}F=F(\xi_h)\)</span> for some
+The last integral is a Riemann integral, since <span class="math inline">\(F\)</span> is continuous. By <span class="math inline">\(u\)</span>-Substitution with <span class="math inline">\(\varphi(t)=t+h\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.6.3</a>) and <a href="ch-integrals.html#thm-integral-additive">Theorem 9.2.13</a>, <span class="math display">\[\int_a^c\bigl(F(x+h)-F(x)\bigr)\,dx=\int_{a+h}^{c+h}F-\int_a^cF=\int_c^{c+h}F-\int_a^{a+h}F.\]</span>
+By the Mean Value Theorem for Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.6.1</a>), <span class="math inline">\(\frac1h\int_c^{c+h}F=F(\xi_h)\)</span> for some
 <span class="math inline">\(\xi_h\in[c,c+h]\)</span>. Since <span class="math inline">\(F\)</span> is continuous, this tends to <span class="math inline">\(F(c)\)</span>. In the same way, <span class="math inline">\(\frac1h\int_a^{a+h}F\to F(a)\)</span>. So <span class="math display">\[\int_{[a,c]}F'=F(c)-F(a)=\int_{[a,c]}f.\]</span>
 Hence <span class="math inline">\(\int_{[a,c]}(F'-f)=0\)</span> for
 all <span class="math inline">\(c\in[a,b]\)</span>. By <a href="#lem-integral-zero-intervals">Lemma 17.4.3</a>, <span class="math inline">\(F'=f\)</span> a.e. on <span class="math inline">\([a,b]\)</span>.</p>
@@ -555,7 +555,7 @@ By the first case, the two integrals have derivatives <span class="math inline">
 <span class="math inline">\(f\)</span> to be continuous at <span class="math inline">\(x\)</span> and then gives <span class="math inline">\(F'(x)=f(x)\)</span> at that point. Here <span class="math inline">\(f\)</span> is only integrable, and the conclusion
 holds almost everywhere. It can fail at particular points. If <span class="math inline">\(f=\chi_{[0,1/2]}\)</span> on <span class="math inline">\([0,1]\)</span>, then <span class="math inline">\(F(x)=\min\left\{x,\frac12\right\}\)</span>, which
 is not differentiable at <span class="math inline">\(\frac12\)</span>.</p>
-<section class="level5 unnumbered" id="exercises-64">
+<section class="level5 unnumbered" id="exercises-66">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-averages-converge">
 
@@ -744,7 +744,7 @@ are absolutely continuous (<a href="#exer-ac-algebra">Exercise
 continuous, show that it is not of bounded variation, as in <a href="#ex-x-sin-not-ac">Example 17.5.4</a>, or show that <span class="math inline">\(f(b)-f(a)\ne\int_{[a,b]}f'\)</span>, as for
 the Cantor function.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-65">
+<section class="level5 unnumbered" id="exercises-67">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-monotone-ac-singular">
 
@@ -883,7 +883,7 @@ which is false.</p>
 length <span class="math inline">\(\left(\frac23\right)^n\)</span>,
 which is as small as we like. But <span class="math inline">\(\phi\)</span> increases by <span class="math inline">\(\frac{1}{2^n}\)</span> on each of them, by <a href="#lem-cantor-approx">Lemma 17.6.1</a> (2) and (3), for a total of
 <span class="math inline">\(1\)</span>. So no <span class="math inline">\(\delta\)</span> works for <span class="math inline">\(\varepsilon=1\)</span> in <a href="#def-absolutely-continuous">Definition 17.5.1</a>.</p>
-<section class="level5 unnumbered" id="exercises-66">
+<section class="level5 unnumbered" id="exercises-68">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cantor-symmetry">
 

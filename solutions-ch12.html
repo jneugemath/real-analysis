@@ -272,6 +272,45 @@ Alternating Series Test.</p>
 <p><strong><a href="ch-power-series.html#exer-sin-not-polynomial">Exercise
 12.4.10</a>.</strong> <em>Hint.</em> If <span class="math inline">\(p\)</span> is a polynomial of degree <span class="math inline">\(n\)</span>, then <span class="math inline">\(p^{(m)}=0\)</span> for <span class="math inline">\(m&gt;n\)</span>. What is <span class="math inline">\(\sin^{(4m)}\)</span>?</p>
 </div>
+<div class="solutionbox" id="sol-exer-exp-series-bounds">
+
+<p><strong><a href="ch-power-series.html#exer-exp-series-bounds">Exercise
+12.5.1</a>.</strong> <em>Hint.</em> For <span class="math inline">\(x\ge0\)</span> every term of the series is at
+least <span class="math inline">\(0\)</span>. Then <span class="math inline">\(E(x)\ge\frac{x^{n+1}}{(n+1)!}\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-e-estimate">
+
+<p><strong><a href="ch-power-series.html#exer-e-estimate">Exercise 12.5.2</a>.</strong> By
+<a href="ch-power-series.html#def-ln-from-exp">Definition 12.5.3</a>, <span class="math inline">\(e=E(1)=\sum_{k=0}^\infty\frac1{k!}\)</span>. So
+<span class="math inline">\(e-\sum_{k=0}^n\frac1{k!}=\sum_{k=n+1}^\infty\frac1{k!}&gt;0\)</span>.
+For <span class="math inline">\(k\ge n+1\)</span>, <span class="math inline">\(\frac1{k!}\le\frac1{(n+1)!}\cdot\frac1{(n+1)^{k-n-1}}\)</span>,
+with strict inequality for <span class="math inline">\(k\ge
+n+2\)</span>. So by the geometric series, <span class="math display">\[\sum_{k=n+1}^\infty\frac1{k!}&lt;\frac1{(n+1)!}\sum_{j=0}^\infty\frac1{(n+1)^j}=\frac1{(n+1)!}\cdot\frac{n+1}n=\frac1{n!\,n}.\]</span>
+With <span class="math inline">\(n=7\)</span>, <span class="math inline">\(\sum_{k=0}^7\frac1{k!}=\frac{685}{252}=2.71825\ldots\)</span>
+and <span class="math inline">\(\frac1{7!\cdot7}=\frac1{35280}&lt;0.00003\)</span>.
+So <span class="math inline">\(2.718&lt;e&lt;2.71826+0.00003&lt;2.719\)</span>.</p>
+</div>
+<div class="solutionbox" id="sol-exer-e-irrational">
+
+<p><strong><a href="ch-power-series.html#exer-e-irrational">Exercise 12.5.3</a>.</strong>
+Suppose <span class="math inline">\(e=\frac pq\)</span> with <span class="math inline">\(p,q\in\mathbb{N}\)</span>. Let <span class="math display">\[a=q!\left(e-\sum_{k=0}^q\frac1{k!}\right)=(q-1)!\,p-\sum_{k=0}^q\frac{q!}{k!}.\]</span>
+Each <span class="math inline">\(\frac{q!}{k!}\)</span> with <span class="math inline">\(k\le q\)</span> is an integer, so <span class="math inline">\(a\in\mathbb{Z}\)</span>. By <a href="ch-power-series.html#exer-e-estimate">Exercise 12.5.2</a> with <span class="math inline">\(n=q\)</span>, <span class="math inline">\(0&lt;a&lt;\frac{q!}{q!\,q}=\frac1q\le1\)</span>.
+No integer lies strictly between <span class="math inline">\(0\)</span>
+and <span class="math inline">\(1\)</span>. So <span class="math inline">\(e\)</span> is irrational.</p>
+</div>
+<div class="solutionbox" id="sol-exer-cosh-sinh-series">
+
+<p><strong><a href="ch-power-series.html#exer-cosh-sinh-series">Exercise
+12.5.4</a>.</strong> <em>Hint.</em> Write out the series for <span class="math inline">\(E(-x)\)</span>. Add or subtract it from the series
+for <span class="math inline">\(E(x)\)</span> term by term.</p>
+</div>
+<div class="solutionbox" id="sol-exer-exp-binomial-bound">
+
+<p><strong><a href="ch-power-series.html#exer-exp-binomial-bound">Exercise
+12.5.5</a>.</strong> <em>Hint.</em> By the Binomial Theorem, <span class="math inline">\(\left(1+\frac xn\right)^n=\sum_{k=0}^n\binom
+nk\frac{x^k}{n^k}\)</span>. Show <span class="math inline">\(\binom
+nk\frac1{n^k}\le\frac1{k!}\)</span>.</p>
+</div>
 </article>
 </main>
 <nav class="pager" aria-label="Previous and next page (bottom)">

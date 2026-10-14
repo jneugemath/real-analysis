@@ -31,7 +31,9 @@ window.MathJax = {
 <main id="main">
 <article id="ch-power-series">
 <h1>Chapter 12. Power Series Expansions</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-radius">12.1 Radius of Convergence</a></li><li><a href="#sec-power-series-calculus">12.2 Integrals and Derivatives of Power
-Series</a></li><li><a href="#sec-taylor">12.3 Taylor Series</a></li><li><a href="#sec-trig">12.4 The Trigonometric Functions</a></li><li><a href="#notes-11">Notes</a></li></ul></nav>
+Series</a></li><li><a href="#sec-taylor">12.3 Taylor Series</a></li><li><a href="#sec-trig">12.4 Trigonometric Functions from Power
+Series<sup>*</sup></a></li><li><a href="#sec-exp-series">12.5 The Exponential Function from Its
+Series<sup>*</sup></a></li><li><a href="#notes-11">Notes</a></li></ul></nav>
 <p>A power series is a series of functions whose terms are constant
 multiples of <span class="math inline">\((x-c)^k\)</span>. It is the
 infinite analogue of a polynomial. This chapter shows that power series
@@ -46,7 +48,9 @@ Given a function <span class="math inline">\(f\)</span>, is it the sum
 of a power series? The only candidate is the Taylor series of <span class="math inline">\(f\)</span>. Taylor’s Theorem measures how far
 <span class="math inline">\(f\)</span> is from the partial sums of that
 series. Sometimes the answer is yes, as for <span class="math inline">\(\sin x\)</span>, <span class="math inline">\(e^x\)</span> and <span class="math inline">\(\ln(1+x)\)</span>. Sometimes it is no, even for a
-function with derivatives of every order.</p>
+function with derivatives of every order. The starred Sections <a href="#sec-trig">12.4</a> and <a href="#sec-exp-series">12.5</a> use
+power series to define the trigonometric functions and the exponential
+function a second way.</p>
 <section class="level3 unnumbered" id="sec-radius">
 <h2>12.1 Radius of Convergence</h2>
 <div class="definitionbox" id="def-power-series">
@@ -257,7 +261,7 @@ but the proof is not given here. It requires rewriting a power series
 centered at <span class="math inline">\(c\)</span> as one centered at
 <span class="math inline">\(d\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-41">
+<section class="level5 unnumbered" id="exercises-42">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-radius-gaps-1">
 
@@ -500,7 +504,7 @@ with positive radius of convergence that converges to <span class="math inline">
 </div>
 <figure class="figure" id="fig-flat-function"><div class="figure-images"><img alt="The graph of e to the minus 1 over x squared. It lies along the x-axis near 0, then rises smoothly and levels off toward height 1 on both sides." height="207" src="figs/fig14.svg" width="501"/></div><figcaption><strong>Figure 12.1.</strong> The function <span class="math inline">\(f\)</span> of <a href="#ex-flat-function">Example
 12.2.10</a>. It is extremely flat at <span class="math inline">\(0\)</span>. Every derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(0\)</span> is <span class="math inline">\(0\)</span>, but <span class="math inline">\(f\)</span> is not the zero function.</figcaption></figure>
-<section class="level5 unnumbered" id="exercises-42">
+<section class="level5 unnumbered" id="exercises-43">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-power-series-integral">
 
@@ -694,7 +698,7 @@ Remainder)<strong>.</strong></p>
 <div class="proofbox">
 <p><em>Proof.</em> Since <span class="math inline">\(f^{(n+1)}(t)(x-t)^n\)</span> is continuous on the
 interval between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span>, by the Mean Value Theorem for
-Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.5.1</a>), there exists
+Integrals (<a href="ch-integrals.html#thm-mvt-integrals">Theorem 9.6.1</a>), there exists
 a <span class="math inline">\(\xi\)</span> between <span class="math inline">\(c\)</span> and <span class="math inline">\(x\)</span> such that <span class="math display">\[\int^x_c
 f^{(n+1)}(t)(x-t)^n\,dt=(x-c)f^{(n+1)}(\xi)(x-\xi)^n.\]</span> The
 result then follows from the Integral Form of the Remainder (<a href="#thm-taylor-integral">Theorem 12.3.9</a>).</p>
@@ -775,7 +779,7 @@ distance in the complex plane from <span class="math inline">\(c=0\)</span> to <
 series. The explanation belongs to complex analysis, where power series
 are studied for complex <span class="math inline">\(x\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-43">
+<section class="level5 unnumbered" id="exercises-44">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-taylor-polynomial-at-1">
 
@@ -819,11 +823,16 @@ for <span class="math inline">\(|x|&lt;1\)</span>. This is the
 </section>
 </section>
 <section class="level3 unnumbered" id="sec-trig">
-<h2>12.4 The Trigonometric Functions</h2>
+<h2>12.4 Trigonometric Functions from Power
+Series<sup>*</sup></h2>
 <p>The functions <span class="math inline">\(\sin x\)</span> and <span class="math inline">\(\cos x\)</span> have been used throughout the book
 with their properties assumed. See <a href="ch-sequences.html#rem-elementary-functions">Remark 3.1.1</a> and the introduction
 to <a href="ch-derivative.html">Chapter 7</a>. This section defines them and
-proves those properties. It also defines <span class="math inline">\(\pi\)</span>.</p>
+proves those properties. <a href="ch-integrals.html#sec-trig-integrals">Section 9.5</a>
+did the same thing starting from an integral. Either section can be read
+without the other, and a reader willing to assume the familiar
+properties of <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> can skip both. The end of this
+section shows the two give the same functions.</p>
 <p><a href="#ex-sin-taylor">Example 12.3.11</a> showed that if <span class="math inline">\(\sin\)</span> has its familiar derivatives, then
 it equals its Taylor series. This section turns that around. The series
 becomes the definition. Everything else follows from the derivatives,
@@ -1079,9 +1088,17 @@ c=y\)</span> for some <span class="math inline">\(c\in(a,b)\)</span>. So
 So <span class="math inline">\(F-\arctan\)</span> is constant by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5). Both are <span class="math inline">\(0\)</span> at <span class="math inline">\(0\)</span>. So <span class="math inline">\(F=\arctan\)</span>. Last, <span class="math inline">\(\cos^2\frac\pi4-\sin^2\frac\pi4=\cos\frac\pi2=0\)</span>
 by <a href="#cor-trig-formulas">Corollary 12.4.6</a> (1), and both <span class="math inline">\(\sin\frac\pi4\)</span> and <span class="math inline">\(\cos\frac\pi4\)</span> are positive. So <span class="math inline">\(\sin\frac\pi4=\cos\frac\pi4\)</span>, <span class="math inline">\(\tan\frac\pi4=1\)</span> and <span class="math inline">\(\arctan1=\frac\pi4\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<p>Part (4) gives another way to define <span class="math inline">\(\pi\)</span>, as four times an integral, much as
-<span class="math inline">\(\ln x\)</span> was defined in <a href="ch-integrals.html#sec-exp-log">Section 9.4</a>. The inverse cosine was found in <a href="ch-derivative.html#ex-arccos">Example 7.2.10</a>, and the inverse sine is <a href="#exer-arcsin">Exercise 12.4.4</a>.</p>
-<section class="level5 unnumbered" id="exercises-44">
+<p>The inverse cosine was found in <a href="ch-derivative.html#ex-arccos">Example
+7.2.10</a>, and the inverse sine is <a href="#exer-arcsin">Exercise
+12.4.4</a>.</p>
+<p>The functions of this section are the ones built in <a href="ch-integrals.html#sec-trig-integrals">Section 9.5</a>. Write <span class="math inline">\(S\)</span> and <span class="math inline">\(C\)</span> for the sine and cosine of that
+section. By <a href="ch-integrals.html#thm-sin-cos-integral">Theorem 9.5.9</a>, <span class="math inline">\(S''+S=0\)</span>, <span class="math inline">\(S(0)=0\)</span> and <span class="math inline">\(S'(0)=C(0)=1\)</span>. So <span class="math inline">\(S=\sin\)</span> by <a href="#thm-trig-ode">Theorem
+12.4.4</a>. In the same way, <span class="math inline">\(C=\cos\)</span>. In <a href="ch-integrals.html#sec-trig-integrals">Section 9.5</a>, <span class="math inline">\(\pi\)</span> was defined as <span class="math inline">\(2\sup\arctan\)</span>, and <a href="ch-integrals.html#thm-trig-integral-identities">Theorem 9.5.10</a> (4) shows that
+<span class="math inline">\(\frac\pi2\)</span> is the smallest positive
+zero of <span class="math inline">\(C\)</span>. So the two definitions
+of <span class="math inline">\(\pi\)</span> agree. By <a href="#thm-tan-arctan">Theorem 12.4.12</a> (4), the two definitions of
+<span class="math inline">\(\arctan\)</span> agree too.</p>
+<section class="level5 unnumbered" id="exercises-45">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-trig-double-angle">
 
@@ -1132,6 +1149,142 @@ x=\sum_{k=0}^\infty\frac{(-1)^k}{2k+1}x^{2k+1}\)</span> for <span class="math in
 <div class="exercisebox" id="exer-sin-not-polynomial">
 
 <p><strong>Exercise 12.4.10.</strong> Prove that <span class="math inline">\(\sin\)</span> is not a polynomial. <a aria-label="Hint for Exercise 12.4.10" href="solutions-ch12.html#sol-exer-sin-not-polynomial">[Hint]</a></p>
+</div>
+</section>
+</section>
+<section class="level3 unnumbered" id="sec-exp-series">
+<h2>12.5 The Exponential Function from Its
+Series<sup>*</sup></h2>
+<p><a href="ch-integrals.html#sec-exp-log">Section 9.4</a> defined <span class="math inline">\(\ln\)</span> as an integral and <span class="math inline">\(e^x\)</span> as its inverse. This section goes the
+other way. It defines <span class="math inline">\(e^x\)</span> by its
+power series and gets <span class="math inline">\(\ln\)</span> as the
+inverse. It can be read without <a href="ch-integrals.html#sec-exp-log">Section 9.4</a>.
+At the end, the two approaches are shown to give the same functions. A
+reader willing to assume the familiar properties of <span class="math inline">\(e^x\)</span> and <span class="math inline">\(\ln
+x\)</span> can skip both sections.</p>
+<div class="definitionbox" id="def-exp-series">
+
+<p><strong>Definition 12.5.1.</strong> For <span class="math inline">\(x\in\mathbb{R}\)</span>, define <span class="math display">\[E(x)=\sum_{k=0}^\infty\frac{x^k}{k!}=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots.\]</span></p>
+</div>
+<p>The series converges for every <span class="math inline">\(x\)</span>. For <span class="math inline">\(x\ne0\)</span>, the ratio of consecutive terms is
+<span class="math inline">\(\frac{|x|}{k+1}\to0\)</span>, so it
+converges absolutely by the Ratio Test (<a href="ch-series.html#thm-ratio-test">Theorem 10.2.12</a>). So its radius of
+convergence is <span class="math inline">\(\infty\)</span>, by <a href="#thm-radius-of-convergence">Theorem 12.1.7</a> (2).</p>
+<div class="theorembox" id="thm-exp-series">
+
+<p><strong>Theorem 12.5.2.</strong></p>
+<ol>
+<li><p><span class="math inline">\(E\)</span> is differentiable on <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(E'=E\)</span> and <span class="math inline">\(E(0)=1\)</span>.</p></li>
+<li><p><span class="math inline">\(E(x)E(-x)=1\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(E(x+y)=E(x)E(y)\)</span> for all
+<span class="math inline">\(x,y\in\mathbb{R}\)</span>.</p></li>
+<li><p><span class="math inline">\(E(x)&gt;0\)</span> for all <span class="math inline">\(x\)</span>, and <span class="math inline">\(E(x)\ge1+x\)</span> for all <span class="math inline">\(x\ge0\)</span>.</p></li>
+<li><p><span class="math inline">\(E\)</span> is strictly increasing,
+<span class="math inline">\(\lim_{x\to\infty}E(x)=\infty\)</span> and
+<span class="math inline">\(\lim_{x\to-\infty}E(x)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(E\)</span> maps <span class="math inline">\(\mathbb{R}\)</span> onto <span class="math inline">\((0,\infty)\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) By <a href="#thm-power-series-derivative">Theorem 12.2.3</a>,
+<span class="math display">\[E'(x)=\sum_{k=1}^\infty\frac{kx^{k-1}}{k!}=\sum_{k=1}^\infty\frac{x^{k-1}}{(k-1)!}=\sum_{j=0}^\infty\frac{x^j}{j!}=E(x).\]</span>
+Setting <span class="math inline">\(x=0\)</span> leaves only the first
+term, so <span class="math inline">\(E(0)=1\)</span>.</p>
+<p>(2) Let <span class="math inline">\(g(x)=E(x)E(-x)\)</span>. By the
+Product Rule and the Chain Rule, <span class="math inline">\(g'(x)=E(x)E(-x)-E(x)E(-x)=0\)</span>. So <span class="math inline">\(g\)</span> is constant by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>, and <span class="math inline">\(g(x)=g(0)=1\)</span>.</p>
+<p>(3) Fix <span class="math inline">\(y\)</span>, and let <span class="math inline">\(h(x)=E(x+y)E(-x)\)</span>. Then <span class="math inline">\(h'(x)=E(x+y)E(-x)-E(x+y)E(-x)=0\)</span>. So
+<span class="math inline">\(h(x)=h(0)=E(y)\)</span>. Multiply <span class="math inline">\(E(x+y)E(-x)=E(y)\)</span> by <span class="math inline">\(E(x)\)</span> and use (2).</p>
+<p>(4) If <span class="math inline">\(x\ge0\)</span>, every term of the
+series is at least <span class="math inline">\(0\)</span>, so <span class="math inline">\(E(x)\ge1+x\ge1\)</span>. If <span class="math inline">\(x&lt;0\)</span>, then <span class="math inline">\(E(x)=\frac1{E(-x)}&gt;0\)</span> by (2).</p>
+<p>(5) Since <span class="math inline">\(E'=E&gt;0\)</span>, <span class="math inline">\(E\)</span> is strictly increasing by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Since <span class="math inline">\(E(x)\ge1+x\)</span> for <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(E(x)\to\infty\)</span> as <span class="math inline">\(x\to\infty\)</span>. Then <span class="math inline">\(E(x)=\frac1{E(-x)}\to0\)</span> as <span class="math inline">\(x\to-\infty\)</span>.</p>
+<p>(6) Let <span class="math inline">\(y&gt;0\)</span>. By (5), there
+are <span class="math inline">\(a&lt;b\)</span> with <span class="math inline">\(E(a)&lt;y&lt;E(b)\)</span>. Since <span class="math inline">\(E\)</span> is continuous, <a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a> gives a <span class="math inline">\(c\)</span> with <span class="math inline">\(E(c)=y\)</span>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="definitionbox" id="def-ln-from-exp">
+
+<p><strong>Definition 12.5.3.</strong> Let <span class="math inline">\(e=E(1)\)</span>. Let <span class="math inline">\(L:(0,\infty)\to\mathbb{R}\)</span> be the inverse
+of <span class="math inline">\(E\)</span>.</p>
+</div>
+<div class="theorembox" id="thm-ln-from-exp">
+
+<p><strong>Theorem 12.5.4.</strong></p>
+<ol>
+<li><p><span class="math inline">\(L\)</span> is differentiable, <span class="math inline">\(L'(x)=\frac1x\)</span> and <span class="math inline">\(L(1)=0\)</span>. So <span class="math inline">\(L(x)=\int_1^x\frac1t\,dt\)</span> for all <span class="math inline">\(x&gt;0\)</span>.</p></li>
+<li><p><span class="math inline">\(L(ab)=L(a)+L(b)\)</span> for all
+<span class="math inline">\(a,b&gt;0\)</span>.</p></li>
+<li><p><span class="math inline">\(E(r)=e^r\)</span> for all <span class="math inline">\(r\in\mathbb{Q}\)</span>.</p></li>
+<li><p><span class="math inline">\(e=\lim_{n\to\infty}\left(1+\frac1n\right)^n\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>(1) By <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a>, <span class="math inline">\(L\)</span> is differentiable on <span class="math inline">\((0,\infty)\)</span>. If <span class="math inline">\(x=E(y)\)</span>, then <span class="math inline">\(L'(x)=\frac1{E'(y)}=\frac1{E(y)}=\frac1x\)</span>.
+Since <span class="math inline">\(E(0)=1\)</span>, <span class="math inline">\(L(1)=0\)</span>. The function <span class="math inline">\(\int_1^x\frac1t\,dt\)</span> also has derivative
+<span class="math inline">\(\frac1x\)</span> and is <span class="math inline">\(0\)</span> at <span class="math inline">\(1\)</span>, by <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>. So the two are equal by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5).</p>
+<p>(2) Let <span class="math inline">\(a=E(s)\)</span> and <span class="math inline">\(b=E(t)\)</span>. Then <span class="math inline">\(ab=E(s+t)\)</span> by <a href="#thm-exp-series">Theorem 12.5.2</a> (3). So <span class="math inline">\(L(ab)=s+t=L(a)+L(b)\)</span>.</p>
+<p>(3) By (3) of <a href="#thm-exp-series">Theorem 12.5.2</a> and
+induction, <span class="math inline">\(E(nx)=E(x)^n\)</span> for <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(E(n)=e^n\)</span>, and <span class="math inline">\(E(-n)=\frac1{E(n)}=e^{-n}\)</span>. Let <span class="math inline">\(r=\frac mn\)</span> with <span class="math inline">\(m\in\mathbb{Z}\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. Then <span class="math inline">\(E(r)^n=E(m)=e^m\)</span>. Since <span class="math inline">\(E(r)&gt;0\)</span>, it is the positive <span class="math inline">\(n\)</span>th root of <span class="math inline">\(e^m\)</span>, which is <span class="math inline">\(e^{m/n}\)</span> by <a href="ch-real-numbers.html#thm-nth-root">Theorem 1.7.13</a>.</p>
+<p>(4) By (2) and induction, <span class="math inline">\(L(b^n)=nL(b)\)</span> for <span class="math inline">\(b&gt;0\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>. So <span class="math inline">\(\left(1+\frac1n\right)^n=E\left(nL\left(1+\frac1n\right)\right)\)</span>.
+Since <span class="math inline">\(L'(1)=1\)</span>, <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> with <span class="math inline">\(x_n=1+\frac1n\)</span> gives <span class="math display">\[nL\left(1+\frac1n\right)=\frac{L\left(1+\frac1n\right)-L(1)}{1/n}\to1.\]</span>
+Since <span class="math inline">\(E\)</span> is continuous, <span class="math inline">\(\left(1+\frac1n\right)^n\to E(1)=e\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<p>Part (1) says <span class="math inline">\(L\)</span> is the function
+<span class="math inline">\(\ln x=\int_1^x\frac1t\,dt\)</span> of <a href="ch-integrals.html#sec-exp-log">Section 9.4</a>. Part (4) says <span class="math inline">\(e\)</span> is the number <span class="math inline">\(e\)</span> defined in <a href="ch-integrals.html#ex-exp-ln">Example
+9.4.1</a>. So <span class="math inline">\(E\)</span>, the inverse of
+<span class="math inline">\(L\)</span>, is the function <span class="math inline">\(\exp\)</span> of <a href="ch-integrals.html#def-exp">Definition
+9.4.3</a>, and <span class="math inline">\(e^x=\exp(x)=E(x)\)</span>.
+The two approaches give the same functions. A reader of this section can
+go on to <a href="ch-integrals.html#def-general-power">Definition 9.4.5</a> to define
+<span class="math inline">\(a^x\)</span> and <span class="math inline">\(\log_a\)</span>. The facts used there from
+Theorems <a href="ch-integrals.html#thm-ln-properties">9.4.2</a> and <a href="ch-integrals.html#thm-exp-properties">9.4.4</a> follow from Theorems <a href="#thm-exp-series">12.5.2</a> and <a href="#thm-ln-from-exp">12.5.4</a> in the same way.</p>
+<p>The proof of (3) in <a href="#thm-exp-series">Theorem 12.5.2</a> is
+the same trick as <a href="#lem-trig-ode-zero">Lemma 12.4.3</a>. A
+function is pinned down by a differential equation and one value. See <a href="ch-integrals.html#exer-exp-unique">Exercise 9.4.4</a>.</p>
+<div class="remarkbox" id="rem-exp-trig">
+
+<p><strong>Remark 12.5.5.</strong> Compare the three series <span class="math display">\[E(x)=\sum_{k=0}^\infty\frac{x^k}{k!},\qquad\cos
+x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k}}{(2k)!},\qquad\sin
+x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)!}.\]</span> The series
+for <span class="math inline">\(\cos\)</span> and <span class="math inline">\(\sin\)</span> are the even and odd parts of the
+series for <span class="math inline">\(E\)</span>, with alternating
+signs. Without the signs, the even and odd parts give the hyperbolic
+functions <span class="math inline">\(\cosh x\)</span> and <span class="math inline">\(\sinh x\)</span> (<a href="#exer-cosh-sinh-series">Exercise 12.5.4</a>). The signs come from
+powers of <span class="math inline">\(i=\sqrt{-1}\)</span>, since <span class="math inline">\(i^2=-1\)</span>, <span class="math inline">\(i^3=-i\)</span> and <span class="math inline">\(i^4=1\)</span>. If complex numbers are allowed in
+the series, then <span class="math display">\[E(ix)=\cos x+i\sin
+x.\]</span> This is Euler’s formula. Making it precise requires series
+of complex numbers, which belong to complex analysis. This book stays
+with real numbers.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-46">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-exp-series-bounds">
+
+<p><strong>Exercise 12.5.1.</strong> Let <span class="math inline">\(x\ge0\)</span> and <span class="math inline">\(n\in\mathbb{N}_0\)</span>. Prove that <span class="math inline">\(E(x)\ge\sum_{k=0}^n\frac{x^k}{k!}\)</span>. Use
+this to prove that <span class="math inline">\(\lim_{x\to\infty}\frac{x^n}{E(x)}=0\)</span>. <a aria-label="Hint for Exercise 12.5.1" href="solutions-ch12.html#sol-exer-exp-series-bounds">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-e-estimate">
+
+<p><strong>Exercise 12.5.2.</strong> Prove that <span class="math inline">\(0&lt;e-\sum_{k=0}^n\frac1{k!}&lt;\frac1{n!\,n}\)</span>
+for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Use <span class="math inline">\(n=7\)</span> to prove that <span class="math inline">\(2.718&lt;e&lt;2.719\)</span>. <a aria-label="Solution for Exercise 12.5.2" href="solutions-ch12.html#sol-exer-e-estimate">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-e-irrational">
+
+<p><strong>Exercise 12.5.3.</strong> Prove that <span class="math inline">\(e\)</span> is irrational. (Suppose <span class="math inline">\(e=\frac pq\)</span> with <span class="math inline">\(p,q\in\mathbb{N}\)</span>. Multiply the inequality
+of <a href="#exer-e-estimate">Exercise 12.5.2</a> with <span class="math inline">\(n=q\)</span> by <span class="math inline">\(q!\)</span>.) <a aria-label="Solution for Exercise 12.5.3" href="solutions-ch12.html#sol-exer-e-irrational">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-cosh-sinh-series">
+
+<p><strong>Exercise 12.5.4.</strong> Let <span class="math inline">\(\cosh x=\frac{E(x)+E(-x)}2\)</span> and <span class="math inline">\(\sinh x=\frac{E(x)-E(-x)}2\)</span>. Prove that
+<span class="math inline">\(\cosh
+x=\sum_{k=0}^\infty\frac{x^{2k}}{(2k)!}\)</span> and <span class="math inline">\(\sinh
+x=\sum_{k=0}^\infty\frac{x^{2k+1}}{(2k+1)!}\)</span>. <a aria-label="Hint for Exercise 12.5.4" href="solutions-ch12.html#sol-exer-cosh-sinh-series">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-exp-binomial-bound">
+
+<p><strong>Exercise 12.5.5.</strong> Let <span class="math inline">\(x\ge0\)</span>. Use the Binomial Theorem to prove
+that <span class="math inline">\(\left(1+\frac xn\right)^n\le
+E(x)\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. <a aria-label="Hint for Exercise 12.5.5" href="solutions-ch12.html#sol-exer-exp-binomial-bound">[Hint]</a></p>
 </div>
 </section>
 </section>

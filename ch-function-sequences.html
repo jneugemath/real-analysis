@@ -121,7 +121,7 @@ of <span class="math inline">\(f\)</span> is <span class="math inline">\(0\)</sp
 <p><strong>Example 11.1.7.</strong> For <span class="math inline">\(x\in[0,1]\)</span>, <span class="math inline">\(n\in\mathbb{N}\)</span>, define <span class="math inline">\(f_n(x)=nx(1-x^2)^n\)</span>. Since each <span class="math inline">\(f_n\)</span> is continuous, <span class="math inline">\(f_n\in\mathcal{R}[0,1]\)</span>. If <span class="math inline">\(x=0,1\)</span>, then <span class="math inline">\(f_n(x)=0\)</span>. If <span class="math inline">\(x\in(0,1)\)</span>, then <span class="math inline">\(0&lt;1-x^2&lt;1\)</span>, and so <span class="math inline">\(f_n(x)\to 0\)</span>. Indeed, <span class="math inline">\(\sum_nnx(1-x^2)^n\)</span> converges by <a href="ch-series.html#ex-polynomial-geometric">Example 10.3.5</a>, so its terms tend to
 <span class="math inline">\(0\)</span>. Thus for all <span class="math inline">\(x\in[0,1]\)</span>, <span class="math display">\[\lim_{n\to\infty} f_n(x)=f(x)=0.\]</span> Thus
 <span class="math inline">\(f\in\mathcal{R}[0,1]\)</span> as well. But
-the substitution <span class="math inline">\(u=1-x^2\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.5.3</a>) gives <span class="math display">\[\int^1_0
+the substitution <span class="math inline">\(u=1-x^2\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.6.3</a>) gives <span class="math display">\[\int^1_0
 f_n=\frac{1}{2}\cdot\frac{n}{n+1},\]</span> implying <span class="math display">\[\lim_{n\to\infty}\int^1_0 f_n=\frac{1}{2}\ne
 0=\int^1_0 f.\]</span></p>
 </div>
@@ -564,7 +564,7 @@ c}q_n(x)\right)=\lim_{n\to\infty}f_n'(c).\]</span></p>
 alone is not enough. In <a href="#ex-sin-nx-over-n">Example 11.1.8</a>,
 <span class="math inline">\(\left|\frac{\sin
 nx}{n}\right|\le\frac1n\)</span>, so <span class="math inline">\(f_n\to0\)</span> uniformly on <span class="math inline">\(\mathbb{R}\)</span>. But <span class="math inline">\(f_n'(0)=1\)</span> for all <span class="math inline">\(n\)</span>.</p>
-<section class="level5 unnumbered" id="exercises-40">
+<section class="level5 unnumbered" id="exercises-41">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-uniform-sup">
 
