@@ -142,6 +142,15 @@ table { border-collapse: collapse; margin: 1rem 0; display: block; overflow-x: a
 th, td { padding: 0.3rem 0.6rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
 
 mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+/* numbered equations get an inline min-width from MathJax; let them scroll instead */
+mjx-container[display="true"][width="full"] { min-width: 0 !important; }
+mjx-container.wide-inline {
+  display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden;
+  vertical-align: middle; padding: 2px 0;
+}
+/* the hidden MathML copy for screen readers must not widen the page */
+mjx-container > mjx-assistive-mml { width: 1px !important; }
+mjx-container:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 @media print {
   header.site, nav.pager, nav.local-toc, .skip { display: none; }

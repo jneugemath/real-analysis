@@ -9,8 +9,24 @@
 <script>
 window.MathJax = {
   tex: { tags: 'none' },
-  options: { menuOptions: { settings: { assistiveMml: true } } }
+  options: { menuOptions: { settings: { assistiveMml: true } } },
+  startup: { pageReady: () => MathJax.startup.defaultPageReady().then(fitWideMath)
+      .then(() => document.fonts.ready).then(() => { fitWideMath(); setTimeout(fitWideMath, 1000); }) }
 };
+// An inline formula wider than its line scrolls inside its own line,
+// so the page itself never scrolls sideways (WCAG 1.4.10 Reflow).
+function fitWideMath() {
+  document.querySelectorAll('mjx-container:not([display="true"])').forEach(m => {
+    m.classList.remove('wide-inline');
+    const blk = m.parentElement.closest('p,li,dd,dt,td,th,figcaption,div,section,main');
+    if (!blk) return;
+    const cs = getComputedStyle(blk);
+    const avail = blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (m.getBoundingClientRect().width > avail - 2) m.classList.add('wide-inline');
+  });
+}
+let fitTimer;
+window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitWideMath, 150); });
 </script>
 <script defer src="mathjax/tex-mml-chtml.js"></script>
 </head>
@@ -119,7 +135,7 @@ V_f[a,b]+V_g[a,b]&lt;\infty,\]</span> and <span class="math inline">\(h\)</span>
 <a rel="next" href="solutions-ch09.html"><span class="dir">Next</span> Solutions for Chapter 9. Integrals</a>
 </nav>
 <footer class="site">
-<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print. <a href="accessibility.html">Accessibility</a></p>
 </footer>
 </body>
 </html>

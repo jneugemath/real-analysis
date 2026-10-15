@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Accessibility | Real Analysis</title>
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } },
+  startup: { pageReady: () => MathJax.startup.defaultPageReady().then(fitWideMath)
+      .then(() => document.fonts.ready).then(() => { fitWideMath(); setTimeout(fitWideMath, 1000); }) }
+};
+// An inline formula wider than its line scrolls inside its own line,
+// so the page itself never scrolls sideways (WCAG 1.4.10 Reflow).
+function fitWideMath() {
+  document.querySelectorAll('mjx-container:not([display="true"])').forEach(m => {
+    m.classList.remove('wide-inline');
+    const blk = m.parentElement.closest('p,li,dd,dt,td,th,figcaption,div,section,main');
+    if (!blk) return;
+    const cs = getComputedStyle(blk);
+    const avail = blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (m.getBoundingClientRect().width > avail - 2) m.classList.add('wide-inline');
+  });
+}
+let fitTimer;
+window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitWideMath, 150); });
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<main id="main">
+<h1>Accessibility</h1>
+<p>This book is written for anyone who has finished calculus. That includes readers who use a screen reader, a magnifier, a keyboard, or other assistive technology.</p>
+
+<h2>Standard</h2>
+<p>The web version of the book is designed to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA. This is the standard used in the U.S. Department of Justice rule for public colleges and universities.</p>
+
+<h2>What the web version does</h2>
+<ul>
+<li>Every formula is displayed with MathJax, which gives screen readers a MathML copy to read aloud. Right-click or long-press a formula for speech, zoom and exploration options.</li>
+<li>Every figure has a text description.</li>
+<li>Every page has real headings, labeled navigation and a link to skip to the main content.</li>
+<li>Everything works with a keyboard alone. A formula too wide for the screen can be focused and scrolled with the arrow keys.</li>
+<li>Text has a contrast ratio of at least 7 to 1, in light mode and in dark mode.</li>
+<li>Pages reflow down to a width of 320 pixels. A very long formula scrolls inside its own line, so the page never scrolls sideways.</li>
+<li>The colors follow your system's light or dark setting.</li>
+</ul>
+
+<h2>How it was tested</h2>
+<p>In October 2026, every page was tested with the axe accessibility engine against the WCAG 2.1 Level A and AA rules, in light mode and in dark mode. No failures were found. Reflow at 320 pixels, keyboard access to scrolling formulas, and text contrast were also checked. A full manual review by an outside accessibility specialist has not been done yet. This page will be updated when it is.</p>
+
+<h2>Known limitations</h2>
+<ul>
+<li>The PDF is not tagged for screen readers. The web version has the same text, numbering and figures, and it is the accessible version of the book.</li>
+<li>Screen readers differ in how well they read mathematics. Results can depend on the screen reader and the browser.</li>
+<li>Some figure descriptions may be brief. If one does not help, please say so.</li>
+</ul>
+
+<h2>Report a problem</h2>
+<p>If any part of the book is hard to use, please <a href="https://github.com/jneugemath/real-analysis/issues">report it on the book's GitHub page</a>. You can also ask for the book in another format there. Every report will be read.</p>
+<p>This statement was last updated in October 2026.</p>
+</main>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print. <a href="accessibility.html">Accessibility</a></p>
+</footer>
+</body>
+</html>
