@@ -80,10 +80,7 @@ and <span class="math inline">\(B\)</span> are <em>equal</em>, written
 <div class="remarkbox" id="rem-subset-notation">
 
 <p><strong>Remark 1.1.4.</strong> Some books write <span class="math inline">\(A\subseteq B\)</span> for a subset and <span class="math inline">\(A\subset B\)</span> for a proper subset. In this
-book, <span class="math inline">\(A\subset B\)</span> allows <span class="math inline">\(A=B\)</span>. Notice every set is a subset of
-itself. Also, <span class="math inline">\(\emptyset\subset A\)</span>
-for every set <span class="math inline">\(A\)</span>. Since <span class="math inline">\(\emptyset\)</span> has no elements, there is
-nothing to check.</p>
+book, <span class="math inline">\(A\subset B\)</span> allows <span class="math inline">\(A=B\)</span>.</p>
 </div>
 <div class="examplebox" id="ex-subsets">
 
@@ -99,16 +96,49 @@ element of <span class="math inline">\(A\)</span>. Then show <span class="math i
 Nothing can be assumed about <span class="math inline">\(x\)</span>
 except that <span class="math inline">\(x\in A\)</span>. Since <span class="math inline">\(x\)</span> was any element of <span class="math inline">\(A\)</span>, every element of <span class="math inline">\(A\)</span> is in <span class="math inline">\(B\)</span>.</p>
 </div>
+<div class="theorembox" id="thm-empty-self-subset">
+
+<p><strong>Theorem 1.1.6.</strong> Let <span class="math inline">\(A\)</span> be a set. Then</p>
+<ol>
+<li><p><span class="math inline">\(A\subset A\)</span>, and</p></li>
+<li><p><span class="math inline">\(\emptyset\subset A\)</span>.</p></li>
+</ol>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<ol>
+<li><p>Let <span class="math inline">\(x\in A\)</span>. Then <span class="math inline">\(x\in A\)</span>. So <span class="math inline">\(A\subset A\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(x\in\emptyset\)</span>. We must
+show <span class="math inline">\(x\in A\)</span>. But <span class="math inline">\(\emptyset\)</span> has no elements, so there is no
+such <span class="math inline">\(x\)</span> and nothing to show. So
+<span class="math inline">\(\emptyset\subset A\)</span>.</p></li>
+</ol>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="techniquebox">
+<p><strong>Proof Technique (Vacuous Truth).</strong></p>
+<p>The proof of <a href="#thm-empty-self-subset">Theorem 1.1.6</a> (2)
+never checks anything. The statement “for all <span class="math inline">\(x\in\emptyset\)</span>, <span class="math inline">\(x\in A\)</span>” cannot fail, because there is no
+<span class="math inline">\(x\)</span> for which it could fail. A
+statement of the form “for all <span class="math inline">\(x\in
+S\)</span>, <span class="math inline">\(P(x)\)</span>” with <span class="math inline">\(S=\emptyset\)</span> is called <em>vacuously
+true</em>. It is true no matter what <span class="math inline">\(P(x)\)</span> says. For example, every element of
+<span class="math inline">\(\emptyset\)</span> is a negative integer.
+Every element of <span class="math inline">\(\emptyset\)</span> is also
+a positive integer. Both statements are true. The same idea applies to a
+statement “if <span class="math inline">\(P\)</span>, then <span class="math inline">\(Q\)</span>” when <span class="math inline">\(P\)</span> is false. Vacuous truth comes up again
+in <a href="ch-topology.html#ex-R-empty-open-closed">Example 4.1.16</a>, which shows
+that <span class="math inline">\(\emptyset\)</span> is open.</p>
+</div>
 <div class="techniquebox">
 <p><strong>Proof Technique (Proving Two Sets Are Equal).</strong> To
 prove <span class="math inline">\(A=B\)</span>, prove two things. First
 show <span class="math inline">\(A\subset B\)</span>. Then show <span class="math inline">\(B\subset A\)</span>. This is called a double
 inclusion argument. The proof of <a href="#thm-set-properties">Theorem
-1.1.9</a> (3) below is an example.</p>
+1.1.10</a> (3) below is an example.</p>
 </div>
 <div class="definitionbox" id="def-set-operations">
 
-<p><strong>Definition 1.1.6.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets.</p>
+<p><strong>Definition 1.1.7.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets.</p>
 <ol>
 <li><p>The <em>union</em> of <span class="math inline">\(A\)</span> and
 <span class="math inline">\(B\)</span> is <span class="math inline">\(A\cup B=\{x:x\in A\text{ or }x\in
@@ -125,16 +155,16 @@ In this case, the <em>complement</em> of <span class="math inline">\(A\)</span> 
 </div>
 <div class="remarkbox" id="rem-inclusive-or">
 
-<p><strong>Remark 1.1.7.</strong> In mathematics, “or” always allows
+<p><strong>Remark 1.1.8.</strong> In mathematics, “or” always allows
 both. The statement “<span class="math inline">\(x\in A\)</span> or
 <span class="math inline">\(x\in B\)</span>” is true when <span class="math inline">\(x\)</span> is in both sets.</p>
 </div>
 <div class="examplebox" id="ex-set-operations">
 
-<p><strong>Example 1.1.8.</strong> Let <span class="math inline">\(X=\{1,2,3,4,5,6\}\)</span>, <span class="math inline">\(A=\{1,2,3,4\}\)</span>, and <span class="math inline">\(B=\{3,4,5\}\)</span>. Then <span class="math display">\[A\cup B=\{1,2,3,4,5\},\quad A\cap B=\{3,4\},\quad
+<p><strong>Example 1.1.9.</strong> Let <span class="math inline">\(X=\{1,2,3,4,5,6\}\)</span>, <span class="math inline">\(A=\{1,2,3,4\}\)</span>, and <span class="math inline">\(B=\{3,4,5\}\)</span>. Then <span class="math display">\[A\cup B=\{1,2,3,4,5\},\quad A\cap B=\{3,4\},\quad
 A\setminus B=\{1,2\},\quad B\setminus A=\{5\}.\]</span> Also, <span class="math inline">\(A^c=\{5,6\}\)</span> and <span class="math inline">\(B^c=\{1,2,6\}\)</span>. Notice <span class="math inline">\(A^c\cap B^c=\{6\}=(A\cup B)^c\)</span>. This is a
 special case of De Morgan’s Laws (<a href="#thm-de-morgan">Theorem
-1.1.10</a>).</p>
+1.1.11</a>).</p>
 </div>
 <div class="techniquebox">
 <p><strong>Proof Technique (Direct Proof).</strong> Most theorems have
@@ -144,11 +174,11 @@ statement <span class="math inline">\(Q\)</span> is the
 results that are already proved to show <span class="math inline">\(Q\)</span> is true. Each step must follow from the
 steps before it. A good first step is to write out what the hypothesis
 means using definitions. Then write out what the conclusion means. The
-proof connects the two. The proofs of <a href="#thm-set-properties">Theorem 1.1.9</a> are direct proofs.</p>
+proof connects the two. The proofs of <a href="#thm-set-properties">Theorem 1.1.10</a> are direct proofs.</p>
 </div>
 <div class="theorembox" id="thm-set-properties">
 
-<p><strong>Theorem 1.1.9.</strong> Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>
+<p><strong>Theorem 1.1.10.</strong> Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>
 and <span class="math inline">\(C\)</span> be subsets of a universal set
 <span class="math inline">\(X\)</span>.</p>
 <ol>
@@ -184,13 +214,13 @@ B)\cup(A\cap C)\)</span>.</p></li>
 <div class="techniquebox">
 <p><strong>Proof Technique (Proof by Cases).</strong> Sometimes a proof
 splits into cases. Each case must be handled, and together the cases
-must cover every possibility. In the proof of <a href="#thm-set-properties">Theorem 1.1.9</a> (3), <span class="math inline">\(x\in B\cup C\)</span> means <span class="math inline">\(x\in B\)</span> or <span class="math inline">\(x\in C\)</span>. So there are two cases. The proof
+must cover every possibility. In the proof of <a href="#thm-set-properties">Theorem 1.1.10</a> (3), <span class="math inline">\(x\in B\cup C\)</span> means <span class="math inline">\(x\in B\)</span> or <span class="math inline">\(x\in C\)</span>. So there are two cases. The proof
 handles each one. Then it notices both cases give the same
 conclusion.</p>
 </div>
 <div class="theorembox" id="thm-de-morgan">
 
-<p><strong>Theorem 1.1.10</strong> (De Morgan’s
+<p><strong>Theorem 1.1.11</strong> (De Morgan’s
 Laws)<strong>.</strong></p>
 <p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be subsets of a universal set <span class="math inline">\(X\)</span>. Then</p>
 <ol>
@@ -212,7 +242,7 @@ B^c\)</span>.</p></li>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="definitionbox" id="def-family">
 
-<p><strong>Definition 1.1.11.</strong> Let <span class="math inline">\(\Lambda\)</span> be a nonempty set. Suppose for
+<p><strong>Definition 1.1.12.</strong> Let <span class="math inline">\(\Lambda\)</span> be a nonempty set. Suppose for
 each <span class="math inline">\(\alpha\in\Lambda\)</span>, <span class="math inline">\(A_\alpha\)</span> is a set. Then <span class="math inline">\(\{A_\alpha\}_{\alpha\in\Lambda}\)</span> is called
 a <em>family of sets</em> and <span class="math inline">\(\Lambda\)</span> is called an <em>index set</em>.
 Define the union and intersection of the family by <span class="math display">\[\bigcup_{\alpha\in\Lambda}A_\alpha=\{x:x\in
@@ -221,7 +251,7 @@ A_\alpha\text{ for all }\alpha\in\Lambda\}.\]</span> If <span class="math inline
 </div>
 <div class="examplebox" id="ex-family">
 
-<p><strong>Example 1.1.12.</strong> For each <span class="math inline">\(n\in\{1,2,3,\dots\}\)</span>, let <span class="math inline">\(A_n=\{1,2,\dots,n\}\)</span>. Then <span class="math inline">\(\bigcup_{n=1}^\infty A_n=\{1,2,3,\dots\}\)</span>
+<p><strong>Example 1.1.13.</strong> For each <span class="math inline">\(n\in\{1,2,3,\dots\}\)</span>, let <span class="math inline">\(A_n=\{1,2,\dots,n\}\)</span>. Then <span class="math inline">\(\bigcup_{n=1}^\infty A_n=\{1,2,3,\dots\}\)</span>
 and <span class="math inline">\(\bigcap_{n=1}^\infty
 A_n=\{1\}\)</span>.</p>
 <p>For each <span class="math inline">\(n\in\{1,2,3,\dots\}\)</span>,
@@ -258,7 +288,7 @@ all.” Then negate the last statement. <a href="#exer-negations">Exercise
 </div>
 <div class="theorembox" id="thm-de-morgan-families">
 
-<p><strong>Theorem 1.1.13</strong> (De Morgan’s
+<p><strong>Theorem 1.1.14</strong> (De Morgan’s
 Laws)<strong>.</strong></p>
 <p>Let <span class="math inline">\(\{A_\alpha\}_{\alpha\in\Lambda}\)</span> be a
 family of subsets of a universal set <span class="math inline">\(X\)</span>. Then</p>
@@ -285,18 +315,18 @@ So <span class="math inline">\(x\in\left(\bigcup_{\alpha\in\Lambda}A_\alpha\righ
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="definitionbox" id="def-cartesian-product">
 
-<p><strong>Definition 1.1.14.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets. An <em>ordered pair</em> <span class="math inline">\((a,b)\)</span> is a pair of objects where the
+<p><strong>Definition 1.1.15.</strong> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be sets. An <em>ordered pair</em> <span class="math inline">\((a,b)\)</span> is a pair of objects where the
 order matters. Two ordered pairs <span class="math inline">\((a,b)\)</span> and <span class="math inline">\((c,d)\)</span> are equal if <span class="math inline">\(a=c\)</span> and <span class="math inline">\(b=d\)</span>. The <em>Cartesian product</em> of
 <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is <span class="math display">\[A\times
 B=\{(a,b):a\in A,\ b\in B\}.\]</span></p>
 </div>
 <div class="examplebox" id="ex-cartesian-product">
 
-<p><strong>Example 1.1.15.</strong> <span class="math inline">\(\{1,2\}\times\{3,4,5\}=\{(1,3),(1,4),(1,5),(2,3),(2,4),(2,5)\}\)</span>.</p>
+<p><strong>Example 1.1.16.</strong> <span class="math inline">\(\{1,2\}\times\{3,4,5\}=\{(1,3),(1,4),(1,5),(2,3),(2,4),(2,5)\}\)</span>.</p>
 </div>
 <div class="definitionbox" id="def-relation">
 
-<p><strong>Definition 1.1.16.</strong> A <em>relation</em> on a set
+<p><strong>Definition 1.1.17.</strong> A <em>relation</em> on a set
 <span class="math inline">\(A\)</span> is a subset <span class="math inline">\(R\)</span> of <span class="math inline">\(A\times
 A\)</span>. If <span class="math inline">\((x,y)\in R\)</span>, write
 <span class="math inline">\(x\,R\,y\)</span>. A relation <span class="math inline">\(\sim\)</span> on <span class="math inline">\(A\)</span> is an <em>equivalence relation</em>
@@ -312,24 +342,24 @@ if</p>
 form “for all <span class="math inline">\(x\)</span>, <span class="math inline">\(P(x)\)</span>” is false if <span class="math inline">\(P(x)\)</span> fails for just one <span class="math inline">\(x\)</span>. An <span class="math inline">\(x\)</span> for which <span class="math inline">\(P(x)\)</span> fails is called a
 <em>counterexample</em>. One counterexample is enough to show a “for
 all” statement is false. However, examples where <span class="math inline">\(P(x)\)</span> is true never prove a “for all”
-statement. <a href="#ex-relations">Example 1.1.17</a> uses a
+statement. <a href="#ex-relations">Example 1.1.18</a> uses a
 counterexample.</p>
 </div>
 <div class="examplebox" id="ex-relations">
 
-<p><strong>Example 1.1.17.</strong> Equality is an equivalence relation
+<p><strong>Example 1.1.18.</strong> Equality is an equivalence relation
 on any set. Now consider the relation <span class="math inline">\(\le\)</span> on <span class="math inline">\(\{1,2,3\}\)</span>. It is reflexive and
 transitive. However, it is not symmetric. To see this, notice <span class="math inline">\(1\le 2\)</span> but <span class="math inline">\(2\not\le 1\)</span>. So <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=2\)</span> is a counterexample. Thus <span class="math inline">\(\le\)</span> is not an equivalence relation.</p>
 </div>
 <div class="definitionbox" id="def-power-set">
 
-<p><strong>Definition 1.1.18.</strong> The <em>power set</em> of a set
+<p><strong>Definition 1.1.19.</strong> The <em>power set</em> of a set
 <span class="math inline">\(A\)</span>, denoted <span class="math inline">\(\mathcal{P}(A)\)</span>, is the set of all subsets
 of <span class="math inline">\(A\)</span>.</p>
 </div>
 <div class="examplebox" id="ex-power-set">
 
-<p><strong>Example 1.1.19.</strong> <span class="math inline">\(\mathcal{P}(\{1,2\})=\bigl\{\emptyset,\{1\},\{2\},\{1,2\}\bigr\}\)</span>.</p>
+<p><strong>Example 1.1.20.</strong> <span class="math inline">\(\mathcal{P}(\{1,2\})=\bigl\{\emptyset,\{1\},\{2\},\{1,2\}\bigr\}\)</span>.</p>
 </div>
 <section class="level5 unnumbered" id="exercises">
 <h3>Exercises</h3>
@@ -339,15 +369,15 @@ of <span class="math inline">\(A\)</span>.</p>
 </div>
 <div class="exercisebox" id="exer-set-properties">
 
-<p><strong>Exercise 1.1.2.</strong> Prove <a href="#thm-set-properties">Theorem 1.1.9</a> (2), (4) and (5).</p>
+<p><strong>Exercise 1.1.2.</strong> Prove <a href="#thm-set-properties">Theorem 1.1.10</a> (2), (4) and (5).</p>
 </div>
 <div class="exercisebox" id="exer-de-morgan">
 
-<p><strong>Exercise 1.1.3.</strong> Prove <a href="#thm-de-morgan">Theorem 1.1.10</a> (2). <a aria-label="Solution for Exercise 1.1.3" href="solutions-ch01.html#sol-exer-de-morgan">[Solution]</a></p>
+<p><strong>Exercise 1.1.3.</strong> Prove <a href="#thm-de-morgan">Theorem 1.1.11</a> (2). <a aria-label="Solution for Exercise 1.1.3" href="solutions-ch01.html#sol-exer-de-morgan">[Solution]</a></p>
 </div>
 <div class="exercisebox" id="exer-de-morgan-families">
 
-<p><strong>Exercise 1.1.4.</strong> Prove <a href="#thm-de-morgan-families">Theorem 1.1.13</a> (2).</p>
+<p><strong>Exercise 1.1.4.</strong> Prove <a href="#thm-de-morgan-families">Theorem 1.1.14</a> (2).</p>
 </div>
 <div class="exercisebox" id="exer-subset-transitive">
 
