@@ -1,4 +1,4 @@
-# Real Analysis Made a Littl(ε > 0) Easier
+# Real Analysis
 
 Jeffrey T. Neugebauer
 
