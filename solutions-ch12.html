@@ -272,12 +272,13 @@ x)=y(0)\cos\omega x+\frac{y'(0)}\omega\sin\omega x\)</span>.</p>
 <div class="solutionbox" id="sol-exer-unit-circle">
 
 <p><strong><a href="ch-power-series.html#exer-unit-circle">Exercise 12.4.7</a>.</strong>
-<em>Existence.</em> On <span class="math inline">\((0,\pi)\)</span>,
-<span class="math inline">\(\cos'=-\sin&lt;0\)</span> by <a href="ch-power-series.html#thm-trig-periodic">Theorem 12.4.11</a> (5). So <span class="math inline">\(\cos\)</span> is strictly decreasing on <span class="math inline">\([0,\pi]\)</span>, by <a href="ch-derivative.html#thm-mvt">Theorem
+There are two things to prove. Such a <span class="math inline">\(t\)</span> exists, and it is unique. To find <span class="math inline">\(t\)</span>, start with <span class="math inline">\(\cos\)</span> on <span class="math inline">\([0,\pi]\)</span>. On <span class="math inline">\((0,\pi)\)</span>, <span class="math inline">\(\cos'=-\sin&lt;0\)</span> by <a href="ch-power-series.html#thm-trig-periodic">Theorem 12.4.11</a> (5). So <span class="math inline">\(\cos\)</span> is strictly decreasing on <span class="math inline">\([0,\pi]\)</span>, by <a href="ch-derivative.html#thm-mvt">Theorem
 7.2.4</a> as in <a href="ch-power-series.html#exer-arcsin">Exercise 12.4.4</a>. Since <span class="math inline">\(\cos0=1\)</span>, <span class="math inline">\(\cos\pi=-1\)</span> and <span class="math inline">\(|a|\le1\)</span>, <a href="ch-continuity.html#thm-ivt">Theorem
 6.3.10</a> gives an <span class="math inline">\(s\in[0,\pi]\)</span>
 with <span class="math inline">\(\cos s=a\)</span>. Then <span class="math inline">\(\sin s\ge0\)</span> and <span class="math inline">\(\sin^2s=1-a^2=b^2\)</span>, so <span class="math inline">\(\sin s=|b|\)</span>. If <span class="math inline">\(b\ge0\)</span>, let <span class="math inline">\(t=s\)</span>. If <span class="math inline">\(b&lt;0\)</span>, then <span class="math inline">\(\sin s&gt;0\)</span>, so <span class="math inline">\(0&lt;s&lt;\pi\)</span>. Let <span class="math inline">\(t=2\pi-s\in(\pi,2\pi)\)</span>. By <a href="ch-power-series.html#thm-trig-periodic">Theorem 12.4.11</a> (4) and <a href="ch-power-series.html#thm-sin-cos-derivatives">Theorem 12.4.3</a>, <span class="math inline">\(\cos t=\cos(-s)=a\)</span> and <span class="math inline">\(\sin t=\sin(-s)=-|b|=b\)</span>.</p>
-<p><em>Uniqueness.</em> Suppose <span class="math inline">\(t_1,t_2\in[0,2\pi)\)</span> both work. By <a href="ch-power-series.html#thm-trig-identities">Theorem 12.4.6</a> and <a href="ch-power-series.html#thm-sin-cos-derivatives">Theorem 12.4.3</a>, <span class="math display">\[\cos(t_1-t_2)=\cos t_1\cos t_2+\sin t_1\sin
+<p>To show that <span class="math inline">\(t\)</span> is unique,
+suppose <span class="math inline">\(t_1,t_2\in[0,2\pi)\)</span> both
+work. By <a href="ch-power-series.html#thm-trig-identities">Theorem 12.4.6</a> and <a href="ch-power-series.html#thm-sin-cos-derivatives">Theorem 12.4.3</a>, <span class="math display">\[\cos(t_1-t_2)=\cos t_1\cos t_2+\sin t_1\sin
 t_2=a^2+b^2=1\]</span> and <span class="math inline">\(\sin(t_1-t_2)=\sin t_1\cos t_2-\cos t_1\sin
 t_2=ba-ab=0\)</span>. By <a href="ch-power-series.html#thm-trig-periodic">Theorem
 12.4.11</a> (6), <span class="math inline">\(t_1-t_2=k\pi\)</span> for

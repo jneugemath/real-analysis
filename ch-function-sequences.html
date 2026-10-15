@@ -389,13 +389,14 @@ c}\left(\lim_{n\to \infty}f_n(x)\right)=\lim_{n\to
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em>The numbers <span class="math inline">\(A_n\)</span>
-converge.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By the Cauchy Criterion
+<p>The first step shows that the numbers <span class="math inline">\(A_n\)</span> converge. Their limit is the
+candidate for the limit of <span class="math inline">\(f\)</span> at
+<span class="math inline">\(c\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By the Cauchy Criterion
 (<a href="#thm-cauchy-criterion-uniform">Theorem 11.2.5</a>), there is
 an <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|f_n(x)-f_m(x)|&lt;\varepsilon\)</span> for all
 <span class="math inline">\(x\in E\)</span> and all <span class="math inline">\(m,n\ge N\)</span>. Fix <span class="math inline">\(m,n\ge N\)</span>. By the limit laws, <span class="math inline">\(f_n(x)-f_m(x)\to A_n-A_m\)</span> as <span class="math inline">\(x\to c\)</span>, and so <span class="math inline">\(|f_n(x)-f_m(x)|\to|A_n-A_m|\)</span>, since <span class="math inline">\(\bigl||u|-|v|\bigr|\le|u-v|\)</span>. So <span class="math inline">\(|A_n-A_m|\le\varepsilon\)</span>, by <a href="ch-continuity.html#thm-function-order-limits">Theorem 6.1.15</a>. Thus <span class="math inline">\(\{A_n\}\)</span> is a Cauchy sequence. By <a href="ch-sequences.html#thm-cauchy-criterion">Theorem 3.5.2</a>, it converges. Let <span class="math inline">\(A=\lim_{n\to\infty}A_n\)</span>.</p>
-<p><em>The function <span class="math inline">\(f\)</span> has limit
-<span class="math inline">\(A\)</span> at <span class="math inline">\(c\)</span>.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. For all large <span class="math inline">\(n\)</span>, both <span class="math inline">\(|f(x)-f_n(x)|&lt;\frac\varepsilon 3\)</span> for
+<p>The second step shows that <span class="math inline">\(f\)</span> has
+limit <span class="math inline">\(A\)</span> at <span class="math inline">\(c\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. For all large <span class="math inline">\(n\)</span>, both <span class="math inline">\(|f(x)-f_n(x)|&lt;\frac\varepsilon 3\)</span> for
 every <span class="math inline">\(x\in E\)</span>, and <span class="math inline">\(|A_n-A|&lt;\frac\varepsilon 3\)</span>. Fix one
 such <span class="math inline">\(n\)</span>. Since <span class="math inline">\(f_n(x)\to A_n\)</span> as <span class="math inline">\(x\to c\)</span>, there is a <span class="math inline">\(\delta&gt;0\)</span> such that <span class="math inline">\(|f_n(x)-A_n|&lt;\frac\varepsilon 3\)</span> for
 all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta\)</span>. For those <span class="math inline">\(x\)</span>, <span class="math display">\[\begin{aligned}
@@ -508,8 +509,9 @@ f_n;\]</span> i.e., <span class="math display">\[\lim_{n\to\infty}
 By <a href="#thm-uniform-sup">Theorem 11.2.7</a>, <span class="math inline">\(\varepsilon_n\to0\)</span>. In particular, <span class="math inline">\(\varepsilon_n\)</span> is finite for all large
 <span class="math inline">\(n\)</span>. For such <span class="math inline">\(n\)</span>, <span class="math inline">\(|f(x)|\le|f_n(x)|+\varepsilon_n\)</span> for all
 <span class="math inline">\(x\)</span>, so <span class="math inline">\(f\)</span> is bounded, since <span class="math inline">\(f_n\)</span> is.</p>
-<p><em>The function <span class="math inline">\(f\)</span> is
-integrable.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(n\)</span> with <span class="math inline">\(\varepsilon_n&lt;\frac{\varepsilon}{3(b-a)}\)</span>.
+<p>With <span class="math inline">\(f\)</span> bounded, the next step
+shows that <span class="math inline">\(f\)</span> is integrable. Let
+<span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(n\)</span> with <span class="math inline">\(\varepsilon_n&lt;\frac{\varepsilon}{3(b-a)}\)</span>.
 Since <span class="math inline">\(f_n\in\mathcal{R}[a,b]\)</span>,
 Riemann’s Criterion (<a href="ch-integrals.html#thm-riemann-criterion">Theorem 9.2.1</a>)
 gives a partition <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_k\}\)</span> of <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P},f_n)-\mathcal{L}(\mathcal{P},f_n)&lt;\frac\varepsilon
@@ -518,7 +520,7 @@ gives a partition <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_k\}\)</s
 f_n(x)+\varepsilon_n\)</span>. So the supremum of <span class="math inline">\(f\)</span> there is at most the supremum of <span class="math inline">\(f_n\)</span> plus <span class="math inline">\(\varepsilon_n\)</span>, and the infimum of <span class="math inline">\(f\)</span> there is at least the infimum of <span class="math inline">\(f_n\)</span> minus <span class="math inline">\(\varepsilon_n\)</span>. Summing over <span class="math inline">\(i\)</span>, <span class="math display">\[\mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)\le\mathcal{U}(\mathcal{P},f_n)-\mathcal{L}(\mathcal{P},f_n)+2\varepsilon_n(b-a)&lt;\frac\varepsilon
 3+\frac{2\varepsilon}{3}=\varepsilon.\]</span> So <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> by Riemann’s
 Criterion.</p>
-<p><em>The integrals converge.</em> For all large <span class="math inline">\(n\)</span>, by Theorems <a href="ch-integrals.html#thm-integral-linear">9.2.11</a> and <a href="ch-integrals.html#thm-integral-abs">9.2.12</a> and <a href="ch-integrals.html#exer-integral-monotone">Exercise 9.2.3</a>, <span class="math display">\[\left|\int^b_a f-\int^b_a
+<p>It remains to show that the integrals converge. For all large <span class="math inline">\(n\)</span>, by Theorems <a href="ch-integrals.html#thm-integral-linear">9.2.11</a> and <a href="ch-integrals.html#thm-integral-abs">9.2.12</a> and <a href="ch-integrals.html#exer-integral-monotone">Exercise 9.2.3</a>, <span class="math display">\[\left|\int^b_a f-\int^b_a
 f_n\right|=\left|\int_a^b(f-f_n)\right|\le\int_a^b|f-f_n|\le
 \varepsilon_n(b-a).\]</span> Since <span class="math inline">\(\varepsilon_n\to0\)</span>, <span class="math inline">\(\lim_{n\to\infty}\int^b_a f_n=\int^b_a
 f\)</span>.</p>
@@ -537,7 +539,8 @@ These are the partial sums of <span class="math inline">\(\sum\int_a^bf_k\)</spa
 
 <p><strong>Example 11.2.20.</strong> Notice even though for <span class="math inline">\(f_n(x)=x^n\)</span>, <span class="math inline">\(\{f_n\}\)</span> converges pointwise and not
 uniformly to <span class="math display">\[f(x)=\begin{cases}0, &amp;
-x\in[0,1),\\ 1, &amp; x=1,\end{cases}\]</span> we have <span class="math display">\[\lim_{n\to\infty}\int^1_0
+x\in[0,1),\\ 1, &amp; x=1,\end{cases}\]</span> it is still true that
+<span class="math display">\[\lim_{n\to\infty}\int^1_0
 f_n=\lim_{n\to\infty}\frac{1}{n+1}=0=\int^1_0 f.\]</span> So uniform
 convergence is sufficient for the conclusion of <a href="#thm-uniform-integral">Theorem 11.2.18</a>, but not necessary. The
 next theorem gives a different sufficient condition.</p>
@@ -570,7 +573,7 @@ for all <span class="math inline">\(x\in[a,b]\)</span>.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em>A key estimate.</em> Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\{f_n(x_0)\}\)</span> converges and <span class="math inline">\(\{f_n'\}\)</span> converges uniformly, there
+<p>The proof starts with an estimate that controls <span class="math inline">\(f_n-f_m\)</span> on all of <span class="math inline">\([a,b]\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since <span class="math inline">\(\{f_n(x_0)\}\)</span> converges and <span class="math inline">\(\{f_n'\}\)</span> converges uniformly, there
 is an <span class="math inline">\(N\in\mathbb{N}\)</span> such that for
 all <span class="math inline">\(m,n\ge N\)</span>, <span class="math display">\[|f_n(x_0)-f_m(x_0)|&lt;\frac{\varepsilon}{2}\quad\text{and}\quad|f_n'(t)-f_m'(t)|&lt;\frac{\varepsilon}{2(b-a)}\text{
 for all }t\in[a,b].\]</span> Fix <span class="math inline">\(m,n\ge
@@ -579,10 +582,9 @@ N\)</span>, and let <span class="math inline">\(h=f_n-f_m\)</span>. Then
 for all <span class="math inline">\(t\)</span>. Let <span class="math inline">\(x,y\in[a,b]\)</span> with <span class="math inline">\(x\ne y\)</span>. By the Mean Value Theorem, <span class="math inline">\(h(x)-h(y)=h'(t)(x-y)\)</span> for some <span class="math inline">\(t\)</span> between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. So <span id="eq-uniform-derivative-key"></span> <span class="math display">\[|h(x)-h(y)|\le\frac{\varepsilon}{2(b-a)}|x-y|\quad\text{for
 all }x,y\in[a,b].
 \tag{11.2.1}\]</span> This also holds when <span class="math inline">\(x=y\)</span>.</p>
-<p><em>Uniform convergence of <span class="math inline">\(\{f_n\}\)</span>.</em> Take <span class="math inline">\(y=x_0\)</span> in <a href="#eq-uniform-derivative-key">(11.2.1)</a>. Since <span class="math inline">\(|x-x_0|\le b-a\)</span>, for all <span class="math inline">\(x\in[a,b]\)</span>, <span class="math display">\[|f_n(x)-f_m(x)|=|h(x)|\le|h(x)-h(x_0)|+|h(x_0)|&lt;\frac\varepsilon
+<p>The estimate first shows that <span class="math inline">\(\{f_n\}\)</span> converges uniformly. Take <span class="math inline">\(y=x_0\)</span> in <a href="#eq-uniform-derivative-key">(11.2.1)</a>. Since <span class="math inline">\(|x-x_0|\le b-a\)</span>, for all <span class="math inline">\(x\in[a,b]\)</span>, <span class="math display">\[|f_n(x)-f_m(x)|=|h(x)|\le|h(x)-h(x_0)|+|h(x_0)|&lt;\frac\varepsilon
 2+\frac\varepsilon 2=\varepsilon.\]</span> This holds for all <span class="math inline">\(m,n\ge N\)</span>. So by <a href="#thm-cauchy-criterion-uniform">Theorem 11.2.5</a>, <span class="math inline">\(\{f_n\}\)</span> converges uniformly on <span class="math inline">\([a,b]\)</span> to a function <span class="math inline">\(f\)</span>.</p>
-<p><em>The derivative of <span class="math inline">\(f\)</span>.</em>
-Fix <span class="math inline">\(c\in[a,b]\)</span> and let <span class="math inline">\(E=[a,b]\setminus\{c\}\)</span>. For <span class="math inline">\(x\in E\)</span>, define <span class="math display">\[q_n(x)=\frac{f_n(x)-f_n(c)}{x-c}\quad\text{and}\quad
+<p>It remains to compute the derivative of <span class="math inline">\(f\)</span>. Fix <span class="math inline">\(c\in[a,b]\)</span> and let <span class="math inline">\(E=[a,b]\setminus\{c\}\)</span>. For <span class="math inline">\(x\in E\)</span>, define <span class="math display">\[q_n(x)=\frac{f_n(x)-f_n(c)}{x-c}\quad\text{and}\quad
 q(x)=\frac{f(x)-f(c)}{x-c}.\]</span> Then <span class="math inline">\(q_n(x)\to q(x)\)</span> for every <span class="math inline">\(x\in E\)</span>, and <span class="math inline">\(\lim_{x\to c}q_n(x)=f_n'(c)\)</span> for each
 <span class="math inline">\(n\)</span>. Taking <span class="math inline">\(y=c\)</span> in <a href="#eq-uniform-derivative-key">(11.2.1)</a>, for all <span class="math inline">\(m,n\ge N\)</span> and all <span class="math inline">\(x\in E\)</span>, <span class="math display">\[|q_n(x)-q_m(x)|=\frac{|h(x)-h(c)|}{|x-c|}\le\frac{\varepsilon}{2(b-a)}.\]</span>
 Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
@@ -704,8 +706,9 @@ differentiable at <span class="math inline">\(x\)</span>. For <span class="math 
 x)}{2^k},\]</span> and <span class="math display">\[R_n(x)=\sum^{\infty}_{k=n}\frac{\cos(a^k\pi
 x)}{2^k}.\]</span> Then for <span class="math inline">\(h&gt;0\)</span>,
 <span class="math display">\[\frac{f(x+h)-f(x)}{h}=\frac{S_n(x+h)-S_n(x)}{h}+\frac{R_n(x+h)-R_n(x)}{h}.\]</span></p>
-<p><em>The first part is not too large.</em> By the Mean Value Theorem,
-for each <span class="math inline">\(k\)</span> there exists a <span class="math inline">\(\xi\in(0,h)\)</span> with <span class="math display">\[\frac{\cos(a^k\pi(x+h))-\cos(a^k\pi
+<p>The first step shows that the <span class="math inline">\(S_n\)</span> part is not too large. By the Mean
+Value Theorem, for each <span class="math inline">\(k\)</span> there
+exists a <span class="math inline">\(\xi\in(0,h)\)</span> with <span class="math display">\[\frac{\cos(a^k\pi(x+h))-\cos(a^k\pi
 x)}{h}=-a^k\pi\sin(a^k\pi(x+\xi)).\]</span> Since <span class="math display">\[|-a^k\pi\sin(a^k\pi(x+\xi))|\le a^k\pi,\]</span>
 <span class="math display">\[\begin{aligned}
 \left|\frac{S_n(x+h)-S_n(x)}{h}\right|&amp;\le
@@ -715,15 +718,17 @@ x)}{h}\right|\\
 &amp;=\frac{\pi\left(1-\left(\frac{a}{2}\right)^n\right)}{1-\frac{a}{2}}\\
 &amp;&lt;\frac{2\pi}{a-2}\left(\frac{a}{2}\right)^n.
 \end{aligned}\]</span></p>
-<p><em>A good choice of <span class="math inline">\(h\)</span>.</em>
-Write <span class="math inline">\(a^nx=k_n+\delta_n\)</span>, where
-<span class="math inline">\(k_n\in\mathbb{Z}\)</span> and <span class="math inline">\(-\frac{1}{2}\le \delta_n&lt;\frac{1}{2}\)</span>.
+<p>The second step chooses <span class="math inline">\(h\)</span> so
+that the <span class="math inline">\(R_n\)</span> part is large. Write
+<span class="math inline">\(a^nx=k_n+\delta_n\)</span>, where <span class="math inline">\(k_n\in\mathbb{Z}\)</span> and <span class="math inline">\(-\frac{1}{2}\le \delta_n&lt;\frac{1}{2}\)</span>.
 Set <span class="math display">\[h_n=\frac{1-\delta_n}{a^n}.\]</span>
 Since <span class="math inline">\(-\frac{1}{2}\le
 \delta_n&lt;\frac{1}{2}\)</span>, <span class="math inline">\(\frac{3}{2}\ge 1-\delta_n&gt;\frac{1}{2}\)</span>.
 Therefore, <span class="math display">\[\frac{2}{3}a^n\le
 \frac{1}{h_n}&lt;2a^n.\]</span> In particular <span class="math inline">\(h_n&gt;0\)</span> and <span class="math inline">\(h_n\to0\)</span> as <span class="math inline">\(n\to\infty\)</span>.</p>
-<p><em>The second part is large.</em> For <span class="math inline">\(k\ge n\)</span>, <span class="math display">\[\begin{aligned}
+<p>With this choice of <span class="math inline">\(h\)</span>, the third
+step shows that the <span class="math inline">\(R_n\)</span> part is
+large. For <span class="math inline">\(k\ge n\)</span>, <span class="math display">\[\begin{aligned}
 a^k\pi(x+h_n)&amp;=a^{k-n}a^n\pi(x+h_n)\\
 &amp;=a^{k-n}\pi(a^nx+(1-\delta_n))\\
 &amp;=a^{k-n}\pi(k_n+1).
@@ -751,8 +756,8 @@ Since <span class="math inline">\(-\frac{1}{2}\le
 \delta_n&lt;\frac{1}{2}\)</span>, <span class="math inline">\(\cos(\delta_n\pi)\ge 0\)</span>. Therefore, <span class="math display">\[\left|\frac{R_n(x+h_n)-R_n(x)}{h_n}\right|\ge
 \frac{1}{h_n}\cdot\frac{1}{2^n}\ge
 \frac{2}{3}\left(\frac{a}{2}\right)^n.\]</span></p>
-<p><em>Putting the parts together.</em> Therefore, by using the Reverse
-Triangle Inequality, <span class="math display">\[\begin{aligned}
+<p>The last step puts the two parts together. Therefore, by using the
+Reverse Triangle Inequality, <span class="math display">\[\begin{aligned}
 \left|\frac{f(x+h_n)-f(x)}{h_n}\right|&amp;\ge
 \left|\frac{R_n(x+h_n)-R_n(x)}{h_n}\right|-\left|\frac{S_n(x+h_n)-S_n(x)}{h_n}\right|\\
 &amp;\ge\frac{2}{3}\left(\frac{a}{2}\right)^n-\frac{2\pi}{a-2}\left(\frac{a}{2}\right)^n\\
@@ -917,28 +922,32 @@ Theorem)<strong>.</strong></p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em>The approximations.</em> Let <span class="math inline">\(\varphi_0(t)=y_0\)</span> for all <span class="math inline">\(t\)</span>, and for <span class="math inline">\(n\in\mathbb{N}_0\)</span> let <span class="math display">\[\varphi_{n+1}(t)=y_0+\int_{t_0}^tf(s,\varphi_n(s))\,ds.\]</span>
+<p>The proof builds approximate solutions one at a time. Let <span class="math inline">\(\varphi_0(t)=y_0\)</span> for all <span class="math inline">\(t\)</span>, and for <span class="math inline">\(n\in\mathbb{N}_0\)</span> let <span class="math display">\[\varphi_{n+1}(t)=y_0+\int_{t_0}^tf(s,\varphi_n(s))\,ds.\]</span>
 By <a href="#lem-picard-integral">Lemma 11.5.1</a> (1) and <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, each <span class="math inline">\(\varphi_n\)</span> is continuous, so each step
 makes sense. These are the <em>Picard iterates</em>.</p>
-<p><em>An estimate.</em> The function <span class="math inline">\(t\mapsto f(t,y_0)\)</span> is continuous on <span class="math inline">\([a,b]\)</span>, so it is bounded, say by <span class="math inline">\(M\)</span> (<a href="ch-continuity.html#thm-evt">Theorem
-6.3.15</a>). We show by induction that <span class="math display">\[|\varphi_{n+1}(t)-\varphi_n(t)|\le\frac{ML^n|t-t_0|^{n+1}}{(n+1)!}\quad\text{for
+<p>The next step bounds the distance between successive approximations.
+The function <span class="math inline">\(t\mapsto f(t,y_0)\)</span> is
+continuous on <span class="math inline">\([a,b]\)</span>, so it is
+bounded, say by <span class="math inline">\(M\)</span> (<a href="ch-continuity.html#thm-evt">Theorem 6.3.15</a>). Induction on <span class="math inline">\(n\)</span> shows that <span class="math display">\[|\varphi_{n+1}(t)-\varphi_n(t)|\le\frac{ML^n|t-t_0|^{n+1}}{(n+1)!}\quad\text{for
 all }t\in[a,b].\]</span> For <span class="math inline">\(n=0\)</span>,
 <span class="math inline">\(|\varphi_1(t)-y_0|=\left|\int_{t_0}^tf(s,y_0)\,ds\right|\le
 M|t-t_0|\)</span>. If the estimate holds for <span class="math inline">\(n\)</span>, then by condition (2), <span class="math display">\[\begin{aligned}
 |\varphi_{n+2}(t)-\varphi_{n+1}(t)|&amp;\le\left|\int_{t_0}^tL|\varphi_{n+1}(s)-\varphi_n(s)|\,ds\right|\\
 &amp;\le\left|\int_{t_0}^t\frac{ML^{n+1}|s-t_0|^{n+1}}{(n+1)!}\,ds\right|=\frac{ML^{n+1}|t-t_0|^{n+2}}{(n+2)!}.
 \end{aligned}\]</span></p>
-<p><em>Uniform convergence.</em> Let <span class="math inline">\(h=b-a\)</span>. Then <span class="math inline">\(|\varphi_{n+1}(t)-\varphi_n(t)|\le\frac{ML^nh^{n+1}}{(n+1)!}\)</span>
+<p>These bounds make the approximations converge uniformly. Let <span class="math inline">\(h=b-a\)</span>. Then <span class="math inline">\(|\varphi_{n+1}(t)-\varphi_n(t)|\le\frac{ML^nh^{n+1}}{(n+1)!}\)</span>
 for all <span class="math inline">\(t\)</span>. These bounds form a
 convergent series, by the Ratio Test. By <a href="#thm-weierstrass-m-test">Theorem 11.2.10</a>, <span class="math inline">\(\varphi_n=y_0+\sum_{k=0}^{n-1}(\varphi_{k+1}-\varphi_k)\)</span>
 converges uniformly on <span class="math inline">\([a,b]\)</span> to a
 function <span class="math inline">\(y\)</span>, which is continuous by
 <a href="#cor-uniform-limit-continuous">Corollary 11.2.16</a>.</p>
-<p><em>The limit is a solution.</em> By condition (2), <span class="math inline">\(|f(s,\varphi_n(s))-f(s,y(s))|\le
+<p>The next step shows that the limit <span class="math inline">\(y\)</span> is a solution. By condition (2), <span class="math inline">\(|f(s,\varphi_n(s))-f(s,y(s))|\le
 L|\varphi_n(s)-y(s)|\)</span>, so <span class="math inline">\(f(s,\varphi_n(s))\to f(s,y(s))\)</span> uniformly.
 By <a href="#thm-uniform-integral">Theorem 11.2.18</a>, letting <span class="math inline">\(n\to\infty\)</span> in the definition of <span class="math inline">\(\varphi_{n+1}\)</span> gives <span class="math inline">\(y(t)=y_0+\int_{t_0}^tf(s,y(s))\,ds\)</span>. By <a href="#lem-picard-integral">Lemma 11.5.1</a> (2), <span class="math inline">\(y\)</span> is a solution.</p>
-<p><em>Uniqueness.</em> Let <span class="math inline">\(z\)</span> be
-another solution, and let <span class="math inline">\(w(t)=|y(t)-z(t)|\)</span>. By <a href="#lem-picard-integral">Lemma 11.5.1</a>, <span class="math inline">\(w\)</span> is continuous, and by condition (2),
+<p>It remains to show that <span class="math inline">\(y\)</span> is the
+only solution. Let <span class="math inline">\(z\)</span> be another
+solution, and let <span class="math inline">\(w(t)=|y(t)-z(t)|\)</span>.
+By <a href="#lem-picard-integral">Lemma 11.5.1</a>, <span class="math inline">\(w\)</span> is continuous, and by condition (2),
 <span class="math display">\[w(t)\le\left|\int_{t_0}^tLw(s)\,ds\right|.\]</span>
 Let <span class="math inline">\(K\)</span> be the maximum of <span class="math inline">\(w\)</span> on <span class="math inline">\([a,b]\)</span>. Then <span class="math inline">\(w(t)\le KL|t-t_0|\)</span>, and by induction <span class="math inline">\(w(t)\le\frac{KL^n|t-t_0|^n}{n!}\le\frac{K(Lh)^n}{n!}\)</span>
 for every <span class="math inline">\(n\)</span>. This tends to <span class="math inline">\(0\)</span> by <a href="ch-series.html#exer-pk-over-kfactorial">Exercise 10.2.5</a>. So <span class="math inline">\(w=0\)</span> and <span class="math inline">\(z=y\)</span>.</p>

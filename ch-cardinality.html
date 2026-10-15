@@ -458,13 +458,17 @@ of points of <span class="math inline">\(A\)</span> that are not values
 of <span class="math inline">\(g\)</span>. For <span class="math inline">\(n\in\mathbb{N}_0\)</span>, let <span class="math inline">\(C_{n+1}=g\bigl[f[C_n]\bigr]\)</span>. Let <span class="math inline">\(C=\bigcup_{n=0}^\infty C_n\)</span>. Every point
 of <span class="math inline">\(A\setminus C\)</span> is in <span class="math inline">\(g[B]\)</span>, since it is not in <span class="math inline">\(C_0\)</span>. Since <span class="math inline">\(g\)</span> is one-to-one, each such point is <span class="math inline">\(g(b)\)</span> for exactly one <span class="math inline">\(b\in B\)</span>. Define <span class="math inline">\(h:A\to B\)</span> by <span class="math display">\[h(a)=\begin{cases}f(a), &amp; a\in C,\\ \text{the
 }b\in B\text{ with }g(b)=a, &amp; a\notin C.\end{cases}\]</span></p>
-<p><em><span class="math inline">\(h\)</span> is one-to-one.</em> Let
-<span class="math inline">\(a,a'\in A\)</span> with <span class="math inline">\(h(a)=h(a')\)</span>. If <span class="math inline">\(a,a'\in C\)</span>, then <span class="math inline">\(f(a)=f(a')\)</span>, so <span class="math inline">\(a=a'\)</span>. If <span class="math inline">\(a,a'\notin C\)</span>, then <span class="math inline">\(a=g(h(a))=g(h(a'))=a'\)</span>. Suppose
+<p>It remains to show that <span class="math inline">\(h\)</span> is
+one-to-one and onto. First, <span class="math inline">\(h\)</span> is
+one-to-one. To see this, let <span class="math inline">\(a,a'\in
+A\)</span> with <span class="math inline">\(h(a)=h(a')\)</span>. If
+<span class="math inline">\(a,a'\in C\)</span>, then <span class="math inline">\(f(a)=f(a')\)</span>, so <span class="math inline">\(a=a'\)</span>. If <span class="math inline">\(a,a'\notin C\)</span>, then <span class="math inline">\(a=g(h(a))=g(h(a'))=a'\)</span>. Suppose
 <span class="math inline">\(a\in C\)</span> and <span class="math inline">\(a'\notin C\)</span>. Then <span class="math inline">\(a'=g(h(a'))=g(h(a))=g(f(a))\)</span>.
 Since <span class="math inline">\(a\in C_n\)</span> for some <span class="math inline">\(n\)</span>, <span class="math inline">\(a'\in
 C_{n+1}\subset C\)</span>. This contradicts <span class="math inline">\(a'\notin C\)</span>. So this case cannot
 happen.</p>
-<p><em><span class="math inline">\(h\)</span> is onto.</em> Let <span class="math inline">\(b\in B\)</span>, and let <span class="math inline">\(a=g(b)\)</span>. If <span class="math inline">\(a\notin C\)</span>, then <span class="math inline">\(h(a)=b\)</span>. If <span class="math inline">\(a\in C\)</span>, then <span class="math inline">\(a\in C_n\)</span> for some <span class="math inline">\(n\)</span>. Since <span class="math inline">\(a\in
+<p>Next, <span class="math inline">\(h\)</span> is onto. To see this,
+let <span class="math inline">\(b\in B\)</span>, and let <span class="math inline">\(a=g(b)\)</span>. If <span class="math inline">\(a\notin C\)</span>, then <span class="math inline">\(h(a)=b\)</span>. If <span class="math inline">\(a\in C\)</span>, then <span class="math inline">\(a\in C_n\)</span> for some <span class="math inline">\(n\)</span>. Since <span class="math inline">\(a\in
 g[B]\)</span>, <span class="math inline">\(n\ne0\)</span>. So <span class="math inline">\(a\in C_n=g\bigl[f[C_{n-1}]\bigr]\)</span>, and
 <span class="math inline">\(a=g(f(a'))\)</span> for some <span class="math inline">\(a'\in C_{n-1}\)</span>. Since <span class="math inline">\(g\)</span> is one-to-one, <span class="math inline">\(b=f(a')=h(a')\)</span>.</p>
 <p>So <span class="math inline">\(h\)</span> is a bijection, and <span class="math inline">\(A\sim B\)</span>.</p>
@@ -489,16 +493,17 @@ it is not easy to write down.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em><span class="math inline">\(2^\mathbb{N}\lesssim[0,1]\)</span>.</em> For <span class="math inline">\(s\in2^\mathbb{N}\)</span>, let <span class="math inline">\(F(s)=\sum_{k=1}^\infty\frac{2s(k)}{3^k}\)</span>.
+<p>By <a href="#thm-schroder-bernstein">Theorem 2.4.2</a>, it is enough
+to show <span class="math inline">\(2^\mathbb{N}\lesssim[0,1]\)</span>
+and <span class="math inline">\([0,1]\lesssim2^\mathbb{N}\)</span>. To
+show the first, let <span class="math inline">\(s\in2^\mathbb{N}\)</span>, and let <span class="math inline">\(F(s)=\sum_{k=1}^\infty\frac{2s(k)}{3^k}\)</span>.
 The series converges by comparison with <span class="math inline">\(\sum\frac2{3^k}=1\)</span>, and <span class="math inline">\(0\le F(s)\le1\)</span>. (Series are studied in <a href="ch-series.html">Chapter 10</a>. As in <a href="#rem-decimal-expansions">Remark 2.3.1</a>, these facts are assumed
 here.) (These are the points of the Cantor set of <a href="ch-cantor.html">Chapter 5</a>.) Let <span class="math inline">\(s\ne
 t\)</span>, and let <span class="math inline">\(k\)</span> be the first
 index with <span class="math inline">\(s(k)\ne t(k)\)</span>. Say <span class="math inline">\(s(k)=1\)</span> and <span class="math inline">\(t(k)=0\)</span>. Then <span class="math display">\[F(s)-F(t)\ge\frac2{3^k}-\sum_{j=k+1}^\infty\frac2{3^j}=\frac2{3^k}-\frac1{3^k}&gt;0.\]</span>
 So <span class="math inline">\(F(s)\ne F(t)\)</span>, and <span class="math inline">\(F\)</span> is one-to-one.</p>
-<p><em><span class="math inline">\([0,1]\lesssim2^\mathbb{N}\)</span>.</em> As with
-decimal expansions in <a href="#rem-decimal-expansions">Remark
-2.3.1</a>, every <span class="math inline">\(x\in[0,1)\)</span> has a
-binary expansion <span class="math inline">\(x=\sum_{k=1}^\infty\frac{d_k}{2^k}\)</span> with
+<p>To show <span class="math inline">\([0,1]\lesssim2^\mathbb{N}\)</span>, use binary
+expansions. As with decimal expansions in <a href="#rem-decimal-expansions">Remark 2.3.1</a>, every <span class="math inline">\(x\in[0,1)\)</span> has a binary expansion <span class="math inline">\(x=\sum_{k=1}^\infty\frac{d_k}{2^k}\)</span> with
 each <span class="math inline">\(d_k\in\{0,1\}\)</span>, and it can be
 chosen so that it does not end in all <span class="math inline">\(1\)</span>’s. Then it is unique. Let <span class="math inline">\(G(x)\)</span> be the sequence <span class="math inline">\(\{d_k\}\)</span> of that expansion, and let <span class="math inline">\(G(1)\)</span> be the sequence of all <span class="math inline">\(1\)</span>’s. Different numbers in <span class="math inline">\([0,1)\)</span> have different expansions, and no
 expansion used for <span class="math inline">\(x&lt;1\)</span> ends in

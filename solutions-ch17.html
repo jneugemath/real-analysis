@@ -76,7 +76,8 @@ that contains <span class="math inline">\(0\)</span> has length <span class="mat
 <div class="solutionbox" id="sol-exer-vitali-countable">
 
 <p><strong><a href="ch-differentiation.html#exer-vitali-countable">Exercise
-17.1.2</a>.</strong> <em>Hint.</em> Look at Step 3 of the proof.</p>
+17.1.2</a>.</strong> <em>Hint.</em> Look at the third step of the proof
+of <a href="ch-differentiation.html#lem-vitali">Lemma 17.1.2</a>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-vitali-rational">
 
@@ -94,7 +95,7 @@ with <span class="math inline">\(c&lt;d\)</span>. Choose <span class="math inlin
 <span class="math inline">\(x\in[c,d]\)</span> with <span class="math inline">\(g(x)\ge r\)</span>.</p>
 <p><em>Solution.</em> Two facts are used. First, for any <span class="math inline">\(c\)</span>, the difference quotients of <span class="math inline">\(g(x)=f(x)+cx\)</span> are those of <span class="math inline">\(f\)</span> plus <span class="math inline">\(c\)</span>. So each Dini derivative of <span class="math inline">\(g\)</span> is the matching Dini derivative of
 <span class="math inline">\(f\)</span> plus <span class="math inline">\(c\)</span>. Second, it is enough to show <span class="math inline">\(f(c)\le f(d)\)</span> whenever <span class="math inline">\(a&lt;c&lt;d&lt;b\)</span>. Indeed, if <span class="math inline">\(a\le x&lt;y\le b\)</span>, choose <span class="math inline">\(c_k\to x\)</span> and <span class="math inline">\(d_k\to y\)</span> with <span class="math inline">\(a&lt;c_k&lt;d_k&lt;b\)</span>. Then <span class="math inline">\(f(c_k)\le f(d_k)\)</span>, and <span class="math inline">\(f(x)\le f(y)\)</span> by continuity.</p>
-<p><em>The case <span class="math inline">\(D_+f\ge0\)</span>.</em>
+<p>The first case is <span class="math inline">\(D_+f\ge0\)</span>.
 Suppose <span class="math inline">\(a&lt;c&lt;d&lt;b\)</span> and <span class="math inline">\(f(c)&gt;f(d)\)</span>. Choose <span class="math inline">\(\varepsilon&gt;0\)</span> with <span class="math inline">\(\varepsilon(d-c)&lt;f(c)-f(d)\)</span>, and let
 <span class="math inline">\(g(x)=f(x)+\varepsilon x\)</span>. Then <span class="math inline">\(g(c)&gt;g(d)\)</span>. Choose <span class="math inline">\(r\)</span> with <span class="math inline">\(g(d)&lt;r&lt;g(c)\)</span>. Let <span class="math inline">\(x_0=\sup\{x\in[c,d]:g(x)\ge r\}\)</span>. Since
 <span class="math inline">\(g\)</span> is continuous, <span class="math inline">\(g(x_0)\ge r\)</span>. (Take points of this set
@@ -105,7 +106,7 @@ So <span class="math inline">\(D^+g(x_0)\le0\)</span>, and then <span class="mat
 since <span class="math inline">\(x_0\in(a,b)\)</span>. This
 contradiction shows <span class="math inline">\(f(c)\le
 f(d)\)</span>.</p>
-<p><em>The case <span class="math inline">\(D^-f\ge0\)</span>.</em>
+<p>The second case is <span class="math inline">\(D^-f\ge0\)</span>.
 Suppose <span class="math inline">\(a&lt;c&lt;d&lt;b\)</span> and <span class="math inline">\(f(c)&gt;f(d)\)</span>. Define <span class="math inline">\(\varepsilon\)</span>, <span class="math inline">\(g\)</span> and <span class="math inline">\(r\)</span> as before. Let <span class="math inline">\(x_1=\inf\{x\in[c,d]:g(x)\le r\}\)</span>. By
 continuity, <span class="math inline">\(g(x_1)\le r\)</span>. So <span class="math inline">\(x_1\ne c\)</span>, and <span class="math inline">\(c&lt;x_1\le d\)</span>. For <span class="math inline">\(c\le x&lt;x_1\)</span>, <span class="math inline">\(g(x)&gt;r\ge g(x_1)\)</span>. So every difference
 quotient <span class="math inline">\(\frac{g(x_1)-g(x_1-h)}{h}\)</span>
@@ -113,10 +114,11 @@ with <span class="math inline">\(0&lt;h\le x_1-c\)</span> is negative,
 and <span class="math inline">\(D^-g(x_1)\le0\)</span>. But <span class="math inline">\(D^-g(x_1)=D^-f(x_1)+\varepsilon\ge\varepsilon&gt;0\)</span>.
 This contradiction shows <span class="math inline">\(f(c)\le
 f(d)\)</span>.</p>
-<p><em>All four derivatives.</em> The first argument showed <span class="math inline">\(D^+g(x_0)\le0\)</span>. So it also proves the
-theorem when <span class="math inline">\(D^+f\ge0\)</span>. The second
-proves it when <span class="math inline">\(D^-f\ge0\)</span>. Since
-<span class="math inline">\(D_+f\le D^+f\)</span> and <span class="math inline">\(D_-f\le D^-f\)</span>, the hypothesis <span class="math inline">\(D_+f\ge0\)</span> implies <span class="math inline">\(D^+f\ge0\)</span>, and <span class="math inline">\(D_-f\ge0\)</span> implies <span class="math inline">\(D^-f\ge0\)</span>. So the cases <span class="math inline">\(D^+f\ge0\)</span> and <span class="math inline">\(D^-f\ge0\)</span> cover all four.</p>
+<p>These two cases cover all four Dini derivatives. The first argument
+showed <span class="math inline">\(D^+g(x_0)\le0\)</span>. So it also
+proves the theorem when <span class="math inline">\(D^+f\ge0\)</span>.
+The second proves it when <span class="math inline">\(D^-f\ge0\)</span>.
+Since <span class="math inline">\(D_+f\le D^+f\)</span> and <span class="math inline">\(D_-f\le D^-f\)</span>, the hypothesis <span class="math inline">\(D_+f\ge0\)</span> implies <span class="math inline">\(D^+f\ge0\)</span>, and <span class="math inline">\(D_-f\ge0\)</span> implies <span class="math inline">\(D^-f\ge0\)</span>. So the cases <span class="math inline">\(D^+f\ge0\)</span> and <span class="math inline">\(D^-f\ge0\)</span> cover all four.</p>
 </div>
 <div class="solutionbox" id="sol-exer-dini-examples">
 
@@ -278,15 +280,14 @@ So <span class="math inline">\(F\)</span> is absolutely continuous on
 <em>Hint.</em> Continuous functions on <span class="math inline">\([a,b]\)</span> are bounded. For <span class="math inline">\(fg\)</span>, use <span class="math inline">\(|f(y)g(y)-f(x)g(x)|\le|f(y)||g(y)-g(x)|+|g(x)||f(y)-f(x)|\)</span>.</p>
 <p><em>Solution.</em> Let <span class="math inline">\(\{(x_i,x_i')\}\)</span> denote a finite
 collection of nonoverlapping subintervals of <span class="math inline">\([a,b]\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
-<p><em>The sum.</em> Choose <span class="math inline">\(\delta_1\)</span> for <span class="math inline">\(f\)</span> and <span class="math inline">\(\delta_2\)</span> for <span class="math inline">\(g\)</span> in <a href="ch-differentiation.html#def-absolutely-continuous">Definition 17.5.1</a>, both with <span class="math inline">\(\frac\varepsilon 2\)</span>, and let <span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>. If
+<p>First, <span class="math inline">\(f+g\in AC[a,b]\)</span>. Choose
+<span class="math inline">\(\delta_1\)</span> for <span class="math inline">\(f\)</span> and <span class="math inline">\(\delta_2\)</span> for <span class="math inline">\(g\)</span> in <a href="ch-differentiation.html#def-absolutely-continuous">Definition 17.5.1</a>, both with <span class="math inline">\(\frac\varepsilon 2\)</span>, and let <span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>. If
 <span class="math inline">\(\sum|x_i'-x_i|&lt;\delta\)</span>, then
 by the Triangle Inequality <span class="math display">\[\sum|(f+g)(x_i')-(f+g)(x_i)|\le\sum|f(x_i')-f(x_i)|+\sum|g(x_i')-g(x_i)|&lt;\frac\varepsilon
 2+\frac\varepsilon 2=\varepsilon.\]</span></p>
-<p><em>The multiple.</em> If <span class="math inline">\(c=0\)</span>,
-then <span class="math inline">\(cf=0\)</span> is constant. Otherwise
-choose <span class="math inline">\(\delta\)</span> for <span class="math inline">\(f\)</span> with <span class="math inline">\(\frac{\varepsilon}{|c|}\)</span>. Then <span class="math inline">\(\sum|cf(x_i')-cf(x_i)|=|c|\sum|f(x_i')-f(x_i)|&lt;\varepsilon\)</span>.</p>
-<p><em>The product.</em> An absolutely continuous function is
-continuous, so <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are bounded on <span class="math inline">\([a,b]\)</span> (<a href="ch-continuity.html#thm-continuous-bounded">Theorem 6.3.14</a>). Choose <span class="math inline">\(K&gt;0\)</span> with <span class="math inline">\(|f|\le K\)</span> and <span class="math inline">\(|g|\le K\)</span>. For <span class="math inline">\(x,y\in[a,b]\)</span>, <span class="math display">\[\begin{aligned}
+<p>Next, <span class="math inline">\(cf\in AC[a,b]\)</span>. If <span class="math inline">\(c=0\)</span>, then <span class="math inline">\(cf=0\)</span> is constant. Otherwise choose <span class="math inline">\(\delta\)</span> for <span class="math inline">\(f\)</span> with <span class="math inline">\(\frac{\varepsilon}{|c|}\)</span>. Then <span class="math inline">\(\sum|cf(x_i')-cf(x_i)|=|c|\sum|f(x_i')-f(x_i)|&lt;\varepsilon\)</span>.</p>
+<p>Finally, <span class="math inline">\(fg\in AC[a,b]\)</span>. An
+absolutely continuous function is continuous, so <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are bounded on <span class="math inline">\([a,b]\)</span> (<a href="ch-continuity.html#thm-continuous-bounded">Theorem 6.3.14</a>). Choose <span class="math inline">\(K&gt;0\)</span> with <span class="math inline">\(|f|\le K\)</span> and <span class="math inline">\(|g|\le K\)</span>. For <span class="math inline">\(x,y\in[a,b]\)</span>, <span class="math display">\[\begin{aligned}
 |f(y)g(y)-f(x)g(x)|&amp;\le|f(y)||g(y)-g(x)|+|g(x)||f(y)-f(x)|\\
 &amp;\le K\bigl(|g(y)-g(x)|+|f(y)-f(x)|\bigr).
 \end{aligned}\]</span> Choose <span class="math inline">\(\delta\)</span> for both <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> with <span class="math inline">\(\frac{\varepsilon}{2K}\)</span>. If <span class="math inline">\(\sum|x_i'-x_i|&lt;\delta\)</span>, then <span class="math display">\[\begin{aligned}
@@ -340,15 +341,15 @@ closed subinterval.</p>
 the intervals <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span>, where <span class="math inline">\(s=\sum_{k=1}^n\frac{d_k}{3^k}\)</span> with each
 <span class="math inline">\(d_k\in\{0,2\}\)</span>. Also <span class="math inline">\(\phi_n(x)=\left(\frac32\right)^nm\bigl(C_n\cap[0,x]\bigr)\)</span>,
 by <a href="ch-lebesgue-integral.html#def-simple-integral">Definition 16.2.1</a>.</p>
-<p><em>Symmetry.</em> The reflection <span class="math inline">\(t\mapsto1-t\)</span> maps <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span> onto <span class="math inline">\(\left[1-s-3^{-n},1-s\right]\)</span>. Since <span class="math inline">\(\sum_{k=1}^n\frac2{3^k}=1-3^{-n}\)</span>, <span class="math display">\[1-s-3^{-n}=\sum_{k=1}^n\frac{2-d_k}{3^k},\]</span>
+<p>First comes the symmetry <span class="math inline">\(\phi(1-x)=1-\phi(x)\)</span>. The reflection <span class="math inline">\(t\mapsto1-t\)</span> maps <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span> onto <span class="math inline">\(\left[1-s-3^{-n},1-s\right]\)</span>. Since <span class="math inline">\(\sum_{k=1}^n\frac2{3^k}=1-3^{-n}\)</span>, <span class="math display">\[1-s-3^{-n}=\sum_{k=1}^n\frac{2-d_k}{3^k},\]</span>
 and each <span class="math inline">\(2-d_k\in\{0,2\}\)</span>. So the
 reflection maps <span class="math inline">\(C_n\)</span> onto itself. It
 maps <span class="math inline">\(C_n\cap[0,1-x]\)</span> onto <span class="math inline">\(C_n\cap[x,1]\)</span>. Both are finite unions of
 intervals, and the reflection does not change lengths. So <span class="math display">\[\phi_n(1-x)=\left(\tfrac32\right)^nm\bigl(C_n\cap[x,1]\bigr)=\left(\tfrac32\right)^n\Bigl(m(C_n)-m\bigl(C_n\cap[0,x]\bigr)\Bigr)=1-\phi_n(x),\]</span>
 using <span class="math inline">\(m(C_n)=\left(\frac23\right)^n\)</span>
 and <span class="math inline">\(m(\{x\})=0\)</span>. Letting <span class="math inline">\(n\to\infty\)</span> gives <span class="math inline">\(\phi(1-x)=1-\phi(x)\)</span>.</p>
-<p><em>Scaling.</em> The map <span class="math inline">\(t\mapsto\frac
-t3\)</span> sends <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span> to <span class="math inline">\(\left[\frac s3,\frac
+<p>Next comes the scaling <span class="math inline">\(\phi\left(\frac
+x3\right)=\frac12\phi(x)\)</span>. The map <span class="math inline">\(t\mapsto\frac t3\)</span> sends <span class="math inline">\(\left[s,s+3^{-n}\right]\)</span> to <span class="math inline">\(\left[\frac s3,\frac
 s3+3^{-(n+1)}\right]\)</span>, and <span class="math inline">\(\frac
 s3=\sum_{k=1}^{n+1}\frac{d_k'}{3^k}\)</span> with <span class="math inline">\(d_1'=0\)</span> and <span class="math inline">\(d_{k+1}'=d_k\)</span>. These are exactly the
 intervals of <span class="math inline">\(C_{n+1}\)</span> whose first
@@ -360,7 +361,7 @@ intervals by <span class="math inline">\(\frac13\)</span>. So <span class="math 
 x3\right)=\left(\tfrac32\right)^{n+1}\cdot\tfrac13\,m\bigl(C_n\cap[0,x]\bigr)=\tfrac12\phi_n(x).\]</span>
 Letting <span class="math inline">\(n\to\infty\)</span> gives <span class="math inline">\(\phi\left(\frac
 x3\right)=\frac12\phi(x)\)</span>.</p>
-<p><em>The integral.</em> Since <span class="math inline">\(\phi\)</span> is continuous, <span class="math inline">\(\int_{[0,1]}\phi=\int_0^1\phi\)</span>, by <a href="ch-lebesgue-integral.html#thm-riemann-lebesgue">Theorem 16.3.3</a>. The substitution <span class="math inline">\(x=1-t\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.6.3</a>) gives <span class="math inline">\(\int_0^1\phi(1-t)\,dt=\int_0^1\phi(x)\,dx\)</span>.
+<p>Finally, the symmetry gives the integral. Since <span class="math inline">\(\phi\)</span> is continuous, <span class="math inline">\(\int_{[0,1]}\phi=\int_0^1\phi\)</span>, by <a href="ch-lebesgue-integral.html#thm-riemann-lebesgue">Theorem 16.3.3</a>. The substitution <span class="math inline">\(x=1-t\)</span> (<a href="ch-integrals.html#thm-substitution">Theorem 9.6.3</a>) gives <span class="math inline">\(\int_0^1\phi(1-t)\,dt=\int_0^1\phi(x)\,dx\)</span>.
 So, by the symmetry, <span class="math display">\[\int_0^1\phi=\int_0^1\phi(1-t)\,dt=\int_0^1\bigl(1-\phi(t)\bigr)\,dt=1-\int_0^1\phi.\]</span>
 So <span class="math inline">\(\int_{[0,1]}\phi=\frac12\)</span>.</p>
 </div>

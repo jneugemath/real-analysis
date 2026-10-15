@@ -73,9 +73,9 @@ Carathéodory to pick out the <em>measurable</em> sets, the ones that
 split every other set additively. They form a <span class="math inline">\(\sigma\)</span>-algebra, and on it <span class="math inline">\(m^*\)</span> is a measure. <a href="#sec-approximation">Section 14.3</a> shows every measurable set is
 a Borel set up to a set of measure zero. <a href="#sec-nonmeasurable">Section 14.4</a>, which is marked with a star,
 shows that some sets are not measurable.</p>
-<p><em>What this chapter uses from earlier chapters.</em> The
+<p>This chapter uses a few results from earlier chapters. They are the
 Heine–Borel Theorem (<a href="ch-topology.html#thm-heine-borel">Theorem 4.2.14</a>),
-countable unions of countable sets (<a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>), sets of measure zero (<a href="ch-integrals.html#def-measure-zero">Definition 9.2.5</a>), and from <a href="ch-measures.html">Chapter 13</a>, <a href="ch-measures.html#thm-sigma-algebra-disjoint">Theorem 13.1.4</a>, <a href="ch-measures.html#thm-borel-generators">Theorem 13.2.5</a> and the Good Sets
+countable unions of countable sets (<a href="ch-cardinality.html#thm-countable-union">Theorem 2.2.6</a>), sets of measure zero (<a href="ch-integrals.html#def-measure-zero">Definition 9.2.5</a>), and, from <a href="ch-measures.html">Chapter 13</a>, <a href="ch-measures.html#thm-sigma-algebra-disjoint">Theorem 13.1.4</a>, <a href="ch-measures.html#thm-borel-generators">Theorem 13.2.5</a> and the Good Sets
 Principle.</p>
 <section class="level3 unnumbered" id="sec-outer-measure">
 <h2>14.1 Outer Measure</h2>
@@ -126,7 +126,8 @@ its length.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em>Closed bounded intervals.</em> Let <span class="math inline">\(a\le b\)</span>. For <span class="math inline">\(\varepsilon&gt;0\)</span>, the single interval
+<p>The proof starts with closed bounded intervals, since every other
+interval can be squeezed between two of them. Let <span class="math inline">\(a\le b\)</span>. For <span class="math inline">\(\varepsilon&gt;0\)</span>, the single interval
 <span class="math inline">\((a-\varepsilon,b+\varepsilon)\)</span>
 covers <span class="math inline">\([a,b]\)</span>. So <span class="math inline">\(m^*([a,b])\le b-a+2\varepsilon\)</span> for every
 <span class="math inline">\(\varepsilon&gt;0\)</span>, and <span class="math inline">\(m^*([a,b])\le b-a\)</span>.</p>
@@ -148,11 +149,11 @@ with an interval <span class="math inline">\((a_k,b_k)\)</span> such
 that <span class="math inline">\(b_k&gt;b\)</span>. Since <span class="math inline">\(a_{i+1}&lt;b_i\)</span> for each <span class="math inline">\(i\)</span>, <span class="math display">\[\sum_{i=1}^k(b_i-a_i)=(b_k-a_1)+\sum_{i=1}^{k-1}(b_i-a_{i+1})&gt;b_k-a_1&gt;b-a.\]</span>
 The chosen intervals are distinct members of <span class="math inline">\(\{I_n\}\)</span>, so <span class="math inline">\(\sum\ell(I_n)\ge\sum_{i=1}^k(b_i-a_i)&gt;b-a\)</span>.
 Taking the infimum over all covers, <span class="math inline">\(m^*([a,b])\ge b-a\)</span>.</p>
-<p><em>Other bounded intervals.</em> Let <span class="math inline">\(I\)</span> be a bounded interval with endpoints
+<p>Next come the other bounded intervals. Let <span class="math inline">\(I\)</span> be a bounded interval with endpoints
 <span class="math inline">\(a&lt;b\)</span>. Then <span class="math inline">\(I\subset[a,b]\)</span>, so <span class="math inline">\(m^*(I)\le b-a\)</span> by <a href="#lem-outer-measure-monotone">Lemma 14.1.3</a>. For <span class="math inline">\(0&lt;\varepsilon&lt;\frac{b-a}{2}\)</span>, the
 closed interval <span class="math inline">\([a+\varepsilon,b-\varepsilon]\)</span> is
 contained in <span class="math inline">\(I\)</span>, so <span class="math inline">\(m^*(I)\ge b-a-2\varepsilon\)</span>. So <span class="math inline">\(m^*(I)=b-a=\ell(I)\)</span>.</p>
-<p><em>Unbounded intervals.</em> If <span class="math inline">\(I\)</span> is unbounded, then for every <span class="math inline">\(M&gt;0\)</span> it contains a closed interval
+<p>The last case is an unbounded interval. If <span class="math inline">\(I\)</span> is unbounded, then for every <span class="math inline">\(M&gt;0\)</span> it contains a closed interval
 <span class="math inline">\(J\)</span> with <span class="math inline">\(\ell(J)=M\)</span>. So <span class="math inline">\(m^*(I)\ge m^*(J)=M\)</span> for every <span class="math inline">\(M&gt;0\)</span>, and <span class="math inline">\(m^*(I)=\infty=\ell(I)\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <figure class="figure" id="fig-interval-chain"><div class="figure-images"><img alt="The interval [a,b] on a number line with a chain of overlapping open intervals above it. The first contains a, each next interval contains the right endpoint of the previous one, and the last extends past b." height="113" src="figs/fig16.svg" width="626"/></div><figcaption><strong>Figure 14.1.</strong> The chain of intervals in the proof of
@@ -340,7 +341,8 @@ measurable.</p>
 <p><em>Proof.</em> Let <span class="math inline">\(A\)</span> be a set.
 Since <span class="math inline">\(E\)</span> is measurable, <span class="math display">\[m^*(A)=m^*(A\cap E)+m^*(A\cap E^c).\]</span>
 Since <span class="math inline">\(A\cap E\subset E\)</span>, <span class="math inline">\(m^*(A\cap E)=0\)</span>. So <span class="math inline">\(m^*(A\cap E^c)=m^*(A)\)</span>. Thus, since <span class="math inline">\(A\cap F\subset A\cap E\)</span> and <span class="math inline">\(A\cap F^c\subset A\)</span>, <span class="math display">\[m^*(A)=m^*(A\cap E)+m^*(A\cap E^c)\ge m^*(A\cap
-F) + m^*(A)\ge m^*(A\cap F) + m^*(A\cap F^c).\]</span> So <span class="math inline">\(F\)</span> is measurable. Since <span class="math inline">\(F\subset E\)</span>, <span class="math inline">\(m(F)\le m(E)\)</span> and so <span class="math inline">\(m(F)=0\)</span>. (A shorter proof. By <a href="#lem-outer-measure-monotone">Lemma 14.1.3</a>, <span class="math inline">\(m^*(F)\le m^*(E)=0\)</span>, so <span class="math inline">\(F\)</span> is measurable by <a href="#lem-null-measurable">Lemma 14.2.3</a>.)</p>
+F) + m^*(A)\ge m^*(A\cap F) + m^*(A\cap F^c).\]</span> So <span class="math inline">\(F\)</span> is measurable. Since <span class="math inline">\(F\subset E\)</span>, <span class="math inline">\(m(F)\le m(E)\)</span> and so <span class="math inline">\(m(F)=0\)</span>. (There is also a shorter proof.
+By <a href="#lem-outer-measure-monotone">Lemma 14.1.3</a>, <span class="math inline">\(m^*(F)\le m^*(E)=0\)</span>, so <span class="math inline">\(F\)</span> is measurable by <a href="#lem-null-measurable">Lemma 14.2.3</a>.)</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="lemmabox" id="lem-union-measurable">
 
@@ -655,12 +657,12 @@ of <span class="math inline">\(P\)</span> never differ by a rational
 number.</p>
 <p>List the rational numbers in <span class="math inline">\([0,1)\)</span> as <span class="math inline">\(r_0,r_1,r_2,\dots\)</span>, with <span class="math inline">\(r_0=0\)</span>, and let <span class="math inline">\(P_i=P\mathbin{\overset{\circ}{+}}r_i\)</span>. So
 <span class="math inline">\(P_0=P\)</span>.</p>
-<p><em>The sets <span class="math inline">\(P_i\)</span> are
-disjoint.</em> Suppose <span class="math inline">\(x\in P_i\cap
+<p>First, the sets <span class="math inline">\(P_i\)</span> are
+disjoint. To see this, suppose <span class="math inline">\(x\in P_i\cap
 P_j\)</span>. Then <span class="math inline">\(x=p\mathbin{\overset{\circ}{+}}r_i=q\mathbin{\overset{\circ}{+}}r_j\)</span>
 for some <span class="math inline">\(p,q\in P\)</span>. So <span class="math inline">\(p-q\)</span> is <span class="math inline">\(r_j-r_i\)</span>, or <span class="math inline">\(r_j-r_i\pm1\)</span>. In every case <span class="math inline">\(p-q\in\mathbb{Q}\)</span>, so <span class="math inline">\(p\sim q\)</span>, and therefore <span class="math inline">\(p=q\)</span>. Then <span class="math inline">\(p\mathbin{\overset{\circ}{+}}r_i=p\mathbin{\overset{\circ}{+}}r_j\)</span>,
 which forces <span class="math inline">\(r_i=r_j\)</span>, so <span class="math inline">\(i=j\)</span>.</p>
-<p><em>The sets <span class="math inline">\(P_i\)</span> cover <span class="math inline">\([0,1)\)</span>.</em> Let <span class="math inline">\(x\in[0,1)\)</span>. Then <span class="math inline">\(x\sim p\)</span> for some <span class="math inline">\(p\in P\)</span>. Let <span class="math inline">\(r=x-p\)</span> if <span class="math inline">\(x\ge
+<p>Next, the sets <span class="math inline">\(P_i\)</span> cover <span class="math inline">\([0,1)\)</span>. To see this, let <span class="math inline">\(x\in[0,1)\)</span>. Then <span class="math inline">\(x\sim p\)</span> for some <span class="math inline">\(p\in P\)</span>. Let <span class="math inline">\(r=x-p\)</span> if <span class="math inline">\(x\ge
 p\)</span>, and <span class="math inline">\(r=x-p+1\)</span> if <span class="math inline">\(x&lt;p\)</span>. Then <span class="math inline">\(r\in\mathbb{Q}\cap[0,1)\)</span>, so <span class="math inline">\(r=r_i\)</span> for some <span class="math inline">\(i\)</span>, and <span class="math inline">\(x=p\mathbin{\overset{\circ}{+}}r_i\in
 P_i\)</span>.</p>
 <p>Now suppose <span class="math inline">\(P\)</span> were measurable.

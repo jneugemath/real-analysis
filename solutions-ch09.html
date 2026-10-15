@@ -382,8 +382,8 @@ only if <span class="math inline">\(p&lt;1\)</span>.</p>
 <p><em>Solution.</em> Since <span class="math inline">\(\int_a^bf\)</span> converges, the limits <span class="math display">\[L_1=\lim_{s\to c^-}\int_a^sf\quad\text{and}\quad
 L_2=\lim_{t\to c^+}\int_t^bf\]</span> exist, and <span class="math inline">\(\int_a^bf=L_1+L_2\)</span>. For <span class="math inline">\(0&lt;\varepsilon&lt;\min\{c-a,b-c\}\)</span>, let
 <span class="math inline">\(G(\varepsilon)=\int_a^{c-\varepsilon}f+\int_{c+\varepsilon}^bf\)</span>.
-We show <span class="math inline">\(G(\varepsilon)\to L_1+L_2\)</span>
-as <span class="math inline">\(\varepsilon\to0^+\)</span>.</p>
+The goal is to show <span class="math inline">\(G(\varepsilon)\to
+L_1+L_2\)</span> as <span class="math inline">\(\varepsilon\to0^+\)</span>.</p>
 <p>Let <span class="math inline">\(\eta&gt;0\)</span>. There is a <span class="math inline">\(\delta_1&gt;0\)</span> such that <span class="math inline">\(\left|\int_a^sf-L_1\right|&lt;\frac\eta2\)</span>
 for all <span class="math inline">\(s\in[a,c)\)</span> with <span class="math inline">\(c-s&lt;\delta_1\)</span>. There is a <span class="math inline">\(\delta_2&gt;0\)</span> such that <span class="math inline">\(\left|\int_t^bf-L_2\right|&lt;\frac\eta2\)</span>
 for all <span class="math inline">\(t\in(c,b]\)</span> with <span class="math inline">\(t-c&lt;\delta_2\)</span>. Let <span class="math inline">\(\delta=\min\{\delta_1,\delta_2,c-a,b-c\}\)</span>.
@@ -507,9 +507,10 @@ and sum over <span class="math inline">\(i\)</span>.</p>
 the integrator by <span class="math inline">\(c\ge0\)</span> multiplies
 every Riemann–Stieltjes sum by <span class="math inline">\(c\)</span>.
 Then use <a href="ch-integrals.html#thm-rs-properties">Theorem 9.9.10</a> (3).</p>
-<p><em>Solution.</em> <em>Step 1. Scaling the integrator.</em> Let <span class="math inline">\(\beta:[a,b]\to\mathbb{R}\)</span> be increasing,
+<p><em>Solution.</em> The first step shows that scaling the integrator
+scales the integral. Let <span class="math inline">\(\beta:[a,b]\to\mathbb{R}\)</span> be increasing,
 let <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, and let
-<span class="math inline">\(c\ge0\)</span>. We show <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span> and <span class="math inline">\(\int_a^bf\,d(c\beta)=c\int_a^bf\,d\beta\)</span>.
+<span class="math inline">\(c\ge0\)</span>. The claim is that <span class="math inline">\(f\in\mathcal{R}(c\beta)\)</span> and <span class="math inline">\(\int_a^bf\,d(c\beta)=c\int_a^bf\,d\beta\)</span>.
 If <span class="math inline">\(c=0\)</span>, then <span class="math inline">\(c\beta\)</span> is constant. Every sum for <span class="math inline">\(c\beta\)</span> is <span class="math inline">\(0\)</span>, so the integral is <span class="math inline">\(0\)</span>. Suppose <span class="math inline">\(c&gt;0\)</span>. For any partition <span class="math inline">\(\mathcal{P}\)</span>, the increments of <span class="math inline">\(c\beta\)</span> are <span class="math inline">\(c\Delta\beta_i\)</span>. So <span class="math display">\[\mathcal{U}(\mathcal{P},f,c\beta)=c\,\mathcal{U}(\mathcal{P},f,\beta)\quad\text{and}\quad\mathcal{L}(\mathcal{P},f,c\beta)=c\,\mathcal{L}(\mathcal{P},f,\beta).\]</span>
 Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Riemann’s
 Criterion (<a href="ch-integrals.html#thm-rs-riemann-criterion">Theorem 9.9.8</a>) gives
@@ -519,15 +520,17 @@ c\)</span>. Then the difference for <span class="math inline">\(c\beta\)</span> 
 Multiplying by <span class="math inline">\(c\)</span>, the number <span class="math inline">\(c\int_a^bf\,d\beta\)</span> lies between every
 lower sum and every upper sum for <span class="math inline">\(c\beta\)</span>. So it lies between the lower and
 upper integrals, which both equal <span class="math inline">\(\int_a^bf\,d(c\beta)\)</span>.</p>
-<p><em>Step 2.</em> Since <span class="math inline">\(a&lt;s_i\le
-b\)</span> and <span class="math inline">\(f\)</span> is continuous, <a href="ch-integrals.html#ex-unit-jump">Example 9.9.6</a> gives <span class="math inline">\(f\in\mathcal{R}(I_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Here <span class="math inline">\(I_{s_i}(x)=I(x-s_i)\)</span>. By Step 1, <span class="math inline">\(f\in\mathcal{R}(c_iI_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,d(c_iI_{s_i})=c_if(s_i)\)</span>. Each
-<span class="math inline">\(c_iI_{s_i}\)</span> is increasing, since
-<span class="math inline">\(c_i\ge0\)</span>.</p>
-<p><em>Step 3.</em> Let <span class="math inline">\(\alpha_k=\sum_{i=1}^kc_iI_{s_i}\)</span>. We show
-by induction on <span class="math inline">\(k\)</span> that <span class="math inline">\(f\in\mathcal{R}(\alpha_k)\)</span> and <span class="math inline">\(\int_a^bf\,d\alpha_k=\sum_{i=1}^kc_if(s_i)\)</span>.
-The case <span class="math inline">\(k=1\)</span> is Step 2. If it holds
-for <span class="math inline">\(k\)</span>, then <span class="math inline">\(\alpha_{k+1}=\alpha_k+c_{k+1}I_{s_{k+1}}\)</span>
-is a sum of two increasing functions. By <a href="ch-integrals.html#thm-rs-properties">Theorem 9.9.10</a> (3) and Step 2, <span class="math display">\[\int_a^bf\,d\alpha_{k+1}=\int_a^bf\,d\alpha_k+\int_a^bf\,d(c_{k+1}I_{s_{k+1}})=\sum_{i=1}^{k+1}c_if(s_i).\]</span>
+<p>The second step handles a single jump. Since <span class="math inline">\(a&lt;s_i\le b\)</span> and <span class="math inline">\(f\)</span> is continuous, <a href="ch-integrals.html#ex-unit-jump">Example 9.9.6</a> gives <span class="math inline">\(f\in\mathcal{R}(I_{s_i})\)</span> with <span class="math inline">\(\int_a^bf\,dI_{s_i}=f(s_i)\)</span>. Here <span class="math inline">\(I_{s_i}(x)=I(x-s_i)\)</span>. By the first step,
+<span class="math inline">\(f\in\mathcal{R}(c_iI_{s_i})\)</span> with
+<span class="math inline">\(\int_a^bf\,d(c_iI_{s_i})=c_if(s_i)\)</span>.
+Each <span class="math inline">\(c_iI_{s_i}\)</span> is increasing,
+since <span class="math inline">\(c_i\ge0\)</span>.</p>
+<p>The third step adds the jumps together. Let <span class="math inline">\(\alpha_k=\sum_{i=1}^kc_iI_{s_i}\)</span>.
+Induction on <span class="math inline">\(k\)</span> shows that <span class="math inline">\(f\in\mathcal{R}(\alpha_k)\)</span> and <span class="math inline">\(\int_a^bf\,d\alpha_k=\sum_{i=1}^kc_if(s_i)\)</span>.
+The case <span class="math inline">\(k=1\)</span> is the second step. If
+it holds for <span class="math inline">\(k\)</span>, then <span class="math inline">\(\alpha_{k+1}=\alpha_k+c_{k+1}I_{s_{k+1}}\)</span>
+is a sum of two increasing functions. By <a href="ch-integrals.html#thm-rs-properties">Theorem 9.9.10</a> (3) and the second step,
+<span class="math display">\[\int_a^bf\,d\alpha_{k+1}=\int_a^bf\,d\alpha_k+\int_a^bf\,d(c_{k+1}I_{s_{k+1}})=\sum_{i=1}^{k+1}c_if(s_i).\]</span>
 Since <span class="math inline">\(\alpha=\alpha_n\)</span>, this proves
 the theorem.</p>
 </div>
@@ -552,9 +555,8 @@ so that <span class="math inline">\(V_\alpha\in C^{(1)}[a,b]\)</span>.
 Then apply <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.9.17</a> to
 <span class="math inline">\(V_\alpha\)</span> and to <span class="math inline">\(V_\alpha-\alpha\)</span>.</p>
 <p><em>Solution.</em> By <a href="ch-bounded-variation.html#cor-continuous-derivative-bv">Corollary 8.1.10</a>, <span class="math inline">\(\alpha\in BV[a,b]\)</span>. So <span class="math inline">\(V_\alpha\)</span> is defined.</p>
-<p><em>Step 1. <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>
-for <span class="math inline">\(x\in[a,b]\)</span>.</em> Both sides are
-<span class="math inline">\(0\)</span> at <span class="math inline">\(x=a\)</span>. Fix <span class="math inline">\(x\in(a,b]\)</span>. Since <span class="math inline">\(|\alpha'|\)</span> is continuous, it is
+<p>The first step shows that <span class="math inline">\(V_\alpha(x)=\int_a^x|\alpha'(t)|\,dt\)</span>
+for <span class="math inline">\(x\in[a,b]\)</span>. Both sides are <span class="math inline">\(0\)</span> at <span class="math inline">\(x=a\)</span>. Fix <span class="math inline">\(x\in(a,b]\)</span>. Since <span class="math inline">\(|\alpha'|\)</span> is continuous, it is
 integrable on <span class="math inline">\([a,x]\)</span>. Let <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> be a
 partition of <span class="math inline">\([a,x]\)</span>. By the Mean
 Value Theorem, <span class="math inline">\(\alpha(x_i)-\alpha(x_{i-1})=\alpha'(t_i)\Delta
@@ -567,9 +569,10 @@ V_\alpha[a,x]\)</span>. For the other direction, let <span class="math inline">\
 V(\mathcal{P}\cup\mathcal{Q})\le\mathcal{U}(\mathcal{P}\cup\mathcal{Q},|\alpha'|)\le\mathcal{U}(\mathcal{Q},|\alpha'|).\]</span>
 So <span class="math inline">\(V(\mathcal{P})\le\overline{\int_{a}^{x}}|\alpha'|=\int_a^x|\alpha'|\)</span>
 for every <span class="math inline">\(\mathcal{P}\)</span>, and <span class="math inline">\(V_\alpha[a,x]\le\int_a^x|\alpha'|\)</span>.</p>
-<p><em>Step 2.</em> By Step 1 and <a href="ch-integrals.html#thm-ftc-derivative">Theorem
-9.3.7</a>, <span class="math inline">\(V_\alpha\)</span> is
-differentiable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(V_\alpha'=|\alpha'|\)</span>, which is
+<p>The second step writes <span class="math inline">\(\alpha\)</span> as
+a difference of two increasing functions with integrable derivatives. By
+the first step and <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>,
+<span class="math inline">\(V_\alpha\)</span> is differentiable on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(V_\alpha'=|\alpha'|\)</span>, which is
 continuous and so in <span class="math inline">\(\mathcal{R}[a,b]\)</span>. Let <span class="math inline">\(\beta=V_\alpha-\alpha\)</span>. Then <span class="math inline">\(\beta\)</span> is differentiable with <span class="math inline">\(\beta'=|\alpha'|-\alpha'\in\mathcal{R}[a,b]\)</span>.
 Both <span class="math inline">\(V_\alpha\)</span> and <span class="math inline">\(\beta\)</span> are increasing, by Theorems <a href="ch-bounded-variation.html#thm-variation-increasing">8.2.2</a> and <a href="ch-bounded-variation.html#thm-variation-minus-f">8.2.4</a>. By <a href="ch-integrals.html#thm-rs-derivative-integrator">Theorem 9.9.17</a>, <span class="math inline">\(f\in\mathcal{R}(V_\alpha)\)</span> and <span class="math inline">\(f\in\mathcal{R}(\beta)\)</span>, with <span class="math display">\[\int_a^bf\,dV_\alpha=\int_a^bf|\alpha'|\quad\text{and}\quad\int_a^bf\,d\beta=\int_a^bf\bigl(|\alpha'|-\alpha'\bigr).\]</span>
 By <a href="ch-integrals.html#def-rs-bv">Definition 9.9.20</a>, <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span>, and by <a href="ch-integrals.html#thm-integral-linear">Theorem 9.2.11</a>, <span class="math display">\[\int_a^bf\,d\alpha=\int_a^bf|\alpha'|-\int_a^bf\bigl(|\alpha'|-\alpha'\bigr)=\int_a^bf\alpha'.\]</span></p>

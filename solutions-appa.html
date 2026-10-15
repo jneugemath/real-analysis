@@ -113,7 +113,7 @@ A.1.4</a>, <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> is the
 Only the additive facts of <a href="app-cuts.html#cor-cut-additive">Corollary
 A.3.5</a> are used to rearrange sums, such as <span class="math inline">\(-(\beta+\gamma)=(-\beta)+(-\gamma)\)</span> and
 <span class="math inline">\(-(-\gamma)=\gamma\)</span>.</p>
-<p><em>The rule of signs.</em> First, <span class="math inline">\((-\alpha)\beta=-(\alpha\beta)\)</span> for all
+<p>The proof starts with the rule of signs. First, <span class="math inline">\((-\alpha)\beta=-(\alpha\beta)\)</span> for all
 cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. If <span class="math inline">\(\alpha=0^*\)</span> or <span class="math inline">\(\beta=0^*\)</span>, both sides are <span class="math inline">\(0^*\)</span>. Otherwise there are four cases, by
 <a href="app-cuts.html#def-cut-product">Definition A.4.6</a>.</p>
 <ul>
@@ -128,20 +128,20 @@ definition, and <span class="math inline">\(\alpha(-\beta)=-(\alpha\beta)\)</spa
 <li><p>If <span class="math inline">\(\alpha&lt;0^*\)</span> and <span class="math inline">\(\beta&lt;0^*\)</span>, then <span class="math inline">\(\beta&lt;0^*&lt;-\alpha\)</span>. So <span class="math inline">\((-\alpha)\beta=-\bigl((-\alpha)(-\beta)\bigr)=-(\alpha\beta)\)</span>.</p></li>
 </ul>
 <p>Since multiplication is commutative, also <span class="math inline">\(\alpha(-\beta)=-(\alpha\beta)\)</span>.</p>
-<p><em>Associativity.</em> If one of <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> is <span class="math inline">\(0^*\)</span>, both sides of <span class="math inline">\((\alpha\beta)\gamma=\alpha(\beta\gamma)\)</span>
+<p>Next comes associativity. If one of <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> is <span class="math inline">\(0^*\)</span>, both sides of <span class="math inline">\((\alpha\beta)\gamma=\alpha(\beta\gamma)\)</span>
 are <span class="math inline">\(0^*\)</span>. If the identity holds for
 <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span>, it also holds with <span class="math inline">\(\alpha\)</span> replaced by <span class="math inline">\(-\alpha\)</span>, since by the rule of signs <span class="math display">\[\bigl((-\alpha)\beta\bigr)\gamma=-\bigl((\alpha\beta)\gamma\bigr)=-\bigl(\alpha(\beta\gamma)\bigr)=(-\alpha)(\beta\gamma).\]</span>
 The same computation works for <span class="math inline">\(\beta\)</span> and for <span class="math inline">\(\gamma\)</span>. The identity holds when all three
 cuts are positive, by <a href="app-cuts.html#thm-cut-multiplication-positive">Theorem
 A.4.5</a> (2). Every nonzero cut is a positive cut or the negative of
 one. So the identity holds for all cuts.</p>
-<p><em>Distributivity.</em> If <span class="math inline">\(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\)</span>,
+<p>Last comes distributivity. If <span class="math inline">\(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\)</span>,
 then <span class="math display">\[(-\alpha)(\beta+\gamma)=-\bigl(\alpha\beta+\alpha\gamma\bigr)=(-\alpha)\beta+(-\alpha)\gamma.\]</span>
 So it is enough to treat <span class="math inline">\(\alpha\ge0^*\)</span>, and <span class="math inline">\(\alpha=0^*\)</span> is clear. Let <span class="math inline">\(\alpha&gt;0^*\)</span>. If <span class="math inline">\(\beta,\gamma\ge0^*\)</span>, the identity is <a href="app-cuts.html#thm-cut-multiplication-positive">Theorem A.4.5</a> (5), or is
 clear when <span class="math inline">\(\beta\)</span> or <span class="math inline">\(\gamma\)</span> is <span class="math inline">\(0^*\)</span>. If <span class="math inline">\(\beta,\gamma\le0^*\)</span>, then <span class="math inline">\(-\beta,-\gamma\ge0^*\)</span>, and <span class="math display">\[\alpha(\beta+\gamma)=-\bigl(\alpha((-\beta)+(-\gamma))\bigr)=-\bigl(\alpha(-\beta)+\alpha(-\gamma)\bigr)=\alpha\beta+\alpha\gamma.\]</span>
 Finally, suppose one of <span class="math inline">\(\beta\)</span>,
 <span class="math inline">\(\gamma\)</span> is positive and the other is
-negative. Since addition is commutative, we may take <span class="math inline">\(\beta&gt;0^*&gt;\gamma\)</span>. If <span class="math inline">\(\beta+\gamma\ge0^*\)</span>, then <span class="math inline">\(\beta=(\beta+\gamma)+(-\gamma)\)</span> is a sum
+negative. Since addition is commutative, it is enough to take <span class="math inline">\(\beta&gt;0^*&gt;\gamma\)</span>. If <span class="math inline">\(\beta+\gamma\ge0^*\)</span>, then <span class="math inline">\(\beta=(\beta+\gamma)+(-\gamma)\)</span> is a sum
 of two cuts that are at least <span class="math inline">\(0^*\)</span>.
 So <span class="math inline">\(\alpha\beta=\alpha(\beta+\gamma)+\alpha(-\gamma)=\alpha(\beta+\gamma)-\alpha\gamma\)</span>,
 which gives <span class="math inline">\(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\)</span>.

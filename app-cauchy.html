@@ -274,16 +274,15 @@ if the sequence <span class="math inline">\(x\)</span> is positive.</p>
 <p><em>Proof.</em></p>
 <p>If <span class="math inline">\(x\sim x'\)</span> and <span class="math inline">\(y\sim y'\)</span>, then <span class="math inline">\(y-x\sim y'-x'\)</span>. So by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (1), whether <span class="math inline">\(y-x\)</span> is positive does not depend on the
 choice of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in their classes. So <span class="math inline">\(&lt;\)</span> is well defined.</p>
-<p><em>Trichotomy.</em> Let <span class="math inline">\(a=[x]\)</span>
-and <span class="math inline">\(b=[y]\)</span>. By <a href="#lem-cauchy-positive">Lemma B.3.2</a> (2), exactly one of the
+<p>Next, <span class="math inline">\(&lt;\)</span> satisfies trichotomy.
+To see this, let <span class="math inline">\(a=[x]\)</span> and <span class="math inline">\(b=[y]\)</span>. By <a href="#lem-cauchy-positive">Lemma B.3.2</a> (2), exactly one of the
 following holds. The sequence <span class="math inline">\(y-x\)</span>
 is positive, <span class="math inline">\(y-x\)</span> is null, or <span class="math inline">\(x-y\)</span> is positive. These say <span class="math inline">\(a&lt;b\)</span>, <span class="math inline">\(a=b\)</span> and <span class="math inline">\(b&lt;a\)</span>.</p>
-<p><em>Transitivity.</em> If <span class="math inline">\([x]&lt;[y]\)</span> and <span class="math inline">\([y]&lt;[z]\)</span>, then <span class="math inline">\(z-x=(z-y)+(y-x)\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3). So <span class="math inline">\([x]&lt;[z]\)</span>.</p>
-<p><em>Property (1) of <a href="ch-real-numbers.html#def-ordered-field">Definition
-1.5.6</a>.</em> Since <span class="math inline">\((y+z)-(x+z)=y-x\)</span>, <span class="math inline">\([x]\le[y]\)</span> implies <span class="math inline">\([x]+[z]\le[y]+[z]\)</span>.</p>
-<p><em>Property (2) of <a href="ch-real-numbers.html#def-ordered-field">Definition
-1.5.6</a>.</em> Let <span class="math inline">\([0]\le[x]\)</span> and
-<span class="math inline">\([0]\le[y]\)</span>. If either is <span class="math inline">\([0]\)</span>, then <span class="math inline">\([x][y]=[0]\)</span>. Otherwise <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are positive, so <span class="math inline">\(xy\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3), and <span class="math inline">\([0]&lt;[x][y]\)</span>.</p>
+<p>The relation is also transitive. If <span class="math inline">\([x]&lt;[y]\)</span> and <span class="math inline">\([y]&lt;[z]\)</span>, then <span class="math inline">\(z-x=(z-y)+(y-x)\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3). So <span class="math inline">\([x]&lt;[z]\)</span>.</p>
+<p>It remains to check the two properties in <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a>. Property (1) holds since
+<span class="math inline">\((y+z)-(x+z)=y-x\)</span>. So <span class="math inline">\([x]\le[y]\)</span> implies <span class="math inline">\([x]+[z]\le[y]+[z]\)</span>.</p>
+<p>For property (2), let <span class="math inline">\([0]\le[x]\)</span>
+and <span class="math inline">\([0]\le[y]\)</span>. If either is <span class="math inline">\([0]\)</span>, then <span class="math inline">\([x][y]=[0]\)</span>. Otherwise <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are positive, so <span class="math inline">\(xy\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3), and <span class="math inline">\([0]&lt;[x][y]\)</span>.</p>
 <p>Finally, <span class="math inline">\([0]&lt;[x]\)</span> means <span class="math inline">\(x-0=x\)</span> is positive.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="lemmabox" id="lem-cauchy-compare">
@@ -376,17 +375,18 @@ property.</p>
 <p><em>Proof.</em></p>
 <p>Let <span class="math inline">\(E\subset\mathbb{R}\)</span> be
 nonempty and bounded above, say by <span class="math inline">\(B\)</span>. Choose <span class="math inline">\(e_0\in E\)</span>. By <a href="#lem-cauchy-density">Lemma B.4.1</a> (1), there are <span class="math inline">\(j,k\in\mathbb{N}\)</span> with <span class="math inline">\(B&lt;k\)</span> and <span class="math inline">\(-e_0&lt;j\)</span>. Let <span class="math inline">\(a_0=-j\)</span> and <span class="math inline">\(b_0=k\)</span>. Then <span class="math inline">\(a_0&lt;e_0\le B&lt;b_0\)</span>. So <span class="math inline">\(a_0\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, and <span class="math inline">\(b_0\)</span> is an upper bound of <span class="math inline">\(E\)</span>.</p>
-<p><em>Bisection.</em> Suppose rational numbers <span class="math inline">\(a_n&lt;b_n\)</span> have been chosen, where <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span> and <span class="math inline">\(b_n\)</span> is. Let <span class="math inline">\(m=\frac12(a_n+b_n)\)</span>. If <span class="math inline">\(m\)</span> is an upper bound of <span class="math inline">\(E\)</span>, let <span class="math inline">\(a_{n+1}=a_n\)</span> and <span class="math inline">\(b_{n+1}=m\)</span>. Otherwise let <span class="math inline">\(a_{n+1}=m\)</span> and <span class="math inline">\(b_{n+1}=b_n\)</span>. By induction, for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>, <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, <span class="math inline">\(b_n\)</span> is an upper bound of <span class="math inline">\(E\)</span>, <span class="math display">\[a_n\le
+<p>The proof finds <span class="math inline">\(\sup E\)</span> by
+bisection. Suppose rational numbers <span class="math inline">\(a_n&lt;b_n\)</span> have been chosen, where <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span> and <span class="math inline">\(b_n\)</span> is. Let <span class="math inline">\(m=\frac12(a_n+b_n)\)</span>. If <span class="math inline">\(m\)</span> is an upper bound of <span class="math inline">\(E\)</span>, let <span class="math inline">\(a_{n+1}=a_n\)</span> and <span class="math inline">\(b_{n+1}=m\)</span>. Otherwise let <span class="math inline">\(a_{n+1}=m\)</span> and <span class="math inline">\(b_{n+1}=b_n\)</span>. By induction, for all <span class="math inline">\(n\in\mathbb{N}_0\)</span>, <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, <span class="math inline">\(b_n\)</span> is an upper bound of <span class="math inline">\(E\)</span>, <span class="math display">\[a_n\le
 a_{n+1}&lt;b_{n+1}\le b_n,\quad\text{and}\quad
 b_n-a_n=\frac{b_0-a_0}{2^n}.\]</span></p>
-<p><em>The endpoints are Cauchy sequences in <span class="math inline">\(\mathbb{Q}\)</span>.</em> Let <span class="math inline">\(d=b_0-a_0\)</span>. If <span class="math inline">\(m\ge n\ge1\)</span>, then <span class="math inline">\(a_n\le a_m&lt;b_m\le b_n\)</span>. So <span class="math inline">\(|a_m-a_n|\)</span> and <span class="math inline">\(|b_m-b_n|\)</span> are at most <span class="math inline">\(\frac d{2^n}&lt;\frac dn\)</span>, using <span class="math inline">\(2^n&gt;n\)</span> (<a href="ch-real-numbers.html#exer-two-to-n">Exercise 1.2.9</a>). Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N\varepsilon&gt;d\)</span> by <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>. Then <span class="math inline">\(|a_m-a_n|&lt;\varepsilon\)</span> and <span class="math inline">\(|b_m-b_n|&lt;\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Also <span class="math inline">\(b_n-a_n&lt;\frac dn\)</span>, so <span class="math inline">\(\{b_n-a_n\}\)</span> is null. Thus the sequences
+<p>Next, the endpoints form Cauchy sequences in <span class="math inline">\(\mathbb{Q}\)</span>. To see this, let <span class="math inline">\(d=b_0-a_0\)</span>. If <span class="math inline">\(m\ge n\ge1\)</span>, then <span class="math inline">\(a_n\le a_m&lt;b_m\le b_n\)</span>. So <span class="math inline">\(|a_m-a_n|\)</span> and <span class="math inline">\(|b_m-b_n|\)</span> are at most <span class="math inline">\(\frac d{2^n}&lt;\frac dn\)</span>, using <span class="math inline">\(2^n&gt;n\)</span> (<a href="ch-real-numbers.html#exer-two-to-n">Exercise 1.2.9</a>). Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N\varepsilon&gt;d\)</span> by <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>. Then <span class="math inline">\(|a_m-a_n|&lt;\varepsilon\)</span> and <span class="math inline">\(|b_m-b_n|&lt;\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Also <span class="math inline">\(b_n-a_n&lt;\frac dn\)</span>, so <span class="math inline">\(\{b_n-a_n\}\)</span> is null. Thus the sequences
 <span class="math inline">\(a=\{a_n\}\)</span> and <span class="math inline">\(b=\{b_n\}\)</span> are in <span class="math inline">\(\mathcal{C}\)</span>, and <span class="math inline">\(a\sim b\)</span>. Let <span class="math inline">\(s=[a]=[b]\)</span>.</p>
-<p><em>The number <span class="math inline">\(s\)</span> is an upper
-bound of <span class="math inline">\(E\)</span>.</em> Let <span class="math inline">\(e\in E\)</span>, and suppose <span class="math inline">\(e&gt;s\)</span>. By <a href="#lem-cauchy-density">Lemma B.4.1</a> (2), there is a rational
+<p>The class <span class="math inline">\(s\)</span> is the candidate for
+<span class="math inline">\(\sup E\)</span>. First, <span class="math inline">\(s\)</span> is an upper bound of <span class="math inline">\(E\)</span>. To see this, let <span class="math inline">\(e\in E\)</span>, and suppose <span class="math inline">\(e&gt;s\)</span>. By <a href="#lem-cauchy-density">Lemma B.4.1</a> (2), there is a rational
 <span class="math inline">\(\varepsilon\)</span> with <span class="math inline">\(0&lt;\varepsilon&lt;e-s\)</span>. By <a href="#lem-cauchy-converges-to-class">Lemma B.4.2</a>, there is an <span class="math inline">\(n\)</span> with <span class="math inline">\(|s-b_n|\le\varepsilon\)</span>. Then <span class="math inline">\(b_n\le s+\varepsilon&lt;e\)</span>. This
 contradicts the fact that <span class="math inline">\(b_n\)</span> is an
 upper bound of <span class="math inline">\(E\)</span>. So <span class="math inline">\(e\le s\)</span>.</p>
-<p><em>No smaller number is an upper bound of <span class="math inline">\(E\)</span>.</em> Let <span class="math inline">\(t&lt;s\)</span>. Choose a rational <span class="math inline">\(\varepsilon\)</span> with <span class="math inline">\(0&lt;\varepsilon&lt;s-t\)</span>, and an <span class="math inline">\(n\)</span> with <span class="math inline">\(|s-a_n|\le\varepsilon\)</span>. Then <span class="math inline">\(a_n\ge s-\varepsilon&gt;t\)</span>. Since <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, some <span class="math inline">\(e\in
+<p>Finally, no smaller number is an upper bound of <span class="math inline">\(E\)</span>. To see this, let <span class="math inline">\(t&lt;s\)</span>. Choose a rational <span class="math inline">\(\varepsilon\)</span> with <span class="math inline">\(0&lt;\varepsilon&lt;s-t\)</span>, and an <span class="math inline">\(n\)</span> with <span class="math inline">\(|s-a_n|\le\varepsilon\)</span>. Then <span class="math inline">\(a_n\ge s-\varepsilon&gt;t\)</span>. Since <span class="math inline">\(a_n\)</span> is not an upper bound of <span class="math inline">\(E\)</span>, some <span class="math inline">\(e\in
 E\)</span> has <span class="math inline">\(e&gt;a_n&gt;t\)</span>. So
 <span class="math inline">\(t\)</span> is not an upper bound of <span class="math inline">\(E\)</span>. Therefore <span class="math inline">\(s=\sup E\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
@@ -482,48 +482,51 @@ the Archimedean Principle in <span class="math inline">\(\mathbb{F}\)</span>, th
 <span class="math inline">\(-j\in C(x)\)</span>, and every <span class="math inline">\(q\in C(x)\)</span> has <span class="math inline">\(q&lt;k\)</span>, so <span class="math inline">\(\kappa(q)&lt;k_{\mathbb{G}}\)</span>. Define <span class="math display">\[\varphi(x)=\sup\{\kappa(q):q\in C(x)\},\]</span>
 which exists in <span class="math inline">\(\mathbb{G}\)</span> by the
 least upper bound property.</p>
-<p><em>Step 1. For <span class="math inline">\(q\in\mathbb{Q}\)</span>,
-<span class="math inline">\(\kappa(q)&lt;\varphi(x)\)</span> if and only
-if <span class="math inline">\(\iota(q)&lt;x\)</span>.</em> Suppose
-<span class="math inline">\(\iota(q)&lt;x\)</span>. By density in <span class="math inline">\(\mathbb{F}\)</span>, there is an <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(\iota(q)&lt;\iota(r)&lt;x\)</span>. Then <span class="math inline">\(r\in C(x)\)</span> and <span class="math inline">\(q&lt;r\)</span>, so <span class="math inline">\(\kappa(q)&lt;\kappa(r)\le\varphi(x)\)</span>.
+<p>The proof has six steps. The first step shows that for <span class="math inline">\(q\in\mathbb{Q}\)</span>, <span class="math inline">\(\kappa(q)&lt;\varphi(x)\)</span> if and only if
+<span class="math inline">\(\iota(q)&lt;x\)</span>. Suppose <span class="math inline">\(\iota(q)&lt;x\)</span>. By density in <span class="math inline">\(\mathbb{F}\)</span>, there is an <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(\iota(q)&lt;\iota(r)&lt;x\)</span>. Then <span class="math inline">\(r\in C(x)\)</span> and <span class="math inline">\(q&lt;r\)</span>, so <span class="math inline">\(\kappa(q)&lt;\kappa(r)\le\varphi(x)\)</span>.
 Conversely, suppose <span class="math inline">\(\kappa(q)&lt;\varphi(x)\)</span>. Then <span class="math inline">\(\kappa(q)\)</span> is not an upper bound of <span class="math inline">\(\{\kappa(r):r\in C(x)\}\)</span>. So <span class="math inline">\(\kappa(q)&lt;\kappa(r)\)</span> for some <span class="math inline">\(r\in C(x)\)</span>. Then <span class="math inline">\(q&lt;r\)</span>, and <span class="math inline">\(\iota(q)&lt;\iota(r)&lt;x\)</span>.</p>
-<p><em>Step 2. Rational numbers.</em> For <span class="math inline">\(p,q\in\mathbb{Q}\)</span>, Step 1 gives <span class="math inline">\(\kappa(q)&lt;\varphi(\iota(p))\)</span> if and
-only if <span class="math inline">\(\iota(q)&lt;\iota(p)\)</span>, that
-is, <span class="math inline">\(q&lt;p\)</span>, that is, <span class="math inline">\(\kappa(q)&lt;\kappa(p)\)</span>. So <span class="math inline">\(\varphi(\iota(p))\)</span> and <span class="math inline">\(\kappa(p)\)</span> have the same rational numbers
+<p>The second step shows that <span class="math inline">\(\varphi\)</span> sends each rational number of
+<span class="math inline">\(\mathbb{F}\)</span> to the matching rational
+number of <span class="math inline">\(\mathbb{G}\)</span>. For <span class="math inline">\(p,q\in\mathbb{Q}\)</span>, the first step gives
+<span class="math inline">\(\kappa(q)&lt;\varphi(\iota(p))\)</span> if
+and only if <span class="math inline">\(\iota(q)&lt;\iota(p)\)</span>,
+that is, <span class="math inline">\(q&lt;p\)</span>, that is, <span class="math inline">\(\kappa(q)&lt;\kappa(p)\)</span>. So <span class="math inline">\(\varphi(\iota(p))\)</span> and <span class="math inline">\(\kappa(p)\)</span> have the same rational numbers
 below them, and <span class="math inline">\(\varphi(\iota(p))=\kappa(p)\)</span>. In
 particular <span class="math inline">\(\varphi(0)=0\)</span>.</p>
-<p><em>Step 3. Order.</em> Let <span class="math inline">\(x&lt;y\)</span>. By density in <span class="math inline">\(\mathbb{F}\)</span>, there is a <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(x&lt;\iota(q)&lt;y\)</span>. By Step 1, <span class="math inline">\(\kappa(q)&lt;\varphi(y)\)</span>, and <span class="math inline">\(\kappa(q)\not&lt;\varphi(x)\)</span>. So <span class="math inline">\(\varphi(x)\le\kappa(q)&lt;\varphi(y)\)</span>.
+<p>The third step shows that <span class="math inline">\(\varphi\)</span> preserves order. Let <span class="math inline">\(x&lt;y\)</span>. By density in <span class="math inline">\(\mathbb{F}\)</span>, there is a <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(x&lt;\iota(q)&lt;y\)</span>. By the first step,
+<span class="math inline">\(\kappa(q)&lt;\varphi(y)\)</span>, and <span class="math inline">\(\kappa(q)\not&lt;\varphi(x)\)</span>. So <span class="math inline">\(\varphi(x)\le\kappa(q)&lt;\varphi(y)\)</span>.
 Conversely, if <span class="math inline">\(\varphi(x)&lt;\varphi(y)\)</span>, then <span class="math inline">\(x&lt;y\)</span>, since <span class="math inline">\(x=y\)</span> and <span class="math inline">\(y&lt;x\)</span> are ruled out. In particular,
 <span class="math inline">\(\varphi\)</span> is one-to-one.</p>
-<p><em>Step 4. Onto.</em> Define <span class="math inline">\(\psi:\mathbb{G}\to\mathbb{F}\)</span> in the same
+<p>The fourth step shows that <span class="math inline">\(\varphi\)</span> is onto. Define <span class="math inline">\(\psi:\mathbb{G}\to\mathbb{F}\)</span> in the same
 way, with the roles of <span class="math inline">\(\mathbb{F}\)</span>
-and <span class="math inline">\(\mathbb{G}\)</span> exchanged. By Step 1
-for <span class="math inline">\(\psi\)</span> and then for <span class="math inline">\(\varphi\)</span>, for every <span class="math inline">\(q\in\mathbb{Q}\)</span>, <span class="math display">\[\iota(q)&lt;\psi(\varphi(x))\iff\kappa(q)&lt;\varphi(x)\iff\iota(q)&lt;x.\]</span>
+and <span class="math inline">\(\mathbb{G}\)</span> exchanged. By the
+first step for <span class="math inline">\(\psi\)</span> and then for
+<span class="math inline">\(\varphi\)</span>, for every <span class="math inline">\(q\in\mathbb{Q}\)</span>, <span class="math display">\[\iota(q)&lt;\psi(\varphi(x))\iff\kappa(q)&lt;\varphi(x)\iff\iota(q)&lt;x.\]</span>
 So <span class="math inline">\(\psi(\varphi(x))=x\)</span> for every
 <span class="math inline">\(x\in\mathbb{F}\)</span>. In the same way,
 <span class="math inline">\(\varphi(\psi(g))=g\)</span> for every <span class="math inline">\(g\in\mathbb{G}\)</span>. So <span class="math inline">\(\varphi\)</span> maps <span class="math inline">\(\mathbb{F}\)</span> onto <span class="math inline">\(\mathbb{G}\)</span>.</p>
-<p><em>Step 5. Sums.</em> Let <span class="math inline">\(x,y\in\mathbb{F}\)</span> and <span class="math inline">\(q\in\mathbb{Q}\)</span>. Suppose <span class="math inline">\(\kappa(q)&lt;\varphi(x)+\varphi(y)\)</span>. Then
+<p>The fifth step shows that <span class="math inline">\(\varphi\)</span> preserves sums. Let <span class="math inline">\(x,y\in\mathbb{F}\)</span> and <span class="math inline">\(q\in\mathbb{Q}\)</span>. Suppose <span class="math inline">\(\kappa(q)&lt;\varphi(x)+\varphi(y)\)</span>. Then
 <span class="math inline">\(\kappa(q)-\varphi(y)&lt;\varphi(x)\)</span>.
 By density in <span class="math inline">\(\mathbb{G}\)</span>, there is
 an <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(\kappa(q)-\varphi(y)&lt;\kappa(r)&lt;\varphi(x)\)</span>.
 Then <span class="math inline">\(\kappa(q-r)&lt;\varphi(y)\)</span> and
-<span class="math inline">\(\kappa(r)&lt;\varphi(x)\)</span>. By Step 1,
-<span class="math inline">\(\iota(q-r)&lt;y\)</span> and <span class="math inline">\(\iota(r)&lt;x\)</span>. Adding, <span class="math inline">\(\iota(q)&lt;x+y\)</span>, and so <span class="math inline">\(\kappa(q)&lt;\varphi(x+y)\)</span> by Step 1. The
-same argument in <span class="math inline">\(\mathbb{F}\)</span> shows
-that <span class="math inline">\(\kappa(q)&lt;\varphi(x+y)\)</span>
-implies <span class="math inline">\(\kappa(q)&lt;\varphi(x)+\varphi(y)\)</span>. So
+<span class="math inline">\(\kappa(r)&lt;\varphi(x)\)</span>. By the
+first step, <span class="math inline">\(\iota(q-r)&lt;y\)</span> and
+<span class="math inline">\(\iota(r)&lt;x\)</span>. Adding, <span class="math inline">\(\iota(q)&lt;x+y\)</span>, and so <span class="math inline">\(\kappa(q)&lt;\varphi(x+y)\)</span> by the first
+step. The same argument in <span class="math inline">\(\mathbb{F}\)</span> shows that <span class="math inline">\(\kappa(q)&lt;\varphi(x+y)\)</span> implies <span class="math inline">\(\kappa(q)&lt;\varphi(x)+\varphi(y)\)</span>. So
 <span class="math inline">\(\varphi(x+y)=\varphi(x)+\varphi(y)\)</span>.
 In particular, <span class="math inline">\(\varphi(-x)=-\varphi(x)\)</span>, since <span class="math inline">\(\varphi(x)+\varphi(-x)=\varphi(0)=0\)</span>.</p>
-<p><em>Step 6. Products.</em> First let <span class="math inline">\(x,y&gt;0\)</span>. Then <span class="math inline">\(\varphi(x),\varphi(y)&gt;0\)</span> by Steps 2 and
-3. Let <span class="math inline">\(q\in\mathbb{Q}\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(\kappa(q)\le0&lt;\varphi(x)\varphi(y)\)</span>,
+<p>The sixth step shows that <span class="math inline">\(\varphi\)</span> preserves products. First let
+<span class="math inline">\(x,y&gt;0\)</span>. Then <span class="math inline">\(\varphi(x),\varphi(y)&gt;0\)</span> by the second
+and third steps. Let <span class="math inline">\(q\in\mathbb{Q}\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(\kappa(q)\le0&lt;\varphi(x)\varphi(y)\)</span>,
 and <span class="math inline">\(\iota(q)\le0&lt;xy\)</span>, so <span class="math inline">\(\kappa(q)&lt;\varphi(xy)\)</span>. Now let <span class="math inline">\(q&gt;0\)</span>, and suppose <span class="math inline">\(\kappa(q)&lt;\varphi(x)\varphi(y)\)</span>. Then
 <span class="math inline">\(0&lt;\kappa(q)\varphi(y)^{-1}&lt;\varphi(x)\)</span>.
 By density in <span class="math inline">\(\mathbb{G}\)</span>, there is
 an <span class="math inline">\(r\in\mathbb{Q}\)</span> with <span class="math inline">\(\kappa(q)\varphi(y)^{-1}&lt;\kappa(r)&lt;\varphi(x)\)</span>.
 Then <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(\kappa(r)&lt;\varphi(x)\)</span> and <span class="math inline">\(\kappa\bigl(\frac qr\bigr)&lt;\varphi(y)\)</span>.
-By Step 1, <span class="math inline">\(0&lt;\iota(r)&lt;x\)</span> and
-<span class="math inline">\(0&lt;\iota\bigl(\frac
-qr\bigr)&lt;y\)</span>. Multiplying, <span class="math inline">\(\iota(q)&lt;xy\)</span>, so <span class="math inline">\(\kappa(q)&lt;\varphi(xy)\)</span>. The same
+By the first step, <span class="math inline">\(0&lt;\iota(r)&lt;x\)</span> and <span class="math inline">\(0&lt;\iota\bigl(\frac qr\bigr)&lt;y\)</span>.
+Multiplying, <span class="math inline">\(\iota(q)&lt;xy\)</span>, so
+<span class="math inline">\(\kappa(q)&lt;\varphi(xy)\)</span>. The same
 argument in <span class="math inline">\(\mathbb{F}\)</span> gives the
 converse. So <span class="math inline">\(\varphi(xy)=\varphi(x)\varphi(y)\)</span> when
 <span class="math inline">\(x,y&gt;0\)</span>. The other cases follow

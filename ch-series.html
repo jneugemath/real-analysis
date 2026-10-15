@@ -197,8 +197,7 @@ b_k=\beta\)</span>, then</p>
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <ol>
-<li><p>Exercise. See <a href="#exer-series-scalar">Exercise
-10.2.2</a>.</p></li>
+<li><p>This part is an exercise. See <a href="#exer-series-scalar">Exercise 10.2.2</a>.</p></li>
 <li><p>For each <span class="math inline">\(n\in\mathbb{N}\)</span>, let
 <span class="math inline">\(s_n=\sum_{k=1}^n a_k\)</span> and <span class="math inline">\(t_n=\sum^n_{k=1} b_k\)</span>. So <span class="math inline">\(s_n\to \alpha\)</span> and <span class="math inline">\(t_n\to\beta\)</span>. So <span class="math inline">\(s_n+t_n\to\alpha+\beta\)</span> by <a href="ch-sequences.html#thm-limit-laws">Theorem 3.2.4</a>, implying <span class="math inline">\(\sum(a_k+b_k)=\alpha+\beta\)</span>. Here <span class="math inline">\(s_n+t_n=\sum_{k=1}^n(a_k+b_k)\)</span> is the
 <span class="math inline">\(n\)</span>th partial sum of <span class="math inline">\(\sum(a_k+b_k)\)</span>.</p></li>
@@ -406,8 +405,7 @@ that <span class="math inline">\(\sqrt[k]{a_k}&lt;c\)</span> for all
 and <a href="#ex-geometric-series">Example 10.1.3</a>.</p></li>
 <li><p>Notice <span class="math inline">\(\sqrt[k]{a_k}&gt;1\)</span>
 for infinitely many <span class="math inline">\(k\)</span>. If <span class="math inline">\(\alpha&lt;\infty\)</span>, this follows from <a href="ch-sequences.html#thm-limsup-characterization">Theorem 3.6.11</a> with <span class="math inline">\(\varepsilon=\alpha-1\)</span>. If <span class="math inline">\(\alpha=\infty\)</span>, it holds because <span class="math inline">\(\infty\)</span> is a cluster point of <span class="math inline">\(\{\sqrt[k]{a_k}\}\)</span>, by <a href="ch-sequences.html#thm-limsup-infinite">Theorem 3.6.12</a>. So <span class="math inline">\(a_k&gt;1\)</span> for infinitely many <span class="math inline">\(k\)</span>. Thus <span class="math inline">\(a_k\not\to0\)</span>. So <span class="math inline">\(\sum a_k\)</span> diverges by the <span class="math inline">\(n\)</span>th Term Test.</p></li>
-<li><p>Exercise. See <a href="#exer-root-test-inconclusive">Exercise
-10.2.4</a>.</p></li>
+<li><p>This part is an exercise. See <a href="#exer-root-test-inconclusive">Exercise 10.2.4</a>.</p></li>
 </ol>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="techniquebox">
@@ -812,9 +810,12 @@ rearrangement <span class="math inline">\(\sum a_k'\)</span> of
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em>Step 1. The positive and negative parts both diverge.</em> For
-each <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(P_n\)</span> be the sum of the nonnegative terms
-among <span class="math inline">\(a_1,\dots,a_n\)</span>, and let <span class="math inline">\(Q_n\)</span> be the sum of the absolute values of
+<p>The proof has three steps. The first step shows that the positive
+part and the negative part of the series both diverge. That is what lets
+the rearranged sums swing past <span class="math inline">\(\alpha\)</span> in both directions as often as
+needed. For each <span class="math inline">\(n\in\mathbb{N}\)</span>,
+let <span class="math inline">\(P_n\)</span> be the sum of the
+nonnegative terms among <span class="math inline">\(a_1,\dots,a_n\)</span>, and let <span class="math inline">\(Q_n\)</span> be the sum of the absolute values of
 the negative terms among <span class="math inline">\(a_1,\dots,a_n\)</span>. Then <span class="math display">\[s_n=P_n-Q_n\quad\text{and}\quad\sum_{k=1}^n|a_k|=P_n+Q_n.\]</span>
 Suppose <span class="math inline">\(\{P_n\}\)</span> were bounded. Since
 <span class="math inline">\(\{s_n\}\)</span> converges, it is bounded,
@@ -832,7 +833,9 @@ of <span class="math inline">\(\sum p_i\)</span> are not bounded. So
 <span class="math inline">\(\sum_{i=1}^np_i\to\infty\)</span> by <a href="#thm-nonnegative-series">Theorem 10.2.6</a>. In the same way,
 <span class="math inline">\(\sum_{i=1}^nq_i\to\infty\)</span>. Also
 <span class="math inline">\(a_k\to0\)</span> by the <span class="math inline">\(n\)</span>th Term Test. Since <span class="math inline">\(\{p_i\}\)</span> is a subsequence of <span class="math inline">\(\{a_k\}\)</span>, and <span class="math inline">\(\{q_i\}\)</span> is a subsequence of <span class="math inline">\(\{|a_k|\}\)</span>, both tend to <span class="math inline">\(0\)</span>.</p>
-<p><em>Step 2. The construction.</em> Let <span class="math inline">\(m_1\)</span> be the smallest positive integer with
+<p>The second step builds the rearrangement. It adds nonnegative terms
+until the total passes <span class="math inline">\(\alpha\)</span>, then
+negative terms until the total drops below <span class="math inline">\(\alpha\)</span>, and so on. Let <span class="math inline">\(m_1\)</span> be the smallest positive integer with
 <span class="math display">\[X_1=p_1+\cdots+p_{m_1}&gt;\alpha.\]</span>
 It exists because <span class="math inline">\(\sum_{i=1}^np_i\to\infty\)</span>. Let <span class="math inline">\(n_1\)</span> be the smallest positive integer with
 <span class="math display">\[Y_1=X_1-q_1-\cdots-q_{n_1}&lt;\alpha.\]</span> It
@@ -845,7 +848,7 @@ The rearranged series is <span class="math display">\[p_1+\cdots+p_{m_1}-q_1-\cd
 Since <span class="math inline">\(m_1&lt;m_2&lt;\cdots\)</span> and
 <span class="math inline">\(n_1&lt;n_2&lt;\cdots\)</span>, every <span class="math inline">\(p_i\)</span> and every <span class="math inline">\(q_i\)</span> is used, exactly once. So this is a
 rearrangement of <span class="math inline">\(\sum a_k\)</span>.</p>
-<p><em>Step 3. The rearranged series converges to <span class="math inline">\(\alpha\)</span>.</em> Let <span class="math inline">\(k\ge2\)</span>. Since <span class="math inline">\(m_k\)</span> is the smallest choice, the total
+<p>The third step shows that the rearranged series converges to <span class="math inline">\(\alpha\)</span>. Let <span class="math inline">\(k\ge2\)</span>. Since <span class="math inline">\(m_k\)</span> is the smallest choice, the total
 just before <span class="math inline">\(p_{m_k}\)</span> was added was
 at most <span class="math inline">\(\alpha\)</span>. So <span class="math inline">\(\alpha&lt;X_k\le\alpha+p_{m_k}\)</span>. In the
 same way, the total just before <span class="math inline">\(q_{n_k}\)</span> was added was at least <span class="math inline">\(\alpha\)</span>, so <span class="math inline">\(\alpha-q_{n_k}\le Y_k&lt;\alpha\)</span>. Since

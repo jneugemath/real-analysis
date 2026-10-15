@@ -179,7 +179,7 @@ exists (as a real number or <span class="math inline">\(\infty\)</span>), then t
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>Changing finitely many coefficients does not change <span class="math inline">\(\limsup\sqrt[k]{|a_k|}\)</span>, by <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (1). So we may assume <span class="math inline">\(a_k\ne0\)</span> for all <span class="math inline">\(k\)</span>. Apply <a href="#thm-ratio-root-comparison">Theorem 12.1.5</a> to <span class="math inline">\(\{|a_k|\}\)</span>. (If the limit is <span class="math inline">\(\infty\)</span>, the left inequality gives <span class="math inline">\(\liminf\sqrt[k]{|a_k|}=\infty\)</span>.)</p>
+<p>Changing finitely many coefficients does not change <span class="math inline">\(\limsup\sqrt[k]{|a_k|}\)</span>, by <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (1). So assume <span class="math inline">\(a_k\ne0\)</span> for all <span class="math inline">\(k\)</span>. Apply <a href="#thm-ratio-root-comparison">Theorem 12.1.5</a> to <span class="math inline">\(\{|a_k|\}\)</span>. (If the limit is <span class="math inline">\(\infty\)</span>, the left inequality gives <span class="math inline">\(\liminf\sqrt[k]{|a_k|}=\infty\)</span>.)</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-radius-of-convergence">
 
@@ -484,8 +484,9 @@ Since <span class="math inline">\(f(x)=g(x)\)</span> for all <span class="math i
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <p>Recall that <span class="math inline">\(e^u\)</span> is increasing,
-<span class="math inline">\(\frac{d}{du}e^u=e^u\)</span> and <span class="math inline">\(e^0=1\)</span> (<a href="ch-integrals.html#thm-exp-properties">Theorem 9.4.6</a>). For <span class="math inline">\(m\in\mathbb{N}_0\)</span> and <span class="math inline">\(u\ge0\)</span>, let <span class="math inline">\(g_m(u)=e^u-\sum_{k=0}^m\frac{u^k}{k!}\)</span>. We
-show <span class="math inline">\(g_m(u)\ge0\)</span> for <span class="math inline">\(u\ge0\)</span> by induction on <span class="math inline">\(m\)</span>. First, <span class="math inline">\(g_0(u)=e^u-1\ge0\)</span>, since <span class="math inline">\(E\)</span> is increasing. If <span class="math inline">\(g_{m-1}\ge0\)</span> on <span class="math inline">\([0,\infty)\)</span>, then <span class="math inline">\(g_m'=g_{m-1}\ge0\)</span> there, so <span class="math inline">\(g_m\)</span> is increasing on <span class="math inline">\([0,\infty)\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Since <span class="math inline">\(g_m(0)=0\)</span>, <span class="math inline">\(g_m(u)\ge0\)</span> for all <span class="math inline">\(u\ge0\)</span>. So <span class="math inline">\(e^u\ge\sum_{k=0}^m\frac{u^k}{k!}\ge\frac{u^m}{m!}\)</span>.</p>
+<span class="math inline">\(\frac{d}{du}e^u=e^u\)</span> and <span class="math inline">\(e^0=1\)</span> (<a href="ch-integrals.html#thm-exp-properties">Theorem 9.4.6</a>). For <span class="math inline">\(m\in\mathbb{N}_0\)</span> and <span class="math inline">\(u\ge0\)</span>, let <span class="math inline">\(g_m(u)=e^u-\sum_{k=0}^m\frac{u^k}{k!}\)</span>.
+The proof shows <span class="math inline">\(g_m(u)\ge0\)</span> for
+<span class="math inline">\(u\ge0\)</span> by induction on <span class="math inline">\(m\)</span>. For <span class="math inline">\(m=0\)</span>, <span class="math inline">\(g_0(u)=e^u-1\ge0\)</span>, since <span class="math inline">\(e^u\)</span> is increasing and <span class="math inline">\(e^0=1\)</span>. If <span class="math inline">\(g_{m-1}\ge0\)</span> on <span class="math inline">\([0,\infty)\)</span>, then <span class="math inline">\(g_m'=g_{m-1}\ge0\)</span> there, so <span class="math inline">\(g_m\)</span> is increasing on <span class="math inline">\([0,\infty)\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Since <span class="math inline">\(g_m(0)=0\)</span>, <span class="math inline">\(g_m(u)\ge0\)</span> for all <span class="math inline">\(u\ge0\)</span>. So <span class="math inline">\(e^u\ge\sum_{k=0}^m\frac{u^k}{k!}\ge\frac{u^m}{m!}\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="examplebox" id="ex-flat-function">
 
@@ -493,7 +494,8 @@ show <span class="math inline">\(g_m(u)\ge0\)</span> for <span class="math inlin
 C^\infty(I)\)</span> does not imply <span class="math inline">\(f\)</span> has a power series representation with
 positive radius of convergence. For example, let <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> be defined by
 <span class="math display">\[f(x)=\begin{cases}e^{-1/x^2}, &amp; x\ne
-0,\\ 0, &amp; x=0.\end{cases}\]</span> See <a href="#fig-flat-function">Figure 12.1</a>. First, a limit. Let <span class="math inline">\(P\)</span> be a polynomial of degree <span class="math inline">\(d\)</span>. Then <span id="eq-flat-limit"></span>
+0,\\ 0, &amp; x=0.\end{cases}\]</span> See <a href="#fig-flat-function">Figure 12.1</a>. The proof rests on one limit,
+and every derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(0\)</span> comes down to it. Let <span class="math inline">\(P\)</span> be a polynomial of degree <span class="math inline">\(d\)</span>. Then <span id="eq-flat-limit"></span>
 <span class="math display">\[\lim_{x\to0}P\left(\frac1x\right)e^{-1/x^2}=0.
 \tag{12.2.1}\]</span> To see this, let <span class="math inline">\(C\)</span> be the sum of the absolute values of
 the coefficients of <span class="math inline">\(P\)</span>. For <span class="math inline">\(0&lt;|x|\le1\)</span>, <span class="math inline">\(\left|P\left(\frac1x\right)\right|\le
@@ -631,7 +633,8 @@ not required.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>If <span class="math inline">\(x=c\)</span>, both sides are <span class="math inline">\(0\)</span> with <span class="math inline">\(\xi=c\)</span>. So suppose <span class="math inline">\(x\ne c\)</span>. By symmetry we may assume <span class="math inline">\(x&gt;c\)</span>. Let <span class="math inline">\(M\)</span> be the number with <span class="math display">\[f(x)=T_n(f,c)(x)+M(x-c)^{n+1}.\]</span> The goal
+<p>If <span class="math inline">\(x=c\)</span>, both sides are <span class="math inline">\(0\)</span> with <span class="math inline">\(\xi=c\)</span>. So suppose <span class="math inline">\(x\ne c\)</span>. By symmetry, it is enough to
+treat <span class="math inline">\(x&gt;c\)</span>. Let <span class="math inline">\(M\)</span> be the number with <span class="math display">\[f(x)=T_n(f,c)(x)+M(x-c)^{n+1}.\]</span> The goal
 is to show <span class="math inline">\(M=\frac{f^{(n+1)}(\xi)}{(n+1)!}\)</span> for some
 <span class="math inline">\(\xi\in(c,x)\)</span>. Define <span class="math inline">\(g:I\to\mathbb{R}\)</span> by <span class="math display">\[g(t)=f(t)-T_n(f,c)(t)-M(t-c)^{n+1}.\]</span>
 Three facts about <span class="math inline">\(g\)</span> are needed.
@@ -643,8 +646,8 @@ of <span class="math inline">\((t-c)^{n+1}\)</span> of order at most
 most <span class="math inline">\(n\)</span>, its <span class="math inline">\((n+1)\)</span>st derivative is <span class="math inline">\(0\)</span>. So <span class="math display">\[g^{(n+1)}(t)=f^{(n+1)}(t)-(n+1)!\,M\quad\text{for
 all }t\in I.\]</span></p>
 <p>Now apply Rolle’s Theorem <span class="math inline">\(n+1\)</span>
-times. Let <span class="math inline">\(x_0=x\)</span>. We find points
-<span class="math inline">\(c&lt;x_{n+1}&lt;x_n&lt;\cdots&lt;x_1&lt;x_0\)</span>
+times. Let <span class="math inline">\(x_0=x\)</span>. The goal is to
+find points <span class="math inline">\(c&lt;x_{n+1}&lt;x_n&lt;\cdots&lt;x_1&lt;x_0\)</span>
 with <span class="math inline">\(g^{(j)}(x_j)=0\)</span> for each <span class="math inline">\(j\)</span>. Suppose <span class="math inline">\(x_j\)</span> has been found for some <span class="math inline">\(j\le n\)</span>. Then <span class="math inline">\(g^{(j)}(c)=0=g^{(j)}(x_j)\)</span>, and <span class="math inline">\(g^{(j)}\)</span> is differentiable on <span class="math inline">\(I\)</span> because <span class="math inline">\(j\le n\)</span>. So Rolle’s Theorem (<a href="ch-derivative.html#thm-rolle">Theorem 7.2.1</a>) gives an <span class="math inline">\(x_{j+1}\in(c,x_j)\)</span> with <span class="math inline">\(g^{(j+1)}(x_{j+1})=0\)</span>. This starts with
 <span class="math inline">\(j=0\)</span>, since <span class="math inline">\(g(c)=0=g(x)\)</span>.</p>
 <p>Let <span class="math inline">\(\xi=x_{n+1}\)</span>. Then <span class="math inline">\(\xi\in(c,x)\)</span> and <span class="math inline">\(0=g^{(n+1)}(\xi)=f^{(n+1)}(\xi)-(n+1)!\,M\)</span>.

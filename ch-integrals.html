@@ -552,8 +552,7 @@ f+\int^b_a g.\]</span></p>
 f+\int^b_a g,\]</span> which implies <span class="math inline">\(f+g\in\mathcal{R}[a,b]\)</span> with <span class="math display">\[\int^b_a (f+g)=\int^b_a f+\int^b_a g.\]</span>
 (The last step uses <a href="#thm-lower-le-upper">Theorem
 9.1.6</a>.)</p></li>
-<li><p>Exercise. See <a href="#exer-integral-scalar">Exercise
-9.2.1</a>.</p></li>
+<li><p>This part is an exercise. See <a href="#exer-integral-scalar">Exercise 9.2.1</a>.</p></li>
 <li><p>Notice <span class="math display">\[fg=\frac{1}{4}\left[(f+g)^2-(f-g)^2\right].\]</span>
 By (2), <span class="math inline">\(-g\in\mathcal{R}[a,b]\)</span>. So
 by (1), <span class="math inline">\(f+g,f-g\in\mathcal{R}[a,b]\)</span>.
@@ -922,7 +921,8 @@ b.\]</span> So <span class="math inline">\(\ln (b^n)=n\ln b\)</span> for
 all <span class="math inline">\(n\in\mathbb{Z}\)</span>. Also, since
 <span class="math display">\[n\ln(\sqrt[n]{b})=\ln b,\]</span> <span class="math display">\[\ln(\sqrt[n]{b})=\frac{1}{n}\ln b.\]</span> Thus
 <span class="math inline">\(\ln(b^r)=r\ln b\)</span> for all <span class="math inline">\(r\in\mathbb{Q}\)</span>.</p>
-<p>Now the rest of (1). Last, <span class="math display">\[\begin{aligned}
+<p>It remains to prove <span class="math inline">\(\ln e=1\)</span>, the
+last claim in (1). Last, <span class="math display">\[\begin{aligned}
 1=\left.\frac{d}{dx}\ln x\right|_{x=1} &amp;=
 \lim_{n\to\infty}\frac{\ln\left(1+\frac{1}{n}\right)-\ln 1}{1/n}\\
 &amp;=\lim_{n\to\infty}n\ln\left(1+\frac{1}{n}\right)\\
@@ -1318,24 +1318,23 @@ x\quad\text{and}\quad\frac{d}{dx}\cos x=-\sin x.\]</span> Also <span class="math
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em>Values.</em> Since <span class="math inline">\(\tan0=0\)</span>,
-<span class="math inline">\(\cos0=1\)</span> and <span class="math inline">\(\sin0=0\)</span>. The values at <span class="math inline">\(\frac\pi2\)</span> are part of the definition. For
+<p>The proof starts with the values. Since <span class="math inline">\(\tan0=0\)</span>, the definition gives <span class="math inline">\(\cos0=1\)</span> and <span class="math inline">\(\sin0=0\)</span>. The values at <span class="math inline">\(\frac\pi2\)</span> are part of the definition. For
 <span class="math inline">\(|x|&lt;\frac\pi2\)</span>, <span class="math display">\[\sin^2x+\cos^2x=\frac{\tan^2x+1}{1+\tan^2x}=1.\]</span>
 This also holds at <span class="math inline">\(\pm\frac\pi2\)</span>,
 and multiplying by <span class="math inline">\((-1)^{2k}=1\)</span> does
 not change it. So it holds on <span class="math inline">\(\mathbb{R}\)</span>.</p>
-<p><em>Derivatives on <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>.</em>
-By <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a> applied to <span class="math inline">\(x^2\)</span> on <span class="math inline">\((0,\infty)\)</span>, <span class="math inline">\(\sqrt u\)</span> is differentiable for <span class="math inline">\(u&gt;0\)</span> with derivative <span class="math inline">\(\frac1{2\sqrt u}\)</span>. Let <span class="math inline">\(u=1+\tan^2x\)</span>, so <span class="math inline">\(u'=2\tan x(1+\tan^2x)\)</span>. By the Chain
+<p>Next come the derivatives on <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>. There
+<span class="math inline">\(\cos\)</span> and <span class="math inline">\(\sin\)</span> are given directly in terms of <span class="math inline">\(\tan\)</span>. By <a href="ch-derivative.html#thm-inverse-function">Theorem 7.2.9</a> applied to <span class="math inline">\(x^2\)</span> on <span class="math inline">\((0,\infty)\)</span>, <span class="math inline">\(\sqrt u\)</span> is differentiable for <span class="math inline">\(u&gt;0\)</span> with derivative <span class="math inline">\(\frac1{2\sqrt u}\)</span>. Let <span class="math inline">\(u=1+\tan^2x\)</span>, so <span class="math inline">\(u'=2\tan x(1+\tan^2x)\)</span>. By the Chain
 Rule and the Quotient Rule, <span class="math display">\[\frac{d}{dx}\cos
 x=-\frac1u\cdot\frac{u'}{2\sqrt u}=-\frac{\tan
 x}{\sqrt{1+\tan^2x}}=-\sin x.\]</span> By the Product Rule, <span class="math display">\[\frac{d}{dx}\sin x=(1+\tan^2x)\cos x-\tan x\sin
 x=(1+\tan^2x)\cos x-\tan^2x\cos x=\cos x.\]</span></p>
-<p><em>Other open intervals.</em> On <span class="math inline">\(\left(-\frac\pi2+k\pi,\frac\pi2+k\pi\right)\)</span>,
+<p>The other open intervals follow by shifting. On <span class="math inline">\(\left(-\frac\pi2+k\pi,\frac\pi2+k\pi\right)\)</span>,
 <span class="math inline">\(\sin x=(-1)^k\sin(x-k\pi)\)</span> with
 <span class="math inline">\(x-k\pi\)</span> in <span class="math inline">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>. So
 <span class="math inline">\(\sin'(x)=(-1)^k\cos(x-k\pi)=\cos
 x\)</span>. Similarly <span class="math inline">\(\cos'=-\sin\)</span>.</p>
-<p><em>The points <span class="math inline">\(\frac\pi2+k\pi\)</span>.</em> First take <span class="math inline">\(c=\frac\pi2\)</span>. As <span class="math inline">\(x\to\frac\pi2^-\)</span>, <span class="math inline">\(\tan x\to\infty\)</span>, so <span class="math display">\[\cos
+<p>It remains to check the points <span class="math inline">\(\frac\pi2+k\pi\)</span>, where <span class="math inline">\(\tan\)</span> is not defined. First take <span class="math inline">\(c=\frac\pi2\)</span>. As <span class="math inline">\(x\to\frac\pi2^-\)</span>, <span class="math inline">\(\tan x\to\infty\)</span>, so <span class="math display">\[\cos
 x=\frac1{\sqrt{1+\tan^2x}}\to0\quad\text{and}\quad\sin
 x=\frac1{\sqrt{1+1/\tan^2x}}\to1.\]</span> As <span class="math inline">\(x\to\frac\pi2^+\)</span>, <span class="math inline">\(x-\pi\to-\frac\pi2^+\)</span>. The same
 computation, with <span class="math inline">\(\tan(x-\pi)\to-\infty\)</span>, gives <span class="math inline">\(\cos(x-\pi)\to0\)</span> and <span class="math inline">\(\sin(x-\pi)\to-1\)</span>. So <span class="math inline">\(\cos x=-\cos(x-\pi)\to0\)</span> and <span class="math inline">\(\sin x=-\sin(x-\pi)\to1\)</span>. Thus <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are continuous at <span class="math inline">\(\frac\pi2\)</span>, and so on <span class="math inline">\((0,\pi)\)</span>. Also <span class="math inline">\(\sin'(x)=\cos x\to0=\cos\frac\pi2\)</span> and

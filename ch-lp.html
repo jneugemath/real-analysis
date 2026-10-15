@@ -282,13 +282,12 @@ f-g\right\rVert_p&lt;\varepsilon\)</span>.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em>Step 1. Cut <span class="math inline">\(f\)</span> off.</em> For
-<span class="math inline">\(N\in\mathbb{N}\)</span>, let <span class="math inline">\(f_N=f\)</span> where <span class="math inline">\(|f|\le N\)</span>, <span class="math inline">\(f_N=N\)</span> where <span class="math inline">\(f&gt;N\)</span>, and <span class="math inline">\(f_N=-N\)</span> where <span class="math inline">\(f&lt;-N\)</span>. By <a href="ch-lebesgue-integral.html#exer-chebyshev">Exercise 16.4.5</a>, <span class="math inline">\(m(\{|f|^p\ge N^p\})\le
+<p>The proof has two steps. The first step cuts <span class="math inline">\(f\)</span> off at height <span class="math inline">\(N\)</span>, which makes it bounded. For <span class="math inline">\(N\in\mathbb{N}\)</span>, let <span class="math inline">\(f_N=f\)</span> where <span class="math inline">\(|f|\le N\)</span>, <span class="math inline">\(f_N=N\)</span> where <span class="math inline">\(f&gt;N\)</span>, and <span class="math inline">\(f_N=-N\)</span> where <span class="math inline">\(f&lt;-N\)</span>. By <a href="ch-lebesgue-integral.html#exer-chebyshev">Exercise 16.4.5</a>, <span class="math inline">\(m(\{|f|^p\ge N^p\})\le
 N^{-p}\int|f|^p\to0\)</span>, so <span class="math inline">\(|f|&lt;\infty\)</span> almost everywhere. So <span class="math inline">\(f_N\to f\)</span> almost everywhere. Also <span class="math inline">\(|f-f_N|^p\le|f|^p\)</span>, which is integrable.
 By <a href="ch-lebesgue-integral.html#thm-dct">Theorem 16.5.6</a>, <span class="math inline">\(\left\lVert f-f_N\right\rVert_p\to0\)</span>.
 Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(\left\lVert
 f-f_N\right\rVert_p&lt;\frac\varepsilon 2\)</span>.</p>
-<p><em>Step 2. Approximate the bounded function <span class="math inline">\(f_N\)</span>.</em> Let <span class="math inline">\(\eta&gt;0\)</span>. By <a href="ch-measurable-functions.html#thm-measurable-approx-continuous">Theorem 15.2.7</a>, there is a
+<p>The second step approximates the bounded function <span class="math inline">\(f_N\)</span> by a step function. Let <span class="math inline">\(\eta&gt;0\)</span>. By <a href="ch-measurable-functions.html#thm-measurable-approx-continuous">Theorem 15.2.7</a>, there is a
 step function <span class="math inline">\(g\)</span> with <span class="math inline">\(-N\le g\le N\)</span> and <span class="math inline">\(m(A)&lt;\eta\)</span>, where <span class="math inline">\(A=\{x:|f_N(x)-g(x)|\ge\eta\}\)</span>. Off <span class="math inline">\(A\)</span>, <span class="math inline">\(|f_N-g|&lt;\eta\)</span>. On <span class="math inline">\(A\)</span>, <span class="math inline">\(|f_N-g|\le2N\)</span>. So <span class="math display">\[\int_{[a,b]}|f_N-g|^p\le\eta^p(b-a)+(2N)^p\eta.\]</span>
 Choose <span class="math inline">\(\eta\)</span> so small that this is
 less than <span class="math inline">\(\left(\frac\varepsilon

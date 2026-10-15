@@ -232,7 +232,7 @@ there exists a <span class="math inline">\(\delta_1&gt;0\)</span> such
 that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>, <span class="math inline">\(|f(x)-L_1|&lt;\frac{|L_1-L_2|}{2}\)</span> and
 there exists a <span class="math inline">\(\delta_2&gt;0\)</span> such
 that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_2\)</span>, <span class="math inline">\(|f(x)-L_2|&lt;\frac{|L_1-L_2|}{2}\)</span>. Since
-<span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(E\)</span>, we can choose <span class="math inline">\(x_0\in E\)</span> such that <span class="math inline">\(0&lt;|x_0-c|&lt;\min\{\delta_1,\delta_2\}\)</span>.
+<span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(E\)</span>, it is possible to choose <span class="math inline">\(x_0\in E\)</span> such that <span class="math inline">\(0&lt;|x_0-c|&lt;\min\{\delta_1,\delta_2\}\)</span>.
 Then <span class="math display">\[\begin{aligned}
 |L_1-L_2|&amp;=|L_1-f(x_0)+f(x_0)-L_2|\\
 &amp;\le |f(x_0)-L_1|+|f(x_0)-L_2|\\
@@ -270,8 +270,8 @@ exist <span class="math inline">\(M&gt;0\)</span> and <span class="math inline">
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <ol>
-<li><p>Exercise.</p></li>
-<li><p>Exercise.</p></li>
+<li><p>This part is an exercise.</p></li>
+<li><p>This part is an exercise.</p></li>
 <li><p>By <a href="#lem-limit-sign">Lemma 6.1.11</a>, there exists a
 <span class="math inline">\(\delta_1&gt;0\)</span> such that for all
 <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_1\)</span>, <span class="math inline">\(|g(x)|&gt;\frac{|L_2|}{2}\)</span>, and hence,
@@ -1090,7 +1090,8 @@ I\)</span> with <span class="math inline">\(f(c)=d\)</span>. Also, note
 Otherwise <span class="math inline">\(c\)</span> would be the smallest
 element of <span class="math inline">\(I\)</span>, and <span class="math inline">\(d=f(c)\)</span> would be the smallest element of
 <span class="math inline">\(J\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(a\in I\)</span> with <span class="math inline">\(a&lt;c\)</span>. Then <span class="math inline">\([a,c]\subset I\)</span>, since <span class="math inline">\(I\)</span> is an interval. A <span class="math inline">\(\delta\)</span> that works for <span class="math inline">\(\min\{\varepsilon,c-a\}\)</span> also works for
-<span class="math inline">\(\varepsilon\)</span>. So we may assume <span class="math inline">\(\varepsilon\le c-a\)</span>, and then <span class="math inline">\(c-\varepsilon\in I\)</span>. Define <span class="math inline">\(\delta_1=f(c)-f(c-\varepsilon)\)</span>. Since
+<span class="math inline">\(\varepsilon\)</span>. So it is enough to
+take <span class="math inline">\(\varepsilon\le c-a\)</span>. Then <span class="math inline">\(c-\varepsilon\in I\)</span>. Define <span class="math inline">\(\delta_1=f(c)-f(c-\varepsilon)\)</span>. Since
 <span class="math inline">\(f\)</span> is continuous and strictly
 increasing, <span class="math display">\[f[(c-\varepsilon,c]]=(f(c-\varepsilon),f(c)]=(d-\delta_1,d]\]</span>
 by <a href="#cor-continuous-image-interval">Corollary 6.3.11</a> applied
@@ -1164,14 +1165,14 @@ a <span class="math inline">\(G_\delta\)</span> set.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p><em><span class="math inline">\(U_n\)</span> is open.</em> Let <span class="math inline">\(c\in U_n\)</span>, with <span class="math inline">\(\delta\)</span> as in the definition. Let <span class="math inline">\(c'\in(c-\delta,c+\delta)\)</span>, and let
+<p>The first step shows that each <span class="math inline">\(U_n\)</span> is open. Let <span class="math inline">\(c\in U_n\)</span>, with <span class="math inline">\(\delta\)</span> as in the definition. Let <span class="math inline">\(c'\in(c-\delta,c+\delta)\)</span>, and let
 <span class="math inline">\(\delta'=\delta-|c'-c|&gt;0\)</span>.
 Then <span class="math inline">\((c'-\delta',c'+\delta')\subset(c-\delta,c+\delta)\)</span>.
 So <span class="math inline">\(|f(x)-f(y)|&lt;\frac1n\)</span> for all
 <span class="math inline">\(x,y\)</span> in <span class="math inline">\((c'-\delta',c'+\delta')\)</span>,
 and <span class="math inline">\(c'\in U_n\)</span>. Thus <span class="math inline">\((c-\delta,c+\delta)\subset U_n\)</span>.</p>
-<p><em>Continuity.</em> Suppose <span class="math inline">\(f\)</span>
-is continuous at <span class="math inline">\(c\)</span>, and let <span class="math inline">\(n\in\mathbb{N}\)</span>. Choose <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(x)-f(c)|&lt;\frac1{2n}\)</span> whenever <span class="math inline">\(|x-c|&lt;\delta\)</span>. For <span class="math inline">\(x,y\in(c-\delta,c+\delta)\)</span>, <span class="math inline">\(|f(x)-f(y)|\le|f(x)-f(c)|+|f(c)-f(y)|&lt;\frac1n\)</span>.
+<p>It remains to show that <span class="math inline">\(f\)</span> is
+continuous at <span class="math inline">\(c\)</span> exactly when <span class="math inline">\(c\)</span> is in every <span class="math inline">\(U_n\)</span>. Suppose <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>, and let <span class="math inline">\(n\in\mathbb{N}\)</span>. Choose <span class="math inline">\(\delta&gt;0\)</span> with <span class="math inline">\(|f(x)-f(c)|&lt;\frac1{2n}\)</span> whenever <span class="math inline">\(|x-c|&lt;\delta\)</span>. For <span class="math inline">\(x,y\in(c-\delta,c+\delta)\)</span>, <span class="math inline">\(|f(x)-f(y)|\le|f(x)-f(c)|+|f(c)-f(y)|&lt;\frac1n\)</span>.
 So <span class="math inline">\(c\in U_n\)</span>. Conversely, suppose
 <span class="math inline">\(c\in U_n\)</span> for every <span class="math inline">\(n\)</span>, and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose <span class="math inline">\(n\)</span> with <span class="math inline">\(\frac1n&lt;\varepsilon\)</span>, and <span class="math inline">\(\delta\)</span> for this <span class="math inline">\(n\)</span>. If <span class="math inline">\(|x-c|&lt;\delta\)</span>, take <span class="math inline">\(y=c\)</span>. Then <span class="math inline">\(|f(x)-f(c)|&lt;\frac1n&lt;\varepsilon\)</span>. So
 <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
