@@ -815,9 +815,10 @@ x\)</span> and <span class="math inline">\(e^x\)</span> can skip both
 sections.</p>
 <div class="examplebox" id="ex-exp-ln">
 
-<p><strong>Example 9.4.1</strong> (Exponential and Natural Log
-Functions)<strong>.</strong> Define a sequence <span class="math inline">\(t_n=\left(1+\frac{1}{n}\right)^n\)</span>. By the
-Binomial Theorem (<a href="#exer-binomial">Exercise 9.3.3</a>), <span class="math display">\[t_n=1+n\cdot\frac{1}{n}+\frac{n(n-1)}{1\cdot
+<p><strong>Example 9.4.1</strong> (The Number <span class="math inline">\(e\)</span>)<strong>.</strong> Define a sequence
+<span class="math inline">\(t_n=\left(1+\frac{1}{n}\right)^n\)</span>.
+By the Binomial Theorem (<a href="#exer-binomial">Exercise 9.3.3</a>),
+<span class="math display">\[t_n=1+n\cdot\frac{1}{n}+\frac{n(n-1)}{1\cdot
 2}\cdot\frac{1}{n^2}+\cdots +\frac{n(n-1)\cdots 1}{1\cdot 2\cdots
 n}\cdot\frac{1}{n^n}.\]</span> Notice there are <span class="math inline">\(n+1\)</span> terms. For <span class="math inline">\(k=1,\dots,n\)</span>, the <span class="math inline">\((k+1)\)</span>st term is <span class="math display">\[\frac{n(n-1)\cdots(n-k+1)}{1\cdot 2\cdots
 k}\cdot\frac{1}{n^k}=\frac{1}{1\cdot 2\cdots
@@ -835,39 +836,27 @@ t_n&amp;\le 1+1+\frac{1}{1\cdot 2}+\frac{1}{1\cdot 2\cdot
 &amp;&lt;3.
 \end{aligned}\]</span> The second line uses <span class="math inline">\(k!\ge2^{k-1}\)</span> (<a href="ch-real-numbers.html#exer-factorial-bound">Exercise 1.2.10</a>), and the third uses <a href="ch-real-numbers.html#exer-geometric-sum">Exercise 1.2.7</a>. So <span class="math inline">\(\{t_n\}\)</span> is bounded. Therefore, <span class="math inline">\(\{t_n\}\)</span> converges by the Monotone
 Convergence Theorem. Define <span class="math display">\[e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n.\]</span></p>
-<p>Next, define, for <span class="math inline">\(x&gt;0\)</span>, <span class="math display">\[\ln x=\int^x_1\frac{1}{t}\,dt.\]</span> Since
-<span class="math inline">\(f(t)=\frac{1}{t}\)</span> is continuous on
-<span class="math inline">\((0,\infty)\)</span>, <span class="math inline">\(\frac{d}{dx}\ln x=\frac{1}{x}\)</span> for all
-<span class="math inline">\(x&gt;0\)</span> by <a href="#thm-ftc-derivative">Theorem 9.3.7</a>, applied on any closed
-interval in <span class="math inline">\((0,\infty)\)</span> that
-contains <span class="math inline">\(1\)</span> and <span class="math inline">\(x\)</span>. So <span class="math inline">\(\ln
-x\)</span> is a strictly increasing function by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>.</p>
-<p>Notice <span class="math display">\[\frac{d}{dx}\ln
-ax=\frac{1}{ax}a=\frac{1}{x}=\frac{d}{dx}\ln x.\]</span> So by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5), <span class="math inline">\(\ln ax=\ln x + C\)</span>. Now <span class="math inline">\(\ln 1=0\)</span>, so <span class="math inline">\(C=\ln a\)</span> and therefore, <span class="math display">\[\ln ab=\ln a+\ln b\]</span> for <span class="math inline">\(a,b&gt;0\)</span>.</p>
-<p>Next, notice <span class="math display">\[\frac{d}{dx}\ln
-\frac{1}{x}=\frac{1}{1/x}\cdot\frac{-1}{x^2}=\frac{-1}{x}=-\frac{d}{dx}\ln
-x.\]</span> So <span class="math inline">\(\ln\frac{1}{x}=-\ln x
-+C\)</span>, and since <span class="math inline">\(\ln 1=0\)</span>,
-<span class="math inline">\(C=0\)</span>. Thus <span class="math display">\[\ln\frac{1}{x}=-\ln x.\]</span></p>
-<p>Now, note if <span class="math inline">\(n\in\mathbb{N}\)</span>,
-<span class="math inline">\(\ln(b^n)=n\ln b\)</span> by induction. Also,
-<span class="math display">\[\ln(b^{-n})=\ln\left(\left(\frac{1}{b}\right)^n\right)=n\ln\frac{1}{b}=-n\ln
-b.\]</span> So <span class="math inline">\(\ln (b^n)=n\ln b\)</span> for
-all <span class="math inline">\(n\in\mathbb{Z}\)</span>. Also, since
-<span class="math display">\[n\ln(\sqrt[n]{b})=\ln b,\]</span> <span class="math display">\[\ln(\sqrt[n]{b})=\frac{1}{n}\ln b.\]</span> Thus
-<span class="math inline">\(\ln(b^r)=r\ln b\)</span> for all <span class="math inline">\(r\in\mathbb{Q}\)</span>.</p>
-<p>Last, <span class="math display">\[\begin{aligned}
-1=\left.\frac{d}{dx}\ln x\right|_{x=1} &amp;=
-\lim_{n\to\infty}\frac{\ln\left(1+\frac{1}{n}\right)-\ln 1}{1/n}\\
-&amp;=\lim_{n\to\infty}n\ln\left(1+\frac{1}{n}\right)\\
-&amp;=\lim_{n\to\infty}\ln\left(\left(1+\frac{1}{n}\right)^n\right)\\
-&amp;=\ln e.
-\end{aligned}\]</span> The first line uses <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> with <span class="math inline">\(x_n=1+\frac1n\)</span>. The last line uses the
-continuity of <span class="math inline">\(\ln\)</span> and <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>.</p>
+</div>
+<div class="definitionbox" id="def-ln">
+
+<p><strong>Definition 9.4.2.</strong> The <em>natural logarithm</em> is
+the function <span class="math inline">\(\ln:(0,\infty)\to\mathbb{R}\)</span> defined by
+<span class="math display">\[\ln x=\int^x_1\frac{1}{t}\,dt.\]</span></p>
+</div>
+<div class="remarkbox" id="rem-ln-notation">
+
+<p><strong>Remark 9.4.3.</strong> Here <span class="math inline">\(\ln\)</span> is the name of a function, just as
+<span class="math inline">\(f\)</span> is, and <span class="math inline">\(\ln x\)</span> is its value at <span class="math inline">\(x\)</span>, just as <span class="math inline">\(f(x)\)</span> is. By tradition the parentheses are
+usually left off, so <span class="math inline">\(\ln x\)</span> means
+<span class="math inline">\(\ln(x)\)</span>. Writing <span class="math inline">\(\ln\)</span> alone, as in <span class="math inline">\(\ln:(0,\infty)\to\mathbb{R}\)</span> or “<span class="math inline">\(\ln\)</span> is increasing,” refers to the whole
+function. The same goes for <span class="math inline">\(\exp\)</span>
+below, and for <span class="math inline">\(\sin\)</span>, <span class="math inline">\(\cos\)</span> and <span class="math inline">\(\arctan\)</span> in <a href="#sec-trig-integrals">Section 9.5</a>. Parentheses are used when
+the input is more than a single symbol, as in <span class="math inline">\(\ln(1+x)\)</span>. Products are an exception by
+custom, so <span class="math inline">\(\ln ab\)</span> means <span class="math inline">\(\ln(ab)\)</span>.</p>
 </div>
 <div class="theorembox" id="thm-ln-properties">
 
-<p><strong>Theorem 9.4.2.</strong></p>
+<p><strong>Theorem 9.4.4.</strong></p>
 <p>The natural logarithm <span class="math inline">\(\ln:(0,\infty)\to\mathbb{R}\)</span> has the
 following properties.</p>
 <ol>
@@ -883,10 +872,36 @@ x=-\infty\)</span>.</p></li>
 </ol>
 </div>
 <div class="proofbox">
-<p><em>Proof.</em></p>
-<p>Parts (1), (2) and (3) were proved in <a href="#ex-exp-ln">Example
-9.4.1</a>. For the second half of (2), <span class="math inline">\(\ln\frac ab=\ln a+\ln\frac1b=\ln a-\ln
-b\)</span>.</p>
+<p><em>Proof.</em> (1) Since <span class="math inline">\(f(t)=\frac{1}{t}\)</span> is continuous on <span class="math inline">\((0,\infty)\)</span>, <span class="math inline">\(\frac{d}{dx}\ln x=\frac{1}{x}\)</span> for all
+<span class="math inline">\(x&gt;0\)</span> by <a href="#thm-ftc-derivative">Theorem 9.3.7</a>, applied on any closed
+interval in <span class="math inline">\((0,\infty)\)</span> that
+contains <span class="math inline">\(1\)</span> and <span class="math inline">\(x\)</span>. So <span class="math inline">\(\ln
+x\)</span> is a strictly increasing function by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a>. Also <span class="math inline">\(\ln1=\int_1^1\frac1t\,dt=0\)</span>. That <span class="math inline">\(\ln e=1\)</span> is shown at the end of the
+proof.</p>
+<p>(2) Notice <span class="math display">\[\frac{d}{dx}\ln
+ax=\frac{1}{ax}a=\frac{1}{x}=\frac{d}{dx}\ln x.\]</span> So by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5), <span class="math inline">\(\ln ax=\ln x + C\)</span>. Now <span class="math inline">\(\ln 1=0\)</span>, so <span class="math inline">\(C=\ln a\)</span> and therefore, <span class="math display">\[\ln ab=\ln a+\ln b\]</span> for <span class="math inline">\(a,b&gt;0\)</span>.</p>
+<p>Next, notice <span class="math display">\[\frac{d}{dx}\ln
+\frac{1}{x}=\frac{1}{1/x}\cdot\frac{-1}{x^2}=\frac{-1}{x}=-\frac{d}{dx}\ln
+x.\]</span> So <span class="math inline">\(\ln\frac{1}{x}=-\ln x
++C\)</span>, and since <span class="math inline">\(\ln 1=0\)</span>,
+<span class="math inline">\(C=0\)</span>. Thus <span class="math display">\[\ln\frac{1}{x}=-\ln x.\]</span> For the second
+half of (2), <span class="math inline">\(\ln\frac ab=\ln
+a+\ln\frac1b=\ln a-\ln b\)</span>.</p>
+<p>(3) Now, note if <span class="math inline">\(n\in\mathbb{N}\)</span>,
+<span class="math inline">\(\ln(b^n)=n\ln b\)</span> by induction. Also,
+<span class="math display">\[\ln(b^{-n})=\ln\left(\left(\frac{1}{b}\right)^n\right)=n\ln\frac{1}{b}=-n\ln
+b.\]</span> So <span class="math inline">\(\ln (b^n)=n\ln b\)</span> for
+all <span class="math inline">\(n\in\mathbb{Z}\)</span>. Also, since
+<span class="math display">\[n\ln(\sqrt[n]{b})=\ln b,\]</span> <span class="math display">\[\ln(\sqrt[n]{b})=\frac{1}{n}\ln b.\]</span> Thus
+<span class="math inline">\(\ln(b^r)=r\ln b\)</span> for all <span class="math inline">\(r\in\mathbb{Q}\)</span>.</p>
+<p>Now the rest of (1). Last, <span class="math display">\[\begin{aligned}
+1=\left.\frac{d}{dx}\ln x\right|_{x=1} &amp;=
+\lim_{n\to\infty}\frac{\ln\left(1+\frac{1}{n}\right)-\ln 1}{1/n}\\
+&amp;=\lim_{n\to\infty}n\ln\left(1+\frac{1}{n}\right)\\
+&amp;=\lim_{n\to\infty}\ln\left(\left(1+\frac{1}{n}\right)^n\right)\\
+&amp;=\ln e.
+\end{aligned}\]</span> The first line uses <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> with <span class="math inline">\(x_n=1+\frac1n\)</span>. The last line uses the
+continuity of <span class="math inline">\(\ln\)</span> and <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>.</p>
 <p>(4) The derivative <span class="math inline">\(\frac1x\)</span> is
 decreasing on <span class="math inline">\((0,\infty)\)</span>. So <span class="math inline">\(\ln\)</span> is concave by <a href="ch-derivative.html#thm-convex-derivative">Theorem 7.4.3</a>.</p>
 <p>(5) Since <span class="math inline">\(\ln\)</span> is strictly
@@ -898,14 +913,14 @@ c=y\)</span> for some <span class="math inline">\(c\in(a,b)\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="definitionbox" id="def-exp">
 
-<p><strong>Definition 9.4.3.</strong> The <em>exponential function</em>
+<p><strong>Definition 9.4.5.</strong> The <em>exponential function</em>
 <span class="math inline">\(\exp:\mathbb{R}\to(0,\infty)\)</span> is the
 inverse of <span class="math inline">\(\ln\)</span>. That is, <span class="math inline">\(\exp(y)=x\)</span> exactly when <span class="math inline">\(\ln x=y\)</span>.</p>
 </div>
-<p>By <a href="#thm-ln-properties">Theorem 9.4.2</a>, <span class="math inline">\(\ln\)</span> is one-to-one and onto <span class="math inline">\(\mathbb{R}\)</span>. So <span class="math inline">\(\exp\)</span> is defined on all of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>By <a href="#thm-ln-properties">Theorem 9.4.4</a>, <span class="math inline">\(\ln\)</span> is one-to-one and onto <span class="math inline">\(\mathbb{R}\)</span>. So <span class="math inline">\(\exp\)</span> is defined on all of <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <div class="theorembox" id="thm-exp-properties">
 
-<p><strong>Theorem 9.4.4.</strong> The exponential function has the
+<p><strong>Theorem 9.4.6.</strong> The exponential function has the
 following properties.</p>
 <ol>
 <li><p><span class="math inline">\(\exp\)</span> is strictly increasing
@@ -929,23 +944,23 @@ c).\]</span> Every <span class="math inline">\(x\in\mathbb{R}\)</span>
 is <span class="math inline">\(\ln c\)</span> for some <span class="math inline">\(c&gt;0\)</span>. So <span class="math inline">\(\exp'(x)=\exp(x)\)</span>.</p>
 <p>(3) Let <span class="math inline">\(a=\exp(x)\)</span> and <span class="math inline">\(b=\exp(y)\)</span>. Then <span class="math inline">\(\ln ab=\ln a+\ln b=x+y\)</span>, so <span class="math inline">\(\exp(x+y)=ab\)</span>. Taking <span class="math inline">\(y=-x\)</span> gives <span class="math inline">\(\exp(x)\exp(-x)=\exp(0)=1\)</span>.</p>
 <p>(4) Let <span class="math inline">\(r\in\mathbb{Q}\)</span>. Then
-<span class="math inline">\(\ln(e^r)=r\ln e=r\)</span> by <a href="#thm-ln-properties">Theorem 9.4.2</a> (3). So <span class="math inline">\(\exp(r)=e^r\)</span>.</p>
+<span class="math inline">\(\ln(e^r)=r\ln e=r\)</span> by <a href="#thm-ln-properties">Theorem 9.4.4</a> (3). So <span class="math inline">\(\exp(r)=e^r\)</span>.</p>
 <p>(5) Let <span class="math inline">\(M&gt;0\)</span>. If <span class="math inline">\(x&gt;\ln M\)</span>, then <span class="math inline">\(\exp(x)&gt;\exp(\ln M)=M\)</span>. So <span class="math inline">\(\exp(x)\to\infty\)</span> as <span class="math inline">\(x\to\infty\)</span>. Let <span class="math inline">\(\varepsilon&gt;0\)</span>. If <span class="math inline">\(x&lt;\ln\varepsilon\)</span>, then <span class="math inline">\(0&lt;\exp(x)&lt;\varepsilon\)</span>. So <span class="math inline">\(\exp(x)\to0\)</span> as <span class="math inline">\(x\to-\infty\)</span>.</p>
 <p>(6) By (1) and (2), <span class="math inline">\(\exp'\)</span> is
 increasing. So <span class="math inline">\(\exp\)</span> is convex by <a href="ch-derivative.html#thm-convex-derivative">Theorem 7.4.3</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<p>By <a href="#thm-exp-properties">Theorem 9.4.4</a> (4), <span class="math inline">\(\exp(x)\)</span> agrees with <span class="math inline">\(e^x\)</span> whenever <span class="math inline">\(x\)</span> is rational. So from now on, <span class="math inline">\(e^x\)</span> means <span class="math inline">\(\exp(x)\)</span> for every <span class="math inline">\(x\in\mathbb{R}\)</span>. With this notation, part
+<p>By <a href="#thm-exp-properties">Theorem 9.4.6</a> (4), <span class="math inline">\(\exp(x)\)</span> agrees with <span class="math inline">\(e^x\)</span> whenever <span class="math inline">\(x\)</span> is rational. So from now on, <span class="math inline">\(e^x\)</span> means <span class="math inline">\(\exp(x)\)</span> for every <span class="math inline">\(x\in\mathbb{R}\)</span>. With this notation, part
 (3) reads <span class="math inline">\(e^{x+y}=e^xe^y\)</span>, the usual
 law of exponents. The same idea defines every power.</p>
 <div class="definitionbox" id="def-general-power">
 
-<p><strong>Definition 9.4.5.</strong> Let <span class="math inline">\(a&gt;0\)</span> and <span class="math inline">\(x\in\mathbb{R}\)</span>. Define <span class="math display">\[a^x=e^{x\ln a}.\]</span></p>
+<p><strong>Definition 9.4.7.</strong> Let <span class="math inline">\(a&gt;0\)</span> and <span class="math inline">\(x\in\mathbb{R}\)</span>. Define <span class="math display">\[a^x=e^{x\ln a}.\]</span></p>
 </div>
-<p>This does not conflict with the powers already defined. If <span class="math inline">\(r\in\mathbb{Q}\)</span>, then <span class="math inline">\(\ln(a^r)=r\ln a\)</span> by <a href="#thm-ln-properties">Theorem 9.4.2</a> (3), where <span class="math inline">\(a^r\)</span> has its old meaning. So the old <span class="math inline">\(a^r\)</span> is <span class="math inline">\(e^{r\ln a}\)</span>. Also <span class="math inline">\(e^x\)</span> has the same meaning as before, since
+<p>This does not conflict with the powers already defined. If <span class="math inline">\(r\in\mathbb{Q}\)</span>, then <span class="math inline">\(\ln(a^r)=r\ln a\)</span> by <a href="#thm-ln-properties">Theorem 9.4.4</a> (3), where <span class="math inline">\(a^r\)</span> has its old meaning. So the old <span class="math inline">\(a^r\)</span> is <span class="math inline">\(e^{r\ln a}\)</span>. Also <span class="math inline">\(e^x\)</span> has the same meaning as before, since
 <span class="math inline">\(\ln e=1\)</span>.</p>
 <div class="theorembox" id="thm-power-laws">
 
-<p><strong>Theorem 9.4.6</strong> (Laws of
+<p><strong>Theorem 9.4.8</strong> (Laws of
 Exponents)<strong>.</strong></p>
 <p>Let <span class="math inline">\(a,b&gt;0\)</span> and <span class="math inline">\(x,y\in\mathbb{R}\)</span>.</p>
 <ol>
@@ -964,13 +979,13 @@ x^{\alpha-1}\)</span> for all <span class="math inline">\(x&gt;0\)</span>.</p></
 <p><em>Proof.</em></p>
 <p>(1) <span class="math inline">\(\ln(a^x)=\ln(e^{x\ln a})=x\ln
 a\)</span>, since <span class="math inline">\(\ln\)</span> and <span class="math inline">\(\exp\)</span> are inverses.</p>
-<p>(2) By <a href="#thm-exp-properties">Theorem 9.4.4</a> (3), <span class="math display">\[a^{x+y}=e^{(x+y)\ln a}=e^{x\ln a+y\ln a}=e^{x\ln
+<p>(2) By <a href="#thm-exp-properties">Theorem 9.4.6</a> (3), <span class="math display">\[a^{x+y}=e^{(x+y)\ln a}=e^{x\ln a+y\ln a}=e^{x\ln
 a}e^{y\ln a}=a^xa^y.\]</span> Taking <span class="math inline">\(y=-x\)</span> gives <span class="math inline">\(a^xa^{-x}=a^0=1\)</span>.</p>
 <p>(3) By (1), <span class="math inline">\((a^x)^y=e^{y\ln(a^x)}=e^{xy\ln
 a}=a^{xy}\)</span>.</p>
 <p>(4) <span class="math inline">\((ab)^x=e^{x\ln ab}=e^{x\ln a+x\ln
 b}=a^xb^x\)</span>.</p>
-<p>(5) By <a href="ch-derivative.html#thm-chain-rule">Theorem 7.1.6</a> and <a href="#thm-exp-properties">Theorem 9.4.4</a> (2), <span class="math inline">\(\frac{d}{dx}e^{x\ln a}=e^{x\ln a}\ln a=a^x\ln
+<p>(5) By <a href="ch-derivative.html#thm-chain-rule">Theorem 7.1.6</a> and <a href="#thm-exp-properties">Theorem 9.4.6</a> (2), <span class="math inline">\(\frac{d}{dx}e^{x\ln a}=e^{x\ln a}\ln a=a^x\ln
 a\)</span>.</p>
 <p>(6) For <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(x^\alpha=e^{\alpha\ln x}\)</span>. By the Chain
 Rule and (2), <span class="math display">\[\frac{d}{dx}x^\alpha=e^{\alpha\ln
@@ -981,11 +996,11 @@ x^{\alpha-1}.\]</span></p>
 exponent.</p>
 <div class="definitionbox" id="def-log-base-a">
 
-<p><strong>Definition 9.4.7.</strong> Let <span class="math inline">\(a&gt;0\)</span> with <span class="math inline">\(a\ne1\)</span>. The <em>logarithm to the base
+<p><strong>Definition 9.4.9.</strong> Let <span class="math inline">\(a&gt;0\)</span> with <span class="math inline">\(a\ne1\)</span>. The <em>logarithm to the base
 <span class="math inline">\(a\)</span></em>, written <span class="math inline">\(\log_a\)</span>, is the inverse of the function
 <span class="math inline">\(x\mapsto a^x\)</span>.</p>
 </div>
-<p>This makes sense. By <a href="#thm-power-laws">Theorem 9.4.6</a> (5),
+<p>This makes sense. By <a href="#thm-power-laws">Theorem 9.4.8</a> (5),
 the derivative of <span class="math inline">\(a^x\)</span> is <span class="math inline">\(a^x\ln a\)</span>, which is never <span class="math inline">\(0\)</span> since <span class="math inline">\(\ln
 a\ne0\)</span>. So <span class="math inline">\(a^x\)</span> is strictly
 monotone. It maps <span class="math inline">\(\mathbb{R}\)</span> onto
@@ -993,17 +1008,17 @@ monotone. It maps <span class="math inline">\(\mathbb{R}\)</span> onto
 <span class="math inline">\(\log_e=\ln\)</span>.</p>
 <div class="theorembox" id="thm-log-base-change">
 
-<p><strong>Theorem 9.4.8.</strong> Let <span class="math inline">\(a&gt;0\)</span> with <span class="math inline">\(a\ne1\)</span>. Then <span class="math inline">\(\log_ax=\frac{\ln x}{\ln a}\)</span> for all <span class="math inline">\(x&gt;0\)</span>.</p>
+<p><strong>Theorem 9.4.10.</strong> Let <span class="math inline">\(a&gt;0\)</span> with <span class="math inline">\(a\ne1\)</span>. Then <span class="math inline">\(\log_ax=\frac{\ln x}{\ln a}\)</span> for all <span class="math inline">\(x&gt;0\)</span>.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>Let <span class="math inline">\(y=\log_ax\)</span>. Then <span class="math inline">\(a^y=x\)</span>. By <a href="#thm-power-laws">Theorem 9.4.6</a> (1), <span class="math inline">\(y\ln a=\ln x\)</span>. So <span class="math inline">\(y=\frac{\ln x}{\ln a}\)</span>.</p>
+<p>Let <span class="math inline">\(y=\log_ax\)</span>. Then <span class="math inline">\(a^y=x\)</span>. By <a href="#thm-power-laws">Theorem 9.4.8</a> (1), <span class="math inline">\(y\ln a=\ln x\)</span>. So <span class="math inline">\(y=\frac{\ln x}{\ln a}\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <p>Two inequalities are used often. The first says the graph of <span class="math inline">\(e^x\)</span> lies above its tangent line at <span class="math inline">\(0\)</span>. The second says the graph of <span class="math inline">\(\ln x\)</span> lies below its tangent line at
 <span class="math inline">\(1\)</span>.</p>
 <div class="theorembox" id="thm-exp-inequality">
 
-<p><strong>Theorem 9.4.9.</strong></p>
+<p><strong>Theorem 9.4.11.</strong></p>
 <ol>
 <li><p><span class="math inline">\(e^x\ge1+x\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>, with equality only when
 <span class="math inline">\(x=0\)</span>.</p></li>
@@ -1026,12 +1041,12 @@ proves (1) with the Mean Value Theorem.</p>
 The same kind of limit gives every value of <span class="math inline">\(e^x\)</span>.</p>
 <div class="theorembox" id="thm-exp-limit">
 
-<p><strong>Theorem 9.4.10.</strong> For every <span class="math inline">\(x\in\mathbb{R}\)</span>, <span class="math display">\[\lim_{n\to\infty}\left(1+\frac
+<p><strong>Theorem 9.4.12.</strong> For every <span class="math inline">\(x\in\mathbb{R}\)</span>, <span class="math display">\[\lim_{n\to\infty}\left(1+\frac
 xn\right)^n=e^x.\]</span></p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>If <span class="math inline">\(x=0\)</span>, both sides are <span class="math inline">\(1\)</span>. Let <span class="math inline">\(x\ne0\)</span>. For <span class="math inline">\(n&gt;|x|\)</span>, <span class="math inline">\(1+\frac xn&gt;0\)</span>. So by <a href="#thm-ln-properties">Theorem 9.4.2</a> (3), <span class="math display">\[\left(1+\frac
+<p>If <span class="math inline">\(x=0\)</span>, both sides are <span class="math inline">\(1\)</span>. Let <span class="math inline">\(x\ne0\)</span>. For <span class="math inline">\(n&gt;|x|\)</span>, <span class="math inline">\(1+\frac xn&gt;0\)</span>. So by <a href="#thm-ln-properties">Theorem 9.4.4</a> (3), <span class="math display">\[\left(1+\frac
 xn\right)^n=e^{n\ln(1+x/n)}.\]</span> Let <span class="math inline">\(h_n=\frac xn\)</span>. Then <span class="math inline">\(h_n\ne0\)</span> and <span class="math inline">\(h_n\to0\)</span>. Since the derivative of <span class="math inline">\(\ln\)</span> at <span class="math inline">\(1\)</span> is <span class="math inline">\(1\)</span>, <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> gives <span class="math display">\[n\ln\left(1+\frac
 xn\right)=x\cdot\frac{\ln(1+h_n)-\ln1}{h_n}\to x\cdot1=x.\]</span> Since
 <span class="math inline">\(\exp\)</span> is continuous, <span class="math inline">\(e^{n\ln(1+x/n)}\to e^x\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>.</p>
@@ -1041,7 +1056,7 @@ every power of <span class="math inline">\(x\)</span>, and <span class="math inl
 power of <span class="math inline">\(x\)</span>.</p>
 <div class="theorembox" id="thm-growth-rates">
 
-<p><strong>Theorem 9.4.11.</strong> Let <span class="math inline">\(\alpha&gt;0\)</span>. Then</p>
+<p><strong>Theorem 9.4.13.</strong> Let <span class="math inline">\(\alpha&gt;0\)</span>. Then</p>
 <ol>
 <li><p><span class="math inline">\(\displaystyle\lim_{x\to\infty}\frac{x^\alpha}{e^x}=0\)</span>,</p></li>
 <li><p><span class="math inline">\(\displaystyle\lim_{x\to\infty}\frac{\ln
@@ -1053,12 +1068,12 @@ x=0\)</span>.</p></li>
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <p>(1) Choose <span class="math inline">\(m\in\mathbb{N}\)</span> with
-<span class="math inline">\(m\ge\alpha\)</span>, and let <span class="math inline">\(k=m+1\)</span>. Let <span class="math inline">\(x&gt;1\)</span>. Then <span class="math inline">\(x^\alpha\le x^m\)</span> by <a href="#thm-power-laws">Theorem 9.4.6</a> (2), since <span class="math inline">\(x^{m-\alpha}\ge1\)</span>. By <a href="#thm-exp-inequality">Theorem 9.4.9</a> (1), <span class="math inline">\(e^{x/k}&gt;\frac xk\)</span>. By <a href="#thm-power-laws">Theorem 9.4.6</a> (3), <span class="math inline">\(e^x=\left(e^{x/k}\right)^k&gt;\left(\frac
+<span class="math inline">\(m\ge\alpha\)</span>, and let <span class="math inline">\(k=m+1\)</span>. Let <span class="math inline">\(x&gt;1\)</span>. Then <span class="math inline">\(x^\alpha\le x^m\)</span> by <a href="#thm-power-laws">Theorem 9.4.8</a> (2), since <span class="math inline">\(x^{m-\alpha}\ge1\)</span>. By <a href="#thm-exp-inequality">Theorem 9.4.11</a> (1), <span class="math inline">\(e^{x/k}&gt;\frac xk\)</span>. By <a href="#thm-power-laws">Theorem 9.4.8</a> (3), <span class="math inline">\(e^x=\left(e^{x/k}\right)^k&gt;\left(\frac
 xk\right)^k\)</span>. So <span class="math display">\[0&lt;\frac{x^\alpha}{e^x}&lt;x^m\cdot\frac{k^k}{x^k}=\frac{k^k}x.\]</span>
 Since <span class="math inline">\(\frac{k^k}x\to0\)</span> as <span class="math inline">\(x\to\infty\)</span>, the Squeeze Theorem gives
 (1).</p>
 <p>(2) Let <span class="math inline">\(\{x_n\}\)</span> be a sequence
-with <span class="math inline">\(x_n&gt;1\)</span> and <span class="math inline">\(x_n\to\infty\)</span>. Let <span class="math inline">\(t_n=\alpha\ln x_n\)</span>. Then <span class="math inline">\(t_n&gt;0\)</span>, and <span class="math inline">\(t_n\to\infty\)</span> by <a href="#thm-ln-properties">Theorem 9.4.2</a> (5) and <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>. Also <span class="math inline">\(x_n^\alpha=e^{t_n}\)</span>. So <span class="math display">\[\frac{\ln
+with <span class="math inline">\(x_n&gt;1\)</span> and <span class="math inline">\(x_n\to\infty\)</span>. Let <span class="math inline">\(t_n=\alpha\ln x_n\)</span>. Then <span class="math inline">\(t_n&gt;0\)</span>, and <span class="math inline">\(t_n\to\infty\)</span> by <a href="#thm-ln-properties">Theorem 9.4.4</a> (5) and <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>. Also <span class="math inline">\(x_n^\alpha=e^{t_n}\)</span>. So <span class="math display">\[\frac{\ln
 x_n}{x_n^\alpha}=\frac1\alpha\cdot\frac{t_n}{e^{t_n}}\to0\]</span> by
 (1) with exponent <span class="math inline">\(1\)</span> and <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>. Since this
 holds for every such sequence, (2) follows from <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>.</p>
@@ -1236,6 +1251,17 @@ any other <span class="math inline">\(x\in\mathbb{R}\)</span>, write
 <span class="math display">\[\sin x=(-1)^k\sin y\quad\text{and}\quad\cos
 x=(-1)^k\cos y.\]</span></p>
 </div>
+<div class="remarkbox" id="rem-trig-notation-integral">
+
+<p><strong>Remark 9.5.8.</strong> Here <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are names of functions, just as
+<span class="math inline">\(f\)</span> is, and <span class="math inline">\(\sin x\)</span> and <span class="math inline">\(\cos x\)</span> are their values at <span class="math inline">\(x\)</span>, just as <span class="math inline">\(f(x)\)</span> is. By tradition the parentheses are
+usually left off, so <span class="math inline">\(\sin x\)</span> means
+<span class="math inline">\(\sin(x)\)</span>. Writing <span class="math inline">\(\sin\)</span> alone, as in “<span class="math inline">\(\sin'=\cos\)</span>,” refers to the whole
+function. Parentheses are used when the input is more than a single
+symbol, as in <span class="math inline">\(\sin(x+y)\)</span>. Also by
+tradition, <span class="math inline">\(\sin^2x\)</span> means <span class="math inline">\((\sin x)^2\)</span>, not <span class="math inline">\(\sin(\sin x)\)</span>. The same conventions hold
+for <span class="math inline">\(\tan\)</span> and <span class="math inline">\(\arctan\)</span>.</p>
+</div>
 <p>There is exactly one such <span class="math inline">\(k\)</span>,
 because the intervals <span class="math inline">\(\left(-\frac\pi2+k\pi,\frac\pi2+k\pi\right]\)</span>,
 <span class="math inline">\(k\in\mathbb{Z}\)</span>, cover <span class="math inline">\(\mathbb{R}\)</span> and do not overlap. Notice
@@ -1246,7 +1272,7 @@ x\quad\text{and}\quad\cos(x+\pi)=-\cos x\]</span> for every <span class="math in
 derivative has no removable discontinuities.</p>
 <div class="lemmabox" id="lem-derivative-limit">
 
-<p><strong>Lemma 9.5.8.</strong> Let <span class="math inline">\(f:(a,b)\to\mathbb{R}\)</span> be continuous, let
+<p><strong>Lemma 9.5.9.</strong> Let <span class="math inline">\(f:(a,b)\to\mathbb{R}\)</span> be continuous, let
 <span class="math inline">\(c\in(a,b)\)</span>, and suppose <span class="math inline">\(f\)</span> is differentiable at every point of
 <span class="math inline">\((a,b)\)</span> except perhaps <span class="math inline">\(c\)</span>. If <span class="math inline">\(\lim_{x\to c}f'(x)=L\)</span>, then <span class="math inline">\(f\)</span> is differentiable at <span class="math inline">\(c\)</span> and <span class="math inline">\(f'(c)=L\)</span>.</p>
 </div>
@@ -1259,7 +1285,7 @@ some <span class="math inline">\(\xi\)</span> strictly between <span class="math
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-sin-cos-integral">
 
-<p><strong>Theorem 9.5.9.</strong> The functions <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are differentiable on <span class="math inline">\(\mathbb{R}\)</span>, and <span class="math display">\[\frac{d}{dx}\sin x=\cos
+<p><strong>Theorem 9.5.10.</strong> The functions <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are differentiable on <span class="math inline">\(\mathbb{R}\)</span>, and <span class="math display">\[\frac{d}{dx}\sin x=\cos
 x\quad\text{and}\quad\frac{d}{dx}\cos x=-\sin x.\]</span> Also <span class="math inline">\(\sin0=0\)</span>, <span class="math inline">\(\cos0=1\)</span>, <span class="math inline">\(\sin\frac\pi2=1\)</span>, <span class="math inline">\(\cos\frac\pi2=0\)</span> and <span class="math inline">\(\sin^2x+\cos^2x=1\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>.</p>
 </div>
 <div class="proofbox">
@@ -1286,7 +1312,7 @@ x=\frac1{\sqrt{1+\tan^2x}}\to0\quad\text{and}\quad\sin
 x=\frac1{\sqrt{1+1/\tan^2x}}\to1.\]</span> As <span class="math inline">\(x\to\frac\pi2^+\)</span>, <span class="math inline">\(x-\pi\to-\frac\pi2^+\)</span>. The same
 computation, with <span class="math inline">\(\tan(x-\pi)\to-\infty\)</span>, gives <span class="math inline">\(\cos(x-\pi)\to0\)</span> and <span class="math inline">\(\sin(x-\pi)\to-1\)</span>. So <span class="math inline">\(\cos x=-\cos(x-\pi)\to0\)</span> and <span class="math inline">\(\sin x=-\sin(x-\pi)\to1\)</span>. Thus <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\cos\)</span> are continuous at <span class="math inline">\(\frac\pi2\)</span>, and so on <span class="math inline">\((0,\pi)\)</span>. Also <span class="math inline">\(\sin'(x)=\cos x\to0=\cos\frac\pi2\)</span> and
 <span class="math inline">\(\cos'(x)=-\sin
-x\to-1=-\sin\frac\pi2\)</span> as <span class="math inline">\(x\to\frac\pi2\)</span>. By <a href="#lem-derivative-limit">Lemma 9.5.8</a>, <span class="math inline">\(\sin'\left(\frac\pi2\right)=\cos\frac\pi2\)</span>
+x\to-1=-\sin\frac\pi2\)</span> as <span class="math inline">\(x\to\frac\pi2\)</span>. By <a href="#lem-derivative-limit">Lemma 9.5.9</a>, <span class="math inline">\(\sin'\left(\frac\pi2\right)=\cos\frac\pi2\)</span>
 and <span class="math inline">\(\cos'\left(\frac\pi2\right)=-\sin\frac\pi2\)</span>.
 For <span class="math inline">\(c=\frac\pi2+k\pi\)</span>, use <span class="math inline">\(\sin x=(-1)^k\sin(x-k\pi)\)</span> and <span class="math inline">\(\cos x=(-1)^k\cos(x-k\pi)\)</span> near <span class="math inline">\(c\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
@@ -1297,7 +1323,7 @@ appears in <a href="ch-power-series.html#sec-trig">Section 12.4</a>, so that eac
 can be read alone.</p>
 <div class="theorembox" id="thm-trig-integral-identities">
 
-<p><strong>Theorem 9.5.10.</strong></p>
+<p><strong>Theorem 9.5.11.</strong></p>
 <ol>
 <li><p>If <span class="math inline">\(y:\mathbb{R}\to\mathbb{R}\)</span>
 is twice differentiable with <span class="math inline">\(y''+y=0\)</span> on <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(y(x)=y(0)\cos x+y'(0)\sin x\)</span> for all
@@ -1334,7 +1360,7 @@ formulas too. The integral for <span class="math inline">\(\arcsin\)</span> is i
 started from <span class="math inline">\(\arctan\)</span>.</p>
 <div class="theorembox" id="thm-arcsin-integral">
 
-<p><strong>Theorem 9.5.11.</strong></p>
+<p><strong>Theorem 9.5.12.</strong></p>
 <ol>
 <li><p><span class="math inline">\(\sin\)</span> is strictly increasing
 on <span class="math inline">\(\left[-\frac\pi2,\frac\pi2\right]\)</span> and
@@ -1357,9 +1383,9 @@ it maps onto <span class="math inline">\([-1,1]\)</span> by <a href="ch-continui
 x}=\frac1{\sqrt{1-y^2}}\)</span>. The integral <span class="math inline">\(G(x)=\int_0^x\frac{dt}{\sqrt{1-t^2}}\)</span> has
 the same derivative on <span class="math inline">\((-1,1)\)</span>, by
 <a href="#thm-ftc-derivative">Theorem 9.3.7</a>. Both are <span class="math inline">\(0\)</span> at <span class="math inline">\(0\)</span>. So <span class="math inline">\(G=\arcsin\)</span> on <span class="math inline">\((-1,1)\)</span> by <a href="ch-derivative.html#thm-derivative-sign">Theorem 7.2.7</a> (5).</p>
-<p>(2) On <span class="math inline">\((0,\pi)\)</span>, <span class="math inline">\(\cos'=-\sin&lt;0\)</span> by <a href="#thm-trig-integral-identities">Theorem 9.5.10</a> (4). As in (1),
+<p>(2) On <span class="math inline">\((0,\pi)\)</span>, <span class="math inline">\(\cos'=-\sin&lt;0\)</span> by <a href="#thm-trig-integral-identities">Theorem 9.5.11</a> (4). As in (1),
 <span class="math inline">\(\cos\)</span> is strictly decreasing on
-<span class="math inline">\([0,\pi]\)</span> and maps it onto <span class="math inline">\([\cos\pi,\cos0]=[-1,1]\)</span>. Let <span class="math inline">\(y\in[-1,1]\)</span> and <span class="math inline">\(x=\arcsin y\)</span>. Then <span class="math inline">\(\frac\pi2-x\in[0,\pi]\)</span>. By <a href="#thm-trig-integral-identities">Theorem 9.5.10</a> (2) and (3),
+<span class="math inline">\([0,\pi]\)</span> and maps it onto <span class="math inline">\([\cos\pi,\cos0]=[-1,1]\)</span>. Let <span class="math inline">\(y\in[-1,1]\)</span> and <span class="math inline">\(x=\arcsin y\)</span>. Then <span class="math inline">\(\frac\pi2-x\in[0,\pi]\)</span>. By <a href="#thm-trig-integral-identities">Theorem 9.5.11</a> (2) and (3),
 <span class="math inline">\(\cos\left(\frac\pi2-x\right)=\cos\frac\pi2\cos
 x+\sin\frac\pi2\sin x=\sin x=y\)</span>. So <span class="math inline">\(\arccos y=\frac\pi2-x\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
@@ -1491,7 +1517,7 @@ g(x)\,dx.\]</span> <a aria-label="Hint for Exercise 9.6.1" href="solutions-ch09.
 <h2>9.7 Improper Integrals</h2>
 <p>The Riemann integral needs a bounded function on a closed and bounded
 interval. An improper integral removes one of these restrictions by
-taking a limit. Throughout this section, <span class="math inline">\(x^p\)</span> for real <span class="math inline">\(p\)</span> and <span class="math inline">\(x&gt;0\)</span> means <span class="math inline">\(E(p\ln x)\)</span>, as in <a href="#ex-exp-ln">Example 9.4.1</a>. Its derivative is <span class="math inline">\(px^{p-1}\)</span>.</p>
+taking a limit. Throughout this section, <span class="math inline">\(x^p\)</span> for real <span class="math inline">\(p\)</span> and <span class="math inline">\(x&gt;0\)</span> means <span class="math inline">\(e^{p\ln x}\)</span>, as in <a href="#def-general-power">Definition 9.4.7</a>. Its derivative is <span class="math inline">\(px^{p-1}\)</span>.</p>
 <div class="definitionbox" id="def-locally-integrable">
 
 <p><strong>Definition 9.7.1.</strong> Let <span class="math inline">\(I\subset\mathbb{R}\)</span> be an interval and
@@ -1876,7 +1902,7 @@ e^{-x^2}\,dx=\frac{\sqrt\pi}2.\]</span></p>
 the integral converges by <a href="#thm-comparison-test-integrals">Theorem 9.7.8</a>. Call its value
 <span class="math inline">\(G\)</span>. By the substitution <span class="math inline">\(u=\sqrt n\,x\)</span> (<a href="#thm-substitution">Theorem 9.6.3</a>, on <span class="math inline">\([0,b]\)</span>, then <span class="math inline">\(b\to\infty\)</span>), <span class="math display">\[\int_0^\infty e^{-nx^2}\,dx=\frac G{\sqrt
 n}.\]</span> Since <span class="math inline">\(e^u\ge1+u\)</span> for
-all <span class="math inline">\(u\)</span> (<a href="#thm-exp-inequality">Theorem 9.4.9</a>), <span class="math inline">\(1-x^2\le e^{-x^2}\)</span> and <span class="math inline">\(1+x^2\le e^{x^2}\)</span>. Raising to the power
+all <span class="math inline">\(u\)</span> (<a href="#thm-exp-inequality">Theorem 9.4.11</a>), <span class="math inline">\(1-x^2\le e^{-x^2}\)</span> and <span class="math inline">\(1+x^2\le e^{x^2}\)</span>. Raising to the power
 <span class="math inline">\(n\)</span>, <span class="math display">\[(1-x^2)^n\le e^{-nx^2}\quad(0\le
 x\le1)\qquad\text{and}\qquad
 e^{-nx^2}\le\frac1{(1+x^2)^n}\quad(x\ge0).\]</span> Integrate. The

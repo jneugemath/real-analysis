@@ -175,7 +175,7 @@ and shift the index in one of the two sums.</p>
 <div class="solutionbox" id="sol-exer-log-base-laws">
 
 <p><strong><a href="ch-integrals.html#exer-log-base-laws">Exercise 9.4.1</a>.</strong>
-<em>Hint.</em> Use <a href="ch-integrals.html#thm-log-base-change">Theorem 9.4.8</a> to
+<em>Hint.</em> Use <a href="ch-integrals.html#thm-log-base-change">Theorem 9.4.10</a> to
 write each logarithm as a quotient of natural logarithms.</p>
 </div>
 <div class="solutionbox" id="sol-exer-ln-bounds">
@@ -195,7 +195,7 @@ x}\left(\ln x+x\cdot\frac1x\right)=x^x(1+\ln x).\]</span></p></li>
 increasing on <span class="math inline">\(\left[\frac1e,\infty\right)\)</span>. So the
 smallest value of <span class="math inline">\(f\)</span> is <span class="math inline">\(f\left(\frac1e\right)=e^{-1/e}\)</span>.</p></li>
 <li><p>Let <span class="math inline">\(\{x_n\}\)</span> be a sequence
-with <span class="math inline">\(x_n&gt;0\)</span> and <span class="math inline">\(x_n\to0\)</span>. By <a href="ch-integrals.html#thm-growth-rates">Theorem 9.4.11</a> (3) with <span class="math inline">\(\alpha=1\)</span> and <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>, <span class="math inline">\(x_n\ln x_n\to0\)</span>. Since <span class="math inline">\(\exp\)</span> is continuous at <span class="math inline">\(0\)</span>, <span class="math inline">\(x_n^{x_n}=e^{x_n\ln x_n}\to e^0=1\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>. So <span class="math inline">\(\lim_{x\to0^+}x^x=1\)</span> by <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>.</p></li>
+with <span class="math inline">\(x_n&gt;0\)</span> and <span class="math inline">\(x_n\to0\)</span>. By <a href="ch-integrals.html#thm-growth-rates">Theorem 9.4.13</a> (3) with <span class="math inline">\(\alpha=1\)</span> and <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>, <span class="math inline">\(x_n\ln x_n\to0\)</span>. Since <span class="math inline">\(\exp\)</span> is continuous at <span class="math inline">\(0\)</span>, <span class="math inline">\(x_n^{x_n}=e^{x_n\ln x_n}\to e^0=1\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>. So <span class="math inline">\(\lim_{x\to0^+}x^x=1\)</span> by <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>.</p></li>
 </ol>
 </div>
 <div class="solutionbox" id="sol-exer-exp-unique">
@@ -227,7 +227,7 @@ y=x\)</span>, then <span class="math inline">\(u=e^y\)</span> solves
 <div class="solutionbox" id="sol-exer-exp-real-limits">
 
 <p><strong><a href="ch-integrals.html#exer-exp-real-limits">Exercise 9.4.7</a>.</strong>
-For <span class="math inline">\(x&gt;-1\)</span> with <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\((1+x)^{1/x}=e^{\ln(1+x)/x}\)</span> by <a href="ch-integrals.html#def-general-power">Definition 9.4.5</a>. Let <span class="math inline">\(\{x_n\}\)</span> be a sequence with <span class="math inline">\(x_n&gt;-1\)</span>, <span class="math inline">\(x_n\ne0\)</span> and <span class="math inline">\(x_n\to0\)</span>. Since the derivative of <span class="math inline">\(\ln\)</span> at <span class="math inline">\(1\)</span> is <span class="math inline">\(1\)</span>, <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> gives <span class="math display">\[\frac{\ln(1+x_n)}{x_n}=\frac{\ln(1+x_n)-\ln1}{x_n}\to1.\]</span>
+For <span class="math inline">\(x&gt;-1\)</span> with <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\((1+x)^{1/x}=e^{\ln(1+x)/x}\)</span> by <a href="ch-integrals.html#def-general-power">Definition 9.4.7</a>. Let <span class="math inline">\(\{x_n\}\)</span> be a sequence with <span class="math inline">\(x_n&gt;-1\)</span>, <span class="math inline">\(x_n\ne0\)</span> and <span class="math inline">\(x_n\to0\)</span>. Since the derivative of <span class="math inline">\(\ln\)</span> at <span class="math inline">\(1\)</span> is <span class="math inline">\(1\)</span>, <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a> gives <span class="math display">\[\frac{\ln(1+x_n)}{x_n}=\frac{\ln(1+x_n)-\ln1}{x_n}\to1.\]</span>
 Since <span class="math inline">\(\exp\)</span> is continuous at <span class="math inline">\(1\)</span>, <span class="math inline">\((1+x_n)^{1/x_n}\to e^1=e\)</span> by <a href="ch-continuity.html#thm-sequential-continuity">Theorem 6.3.9</a>. So <span class="math inline">\(\lim_{x\to0}(1+x)^{1/x}=e\)</span> by <a href="ch-continuity.html#thm-sequential-limits">Theorem 6.1.18</a>.</p>
 <p>For the second limit, let <span class="math inline">\(\{x_n\}\)</span> be a sequence with <span class="math inline">\(x_n&gt;0\)</span> and <span class="math inline">\(x_n\to\infty\)</span>. Let <span class="math inline">\(h_n=\frac1{x_n}\)</span>. Then <span class="math inline">\(h_n&gt;0\)</span> and <span class="math inline">\(h_n\to0\)</span>. By the first part, <span class="math inline">\(\left(1+\frac1{x_n}\right)^{x_n}=(1+h_n)^{1/h_n}\to
 e\)</span>. So <span class="math inline">\(\lim_{x\to\infty}\left(1+\frac1x\right)^x=e\)</span>
@@ -236,7 +236,7 @@ by <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>
 <div class="solutionbox" id="sol-exer-weighted-am-gm">
 
 <p><strong><a href="ch-integrals.html#exer-weighted-am-gm">Exercise 9.4.8</a>.</strong>
-<em>Hint.</em> By <a href="ch-integrals.html#thm-ln-properties">Theorem 9.4.2</a> (4),
+<em>Hint.</em> By <a href="ch-integrals.html#thm-ln-properties">Theorem 9.4.4</a> (4),
 <span class="math inline">\(\ln(ta+(1-t)b)\ge t\ln a+(1-t)\ln
 b\)</span>. Write the right side as one logarithm and apply <span class="math inline">\(\exp\)</span>.</p>
 </div>
@@ -273,14 +273,14 @@ of <span class="math inline">\(\sin\)</span> at <span class="math inline">\(0\)<
 <div class="solutionbox" id="sol-exer-sec-tan">
 
 <p><strong><a href="ch-integrals.html#exer-sec-tan">Exercise 9.5.5</a>.</strong>
-<em>Hint.</em> Use the Quotient Rule and <a href="ch-integrals.html#thm-sin-cos-integral">Theorem 9.5.9</a>. For the second part,
+<em>Hint.</em> Use the Quotient Rule and <a href="ch-integrals.html#thm-sin-cos-integral">Theorem 9.5.10</a>. For the second part,
 divide <span class="math inline">\(\sin^2x+\cos^2x=1\)</span> by <span class="math inline">\(\cos^2x\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-quarter-circle">
 
 <p><strong><a href="ch-integrals.html#exer-quarter-circle">Exercise 9.5.6</a>.</strong>
 For <span class="math inline">\(-1&lt;x&lt;1\)</span>, the Product Rule,
-the Chain Rule and <a href="ch-integrals.html#thm-arcsin-integral">Theorem 9.5.11</a> (1)
+the Chain Rule and <a href="ch-integrals.html#thm-arcsin-integral">Theorem 9.5.12</a> (1)
 give <span class="math display">\[F'(x)=\frac12\left(\sqrt{1-x^2}-\frac{x^2}{\sqrt{1-x^2}}+\frac1{\sqrt{1-x^2}}\right)=\frac12\cdot\frac{(1-x^2)-x^2+1}{\sqrt{1-x^2}}=\sqrt{1-x^2}.\]</span>
 Let <span class="math inline">\(G(x)=\int_0^x\sqrt{1-t^2}\,dt\)</span>
 for <span class="math inline">\(0\le x\le1\)</span>. By <a href="ch-integrals.html#thm-ftc-derivative">Theorem 9.3.7</a>, <span class="math inline">\(G'(x)=\sqrt{1-x^2}=F'(x)\)</span> for
@@ -423,7 +423,7 @@ Letting <span class="math inline">\(b\to\infty\)</span> and adding <span class="
 e^{-x^2}\,dx=2\cdot\frac{\sqrt\pi}2=\sqrt\pi\)</span>.</p>
 <p>For the second integral, let <span class="math inline">\(b&gt;0\)</span> and integrate by parts with <span class="math inline">\(u=x\)</span> and <span class="math inline">\(v=-\frac12e^{-x^2}\)</span>, so <span class="math inline">\(v'=xe^{-x^2}\)</span>. Then <span class="math display">\[\int_0^bx^2e^{-x^2}\,dx=-\frac
 b2e^{-b^2}+\frac12\int_0^be^{-x^2}\,dx.\]</span> For <span class="math inline">\(b\ge1\)</span>, <span class="math inline">\(0&lt;be^{-b^2}\le be^{-b}\)</span>, which tends to
-<span class="math inline">\(0\)</span> by <a href="ch-integrals.html#thm-growth-rates">Theorem 9.4.11</a>. So letting <span class="math inline">\(b\to\infty\)</span> gives <span class="math inline">\(\int_0^\infty
+<span class="math inline">\(0\)</span> by <a href="ch-integrals.html#thm-growth-rates">Theorem 9.4.13</a>. So letting <span class="math inline">\(b\to\infty\)</span> gives <span class="math inline">\(\int_0^\infty
 x^2e^{-x^2}\,dx=\frac12\cdot\frac{\sqrt\pi}2=\frac{\sqrt\pi}4\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-basel-variants">
