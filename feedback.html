@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jeffrey T. Neugebauer">
+<title>Corrections and Suggestions | Real Analysis</title>
+<meta http-equiv="refresh" content="0; url=https://docs.google.com/forms/d/e/1FAIpQLSe5WhYI2_9uMuSmjf7tG4GWQitfRBqZTgZfdmrDUE69p0JJfA/viewform">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { tags: 'none' },
+  options: { menuOptions: { settings: { assistiveMml: true } } },
+  startup: { pageReady: () => MathJax.startup.defaultPageReady().then(fitWideMath)
+      .then(() => document.fonts.ready).then(() => { fitWideMath(); setTimeout(fitWideMath, 1000); }) }
+};
+// An inline formula wider than its line scrolls inside its own line,
+// so the page itself never scrolls sideways (WCAG 1.4.10 Reflow).
+function fitWideMath() {
+  document.querySelectorAll('mjx-container:not([display="true"])').forEach(m => {
+    m.classList.remove('wide-inline');
+    const blk = m.parentElement.closest('p,li,dd,dt,td,th,figcaption,div,section,main');
+    if (!blk) return;
+    const cs = getComputedStyle(blk);
+    const avail = blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (m.getBoundingClientRect().width > avail - 2) m.classList.add('wide-inline');
+  });
+}
+let fitTimer;
+window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitWideMath, 150); });
+</script>
+<script defer src="mathjax/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+<nav aria-label="Site">
+<a class="book" href="index.html">Real Analysis</a>
+<a href="index.html#contents">Contents</a>
+<a href="real-analysis.pdf">PDF</a>
+</nav>
+</header>
+<main id="main">
+<h1>Corrections and Suggestions</h1>
+<p>This page opens the book's <a href="https://docs.google.com/forms/d/e/1FAIpQLSe5WhYI2_9uMuSmjf7tG4GWQitfRBqZTgZfdmrDUE69p0JJfA/viewform">corrections and suggestions form</a>. If it does not open on its own, follow that link.</p>
+<p>Use the form to report a typo, a mathematical error or an unclear explanation, to suggest new material, or to report an accessibility problem. If you use the book in a course, you can also use it to be added to the Acknowledgments.</p>
+</main>
+<footer class="site">
+<p>Real Analysis by Jeffrey T. Neugebauer. This book is open access. It is free to read, download and print.</p>
+<p><a href="feedback.html">Send a correction or suggestion</a> &middot; <a href="accessibility.html">Accessibility</a></p>
+</footer>
+</body>
+</html>
