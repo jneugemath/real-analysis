@@ -10,9 +10,21 @@
 window.MathJax = {
   tex: { tags: 'none' },
   options: { menuOptions: { settings: { assistiveMml: true } } },
-  startup: { pageReady: () => MathJax.startup.defaultPageReady().then(fitWideMath)
+  startup: { pageReady: () => MathJax.startup.defaultPageReady().then(fixMenuRerender).then(fitWideMath)
       .then(() => document.fonts.ready).then(() => { fitWideMath(); setTimeout(fitWideMath, 1000); }) }
 };
+// MathJax 3.2.2 re-renders the page when the Accessibility menu changes, but it does not
+// wait for the speech data to load, so every formula disappears. Wrapping the re-render in
+// MathJax's retry handler makes it wait and try again.
+function fixMenuRerender() {
+  const menu = MathJax.startup.document && MathJax.startup.document.menu;
+  if (!menu || menu._retryPatched) return;
+  const rerender = menu.rerender;
+  menu.rerender = function (start) {
+    return MathJax._.mathjax.mathjax.handleRetriesFor(() => rerender.call(this, start));
+  };
+  menu._retryPatched = true;
+}
 // An inline formula wider than its line scrolls inside its own line,
 // so the page itself never scrolls sideways (WCAG 1.4.10 Reflow).
 function fitWideMath() {
