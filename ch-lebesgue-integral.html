@@ -223,8 +223,11 @@ those sets <span class="math inline">\(A_j\cap B_i\)</span> that are
 nonempty and on which <span class="math inline">\(\varphi\)</span> or
 <span class="math inline">\(\psi\)</span> is not zero. Each <span class="math inline">\(E_k\)</span> lies in <span class="math inline">\(\{\varphi\ne0\}\)</span> or in <span class="math inline">\(\{\psi\ne0\}\)</span>, so <span class="math inline">\(m(E_k)&lt;\infty\)</span>. On <span class="math inline">\(E_k\)</span>, <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are constant, say <span class="math inline">\(\varphi=c_k\)</span> and <span class="math inline">\(\psi=d_k\)</span>. Off <span class="math inline">\(\bigcup_kE_k\)</span>, <span class="math inline">\(\varphi=\psi=0\)</span>. So <span class="math display">\[\varphi=\sum^N_{k=1}c_k\chi_{E_k}\quad\text{and}\quad\psi=\sum^N_{k=1}d_k\chi_{E_k}.\]</span>
 So <span class="math display">\[a\varphi+b\psi=\sum_{k=1}^N(ac_k+bd_k)\chi_{E_k}.\]</span>
-Thus, by <a href="#lem-simple-integral-disjoint">Lemma 16.2.2</a>, <span class="math display">\[\int
-(a\varphi+b\psi)=\sum_{k=1}^N(ac_k+bd_k)m(E_k)=a\sum_{k=1}^Nc_km(E_k)+b\sum_{k=1}^Nd_km(E_k)=a\int\varphi+b\int\psi.\]</span></p>
+Thus, by <a href="#lem-simple-integral-disjoint">Lemma 16.2.2</a>, <span class="math display">\[\begin{aligned}
+\int
+(a\varphi+b\psi)&amp;=\sum_{k=1}^N(ac_k+bd_k)m(E_k)=a\sum_{k=1}^Nc_km(E_k)+b\sum_{k=1}^Nd_km(E_k)\\
+&amp;=a\int\varphi+b\int\psi.
+\end{aligned}\]</span></p>
 <p>Lastly, suppose <span class="math inline">\(\varphi\ge\psi\)</span>
 a.e. Then <span class="math inline">\(\varphi-\psi=\sum_{k=1}^N(c_k-d_k)\chi_{E_k}\)</span>.
 If <span class="math inline">\(c_k-d_k&lt;0\)</span>, then <span class="math inline">\(E_k\subset\{\varphi&lt;\psi\}\)</span>, so <span class="math inline">\(m(E_k)=0\)</span>. So every term of <span class="math inline">\(\sum_{k=1}^N(c_k-d_k)m(E_k)\)</span> is at least
@@ -669,8 +672,7 @@ outside a set of finite measure, that <span class="math inline">\(|f_n|\le1\)</s
 <div class="exercisebox" id="exer-bct-evaluate">
 
 <p><strong>Exercise 16.3.3.</strong> Use <a href="#cor-bct-ae">Corollary
-16.3.7</a> to find <span class="math inline">\(\lim_{n\to\infty}\int_{[0,1]}\frac{1}{1+x^n}\,dm\)</span>
-and <span class="math inline">\(\lim_{n\to\infty}\int_{[0,1]}\frac{nx}{1+n^2x^2}\,dm\)</span>.
+16.3.7</a> to find <span class="math display">\[\lim_{n\to\infty}\int_{[0,1]}\frac{1}{1+x^n}\,dm\quad\text{and}\quad\lim_{n\to\infty}\int_{[0,1]}\frac{nx}{1+n^2x^2}\,dm.\]</span>
 Check the second answer by computing the integral with the Fundamental
 Theorem of Calculus. <a aria-label="Hint for Exercise 16.3.3" href="solutions-ch16.html#sol-exer-bct-evaluate">[Hint]</a></p>
 </div>

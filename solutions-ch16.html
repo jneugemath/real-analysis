@@ -94,10 +94,10 @@ and the endpoints of the intervals <span class="math inline">\(I_i\)</span> in <
 except on a set of measure zero.</p>
 <p><em>Solution.</em> On <span class="math inline">\([0,1)\)</span>,
 <span class="math inline">\(\varphi\)</span> is <span class="math inline">\(1\)</span> at rational points and <span class="math inline">\(0\)</span> at irrational points. On <span class="math inline">\([1,2)\)</span> it is <span class="math inline">\(2\)</span> or <span class="math inline">\(1\)</span>, and on <span class="math inline">\([2,3)\)</span> it is <span class="math inline">\(3\)</span> or <span class="math inline">\(2\)</span>. Also <span class="math inline">\(\varphi(3)=3+1=4\)</span>. So <span class="math inline">\(\varphi\)</span> takes the values <span class="math inline">\(0,1,2,3,4\)</span>, and <span class="math display">\[\begin{aligned}
-A_0&amp;=\{\varphi=0\}=[0,1)\setminus\mathbb{Q}, &amp;
+A_0&amp;=\{\varphi=0\}=[0,1)\setminus\mathbb{Q},\\
 A_1&amp;=\{\varphi=1\}=\bigl([0,1)\cap\mathbb{Q}\bigr)\cup\bigl([1,2)\setminus\mathbb{Q}\bigr),\\
-A_2&amp;=\{\varphi=2\}=\bigl([1,2)\cap\mathbb{Q}\bigr)\cup\bigl([2,3)\setminus\mathbb{Q}\bigr),
-&amp; A_3&amp;=\{\varphi=3\}=[2,3)\cap\mathbb{Q},\\
+A_2&amp;=\{\varphi=2\}=\bigl([1,2)\cap\mathbb{Q}\bigr)\cup\bigl([2,3)\setminus\mathbb{Q}\bigr),\\
+A_3&amp;=\{\varphi=3\}=[2,3)\cap\mathbb{Q},\\
 A_4&amp;=\{\varphi=4\}=\{3\}.
 \end{aligned}\]</span> Intervals and <span class="math inline">\(\mathbb{Q}\)</span> are measurable (<a href="ch-lebesgue-measure.html#thm-borel-measurable">Theorem 14.2.10</a> and <a href="ch-lebesgue-measure.html#exer-countable-measurable">Exercise 14.2.1</a>), so each <span class="math inline">\(A_i\)</span> is measurable. So <span class="math inline">\(\varphi\)</span> is measurable, with finitely many
 values, and it is simple. Its canonical representation is <span class="math display">\[\varphi=0\cdot\chi_{A_0}+1\cdot\chi_{A_1}+2\cdot\chi_{A_2}+3\cdot\chi_{A_3}+4\cdot\chi_{A_4}.\]</span>
@@ -318,9 +318,11 @@ f^+(x)+f^-(x)=|f(x)|.\]</span> These also hold when <span class="math inline">\(
 First, notice that if <span class="math inline">\(c\ge0\)</span>, then
 <span class="math inline">\(cf=(cf)^+-(cf)^-=cf^+-cf^-\)</span>. That
 is, <span class="math inline">\((cf)^+=cf^+\)</span> and <span class="math inline">\((cf)^-=cf^-\)</span>. If <span class="math inline">\(c&lt;0\)</span>, then <span class="math inline">\(cf=(cf)^+-(cf)^-=-cf^-+cf^+\)</span>, with <span class="math inline">\((cf)^+=-cf^-\)</span> and <span class="math inline">\((cf)^-=-cf^+\)</span>. If <span class="math inline">\(c=0\)</span>, then <span class="math inline">\(cf=0\)</span> and both sides are <span class="math inline">\(0\)</span>. So by <a href="ch-lebesgue-integral.html#thm-nonnegative-integral-properties">Theorem 16.4.2</a> (1), for
-<span class="math inline">\(c&gt;0\)</span>, <span class="math display">\[\int_E cf =
-\int_E(cf)^+-\int_E(cf)^-=\int_Ecf^+-\int_Ecf^-=c\int_Ef^+-c\int_Ef^-=c\left(\int_Ef^+-\int_Ef^-\right)=c\int_Ef.\]</span>
-For <span class="math inline">\(c&lt;0\)</span>, using (1) with <span class="math inline">\(-c&gt;0\)</span>, <span class="math display">\[\begin{aligned}
+<span class="math inline">\(c&gt;0\)</span>, <span class="math display">\[\begin{aligned}
+\int_E cf &amp;= \int_E(cf)^+-\int_E(cf)^-=\int_Ecf^+-\int_Ecf^-\\
+&amp;=c\int_Ef^+-c\int_Ef^-=c\left(\int_Ef^+-\int_Ef^-\right)=c\int_Ef.
+\end{aligned}\]</span> For <span class="math inline">\(c&lt;0\)</span>,
+using (1) with <span class="math inline">\(-c&gt;0\)</span>, <span class="math display">\[\begin{aligned}
 \int_E cf &amp;= \int_E(cf)^+-\int_E(cf)^-=\int_E-cf^--\int_E-cf^+\\
 &amp;=-c\int_Ef^--(-c)\int_Ef^+=c\left(-\int_Ef^-+\int_Ef^+\right)=c\int_Ef.
 \end{aligned}\]</span> In each case <span class="math inline">\(\int_E(cf)^+\)</span> and <span class="math inline">\(\int_E(cf)^-\)</span> are finite multiples of

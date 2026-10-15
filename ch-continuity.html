@@ -221,9 +221,11 @@ that for all <span class="math inline">\(x\in E\)</span> with <span class="math 
 there exists a <span class="math inline">\(\delta_2&gt;0\)</span> such
 that for all <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;|x-c|&lt;\delta_2\)</span>, <span class="math inline">\(|f(x)-L_2|&lt;\frac{|L_1-L_2|}{2}\)</span>. Since
 <span class="math inline">\(c\)</span> is a limit point of <span class="math inline">\(E\)</span>, we can choose <span class="math inline">\(x_0\in E\)</span> such that <span class="math inline">\(0&lt;|x_0-c|&lt;\min\{\delta_1,\delta_2\}\)</span>.
-Then <span class="math display">\[|L_1-L_2|=|L_1-f(x_0)+f(x_0)-L_2|\le
-|f(x_0)-L_1|+|f(x_0)-L_2|&lt;\frac{|L_1-L_2|}{2}+\frac{|L_1-L_2|}{2}=|L_1-L_2|,\]</span>
-a contradiction. So <span class="math inline">\(L_1=L_2\)</span>.</p>
+Then <span class="math display">\[\begin{aligned}
+|L_1-L_2|&amp;=|L_1-f(x_0)+f(x_0)-L_2|\\
+&amp;\le |f(x_0)-L_1|+|f(x_0)-L_2|\\
+&amp;&lt;\frac{|L_1-L_2|}{2}+\frac{|L_1-L_2|}{2}=|L_1-L_2|,
+\end{aligned}\]</span> a contradiction. So <span class="math inline">\(L_1=L_2\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="lemmabox" id="lem-limit-sign">
 
@@ -1000,10 +1002,10 @@ decreasing on <span class="math inline">\(E\)</span>.</p></li>
 
 <p><strong>Theorem 6.5.2.</strong> Let <span class="math inline">\(I\subset \mathbb{R}\)</span> be an open interval
 and <span class="math inline">\(f:I\to\mathbb{R}\)</span> increasing on
-<span class="math inline">\(I\)</span>. Then for all <span class="math inline">\(c\in I\)</span>, <span class="math inline">\(\lim_{x\to c^+}f(x)\)</span> and <span class="math inline">\(\lim_{x\to c^-}f(x)\)</span> exist and <span class="math display">\[\sup\{f(x):x&lt;c,\ x\in I\}=\lim_{x\to
-c^-}f(x)\le f(c)\le \lim_{x\to c^+} f(x)=\inf\{f(x):x&gt;c,\ x\in
-I\}.\]</span> Furthermore, if <span class="math inline">\(c,d\in
-I\)</span> with <span class="math inline">\(c&lt;d\)</span>, <span class="math inline">\(\lim_{x\to c^+}f(x)\le\lim_{x\to
+<span class="math inline">\(I\)</span>. Then for all <span class="math inline">\(c\in I\)</span>, <span class="math inline">\(\lim_{x\to c^+}f(x)\)</span> and <span class="math inline">\(\lim_{x\to c^-}f(x)\)</span> exist and <span class="math display">\[\begin{aligned}
+\sup\{f(x):x&lt;c,\ x\in I\}&amp;=\lim_{x\to c^-}f(x)\le f(c)\\
+&amp;\le \lim_{x\to c^+} f(x)=\inf\{f(x):x&gt;c,\ x\in I\}.
+\end{aligned}\]</span> Furthermore, if <span class="math inline">\(c,d\in I\)</span> with <span class="math inline">\(c&lt;d\)</span>, <span class="math inline">\(\lim_{x\to c^+}f(x)\le\lim_{x\to
 d^-}f(x)\)</span>.</p>
 </div>
 <div class="proofbox">

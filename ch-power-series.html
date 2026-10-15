@@ -184,13 +184,13 @@ uniformly for all <span class="math inline">\(x\)</span> with <span class="math 
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <ol>
-<li><p>By the root test, <span class="math inline">\(\sum
-a_k(x-c)^k\)</span> converges absolutely if <span class="math inline">\(\limsup\sqrt[k]{|a_k||x-c|^k}&lt;1\)</span>. By <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (2), this <span class="math inline">\(\limsup\)</span> is <span class="math inline">\(|x-c|\cdot\frac1R\)</span> when <span class="math inline">\(x\ne c\)</span>, where <span class="math inline">\(|x-c|\cdot\frac1R=0\)</span> if <span class="math inline">\(R=\infty\)</span>. So the series converges if
-<span class="math inline">\(|x-c|\cdot\frac{1}{R}&lt;1\)</span>, or if
-<span class="math inline">\(|x-c|&lt;R\)</span>.</p></li>
 <li><p>By the root test (<a href="ch-series.html#thm-ratio-root-test">Theorem
 10.3.4</a>), <span class="math inline">\(\sum a_k(x-c)^k\)</span>
-diverges if <span class="math inline">\(\limsup\sqrt[k]{|a_k||x-c|^k}&gt;1\)</span>. So
+converges absolutely if <span class="math inline">\(\limsup\sqrt[k]{|a_k||x-c|^k}&lt;1\)</span>. By <a href="#lem-limsup-scaling">Lemma 12.1.2</a> (2), this <span class="math inline">\(\limsup\)</span> is <span class="math inline">\(|x-c|\cdot\frac1R\)</span> when <span class="math inline">\(x\ne c\)</span>, where <span class="math inline">\(|x-c|\cdot\frac1R=0\)</span> if <span class="math inline">\(R=\infty\)</span>. So the series converges if
+<span class="math inline">\(|x-c|\cdot\frac{1}{R}&lt;1\)</span>, or if
+<span class="math inline">\(|x-c|&lt;R\)</span>.</p></li>
+<li><p>By the root test, <span class="math inline">\(\sum
+a_k(x-c)^k\)</span> diverges if <span class="math inline">\(\limsup\sqrt[k]{|a_k||x-c|^k}&gt;1\)</span>. So
 the series diverges if <span class="math inline">\(|x-c|\cdot\frac{1}{R}&gt;1\)</span>, or if <span class="math inline">\(|x-c|&gt;R\)</span>.</p></li>
 <li><p>Suppose <span class="math inline">\(0&lt;\rho&lt;R\)</span>.
 Choose <span class="math inline">\(\beta\in(\rho,R)\)</span>. Since
@@ -531,8 +531,8 @@ radius of convergence <span class="math inline">\(R&gt;0\)</span>. For
 <span class="math inline">\(|x-c|&lt;R\)</span>.</p>
 <ol type="a">
 <li><p>Use the fact that <span class="math inline">\(\frac{d}{dx}\arctan
-x=\frac{1}{1+x^2}\)</span> to show <span class="math inline">\(\arctan
-x=\sum^{\infty}_{k=0}\frac{(-1)^k}{2k+1}x^{2k+1}\)</span> for <span class="math inline">\(x\in (-1,1)\)</span>.</p></li>
+x=\frac{1}{1+x^2}\)</span> to show <span class="math display">\[\arctan
+x=\sum^{\infty}_{k=0}\frac{(-1)^k}{2k+1}x^{2k+1}\]</span> for <span class="math inline">\(x\in (-1,1)\)</span>.</p></li>
 <li><p>Use Abel’s theorem to show <span class="math inline">\(\sum^{\infty}_{k=0}\frac{(-1)^k}{2k+1}=\frac{\pi}{4}\)</span>.
 Then explain why the formula in (a) also holds at <span class="math inline">\(x=\pm1\)</span>.</p></li>
 </ol>
@@ -888,10 +888,13 @@ x\quad\text{and}\quad\frac{d}{dx}\cos x=-\sin x.\]</span> Also <span class="math
 series can be differentiated term by term. For <span class="math inline">\(\sin\)</span>, <span class="math display">\[\frac{d}{dx}\sin
 x=\sum_{k=0}^\infty\frac{(-1)^k(2k+1)}{(2k+1)!}x^{2k}=\sum_{k=0}^\infty\frac{(-1)^k}{(2k)!}x^{2k}=\cos
 x.\]</span> For <span class="math inline">\(\cos\)</span>, the term with
-<span class="math inline">\(k=0\)</span> is constant, so <span class="math display">\[\frac{d}{dx}\cos
-x=\sum_{k=1}^\infty\frac{(-1)^k(2k)}{(2k)!}x^{2k-1}=\sum_{k=1}^\infty\frac{(-1)^k}{(2k-1)!}x^{2k-1}=-\sum_{j=0}^\infty\frac{(-1)^j}{(2j+1)!}x^{2j+1}=-\sin
-x,\]</span> where <span class="math inline">\(j=k-1\)</span>. Setting
-<span class="math inline">\(x=0\)</span> in the series gives <span class="math inline">\(\sin0=0\)</span> and <span class="math inline">\(\cos0=1\)</span>. The series for <span class="math inline">\(\sin\)</span> has only odd powers and the series
+<span class="math inline">\(k=0\)</span> is constant, so <span class="math display">\[\begin{aligned}
+\frac{d}{dx}\cos
+x&amp;=\sum_{k=1}^\infty\frac{(-1)^k(2k)}{(2k)!}x^{2k-1}=\sum_{k=1}^\infty\frac{(-1)^k}{(2k-1)!}x^{2k-1}\\
+&amp;=-\sum_{j=0}^\infty\frac{(-1)^j}{(2j+1)!}x^{2j+1}=-\sin x,
+\end{aligned}\]</span> where <span class="math inline">\(j=k-1\)</span>.
+Setting <span class="math inline">\(x=0\)</span> in the series gives
+<span class="math inline">\(\sin0=0\)</span> and <span class="math inline">\(\cos0=1\)</span>. The series for <span class="math inline">\(\sin\)</span> has only odd powers and the series
 for <span class="math inline">\(\cos\)</span> has only even powers. So
 <span class="math inline">\(\sin(-x)=-\sin x\)</span> and <span class="math inline">\(\cos(-x)=\cos x\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>

@@ -274,10 +274,15 @@ by the Triangle Inequality <span class="math display">\[\sum|(f+g)(x_i')-(f+g)(x
 then <span class="math inline">\(cf=0\)</span> is constant. Otherwise
 choose <span class="math inline">\(\delta\)</span> for <span class="math inline">\(f\)</span> with <span class="math inline">\(\frac{\varepsilon}{|c|}\)</span>. Then <span class="math inline">\(\sum|cf(x_i')-cf(x_i)|=|c|\sum|f(x_i')-f(x_i)|&lt;\varepsilon\)</span>.</p>
 <p><em>The product.</em> An absolutely continuous function is
-continuous, so <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are bounded on <span class="math inline">\([a,b]\)</span> (<a href="ch-continuity.html#thm-continuous-bounded">Theorem 6.3.14</a>). Choose <span class="math inline">\(K&gt;0\)</span> with <span class="math inline">\(|f|\le K\)</span> and <span class="math inline">\(|g|\le K\)</span>. For <span class="math inline">\(x,y\in[a,b]\)</span>, <span class="math display">\[|f(y)g(y)-f(x)g(x)|\le|f(y)||g(y)-g(x)|+|g(x)||f(y)-f(x)|\le
-K\bigl(|g(y)-g(x)|+|f(y)-f(x)|\bigr).\]</span> Choose <span class="math inline">\(\delta\)</span> for both <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> with <span class="math inline">\(\frac{\varepsilon}{2K}\)</span>. If <span class="math inline">\(\sum|x_i'-x_i|&lt;\delta\)</span>, then <span class="math display">\[\sum|fg(x_i')-fg(x_i)|\le
-K\left(\sum|g(x_i')-g(x_i)|+\sum|f(x_i')-f(x_i)|\right)&lt;K\left(\frac{\varepsilon}{2K}+\frac{\varepsilon}{2K}\right)=\varepsilon.\]</span>
-So <span class="math inline">\(f+g\)</span>, <span class="math inline">\(cf\)</span> and <span class="math inline">\(fg\)</span> are in <span class="math inline">\(AC[a,b]\)</span>.</p>
+continuous, so <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are bounded on <span class="math inline">\([a,b]\)</span> (<a href="ch-continuity.html#thm-continuous-bounded">Theorem 6.3.14</a>). Choose <span class="math inline">\(K&gt;0\)</span> with <span class="math inline">\(|f|\le K\)</span> and <span class="math inline">\(|g|\le K\)</span>. For <span class="math inline">\(x,y\in[a,b]\)</span>, <span class="math display">\[\begin{aligned}
+|f(y)g(y)-f(x)g(x)|&amp;\le|f(y)||g(y)-g(x)|+|g(x)||f(y)-f(x)|\\
+&amp;\le K\bigl(|g(y)-g(x)|+|f(y)-f(x)|\bigr).
+\end{aligned}\]</span> Choose <span class="math inline">\(\delta\)</span> for both <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> with <span class="math inline">\(\frac{\varepsilon}{2K}\)</span>. If <span class="math inline">\(\sum|x_i'-x_i|&lt;\delta\)</span>, then <span class="math display">\[\begin{aligned}
+\sum|fg(x_i')-fg(x_i)|&amp;\le
+K\left(\sum|g(x_i')-g(x_i)|+\sum|f(x_i')-f(x_i)|\right)\\
+&amp;&lt;K\left(\frac{\varepsilon}{2K}+\frac{\varepsilon}{2K}\right)=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(f+g\)</span>,
+<span class="math inline">\(cf\)</span> and <span class="math inline">\(fg\)</span> are in <span class="math inline">\(AC[a,b]\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-ac-variation">
 

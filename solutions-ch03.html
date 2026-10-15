@@ -56,8 +56,10 @@ all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\l
 So <span class="math inline">\(x_n\to\frac{5}{3}\)</span>.</p>
 <p>(b) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
 <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\left(\frac{5}{2\varepsilon}\right)^{2/3}\)</span>.
-Then, for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_n-6|=\left|\frac{12n^2+5\sqrt{n}}{2n^2}-6\right|=\left|\frac{12n^2+5\sqrt{n}-12n^2}{2n^2}\right|=\frac{5\sqrt{n}}{2n^2}=\frac{5}{2n^{3/2}}&lt;\frac{5}{2\left(\left(\frac{5}{2\varepsilon}\right)^{2/3}\right)^{3/2}}=\varepsilon.\]</span>
-So <span class="math inline">\(x_n\to6\)</span>.</p>
+Then, for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+|x_n-6|&amp;=\left|\frac{12n^2+5\sqrt{n}}{2n^2}-6\right|=\left|\frac{12n^2+5\sqrt{n}-12n^2}{2n^2}\right|=\frac{5\sqrt{n}}{2n^2}\\
+&amp;=\frac{5}{2n^{3/2}}&lt;\frac{5}{2\left(\left(\frac{5}{2\varepsilon}\right)^{2/3}\right)^{3/2}}=\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(x_n\to6\)</span>.</p>
 <p>(c) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
 <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\frac{1}{\varepsilon}\)</span>. Then, for all
 <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_n-1|=\left|1-\frac{(-1)^n}{n} -
@@ -65,8 +67,11 @@ So <span class="math inline">\(x_n\to6\)</span>.</p>
 So <span class="math inline">\(x_n\to 1\)</span>.</p>
 <p>(d) Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Choose
 <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(N&gt;\max\left\{75,\frac{16}{9\varepsilon},\sqrt{\frac{67}{\varepsilon}}\right\}\)</span>.
-Then, for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\left|x_n-\frac{8}{3}\right|=\left|\frac{(1+4n)^2}{6n^2+n-75}-\frac{8}{3}\right|=\left|\frac{48n^2+24n+3-48n^2-8n+600}{18n^2+3n-225}\right|=\left|\frac{16n+603}{18n^2+3n-225}\right|.\]</span>
-Since for all <span class="math inline">\(n\geq N\)</span>, <span class="math inline">\(n&gt;75\)</span>, <span class="math inline">\(3n-225&gt;0\)</span>. So <span class="math inline">\(|18n^2+3n-225|=18n^2+3n-225&gt;18n^2\)</span>. So
+Then, for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\begin{aligned}
+\left|x_n-\frac{8}{3}\right|&amp;=\left|\frac{(1+4n)^2}{6n^2+n-75}-\frac{8}{3}\right|=\left|\frac{48n^2+24n+3-48n^2-8n+600}{18n^2+3n-225}\right|\\
+&amp;=\left|\frac{16n+603}{18n^2+3n-225}\right|.
+\end{aligned}\]</span> Since for all <span class="math inline">\(n\geq
+N\)</span>, <span class="math inline">\(n&gt;75\)</span>, <span class="math inline">\(3n-225&gt;0\)</span>. So <span class="math inline">\(|18n^2+3n-225|=18n^2+3n-225&gt;18n^2\)</span>. So
 for all <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[\left|x_n-\frac{8}{3}\right|\le
 \frac{16n+603}{18n^2}=\frac{8}{9n}+\frac{67}{2n^2}&lt;\frac{8}{9\left(\frac{16}{9\varepsilon}\right)}+\frac{67}{2\left(\sqrt{\frac{67}{\varepsilon}}\right)^2}=\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.\]</span>
 Thus <span class="math inline">\(x_n\to \frac{8}{3}\)</span>.</p>

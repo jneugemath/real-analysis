@@ -1838,8 +1838,10 @@ n\,I_n=\sqrt{\frac\pi2}\)</span>.</p></li>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>(1) The values of <span class="math inline">\(I_0\)</span> and <span class="math inline">\(I_1\)</span> follow from <a href="#thm-ftc-evaluation">Theorem 9.3.6</a>. For <span class="math inline">\(n\ge2\)</span>, integrate by parts (<a href="#thm-integration-by-parts">Theorem 9.6.2</a>) with <span class="math inline">\(u=\sin^{n-1}x\)</span> and <span class="math inline">\(v=-\cos x\)</span>. The boundary term <span class="math inline">\(-\sin^{n-1}x\cos x\)</span> is <span class="math inline">\(0\)</span> at both ends. So <span class="math display">\[I_n=(n-1)\int_0^{\pi/2}\sin^{n-2}x\cos^2x\,dx=(n-1)\int_0^{\pi/2}\sin^{n-2}x\,(1-\sin^2x)\,dx=(n-1)(I_{n-2}-I_n).\]</span>
-Solving for <span class="math inline">\(I_n\)</span> gives <span class="math inline">\(I_n=\frac{n-1}nI_{n-2}\)</span>.</p>
+<p>(1) The values of <span class="math inline">\(I_0\)</span> and <span class="math inline">\(I_1\)</span> follow from <a href="#thm-ftc-evaluation">Theorem 9.3.6</a>. For <span class="math inline">\(n\ge2\)</span>, integrate by parts (<a href="#thm-integration-by-parts">Theorem 9.6.2</a>) with <span class="math inline">\(u=\sin^{n-1}x\)</span> and <span class="math inline">\(v=-\cos x\)</span>. The boundary term <span class="math inline">\(-\sin^{n-1}x\cos x\)</span> is <span class="math inline">\(0\)</span> at both ends. So <span class="math display">\[\begin{aligned}
+I_n&amp;=(n-1)\int_0^{\pi/2}\sin^{n-2}x\cos^2x\,dx\\
+&amp;=(n-1)\int_0^{\pi/2}\sin^{n-2}x\,(1-\sin^2x)\,dx=(n-1)(I_{n-2}-I_n).
+\end{aligned}\]</span> Solving for <span class="math inline">\(I_n\)</span> gives <span class="math inline">\(I_n=\frac{n-1}nI_{n-2}\)</span>.</p>
 <p>(2) This follows from (1) by induction on <span class="math inline">\(m\)</span>. For example, <span class="math inline">\(I_{2m}=\frac{2m-1}{2m}I_{2m-2}\)</span>, and <span class="math inline">\(\frac{(2m)!}{4^m(m!)^2}=\frac{(2m)(2m-1)}{4m^2}\cdot\frac{(2m-2)!}{4^{m-1}((m-1)!)^2}\)</span>.</p>
 <p>(3) On <span class="math inline">\(\left(0,\frac\pi2\right)\)</span>,
 <span class="math inline">\(0&lt;\sin x&lt;1\)</span>, so <span class="math inline">\(0&lt;\sin^{n+1}x&lt;\sin^nx\)</span>. Integrate,
@@ -1946,7 +1948,7 @@ By the Squeeze Theorem, <span class="math inline">\(G=\frac{\sqrt\pi}2\)</span>.
 <span class="math inline">\(B_n=\int_0^{\pi/2}x^2\cos^{2n}x\,dx\)</span>. By
 <a href="#exer-wallis-cos">Exercise 9.8.1</a> and <a href="#lem-wallis-integrals">Lemma 9.8.1</a> (1), <span class="math inline">\(A_n=I_{2n}\)</span> and <span class="math inline">\(A_n=\frac{2n-1}{2n}A_{n-1}\)</span> for <span class="math inline">\(n\ge1\)</span>.</p>
 <p>Let <span class="math inline">\(n\ge1\)</span>. Integrate <span class="math inline">\(A_n\)</span> by parts twice. First, with <span class="math inline">\(u=\cos^{2n}x\)</span> and <span class="math inline">\(v=x\)</span>, <span class="math display">\[A_n=2n\int_0^{\pi/2}x\sin
-x\cos^{2n-1}x\,dx.\]</span> Next, with <span class="math inline">\(u=\sin x\cos^{2n-1}x\)</span> and <span class="math inline">\(v=\frac{x^2}2\)</span>. Here <span class="math inline">\(u'=\cos^{2n}x-(2n-1)\sin^2x\cos^{2n-2}x=2n\cos^{2n}x-(2n-1)\cos^{2n-2}x\)</span>.
+x\cos^{2n-1}x\,dx.\]</span> Next, with <span class="math inline">\(u=\sin x\cos^{2n-1}x\)</span> and <span class="math inline">\(v=\frac{x^2}2\)</span>. Here <span class="math display">\[u'=\cos^{2n}x-(2n-1)\sin^2x\cos^{2n-2}x=2n\cos^{2n}x-(2n-1)\cos^{2n-2}x.\]</span>
 The boundary terms are <span class="math inline">\(0\)</span> both
 times. So <span class="math display">\[A_n=-n\int_0^{\pi/2}x^2\bigl(2n\cos^{2n}x-(2n-1)\cos^{2n-2}x\bigr)\,dx=n(2n-1)B_{n-1}-2n^2B_n.\]</span>
 Divide by <span class="math inline">\(n^2A_n\)</span>, and use <span class="math inline">\(n^2A_n=\frac{n(2n-1)}2A_{n-1}\)</span>. This gives
@@ -2168,9 +2170,11 @@ arbitrary, Riemann’s Criterion gives <span class="math inline">\(f\in\mathcal{
 Since <span class="math inline">\(\alpha\)</span> is continuous, <a href="#exer-rs-equal-increments">Exercise 9.9.2</a> gives a partition
 <span class="math inline">\(\mathcal{P}=\{x_0,\dots,x_n\}\)</span> of
 <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(\Delta\alpha_i=\frac{\alpha(b)-\alpha(a)}{n}\)</span>
-for every <span class="math inline">\(i\)</span>. Since <span class="math inline">\(f\)</span> is increasing, <span class="math inline">\(M_i=f(x_i)\)</span> and <span class="math inline">\(m_i=f(x_{i-1})\)</span>. The sum telescopes. <span class="math display">\[\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha)=\frac{\alpha(b)-\alpha(a)}{n}\sum_{i=1}^n[f(x_i)-f(x_{i-1})]=\frac{\alpha(b)-\alpha(a)}{n}[f(b)-f(a)]&lt;\varepsilon.\]</span>
-So <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> by
-Riemann’s Criterion.</p></li>
+for every <span class="math inline">\(i\)</span>. Since <span class="math inline">\(f\)</span> is increasing, <span class="math inline">\(M_i=f(x_i)\)</span> and <span class="math inline">\(m_i=f(x_{i-1})\)</span>. The sum telescopes. <span class="math display">\[\begin{aligned}
+\mathcal{U}(\mathcal{P},f,\alpha)-\mathcal{L}(\mathcal{P},f,\alpha)&amp;=\frac{\alpha(b)-\alpha(a)}{n}\sum_{i=1}^n[f(x_i)-f(x_{i-1})]\\
+&amp;=\frac{\alpha(b)-\alpha(a)}{n}[f(b)-f(a)]&lt;\varepsilon.
+\end{aligned}\]</span> So <span class="math inline">\(f\in\mathcal{R}(\alpha)\)</span> by Riemann’s
+Criterion.</p></li>
 </ol>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-rs-properties">
@@ -2396,11 +2400,13 @@ for some <span class="math inline">\(t_i\in(x_{i-1},x_i)\)</span>. Let
 <span class="math inline">\(s_i\in[x_{i-1},x_i]\)</span> be arbitrary.
 Both <span class="math inline">\(\alpha'(s_i)\)</span> and <span class="math inline">\(\alpha'(t_i)\)</span> lie between the infimum
 and the supremum of <span class="math inline">\(\alpha'\)</span> on
-<span class="math inline">\([x_{i-1},x_i]\)</span>. So <span class="math display">\[\left|\sum_{i=1}^nf(s_i)\Delta\alpha_i-\sum_{i=1}^nf(s_i)\alpha'(s_i)\Delta
-x_i\right|\le M\sum_{i=1}^n|\alpha'(t_i)-\alpha'(s_i)|\Delta
-x_i\le
-M\bigl(\mathcal{U}(\mathcal{Q},\alpha')-\mathcal{L}(\mathcal{Q},\alpha')\bigr)&lt;M\varepsilon.\]</span>
-Since <span class="math inline">\(\sum_{i=1}^nf(s_i)\alpha'(s_i)\Delta
+<span class="math inline">\([x_{i-1},x_i]\)</span>. So <span class="math display">\[\begin{aligned}
+\left|\sum_{i=1}^nf(s_i)\Delta\alpha_i-\sum_{i=1}^nf(s_i)\alpha'(s_i)\Delta
+x_i\right|&amp;\le
+M\sum_{i=1}^n|\alpha'(t_i)-\alpha'(s_i)|\Delta x_i\\
+&amp;\le
+M\bigl(\mathcal{U}(\mathcal{Q},\alpha')-\mathcal{L}(\mathcal{Q},\alpha')\bigr)&lt;M\varepsilon.
+\end{aligned}\]</span> Since <span class="math inline">\(\sum_{i=1}^nf(s_i)\alpha'(s_i)\Delta
 x_i\le\mathcal{U}(\mathcal{Q},f\alpha')\)</span>, this gives <span class="math inline">\(\sum_{i=1}^nf(s_i)\Delta\alpha_i&lt;\mathcal{U}(\mathcal{Q},f\alpha')+M\varepsilon\)</span>
 for every choice of the <span class="math inline">\(s_i\)</span>. The
 supremum of the left side over all choices of the <span class="math inline">\(s_i\)</span> is <span class="math inline">\(\mathcal{U}(\mathcal{Q},f,\alpha)\)</span>, since
