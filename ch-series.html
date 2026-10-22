@@ -59,20 +59,23 @@ window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = set
 </nav>
 <main id="main">
 <article id="ch-series">
-<h1>Chapter 10. Series of Real Numbers</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-series">10.1 Types of Series</a></li><li><a href="#sec-convergence-tests">10.2 Convergence Tests</a></li><li><a href="#sec-absolute-convergence">10.3 Conditional and Absolute Convergence</a></li><li><a href="#sec-cauchy-product">10.4 The Cauchy Product<sup>*</sup></a></li><li><a href="#notes-9">Notes</a></li></ul></nav>
+<h1>Chapter 10. Series of Real Numbers</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-series">10.1 Types of Series</a></li><li><a href="#sec-convergence-tests">10.2 Convergence Tests</a></li><li><a href="#sec-absolute-convergence">10.3 Conditional and Absolute Convergence</a></li><li><a href="#sec-cauchy-product">10.4 The Cauchy Product<sup>*</sup></a></li><li><a href="#sec-euler-primes">10.5 Infinitely Many Primes<sup>*</sup></a></li><li><a href="#notes-9">Notes</a></li></ul></nav>
 <p>An infinite series is a sum with infinitely many terms. Such a sum
 has no meaning until one is given, and the meaning is a limit. Add the
 first <span class="math inline">\(n\)</span> terms, then let <span class="math inline">\(n\to\infty\)</span>. So this chapter is really
 about a special kind of sequence, and the tools of <a href="ch-sequences.html">Chapter 3</a> do most of the work.</p>
 <p><a href="#sec-series">Section 10.1</a> gives the definition and the
-two kinds of series whose sums are easy to find. <a href="#sec-convergence-tests">Section 10.2</a> proves the standard
-convergence tests. They decide whether a series converges without
-finding its sum. <a href="#sec-absolute-convergence">Section 10.3</a>
-separates series that converge because their terms are small from series
-that converge because their terms cancel. The difference matters.
-Reordering the terms of a series of the second kind can change its sum
-to any real number at all. The starred <a href="#sec-cauchy-product">Section 10.4</a> shows how to multiply two
-series.</p>
+two kinds of series whose sums are easy to find. It also shows that the
+harmonic series diverges. <a href="#sec-convergence-tests">Section
+10.2</a> proves the standard convergence tests. They decide whether a
+series converges without finding its sum. <a href="#sec-absolute-convergence">Section 10.3</a> separates series that
+converge because their terms are small from series that converge because
+their terms cancel. The difference matters. Reordering the terms of a
+series of the second kind can change its sum to any real number at all.
+The starred <a href="#sec-cauchy-product">Section 10.4</a> shows how to
+multiply two series. The starred <a href="#sec-euler-primes">Section
+10.5</a> uses the harmonic series to prove that there are infinitely
+many primes.</p>
 <section class="level3 unnumbered" id="sec-series">
 <h2>10.1 Types of Series</h2>
 <div class="definitionbox" id="def-series">
@@ -126,6 +129,27 @@ called <em>telescoping</em>. Its partial sums are <span class="math inline">\(s_
 when <span class="math inline">\(\{b_n\}\)</span> converges, and then
 its sum is <span class="math inline">\(b_1-\lim_{n\to\infty}b_n\)</span>.</p>
 </div>
+<div class="examplebox" id="ex-harmonic-series">
+
+<p><strong>Example 10.1.5</strong> (The Harmonic
+Series)<strong>.</strong></p>
+<p>The <em>harmonic series</em> is <span class="math inline">\(\sum_{k=1}^\infty\frac1k\)</span>. Its terms tend
+to <span class="math inline">\(0\)</span>, but it diverges. The idea is
+to group the terms in blocks whose lengths double. Each block adds at
+least <span class="math inline">\(\frac12\)</span>. For example, <span class="math display">\[\begin{aligned}
+s_8&amp;=1+\frac12+\left(\frac13+\frac14\right)+\left(\frac15+\frac16+\frac17+\frac18\right)\\
+&amp;\ge1+\frac12+\left(\frac14+\frac14\right)+\left(\frac18+\frac18+\frac18+\frac18\right)=1+\frac32.
+\end{aligned}\]</span> In general, the claim is that <span class="math display">\[s_{2^n}\ge1+\frac n2\]</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. For <span class="math inline">\(j\in\mathbb{N}\)</span>, the block of terms from
+<span class="math inline">\(k=2^{j-1}+1\)</span> to <span class="math inline">\(k=2^j\)</span> has <span class="math inline">\(2^{j-1}\)</span> terms, and each is at least <span class="math inline">\(\frac1{2^j}\)</span>. So <span class="math display">\[\sum_{k=2^{j-1}+1}^{2^j}\frac1k\ge2^{j-1}\cdot\frac1{2^j}=\frac12.\]</span>
+The partial sum <span class="math inline">\(s_{2^n}\)</span> is the
+first term <span class="math inline">\(1\)</span> plus the blocks for
+<span class="math inline">\(j=1,\dots,n\)</span>. So <span class="math inline">\(s_{2^n}\ge1+\frac n2\)</span>. For <span class="math inline">\(n\ge2\)</span> the inequality is strict, since
+<span class="math inline">\(\frac13&gt;\frac14\)</span>.</p>
+<p>So the partial sums are not bounded. Indeed, for each <span class="math inline">\(M&gt;0\)</span>, <a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a> gives an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n&gt;2M\)</span>, and then <span class="math inline">\(s_{2^n}&gt;M\)</span>. A convergent sequence is
+bounded, by <a href="ch-sequences.html#thm-convergent-bounded">Theorem 3.2.3</a>. So
+<span class="math inline">\(\{s_n\}\)</span> diverges, and the harmonic
+series diverges.</p>
+</div>
 </section>
 <section class="level3 unnumbered" id="sec-convergence-tests">
 <h2>10.2 Convergence Tests</h2>
@@ -178,8 +202,7 @@ anything clever with a series, write down <span class="math inline">\(s_n\)</spa
 <p><em>Proof.</em> See <a href="#exer-nth-term-test">Exercise
 10.2.1</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<p>The converse is false. The terms of the <em>harmonic series</em>
-<span class="math inline">\(\sum\frac1k\)</span> tend to <span class="math inline">\(0\)</span>, but the series diverges. See <a href="#ex-p-series">Example 10.2.12</a> and <a href="#exer-harmonic-grouping">Exercise 10.2.8</a>.</p>
+<p>The converse is false. The terms of the harmonic series <span class="math inline">\(\sum\frac1k\)</span> tend to <span class="math inline">\(0\)</span>, but the series diverges, by <a href="#ex-harmonic-series">Example 10.1.5</a>. <a href="#ex-p-series">Example 10.2.12</a> gives a second proof.</p>
 <div class="examplebox" id="ex-geometric-diverges">
 
 <p><strong>Example 10.2.3.</strong> If <span class="math inline">\(|r|\ge1\)</span>, then <span class="math inline">\(|r^k|=|r|^k\ge1\)</span> for all <span class="math inline">\(k\in\mathbb{N}\)</span>. So <span class="math inline">\(r^k\not\to0\)</span>, and <span class="math inline">\(\sum r^k\)</span> diverges by the <span class="math inline">\(n\)</span>th Term Test.</p>
@@ -612,8 +635,8 @@ called <em>Abel’s Test</em>. <a aria-label="Hint for Exercise 10.2.7" href="so
 <div class="exercisebox" id="exer-harmonic-grouping">
 
 <p><strong>Exercise 10.2.8.</strong> Let <span class="math inline">\(s_n\)</span> be the <span class="math inline">\(n\)</span>th partial sum of the harmonic series
-<span class="math inline">\(\sum\frac1k\)</span>. Prove that <span class="math inline">\(s_{2^n}\ge1+\frac n2\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. Conclude, without the
-Integral Test, that the harmonic series diverges. <a aria-label="Hint for Exercise 10.2.8" href="solutions-ch10.html#sol-exer-harmonic-grouping">[Hint]</a></p>
+<span class="math inline">\(\sum\frac1k\)</span>. <a href="#ex-harmonic-series">Example 10.1.5</a> shows that <span class="math inline">\(s_{2^n}\ge1+\frac n2\)</span>. Prove that <span class="math inline">\(s_{2^n}\le1+n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So the partial sums grow
+without bound, but slowly. <a aria-label="Hint for Exercise 10.2.8" href="solutions-ch10.html#sol-exer-harmonic-grouping">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-trig-cos">
 
@@ -979,23 +1002,129 @@ that their Cauchy product converges absolutely. <a aria-label="Hint for Exercise
 </div>
 </section>
 </section>
+<section class="level3 unnumbered" id="sec-euler-primes">
+<h2>10.5 Infinitely Many Primes<sup>*</sup></h2>
+<p>Euclid proved that there are infinitely many primes around 300 BC.
+His proof is <a href="#exer-euclid-primes">Exercise 10.5.1</a>. Euler
+found a different proof in 1737, using series. Each prime <span class="math inline">\(p\)</span> gives a geometric series <span class="math display">\[1+\frac1p+\frac1{p^2}+\frac1{p^3}+\cdots=\frac1{1-\frac1p}.\]</span>
+Multiply these series together, one for each prime. Every natural number
+is a product of primes, so every <span class="math inline">\(\frac1n\)</span> appears when the product is
+multiplied out. Euler concluded that the product is the harmonic series.
+If there were only finitely many primes, the product would be a finite
+number. But the harmonic series diverges, by <a href="#ex-harmonic-series">Example 10.1.5</a>.</p>
+<p>This section makes Euler’s argument precise. It uses only finite sums
+and finite products. It can be skipped. Nothing later depends on it.</p>
+<div class="definitionbox" id="def-prime">
+
+<p><strong>Definition 10.5.1.</strong> Let <span class="math inline">\(d,n\in\mathbb{N}\)</span>. Then <span class="math inline">\(d\)</span> <em>divides</em> <span class="math inline">\(n\)</span> if <span class="math inline">\(n=dm\)</span> for some <span class="math inline">\(m\in\mathbb{N}\)</span>. A natural number <span class="math inline">\(p\ge2\)</span> is <em>prime</em> if the only
+natural numbers that divide <span class="math inline">\(p\)</span> are
+<span class="math inline">\(1\)</span> and <span class="math inline">\(p\)</span>.</p>
+</div>
+<div class="lemmabox" id="lem-prime-factors">
+
+<p><strong>Lemma 10.5.2.</strong> Every natural number <span class="math inline">\(n\ge2\)</span> is a product of primes. That is,
+<span class="math inline">\(n=q_1q_2\cdots q_r\)</span> for some <span class="math inline">\(r\in\mathbb{N}\)</span> and some primes <span class="math inline">\(q_1,\dots,q_r\)</span>, which need not be
+different.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Assume by way of contradiction that some <span class="math inline">\(n\ge2\)</span> is not a product of primes. By <a href="ch-real-numbers.html#ax-well-ordering">Axiom 1.2.7</a>, there is a smallest such <span class="math inline">\(n\)</span>. A prime is a product of one prime, so
+<span class="math inline">\(n\)</span> is not prime. So <span class="math inline">\(n=dm\)</span> for some <span class="math inline">\(d,m\in\mathbb{N}\)</span> with <span class="math inline">\(d\ne1\)</span> and <span class="math inline">\(d\ne n\)</span>. Then <span class="math inline">\(d\ge2\)</span>. Also <span class="math inline">\(m\ge2\)</span>, since <span class="math inline">\(m=1\)</span> would give <span class="math inline">\(d=n\)</span>. So <span class="math inline">\(d=\frac nm\le\frac n2&lt;n\)</span>, and in the
+same way <span class="math inline">\(m&lt;n\)</span>. Since <span class="math inline">\(n\)</span> is the smallest natural number that is
+at least <span class="math inline">\(2\)</span> and is not a product of
+primes, <span class="math inline">\(d\)</span> and <span class="math inline">\(m\)</span> are products of primes. Then so is
+<span class="math inline">\(n=dm\)</span>, a contradiction.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="theorembox" id="thm-infinitely-many-primes">
+
+<p><strong>Theorem 10.5.3</strong> (Euler)<strong>.</strong></p>
+<p>There are infinitely many primes.</p>
+</div>
+<div class="proofbox">
+<p><em>Proof.</em></p>
+<p>Assume by way of contradiction that there are only finitely many
+primes. Call them <span class="math inline">\(p_1,\dots,p_m\)</span>.
+The plan is to show that the partial sums <span class="math inline">\(s_N=\sum_{n=1}^N\frac1n\)</span> of the harmonic
+series are bounded.</p>
+<p>Let <span class="math inline">\(N\in\mathbb{N}\)</span>, and choose
+<span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(2^K&gt;N\)</span>. Let <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\le N\)</span>. If <span class="math inline">\(n\ge2\)</span>, then <span class="math inline">\(n\)</span> is a product of primes by <a href="#lem-prime-factors">Lemma 10.5.2</a>, and each of these primes is
+one of <span class="math inline">\(p_1,\dots,p_m\)</span>. Collecting
+equal primes, <span class="math display">\[n=p_1^{a_1}p_2^{a_2}\cdots
+p_m^{a_m}\]</span> for some <span class="math inline">\(a_1,\dots,a_m\in\mathbb{N}_0\)</span>. This also
+holds for <span class="math inline">\(n=1\)</span>, with every <span class="math inline">\(a_i=0\)</span>. Since <span class="math inline">\(p_i\ge2\)</span>, <span class="math inline">\(2^{a_i}\le p_i^{a_i}\le n&lt;2^K\)</span>. So
+<span class="math inline">\(a_i&lt;K\)</span> for each <span class="math inline">\(i\)</span>.</p>
+<p>Now consider the product <span class="math display">\[P_K=\prod_{i=1}^m\left(1+\frac1{p_i}+\frac1{p_i^2}+\cdots+\frac1{p_i^K}\right).\]</span>
+Multiplying it out with the distributive law, <span class="math inline">\(P_K\)</span> is the sum of the numbers <span class="math display">\[\frac1{p_1^{a_1}p_2^{a_2}\cdots
+p_m^{a_m}}\]</span> over all choices of <span class="math inline">\(a_1,\dots,a_m\in\{0,1,\dots,K\}\)</span>. This
+follows by induction on <span class="math inline">\(m\)</span>. Each
+<span class="math inline">\(n\le N\)</span> gives one such choice.
+Different values of <span class="math inline">\(n\)</span> give
+different choices, since the choice determines <span class="math inline">\(n\)</span>. All the terms are positive. So <span class="math display">\[s_N=\sum_{n=1}^N\frac1n\le P_K.\]</span> Each
+factor of <span class="math inline">\(P_K\)</span> is a partial sum of a
+geometric series with positive terms. So by <a href="#ex-geometric-series">Example 10.1.3</a>, <span class="math display">\[1+\frac1{p_i}+\cdots+\frac1{p_i^K}&lt;\sum_{k=0}^\infty\frac1{p_i^k}=\frac1{1-\frac1{p_i}}=\frac{p_i}{p_i-1}.\]</span>
+So <span class="math inline">\(s_N&lt;C\)</span> for every <span class="math inline">\(N\in\mathbb{N}\)</span>, where <span class="math inline">\(C=\prod_{i=1}^m\frac{p_i}{p_i-1}\)</span>. This
+contradicts <a href="#ex-harmonic-series">Example 10.1.5</a>, which
+shows that the partial sums of the harmonic series are not bounded. So
+there are infinitely many primes.</p>
+<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
+<div class="remarkbox" id="rem-euler-product">
+
+<p><strong>Remark 10.5.4.</strong> Euler went further. Every <span class="math inline">\(n\ge2\)</span> is a product of primes in only one
+way, apart from the order of the factors. This is the Fundamental
+Theorem of Arithmetic, which this book does not prove. With it, each
+<span class="math inline">\(\frac1n\)</span> appears exactly once when
+the geometric series are multiplied out. Euler showed that for <span class="math inline">\(\alpha&gt;1\)</span>, <span class="math display">\[\sum_{n=1}^\infty\frac1{n^\alpha}=\prod_{q\text{
+prime}}\frac1{1-q^{-\alpha}}.\]</span> Here the infinite product means
+the limit of the products over the primes <span class="math inline">\(q\le M\)</span> as <span class="math inline">\(M\to\infty\)</span>. This is called the <em>Euler
+product</em>. It ties the primes to analysis, and it is the starting
+point of analytic number theory.</p>
+</div>
+<section class="level5 unnumbered" id="exercises-45">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-euclid-primes">
+
+<p><strong>Exercise 10.5.1.</strong> (Euclid) Let <span class="math inline">\(p_1,\dots,p_m\)</span> be primes, and let <span class="math inline">\(n=p_1p_2\cdots p_m+1\)</span>. Prove that no <span class="math inline">\(p_i\)</span> divides <span class="math inline">\(n\)</span>. Use <a href="#lem-prime-factors">Lemma
+10.5.2</a> to conclude that there is a prime different from <span class="math inline">\(p_1,\dots,p_m\)</span>. This gives another proof
+of <a href="#thm-infinitely-many-primes">Theorem 10.5.3</a>. <a aria-label="Hint for Exercise 10.5.1" href="solutions-ch10.html#sol-exer-euclid-primes">[Hint]</a></p>
+</div>
+<div class="exercisebox" id="exer-two-three-sum">
+
+<p><strong>Exercise 10.5.2.</strong> For <span class="math inline">\(K\in\mathbb{N}\)</span>, let <span class="math inline">\(T_K\)</span> be the sum of <span class="math inline">\(\frac1{2^a3^b}\)</span> over all <span class="math inline">\(a,b\in\{0,1,\dots,K\}\)</span>. Prove that <span class="math inline">\(T_K\to3\)</span>. The numbers <span class="math inline">\(2^a3^b\)</span> are the natural numbers whose only
+prime factors are <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span>. <a aria-label="Solution for Exercise 10.5.2" href="solutions-ch10.html#sol-exer-two-three-sum">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-prime-reciprocals">
+
+<p><strong>Exercise 10.5.3.</strong> Let <span class="math inline">\(q_1&lt;q_2&lt;q_3&lt;\cdots\)</span> be the
+primes. Prove that <span class="math inline">\(\sum\frac1{q_k}\)</span>
+diverges. <a aria-label="Hint for Exercise 10.5.3" href="solutions-ch10.html#sol-exer-prime-reciprocals">[Hint]</a></p>
+</div>
+</section>
+</section>
 <section class="level3 unnumbered" id="notes-9">
 <h2>Notes</h2>
 <p>Nicole Oresme proved that the harmonic series diverges, by the
-grouping in <a href="#exer-harmonic-grouping">Exercise 10.2.8</a>,
-around 1350 [<a href="bibliography.html#bib-oresme">55</a>]. Colin Maclaurin gave the
-Integral Test in 1742 [<a href="bibliography.html#bib-maclaurin1742">52</a>], and Cauchy
-gave it again later. The Ratio Test is due to Jean le Rond d’Alembert
-(1768) [<a href="bibliography.html#bib-dalembert1768">18</a>], and the Root Test and the
-Cauchy Criterion for series to Cauchy (1821) [<a href="bibliography.html#bib-cauchy1821">15</a>]. Niels Henrik Abel published his
+grouping in <a href="#ex-harmonic-series">Example 10.1.5</a>, around
+1350 [<a href="bibliography.html#bib-oresme">56</a>]. Colin Maclaurin gave the Integral
+Test in 1742 [<a href="bibliography.html#bib-maclaurin1742">53</a>], and Cauchy gave it
+again later. The Ratio Test is due to Jean le Rond d’Alembert (1768) [<a href="bibliography.html#bib-dalembert1768">18</a>], and the Root Test and the Cauchy
+Criterion for series to Cauchy (1821) [<a href="bibliography.html#bib-cauchy1821">15</a>]. Niels Henrik Abel published his
 summation formula in 1826 [<a href="bibliography.html#bib-abel1826">1</a>]. Dirichlet
 observed in 1837, in his paper on primes in arithmetic progressions,
 that rearranging a conditionally convergent series can change its sum
 [<a href="bibliography.html#bib-dirichlet1837">25</a>]. Riemann proved <a href="#thm-riemann-rearrangement">Theorem 10.3.9</a> in his 1854 work on
-trigonometric series, published in 1868 [<a href="bibliography.html#bib-riemann1868">58</a>]. Euler introduced the constant <span class="math inline">\(\gamma\)</span> of <a href="#ex-euler-constant">Example 10.2.11</a> in 1734. Cauchy defined
+trigonometric series, published in 1868 [<a href="bibliography.html#bib-riemann1868">59</a>]. Euler introduced the constant <span class="math inline">\(\gamma\)</span> of <a href="#ex-euler-constant">Example 10.2.11</a> in 1734. Cauchy defined
 the product of two series in his <em>Cours d’analyse</em> of 1821, and
-Franz Mertens proved <a href="#thm-mertens">Theorem 10.4.2</a> in
-1875.</p>
+Franz Mertens proved <a href="#thm-mertens">Theorem 10.4.2</a> in 1875.
+Euclid’s proof that there are infinitely many primes is Proposition 20
+of Book IX of the <em>Elements</em> [<a href="bibliography.html#bib-euclid">28</a>].
+Euler’s proof of <a href="#thm-infinitely-many-primes">Theorem
+10.5.3</a> is in a paper he wrote in 1737 and published in 1744 [<a href="bibliography.html#bib-euler1744">29</a>]. The same paper has the Euler product of
+<a href="#rem-euler-product">Remark 10.5.4</a> and the divergence of
+<span class="math inline">\(\sum\frac1{q_k}\)</span> in <a href="#exer-prime-reciprocals">Exercise 10.5.3</a>. Dirichlet’s 1837
+paper extended Euler’s method to prove that every arithmetic progression
+<span class="math inline">\(a,a+d,a+2d,\dots\)</span> with <span class="math inline">\(a,d\in\mathbb{N}\)</span> and no common factor
+greater than <span class="math inline">\(1\)</span> contains infinitely
+many primes [<a href="bibliography.html#bib-dirichlet1837">25</a>].</p>
 </section>
 </article>
 </main>
