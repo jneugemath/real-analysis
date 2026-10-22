@@ -145,12 +145,12 @@ The partial sum <span class="math inline">\(s_{2^n}\)</span> is the
 first term <span class="math inline">\(1\)</span> plus the blocks for
 <span class="math inline">\(j=1,\dots,n\)</span>. So <span class="math inline">\(s_{2^n}\ge1+\frac n2\)</span>. For <span class="math inline">\(n\ge2\)</span> the inequality is strict, since
 <span class="math inline">\(\frac13&gt;\frac14\)</span>.</p>
-<p>So the partial sums are not bounded. Indeed, for each <span class="math inline">\(M&gt;0\)</span>, <a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a> gives an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n&gt;2M\)</span>, and then <span class="math inline">\(s_{2^n}&gt;M\)</span>. A convergent sequence is
+<p>So the partial sums are not bounded. Indeed, for each <span class="math inline">\(M&gt;0\)</span>, <a href="ch-real-numbers.html#thm-archimedean">Theorem 1.8.8</a> gives an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n&gt;2M\)</span>, and then <span class="math inline">\(s_{2^n}&gt;M\)</span>. A convergent sequence is
 bounded, by <a href="ch-sequences.html#thm-convergent-bounded">Theorem 3.2.3</a>. So
 <span class="math inline">\(\{s_n\}\)</span> diverges, and the harmonic
 series diverges.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-42">
+<section class="level5 unnumbered" id="exercises-43">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-harmonic-grouping">
 
@@ -637,7 +637,7 @@ converges for all <span class="math inline">\(t\in\mathbb{R}\)</span>.
 For <span class="math inline">\(t\ne2p\pi\)</span> this follows from the
 test. For <span class="math inline">\(t=2p\pi\)</span> it is the <span class="math inline">\(p\)</span>-series with <span class="math inline">\(p=2\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-43">
+<section class="level5 unnumbered" id="exercises-44">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-nth-term-test">
 
@@ -942,7 +942,7 @@ overshot <span class="math inline">\(\alpha\)</span> by at most that
 term. A proof that took just some number of terms with total above <span class="math inline">\(\alpha\)</span> would have no such bound. The
 smallest such number exists by the Well-Ordering Principle (<a href="ch-real-numbers.html#ax-well-ordering">Axiom 1.2.7</a>).</p>
 </div>
-<section class="level5 unnumbered" id="exercises-44">
+<section class="level5 unnumbered" id="exercises-45">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-telescoping-bound-absolute">
 
@@ -1027,7 +1027,7 @@ since <span class="math inline">\(\sqrt{uv}\le\frac{u+v}2\)</span> for
 <span class="math inline">\(c_n\not\to0\)</span>, and the Cauchy product
 diverges by the <span class="math inline">\(n\)</span>th Term Test.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-45">
+<section class="level5 unnumbered" id="exercises-46">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-geometric-square">
 
@@ -1047,12 +1047,11 @@ that their Cauchy product converges absolutely. <a aria-label="Hint for Exercise
 His proof is <a href="#exer-euclid-primes">Exercise 10.5.1</a>. Euler
 found a different proof in 1737, using series. Each prime <span class="math inline">\(p\)</span> gives a geometric series <span class="math display">\[1+\frac1p+\frac1{p^2}+\frac1{p^3}+\cdots=\frac1{1-\frac1p}.\]</span>
 Multiply these series together, one for each prime. Every natural number
-is a product of primes, by <a href="ch-real-numbers.html#lem-prime-factors">Lemma
-1.2.18</a>, so every <span class="math inline">\(\frac1n\)</span>
-appears when the product is multiplied out. Euler concluded that the
-product is the harmonic series. If there were only finitely many primes,
-the product would be a finite number. But the harmonic series diverges,
-by <a href="#ex-harmonic-series">Example 10.1.5</a>.</p>
+is a product of primes, by <a href="ch-real-numbers.html#lem-prime-factors">Lemma 1.3.2</a>
+in the starred <a href="ch-real-numbers.html#sec-primes">Section 1.3</a>, so every <span class="math inline">\(\frac1n\)</span> appears when the product is
+multiplied out. Euler concluded that the product is the harmonic series.
+If there were only finitely many primes, the product would be a finite
+number. But the harmonic series diverges, by <a href="#ex-harmonic-series">Example 10.1.5</a>.</p>
 <p>This section makes Euler’s argument precise. It uses only finite sums
 and finite products. It can be skipped. Nothing later depends on it.</p>
 <div class="theorembox" id="thm-infinitely-many-primes">
@@ -1067,7 +1066,7 @@ primes. Call them <span class="math inline">\(p_1,\dots,p_m\)</span>.
 The plan is to show that the partial sums <span class="math inline">\(s_N=\sum_{n=1}^N\frac1n\)</span> of the harmonic
 series are bounded.</p>
 <p>Let <span class="math inline">\(N\in\mathbb{N}\)</span>, and choose
-<span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(2^K&gt;N\)</span>. Let <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\le N\)</span>. If <span class="math inline">\(n\ge2\)</span>, then <span class="math inline">\(n\)</span> is a product of primes by <a href="ch-real-numbers.html#lem-prime-factors">Lemma 1.2.18</a>, and each of these primes is
+<span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(2^K&gt;N\)</span>. Let <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\le N\)</span>. If <span class="math inline">\(n\ge2\)</span>, then <span class="math inline">\(n\)</span> is a product of primes by <a href="ch-real-numbers.html#lem-prime-factors">Lemma 1.3.2</a>, and each of these primes is
 one of <span class="math inline">\(p_1,\dots,p_m\)</span>. Collecting
 equal primes, <span class="math display">\[n=p_1^{a_1}p_2^{a_2}\cdots
 p_m^{a_m}\]</span> for some <span class="math inline">\(a_1,\dots,a_m\in\mathbb{N}_0\)</span>. This also
@@ -1091,7 +1090,7 @@ there are infinitely many primes.</p>
 
 <p><strong>Remark 10.5.2.</strong> Euler went further. Every <span class="math inline">\(n\ge2\)</span> is a product of primes in only one
 way, apart from the order of the factors. This is the Fundamental
-Theorem of Arithmetic, <a href="ch-real-numbers.html#thm-fta">Theorem 1.2.20</a>. With it,
+Theorem of Arithmetic, <a href="ch-real-numbers.html#thm-fta">Theorem 1.3.4</a>. With it,
 each <span class="math inline">\(\frac1n\)</span> appears exactly once
 when the geometric series are multiplied out. Euler showed that for
 <span class="math inline">\(\alpha&gt;1\)</span>, <span class="math display">\[\sum_{n=1}^\infty\frac1{n^\alpha}=\prod_{q\text{
@@ -1100,12 +1099,12 @@ the limit of the products over the primes <span class="math inline">\(q\le M\)</
 product</em>. It ties the primes to analysis, and it is the starting
 point of analytic number theory.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-46">
+<section class="level5 unnumbered" id="exercises-47">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-euclid-primes">
 
 <p><strong>Exercise 10.5.1.</strong> (Euclid) Let <span class="math inline">\(p_1,\dots,p_m\)</span> be primes, and let <span class="math inline">\(n=p_1p_2\cdots p_m+1\)</span>. Prove that no <span class="math inline">\(p_i\)</span> divides <span class="math inline">\(n\)</span>. Use <a href="ch-real-numbers.html#lem-prime-factors">Lemma
-1.2.18</a> to conclude that there is a prime different from <span class="math inline">\(p_1,\dots,p_m\)</span>. This gives another proof
+1.3.2</a> to conclude that there is a prime different from <span class="math inline">\(p_1,\dots,p_m\)</span>. This gives another proof
 of <a href="#thm-infinitely-many-primes">Theorem 10.5.1</a>. <a aria-label="Hint for Exercise 10.5.1" href="solutions-ch10.html#sol-exer-euclid-primes">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-two-three-sum">

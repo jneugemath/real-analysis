@@ -62,7 +62,7 @@ window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = set
 <h1>Appendix B. Construction of the Real Numbers by
 Cauchy Sequences</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-cauchy-construction-sequences">B.1 Cauchy Sequences of Rational Numbers</a></li><li><a href="#sec-cauchy-construction-arithmetic">B.2 Addition and Multiplication</a></li><li><a href="#sec-cauchy-construction-order">B.3 Order</a></li><li><a href="#sec-cauchy-construction-completeness">B.4 Completeness</a></li><li><a href="#sec-cauchy-construction-uniqueness">B.5 Uniqueness of the Real
 Numbers<sup>*</sup></a></li><li><a href="#notes-19">Notes</a></li></ul></nav>
-<p>This appendix gives a second proof of <a href="ch-real-numbers.html#thm-existence-of-R">Theorem 1.7.2</a>, due to Georg Cantor. It
+<p>This appendix gives a second proof of <a href="ch-real-numbers.html#thm-existence-of-R">Theorem 1.8.2</a>, due to Georg Cantor. It
 builds <span class="math inline">\(\mathbb{R}\)</span> out of Cauchy
 sequences of rational numbers, as in <a href="ch-sequences.html#sec-cauchy-sequences">Section 3.5</a>.</p>
 <p>In <span class="math inline">\(\mathbb{Q}\)</span>, a Cauchy sequence
@@ -73,7 +73,7 @@ Cauchy sequences whose difference tends to <span class="math inline">\(0\)</span
 real number will be a whole class of Cauchy sequences, all of them
 closing in on the same point.</p>
 <p>As in <a href="app-cuts.html">Appendix A</a>, only <span class="math inline">\(\mathbb{Q}\)</span> is assumed, with its usual
-operations and order. The results of Sections <a href="ch-real-numbers.html#sec-ordered-sets">1.4</a>, <a href="ch-real-numbers.html#sec-fields">1.5</a> and <a href="ch-real-numbers.html#sec-absolute-value">1.6</a> hold in <span class="math inline">\(\mathbb{Q}\)</span>, and nothing from <a href="ch-real-numbers.html#sec-completeness">Section 1.7</a> or later is used. In
+operations and order. The results of Sections <a href="ch-real-numbers.html#sec-ordered-sets">1.5</a>, <a href="ch-real-numbers.html#sec-fields">1.6</a> and <a href="ch-real-numbers.html#sec-absolute-value">1.7</a> hold in <span class="math inline">\(\mathbb{Q}\)</span>, and nothing from <a href="ch-real-numbers.html#sec-completeness">Section 1.8</a> or later is used. In
 particular, every <span class="math inline">\(\varepsilon\)</span> in
 this appendix is a positive rational number. <a href="app-cuts.html">Appendix A</a> is not needed, except for <a href="app-cuts.html#lem-archimedean-Q">Lemma A.1.5</a>, the Archimedean Principle for
 <span class="math inline">\(\mathbb{Q}\)</span>. In this appendix, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>
@@ -145,7 +145,7 @@ sequence <span class="math inline">\(q,q,q,\dots\)</span>.</p>
 </div>
 <p>So <span class="math inline">\([x]=[y]\)</span> exactly when <span class="math inline">\(x\sim y\)</span>, and <span class="math inline">\([x]=[0]\)</span> exactly when <span class="math inline">\(x\)</span> is a null sequence. For example, <span class="math inline">\(\left[\left\{\frac1n\right\}\right]=[0]\)</span>
 and <span class="math inline">\(\left[\left\{1+\frac1n\right\}\right]=[1]\)</span>.</p>
-<section class="level5 unnumbered" id="exercises-86">
+<section class="level5 unnumbered" id="exercises-87">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-newton-cauchy-Q">
 
@@ -215,7 +215,7 @@ for every <span class="math inline">\(N\)</span>, some <span class="math inline"
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>Axioms (1) and (6) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> hold
+<p>Axioms (1) and (6) of <a href="ch-real-numbers.html#def-field">Definition 1.6.1</a> hold
 by Lemmas <a href="#lem-cauchy-Q-algebra">B.1.2</a> and <a href="#lem-cauchy-well-defined">B.2.2</a>. Axioms (2), (3), (7), (8) and
 (11) hold because they hold term by term in <span class="math inline">\(\mathbb{Q}\)</span>. For example, <span class="math display">\[[x]\bigl([y]+[z]\bigr)=[x(y+z)]=[xy+xz]=[x][y]+[x][z],\]</span>
 since <span class="math inline">\(x_n(y_n+z_n)=x_ny_n+x_nz_n\)</span>
@@ -227,7 +227,7 @@ for every <span class="math inline">\(n\)</span>. For (4) and (5), <span class="
 Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose
 <span class="math inline">\(N'\ge N\)</span> with <span class="math inline">\(|x_m-x_n|&lt;c^2\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N'\)</span>. Then <span class="math inline">\(|y_m-y_n|&lt;\varepsilon\)</span> for <span class="math inline">\(m,n\ge N'\)</span>. So <span class="math inline">\(y\in\mathcal{C}\)</span>. Also <span class="math inline">\(x_ny_n=1\)</span> for all <span class="math inline">\(n\ge N\)</span>, so <span class="math inline">\(xy-1\)</span> is null, and <span class="math inline">\([x][y]=[1]\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-87">
+<section class="level5 unnumbered" id="exercises-88">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-reciprocal-not-cauchy">
 
@@ -268,7 +268,7 @@ the three holds. If <span class="math inline">\(x\)</span> is not null,
 
 <p><strong>Theorem B.3.3.</strong> With the order of <a href="#def-cauchy-positive">Definition B.3.1</a>, <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. An
 element <span class="math inline">\([x]\)</span> is positive in the
-sense of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a> if and only
+sense of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.6.6</a> if and only
 if the sequence <span class="math inline">\(x\)</span> is positive.</p>
 </div>
 <div class="proofbox">
@@ -280,7 +280,7 @@ To see this, let <span class="math inline">\(a=[x]\)</span> and <span class="mat
 following holds. The sequence <span class="math inline">\(y-x\)</span>
 is positive, <span class="math inline">\(y-x\)</span> is null, or <span class="math inline">\(x-y\)</span> is positive. These say <span class="math inline">\(a&lt;b\)</span>, <span class="math inline">\(a=b\)</span> and <span class="math inline">\(b&lt;a\)</span>.</p>
 <p>The relation is also transitive. If <span class="math inline">\([x]&lt;[y]\)</span> and <span class="math inline">\([y]&lt;[z]\)</span>, then <span class="math inline">\(z-x=(z-y)+(y-x)\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3). So <span class="math inline">\([x]&lt;[z]\)</span>.</p>
-<p>It remains to check the two properties in <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a>. Property (1) holds since
+<p>It remains to check the two properties in <a href="ch-real-numbers.html#def-ordered-field">Definition 1.6.6</a>. Property (1) holds since
 <span class="math inline">\((y+z)-(x+z)=y-x\)</span>. So <span class="math inline">\([x]\le[y]\)</span> implies <span class="math inline">\([x]+[z]\le[y]+[z]\)</span>.</p>
 <p>For property (2), let <span class="math inline">\([0]\le[x]\)</span>
 and <span class="math inline">\([0]\le[y]\)</span>. If either is <span class="math inline">\([0]\)</span>, then <span class="math inline">\([x][y]=[0]\)</span>. Otherwise <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are positive, so <span class="math inline">\(xy\)</span> is positive by <a href="#lem-cauchy-positive">Lemma B.3.2</a> (3), and <span class="math inline">\([0]&lt;[x][y]\)</span>.</p>
@@ -313,7 +313,7 @@ negatives and reciprocals. As in the proof of <a href="app-cuts.html#thm-cuts-co
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <p>As in <a href="app-cuts.html#sec-cuts-rationals">Section A.5</a>, identify each
 <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\([q]\)</span>. Then <span class="math inline">\(\mathbb{Q}\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>. In particular, if <span class="math inline">\(x\in\mathcal{C}\)</span>, then each term <span class="math inline">\(x_n\)</span> is also a real number, namely <span class="math inline">\([x_n]\)</span>.</p>
-<section class="level5 unnumbered" id="exercises-88">
+<section class="level5 unnumbered" id="exercises-89">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cauchy-abs">
 
@@ -365,7 +365,7 @@ and <span class="math inline">\(y-q\)</span> are positive. That is,
 <p><em>Proof.</em></p>
 <p>Choose <span class="math inline">\(N\)</span> with <span class="math inline">\(|x_m-x_n|&lt;\varepsilon\)</span> for all <span class="math inline">\(m,n\ge N\)</span>. Fix <span class="math inline">\(n\ge N\)</span>. The class of the sequence <span class="math inline">\(\{x_m-x_n\}_{m=1}^\infty\)</span> is <span class="math inline">\(a-x_n\)</span>. For <span class="math inline">\(m\ge N\)</span>, <span class="math inline">\(-\varepsilon&lt;x_m-x_n&lt;\varepsilon\)</span>.
 By <a href="#lem-cauchy-compare">Lemma B.3.4</a>, <span class="math inline">\(-\varepsilon\le a-x_n\le\varepsilon\)</span>. So
-<span class="math inline">\(|a-x_n|\le\varepsilon\)</span> by <a href="ch-real-numbers.html#thm-absolute-value-basic">Theorem 1.6.2</a> (4).</p>
+<span class="math inline">\(|a-x_n|\le\varepsilon\)</span> by <a href="ch-real-numbers.html#thm-absolute-value-basic">Theorem 1.7.2</a> (4).</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-cauchy-lub">
 
@@ -393,13 +393,13 @@ E\)</span> has <span class="math inline">\(e&gt;a_n&gt;t\)</span>. So
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="proofbox">
 <p><em>Second proof of <a href="ch-real-numbers.html#thm-existence-of-R">Theorem
-1.7.2</a>.</em></p>
+1.8.2</a>.</em></p>
 <p>By <a href="#thm-cauchy-ordered-field">Theorem B.3.3</a>, <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. By <a href="#thm-cauchy-lub">Theorem B.4.3</a>, it has the least upper bound
 property. By <a href="#thm-cauchy-contain-Q">Theorem B.3.5</a>, after
 each <span class="math inline">\(q\in\mathbb{Q}\)</span> is identified
 with <span class="math inline">\([q]\)</span>, <span class="math inline">\(\mathbb{Q}\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-89">
+<section class="level5 unnumbered" id="exercises-90">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cauchy-complete-direct">
 
@@ -424,7 +424,7 @@ section shows that the difference does not matter. Any two ordered
 fields with the least upper bound property are copies of each other.
 Every sum, product and inequality in one matches a sum, product and
 inequality in the other. So <a href="ch-real-numbers.html#thm-existence-of-R">Theorem
-1.7.2</a> describes <span class="math inline">\(\mathbb{R}\)</span>
+1.8.2</a> describes <span class="math inline">\(\mathbb{R}\)</span>
 completely, and it makes sense to speak of the real numbers.</p>
 <p>First, every ordered field contains a copy of <span class="math inline">\(\mathbb{Q}\)</span>. For an ordered field <span class="math inline">\(\mathbb{F}\)</span> and <span class="math inline">\(n\in\mathbb{N}\)</span>, let <span class="math inline">\(n_\mathbb{F}=1+1+\cdots+1\)</span>, with <span class="math inline">\(n\)</span> terms. That is, <span class="math inline">\(1_\mathbb{F}=1\)</span> and <span class="math inline">\((n+1)_\mathbb{F}=n_\mathbb{F}+1\)</span>. Let
 <span class="math inline">\(0_\mathbb{F}=0\)</span> and <span class="math inline">\((-n)_\mathbb{F}=-n_\mathbb{F}\)</span>. This
@@ -454,12 +454,12 @@ mn&lt;\frac jk\)</span> if and only if <span class="math inline">\(mk&lt;nj\)</s
 <span class="math inline">\(m_\mathbb{F}\,k_\mathbb{F}&lt;n_\mathbb{F}\,j_\mathbb{F}\)</span>.
 Since <span class="math inline">\(n_\mathbb{F}\,k_\mathbb{F}&gt;0\)</span>, this
 holds if and only if <span class="math inline">\(\frac{m_\mathbb{F}}{n_\mathbb{F}}&lt;\frac{j_\mathbb{F}}{k_\mathbb{F}}\)</span>,
-by <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.5.8</a> (3) and
+by <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.6.8</a> (3) and
 (6).</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <p>If <span class="math inline">\(\mathbb{F}\)</span> also has the least
-upper bound property, then the proofs of the Archimedean Principle (<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a>), of <a href="ch-real-numbers.html#thm-floor">Theorem 1.7.9</a>, and of the density of the rational
-numbers (<a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>) work in <span class="math inline">\(\mathbb{F}\)</span> word for word. They use only
+upper bound property, then the proofs of the Archimedean Principle (<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.8.8</a>), of <a href="ch-real-numbers.html#thm-floor">Theorem 1.8.9</a>, and of the density of the rational
+numbers (<a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.8.11</a>) work in <span class="math inline">\(\mathbb{F}\)</span> word for word. They use only
 the axioms of an ordered field, the least upper bound property and the
 Well-Ordering Principle, with each integer <span class="math inline">\(n\)</span> read as <span class="math inline">\(n_\mathbb{F}\)</span>. So for all <span class="math inline">\(x,y\in\mathbb{F}\)</span> with <span class="math inline">\(x&lt;y\)</span>, there is a <span class="math inline">\(q\in\mathbb{Q}\)</span> with <span class="math inline">\(x&lt;\iota_\mathbb{F}(q)&lt;y\)</span>. It follows
 that two elements <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> of <span class="math inline">\(\mathbb{F}\)</span> are equal if and only if <span class="math display">\[\{q\in\mathbb{Q}:\iota_\mathbb{F}(q)&lt;x\}=\{q\in\mathbb{Q}:\iota_\mathbb{F}(q)&lt;y\}.\]</span>
@@ -543,7 +543,7 @@ matched with the class of every sequence of rational numbers that
 converges to <span class="math inline">\(\sqrt2\)</span>. Since the two
 constructions give copies of the same ordered field, the rest of the
 book never needs to know which one was used.</p>
-<section class="level5 unnumbered" id="exercises-90">
+<section class="level5 unnumbered" id="exercises-91">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-Q-in-ordered-field">
 
@@ -559,7 +559,7 @@ and <span class="math inline">\(m&lt;k\)</span> implies <span class="math inline
 one-to-one and onto, with <span class="math inline">\(\varphi(x+y)=\varphi(x)+\varphi(y)\)</span> and
 <span class="math inline">\(\varphi(xy)=\varphi(x)\varphi(y)\)</span>
 for all <span class="math inline">\(x,y\in\mathbb{R}\)</span>. Prove
-that <span class="math inline">\(\varphi(x)=x\)</span> for every <span class="math inline">\(x\in\mathbb{R}\)</span>. First show that <span class="math inline">\(\varphi(q)=q\)</span> for <span class="math inline">\(q\in\mathbb{Q}\)</span>. Then use <a href="ch-real-numbers.html#thm-nth-root">Theorem 1.7.13</a> to show that <span class="math inline">\(\varphi\)</span> preserves order. <a aria-label="Hint for Exercise B.5.2" href="solutions-appb.html#sol-exer-R-automorphism">[Hint]</a></p>
+that <span class="math inline">\(\varphi(x)=x\)</span> for every <span class="math inline">\(x\in\mathbb{R}\)</span>. First show that <span class="math inline">\(\varphi(q)=q\)</span> for <span class="math inline">\(q\in\mathbb{Q}\)</span>. Then use <a href="ch-real-numbers.html#thm-nth-root">Theorem 1.8.13</a> to show that <span class="math inline">\(\varphi\)</span> preserves order. <a aria-label="Hint for Exercise B.5.2" href="solutions-appb.html#sol-exer-R-automorphism">[Hint]</a></p>
 </div>
 </section>
 </section>

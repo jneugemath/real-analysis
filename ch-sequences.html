@@ -108,7 +108,7 @@ proof. Start with <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span> an
 it reads <span class="math inline">\(n&gt;\)</span> (something). Then
 choose <span class="math inline">\(N\)</span> larger than that
 something. The Archimedean Principle (<a href="ch-real-numbers.html#thm-archimedean">Theorem
-1.7.8</a>) says such an <span class="math inline">\(N\in\mathbb{N}\)</span> exists. The proof then
+1.8.8</a>) says such an <span class="math inline">\(N\in\mathbb{N}\)</span> exists. The proof then
 runs forward. It states the choice of <span class="math inline">\(N\)</span> and checks that <span class="math inline">\(|x_n-a|&lt;\varepsilon\)</span> for all <span class="math inline">\(n\ge N\)</span>. In <a href="#ex-seq-3n+4">Example
 3.1.3</a>, the scratch work is <span class="math inline">\(\left|x_n-\frac32\right|=\frac{2}{n}&lt;\varepsilon\)</span>,
 which holds when <span class="math inline">\(n&gt;\frac{2}{\varepsilon}\)</span>.</p>
@@ -198,7 +198,7 @@ n|+3|\sin n|}{|n^2+n-60|}\\
 \end{aligned}\]</span> So <span class="math inline">\(x_n\to
 0\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-11">
+<section class="level5 unnumbered" id="exercises-12">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-eps-N-limits">
 
@@ -282,7 +282,7 @@ is less than <span class="math inline">\(\varepsilon\)</span>. This is
 allowed because the definition of <span class="math inline">\(x_n\to
 a\)</span> works for every positive number, including <span class="math inline">\(\frac{\varepsilon}{2}\)</span>. The proof of (2)
 uses the same idea with <span class="math inline">\(\frac{\varepsilon}{2M}\)</span> and <span class="math inline">\(\frac{\varepsilon}{2(|b|+1)}\)</span>. The <span class="math inline">\(+1\)</span> in <span class="math inline">\(|b|+1\)</span> avoids dividing by <span class="math inline">\(0\)</span> when <span class="math inline">\(b=0\)</span>. The proof of (2) also adds and
-subtracts <span class="math inline">\(x_nb\)</span>, as in <a href="ch-real-numbers.html#sec-absolute-value">Section 1.6</a>.</p>
+subtracts <span class="math inline">\(x_nb\)</span>, as in <a href="ch-real-numbers.html#sec-absolute-value">Section 1.7</a>.</p>
 </div>
 <div class="theorembox" id="thm-limit-laws">
 
@@ -428,7 +428,7 @@ This result is an immediate consequence of <a href="#thm-convergent-bounded">The
 generality, assume <span class="math inline">\(\{x_n\}\)</span> is
 increasing. Let <span class="math inline">\(A=\{x_n:n\in\mathbb{N}\}\)</span>. Now since <span class="math inline">\(\{x_n\}\)</span> is bounded, <span class="math inline">\(A\)</span> has an upper bound. So <span class="math inline">\(A\)</span> has a least upper bound in <span class="math inline">\(\mathbb{R}\)</span>, say <span class="math inline">\(\alpha=\sup A\)</span>.</p>
 <p>Let <span class="math inline">\(\varepsilon&gt;0\)</span>. Since
-<span class="math inline">\(\alpha=\sup A\)</span>, by <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.7.7</a>, there exists an <span class="math inline">\(a\in A\)</span> such that <span class="math inline">\(a&gt;\alpha-\varepsilon\)</span>; i.e., there
+<span class="math inline">\(\alpha=\sup A\)</span>, by <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.8.7</a>, there exists an <span class="math inline">\(a\in A\)</span> such that <span class="math inline">\(a&gt;\alpha-\varepsilon\)</span>; i.e., there
 exists an <span class="math inline">\(N\in\mathbb{N}\)</span> such that
 <span class="math inline">\(x_N=a&gt;\alpha-\varepsilon\)</span>. But
 <span class="math inline">\(\{x_n\}\)</span> is increasing. So for all
@@ -446,7 +446,7 @@ increasing, and it is bounded above by <span class="math inline">\(2\)</span>. I
 <span class="math inline">\(N\in\mathbb{N}\)</span> such that for all
 <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_{n+1}\ge x_n\)</span>, or for all <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(x_{n+1}\le x_n\)</span> (<span class="math inline">\(x_n\)</span> is eventually monotonic), <span class="math inline">\(\{x_n\}\)</span> converges.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-12">
+<section class="level5 unnumbered" id="exercises-13">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-power-limit">
 
@@ -542,7 +542,7 @@ converges, say <span class="math inline">\(x_n\to a\)</span>.</p>
 <p>Now, since <span class="math inline">\(x_n\to a\)</span>, <span class="math inline">\(x_{n+1}\to a\)</span>. But since <span class="math inline">\(x_{n+1}=\frac{x_n^2+3}{2x_n}\)</span>, <span class="math display">\[\lim_{n\to\infty}
 x_{n+1}=\lim_{n\to\infty}\frac{x_n^2+3}{2x_n}.\]</span> So <span class="math inline">\(a=\frac{a^2+3}{2a}\)</span>. Since <span class="math inline">\(x_n&gt;\sqrt{3}\)</span> for <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(a\ge\sqrt{3}&gt;0\)</span>. Thus <span class="math inline">\(a=\sqrt{3}\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-13">
+<section class="level5 unnumbered" id="exercises-14">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-recursive-linear">
 
@@ -666,7 +666,7 @@ number.</p>
 <p><strong>Corollary 3.4.6.</strong> Suppose <span class="math inline">\(\{x_n\}\)</span> is a sequence contained in <span class="math inline">\([a,b]\)</span> where <span class="math inline">\(a,b\in\mathbb{R}\)</span>, <span class="math inline">\(a\le b\)</span>. Then <span class="math inline">\(\{x_n\}\)</span> has a subsequence converging to a
 point in <span class="math inline">\([a,b]\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-14">
+<section class="level5 unnumbered" id="exercises-15">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-unbounded-subsequence">
 
@@ -739,7 +739,7 @@ Limit).</strong> To use the definition of convergence, the limit <span class="ma
 avoids this. It only compares terms of the sequence with each other. So
 it can prove a sequence converges even when the limit is unknown. <a href="#exer-factorial-cauchy">Exercise 3.5.1</a> uses this idea.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-15">
+<section class="level5 unnumbered" id="exercises-16">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-factorial-cauchy">
 
@@ -941,7 +941,7 @@ from <a href="#thm-limsup-characterization">Theorem 3.6.11</a>. For the
 <span class="math inline">\(\pm\infty\)</span> case, this follows
 directly from <a href="#thm-limsup-infinite">Theorem 3.6.12</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-16">
+<section class="level5 unnumbered" id="exercises-17">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-limsup-cluster-points">
 

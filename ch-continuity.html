@@ -212,7 +212,7 @@ that for all <span class="math inline">\(x\in\mathbb{R}\)</span> with
 an <span class="math inline">\(x_1\in\mathbb{Q}\)</span> and there
 exists an <span class="math inline">\(x_2\in\mathbb{R}\setminus\mathbb{Q}\)</span> such
 that <span class="math inline">\(x_1,x_2\in(c-\delta,c+\delta)\setminus
-\{c\}\)</span> by <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a> and <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.7.5</a>. Then <span class="math display">\[1=|f(x_1)-f(x_2)|=|f(x_1)-L+L-f(x_2)|\le
+\{c\}\)</span> by <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.8.11</a> and <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.8.5</a>. Then <span class="math display">\[1=|f(x_1)-f(x_2)|=|f(x_1)-L+L-f(x_2)|\le
 |f(x_1)-L|+|f(x_2)-L|&lt;\frac{1}{2}+\frac{1}{2}=1,\]</span> a
 contradiction. So <span class="math inline">\(\lim_{x\to c}f(x)\)</span>
 does not exist. Since <span class="math inline">\(c\)</span> was
@@ -416,7 +416,7 @@ f(x)=L\)</span>.</p>
 <p><em>Proof.</em> See <a href="#exer-one-sided-limits">Exercise
 6.1.8</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-21">
+<section class="level5 unnumbered" id="exercises-22">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-basic-limits">
 
@@ -491,7 +491,7 @@ every <span class="math inline">\(c\ne0\)</span>. <a aria-label="Hint for Exerci
 <p><a href="#sec-function-limits">Section 6.1</a> gives meaning to <span class="math inline">\(\lim_{x\to c}f(x)=L\)</span> when <span class="math inline">\(c\)</span> and <span class="math inline">\(L\)</span> are real numbers. This section allows
 <span class="math inline">\(c\)</span> or <span class="math inline">\(L\)</span> to be <span class="math inline">\(\infty\)</span> or <span class="math inline">\(-\infty\)</span>. Each definition follows the same
 pattern. When <span class="math inline">\(L=\infty\)</span>, “within
-<span class="math inline">\(\varepsilon\)</span> of <span class="math inline">\(L\)</span>” becomes “greater than <span class="math inline">\(M\)</span>.” When <span class="math inline">\(c=\infty\)</span>, “within <span class="math inline">\(\delta\)</span> of <span class="math inline">\(c\)</span>” becomes “greater than <span class="math inline">\(d\)</span>.” Remember that <span class="math inline">\(\infty\)</span> and <span class="math inline">\(-\infty\)</span> are not real numbers (<a href="ch-real-numbers.html#def-interval-notation">Definition 1.7.6</a>). A statement such as
+<span class="math inline">\(\varepsilon\)</span> of <span class="math inline">\(L\)</span>” becomes “greater than <span class="math inline">\(M\)</span>.” When <span class="math inline">\(c=\infty\)</span>, “within <span class="math inline">\(\delta\)</span> of <span class="math inline">\(c\)</span>” becomes “greater than <span class="math inline">\(d\)</span>.” Remember that <span class="math inline">\(\infty\)</span> and <span class="math inline">\(-\infty\)</span> are not real numbers (<a href="ch-real-numbers.html#def-interval-notation">Definition 1.8.6</a>). A statement such as
 <span class="math inline">\(\lim_{x\to c}f(x)=\infty\)</span> describes
 how <span class="math inline">\(f\)</span> behaves. It does not say the
 limit exists in the sense of <a href="#def-function-limit">Definition
@@ -574,7 +574,7 @@ c^+}f(x)=\infty\)</span> if and only if <span class="math inline">\(f(x_n)\to\in
 <p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(\lim_{x\to c^+}f(x)\ne\infty\)</span>. Negating
 the definition, there exists an <span class="math inline">\(M&gt;0\)</span> such that for every <span class="math inline">\(\delta&gt;0\)</span>, there exists an <span class="math inline">\(x\in E\)</span> with <span class="math inline">\(0&lt;x-c&lt;\delta\)</span> and <span class="math inline">\(f(x)\le M\)</span>. Taking <span class="math inline">\(\delta=\frac1n\)</span> gives, for each <span class="math inline">\(n\in\mathbb{N}\)</span>, an <span class="math inline">\(x_n\in E\)</span> with <span class="math inline">\(c&lt;x_n&lt;c+\frac1n\)</span> and <span class="math inline">\(f(x_n)\le M\)</span>. Then <span class="math inline">\(x_n&gt;c\)</span> and <span class="math inline">\(x_n\to c\)</span>, but <span class="math inline">\(\{f(x_n)\}\)</span> does not diverge to <span class="math inline">\(\infty\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-22">
+<section class="level5 unnumbered" id="exercises-23">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-one-over-x-at-infinity">
 
@@ -702,7 +702,7 @@ Supremum).</strong></p>
 <p>To find a point with some property, it often helps to define a set
 <span class="math inline">\(S\)</span> of points that are “on one side”
 and let <span class="math inline">\(c=\sup S\)</span>. Then use the two
-facts about suprema from <a href="ch-real-numbers.html#sec-completeness">Section 1.7</a>.
+facts about suprema from <a href="ch-real-numbers.html#sec-completeness">Section 1.8</a>.
 Points of <span class="math inline">\(S\)</span> come arbitrarily close
 to <span class="math inline">\(c\)</span> from the left. Points to the
 right of <span class="math inline">\(c\)</span> are not in <span class="math inline">\(S\)</span>. Each fact gives an inequality, and
@@ -825,7 +825,7 @@ U\)</span>. Hence <span class="math inline">\((c-\delta,c+\delta)\subset
 f^{-1}[U]\)</span>. So <span class="math inline">\(f^{-1}[U]\)</span> is
 open.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-23">
+<section class="level5 unnumbered" id="exercises-24">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-x-sin-continuous">
 
@@ -951,7 +951,7 @@ So <span class="math inline">\(f\)</span> is uniformly continuous on
 <p><em>Proof.</em> This is an immediate consequence of <a href="#thm-compact-uniform">Theorem 6.4.7</a> and the Heine–Borel
 Theorem (<a href="ch-topology.html#thm-heine-borel">Theorem 4.2.14</a>).</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-24">
+<section class="level5 unnumbered" id="exercises-25">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-one-over-x-uniform">
 
@@ -1025,7 +1025,7 @@ d^-}f(x)\)</span>.</p>
 <p><em>Proof.</em></p>
 <p>Let <span class="math inline">\(c\in I\)</span> and let <span class="math inline">\(A=\{f(x):x\in I,\ x&lt;c\}\)</span>. Since <span class="math inline">\(I\)</span> is open, <span class="math inline">\(A\ne\emptyset\)</span>. Since <span class="math inline">\(f\)</span> is increasing, <span class="math inline">\(f(c)\)</span> is an upper bound of <span class="math inline">\(A\)</span>. So <span class="math inline">\(L=\sup
 A\)</span> exists and <span class="math inline">\(L\le f(c)\)</span>.
-Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.7.7</a>, there exists an <span class="math inline">\(x_0\in I\)</span> with <span class="math inline">\(x_0&lt;c\)</span> and <span class="math inline">\(L-\varepsilon&lt;f(x_0)\)</span>. Let <span class="math inline">\(\delta=c-x_0\)</span>. If <span class="math inline">\(c-\delta&lt;x&lt;c\)</span>, then <span class="math inline">\(x\in I\)</span>, since <span class="math inline">\(I\)</span> is an interval. So <span class="math inline">\(f(x_0)\le f(x)\le L\)</span>, and <span class="math inline">\(L-\varepsilon&lt;f(x)\le L\)</span>. Thus <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c^-}f(x)=L\)</span>. The same argument,
+Let <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.8.7</a>, there exists an <span class="math inline">\(x_0\in I\)</span> with <span class="math inline">\(x_0&lt;c\)</span> and <span class="math inline">\(L-\varepsilon&lt;f(x_0)\)</span>. Let <span class="math inline">\(\delta=c-x_0\)</span>. If <span class="math inline">\(c-\delta&lt;x&lt;c\)</span>, then <span class="math inline">\(x\in I\)</span>, since <span class="math inline">\(I\)</span> is an interval. So <span class="math inline">\(f(x_0)\le f(x)\le L\)</span>, and <span class="math inline">\(L-\varepsilon&lt;f(x)\le L\)</span>. Thus <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. So <span class="math inline">\(\lim_{x\to c^-}f(x)=L\)</span>. The same argument,
 with infima in place of suprema, shows <span class="math inline">\(\lim_{x\to c^+}f(x)=\inf\{f(x):x\in I,\
 x&gt;c\}\)</span> and that this infimum is at least <span class="math inline">\(f(c)\)</span>.</p>
 <p>Now let <span class="math inline">\(c,d\in I\)</span> with <span class="math inline">\(c&lt;d\)</span>. Every <span class="math inline">\(x\)</span> with <span class="math inline">\(c&lt;x&lt;d\)</span> is in <span class="math inline">\(I\)</span>. For such an <span class="math inline">\(x\)</span>, <span class="math display">\[\inf\{f(t):t\in I,\ t&gt;c\}\le
@@ -1045,7 +1045,7 @@ of discontinuity. So assume <span class="math inline">\(f\)</span> is
 increasing. For <span class="math inline">\(c\in I\)</span>, write <span class="math inline">\(f(c^-)=\lim_{x\to c^-}f(x)\)</span> and <span class="math inline">\(f(c^+)=\lim_{x\to c^+}f(x)\)</span>. These exist
 and <span class="math inline">\(f(c^-)\le f(c)\le f(c^+)\)</span> by <a href="#thm-monotone-one-sided">Theorem 6.5.2</a>. If <span class="math inline">\(f(c^-)=f(c^+)\)</span>, then both equal <span class="math inline">\(f(c)\)</span>, and <span class="math inline">\(\lim_{x\to c}f(x)=f(c)\)</span> by <a href="#thm-one-sided-limits">Theorem 6.1.23</a>. So <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(c\)</span>.</p>
 <p>Let <span class="math inline">\(E\)</span> be the set of points of
-<span class="math inline">\(I\)</span> where <span class="math inline">\(f\)</span> is discontinuous. For each <span class="math inline">\(c\in E\)</span>, <span class="math inline">\(f(c^-)&lt;f(c^+)\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>, choose <span class="math inline">\(r_c\in\mathbb{Q}\)</span> with <span class="math inline">\(f(c^-)&lt;r_c&lt;f(c^+)\)</span>. If <span class="math inline">\(c,d\in E\)</span> with <span class="math inline">\(c&lt;d\)</span>, then <span class="math display">\[r_c&lt;f(c^+)\le f(d^-)&lt;r_d\]</span> by <a href="#thm-monotone-one-sided">Theorem 6.5.2</a>. So <span class="math inline">\(c\mapsto r_c\)</span> is a one-to-one map from
+<span class="math inline">\(I\)</span> where <span class="math inline">\(f\)</span> is discontinuous. For each <span class="math inline">\(c\in E\)</span>, <span class="math inline">\(f(c^-)&lt;f(c^+)\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.8.11</a>, choose <span class="math inline">\(r_c\in\mathbb{Q}\)</span> with <span class="math inline">\(f(c^-)&lt;r_c&lt;f(c^+)\)</span>. If <span class="math inline">\(c,d\in E\)</span> with <span class="math inline">\(c&lt;d\)</span>, then <span class="math display">\[r_c&lt;f(c^+)\le f(d^-)&lt;r_d\]</span> by <a href="#thm-monotone-one-sided">Theorem 6.5.2</a>. So <span class="math inline">\(c\mapsto r_c\)</span> is a one-to-one map from
 <span class="math inline">\(E\)</span> into <span class="math inline">\(\mathbb{Q}\)</span>. Since <span class="math inline">\(\mathbb{Q}\)</span> is countable, <span class="math inline">\(E\)</span> is at most countable by <a href="ch-cardinality.html#thm-infinite-subset-countable">Theorem 2.2.4</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="definitionbox" id="def-inverse-function">
@@ -1110,7 +1110,7 @@ for all <span class="math inline">\(y\in J\)</span> with <span class="math inlin
 for all <span class="math inline">\(y\in J\)</span> with <span class="math inline">\(|y-d|&lt;\delta\)</span>, <span class="math inline">\(|f^{-1}(d)-f^{-1}(y)|&lt;\varepsilon\)</span>. So
 <span class="math inline">\(f^{-1}\)</span> is continuous at <span class="math inline">\(d\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-25">
+<section class="level5 unnumbered" id="exercises-26">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-inverse-one-to-one">
 
@@ -1238,7 +1238,7 @@ irrational number.</p>
 where <span class="math inline">\(f\)</span> is continuous would be
 <span class="math inline">\(\mathbb{Q}\)</span>. By <a href="#thm-continuity-set-gdelta">Theorem 6.6.2</a>, it is a <span class="math inline">\(G_\delta\)</span> set. This contradicts <a href="#thm-Q-not-gdelta">Theorem 6.6.4</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-26">
+<section class="level5 unnumbered" id="exercises-27">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-continuity-set-examples">
 

@@ -295,7 +295,7 @@ is a partition of }[0,1]\}.\]</span> So <span class="math display">\[\frac{1}{3}
 and <span class="math display">\[\frac{1}{3}=\inf_n\mathcal{U}(\mathcal{P}_n,f)\ge\inf_\mathcal{P}\mathcal{U}(\mathcal{P},f)=\overline{\int_{0}^{1}}f.\]</span>
 So <span class="math inline">\(\int^1_0 f=\frac{1}{3}\)</span> by <a href="#thm-lower-le-upper">Theorem 9.1.6</a>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-33">
+<section class="level5 unnumbered" id="exercises-34">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-darboux-sums-computation">
 
@@ -361,7 +361,7 @@ Since <span class="math display">\[\underline{\int_{a}^{b}}f\ge
 \mathcal{U}(\mathcal{P},f)-\mathcal{L}(\mathcal{P},f)&lt;\varepsilon.\]</span>
 Since <span class="math inline">\(\varepsilon&gt;0\)</span> was
 arbitrary, <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span>.</p>
-<p>(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Write <span class="math inline">\(I=\int_a^bf\)</span>. Since <span class="math inline">\(I\)</span> is the infimum of the upper sums, <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.7.7</a> gives a partition <span class="math inline">\(\mathcal{P}_1\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P}_1,f)&lt;I+\frac\varepsilon
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Let <span class="math inline">\(f\in\mathcal{R}[a,b]\)</span> and let <span class="math inline">\(\varepsilon&gt;0\)</span>. Write <span class="math inline">\(I=\int_a^bf\)</span>. Since <span class="math inline">\(I\)</span> is the infimum of the upper sums, <a href="ch-real-numbers.html#thm-sup-approximation">Theorem 1.8.7</a> gives a partition <span class="math inline">\(\mathcal{P}_1\)</span> with <span class="math inline">\(\mathcal{U}(\mathcal{P}_1,f)&lt;I+\frac\varepsilon
 2\)</span>. Since <span class="math inline">\(I\)</span> is also the
 supremum of the lower sums, it gives a partition <span class="math inline">\(\mathcal{P}_2\)</span> with <span class="math inline">\(\mathcal{L}(\mathcal{P}_2,f)&gt;I-\frac\varepsilon
 2\)</span>. The common refinement <span class="math inline">\(\mathcal{P}=\mathcal{P}_1\cup\mathcal{P}_2\)</span>
@@ -621,7 +621,7 @@ But <span class="math display">\[\underline{\int_{a}^{c}}f\le
 \overline{\int_{a}^{c}}f\text{ and }\underline{\int_{c}^{b}}f=
 \overline{\int_{c}^{b}}f.\]</span> Thus <span class="math inline">\(f\in\mathcal{R}[a,c]\)</span> and <span class="math inline">\(f\in\mathcal{R}[c,b]\)</span> with <span class="math display">\[\int^c_a f+\int^b_c f=\int^b_af.\]</span></p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-34">
+<section class="level5 unnumbered" id="exercises-35">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-integral-scalar">
 
@@ -803,7 +803,7 @@ for <span class="math inline">\(0&lt;h&lt;\delta\)</span>, <span class="math dis
 Similarly, for <span class="math inline">\(c\in(a,b]\)</span>, <span class="math inline">\(\lim_{h\to0^-}\frac{F(c+h)-F(c)}{h}=f(c)\)</span>.
 So <span class="math inline">\(F'(c)=f(c)\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-35">
+<section class="level5 unnumbered" id="exercises-36">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-ftc-piecewise">
 
@@ -934,7 +934,7 @@ continuity of <span class="math inline">\(\ln\)</span> and <a href="ch-continuit
 <p>(4) The derivative <span class="math inline">\(\frac1x\)</span> is
 decreasing on <span class="math inline">\((0,\infty)\)</span>. So <span class="math inline">\(\ln\)</span> is concave by <a href="ch-derivative.html#thm-convex-derivative">Theorem 7.4.3</a>.</p>
 <p>(5) Since <span class="math inline">\(\ln\)</span> is strictly
-increasing and <span class="math inline">\(\ln1=0\)</span>, <span class="math inline">\(\ln2&gt;0\)</span>. Let <span class="math inline">\(M\in\mathbb{R}\)</span>. By <a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a>, there is an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\ln2&gt;M\)</span>. If <span class="math inline">\(x&gt;2^n\)</span>, then <span class="math inline">\(\ln x&gt;\ln(2^n)=n\ln2&gt;M\)</span>. So <span class="math inline">\(\ln x\to\infty\)</span> as <span class="math inline">\(x\to\infty\)</span>. Next, let <span class="math inline">\(M\in\mathbb{R}\)</span> and choose <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\ln2&gt;-M\)</span>. If <span class="math inline">\(0&lt;x&lt;2^{-n}\)</span>, then <span class="math inline">\(\frac1x&gt;2^n\)</span>, so <span class="math inline">\(\ln x=-\ln\frac1x&lt;-n\ln2&lt;M\)</span>. So
+increasing and <span class="math inline">\(\ln1=0\)</span>, <span class="math inline">\(\ln2&gt;0\)</span>. Let <span class="math inline">\(M\in\mathbb{R}\)</span>. By <a href="ch-real-numbers.html#thm-archimedean">Theorem 1.8.8</a>, there is an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\ln2&gt;M\)</span>. If <span class="math inline">\(x&gt;2^n\)</span>, then <span class="math inline">\(\ln x&gt;\ln(2^n)=n\ln2&gt;M\)</span>. So <span class="math inline">\(\ln x\to\infty\)</span> as <span class="math inline">\(x\to\infty\)</span>. Next, let <span class="math inline">\(M\in\mathbb{R}\)</span> and choose <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\ln2&gt;-M\)</span>. If <span class="math inline">\(0&lt;x&lt;2^{-n}\)</span>, then <span class="math inline">\(\frac1x&gt;2^n\)</span>, so <span class="math inline">\(\ln x=-\ln\frac1x&lt;-n\ln2&lt;M\)</span>. So
 <span class="math inline">\(\ln x\to-\infty\)</span> as <span class="math inline">\(x\to0^+\)</span>.</p>
 <p>(6) Let <span class="math inline">\(y\in\mathbb{R}\)</span>. By (5),
 there are <span class="math inline">\(a,b&gt;0\)</span> with <span class="math inline">\(\ln a&lt;y&lt;\ln b\)</span>. Then <span class="math inline">\(a&lt;b\)</span>, and <span class="math inline">\(\ln\)</span> is continuous on <span class="math inline">\([a,b]\)</span> by <a href="ch-derivative.html#thm-differentiable-continuous">Theorem 7.1.3</a>. By <a href="ch-continuity.html#thm-ivt">Theorem 6.3.10</a>, <span class="math inline">\(\ln
@@ -1110,7 +1110,7 @@ holds for every such sequence, (2) follows from <a href="ch-continuity.html#thm-
 with <span class="math inline">\(0&lt;x_n&lt;1\)</span> and <span class="math inline">\(x_n\to0\)</span>. Let <span class="math inline">\(y_n=\frac1{x_n}\)</span>. Then <span class="math inline">\(y_n\to\infty\)</span>, and <span class="math display">\[x_n^\alpha\ln x_n=-\frac{\ln
 y_n}{y_n^\alpha}\to0\]</span> by (2). So (3) follows from <a href="ch-continuity.html#thm-sequential-limits-extended">Theorem 6.2.8</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-36">
+<section class="level5 unnumbered" id="exercises-37">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-log-base-laws">
 
@@ -1422,7 +1422,7 @@ x+\sin\frac\pi2\sin x=\sin x=y\)</span>. So <span class="math inline">\(\arccos 
 length of the arc of the unit circle above <span class="math inline">\([0,x]\)</span>. So <span class="math inline">\(\pi=2\arcsin1\)</span> is half the length of the
 unit circle, which is how <span class="math inline">\(\pi\)</span> is
 usually introduced.</p>
-<section class="level5 unnumbered" id="exercises-37">
+<section class="level5 unnumbered" id="exercises-38">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-arctan-reciprocal">
 
@@ -1521,7 +1521,7 @@ Fundamental Theorem of Calculus, <span class="math display">\[\int^b_a
 f(\varphi(t))\varphi'(t)\,dt=F(\varphi(b))-F(\varphi(a))=\int^{\varphi(b)}_{\varphi(a)}
 f(s) \,ds.\]</span></p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-38">
+<section class="level5 unnumbered" id="exercises-39">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-weighted-mvt">
 
@@ -1786,7 +1786,7 @@ f=\operatorname{P.V.}\int^b_{a} f.\]</span></p>
 <p><em>Proof.</em> See <a href="#exer-pv-agrees-interior">Exercise
 9.7.2</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-39">
+<section class="level5 unnumbered" id="exercises-40">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-p-test">
 
@@ -1975,7 +1975,7 @@ Thus <span class="math inline">\(0\le\frac{B_N}{A_N}\le\frac{\pi^2}{8(N+1)}\to0\
 been open for almost a century. His argument treated <span class="math inline">\(\frac{\sin x}x\)</span> as a polynomial with
 infinitely many roots. Making that argument rigorous takes more
 machinery than the proof above.</p>
-<section class="level5 unnumbered" id="exercises-40">
+<section class="level5 unnumbered" id="exercises-41">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-wallis-cos">
 
@@ -2497,7 +2497,7 @@ f\alpha'.\]</span></p>
 <p><em>Proof.</em> See <a href="#exer-rs-c1-formula">Exercise
 9.9.7</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-41">
+<section class="level5 unnumbered" id="exercises-42">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-rs-step">
 

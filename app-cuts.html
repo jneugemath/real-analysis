@@ -61,11 +61,11 @@ window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = set
 <article id="app-cuts">
 <h1>Appendix A. Construction of the Real Numbers by
 Cuts</h1><nav aria-labelledby="local-toc-h" class="local-toc"><h2 id="local-toc-h">On this page</h2><ul><li><a href="#sec-cuts">A.1 Cuts</a></li><li><a href="#sec-cuts-order">A.2 Order and the Least Upper Bound Property</a></li><li><a href="#sec-cuts-addition">A.3 Addition</a></li><li><a href="#sec-cuts-multiplication">A.4 Multiplication</a></li><li><a href="#sec-cuts-rationals">A.5 The Rational Numbers as a Subfield</a></li><li><a href="#notes-18">Notes</a></li></ul></nav>
-<p>This appendix proves <a href="ch-real-numbers.html#thm-existence-of-R">Theorem 1.7.2</a>.
+<p>This appendix proves <a href="ch-real-numbers.html#thm-existence-of-R">Theorem 1.8.2</a>.
 It builds an ordered field with the least upper bound property out of
 <span class="math inline">\(\mathbb{Q}\)</span>. The construction is due
 to Richard Dedekind.</p>
-<p>The idea comes from <a href="ch-real-numbers.html#sec-rationals">Section 1.3</a>. The
+<p>The idea comes from <a href="ch-real-numbers.html#sec-rationals">Section 1.4</a>. The
 rational numbers <span class="math inline">\(p\)</span> with <span class="math inline">\(p\le0\)</span> or <span class="math inline">\(p^2&lt;2\)</span> form a left piece of <span class="math inline">\(\mathbb{Q}\)</span>. The positive rational numbers
 with <span class="math inline">\(p^2&gt;2\)</span> form a right piece.
 No rational number sits between the two pieces. Dedekind’s idea was to
@@ -74,9 +74,9 @@ be a set of rational numbers, namely all the rational numbers to its
 left. A rational number <span class="math inline">\(q\)</span> gives
 such a set too, the set of all rational numbers less than <span class="math inline">\(q\)</span>.</p>
 <p>Only <span class="math inline">\(\mathbb{Q}\)</span> is assumed here,
-with its usual operations and order. So <span class="math inline">\(\mathbb{Q}\)</span> is an ordered field (<a href="ch-real-numbers.html#ex-Q-ordered-field">Example 1.5.7</a>), and the results of
-Sections <a href="ch-real-numbers.html#sec-ordered-sets">1.4</a>, <a href="ch-real-numbers.html#sec-fields">1.5</a> and <a href="ch-real-numbers.html#sec-absolute-value">1.6</a>
-hold in <span class="math inline">\(\mathbb{Q}\)</span>. Nothing from <a href="ch-real-numbers.html#sec-completeness">Section 1.7</a> or later is used, since those
+with its usual operations and order. So <span class="math inline">\(\mathbb{Q}\)</span> is an ordered field (<a href="ch-real-numbers.html#ex-Q-ordered-field">Example 1.6.7</a>), and the results of
+Sections <a href="ch-real-numbers.html#sec-ordered-sets">1.5</a>, <a href="ch-real-numbers.html#sec-fields">1.6</a> and <a href="ch-real-numbers.html#sec-absolute-value">1.7</a>
+hold in <span class="math inline">\(\mathbb{Q}\)</span>. Nothing from <a href="ch-real-numbers.html#sec-completeness">Section 1.8</a> or later is used, since those
 results assume that <span class="math inline">\(\mathbb{R}\)</span>
 exists. In this appendix the letters <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>, <span class="math inline">\(r\)</span>, <span class="math inline">\(s\)</span>, <span class="math inline">\(t\)</span>
 and <span class="math inline">\(u\)</span> always denote rational
@@ -109,7 +109,7 @@ is outside <span class="math inline">\(\alpha\)</span>.</p>
 
 <p><strong>Example A.1.3.</strong> Let <span class="math inline">\(q\in\mathbb{Q}\)</span>. Then <span class="math inline">\(q^*=\{p\in\mathbb{Q}:p&lt;q\}\)</span> is a cut,
 called a <em>rational cut</em>. To see this, note that <span class="math inline">\(q-1\in q^*\)</span> and <span class="math inline">\(q\notin q^*\)</span>. Property (2) is the
-transitivity of the order. For (3), if <span class="math inline">\(p&lt;q\)</span>, then <span class="math inline">\(p&lt;\frac{p+q}2&lt;q\)</span> by <a href="ch-real-numbers.html#exer-rational-midpoint">Exercise 1.3.3</a>. Notice that <span class="math inline">\(q\)</span> is the smallest element of <span class="math inline">\(\mathbb{Q}\setminus q^*\)</span>.</p>
+transitivity of the order. For (3), if <span class="math inline">\(p&lt;q\)</span>, then <span class="math inline">\(p&lt;\frac{p+q}2&lt;q\)</span> by <a href="ch-real-numbers.html#exer-rational-midpoint">Exercise 1.4.3</a>. Notice that <span class="math inline">\(q\)</span> is the smallest element of <span class="math inline">\(\mathbb{Q}\setminus q^*\)</span>.</p>
 </div>
 <div class="examplebox" id="ex-sqrt2-cut">
 
@@ -117,11 +117,11 @@ transitivity of the order. For (3), if <span class="math inline">\(p&lt;q\)</spa
 }p^2&lt;2\}\)</span>. Then <span class="math inline">\(\alpha\)</span>
 is a cut, and <span class="math inline">\(\alpha\ne q^*\)</span> for
 every <span class="math inline">\(q\in\mathbb{Q}\)</span>.</p>
-<p>First, <span class="math inline">\(0\in\alpha\)</span> and <span class="math inline">\(2\notin\alpha\)</span>. For (2), let <span class="math inline">\(p\in\alpha\)</span> and <span class="math inline">\(q&lt;p\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(q\in\alpha\)</span>. If <span class="math inline">\(q&gt;0\)</span>, then <span class="math inline">\(0&lt;q&lt;p\)</span>. So <span class="math inline">\(p^2&lt;2\)</span>, and <span class="math inline">\(q^2&lt;p^2&lt;2\)</span> by <a href="ch-real-numbers.html#exer-inequality-rules">Exercise 1.5.3</a>. So <span class="math inline">\(q\in\alpha\)</span>. For (3), let <span class="math inline">\(p\in\alpha\)</span>. If <span class="math inline">\(p\le0\)</span>, then <span class="math inline">\(1\in\alpha\)</span> and <span class="math inline">\(1&gt;p\)</span>. If <span class="math inline">\(p&gt;0\)</span>, then <span class="math inline">\(p\)</span> is in the set <span class="math inline">\(A\)</span> of <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.3.5</a>, which has no largest
+<p>First, <span class="math inline">\(0\in\alpha\)</span> and <span class="math inline">\(2\notin\alpha\)</span>. For (2), let <span class="math inline">\(p\in\alpha\)</span> and <span class="math inline">\(q&lt;p\)</span>. If <span class="math inline">\(q\le0\)</span>, then <span class="math inline">\(q\in\alpha\)</span>. If <span class="math inline">\(q&gt;0\)</span>, then <span class="math inline">\(0&lt;q&lt;p\)</span>. So <span class="math inline">\(p^2&lt;2\)</span>, and <span class="math inline">\(q^2&lt;p^2&lt;2\)</span> by <a href="ch-real-numbers.html#exer-inequality-rules">Exercise 1.6.3</a>. So <span class="math inline">\(q\in\alpha\)</span>. For (3), let <span class="math inline">\(p\in\alpha\)</span>. If <span class="math inline">\(p\le0\)</span>, then <span class="math inline">\(1\in\alpha\)</span> and <span class="math inline">\(1&gt;p\)</span>. If <span class="math inline">\(p&gt;0\)</span>, then <span class="math inline">\(p\)</span> is in the set <span class="math inline">\(A\)</span> of <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.4.5</a>, which has no largest
 element. So <span class="math inline">\(\alpha\)</span> is a cut.</p>
 <p>The set <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> consists of the
-<span class="math inline">\(p&gt;0\)</span> with <span class="math inline">\(p^2\ge2\)</span>. By <a href="ch-real-numbers.html#thm-sqrt2-irrational">Theorem 1.3.4</a>, <span class="math inline">\(p^2\ne2\)</span>. So <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> is the set
-<span class="math inline">\(B\)</span> of <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.3.5</a>, which has no smallest
+<span class="math inline">\(p&gt;0\)</span> with <span class="math inline">\(p^2\ge2\)</span>. By <a href="ch-real-numbers.html#thm-sqrt2-irrational">Theorem 1.4.4</a>, <span class="math inline">\(p^2\ne2\)</span>. So <span class="math inline">\(\mathbb{Q}\setminus\alpha\)</span> is the set
+<span class="math inline">\(B\)</span> of <a href="ch-real-numbers.html#thm-no-largest-element">Theorem 1.4.5</a>, which has no smallest
 element. By <a href="#ex-rational-cut">Example A.1.3</a>, <span class="math inline">\(\mathbb{Q}\setminus q^*\)</span> has a smallest
 element. So <span class="math inline">\(\alpha\ne q^*\)</span>. This cut
 will play the role of <span class="math inline">\(\sqrt2\)</span>.
@@ -133,7 +133,7 @@ Compare <a href="ch-real-numbers.html#fig-sqrt2-gap">Figure 1.1</a>.</p>
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>If <span class="math inline">\(p\le0\)</span>, take <span class="math inline">\(n=1\)</span>. Suppose <span class="math inline">\(p&gt;0\)</span>. As in the proof of <a href="ch-real-numbers.html#lem-lowest-terms">Lemma 1.3.3</a>, write <span class="math inline">\(p=\frac ab\)</span> and <span class="math inline">\(r=\frac cd\)</span> with <span class="math inline">\(a,b,c,d\in\mathbb{N}\)</span>. Let <span class="math inline">\(n=ad+1\)</span>. Since <span class="math inline">\(b\ge1\)</span> and <span class="math inline">\(c\ge1\)</span>, <span class="math display">\[nr=\frac{(ad+1)c}{d}\ge\frac{ad+1}{d}&gt;a\ge\frac
+<p>If <span class="math inline">\(p\le0\)</span>, take <span class="math inline">\(n=1\)</span>. Suppose <span class="math inline">\(p&gt;0\)</span>. As in the proof of <a href="ch-real-numbers.html#lem-lowest-terms">Lemma 1.4.3</a>, write <span class="math inline">\(p=\frac ab\)</span> and <span class="math inline">\(r=\frac cd\)</span> with <span class="math inline">\(a,b,c,d\in\mathbb{N}\)</span>. Let <span class="math inline">\(n=ad+1\)</span>. Since <span class="math inline">\(b\ge1\)</span> and <span class="math inline">\(c\ge1\)</span>, <span class="math display">\[nr=\frac{(ad+1)c}{d}\ge\frac{ad+1}{d}&gt;a\ge\frac
 ab=p.\]</span></p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="lemmabox" id="lem-cut-step">
@@ -153,7 +153,7 @@ step inside. So the inside and the outside of a cut come within <span class="mat
 negative of a cut in <a href="#sec-cuts-addition">Section A.3</a> and to
 the reciprocal in <a href="#sec-cuts-multiplication">Section
 A.4</a>.</p>
-<section class="level5 unnumbered" id="exercises-81">
+<section class="level5 unnumbered" id="exercises-82">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cut-examples">
 
@@ -227,7 +227,7 @@ of <span class="math inline">\(A\)</span>. Indeed, each <span class="math inline
 <p>Notice how little work this took. The hole in <span class="math inline">\(\mathbb{Q}\)</span> at <span class="math inline">\(\sqrt2\)</span> was a gap between a left piece and
 a right piece. A cut is a left piece, so the gap is filled by
 definition. The real work in this appendix is the arithmetic.</p>
-<section class="level5 unnumbered" id="exercises-82">
+<section class="level5 unnumbered" id="exercises-83">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cut-density">
 
@@ -302,8 +302,8 @@ A.1.6</a>, gives the room.</p>
 </div>
 <div class="corollarybox" id="cor-cut-additive">
 
-<p><strong>Corollary A.3.5.</strong> Axioms (1)–(5) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> hold for cuts, with <span class="math inline">\(0^*\)</span> as the zero. So does property (1) of
-<a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a>. Therefore <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (1)–(4) and <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.5.8</a> (1) hold for
+<p><strong>Corollary A.3.5.</strong> Axioms (1)–(5) of <a href="ch-real-numbers.html#def-field">Definition 1.6.1</a> hold for cuts, with <span class="math inline">\(0^*\)</span> as the zero. So does property (1) of
+<a href="ch-real-numbers.html#def-ordered-field">Definition 1.6.6</a>. Therefore <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.6.5</a> (1)–(4) and <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.6.8</a> (1) hold for
 cuts, since their proofs use only these facts. In particular, <span class="math inline">\(-\alpha\)</span> is the only cut with <span class="math inline">\(\alpha+(-\alpha)=0^*\)</span>, <span class="math inline">\(-(-\alpha)=\alpha\)</span>, and <span class="math inline">\(\alpha&gt;0^*\)</span> if and only if <span class="math inline">\(-\alpha&lt;0^*\)</span>.</p>
 </div>
 <div class="proofbox">
@@ -311,9 +311,9 @@ cuts, since their proofs use only these facts. In particular, <span class="math 
 <p>Axiom (1) is <a href="#lem-cut-sum">Lemma A.3.2</a>. Axioms (2)–(5)
 are <a href="#thm-cut-addition">Theorem A.3.4</a> (1)–(4), using (1) to
 write <span class="math inline">\(0^*+\alpha=\alpha\)</span>. Property
-(1) of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a> is <a href="#thm-cut-addition">Theorem A.3.4</a> (5), together with (1).</p>
+(1) of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.6.6</a> is <a href="#thm-cut-addition">Theorem A.3.4</a> (5), together with (1).</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-83">
+<section class="level5 unnumbered" id="exercises-84">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cut-sum-laws">
 
@@ -361,7 +361,7 @@ A positive <span class="math inline">\(p\)</span> is in <span class="math inline
 <div class="proofbox">
 <p><em>Proof.</em></p>
 <p>First, <span class="math inline">\(\alpha\beta\)</span> is shown to
-be a cut. By <a href="#lem-positive-cut">Lemma A.4.1</a>, <span class="math inline">\(\alpha^+\)</span> and <span class="math inline">\(\beta^+\)</span> are not empty, so <span class="math inline">\(\alpha\beta\ne\emptyset\)</span>. Choose <span class="math inline">\(u\notin\alpha\)</span> and <span class="math inline">\(t\notin\beta\)</span>. Both are positive. If <span class="math inline">\(r\in\alpha^+\)</span> and <span class="math inline">\(s\in\beta^+\)</span>, then <span class="math inline">\(0&lt;r&lt;u\)</span> and <span class="math inline">\(0&lt;s&lt;t\)</span>, so <span class="math inline">\(rs&lt;ut\)</span> by <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.5.8</a> (3). So <span class="math inline">\(ut\notin\alpha\beta\)</span>, and <span class="math inline">\(\alpha\beta\ne\mathbb{Q}\)</span>. Property (2)
+be a cut. By <a href="#lem-positive-cut">Lemma A.4.1</a>, <span class="math inline">\(\alpha^+\)</span> and <span class="math inline">\(\beta^+\)</span> are not empty, so <span class="math inline">\(\alpha\beta\ne\emptyset\)</span>. Choose <span class="math inline">\(u\notin\alpha\)</span> and <span class="math inline">\(t\notin\beta\)</span>. Both are positive. If <span class="math inline">\(r\in\alpha^+\)</span> and <span class="math inline">\(s\in\beta^+\)</span>, then <span class="math inline">\(0&lt;r&lt;u\)</span> and <span class="math inline">\(0&lt;s&lt;t\)</span>, so <span class="math inline">\(rs&lt;ut\)</span> by <a href="ch-real-numbers.html#thm-ordered-field-properties">Theorem 1.6.8</a> (3). So <span class="math inline">\(ut\notin\alpha\beta\)</span>, and <span class="math inline">\(\alpha\beta\ne\mathbb{Q}\)</span>. Property (2)
 holds, since <span class="math inline">\(q&lt;p\le rs\)</span> gives
 <span class="math inline">\(q\le rs\)</span>. For (3), let <span class="math inline">\(p\le rs\)</span> with <span class="math inline">\(r\in\alpha^+\)</span> and <span class="math inline">\(s\in\beta^+\)</span>. Choose <span class="math inline">\(r'\in\alpha\)</span> with <span class="math inline">\(r'&gt;r\)</span>. Then <span class="math inline">\(r's\in\alpha\beta\)</span> and <span class="math inline">\(r's&gt;rs\ge p\)</span>. Finally, <span class="math inline">\(0\le rs\)</span>, so <span class="math inline">\(0\in\alpha\beta\setminus0^*\)</span>. Every
 negative number is less than <span class="math inline">\(rs\)</span>, so
@@ -436,7 +436,7 @@ is <span class="math inline">\(0^*\)</span> and its one is <span class="math inl
 </div>
 <div class="proofbox">
 <p><em>Proof.</em></p>
-<p>Axioms (1)–(5) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> hold by
+<p>Axioms (1)–(5) of <a href="ch-real-numbers.html#def-field">Definition 1.6.1</a> hold by
 <a href="#cor-cut-additive">Corollary A.3.5</a>. Every product of cuts
 is a cut, by <a href="#lem-cut-product-positive">Lemma A.4.3</a>, <a href="#thm-cut-addition">Theorem A.3.4</a> (4) and <a href="#def-cut-product">Definition A.4.6</a>. So (6) holds. Each case of
 <a href="#def-cut-product">Definition A.4.6</a> is symmetric in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, by <a href="#thm-cut-multiplication-positive">Theorem A.4.5</a> (1). So (7)
@@ -448,16 +448,16 @@ If <span class="math inline">\(\alpha=0^*\)</span>, then <span class="math inlin
 <span class="math inline">\(\alpha&gt;0^*\)</span>, then <span class="math inline">\(\alpha\alpha^{-1}=1^*\)</span> by <a href="#thm-cut-multiplication-positive">Theorem A.4.5</a> (4). If <span class="math inline">\(\alpha&lt;0^*\)</span>, then <span class="math inline">\((-\alpha)^{-1}&gt;0^*\)</span>, so <span class="math inline">\(\alpha^{-1}&lt;0^*\)</span>. So <span class="math inline">\(\alpha\alpha^{-1}=(-\alpha)\bigl(-\alpha^{-1}\bigr)=(-\alpha)(-\alpha)^{-1}=1^*\)</span>.</p>
 <p>Axioms (8) and (11) follow from <a href="#thm-cut-multiplication-positive">Theorem A.4.5</a> (2) and (5),
 by splitting into cases by signs. This is <a href="#exer-cut-field-signs">Exercise A.4.1</a>.</p>
-<p>Property (1) of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.5.6</a>
+<p>Property (1) of <a href="ch-real-numbers.html#def-ordered-field">Definition 1.6.6</a>
 holds by <a href="#cor-cut-additive">Corollary A.3.5</a>. For (2), let
 <span class="math inline">\(0^*\le\alpha\)</span> and <span class="math inline">\(0^*\le\beta\)</span>. If <span class="math inline">\(\alpha=0^*\)</span> or <span class="math inline">\(\beta=0^*\)</span>, then <span class="math inline">\(\alpha\beta=0^*\)</span>. Otherwise <span class="math inline">\(\alpha\beta&gt;0^*\)</span> by <a href="#lem-cut-product-positive">Lemma A.4.3</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-84">
+<section class="level5 unnumbered" id="exercises-85">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cut-field-signs">
 
 <p><strong>Exercise A.4.1.</strong> Complete the proof of <a href="#thm-cuts-ordered-field">Theorem A.4.7</a> by proving axioms (8)
-and (11) of <a href="ch-real-numbers.html#def-field">Definition 1.5.1</a> for cuts of all
+and (11) of <a href="ch-real-numbers.html#def-field">Definition 1.6.1</a> for cuts of all
 signs. First show that <span class="math inline">\((-\alpha)\beta=-(\alpha\beta)=\alpha(-\beta)\)</span>
 for all cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. <a aria-label="Solution for Exercise A.4.1" href="solutions-appa.html#sol-exer-cut-field-signs">[Solution]</a></p>
 </div>
@@ -510,7 +510,7 @@ map <span class="math inline">\(q\mapsto q^*\)</span> is one-to-one from
 <p><em>Proof.</em></p>
 <p>If <span class="math inline">\(p\ne q\)</span>, then <span class="math inline">\(p&lt;q\)</span> or <span class="math inline">\(q&lt;p\)</span>, so <span class="math inline">\(p^*\ne q^*\)</span> by <a href="#thm-rational-cuts">Theorem A.5.1</a> (1). By <a href="#thm-rational-cuts">Theorem A.5.1</a>, <span class="math inline">\(\mathbb{Q}^*\)</span> contains <span class="math inline">\(0^*\)</span> and <span class="math inline">\(1^*\)</span>, and it contains the sum, the product
 and the negative of any of its elements. If <span class="math inline">\(q\ne0\)</span>, then <span class="math inline">\(q^*\bigl(\frac1q\bigr)^*=1^*\)</span> by <a href="#thm-rational-cuts">Theorem A.5.1</a> (4), so <span class="math inline">\((q^*)^{-1}=\bigl(\frac1q\bigr)^*\in\mathbb{Q}^*\)</span>
-by <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.5.5</a> (7). The axioms of
+by <a href="ch-real-numbers.html#thm-field-properties">Theorem 1.6.5</a> (7). The axioms of
 an ordered field hold in <span class="math inline">\(\mathbb{Q}^*\)</span>, since they hold in <span class="math inline">\(\mathbb{R}\)</span>. So <span class="math inline">\(\mathbb{Q}^*\)</span>, with the operations and
 order of <span class="math inline">\(\mathbb{R}\)</span>, is an ordered
 field contained in <span class="math inline">\(\mathbb{R}\)</span>.</p>
@@ -526,13 +526,13 @@ this book depends on what a real number is made of. It depends only on
 how real numbers add, multiply and compare, and in those ways <span class="math inline">\(q\)</span> and <span class="math inline">\(q^*\)</span> are the same.</p>
 <div class="proofbox">
 <p><em>Proof of <a href="ch-real-numbers.html#thm-existence-of-R">Theorem
-1.7.2</a>.</em></p>
+1.8.2</a>.</em></p>
 <p>By <a href="#thm-cuts-ordered-field">Theorem A.4.7</a>, <span class="math inline">\(\mathbb{R}\)</span> is an ordered field. By <a href="#thm-cut-lub">Theorem A.2.3</a>, it has the least upper bound
 property. By <a href="#thm-cuts-contain-Q">Theorem A.5.2</a>, after each
 <span class="math inline">\(q\in\mathbb{Q}\)</span> is identified with
 <span class="math inline">\(q^*\)</span>, <span class="math inline">\(\mathbb{Q}\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-85">
+<section class="level5 unnumbered" id="exercises-86">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-cut-membership">
 

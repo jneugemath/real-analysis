@@ -141,7 +141,7 @@ numbers greater than <span class="math inline">\(42\)</span>.</p>
 <p><strong>Example 4.1.6.</strong> If <span class="math inline">\(E=\left\{\frac{1}{n}:n\in\mathbb{N}\right\}\)</span>,
 <span class="math inline">\(E^\circ=\emptyset\)</span>. Every interval
 <span class="math inline">\((x-\varepsilon,x+\varepsilon)\)</span>
-contains an irrational number by <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.7.5</a>, and <span class="math inline">\(E\)</span> has no irrational numbers. So no point
+contains an irrational number by <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.8.5</a>, and <span class="math inline">\(E\)</span> has no irrational numbers. So no point
 of <span class="math inline">\(E\)</span> is an interior point.</p>
 </div>
 <div class="theorembox" id="thm-open-intervals-open">
@@ -152,7 +152,7 @@ of <span class="math inline">\(E\)</span> is an interior point.</p>
 <p><em>Proof.</em> See <a href="#exer-open-interval-open">Exercise
 4.1.2</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<p>By <a href="ch-real-numbers.html#def-interval-notation">Definition 1.7.6</a>, <span class="math inline">\((a,b)\)</span> is called an open interval only
+<p>By <a href="ch-real-numbers.html#def-interval-notation">Definition 1.8.6</a>, <span class="math inline">\((a,b)\)</span> is called an open interval only
 when <span class="math inline">\(a&lt;b\)</span> are real numbers. The
 sets <span class="math inline">\((a,\infty)\)</span>, <span class="math inline">\((-\infty,b)\)</span> and <span class="math inline">\((-\infty,\infty)=\mathbb{R}\)</span> are called
 <em>unbounded open intervals</em>. They are also open sets. See <a href="#exer-unbounded-open">Exercise 4.1.4</a> and <a href="#ex-R-empty-open-closed">Example 4.1.16</a>.</p>
@@ -248,7 +248,7 @@ contradiction. So <span class="math inline">\(c\le a\)</span>. Switching
 the roles of <span class="math inline">\(I_x\)</span> and <span class="math inline">\(I_y\)</span> gives <span class="math inline">\(a\le c\)</span>. So <span class="math inline">\(a=c\)</span>. The same argument gives <span class="math inline">\(b=d\)</span>. Thus <span class="math inline">\(I_x=I_y\)</span>.</p>
 <p>Last, the collection of distinct intervals <span class="math inline">\(I_x\)</span> is at most countable. Each of them
 contains a rational number by <a href="ch-real-numbers.html#thm-density-of-Q">Theorem
-1.7.11</a>. Choose one rational number in each of them. Since distinct
+1.8.11</a>. Choose one rational number in each of them. Since distinct
 intervals are disjoint, distinct intervals get distinct rational
 numbers. So the collection is in one-to-one correspondence with a subset
 of <span class="math inline">\(\mathbb{Q}\)</span>. Since <span class="math inline">\(\mathbb{Q}\)</span> is countable by <a href="ch-cardinality.html#cor-Q-countable">Corollary 2.2.7</a>, the collection is at most
@@ -296,7 +296,7 @@ that <span class="math inline">\(J\subset U_\alpha\)</span> for some
 <span class="math inline">\(\alpha\in\Lambda\)</span>. For each <span class="math inline">\(J\in\mathcal{J}_0\)</span>, choose one <span class="math inline">\(\alpha_J\in\Lambda\)</span> with <span class="math inline">\(J\subset U_{\alpha_J}\)</span>. Then <span class="math display">\[\bigcup_{J\in\mathcal{J}_0}U_{\alpha_J}\subset
 U.\]</span> Now let <span class="math inline">\(x\in U\)</span>. Then
 <span class="math inline">\(x\in U_\alpha\)</span> for some <span class="math inline">\(\alpha\in\Lambda\)</span>. Since <span class="math inline">\(U_\alpha\)</span> is open, there exists an <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((x-\varepsilon,x+\varepsilon)\subset
-U_\alpha\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>,
+U_\alpha\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.8.11</a>,
 there exist <span class="math inline">\(p,q\in\mathbb{Q}\)</span> with
 <span class="math inline">\(x-\varepsilon&lt;p&lt;x&lt;q&lt;x+\varepsilon\)</span>.
 Then <span class="math inline">\(J=(p,q)\subset U_\alpha\)</span>, so
@@ -355,7 +355,7 @@ to prove <a href="#thm-closed-union-intersection">Theorem
 <p><strong>Example 4.1.18.</strong> Let <span class="math inline">\(U_n=\left(-\frac{1}{n},\frac{1}{n}\right)\)</span>.
 Then <span class="math inline">\(\bigcap_{n=1}^\infty U_n=\{0\}\)</span>
 is closed. To see the intersection is <span class="math inline">\(\{0\}\)</span>, notice <span class="math inline">\(0\in U_n\)</span> for all <span class="math inline">\(n\)</span>. If <span class="math inline">\(x\ne0\)</span>, then by the Archimedean Principle
-(<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.7.8</a>) there is an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(\frac1n&lt;|x|\)</span>, and <span class="math inline">\(x\notin U_n\)</span>. So an intersection of
+(<a href="ch-real-numbers.html#thm-archimedean">Theorem 1.8.8</a>) there is an <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(\frac1n&lt;|x|\)</span>, and <span class="math inline">\(x\notin U_n\)</span>. So an intersection of
 infinitely many open sets need not be open.</p>
 </div>
 <div class="examplebox" id="ex-intersection-half-open">
@@ -487,9 +487,9 @@ closed set containing <span class="math inline">\(E\)</span>.</p>
 <div class="examplebox" id="ex-Q-dense">
 
 <p><strong>Example 4.1.28.</strong> <span class="math inline">\(\mathbb{Q}\)</span> and <span class="math inline">\(\mathbb{R}\setminus \mathbb{Q}\)</span> are dense
-in <span class="math inline">\(\mathbb{R}\)</span>. Let <span class="math inline">\(x\in\mathbb{R}\)</span> and <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.7.11</a>, there is a rational number
+in <span class="math inline">\(\mathbb{R}\)</span>. Let <span class="math inline">\(x\in\mathbb{R}\)</span> and <span class="math inline">\(\varepsilon&gt;0\)</span>. By <a href="ch-real-numbers.html#thm-density-of-Q">Theorem 1.8.11</a>, there is a rational number
 in <span class="math inline">\((x,x+\varepsilon)\)</span>. It is not
-<span class="math inline">\(x\)</span>. So <span class="math inline">\(x\)</span> is a limit point of <span class="math inline">\(\mathbb{Q}\)</span>, and <span class="math inline">\(\overline{\mathbb{Q}}=\mathbb{R}\)</span>. <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.7.5</a> gives the same for
+<span class="math inline">\(x\)</span>. So <span class="math inline">\(x\)</span> is a limit point of <span class="math inline">\(\mathbb{Q}\)</span>, and <span class="math inline">\(\overline{\mathbb{Q}}=\mathbb{R}\)</span>. <a href="ch-real-numbers.html#exer-density-irrationals">Exercise 1.8.5</a> gives the same for
 <span class="math inline">\(\mathbb{R}\setminus\mathbb{Q}\)</span>.</p>
 </div>
 <div class="definitionbox" id="def-connected">
@@ -509,7 +509,7 @@ there exist <span class="math inline">\(a,b\in A\)</span> with <span class="math
 <p>(<span class="math inline">\(\Leftarrow\)</span>) This direction is
 an exercise.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-17">
+<section class="level5 unnumbered" id="exercises-18">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-open-iff-interior">
 
@@ -768,7 +768,7 @@ of the sets in <span class="math inline">\(\mathcal{U}\)</span>. Let
 <span class="math inline">\(\alpha_c\in\Lambda\)</span> with <span class="math inline">\(c\in U_{\alpha_c}\)</span>. Since <span class="math inline">\(U_{\alpha_c}\)</span> is open, there exists an
 <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\((c-\varepsilon,c+\varepsilon)\subset
 U_{\alpha_c}\)</span>. By <a href="ch-real-numbers.html#thm-sup-approximation">Theorem
-1.7.7</a>, there exists a good point <span class="math inline">\(r\)</span> with <span class="math inline">\(c-\varepsilon&lt;r\le c\)</span>. So <span class="math display">\[[a,r]\subset U_{\alpha_1}\cup\cdots\cup
+1.8.7</a>, there exists a good point <span class="math inline">\(r\)</span> with <span class="math inline">\(c-\varepsilon&lt;r\le c\)</span>. So <span class="math display">\[[a,r]\subset U_{\alpha_1}\cup\cdots\cup
 U_{\alpha_n}\]</span> for some <span class="math inline">\(\alpha_1,\dots,\alpha_n\in\Lambda\)</span>. Let
 <span class="math inline">\(t=\min\left\{b,c+\frac{\varepsilon}{2}\right\}\)</span>.
 Then <span class="math inline">\([r,t]\subset(c-\varepsilon,c+\varepsilon)\subset
@@ -813,7 +813,7 @@ bounded. Choose <span class="math inline">\(x_1\in K\)</span> with <span class="
 possible since <span class="math inline">\(K\)</span> is not bounded.
 Then <span class="math inline">\(|x_1|&lt;|x_2|&lt;|x_3|&lt;\cdots\)</span>, so the
 points <span class="math inline">\(x_n\)</span> are distinct, and <span class="math inline">\(|x_n|&gt;n\)</span> for all <span class="math inline">\(n\)</span>. Let <span class="math inline">\(S=\{x_n:n\in\mathbb{N}\}\)</span>. Then <span class="math inline">\(S\)</span> is an infinite subset of <span class="math inline">\(K\)</span>. Let <span class="math inline">\(y\in\mathbb{R}\)</span>, and choose <span class="math inline">\(N\in\mathbb{N}\)</span> with <span class="math inline">\(N&gt;|y|+1\)</span>. By the Reverse Triangle
-Inequality (<a href="ch-real-numbers.html#thm-absolute-value">Theorem 1.6.3</a>), for all
+Inequality (<a href="ch-real-numbers.html#thm-absolute-value">Theorem 1.7.3</a>), for all
 <span class="math inline">\(n\ge N\)</span>, <span class="math display">\[|x_n-y|\ge|x_n|-|y|&gt;n-|y|\ge
 N-|y|&gt;1.\]</span> So <span class="math inline">\((y-1,y+1)\)</span>
 contains at most the finitely many points <span class="math inline">\(x_1,\dots,x_{N-1}\)</span> of <span class="math inline">\(S\)</span>. By <a href="#exer-limit-point-infinite">Exercise 4.1.9</a>, <span class="math inline">\(y\)</span> is not a limit point of <span class="math inline">\(S\)</span>. So <span class="math inline">\(S\)</span> has no limit point in <span class="math inline">\(\mathbb{R}\)</span>, and so none in <span class="math inline">\(K\)</span>. This contradicts (3). So <span class="math inline">\(K\)</span> is bounded.</p>
@@ -839,7 +839,7 @@ converges to a point in <span class="math inline">\(K\)</span>.</p>
 <p><em>Proof.</em> See <a href="#exer-compact-sequences">Exercise
 4.2.3</a>.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
-<section class="level5 unnumbered" id="exercises-18">
+<section class="level5 unnumbered" id="exercises-19">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-half-line-not-compact">
 
