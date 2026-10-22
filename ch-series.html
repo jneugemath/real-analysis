@@ -150,6 +150,45 @@ bounded, by <a href="ch-sequences.html#thm-convergent-bounded">Theorem 3.2.3</a>
 <span class="math inline">\(\{s_n\}\)</span> diverges, and the harmonic
 series diverges.</p>
 </div>
+<section class="level5 unnumbered" id="exercises-42">
+<h3>Exercises</h3>
+<div class="exercisebox" id="exer-harmonic-grouping">
+
+<p><strong>Exercise 10.1.1.</strong> Let <span class="math inline">\(s_n\)</span> be the <span class="math inline">\(n\)</span>th partial sum of the harmonic series
+<span class="math inline">\(\sum\frac1k\)</span>. <a href="#ex-harmonic-series">Example 10.1.5</a> shows that <span class="math inline">\(s_{2^n}\ge1+\frac n2\)</span>. Prove that <span class="math inline">\(s_{2^n}\le1+n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So the partial sums grow
+without bound, but slowly.</p>
+</div>
+<div class="exercisebox" id="exer-geometric-practice">
+
+<p><strong>Exercise 10.1.2.</strong> Find the sum of each series.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\displaystyle\sum_{k=2}^\infty\left(\frac23\right)^k\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=0}^\infty\frac{5(-1)^k}{3^k}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\sum_{k=1}^\infty\frac{2^k+3^k}{6^k}\)</span></p></li>
+</ol>
+<p><a aria-label="Solution for Exercise 10.1.2" href="solutions-ch10.html#sol-exer-geometric-practice">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-repeating-decimal">
+
+<p><strong>Exercise 10.1.3.</strong> The repeating decimal <span class="math inline">\(0.272727\ldots\)</span> means <span class="math inline">\(\sum_{k=1}^\infty\frac{27}{100^k}\)</span>. Write
+it as a fraction. More generally, let <span class="math inline">\(m\in\mathbb{N}\)</span> and let <span class="math inline">\(D\)</span> be an integer with <span class="math inline">\(0\le D&lt;10^m\)</span>. Prove that <span class="math inline">\(\sum_{k=1}^\infty\frac D{10^{mk}}=\frac
+D{10^m-1}\)</span>. This is the repeating decimal whose repeating block
+is the <span class="math inline">\(m\)</span> digits of <span class="math inline">\(D\)</span>, so every such decimal is a rational
+number. <a aria-label="Solution for Exercise 10.1.3" href="solutions-ch10.html#sol-exer-repeating-decimal">[Solution]</a></p>
+</div>
+<div class="exercisebox" id="exer-bouncing-ball">
+
+<p><strong>Exercise 10.1.4.</strong> A ball is dropped from a height of
+<span class="math inline">\(10\)</span> feet. Each time it hits the
+ground, it bounces back up to <span class="math inline">\(\frac34\)</span> of the height it just fell. Find
+the total distance the ball travels.</p>
+</div>
+<div class="exercisebox" id="exer-telescoping-k-k2">
+
+<p><strong>Exercise 10.1.5.</strong> Prove that <span class="math inline">\(\sum_{k=1}^\infty\frac1{k(k+2)}=\frac34\)</span>.
+Start by writing <span class="math inline">\(\frac1{k(k+2)}=\frac12\left(\frac1k-\frac1{k+2}\right)\)</span>.</p>
+</div>
+</section>
 </section>
 <section class="level3 unnumbered" id="sec-convergence-tests">
 <h2>10.2 Convergence Tests</h2>
@@ -598,7 +637,7 @@ converges for all <span class="math inline">\(t\in\mathbb{R}\)</span>.
 For <span class="math inline">\(t\ne2p\pi\)</span> this follows from the
 test. For <span class="math inline">\(t=2p\pi\)</span> it is the <span class="math inline">\(p\)</span>-series with <span class="math inline">\(p=2\)</span>.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-42">
+<section class="level5 unnumbered" id="exercises-43">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-nth-term-test">
 
@@ -632,11 +671,11 @@ of the Alternating Series Test cannot be replaced by <span class="math inline">\
 <span class="math inline">\(\sum a_kb_k\)</span> converges. This is
 called <em>Abel’s Test</em>. <a aria-label="Hint for Exercise 10.2.7" href="solutions-ch10.html#sol-exer-abel-test">[Hint]</a></p>
 </div>
-<div class="exercisebox" id="exer-harmonic-grouping">
+<div class="exercisebox" id="exer-squares-converge">
 
-<p><strong>Exercise 10.2.8.</strong> Let <span class="math inline">\(s_n\)</span> be the <span class="math inline">\(n\)</span>th partial sum of the harmonic series
-<span class="math inline">\(\sum\frac1k\)</span>. <a href="#ex-harmonic-series">Example 10.1.5</a> shows that <span class="math inline">\(s_{2^n}\ge1+\frac n2\)</span>. Prove that <span class="math inline">\(s_{2^n}\le1+n\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>. So the partial sums grow
-without bound, but slowly. <a aria-label="Hint for Exercise 10.2.8" href="solutions-ch10.html#sol-exer-harmonic-grouping">[Hint]</a></p>
+<p><strong>Exercise 10.2.8.</strong> Suppose <span class="math inline">\(a_k\ge0\)</span> for all <span class="math inline">\(k\)</span> and <span class="math inline">\(\sum
+a_k\)</span> converges. Prove that <span class="math inline">\(\sum
+a_k^2\)</span> converges. Show by example that <span class="math inline">\(\sum\sqrt{a_k}\)</span> can diverge. <a aria-label="Hint for Exercise 10.2.8" href="solutions-ch10.html#sol-exer-squares-converge">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-trig-cos">
 
@@ -903,7 +942,7 @@ overshot <span class="math inline">\(\alpha\)</span> by at most that
 term. A proof that took just some number of terms with total above <span class="math inline">\(\alpha\)</span> would have no such bound. The
 smallest such number exists by the Well-Ordering Principle (<a href="ch-real-numbers.html#ax-well-ordering">Axiom 1.2.7</a>).</p>
 </div>
-<section class="level5 unnumbered" id="exercises-43">
+<section class="level5 unnumbered" id="exercises-44">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-telescoping-bound-absolute">
 
@@ -988,7 +1027,7 @@ since <span class="math inline">\(\sqrt{uv}\le\frac{u+v}2\)</span> for
 <span class="math inline">\(c_n\not\to0\)</span>, and the Cauchy product
 diverges by the <span class="math inline">\(n\)</span>th Term Test.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-44">
+<section class="level5 unnumbered" id="exercises-45">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-geometric-square">
 
@@ -1008,36 +1047,17 @@ that their Cauchy product converges absolutely. <a aria-label="Hint for Exercise
 His proof is <a href="#exer-euclid-primes">Exercise 10.5.1</a>. Euler
 found a different proof in 1737, using series. Each prime <span class="math inline">\(p\)</span> gives a geometric series <span class="math display">\[1+\frac1p+\frac1{p^2}+\frac1{p^3}+\cdots=\frac1{1-\frac1p}.\]</span>
 Multiply these series together, one for each prime. Every natural number
-is a product of primes, so every <span class="math inline">\(\frac1n\)</span> appears when the product is
-multiplied out. Euler concluded that the product is the harmonic series.
-If there were only finitely many primes, the product would be a finite
-number. But the harmonic series diverges, by <a href="#ex-harmonic-series">Example 10.1.5</a>.</p>
+is a product of primes, by <a href="ch-real-numbers.html#lem-prime-factors">Lemma
+1.2.18</a>, so every <span class="math inline">\(\frac1n\)</span>
+appears when the product is multiplied out. Euler concluded that the
+product is the harmonic series. If there were only finitely many primes,
+the product would be a finite number. But the harmonic series diverges,
+by <a href="#ex-harmonic-series">Example 10.1.5</a>.</p>
 <p>This section makes Euler’s argument precise. It uses only finite sums
 and finite products. It can be skipped. Nothing later depends on it.</p>
-<div class="definitionbox" id="def-prime">
-
-<p><strong>Definition 10.5.1.</strong> Let <span class="math inline">\(d,n\in\mathbb{N}\)</span>. Then <span class="math inline">\(d\)</span> <em>divides</em> <span class="math inline">\(n\)</span> if <span class="math inline">\(n=dm\)</span> for some <span class="math inline">\(m\in\mathbb{N}\)</span>. A natural number <span class="math inline">\(p\ge2\)</span> is <em>prime</em> if the only
-natural numbers that divide <span class="math inline">\(p\)</span> are
-<span class="math inline">\(1\)</span> and <span class="math inline">\(p\)</span>.</p>
-</div>
-<div class="lemmabox" id="lem-prime-factors">
-
-<p><strong>Lemma 10.5.2.</strong> Every natural number <span class="math inline">\(n\ge2\)</span> is a product of primes. That is,
-<span class="math inline">\(n=q_1q_2\cdots q_r\)</span> for some <span class="math inline">\(r\in\mathbb{N}\)</span> and some primes <span class="math inline">\(q_1,\dots,q_r\)</span>, which need not be
-different.</p>
-</div>
-<div class="proofbox">
-<p><em>Proof.</em></p>
-<p>Assume by way of contradiction that some <span class="math inline">\(n\ge2\)</span> is not a product of primes. By <a href="ch-real-numbers.html#ax-well-ordering">Axiom 1.2.7</a>, there is a smallest such <span class="math inline">\(n\)</span>. A prime is a product of one prime, so
-<span class="math inline">\(n\)</span> is not prime. So <span class="math inline">\(n=dm\)</span> for some <span class="math inline">\(d,m\in\mathbb{N}\)</span> with <span class="math inline">\(d\ne1\)</span> and <span class="math inline">\(d\ne n\)</span>. Then <span class="math inline">\(d\ge2\)</span>. Also <span class="math inline">\(m\ge2\)</span>, since <span class="math inline">\(m=1\)</span> would give <span class="math inline">\(d=n\)</span>. So <span class="math inline">\(d=\frac nm\le\frac n2&lt;n\)</span>, and in the
-same way <span class="math inline">\(m&lt;n\)</span>. Since <span class="math inline">\(n\)</span> is the smallest natural number that is
-at least <span class="math inline">\(2\)</span> and is not a product of
-primes, <span class="math inline">\(d\)</span> and <span class="math inline">\(m\)</span> are products of primes. Then so is
-<span class="math inline">\(n=dm\)</span>, a contradiction.</p>
-<p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="theorembox" id="thm-infinitely-many-primes">
 
-<p><strong>Theorem 10.5.3</strong> (Euler)<strong>.</strong></p>
+<p><strong>Theorem 10.5.1</strong> (Euler)<strong>.</strong></p>
 <p>There are infinitely many primes.</p>
 </div>
 <div class="proofbox">
@@ -1047,7 +1067,7 @@ primes. Call them <span class="math inline">\(p_1,\dots,p_m\)</span>.
 The plan is to show that the partial sums <span class="math inline">\(s_N=\sum_{n=1}^N\frac1n\)</span> of the harmonic
 series are bounded.</p>
 <p>Let <span class="math inline">\(N\in\mathbb{N}\)</span>, and choose
-<span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(2^K&gt;N\)</span>. Let <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\le N\)</span>. If <span class="math inline">\(n\ge2\)</span>, then <span class="math inline">\(n\)</span> is a product of primes by <a href="#lem-prime-factors">Lemma 10.5.2</a>, and each of these primes is
+<span class="math inline">\(K\in\mathbb{N}\)</span> with <span class="math inline">\(2^K&gt;N\)</span>. Let <span class="math inline">\(n\in\mathbb{N}\)</span> with <span class="math inline">\(n\le N\)</span>. If <span class="math inline">\(n\ge2\)</span>, then <span class="math inline">\(n\)</span> is a product of primes by <a href="ch-real-numbers.html#lem-prime-factors">Lemma 1.2.18</a>, and each of these primes is
 one of <span class="math inline">\(p_1,\dots,p_m\)</span>. Collecting
 equal primes, <span class="math display">\[n=p_1^{a_1}p_2^{a_2}\cdots
 p_m^{a_m}\]</span> for some <span class="math inline">\(a_1,\dots,a_m\in\mathbb{N}_0\)</span>. This also
@@ -1069,23 +1089,24 @@ there are infinitely many primes.</p>
 <p class="qed"><span aria-label="End of proof" role="img">∎</span></p></div>
 <div class="remarkbox" id="rem-euler-product">
 
-<p><strong>Remark 10.5.4.</strong> Euler went further. Every <span class="math inline">\(n\ge2\)</span> is a product of primes in only one
+<p><strong>Remark 10.5.2.</strong> Euler went further. Every <span class="math inline">\(n\ge2\)</span> is a product of primes in only one
 way, apart from the order of the factors. This is the Fundamental
-Theorem of Arithmetic, which this book does not prove. With it, each
-<span class="math inline">\(\frac1n\)</span> appears exactly once when
-the geometric series are multiplied out. Euler showed that for <span class="math inline">\(\alpha&gt;1\)</span>, <span class="math display">\[\sum_{n=1}^\infty\frac1{n^\alpha}=\prod_{q\text{
+Theorem of Arithmetic, <a href="ch-real-numbers.html#thm-fta">Theorem 1.2.20</a>. With it,
+each <span class="math inline">\(\frac1n\)</span> appears exactly once
+when the geometric series are multiplied out. Euler showed that for
+<span class="math inline">\(\alpha&gt;1\)</span>, <span class="math display">\[\sum_{n=1}^\infty\frac1{n^\alpha}=\prod_{q\text{
 prime}}\frac1{1-q^{-\alpha}}.\]</span> Here the infinite product means
 the limit of the products over the primes <span class="math inline">\(q\le M\)</span> as <span class="math inline">\(M\to\infty\)</span>. This is called the <em>Euler
 product</em>. It ties the primes to analysis, and it is the starting
 point of analytic number theory.</p>
 </div>
-<section class="level5 unnumbered" id="exercises-45">
+<section class="level5 unnumbered" id="exercises-46">
 <h3>Exercises</h3>
 <div class="exercisebox" id="exer-euclid-primes">
 
-<p><strong>Exercise 10.5.1.</strong> (Euclid) Let <span class="math inline">\(p_1,\dots,p_m\)</span> be primes, and let <span class="math inline">\(n=p_1p_2\cdots p_m+1\)</span>. Prove that no <span class="math inline">\(p_i\)</span> divides <span class="math inline">\(n\)</span>. Use <a href="#lem-prime-factors">Lemma
-10.5.2</a> to conclude that there is a prime different from <span class="math inline">\(p_1,\dots,p_m\)</span>. This gives another proof
-of <a href="#thm-infinitely-many-primes">Theorem 10.5.3</a>. <a aria-label="Hint for Exercise 10.5.1" href="solutions-ch10.html#sol-exer-euclid-primes">[Hint]</a></p>
+<p><strong>Exercise 10.5.1.</strong> (Euclid) Let <span class="math inline">\(p_1,\dots,p_m\)</span> be primes, and let <span class="math inline">\(n=p_1p_2\cdots p_m+1\)</span>. Prove that no <span class="math inline">\(p_i\)</span> divides <span class="math inline">\(n\)</span>. Use <a href="ch-real-numbers.html#lem-prime-factors">Lemma
+1.2.18</a> to conclude that there is a prime different from <span class="math inline">\(p_1,\dots,p_m\)</span>. This gives another proof
+of <a href="#thm-infinitely-many-primes">Theorem 10.5.1</a>. <a aria-label="Hint for Exercise 10.5.1" href="solutions-ch10.html#sol-exer-euclid-primes">[Hint]</a></p>
 </div>
 <div class="exercisebox" id="exer-two-three-sum">
 
@@ -1118,8 +1139,8 @@ Franz Mertens proved <a href="#thm-mertens">Theorem 10.4.2</a> in 1875.
 Euclid’s proof that there are infinitely many primes is Proposition 20
 of Book IX of the <em>Elements</em> [<a href="bibliography.html#bib-euclid">28</a>].
 Euler’s proof of <a href="#thm-infinitely-many-primes">Theorem
-10.5.3</a> is in a paper he wrote in 1737 and published in 1744 [<a href="bibliography.html#bib-euler1744">29</a>]. The same paper has the Euler product of
-<a href="#rem-euler-product">Remark 10.5.4</a> and the divergence of
+10.5.1</a> is in a paper he wrote in 1737 and published in 1744 [<a href="bibliography.html#bib-euler1744">29</a>]. The same paper has the Euler product of
+<a href="#rem-euler-product">Remark 10.5.2</a> and the divergence of
 <span class="math inline">\(\sum\frac1{q_k}\)</span> in <a href="#exer-prime-reciprocals">Exercise 10.5.3</a>. Dirichlet’s 1837
 paper extended Euler’s method to prove that every arithmetic progression
 <span class="math inline">\(a,a+d,a+2d,\dots\)</span> with <span class="math inline">\(a,d\in\mathbb{N}\)</span> and no common factor

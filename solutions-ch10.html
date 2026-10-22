@@ -60,6 +60,30 @@ window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = set
 <main id="main">
 <article id="solutions-ch10">
 <h1>Solutions for Chapter 10. Series of Real Numbers</h1>
+<div class="solutionbox" id="sol-exer-geometric-practice">
+
+<p><strong><a href="ch-series.html#exer-geometric-practice">Exercise
+10.1.2</a>.</strong></p>
+<ol>
+<li><p>For <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(\sum_{k=2}^n\left(\frac23\right)^k=\sum_{k=1}^n\left(\frac23\right)^k-\frac23\)</span>.
+By <a href="ch-series.html#ex-geometric-series">Example 10.1.3</a>, this tends to
+<span class="math inline">\(\frac{2/3}{1-2/3}-\frac23=2-\frac23=\frac43\)</span>.</p></li>
+<li><p>The partial sums are <span class="math inline">\(5\)</span> times
+those of <span class="math inline">\(\sum_{k=0}^\infty\left(-\frac13\right)^k\)</span>,
+which tend to <span class="math inline">\(\frac1{1+\frac13}=\frac34\)</span> by <a href="ch-series.html#ex-geometric-series">Example 10.1.3</a>. By <a href="ch-sequences.html#thm-limit-laws">Theorem 3.2.4</a> (2), the sum is <span class="math inline">\(\frac{15}4\)</span>.</p></li>
+<li><p>The <span class="math inline">\(n\)</span>th partial sum is <span class="math inline">\(\sum_{k=1}^n\left(\frac13\right)^k+\sum_{k=1}^n\left(\frac12\right)^k\)</span>.
+By <a href="ch-series.html#ex-geometric-series">Example 10.1.3</a>, these tend to
+<span class="math inline">\(\frac{1/3}{2/3}=\frac12\)</span> and <span class="math inline">\(\frac{1/2}{1/2}=1\)</span>. By <a href="ch-sequences.html#thm-limit-laws">Theorem 3.2.4</a> (1), the sum is <span class="math inline">\(\frac32\)</span>.</p></li>
+</ol>
+</div>
+<div class="solutionbox" id="sol-exer-repeating-decimal">
+
+<p><strong><a href="ch-series.html#exer-repeating-decimal">Exercise
+10.1.3</a>.</strong> Let <span class="math inline">\(r=\frac1{10^m}\)</span>, so <span class="math inline">\(0&lt;r&lt;1\)</span>. The partial sums of <span class="math inline">\(\sum_{k=1}^\infty\frac D{10^{mk}}\)</span> are
+<span class="math inline">\(D\)</span> times those of <span class="math inline">\(\sum_{k=1}^\infty r^k\)</span>. By <a href="ch-series.html#ex-geometric-series">Example 10.1.3</a> and <a href="ch-sequences.html#thm-limit-laws">Theorem 3.2.4</a> (2), <span class="math display">\[\sum_{k=1}^\infty\frac D{10^{mk}}=D\cdot\frac
+r{1-r}=\frac D{10^m-1}.\]</span> Since <span class="math inline">\(D\)</span> and <span class="math inline">\(10^m-1\)</span> are integers and <span class="math inline">\(10^m-1\ne0\)</span>, this is a rational number.
+With <span class="math inline">\(m=2\)</span> and <span class="math inline">\(D=27\)</span>, <span class="math inline">\(0.272727\ldots=\frac{27}{99}=\frac3{11}\)</span>.</p>
+</div>
 <div class="solutionbox" id="sol-exer-nth-term-test">
 
 <p><strong><a href="ch-series.html#exer-nth-term-test">Exercise 10.2.1</a>.</strong>
@@ -121,10 +145,10 @@ decreasing, let <span class="math inline">\(b=\lim_{k\to\infty}b_k\)</span> and 
 Dirichlet Test to <span class="math inline">\(\sum
 a_k(b_k-b)\)</span>.</p>
 </div>
-<div class="solutionbox" id="sol-exer-harmonic-grouping">
+<div class="solutionbox" id="sol-exer-squares-converge">
 
-<p><strong><a href="ch-series.html#exer-harmonic-grouping">Exercise
-10.2.8</a>.</strong> <em>Hint.</em> Group the terms as in <a href="ch-series.html#ex-harmonic-series">Example 10.1.5</a>. Each of the <span class="math inline">\(2^{j-1}\)</span> terms in the block for <span class="math inline">\(j\)</span> is at most <span class="math inline">\(\frac1{2^{j-1}}\)</span>.</p>
+<p><strong><a href="ch-series.html#exer-squares-converge">Exercise
+10.2.8</a>.</strong> <em>Hint.</em> Since <span class="math inline">\(a_k\to0\)</span>, <span class="math inline">\(a_k\le1\)</span> for all large <span class="math inline">\(k\)</span>, and then <span class="math inline">\(a_k^2\le a_k\)</span>. For the example, try <span class="math inline">\(a_k=\frac1{k^2}\)</span>.</p>
 </div>
 <div class="solutionbox" id="sol-exer-trig-cos">
 
@@ -235,7 +259,7 @@ the second tends to <span class="math inline">\(\frac1{1-\frac13}=\frac32\)</spa
 <div class="solutionbox" id="sol-exer-prime-reciprocals">
 
 <p><strong><a href="ch-series.html#exer-prime-reciprocals">Exercise
-10.5.3</a>.</strong> <em>Hint.</em> By the proof of <a href="ch-series.html#thm-infinitely-many-primes">Theorem 10.5.3</a>, <span class="math inline">\(s_N\le\prod\frac q{q-1}\)</span>, the product over
+10.5.3</a>.</strong> <em>Hint.</em> By the proof of <a href="ch-series.html#thm-infinitely-many-primes">Theorem 10.5.1</a>, <span class="math inline">\(s_N\le\prod\frac q{q-1}\)</span>, the product over
 the primes <span class="math inline">\(q\le N\)</span>. Take logarithms,
 and use <span class="math inline">\(-\ln(1-x)\le2x\)</span> for <span class="math inline">\(0\le x\le\frac12\)</span>.</p>
 </div>
